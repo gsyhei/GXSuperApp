@@ -1,0 +1,6 @@
+framework module GXTransition_Swift {
+  umbrella header "GXTransition-Swift-umbrella.h"
+
+  export *
+  module * { export * }
+}

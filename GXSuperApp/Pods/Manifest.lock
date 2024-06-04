@@ -1,0 +1,226 @@
+PODS:
+  - Alamofire (5.9.1)
+  - Bugly (2.6.1)
+  - CollectionKit (2.4.0):
+    - CollectionKit/Core (= 2.4.0)
+  - CollectionKit/Core (2.4.0)
+  - CryptoSwift (1.8.2)
+  - Differentiator (5.0.0)
+  - GoogleMaps (7.4.0):
+    - GoogleMaps/Maps (= 7.4.0)
+  - GoogleMaps/Base (7.4.0)
+  - GoogleMaps/Maps (7.4.0):
+    - GoogleMaps/Base
+  - GXAlert-Swift (1.0.1)
+  - GXBanner (1.1.0)
+  - GXCategories (1.0.9)
+  - GXConfigTableViewVC (1.0.1):
+    - RxCocoaPlus
+  - GXRefresh (1.1.2)
+  - GXSegmentPageView (1.1.0)
+  - GXTransition-Swift (1.0.1)
+  - GXWaterfallViewLayout (1.0.1)
+  - HandyJSON (5.0.2)
+  - Hero (1.6.3)
+  - HGPlaceholders (0.5.0)
+  - HXPhotoPicker (4.1.2):
+    - HXPhotoPicker/Full (= 4.1.2)
+  - HXPhotoPicker/Camera (4.1.2):
+    - HXPhotoPicker/Camera/Lite (= 4.1.2)
+    - HXPhotoPicker/Camera/Location (= 4.1.2)
+  - HXPhotoPicker/Camera/Lite (4.1.2):
+    - HXPhotoPicker/Core
+  - HXPhotoPicker/Camera/Location (4.1.2):
+    - HXPhotoPicker/Camera/Lite
+  - HXPhotoPicker/Core (4.1.2)
+  - HXPhotoPicker/Editor (4.1.2):
+    - HXPhotoPicker/Editor/KF (= 4.1.2)
+    - HXPhotoPicker/Editor/Lite (= 4.1.2)
+  - HXPhotoPicker/Editor/KF (4.1.2):
+    - HXPhotoPicker/Editor/Lite
+    - HXPhotoPicker/EditorView/KF
+    - Kingfisher (~> 7.0)
+  - HXPhotoPicker/Editor/Lite (4.1.2):
+    - HXPhotoPicker/EditorView/Lite
+  - HXPhotoPicker/EditorView/KF (4.1.2):
+    - HXPhotoPicker/EditorView/Lite
+    - Kingfisher (~> 7.0)
+  - HXPhotoPicker/EditorView/Lite (4.1.2):
+    - HXPhotoPicker/Core
+  - HXPhotoPicker/Full (4.1.2):
+    - HXPhotoPicker/Camera
+    - HXPhotoPicker/Editor
+    - HXPhotoPicker/Picker
+  - HXPhotoPicker/Picker (4.1.2):
+    - HXPhotoPicker/Picker/KF (= 4.1.2)
+    - HXPhotoPicker/Picker/Lite (= 4.1.2)
+  - HXPhotoPicker/Picker/KF (4.1.2):
+    - HXPhotoPicker/Picker/Lite
+    - Kingfisher (~> 7.0)
+  - HXPhotoPicker/Picker/Lite (4.1.2):
+    - HXPhotoPicker/Core
+  - IQKeyboardManagerSwift (7.0.3)
+  - Kingfisher (7.11.0)
+  - MBProgressHUD (1.2.0)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - ObjcExceptionBridging (7.1.5):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 7.1.5)
+  - ObjcExceptionBridging/ObjcExceptionBridging (7.1.5)
+  - PromiseKit (8.1.1):
+    - PromiseKit/CorePromise (= 8.1.1)
+    - PromiseKit/Foundation (= 8.1.1)
+    - PromiseKit/UIKit (= 8.1.1)
+  - PromiseKit/CorePromise (8.1.1)
+  - PromiseKit/Foundation (8.1.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (8.1.1):
+    - PromiseKit/CorePromise
+  - QRCodeReader.swift (10.1.0)
+  - Reusable (4.1.2):
+    - Reusable/Storyboard (= 4.1.2)
+    - Reusable/View (= 4.1.2)
+  - Reusable/Storyboard (4.1.2)
+  - Reusable/View (4.1.2)
+  - RxCocoa (6.7.1):
+    - RxRelay (= 6.7.1)
+    - RxSwift (= 6.7.1)
+  - RxCocoaPlus (1.0.0):
+    - RxCocoa
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.7.1):
+    - RxSwift (= 6.7.1)
+  - RxSwift (6.7.1)
+  - SnapKit (5.7.1)
+  - SnapKitExtend (1.1.0):
+    - SnapKit
+  - SwiftTheme (0.6.4)
+  - SwiftyUserDefaults (5.3.0)
+  - Then (3.0.0)
+  - ViewAnimator (3.1.0)
+  - XCGLogger (7.1.5):
+    - XCGLogger/Core (= 7.1.5)
+  - XCGLogger/Core (7.1.5):
+    - ObjcExceptionBridging
+
+DEPENDENCIES:
+  - Bugly
+  - CollectionKit
+  - CryptoSwift
+  - GoogleMaps
+  - GXAlert-Swift
+  - GXBanner
+  - GXCategories
+  - GXConfigTableViewVC
+  - GXRefresh
+  - GXSegmentPageView
+  - GXTransition-Swift
+  - GXWaterfallViewLayout
+  - HandyJSON
+  - Hero
+  - HGPlaceholders
+  - HXPhotoPicker (= 4.1.2)
+  - IQKeyboardManagerSwift
+  - Kingfisher
+  - MBProgressHUD
+  - Moya
+  - PromiseKit
+  - QRCodeReader.swift
+  - Reusable
+  - RxDataSources
+  - SnapKitExtend
+  - SwiftTheme
+  - SwiftyUserDefaults
+  - Then
+  - ViewAnimator
+  - XCGLogger
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Bugly
+    - CollectionKit
+    - CryptoSwift
+    - Differentiator
+    - GoogleMaps
+    - GXAlert-Swift
+    - GXBanner
+    - GXCategories
+    - GXConfigTableViewVC
+    - GXRefresh
+    - GXSegmentPageView
+    - GXTransition-Swift
+    - GXWaterfallViewLayout
+    - HandyJSON
+    - Hero
+    - HGPlaceholders
+    - HXPhotoPicker
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - MBProgressHUD
+    - Moya
+    - ObjcExceptionBridging
+    - PromiseKit
+    - QRCodeReader.swift
+    - Reusable
+    - RxCocoa
+    - RxCocoaPlus
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - SnapKit
+    - SnapKitExtend
+    - SwiftTheme
+    - SwiftyUserDefaults
+    - Then
+    - ViewAnimator
+    - XCGLogger
+
+SPEC CHECKSUMS:
+  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
+  Bugly: 217ac2ce5f0f2626d43dbaa4f70764c953a26a31
+  CollectionKit: 8f01e7629185bb81072c4aa734d105df5c2d1c8b
+  CryptoSwift: c63a805d8bb5e5538e88af4e44bb537776af11ea
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  GoogleMaps: 032f676450ba0779bd8ce16840690915f84e57ac
+  GXAlert-Swift: c60dc53cb2ce0516c994ce1f370b826ac9b1ac16
+  GXBanner: 9589d3281ce0b182ec5ca85bb1ce18e94a021013
+  GXCategories: 7f1b5ab3bfdd781d7482b39d0942928c355c6d4d
+  GXConfigTableViewVC: aee824fb558d3a4df6562c6af87e33bbcb54a291
+  GXRefresh: d8c64ca667f1daad0f332cd6066023714fc0da6d
+  GXSegmentPageView: c6d5e7c17be81d44565ee6206a642b8c63f25463
+  GXTransition-Swift: 12b7462f641ffd0ce36c9646315b6e8c9aea6182
+  GXWaterfallViewLayout: 1030bd57d37eedd3146e638d262f0869380a59c8
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  Hero: 419d43384355b3168512bd8ac6a33aadd3dc575b
+  HGPlaceholders: cbf8caed8360fc2ab5e8a4610cce61f76fbd2c37
+  HXPhotoPicker: aa1b5620b40fad3100741b83ac750364cdeb4615
+  IQKeyboardManagerSwift: f9c5dc36cba16ddd2e51fa7d51c34a2e083029b5
+  Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  ObjcExceptionBridging: d3d37d62981bb7f252ecb31b62d7e23a96bbfb8a
+  PromiseKit: d1be44b474e5acfa16adf007a1f49f104e10fead
+  QRCodeReader.swift: 373a389fe9a22d513c879a32a6f647c58f4ef572
+  Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
+  RxCocoa: f5609cb4637587a7faa99c5d5787e3ad582b75a4
+  RxCocoaPlus: ad5b7cac9ad39600a966aa5bfdceea135d470461
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxRelay: 4151ba01152436b08271e08410135e099880eae5
+  RxSwift: b9a93a26031785159e11abd40d1a55bcb8057e52
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
+  SnapKitExtend: aa30cf37196195fae9c4354686cc7710184ebfcc
+  SwiftTheme: 007cbaf1f9e171caf6448a4657533e54c682b285
+  SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+  ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
+  XCGLogger: 399c5885210b4e2ad79d9f7a29b105d672ef724f
+
+PODFILE CHECKSUM: 7f81065802bc2a4fc2e412e10fa4f402c0c655cb
+
+COCOAPODS: 1.15.2

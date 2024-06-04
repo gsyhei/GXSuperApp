@@ -1,0 +1,6 @@
+framework module RxCocoaPlus {
+  umbrella header "RxCocoaPlus-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module GXConfigTableViewVC {
+  umbrella header "GXConfigTableViewVC-umbrella.h"
+
+  export *
+  module * { export * }
+}

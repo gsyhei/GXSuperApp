@@ -1,0 +1,86 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '13.0'
+#source 'https://github.com/CocoaPods/Specs.git'
+
+target 'GXSuperApp' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  inhibit_all_warnings! #抑制所有的警告!
+
+  # 自制分栏显示器
+  pod 'GXSegmentPageView'
+  # 自制广告轮播
+  pod 'GXBanner'
+  # 自制弹出菜单效果扩展
+  pod 'GXAlert-Swift'
+  # 自制上下拉刷新
+  pod 'GXRefresh'
+  # 自制瀑布流布局
+  pod 'GXWaterfallViewLayout'
+  # 自制常用扩展
+  pod 'GXCategories'
+  # 自制转场效果
+  pod 'GXTransition-Swift'
+  # 自制常用个人设置类配置tableView
+  pod 'GXConfigTableViewVC'
+
+  # 输入框键盘管理器
+  pod 'IQKeyboardManagerSwift'
+  # 超级甜的语法糖Swift初始化
+  pod 'Then'
+  # 网络图片缓存框架<Swift版SDWebImage>
+  pod 'Kingfisher'
+  # table/collection快速注册cell扩展
+  pod 'Reusable'
+  # 视图控制器转场
+  pod 'Hero'
+  # 主题色设置库
+  pod 'SwiftTheme'
+  # 基于Alamofire的网络框架
+  pod 'Moya'
+  # JSON/模型转换
+  pod 'HandyJSON'
+  # HUD控件
+  pod 'MBProgressHUD'
+  # 简单快速使用的Collection布局控件
+  pod 'CollectionKit'
+  # AutoLayout
+  pod 'SnapKitExtend'
+  # UserDefault沙盒
+  pod 'SwiftyUserDefaults'
+  # 加密工具
+  pod 'CryptoSwift'  #加密
+  # RxCocoa中table/collection的分区方案
+  pod 'RxDataSources'
+  # 日志框架
+  pod 'XCGLogger'
+  # table collection加载动画
+  pod 'ViewAnimator'
+  # table/collection占位符和空状态的库
+  pod 'HGPlaceholders'
+  # 二维码扫码
+  pod 'QRCodeReader.swift'
+  # 相册
+  pod 'HXPhotoPicker', '4.1.2'
+  # 日志
+  pod 'Bugly' 
+  # 异步链式框架
+  pod "PromiseKit"
+  # 谷歌地图
+  pod 'GoogleMaps'
+  
+end
+
+#Pods config
+#Fix Xcode14 Bundle target error
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
+      config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
+      config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
+      config.build_settings['ENABLE_BITCODE'] = "NO"
+    end
+  end
+end

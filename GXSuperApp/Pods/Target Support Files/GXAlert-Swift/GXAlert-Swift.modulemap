@@ -1,0 +1,6 @@
+framework module GXAlert_Swift {
+  umbrella header "GXAlert-Swift-umbrella.h"
+
+  export *
+  module * { export * }
+}
