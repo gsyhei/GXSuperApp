@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXMinePtOrderDetailVC" customModule="GXHeiVibe" customModuleProvider="target">
+            <connections>
+                <outlet property="backgroundImageView" destination="TRm-mB-8Vf" id="EwV-a6-SQc"/>
+                <outlet property="tableView" destination="gke-j6-Dgy" id="ETT-Kv-9aO"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TRm-mB-8Vf">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="568"/>
+                    <color key="backgroundColor" red="0.50196078430000002" green="0.98431372549999996" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gke-j6-Dgy" customClass="GXBaseTableView" customModule="GXHeiVibe" customModuleProvider="target">
+                    <rect key="frame" x="16" y="107" width="361" height="711"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="X4h-0j-RKo"/>
+                        <outlet property="delegate" destination="-1" id="5Sc-Pg-bWQ"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5P-XR-Ry7" customClass="GXRoundedBevelView" customModule="GXHeiVibe" customModuleProvider="target">
+                    <rect key="frame" x="16" y="75" width="361" height="32"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="OHL-ew-qX2"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gke-j6-Dgy" secondAttribute="trailing" constant="16" id="61S-m3-au5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="TRm-mB-8Vf" secondAttribute="bottom" constant="250" id="Bfb-ll-D6t"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="x5P-XR-Ry7" secondAttribute="trailing" constant="16" id="D9H-x9-LCR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gke-j6-Dgy" secondAttribute="bottom" id="GaW-EC-osy"/>
+                <constraint firstItem="TRm-mB-8Vf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="N5h-ZQ-UTm"/>
+                <constraint firstItem="gke-j6-Dgy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Q1Z-6F-vTu"/>
+                <constraint firstItem="x5P-XR-Ry7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="QXC-B2-pMf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TRm-mB-8Vf" secondAttribute="trailing" id="XWI-bL-CUZ"/>
+                <constraint firstItem="gke-j6-Dgy" firstAttribute="top" secondItem="x5P-XR-Ry7" secondAttribute="bottom" id="Zjm-Vr-Y6K"/>
+                <constraint firstItem="TRm-mB-8Vf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="h1j-Fe-3oN"/>
+                <constraint firstItem="x5P-XR-Ry7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="nps-Iw-VPH"/>
+            </constraints>
+            <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
+        </view>
+    </objects>
+</document>

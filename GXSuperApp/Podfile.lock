@@ -11,6 +11,7 @@ PODS:
   - GoogleMaps/Base (7.4.0)
   - GoogleMaps/Maps (7.4.0):
     - GoogleMaps/Base
+  - GooglePlaces (7.4.0)
   - GXAlert-Swift (1.0.1)
   - GXBanner (1.1.0)
   - GXCategories (1.0.9)
@@ -73,8 +74,12 @@ PODS:
     - PromiseKit/CorePromise (= 8.1.1)
     - PromiseKit/Foundation (= 8.1.1)
     - PromiseKit/UIKit (= 8.1.1)
+  - PromiseKit/CoreLocation (8.1.1):
+    - PromiseKit/CorePromise
   - PromiseKit/CorePromise (8.1.1)
   - PromiseKit/Foundation (8.1.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/StoreKit (8.1.1):
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (8.1.1):
     - PromiseKit/CorePromise
@@ -113,6 +118,7 @@ DEPENDENCIES:
   - CollectionKit
   - CryptoSwift
   - GoogleMaps
+  - GooglePlaces
   - GXAlert-Swift
   - GXBanner
   - GXCategories
@@ -130,6 +136,8 @@ DEPENDENCIES:
   - MBProgressHUD
   - Moya
   - PromiseKit
+  - PromiseKit/CoreLocation
+  - PromiseKit/StoreKit
   - QRCodeReader.swift
   - Reusable
   - RxDataSources
@@ -148,6 +156,7 @@ SPEC REPOS:
     - CryptoSwift
     - Differentiator
     - GoogleMaps
+    - GooglePlaces
     - GXAlert-Swift
     - GXBanner
     - GXCategories
@@ -188,6 +197,7 @@ SPEC CHECKSUMS:
   CryptoSwift: c63a805d8bb5e5538e88af4e44bb537776af11ea
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   GoogleMaps: 032f676450ba0779bd8ce16840690915f84e57ac
+  GooglePlaces: 544e908d94860bf6f8fc1865b80d2c7eb6b5f937
   GXAlert-Swift: c60dc53cb2ce0516c994ce1f370b826ac9b1ac16
   GXBanner: 9589d3281ce0b182ec5ca85bb1ce18e94a021013
   GXCategories: 7f1b5ab3bfdd781d7482b39d0942928c355c6d4d
@@ -221,6 +231,6 @@ SPEC CHECKSUMS:
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
   XCGLogger: 399c5885210b4e2ad79d9f7a29b105d672ef724f
 
-PODFILE CHECKSUM: 7f81065802bc2a4fc2e412e10fa4f402c0c655cb
+PODFILE CHECKSUM: bd5cb1620733211095777ca7c04ed58506de3550
 
 COCOAPODS: 1.15.2

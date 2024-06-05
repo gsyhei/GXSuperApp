@@ -478,6 +478,10 @@ SOFTWARE.
 
 Copyright 2023 Google
 
+## GooglePlaces
+
+Copyright 2023 Google
+
 ## HGPlaceholders
 
 Copyright (c) 2017 HamzaGhazouani <hamza.ghazouani@gmail.com>

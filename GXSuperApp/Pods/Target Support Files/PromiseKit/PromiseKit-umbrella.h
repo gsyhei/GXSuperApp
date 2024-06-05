@@ -10,6 +10,9 @@
 #endif
 #endif
 
+#import "CLGeocoder+AnyPromise.h"
+#import "CLLocationManager+AnyPromise.h"
+#import "PMKCoreLocation.h"
 #import "AnyPromise.h"
 #import "PromiseKit.h"
 #import "fwd.h"
@@ -17,6 +20,8 @@
 #import "NSTask+AnyPromise.h"
 #import "NSURLSession+AnyPromise.h"
 #import "PMKFoundation.h"
+#import "PMKStoreKit.h"
+#import "SKRequest+AnyPromise.h"
 #import "PMKUIKit.h"
 #import "UIView+AnyPromise.h"
 #import "UIViewController+AnyPromise.h"

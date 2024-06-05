@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		33D9DFE22C0EFA0700A282D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */; };
 		33D9DFE62C0EFA0700A282D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9DFE52C0EFA0700A282D5 /* ViewController.swift */; };
-		33D9DFE92C0EFA0700A282D5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 33D9DFE82C0EFA0700A282D5 /* Base */; };
 		33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33D9DFEA2C0EFA0900A282D5 /* Assets.xcassets */; };
 		33D9DFEE2C0EFA0900A282D5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 33D9DFED2C0EFA0900A282D5 /* Base */; };
 		6818C78D9B51E2909BC88500 /* Pods_GXSuperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F37FD32A5D4D283B3BF19 /* Pods_GXSuperApp.framework */; };
@@ -19,7 +18,6 @@
 		33D9DFDE2C0EFA0700A282D5 /* GXSuperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GXSuperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33D9DFE52C0EFA0700A282D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		33D9DFE82C0EFA0700A282D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		33D9DFEA2C0EFA0900A282D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33D9DFED2C0EFA0900A282D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33D9DFEF2C0EFA0900A282D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 			children = (
 				33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */,
 				33D9DFE52C0EFA0700A282D5 /* ViewController.swift */,
-				33D9DFE72C0EFA0700A282D5 /* Main.storyboard */,
 				33D9DFEA2C0EFA0900A282D5 /* Assets.xcassets */,
 				33D9DFEC2C0EFA0900A282D5 /* LaunchScreen.storyboard */,
 				33D9DFEF2C0EFA0900A282D5 /* Info.plist */,
@@ -151,7 +148,6 @@
 			files = (
 				33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */,
 				33D9DFEE2C0EFA0900A282D5 /* Base in Resources */,
-				33D9DFE92C0EFA0700A282D5 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,14 +225,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		33D9DFE72C0EFA0700A282D5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				33D9DFE82C0EFA0700A282D5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		33D9DFEC2C0EFA0900A282D5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -379,6 +367,12 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GXSuperApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "需要您允许使用相机，拍照将用于设置“头像”等。";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "需要您的允许，以便于搜索到您附近的充电站。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要您的允许，以便于搜索到您附近的充电站。";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要您允许使用麦克风才可在照片选项中录制视频。";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "需要您的允许，以便于将图片保存至您的相册。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "需要您允许使用相册，拍照将用于设置“头像”等。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -411,6 +405,12 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GXSuperApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "需要您允许使用相机，拍照将用于设置“头像”等。";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "需要您的允许，以便于搜索到您附近的充电站。";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要您的允许，以便于搜索到您附近的充电站。";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "需要您允许使用麦克风才可在照片选项中录制视频。";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "需要您的允许，以便于将图片保存至您的相册。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "需要您允许使用相册，拍照将用于设置“头像”等。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

@@ -66,8 +66,11 @@ target 'GXSuperApp' do
   pod 'Bugly' 
   # 异步链式框架
   pod "PromiseKit"
+  pod "PromiseKit/CoreLocation"
+  pod "PromiseKit/StoreKit"
   # 谷歌地图
   pod 'GoogleMaps'
+  pod 'GooglePlaces'
   
 end
 
