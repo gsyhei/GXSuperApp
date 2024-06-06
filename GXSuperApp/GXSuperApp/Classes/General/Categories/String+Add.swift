@@ -5,16 +5,9 @@
 //  Created by Gin on 2021/10/23.
 //
 
-import Foundation
+import UIKit
 
 extension String {
-
-    static func gx_printAllFonts() {
-        let  familyNames = UIFont.familyNames
-        for fontNames in familyNames {
-            NSLog("familyNames - \(fontNames)")
-        }
-    }
 
     static func gx_money(number: Int) -> String {
         return "￥" + self.gx_showInSeperator(number: number)

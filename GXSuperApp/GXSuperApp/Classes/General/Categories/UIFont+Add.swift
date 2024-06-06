@@ -9,6 +9,13 @@ import UIKit
 
 extension UIFont {
 
+    class func gx_printAllFonts() {
+        let  familyNames = UIFont.familyNames
+        for fontNames in familyNames {
+            NSLog("familyNames - \(fontNames)")
+        }
+    }
+    
     enum PingFangSCType {
         /// 纤细体
         case thin
@@ -24,20 +31,16 @@ extension UIFont {
         case semibold
     }
 
-    class func gx_font(size fontSize: CGFloat) -> UIFont {
-        return UIFont.gx_PFSCfont(size: fontSize, type: .regular)
+    class func gx_lightFont(size fontSize: CGFloat) -> UIFont {
+        return UIFont(name: "Mukta-Light", size: fontSize) ?? .systemFont(ofSize: fontSize)
     }
 
     class func gx_boldFont(size fontSize: CGFloat) -> UIFont {
-        return UIFont.gx_PFSCfont(size: fontSize, type: .medium)
+        return UIFont(name: "Mukta-Bold", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
     }
 
-    class func gx_boldMaxFont(size fontSize: CGFloat) -> UIFont {
-        return UIFont.gx_PFSCfont(size: fontSize, type: .semibold)
-    }
-
-    class func gx_dingTalkFont(size fontSize: CGFloat) -> UIFont {
-        return UIFont(name: "DingTalk JinBuTi", size: fontSize) ?? .gx_boldMaxFont(size: fontSize).gx_setItalic()
+    class func gx_semiBoldFont(size fontSize: CGFloat) -> UIFont {
+        return UIFont(name: "Mukta-SemiBold", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
     }
 
     class func gx_PFSCfont(size fontSize: CGFloat, type: PingFangSCType) -> UIFont {

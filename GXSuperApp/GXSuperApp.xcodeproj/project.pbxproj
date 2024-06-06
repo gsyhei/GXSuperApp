@@ -11,6 +11,67 @@
 		33D9DFE62C0EFA0700A282D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9DFE52C0EFA0700A282D5 /* ViewController.swift */; };
 		33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33D9DFEA2C0EFA0900A282D5 /* Assets.xcassets */; };
 		33D9DFEE2C0EFA0900A282D5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 33D9DFED2C0EFA0900A282D5 /* Base */; };
+		33EC55AB2C101BA100D4CCD0 /* GXArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53792C101BA100D4CCD0 /* GXArrowButton.swift */; };
+		33EC55AC2C101BA100D4CCD0 /* GXBaseChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC537A2C101BA100D4CCD0 /* GXBaseChatViewController.swift */; };
+		33EC55AD2C101BA100D4CCD0 /* GXBaseChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33EC537B2C101BA100D4CCD0 /* GXBaseChatViewController.xib */; };
+		33EC55AE2C101BA100D4CCD0 /* GXBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC537C2C101BA100D4CCD0 /* GXBaseModel.swift */; };
+		33EC55AF2C101BA100D4CCD0 /* GXBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC537D2C101BA100D4CCD0 /* GXBaseNavigationController.swift */; };
+		33EC55B02C101BA100D4CCD0 /* GXBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC537E2C101BA100D4CCD0 /* GXBaseTableView.swift */; };
+		33EC55B12C101BA100D4CCD0 /* GXBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC537F2C101BA100D4CCD0 /* GXBaseTableViewController.swift */; };
+		33EC55B22C101BA100D4CCD0 /* GXBaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53802C101BA100D4CCD0 /* GXBaseTextField.swift */; };
+		33EC55B32C101BA100D4CCD0 /* GXBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53812C101BA100D4CCD0 /* GXBaseViewController.swift */; };
+		33EC55B42C101BA100D4CCD0 /* GXBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53822C101BA100D4CCD0 /* GXBaseViewModel.swift */; };
+		33EC55B52C101BA100D4CCD0 /* GXBaseWarnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53832C101BA100D4CCD0 /* GXBaseWarnViewController.swift */; };
+		33EC55B62C101BA100D4CCD0 /* GXConfigTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53842C101BA100D4CCD0 /* GXConfigTVC.swift */; };
+		33EC55B72C101BA100D4CCD0 /* GXLinkTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53852C101BA100D4CCD0 /* GXLinkTextView.swift */; };
+		33EC55B82C101BA100D4CCD0 /* GXSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53862C101BA100D4CCD0 /* GXSearchController.swift */; };
+		33EC55B92C101BA100D4CCD0 /* GXSlideTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53872C101BA100D4CCD0 /* GXSlideTableView.swift */; };
+		33EC55BA2C101BA100D4CCD0 /* GXCopyable+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53892C101BA100D4CCD0 /* GXCopyable+Add.swift */; };
+		33EC55BB2C101BA100D4CCD0 /* GXRefreshNormalHeader+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC538A2C101BA100D4CCD0 /* GXRefreshNormalHeader+Add.swift */; };
+		33EC55BC2C101BA100D4CCD0 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 33EC538B2C101BA100D4CCD0 /* MBProgressHUD.bundle */; };
+		33EC55BE2C101BA100D4CCD0 /* NSAttributedString+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC538D2C101BA100D4CCD0 /* NSAttributedString+Add.swift */; };
+		33EC55BF2C101BA100D4CCD0 /* PhotoAsset+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC538E2C101BA100D4CCD0 /* PhotoAsset+Add.swift */; };
+		33EC55C02C101BA100D4CCD0 /* String+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC538F2C101BA100D4CCD0 /* String+Add.swift */; };
+		33EC55C12C101BA100D4CCD0 /* UIAlertController+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53902C101BA100D4CCD0 /* UIAlertController+Add.swift */; };
+		33EC55C22C101BA100D4CCD0 /* UIButton+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53912C101BA100D4CCD0 /* UIButton+Add.swift */; };
+		33EC55C32C101BA100D4CCD0 /* UIColor+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53922C101BA100D4CCD0 /* UIColor+Add.swift */; };
+		33EC55C42C101BA100D4CCD0 /* UIFont+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53932C101BA100D4CCD0 /* UIFont+Add.swift */; };
+		33EC55C52C101BA100D4CCD0 /* UIImage+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53942C101BA100D4CCD0 /* UIImage+Add.swift */; };
+		33EC55C62C101BA100D4CCD0 /* UITextField+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53952C101BA100D4CCD0 /* UITextField+Add.swift */; };
+		33EC55C72C101BA100D4CCD0 /* UITextView+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53962C101BA100D4CCD0 /* UITextView+Add.swift */; };
+		33EC55C82C101BA100D4CCD0 /* GXApiDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53982C101BA100D4CCD0 /* GXApiDefine.swift */; };
+		33EC55C92C101BA100D4CCD0 /* GXDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53992C101BA100D4CCD0 /* GXDefine.swift */; };
+		33EC55CA2C101BA100D4CCD0 /* GXNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC539A2C101BA100D4CCD0 /* GXNotificationName.swift */; };
+		33EC55CD2C101BA100D4CCD0 /* GXUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC539E2C101BA100D4CCD0 /* GXUtil.swift */; };
+		33EC55CE2C101BA100D4CCD0 /* ObjectUnicode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC539F2C101BA100D4CCD0 /* ObjectUnicode.swift */; };
+		33EC55CF2C101BA100D4CCD0 /* GXAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53A12C101BA100D4CCD0 /* GXAlertView.swift */; };
+		33EC55DB2C101BA100D4CCD0 /* GXMessagesLoadHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53AF2C101BA100D4CCD0 /* GXMessagesLoadHeader.swift */; };
+		33EC55DC2C101BA100D4CCD0 /* GXMessagesLoadTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53B02C101BA100D4CCD0 /* GXMessagesLoadTableView.swift */; };
+		33EC55F12C101BA100D4CCD0 /* XYNavigationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53CB2C101BA100D4CCD0 /* XYNavigationManager.m */; };
+		33EC55F22C101BA100D4CCD0 /* GXAddImages9View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53CD2C101BA100D4CCD0 /* GXAddImages9View.swift */; };
+		33EC55F32C101BA100D4CCD0 /* GXAddImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53CE2C101BA100D4CCD0 /* GXAddImagesView.swift */; };
+		33EC55F42C101BA100D4CCD0 /* GXAddItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53CF2C101BA100D4CCD0 /* GXAddItemsView.swift */; };
+		33EC55F52C101BA100D4CCD0 /* GXBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D02C101BA100D4CCD0 /* GXBadgeView.swift */; };
+		33EC55F62C101BA100D4CCD0 /* GXCollectionTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D12C101BA100D4CCD0 /* GXCollectionTagsView.swift */; };
+		33EC55F72C101BA100D4CCD0 /* GXMarqueeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D22C101BA100D4CCD0 /* GXMarqueeTextView.swift */; };
+		33EC55F82C101BA100D4CCD0 /* GXQRCodeReaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D32C101BA100D4CCD0 /* GXQRCodeReaderVC.swift */; };
+		33EC55F92C101BA100D4CCD0 /* GXQRCodeReaderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33EC53D42C101BA100D4CCD0 /* GXQRCodeReaderVC.xib */; };
+		33EC55FA2C101BA100D4CCD0 /* GXRoundedBevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D52C101BA100D4CCD0 /* GXRoundedBevelView.swift */; };
+		33EC55FB2C101BA100D4CCD0 /* GXSelectItemsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D62C101BA100D4CCD0 /* GXSelectItemsMenu.swift */; };
+		33EC55FC2C101BA100D4CCD0 /* GXTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D72C101BA100D4CCD0 /* GXTagsView.swift */; };
+		33EC55FD2C101BA100D4CCD0 /* GXTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D82C101BA100D4CCD0 /* GXTextView.swift */; };
+		33EC55FE2C101BA100D4CCD0 /* GXToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D92C101BA100D4CCD0 /* GXToast.swift */; };
+		33EC55FF2C101BA100D4CCD0 /* GXWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53DA2C101BA100D4CCD0 /* GXWebViewController.swift */; };
+		33EC56012C101BA100D4CCD0 /* GXAppleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53DE2C101BA100D4CCD0 /* GXAppleManager.swift */; };
+		33EC56042C101BA100D4CCD0 /* GXServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53E12C101BA100D4CCD0 /* GXServiceManager.swift */; };
+		33EC578E2C101BA200D4CCD0 /* GXApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC55A62C101BA100D4CCD0 /* GXApi.swift */; };
+		33EC578F2C101BA200D4CCD0 /* GXMoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC55A72C101BA100D4CCD0 /* GXMoyaProvider.swift */; };
+		33EC57932C1021E300D4CCD0 /* GXApproveFailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC57912C1021E300D4CCD0 /* GXApproveFailInfoView.swift */; };
+		33EC57942C1021E300D4CCD0 /* GXApproveFailInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33EC57922C1021E300D4CCD0 /* GXApproveFailInfoView.xib */; };
+		33EC579C2C11643500D4CCD0 /* MBProgressHUD+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC579B2C11643500D4CCD0 /* MBProgressHUD+Add.swift */; };
+		33EC57A02C116B2300D4CCD0 /* Mukta-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33EC579D2C116B2300D4CCD0 /* Mukta-SemiBold.ttf */; };
+		33EC57A12C116B2300D4CCD0 /* Mukta-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33EC579E2C116B2300D4CCD0 /* Mukta-Bold.ttf */; };
+		33EC57A22C116B2300D4CCD0 /* Mukta-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33EC579F2C116B2300D4CCD0 /* Mukta-Light.ttf */; };
 		6818C78D9B51E2909BC88500 /* Pods_GXSuperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F37FD32A5D4D283B3BF19 /* Pods_GXSuperApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +82,68 @@
 		33D9DFEA2C0EFA0900A282D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33D9DFED2C0EFA0900A282D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33D9DFEF2C0EFA0900A282D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33EC53792C101BA100D4CCD0 /* GXArrowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXArrowButton.swift; sourceTree = "<group>"; };
+		33EC537A2C101BA100D4CCD0 /* GXBaseChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseChatViewController.swift; sourceTree = "<group>"; };
+		33EC537B2C101BA100D4CCD0 /* GXBaseChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXBaseChatViewController.xib; sourceTree = "<group>"; };
+		33EC537C2C101BA100D4CCD0 /* GXBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseModel.swift; sourceTree = "<group>"; };
+		33EC537D2C101BA100D4CCD0 /* GXBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseNavigationController.swift; sourceTree = "<group>"; };
+		33EC537E2C101BA100D4CCD0 /* GXBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseTableView.swift; sourceTree = "<group>"; };
+		33EC537F2C101BA100D4CCD0 /* GXBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseTableViewController.swift; sourceTree = "<group>"; };
+		33EC53802C101BA100D4CCD0 /* GXBaseTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseTextField.swift; sourceTree = "<group>"; };
+		33EC53812C101BA100D4CCD0 /* GXBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseViewController.swift; sourceTree = "<group>"; };
+		33EC53822C101BA100D4CCD0 /* GXBaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseViewModel.swift; sourceTree = "<group>"; };
+		33EC53832C101BA100D4CCD0 /* GXBaseWarnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseWarnViewController.swift; sourceTree = "<group>"; };
+		33EC53842C101BA100D4CCD0 /* GXConfigTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXConfigTVC.swift; sourceTree = "<group>"; };
+		33EC53852C101BA100D4CCD0 /* GXLinkTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLinkTextView.swift; sourceTree = "<group>"; };
+		33EC53862C101BA100D4CCD0 /* GXSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSearchController.swift; sourceTree = "<group>"; };
+		33EC53872C101BA100D4CCD0 /* GXSlideTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSlideTableView.swift; sourceTree = "<group>"; };
+		33EC53892C101BA100D4CCD0 /* GXCopyable+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GXCopyable+Add.swift"; sourceTree = "<group>"; };
+		33EC538A2C101BA100D4CCD0 /* GXRefreshNormalHeader+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GXRefreshNormalHeader+Add.swift"; sourceTree = "<group>"; };
+		33EC538B2C101BA100D4CCD0 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		33EC538D2C101BA100D4CCD0 /* NSAttributedString+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Add.swift"; sourceTree = "<group>"; };
+		33EC538E2C101BA100D4CCD0 /* PhotoAsset+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoAsset+Add.swift"; sourceTree = "<group>"; };
+		33EC538F2C101BA100D4CCD0 /* String+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Add.swift"; sourceTree = "<group>"; };
+		33EC53902C101BA100D4CCD0 /* UIAlertController+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Add.swift"; sourceTree = "<group>"; };
+		33EC53912C101BA100D4CCD0 /* UIButton+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Add.swift"; sourceTree = "<group>"; };
+		33EC53922C101BA100D4CCD0 /* UIColor+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Add.swift"; sourceTree = "<group>"; };
+		33EC53932C101BA100D4CCD0 /* UIFont+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Add.swift"; sourceTree = "<group>"; };
+		33EC53942C101BA100D4CCD0 /* UIImage+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Add.swift"; sourceTree = "<group>"; };
+		33EC53952C101BA100D4CCD0 /* UITextField+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Add.swift"; sourceTree = "<group>"; };
+		33EC53962C101BA100D4CCD0 /* UITextView+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Add.swift"; sourceTree = "<group>"; };
+		33EC53982C101BA100D4CCD0 /* GXApiDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXApiDefine.swift; sourceTree = "<group>"; };
+		33EC53992C101BA100D4CCD0 /* GXDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXDefine.swift; sourceTree = "<group>"; };
+		33EC539A2C101BA100D4CCD0 /* GXNotificationName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXNotificationName.swift; sourceTree = "<group>"; };
+		33EC539E2C101BA100D4CCD0 /* GXUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXUtil.swift; sourceTree = "<group>"; };
+		33EC539F2C101BA100D4CCD0 /* ObjectUnicode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectUnicode.swift; sourceTree = "<group>"; };
+		33EC53A12C101BA100D4CCD0 /* GXAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXAlertView.swift; sourceTree = "<group>"; };
+		33EC53AF2C101BA100D4CCD0 /* GXMessagesLoadHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesLoadHeader.swift; sourceTree = "<group>"; };
+		33EC53B02C101BA100D4CCD0 /* GXMessagesLoadTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesLoadTableView.swift; sourceTree = "<group>"; };
+		33EC53CA2C101BA100D4CCD0 /* XYNavigationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYNavigationManager.h; sourceTree = "<group>"; };
+		33EC53CB2C101BA100D4CCD0 /* XYNavigationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYNavigationManager.m; sourceTree = "<group>"; };
+		33EC53CD2C101BA100D4CCD0 /* GXAddImages9View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXAddImages9View.swift; sourceTree = "<group>"; };
+		33EC53CE2C101BA100D4CCD0 /* GXAddImagesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXAddImagesView.swift; sourceTree = "<group>"; };
+		33EC53CF2C101BA100D4CCD0 /* GXAddItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXAddItemsView.swift; sourceTree = "<group>"; };
+		33EC53D02C101BA100D4CCD0 /* GXBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBadgeView.swift; sourceTree = "<group>"; };
+		33EC53D12C101BA100D4CCD0 /* GXCollectionTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXCollectionTagsView.swift; sourceTree = "<group>"; };
+		33EC53D22C101BA100D4CCD0 /* GXMarqueeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMarqueeTextView.swift; sourceTree = "<group>"; };
+		33EC53D32C101BA100D4CCD0 /* GXQRCodeReaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXQRCodeReaderVC.swift; sourceTree = "<group>"; };
+		33EC53D42C101BA100D4CCD0 /* GXQRCodeReaderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXQRCodeReaderVC.xib; sourceTree = "<group>"; };
+		33EC53D52C101BA100D4CCD0 /* GXRoundedBevelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXRoundedBevelView.swift; sourceTree = "<group>"; };
+		33EC53D62C101BA100D4CCD0 /* GXSelectItemsMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSelectItemsMenu.swift; sourceTree = "<group>"; };
+		33EC53D72C101BA100D4CCD0 /* GXTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXTagsView.swift; sourceTree = "<group>"; };
+		33EC53D82C101BA100D4CCD0 /* GXTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXTextView.swift; sourceTree = "<group>"; };
+		33EC53D92C101BA100D4CCD0 /* GXToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXToast.swift; sourceTree = "<group>"; };
+		33EC53DA2C101BA100D4CCD0 /* GXWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXWebViewController.swift; sourceTree = "<group>"; };
+		33EC53DE2C101BA100D4CCD0 /* GXAppleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXAppleManager.swift; sourceTree = "<group>"; };
+		33EC53E12C101BA100D4CCD0 /* GXServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXServiceManager.swift; sourceTree = "<group>"; };
+		33EC55A62C101BA100D4CCD0 /* GXApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXApi.swift; sourceTree = "<group>"; };
+		33EC55A72C101BA100D4CCD0 /* GXMoyaProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMoyaProvider.swift; sourceTree = "<group>"; };
+		33EC57912C1021E300D4CCD0 /* GXApproveFailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXApproveFailInfoView.swift; sourceTree = "<group>"; };
+		33EC57922C1021E300D4CCD0 /* GXApproveFailInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXApproveFailInfoView.xib; sourceTree = "<group>"; };
+		33EC579B2C11643500D4CCD0 /* MBProgressHUD+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Add.swift"; sourceTree = "<group>"; };
+		33EC579D2C116B2300D4CCD0 /* Mukta-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-SemiBold.ttf"; sourceTree = "<group>"; };
+		33EC579E2C116B2300D4CCD0 /* Mukta-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-Bold.ttf"; sourceTree = "<group>"; };
+		33EC579F2C116B2300D4CCD0 /* Mukta-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-Light.ttf"; sourceTree = "<group>"; };
 		5D6F37FD32A5D4D283B3BF19 /* Pods_GXSuperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GXSuperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE37990042C7D6C00FD87875 /* Pods-GXSuperApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GXSuperApp.release.xcconfig"; path = "Target Support Files/Pods-GXSuperApp/Pods-GXSuperApp.release.xcconfig"; sourceTree = "<group>"; };
 		BE467C8C83E2954639F9764B /* Pods-GXSuperApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GXSuperApp.debug.xcconfig"; path = "Target Support Files/Pods-GXSuperApp/Pods-GXSuperApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -59,6 +182,7 @@
 		33D9DFE02C0EFA0700A282D5 /* GXSuperApp */ = {
 			isa = PBXGroup;
 			children = (
+				33EC55AA2C101BA100D4CCD0 /* Classes */,
 				33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */,
 				33D9DFE52C0EFA0700A282D5 /* ViewController.swift */,
 				33D9DFEA2C0EFA0900A282D5 /* Assets.xcassets */,
@@ -66,6 +190,179 @@
 				33D9DFEF2C0EFA0900A282D5 /* Info.plist */,
 			);
 			path = GXSuperApp;
+			sourceTree = "<group>";
+		};
+		33EC53882C101BA100D4CCD0 /* Bases */ = {
+			isa = PBXGroup;
+			children = (
+				33EC537C2C101BA100D4CCD0 /* GXBaseModel.swift */,
+				33EC53792C101BA100D4CCD0 /* GXArrowButton.swift */,
+				33EC537A2C101BA100D4CCD0 /* GXBaseChatViewController.swift */,
+				33EC537B2C101BA100D4CCD0 /* GXBaseChatViewController.xib */,
+				33EC537D2C101BA100D4CCD0 /* GXBaseNavigationController.swift */,
+				33EC537E2C101BA100D4CCD0 /* GXBaseTableView.swift */,
+				33EC537F2C101BA100D4CCD0 /* GXBaseTableViewController.swift */,
+				33EC53802C101BA100D4CCD0 /* GXBaseTextField.swift */,
+				33EC53812C101BA100D4CCD0 /* GXBaseViewController.swift */,
+				33EC53822C101BA100D4CCD0 /* GXBaseViewModel.swift */,
+				33EC53832C101BA100D4CCD0 /* GXBaseWarnViewController.swift */,
+				33EC53842C101BA100D4CCD0 /* GXConfigTVC.swift */,
+				33EC53852C101BA100D4CCD0 /* GXLinkTextView.swift */,
+				33EC53862C101BA100D4CCD0 /* GXSearchController.swift */,
+				33EC53872C101BA100D4CCD0 /* GXSlideTableView.swift */,
+			);
+			path = Bases;
+			sourceTree = "<group>";
+		};
+		33EC53972C101BA100D4CCD0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				33EC538B2C101BA100D4CCD0 /* MBProgressHUD.bundle */,
+				33EC579B2C11643500D4CCD0 /* MBProgressHUD+Add.swift */,
+				33EC53892C101BA100D4CCD0 /* GXCopyable+Add.swift */,
+				33EC538E2C101BA100D4CCD0 /* PhotoAsset+Add.swift */,
+				33EC538F2C101BA100D4CCD0 /* String+Add.swift */,
+				33EC53912C101BA100D4CCD0 /* UIButton+Add.swift */,
+				33EC53922C101BA100D4CCD0 /* UIColor+Add.swift */,
+				33EC53932C101BA100D4CCD0 /* UIFont+Add.swift */,
+				33EC53942C101BA100D4CCD0 /* UIImage+Add.swift */,
+				33EC53952C101BA100D4CCD0 /* UITextField+Add.swift */,
+				33EC53962C101BA100D4CCD0 /* UITextView+Add.swift */,
+				33EC538D2C101BA100D4CCD0 /* NSAttributedString+Add.swift */,
+				33EC53902C101BA100D4CCD0 /* UIAlertController+Add.swift */,
+				33EC538A2C101BA100D4CCD0 /* GXRefreshNormalHeader+Add.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		33EC539B2C101BA100D4CCD0 /* Define */ = {
+			isa = PBXGroup;
+			children = (
+				33EC53992C101BA100D4CCD0 /* GXDefine.swift */,
+				33EC53982C101BA100D4CCD0 /* GXApiDefine.swift */,
+				33EC539A2C101BA100D4CCD0 /* GXNotificationName.swift */,
+			);
+			path = Define;
+			sourceTree = "<group>";
+		};
+		33EC53A02C101BA100D4CCD0 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				33EC539E2C101BA100D4CCD0 /* GXUtil.swift */,
+				33EC539F2C101BA100D4CCD0 /* ObjectUnicode.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		33EC53A22C101BA100D4CCD0 /* GXAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				33EC53A12C101BA100D4CCD0 /* GXAlertView.swift */,
+			);
+			path = GXAlertView;
+			sourceTree = "<group>";
+		};
+		33EC53B12C101BA100D4CCD0 /* GXMessageTableView */ = {
+			isa = PBXGroup;
+			children = (
+				33EC53AF2C101BA100D4CCD0 /* GXMessagesLoadHeader.swift */,
+				33EC53B02C101BA100D4CCD0 /* GXMessagesLoadTableView.swift */,
+			);
+			path = GXMessageTableView;
+			sourceTree = "<group>";
+		};
+		33EC53CC2C101BA100D4CCD0 /* XYNavigationManager */ = {
+			isa = PBXGroup;
+			children = (
+				33EC53CA2C101BA100D4CCD0 /* XYNavigationManager.h */,
+				33EC53CB2C101BA100D4CCD0 /* XYNavigationManager.m */,
+			);
+			path = XYNavigationManager;
+			sourceTree = "<group>";
+		};
+		33EC53DB2C101BA100D4CCD0 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				33EC53A22C101BA100D4CCD0 /* GXAlertView */,
+				33EC53B12C101BA100D4CCD0 /* GXMessageTableView */,
+				33EC53CC2C101BA100D4CCD0 /* XYNavigationManager */,
+				33EC53CD2C101BA100D4CCD0 /* GXAddImages9View.swift */,
+				33EC53CE2C101BA100D4CCD0 /* GXAddImagesView.swift */,
+				33EC53CF2C101BA100D4CCD0 /* GXAddItemsView.swift */,
+				33EC53D02C101BA100D4CCD0 /* GXBadgeView.swift */,
+				33EC53D12C101BA100D4CCD0 /* GXCollectionTagsView.swift */,
+				33EC53D22C101BA100D4CCD0 /* GXMarqueeTextView.swift */,
+				33EC53D32C101BA100D4CCD0 /* GXQRCodeReaderVC.swift */,
+				33EC53D42C101BA100D4CCD0 /* GXQRCodeReaderVC.xib */,
+				33EC53D52C101BA100D4CCD0 /* GXRoundedBevelView.swift */,
+				33EC53D62C101BA100D4CCD0 /* GXSelectItemsMenu.swift */,
+				33EC53D72C101BA100D4CCD0 /* GXTagsView.swift */,
+				33EC53D82C101BA100D4CCD0 /* GXTextView.swift */,
+				33EC53D92C101BA100D4CCD0 /* GXToast.swift */,
+				33EC53DA2C101BA100D4CCD0 /* GXWebViewController.swift */,
+				33EC57912C1021E300D4CCD0 /* GXApproveFailInfoView.swift */,
+				33EC57922C1021E300D4CCD0 /* GXApproveFailInfoView.xib */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		33EC53DC2C101BA100D4CCD0 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				33EC539B2C101BA100D4CCD0 /* Define */,
+				33EC53A02C101BA100D4CCD0 /* Util */,
+				33EC53882C101BA100D4CCD0 /* Bases */,
+				33EC53972C101BA100D4CCD0 /* Categories */,
+				33EC53DB2C101BA100D4CCD0 /* Widgets */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		33EC53E42C101BA100D4CCD0 /* Gobal */ = {
+			isa = PBXGroup;
+			children = (
+				33EC53DE2C101BA100D4CCD0 /* GXAppleManager.swift */,
+				33EC53E12C101BA100D4CCD0 /* GXServiceManager.swift */,
+			);
+			path = Gobal;
+			sourceTree = "<group>";
+		};
+		33EC559D2C101BA100D4CCD0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		33EC55A52C101BA100D4CCD0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				33EC579E2C116B2300D4CCD0 /* Mukta-Bold.ttf */,
+				33EC579F2C116B2300D4CCD0 /* Mukta-Light.ttf */,
+				33EC579D2C116B2300D4CCD0 /* Mukta-SemiBold.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		33EC55A92C101BA100D4CCD0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				33EC55A62C101BA100D4CCD0 /* GXApi.swift */,
+				33EC55A72C101BA100D4CCD0 /* GXMoyaProvider.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		33EC55AA2C101BA100D4CCD0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				33EC55A52C101BA100D4CCD0 /* Resources */,
+				33EC53DC2C101BA100D4CCD0 /* General */,
+				33EC55A92C101BA100D4CCD0 /* Service */,
+				33EC53E42C101BA100D4CCD0 /* Gobal */,
+				33EC559D2C101BA100D4CCD0 /* Main */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		448D79BE9E61B8FDFA827635 /* Pods */ = {
@@ -147,7 +444,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */,
+				33EC57942C1021E300D4CCD0 /* GXApproveFailInfoView.xib in Resources */,
+				33EC57A12C116B2300D4CCD0 /* Mukta-Bold.ttf in Resources */,
+				33EC55BC2C101BA100D4CCD0 /* MBProgressHUD.bundle in Resources */,
+				33EC57A02C116B2300D4CCD0 /* Mukta-SemiBold.ttf in Resources */,
 				33D9DFEE2C0EFA0900A282D5 /* Base in Resources */,
+				33EC55F92C101BA100D4CCD0 /* GXQRCodeReaderVC.xib in Resources */,
+				33EC55AD2C101BA100D4CCD0 /* GXBaseChatViewController.xib in Resources */,
+				33EC57A22C116B2300D4CCD0 /* Mukta-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,8 +521,62 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33EC55FA2C101BA100D4CCD0 /* GXRoundedBevelView.swift in Sources */,
+				33EC55BF2C101BA100D4CCD0 /* PhotoAsset+Add.swift in Sources */,
+				33EC55B42C101BA100D4CCD0 /* GXBaseViewModel.swift in Sources */,
+				33EC55C82C101BA100D4CCD0 /* GXApiDefine.swift in Sources */,
+				33EC55C72C101BA100D4CCD0 /* UITextView+Add.swift in Sources */,
+				33EC55B32C101BA100D4CCD0 /* GXBaseViewController.swift in Sources */,
+				33EC55FF2C101BA100D4CCD0 /* GXWebViewController.swift in Sources */,
+				33EC55AE2C101BA100D4CCD0 /* GXBaseModel.swift in Sources */,
+				33EC55F32C101BA100D4CCD0 /* GXAddImagesView.swift in Sources */,
+				33EC55F72C101BA100D4CCD0 /* GXMarqueeTextView.swift in Sources */,
 				33D9DFE62C0EFA0700A282D5 /* ViewController.swift in Sources */,
+				33EC55F42C101BA100D4CCD0 /* GXAddItemsView.swift in Sources */,
+				33EC55FC2C101BA100D4CCD0 /* GXTagsView.swift in Sources */,
+				33EC55C92C101BA100D4CCD0 /* GXDefine.swift in Sources */,
+				33EC578F2C101BA200D4CCD0 /* GXMoyaProvider.swift in Sources */,
+				33EC55B92C101BA100D4CCD0 /* GXSlideTableView.swift in Sources */,
+				33EC55C42C101BA100D4CCD0 /* UIFont+Add.swift in Sources */,
+				33EC55B62C101BA100D4CCD0 /* GXConfigTVC.swift in Sources */,
 				33D9DFE22C0EFA0700A282D5 /* AppDelegate.swift in Sources */,
+				33EC579C2C11643500D4CCD0 /* MBProgressHUD+Add.swift in Sources */,
+				33EC55FE2C101BA100D4CCD0 /* GXToast.swift in Sources */,
+				33EC56042C101BA100D4CCD0 /* GXServiceManager.swift in Sources */,
+				33EC55C12C101BA100D4CCD0 /* UIAlertController+Add.swift in Sources */,
+				33EC55BE2C101BA100D4CCD0 /* NSAttributedString+Add.swift in Sources */,
+				33EC55BA2C101BA100D4CCD0 /* GXCopyable+Add.swift in Sources */,
+				33EC55BB2C101BA100D4CCD0 /* GXRefreshNormalHeader+Add.swift in Sources */,
+				33EC578E2C101BA200D4CCD0 /* GXApi.swift in Sources */,
+				33EC55F22C101BA100D4CCD0 /* GXAddImages9View.swift in Sources */,
+				33EC55F62C101BA100D4CCD0 /* GXCollectionTagsView.swift in Sources */,
+				33EC55B12C101BA100D4CCD0 /* GXBaseTableViewController.swift in Sources */,
+				33EC55AC2C101BA100D4CCD0 /* GXBaseChatViewController.swift in Sources */,
+				33EC55DB2C101BA100D4CCD0 /* GXMessagesLoadHeader.swift in Sources */,
+				33EC55C62C101BA100D4CCD0 /* UITextField+Add.swift in Sources */,
+				33EC55CE2C101BA100D4CCD0 /* ObjectUnicode.swift in Sources */,
+				33EC55AF2C101BA100D4CCD0 /* GXBaseNavigationController.swift in Sources */,
+				33EC55F12C101BA100D4CCD0 /* XYNavigationManager.m in Sources */,
+				33EC55C32C101BA100D4CCD0 /* UIColor+Add.swift in Sources */,
+				33EC55DC2C101BA100D4CCD0 /* GXMessagesLoadTableView.swift in Sources */,
+				33EC55B82C101BA100D4CCD0 /* GXSearchController.swift in Sources */,
+				33EC55B02C101BA100D4CCD0 /* GXBaseTableView.swift in Sources */,
+				33EC55C02C101BA100D4CCD0 /* String+Add.swift in Sources */,
+				33EC55AB2C101BA100D4CCD0 /* GXArrowButton.swift in Sources */,
+				33EC55F52C101BA100D4CCD0 /* GXBadgeView.swift in Sources */,
+				33EC55C22C101BA100D4CCD0 /* UIButton+Add.swift in Sources */,
+				33EC55FD2C101BA100D4CCD0 /* GXTextView.swift in Sources */,
+				33EC55CA2C101BA100D4CCD0 /* GXNotificationName.swift in Sources */,
+				33EC55CD2C101BA100D4CCD0 /* GXUtil.swift in Sources */,
+				33EC55C52C101BA100D4CCD0 /* UIImage+Add.swift in Sources */,
+				33EC55B52C101BA100D4CCD0 /* GXBaseWarnViewController.swift in Sources */,
+				33EC55F82C101BA100D4CCD0 /* GXQRCodeReaderVC.swift in Sources */,
+				33EC57932C1021E300D4CCD0 /* GXApproveFailInfoView.swift in Sources */,
+				33EC55B72C101BA100D4CCD0 /* GXLinkTextView.swift in Sources */,
+				33EC56012C101BA100D4CCD0 /* GXAppleManager.swift in Sources */,
+				33EC55B22C101BA100D4CCD0 /* GXBaseTextField.swift in Sources */,
+				33EC55FB2C101BA100D4CCD0 /* GXSelectItemsMenu.swift in Sources */,
+				33EC55CF2C101BA100D4CCD0 /* GXAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,12 +717,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE467C8C83E2954639F9764B /* Pods-GXSuperApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L54KZN9KMH;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GXSuperApp/Classes/Resources/ATAuthSDK",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GXSuperApp/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "需要您允许使用相机，拍照将用于设置“头像”等。";
@@ -397,12 +760,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE37990042C7D6C00FD87875 /* Pods-GXSuperApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L54KZN9KMH;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GXSuperApp/Classes/Resources/ATAuthSDK",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GXSuperApp/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "需要您允许使用相机，拍照将用于设置“头像”等。";

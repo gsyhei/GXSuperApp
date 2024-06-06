@@ -7,7 +7,6 @@
 
 import UIKit
 import RxSwift
-import Popover
 import GXAlert_Swift
 
 class GXUtil: NSObject {

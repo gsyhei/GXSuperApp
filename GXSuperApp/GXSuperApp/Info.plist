@@ -7,5 +7,11 @@
 		<string>googlechromes</string>
 		<string>comgooglemaps</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Mukta-Bold.ttf</string>
+		<string>Mukta-Light.ttf</string>
+		<string>Mukta-SemiBold.ttf</string>
+	</array>
 </dict>
 </plist>

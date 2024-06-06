@@ -71,7 +71,6 @@ class GXMoyaProvider: MoyaProvider<GXApi> {
                     self.gx_logger(target: target, error: error, json: nil)
                     DispatchQueue.main.async {
                         failure(error)
-                        GXAppDelegate?.gotoLogin()
                     }
                 }
                 else {

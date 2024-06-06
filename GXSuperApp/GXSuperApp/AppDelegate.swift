@@ -6,20 +6,109 @@
 //
 
 import UIKit
+import XCGLogger
+import Bugly
+import IQKeyboardManagerSwift
 
+let GXAppDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let navc = UINavigationController(rootViewController: ViewController())
-        self.setWindowRootViewController(to: navc)
+        // 日志级别
+        XCGLogger.default.outputLevel = .verbose
+        
+        // 注册Bugly
+        Bugly.start(withAppId: GX_BUGLY_APPKID)
+        
+        // 开启键盘管理
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.resignOnTouchOutside = true
+        IQKeyboardManager.shared.disabledToolbarClasses = [GXBaseChatViewController.self]
+        IQKeyboardManager.shared.disabledDistanceHandlingClasses = [GXBaseChatViewController.self]
+        
+        // 主题预设
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        UINavigationBar.appearance().barTintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = UIColor.gx_black
+        let nbAppearance = UINavigationBarAppearance()
+        nbAppearance.configureWithTransparentBackground()
+        nbAppearance.backgroundColor = UIColor.white
+        nbAppearance.shadowColor = .gx_lightGray
+        nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]
+        let bbiAppearance = UIBarButtonItemAppearance(style: .plain)
+        bbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]
+        bbiAppearance.highlighted.titleTextAttributes = [.foregroundColor: UIColor.gx_gray, .font: UIFont.gx_boldFont(size: 15)]
+        nbAppearance.buttonAppearance = bbiAppearance
+        nbAppearance.doneButtonAppearance = bbiAppearance
+        nbAppearance.backButtonAppearance = bbiAppearance
+        UINavigationBar.appearance().standardAppearance = nbAppearance
+        if #available(iOS 13.0, *) {
+            let nbAppearance = UINavigationBarAppearance()
+            nbAppearance.configureWithTransparentBackground()
+            nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]
+            let bbiAppearance = UIBarButtonItemAppearance(style: .plain)
+            bbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]
+            bbiAppearance.highlighted.titleTextAttributes = [.foregroundColor: UIColor.gx_gray, .font: UIFont.gx_boldFont(size: 15)]
+            nbAppearance.buttonAppearance = bbiAppearance
+            nbAppearance.doneButtonAppearance = bbiAppearance
+            nbAppearance.backButtonAppearance = bbiAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = nbAppearance
+        }
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.white
+        appearance.shadowColor = .gx_lightGray
+        let tbiAppearance = UITabBarItemAppearance(style: .stacked)
+        tbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_drakGray, .font: UIFont.gx_boldFont(size: 13)]
+        tbiAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 13)]
+        appearance.stackedLayoutAppearance = tbiAppearance
+        UITabBar.appearance().standardAppearance = appearance
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+        
+        // 开始监测网络状态
+        GXServiceManager.startListening()
+        
+        UIFont.gx_printAllFonts()
+        
         return true
     }
-
+    
+    // MARK: - UIApplicationDelegate
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return true
+    }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([any UIUserActivityRestoring]?) -> Void) -> Bool {
+        return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("did fail to register for remote notification with error ", error)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+    }
+    
 }
 
 extension AppDelegate {
