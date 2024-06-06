@@ -9,6 +9,8 @@ import UIKit
 import XCGLogger
 import Bugly
 import IQKeyboardManagerSwift
+import GoogleMaps
+import GooglePlaces
 
 let GXAppDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
 @main
@@ -22,11 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         XCGLogger.default.outputLevel = .verbose
         
         // 注册Bugly
-        Bugly.start(withAppId: GX_BUGLY_APPKID)
+        Bugly.start(withAppId: GX_BUGLY_APPID)
         
         // 开启键盘管理
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
+        
+        // 谷歌地图
+        GMSServices.provideAPIKey(GX_GOOGLE_APIKEY)
+        GMSPlacesClient.provideAPIKey(GX_GOOGLE_APIKEY)
+        GMSServices.setMetalRendererEnabled(true)
         
         // 主题预设
         UIApplication.shared.applicationIconBadgeNumber = 0
@@ -77,7 +84,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 开始监测网络状态
         GXServiceManager.startListening()
         
-        
         return true
     }
     
@@ -117,7 +123,7 @@ extension AppDelegate {
     func setWindowRootViewController(to viewController: UIViewController) {
         guard self.window?.rootViewController != nil else {
             self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.backgroundColor = UIColor.black
+            self.window?.backgroundColor = UIColor.gx_background
             self.window?.rootViewController = viewController;
             self.window?.makeKeyAndVisible()
             return

@@ -8,22 +8,45 @@
 import UIKit
 
 class GXHomeVC: GXBaseViewController {
+    @IBOutlet weak var topContainerView: UIView!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var ongoingView: UIView!
+    @IBOutlet weak var ongoingButton: UIButton!
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func setupViewController() {
+        self.ongoingView.setLayerShadow(color: .gx_green, offset: .zero, radius: 8.0)
+        self.ongoingView.layer.shadowOpacity = 0.5
+        self.ongoingButton.setBackgroundColor(.gx_green, for: .normal)
     }
-    */
+    
+}
 
+private extension GXHomeVC {
+    
+    @IBAction func searchButtonClicked(_ sender: Any?) {
+        
+    }
+    
+    @IBAction func filterButtonClicked(_ sender: Any?) {
+        
+    }
+    
+    @IBAction func ongoingButtonClicked(_ sender: Any?) {
+        
+    }
 }

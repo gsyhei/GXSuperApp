@@ -43,7 +43,7 @@ class GXTabBarController: UITabBarController {
         self.view.backgroundColor = .systemBackground
         self.delegate = self
         
-        self.addChild(UIViewController(),
+        self.addChild(GXHomeVC.xibViewController(),
                       title: self.titleNames[0],
                       imageName: self.normalImageNames[0],
                       selectedImageName: self.selectedImageNames[0])

@@ -29,28 +29,7 @@ typealias GXActionBlockBack<T: Any> = (() -> T)
 typealias GXActionBlockItemBack<T1: Any, T2: Any> = ((T1) -> T2)
 
 /// Bugly appID
-let GX_BUGLY_APPKID = "36156d5fa8"
+let GX_BUGLY_APPID = "36156d5fa8"
 
-/// 存储token的key
-let GX_USER_TOKEN_KEY = "GX_USER_TOKEN_KEY"
-
-/// 存储user的key
-//let GX_USER_INFO_KEY = "GX_USER_INFO_KEY"
-
-/// 存储角色类型
-let GX_ROLE_TYPE_KEY = "GX_ROLE_TYPE_KEY"
-
-/// 存储城市的key
-let GX_CITY_KEY = "GX_CITY_KEY"
-
-/// 存储经纬度的key
-let GX_LOCATION_KEY = "GX_LOCATION_KEY"
-
-/// 存储搜索历史的key
-let GX_SEARCH_HISTORY_KEY = "GX_SEARCH_HISTORY_KEY"
-
-/// 参与者角色切换的Popover
-let GX_PTSHOW_POPOVER_KEY = "GX_PTSHOW_POPOVER_KEY"
-
-/// 发布者角色发布的Popover
-let GX_PRSHOW_POPOVER_KEY = "GX_PRSHOW_POPOVER_KEY"
+/// Google api key
+let GX_GOOGLE_APIKEY = "AIzaSyBfUXs3Ro214ffY3JKV3XKXyb4YI5jfSoM"
