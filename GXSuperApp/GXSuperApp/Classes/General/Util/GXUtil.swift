@@ -199,7 +199,7 @@ class GXUtil: NSObject {
             }
             else if actionStyle == .default {
                 action.titleFont = .gx_boldFont(size: 17)
-                action.titleColor = .gx_drakGreen
+                action.titleColor = .gx_green
             }
             else {
                 action.titleFont = .gx_font(size: 17)
@@ -220,7 +220,7 @@ class GXUtil: NSObject {
             }
             else if actionStyle == .default {
                 cancelAction.titleFont = .gx_boldFont(size: 17)
-                cancelAction.titleColor = .gx_drakGreen
+                cancelAction.titleColor = .gx_green
             }
             else {
                 cancelAction.titleFont = .gx_font(size: 17)
@@ -264,7 +264,7 @@ class GXUtil: NSObject {
             }
             else if actionStyle == .default {
                 action.titleFont = .gx_boldFont(size: 17)
-                action.titleColor = .gx_drakGreen
+                action.titleColor = .gx_green
             }
             else {
                 action.titleFont = .gx_font(size: 17)
@@ -285,7 +285,7 @@ class GXUtil: NSObject {
             }
             else if actionStyle == .default {
                 cancelAction.titleFont = .gx_boldFont(size: 17)
-                cancelAction.titleColor = .gx_drakGreen
+                cancelAction.titleColor = .gx_green
             }
             else {
                 cancelAction.titleFont = .gx_font(size: 17)
@@ -329,7 +329,7 @@ class GXUtil: NSObject {
         }
         else if actionStyle == .default {
             action.titleFont = .gx_boldFont(size: 17)
-            action.titleColor = .gx_drakGreen
+            action.titleColor = .gx_green
         }
         else {
             action.titleFont = .gx_font(size: 17)
@@ -412,7 +412,7 @@ class GXUtil: NSObject {
             }
             else if actionStyle == .default {
                 action.titleFont = .gx_boldFont(size: 17)
-                action.titleColor = .gx_drakGreen
+                action.titleColor = .gx_green
             }
             else {
                 action.titleFont = .gx_font(size: 17)
@@ -433,7 +433,7 @@ class GXUtil: NSObject {
             }
             else if actionStyle == .default {
                 cancelAction.titleFont = .gx_boldFont(size: 17)
-                cancelAction.titleColor = .gx_drakGreen
+                cancelAction.titleColor = .gx_green
             }
             else {
                 cancelAction.titleFont = .gx_font(size: 17)

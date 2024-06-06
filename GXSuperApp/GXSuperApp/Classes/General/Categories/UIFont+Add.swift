@@ -31,7 +31,7 @@ extension UIFont {
         case semibold
     }
 
-    class func gx_lightFont(size fontSize: CGFloat) -> UIFont {
+    class func gx_font(size fontSize: CGFloat) -> UIFont {
         return UIFont(name: "Mukta-Light", size: fontSize) ?? .systemFont(ofSize: fontSize)
     }
 

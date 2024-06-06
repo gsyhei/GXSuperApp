@@ -26,7 +26,7 @@ class GXSelectItemCell: UITableViewCell, Reusable {
         self.accessoryType = .none
         self.indentationLevel = 2
         self.indentationWidth = 8.0
-        self.tintColor = .gx_drakGreen
+        self.tintColor = .gx_green
         self.textLabel?.font = .gx_font(size: 15)
         self.textLabel?.textColor = .gx_drakGray
     }

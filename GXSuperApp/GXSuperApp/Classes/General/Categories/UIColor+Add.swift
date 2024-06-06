@@ -11,7 +11,7 @@ import GXCategories
 extension UIColor {
     
     class var gx_background: UIColor {
-        return UIColor(hexString: "#F6F6F6")
+        return UIColor(hexString: "#EDEFF3")
     }
     
     class var gx_inputBackground: UIColor {
@@ -35,7 +35,7 @@ extension UIColor {
     }
 
     class var gx_drakGray: UIColor {
-        return UIColor(hexString: "#666666")
+        return UIColor(hexString: "#747779")
     }
     
     class var gx_gray: UIColor {
@@ -51,19 +51,7 @@ extension UIColor {
     }
 
     class var gx_green: UIColor {
-        return UIColor(hexString: "#80FBAD")
-    }
-
-    class var gx_drakGreen: UIColor {
-        return UIColor(hexString: "#2FCA99")
-    }
-
-    class var gx_lightGreen: UIColor {
-        return UIColor(hexString: "#E6FEEA")
-    }
-    
-    class var gx_lightPublicGreen: UIColor {
-        return UIColor(hexString: "#CCFDDE")
+        return UIColor(hexString: "#05C160")
     }
     
     class var gx_yellow: UIColor {
