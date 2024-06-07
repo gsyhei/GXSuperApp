@@ -56,8 +56,6 @@ target 'GXSuperApp' do
   pod 'XCGLogger'
   # table collection加载动画
   pod 'ViewAnimator'
-  # table/collection占位符和空状态的库
-  pod 'HGPlaceholders'
   # 二维码扫码
   pod 'QRCodeReader.swift'
   # 相册

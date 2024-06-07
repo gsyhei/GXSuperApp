@@ -11,7 +11,6 @@ ${BUILT_PRODUCTS_DIR}/GXRefresh/GXRefresh.framework
 ${BUILT_PRODUCTS_DIR}/GXSegmentPageView/GXSegmentPageView.framework
 ${BUILT_PRODUCTS_DIR}/GXTransition-Swift/GXTransition_Swift.framework
 ${BUILT_PRODUCTS_DIR}/GXWaterfallViewLayout/GXWaterfallViewLayout.framework
-${BUILT_PRODUCTS_DIR}/HGPlaceholders/HGPlaceholders.framework
 ${BUILT_PRODUCTS_DIR}/HXPhotoPicker/HXPhotoPicker.framework
 ${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework
 ${BUILT_PRODUCTS_DIR}/Hero/Hero.framework

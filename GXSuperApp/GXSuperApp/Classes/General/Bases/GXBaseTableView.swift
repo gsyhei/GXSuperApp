@@ -117,6 +117,17 @@ class GXBaseTableView: UITableView {
             self.reloadData()
         }
     }
+    
+    public func gx_setPlaceholderLocation(isTop: Bool = false, offset: CGFloat = -100) {
+        self.placeholderLabel.snp.updateConstraints { make in
+            if isTop {
+                make.top.equalToSuperview().offset(offset)
+            }
+            else {
+                make.top.equalTo(self.placeholderView.snp.centerY).offset(offset)
+            }
+        }
+    }
 }
 
 extension GXBaseTableView {

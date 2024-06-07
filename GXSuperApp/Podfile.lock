@@ -23,7 +23,6 @@ PODS:
   - GXWaterfallViewLayout (1.0.1)
   - HandyJSON (5.0.2)
   - Hero (1.6.3)
-  - HGPlaceholders (0.5.0)
   - HXPhotoPicker (4.1.2):
     - HXPhotoPicker/Full (= 4.1.2)
   - HXPhotoPicker/Camera (4.1.2):
@@ -129,7 +128,6 @@ DEPENDENCIES:
   - GXWaterfallViewLayout
   - HandyJSON
   - Hero
-  - HGPlaceholders
   - HXPhotoPicker (= 4.1.2)
   - IQKeyboardManagerSwift
   - Kingfisher
@@ -167,7 +165,6 @@ SPEC REPOS:
     - GXWaterfallViewLayout
     - HandyJSON
     - Hero
-    - HGPlaceholders
     - HXPhotoPicker
     - IQKeyboardManagerSwift
     - Kingfisher
@@ -208,7 +205,6 @@ SPEC CHECKSUMS:
   GXWaterfallViewLayout: 1030bd57d37eedd3146e638d262f0869380a59c8
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Hero: 419d43384355b3168512bd8ac6a33aadd3dc575b
-  HGPlaceholders: cbf8caed8360fc2ab5e8a4610cce61f76fbd2c37
   HXPhotoPicker: aa1b5620b40fad3100741b83ac750364cdeb4615
   IQKeyboardManagerSwift: f9c5dc36cba16ddd2e51fa7d51c34a2e083029b5
   Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
@@ -231,6 +227,6 @@ SPEC CHECKSUMS:
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
   XCGLogger: 399c5885210b4e2ad79d9f7a29b105d672ef724f
 
-PODFILE CHECKSUM: bd5cb1620733211095777ca7c04ed58506de3550
+PODFILE CHECKSUM: e14c60ddcf6ba8afad803ccf4351e04b38a04426
 
 COCOAPODS: 1.15.2
