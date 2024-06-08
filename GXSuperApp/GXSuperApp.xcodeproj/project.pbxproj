@@ -12,6 +12,7 @@
 		33396A232C11E530000A1944 /* GXHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33396A212C11E530000A1944 /* GXHomeVC.xib */; };
 		33396A252C121A60000A1944 /* GXHomePanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33396A242C121A60000A1944 /* GXHomePanView.swift */; };
 		33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B52C1414CE0089431E /* GXLocationManager.swift */; };
+		33BF81B82C14964F0089431E /* GXMarkerIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B72C14964F0089431E /* GXMarkerIconView.swift */; };
 		33D9DFE22C0EFA0700A282D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */; };
 		33D9DFE62C0EFA0700A282D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9DFE52C0EFA0700A282D5 /* ViewController.swift */; };
 		33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33D9DFEA2C0EFA0900A282D5 /* Assets.xcassets */; };
@@ -84,6 +85,7 @@
 		33396A242C121A60000A1944 /* GXHomePanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomePanView.swift; sourceTree = "<group>"; };
 		33396A262C123170000A1944 /* GXSuperApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GXSuperApp.entitlements; sourceTree = "<group>"; };
 		33BF81B52C1414CE0089431E /* GXLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLocationManager.swift; sourceTree = "<group>"; };
+		33BF81B72C14964F0089431E /* GXMarkerIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMarkerIconView.swift; sourceTree = "<group>"; };
 		33D9DFDE2C0EFA0700A282D5 /* GXSuperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GXSuperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33D9DFE52C0EFA0700A282D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				33396A242C121A60000A1944 /* GXHomePanView.swift */,
+				33BF81B72C14964F0089431E /* GXMarkerIconView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				33EC55B32C101BA100D4CCD0 /* GXBaseViewController.swift in Sources */,
 				33EC55FF2C101BA100D4CCD0 /* GXWebViewController.swift in Sources */,
 				33EC55AE2C101BA100D4CCD0 /* GXBaseModel.swift in Sources */,
+				33BF81B82C14964F0089431E /* GXMarkerIconView.swift in Sources */,
 				33396A252C121A60000A1944 /* GXHomePanView.swift in Sources */,
 				33EC55F32C101BA100D4CCD0 /* GXAddImagesView.swift in Sources */,
 				33EC55F72C101BA100D4CCD0 /* GXMarqueeTextView.swift in Sources */,

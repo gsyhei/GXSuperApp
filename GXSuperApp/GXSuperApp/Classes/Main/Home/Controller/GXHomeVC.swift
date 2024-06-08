@@ -157,9 +157,10 @@ private extension GXHomeVC {
     func mapViewSetMarkers() {
         let target = self.locationMarker?.position ?? self.mapView.camera.target
         
+        let iconView = GXMarkerIconView.createIconView()
         let coordinate1 = CLLocationCoordinate2D(latitude: target.latitude + 0.0002, longitude: target.longitude + 0.0002)
         let marker = GMSMarker(position: coordinate1)
-        marker.icon = UIImage(named: "home_map_ic_station")
+        marker.iconView = iconView
         marker.map = self.mapView
         
         let coordinate2 = CLLocationCoordinate2D(latitude: target.latitude - 0.0002, longitude: target.longitude - 0.0002)
@@ -181,19 +182,12 @@ private extension GXHomeVC {
         self.selectedMarker?.icon = UIImage(named: "home_map_ic_station")
 
         self.selectedMarker = marker
-        if let view = marker.iconView {
-            view.backgroundColor = .gx_green
+        if let iconView = marker.iconView {
+            iconView.backgroundColor = .gx_green
         }
         else {
-            let iconView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 80, height: 46)))
-            iconView.backgroundColor = .gx_green
-            iconView.alpha = 0
+            let iconView = GXMarkerIconView.createIconView()
             marker.iconView = iconView
-            UIView.animate(.promise, duration: 0.1) {
-                iconView.alpha = 1
-            }.done { finished in
-                marker.icon = nil
-            }
         }
     }
     
@@ -235,7 +229,7 @@ extension GXHomeVC: GMSMapViewDelegate {
         XCGLogger.info("mapView position.zoom = \(position.zoom)")
         XCGLogger.info("mapView position.target = \(mapView.camera.target)")
         
-        let isZoomLarge = position.zoom >= 16
+        let isZoomLarge = position.zoom >= 15
         if let lastTarget = self.lastTarget {
             let distance = GXLocationManager.getDistanceTo(coordinate1: lastTarget, coordinate2: position.target)
             if distance > 50000 {

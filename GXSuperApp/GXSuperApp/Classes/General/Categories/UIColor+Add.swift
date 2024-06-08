@@ -23,15 +23,19 @@ extension UIColor {
     }
 
     class var gx_black: UIColor {
-        return UIColor(hexString: "#333333")
+        return UIColor(hexString: "#28292B")
     }
     
     class var gx_blue: UIColor {
-        return UIColor(hexString: "#369AEC")
+        return UIColor(hexString: "#1777FF")
+    }
+    
+    class var gx_lightBlue: UIColor {
+        return UIColor(hexString: "#E1EDFF")
     }
 
     class var gx_textBlack: UIColor {
-        return UIColor(hexString: "#333333")
+        return UIColor(hexString: "#28292B")
     }
 
     class var gx_drakGray: UIColor {
@@ -45,11 +49,7 @@ extension UIColor {
     class var gx_lightGray: UIColor {
         return UIColor(hexString: "#EFEFEF")
     }
-
-    class var gx_lightGray1: UIColor {
-        return UIColor(hexString: "#CDCDCD")
-    }
-
+    
     class var gx_green: UIColor {
         return UIColor(hexString: "#05C160")
     }
