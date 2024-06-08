@@ -117,6 +117,19 @@ class GXQRCodeReaderVC: GXBaseViewController {
             return false
         }
     }
+    
+    /// 图片二维码识别
+    private func codeReaderToImage(_ image: UIImage) -> String? {
+        let ciImage:CIImage=CIImage(image:image)!
+        let context = CIContext(options: nil)
+        let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: context, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
+        guard let letDetector = detector else { return nil }
+        
+        let features = letDetector.features(in: ciImage)
+        guard let features = features as? [CIQRCodeFeature] else { return nil }
+        
+        return features.first?.messageString
+    }
 }
 
 extension GXQRCodeReaderVC {

@@ -15,7 +15,7 @@ class GXServiceManager: NSObject {
     private(set) var networkStatus: NetworkReachabilityManager.NetworkReachabilityStatus = .unknown
     /// 服务器时间与本地时间差
     private(set) var timeDifference: TimeInterval = 0
-    /// 网络监听管理器
+    /// 网络监听管理器 www.google.com / www.baidu.com
     private let networkManager = NetworkReachabilityManager(host: "www.baidu.com")
 
     static let shared: GXServiceManager = {

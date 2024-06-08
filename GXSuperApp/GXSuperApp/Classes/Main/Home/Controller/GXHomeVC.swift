@@ -7,6 +7,8 @@
 
 import UIKit
 import GoogleMaps
+import PromiseKit
+import XCGLogger
 
 class GXHomeVC: GXBaseViewController {
     @IBOutlet weak var topContainerView: UIView!
@@ -16,20 +18,29 @@ class GXHomeVC: GXBaseViewController {
     @IBOutlet weak var ongoingView: UIView!
     @IBOutlet weak var ongoingButton: UIButton!
     
+    private var lastTarget: CLLocationCoordinate2D?
+    private var lastIsZoomLarge: Bool = false
+    private var locationMarker: GMSMarker?
+    private var markerList: [GMSMarker] = []
+    private var selectedMarker: GMSMarker?
+
+    private var menuHeight: CGFloat {
+        return 286.0 + self.view.safeAreaInsets.bottom
+    }
     private lazy var panView: GXHomePanView = {
         return GXHomePanView(frame: self.view.bounds).then {
-            $0.backgroundColor = .gx_background
+            $0.backgroundColor = .clear
         }
     }()
     
     lazy var mapView: GMSMapView = {
         let camera = GMSCameraPosition(latitude: -33.868, longitude: 151.2086, zoom: 12)
         return GMSMapView(frame: .zero, camera: camera).then {
-            $0.delegate = self
-            $0.settings.compassButton = true
+            $0.settings.compassButton = false
             $0.settings.myLocationButton = false
+            $0.settings.rotateGestures = false
+            $0.isMyLocationEnabled = false
             $0.padding = .zero
-            $0.isMyLocationEnabled = true
         }
     }()
     
@@ -46,18 +57,15 @@ class GXHomeVC: GXBaseViewController {
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         
-        let top = self.topContainerView.height + self.view.safeAreaInsets.top + 22.0
+        let top = self.topContainerView.height + self.view.safeAreaInsets.top
         let width = self.view.bounds.width
         let height = self.view.bounds.height - top - self.view.safeAreaInsets.bottom
         let panTopY = top
-        let panCenterY = top - 12.0 + height/2
+        let panCenterY = top + height/2
         let panBottomY = top + height - 156.0
+        self.mapView.frame = CGRect(x: 0, y: top, width: width, height: height)
         self.panView.frame = CGRect(x: 0, y: top, width: width, height: height)
-        self.panView.setPanMovedY(top: panTopY, center: panCenterY, bottom: panBottomY)
-        
-        let mapTop = top - 22.0
-        let mapHeight = panBottomY - mapTop + 30.0
-        self.mapView.frame = CGRect(x: 0, y: mapTop, width: width, height: mapHeight)
+        self.panView.setupPanMovedY(top: panTopY, center: panCenterY, bottom: panBottomY)
     }
     
     override func viewDidLoad() {
@@ -74,6 +82,119 @@ class GXHomeVC: GXBaseViewController {
         
         self.view.insertSubview(self.mapView, belowSubview: self.myLocationButton)
         self.view.insertSubview(self.panView, aboveSubview: self.myLocationButton)
+        
+        self.panView.changePositionAction = {[weak self] position in
+            guard let `self` = self else { return }
+            switch position {
+            case .top:
+                self.myLocationButton.isHidden = true
+                self.mapView.isUserInteractionEnabled = false
+            case .center:
+                self.myLocationButton.isHidden = false
+                self.mapView.isUserInteractionEnabled = true
+                let bottom = self.mapView.bottom - self.panView.panCenterY
+                UIView.animate(.promise, duration: 0.3) {
+                    self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
+                }
+            case .bottom:
+                self.myLocationButton.isHidden = false
+                self.mapView.isUserInteractionEnabled = true
+                let bottom = self.mapView.bottom - self.panView.panBottomY
+                UIView.animate(.promise, duration: 0.3) {
+                    self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
+                }
+            default:
+                self.myLocationButton.isHidden = false
+                self.mapView.isUserInteractionEnabled = true
+                let bottom = self.mapView.bottom - (SCREEN_HEIGHT - self.menuHeight)
+                UIView.animate(.promise, duration: 0.3) {
+                    self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
+                }
+            }
+        }
+        
+        GXLocationManager.shared.requestGeocodeCompletion {[weak self] (isAuth, cityName, location) in
+            guard let `self` = self else { return }
+            guard isAuth else {
+                // 去设置
+                self.mapView.delegate = self
+                return
+            }
+            guard let letLocation = location else {
+                self.mapView.delegate = self
+                return
+            }
+            if let existingMaker = self.locationMarker {
+                CATransaction.begin()
+                CATransaction.setAnimationDuration(2.0)
+                existingMaker.position = letLocation.coordinate
+                existingMaker.rotation = letLocation.course
+                CATransaction.commit()
+            } else {
+                let marker = GMSMarker(position: letLocation.coordinate)
+                marker.icon = UIImage(named: "home_map_ic_direction")
+                marker.rotation = letLocation.course
+                marker.map = self.mapView
+                self.locationMarker = marker
+                self.mapView.animate(with: GMSCameraUpdate.setTarget(letLocation.coordinate, zoom: 17))
+                self.mapView.delegate = self
+                
+                self.mapViewSetMarkers()
+            }
+        }
+    }
+    
+}
+
+private extension GXHomeVC {
+    func mapViewClearMarkers() {
+        self.markerList.forEach { marker in
+            marker.map = nil
+        }
+        self.markerList.removeAll()
+    }
+    
+    func mapViewSetMarkers() {
+        let target = self.locationMarker?.position ?? self.mapView.camera.target
+        
+        let coordinate1 = CLLocationCoordinate2D(latitude: target.latitude + 0.0002, longitude: target.longitude + 0.0002)
+        let marker = GMSMarker(position: coordinate1)
+        marker.icon = UIImage(named: "home_map_ic_station")
+        marker.map = self.mapView
+        
+        let coordinate2 = CLLocationCoordinate2D(latitude: target.latitude - 0.0002, longitude: target.longitude - 0.0002)
+        let marker1 = GMSMarker(position: coordinate2)
+        marker1.icon = UIImage(named: "home_map_ic_station")
+        marker1.map = self.mapView
+    }
+    
+    func mapViewUpdateMarkers(isZoomLarge: Bool) {
+        guard self.lastIsZoomLarge != isZoomLarge else { return }
+        self.lastIsZoomLarge = isZoomLarge
+        self.mapViewClearMarkers()
+    }
+    
+    func mapViewDidTapMarker(marker: GMSMarker) {
+        guard marker != self.selectedMarker else { return }
+        
+        self.selectedMarker?.iconView = nil
+        self.selectedMarker?.icon = UIImage(named: "home_map_ic_station")
+
+        self.selectedMarker = marker
+        if let view = marker.iconView {
+            view.backgroundColor = .gx_green
+        }
+        else {
+            let iconView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 80, height: 46)))
+            iconView.backgroundColor = .gx_green
+            iconView.alpha = 0
+            marker.iconView = iconView
+            UIView.animate(.promise, duration: 0.1) {
+                iconView.alpha = 1
+            }.done { finished in
+                marker.icon = nil
+            }
+        }
     }
     
 }
@@ -85,33 +206,49 @@ private extension GXHomeVC {
     }
     
     @IBAction func filterButtonClicked(_ sender: Any?) {
+        self.panView.setCurrentPanPosition(position: .none, animated: true)
         
     }
     
     @IBAction func myLocationButtonClicked(_ sender: Any?) {
-        guard let location = mapView.myLocation, CLLocationCoordinate2DIsValid(location.coordinate) else {
+        guard let coordinate = self.locationMarker?.position, CLLocationCoordinate2DIsValid(coordinate) else {
             return
         }
-        mapView.layer.cameraLatitude = location.coordinate.latitude
-        mapView.layer.cameraLongitude = location.coordinate.longitude
-        mapView.layer.cameraBearing = 0
+        self.mapView.layer.cameraLatitude = coordinate.latitude
+        self.mapView.layer.cameraLongitude = coordinate.longitude
+        self.mapView.layer.cameraBearing = 0
     }
     
     @IBAction func ongoingButtonClicked(_ sender: Any?) {
         
     }
     
-    func addMapViewAnimation(key: String, toValue: Double) {
-        let animation = CABasicAnimation(keyPath: key)
-        animation.duration = 1
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        animation.toValue = toValue
-        mapView.layer.add(animation, forKey: key)
-    }
 }
 
 extension GXHomeVC: GMSMapViewDelegate {
-    func mapView(_ mapView: GMSMapView, didTapMyLocation location: CLLocationCoordinate2D) {
-        
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        self.mapViewDidTapMarker(marker: marker)
+        return true
     }
+
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        XCGLogger.info("mapView position.zoom = \(position.zoom)")
+        XCGLogger.info("mapView position.target = \(mapView.camera.target)")
+        
+        let isZoomLarge = position.zoom >= 16
+        if let lastTarget = self.lastTarget {
+            let distance = GXLocationManager.getDistanceTo(coordinate1: lastTarget, coordinate2: position.target)
+            if distance > 50000 {
+                self.lastTarget = position.target
+                self.lastIsZoomLarge = isZoomLarge
+                return
+            }
+        } else {
+            self.lastTarget = position.target
+            self.lastIsZoomLarge = isZoomLarge
+            return
+        }
+        self.mapViewUpdateMarkers(isZoomLarge: isZoomLarge)
+    }
+    
 }

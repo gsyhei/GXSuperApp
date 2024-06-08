@@ -10,17 +10,27 @@ import XCGLogger
 
 class GXHomePanView: UIView {
     enum PanPosition {
+        case none //底部
         case top    //头部
         case center //中心
         case bottom //底部
     }
     private var currentTop: CGFloat = .zero
-    private var panTopY: CGFloat = .zero
-    private var panCenterY: CGFloat = .zero
-    private var panBottomY: CGFloat = .zero
+    private(set) var panTopY: CGFloat = .zero
+    private(set) var panCenterY: CGFloat = .zero
+    private(set) var panBottomY: CGFloat = .zero
     private(set) var currentPanPosition: PanPosition = .bottom
     private var isMoveDirUp: Bool = false
     var changePositionAction: GXActionBlockItem<PanPosition>?
+    
+    lazy var arrowButton: UIButton = {
+        return UIButton(type: .custom).then {
+            $0.isUserInteractionEnabled = false
+            $0.backgroundColor = .gx_background
+            $0.setImage(UIImage(named: "home_list_ic_unfold"), for: .normal)
+            $0.setImage(UIImage(named: "home_list_ic_fold"), for: .selected)
+        }
+    }()
     
     lazy var tableView: GXBaseTableView = {
         return GXBaseTableView(_frame: self.bounds, _style: .plain).then {
@@ -34,26 +44,77 @@ class GXHomePanView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.addSubview(self.arrowButton)
         self.addSubview(self.tableView)
-        self.tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        
+        self.arrowButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(22)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(22)
         }
+        self.tableView.snp.makeConstraints { make in
+            make.top.equalTo(self.arrowButton.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
         panGesture.delegate = self
         self.addGestureRecognizer(panGesture)
         self.isUserInteractionEnabled = false
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.arrowButton.setRoundedCorners([.topLeft, .topRight], radius: 12)
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setPanMovedY(top: CGFloat, center: CGFloat, bottom: CGFloat, position: PanPosition = .bottom) {
+    func setupPanMovedY(top: CGFloat, center: CGFloat, bottom: CGFloat, position: PanPosition = .bottom) {
         self.panTopY = top
         self.panCenterY = center
         self.panBottomY = bottom
         self.setCurrentPanPosition(position: position, velocity: 0, animated: false)
         self.isUserInteractionEnabled = true
+    }
+    
+    func setCurrentPanPosition(position: PanPosition, velocity: CGFloat = 1000, animated: Bool = true) {
+        self.currentPanPosition = position
+        var top = self.frame.origin.y
+        switch position {
+        case .none:
+            top = SCREEN_HEIGHT
+        case .top:
+            top = self.panTopY
+        case .center:
+            top = self.panCenterY
+        case .bottom:
+            top = self.panBottomY
+        }
+        let isPanTop = position == .top
+        if animated {
+            var duration = abs(top - self.frame.origin.y) / velocity + 0.1
+            duration = min(0.5, duration)
+            duration = max(0.2, duration)
+            UIView.animate(.promise, duration: duration, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.9) {
+                self.top = top
+            }.done { finished in
+                self.arrowButton.isSelected = isPanTop
+                self.tableView.isScrollEnabled = isPanTop
+                self.tableView.showsVerticalScrollIndicator = isPanTop
+                self.changePositionAction?(position)
+            }
+        }
+        else {
+            self.top = top
+            self.arrowButton.isSelected = isPanTop
+            self.tableView.isScrollEnabled = isPanTop
+            self.tableView.showsVerticalScrollIndicator = isPanTop
+            self.changePositionAction?(position)
+        }
     }
     
 }
@@ -91,37 +152,6 @@ extension GXHomePanView: UIGestureRecognizerDelegate {
 }
 
 private extension GXHomePanView {
-    
-    func setCurrentPanPosition(position: PanPosition, velocity: CGFloat, animated: Bool = true) {
-        self.currentPanPosition = position
-        var top = self.frame.origin.y
-        switch position {
-        case .top:
-            top = self.panTopY
-        case .center:
-            top = self.panCenterY
-        case .bottom:
-            top = self.panBottomY
-        }
-        if animated {
-            var duration = abs(top - self.frame.origin.y) / velocity
-            duration = min(0.2, duration)
-            duration = max(0.1, duration)
-            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut) {
-                self.top = top
-            } completion: { finished in
-                self.tableView.isScrollEnabled = position == .top
-                self.tableView.showsVerticalScrollIndicator = position == .top
-                self.changePositionAction?(position)
-            }
-        }
-        else {
-            self.top = top
-            self.tableView.isScrollEnabled = position == .top
-            self.tableView.showsVerticalScrollIndicator = position == .top
-            self.changePositionAction?(position)
-        }
-    }
     
     @objc func panGestureAction(_ pan: UIPanGestureRecognizer) {
         switch pan.state {
