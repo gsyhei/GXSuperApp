@@ -162,6 +162,7 @@ private extension GXHomeVC {
         let marker = GMSMarker(position: coordinate1)
         marker.iconView = iconView
         marker.map = self.mapView
+        self.selectedMarker = marker
         
         let coordinate2 = CLLocationCoordinate2D(latitude: target.latitude - 0.0002, longitude: target.longitude - 0.0002)
         let marker1 = GMSMarker(position: coordinate2)
@@ -221,7 +222,9 @@ private extension GXHomeVC {
 
 extension GXHomeVC: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        guard marker != self.locationMarker else { return false }
         self.mapViewDidTapMarker(marker: marker)
+        
         return true
     }
 

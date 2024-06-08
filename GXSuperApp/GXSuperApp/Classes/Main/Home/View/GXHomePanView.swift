@@ -21,6 +21,7 @@ class GXHomePanView: UIView {
     private(set) var panBottomY: CGFloat = .zero
     private(set) var currentPanPosition: PanPosition = .bottom
     private var isMoveDirUp: Bool = false
+    private var panGesture: UIPanGestureRecognizer?
     var changePositionAction: GXActionBlockItem<PanPosition>?
     
     lazy var arrowButton: UIButton = {
@@ -36,9 +37,10 @@ class GXHomePanView: UIView {
         return GXBaseTableView(_frame: self.bounds, _style: .plain).then {
             $0.backgroundColor = .gx_background
             $0.separatorStyle = .none
-            $0.rowHeight = 80.0
+            $0.rowHeight = 133.0
             $0.dataSource = self
             $0.delegate = self
+            $0.register(cellType: GXHomeMarkerCell.self)
         }
     }()
     
@@ -60,6 +62,7 @@ class GXHomePanView: UIView {
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
         panGesture.delegate = self
+        self.panGesture = panGesture
         self.addGestureRecognizer(panGesture)
         self.isUserInteractionEnabled = false
     }
@@ -105,6 +108,7 @@ class GXHomePanView: UIView {
                 self.arrowButton.isSelected = isPanTop
                 self.tableView.isScrollEnabled = isPanTop
                 self.tableView.showsVerticalScrollIndicator = isPanTop
+                self.panGesture?.isEnabled = true
                 self.changePositionAction?(position)
             }
         }
@@ -113,6 +117,7 @@ class GXHomePanView: UIView {
             self.arrowButton.isSelected = isPanTop
             self.tableView.isScrollEnabled = isPanTop
             self.tableView.showsVerticalScrollIndicator = isPanTop
+            self.panGesture?.isEnabled = true
             self.changePositionAction?(position)
         }
     }
@@ -126,16 +131,16 @@ extension GXHomePanView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-            cell?.contentView.backgroundColor = .gx_background
-        }
-        cell?.textLabel?.text = "Cell text"
+        let cell: GXHomeMarkerCell = tableView.dequeueReusableCell(for: indexPath)
         
-        return cell!
+        return cell
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let drag = (scrollView.contentOffset.y <= 0)
+        self.panGesture?.isEnabled = drag
+        self.tableView.isScrollEnabled = !drag
+    }
 }
 
 extension GXHomePanView: UIGestureRecognizerDelegate {
