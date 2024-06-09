@@ -139,20 +139,24 @@ extension GXHomePanView: UITableViewDataSource, UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let drag = (scrollView.contentOffset.y <= 0)
         self.panGesture?.isEnabled = drag
-        self.tableView.isScrollEnabled = !drag
     }
+    
 }
 
 extension GXHomePanView: UIGestureRecognizerDelegate {
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if self.tableView.isScrollEnabled && self.tableView.contentOffset.y > 0 {
-            return false
-        }
-        if (self.tableView.isScrollEnabled) {
+        if (self.tableView.isScrollEnabled && self.tableView.contentOffset.y > 0) {
             self.tableView.showsVerticalScrollIndicator = false
-            return true
         }
-        return false
+        return (self.currentPanPosition == .top)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return !(self.currentPanPosition == .top)
     }
 }
 
@@ -184,6 +188,7 @@ private extension GXHomePanView {
         self.currentTop = moveTop
         if self.currentTop > self.panTopY {
             self.tableView.isScrollEnabled = false
+            self.tableView.showsVerticalScrollIndicator = false
         }
     }
     
