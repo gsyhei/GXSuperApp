@@ -105,6 +105,9 @@ extension GXTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController == tabBarController.viewControllers?[2] {
             // 扫码入口
+            let vc = GXQRCodeReaderVC.xibViewController()
+            vc.modalPresentationStyle = .fullScreen
+            tabBarController.present(vc, animated: true)
             return false
         }
         return true

@@ -15,7 +15,7 @@ class GXHomeVC: GXBaseViewController {
     @IBOutlet weak var topContainerView: UIView!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var myLocationButton: UIButton!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var selectTagsView: GXSelectTagsView!
     @IBOutlet weak var ongoingView: UIView!
     @IBOutlet weak var ongoingButton: UIButton!
     

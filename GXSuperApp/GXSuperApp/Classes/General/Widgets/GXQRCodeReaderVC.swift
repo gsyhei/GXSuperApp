@@ -7,6 +7,7 @@
 
 import UIKit
 import QRCodeReader
+import HXPhotoPicker
 
 class GXQRCodeReaderVC: GXBaseViewController {
     @IBOutlet weak var torchButton: UIButton!
@@ -48,7 +49,7 @@ class GXQRCodeReaderVC: GXBaseViewController {
     }()
 
     lazy var scanImageView: UIImageView = {
-        return UIImageView(image: UIImage(named: "qr_qrcode_rect")).then {
+        return UIImageView(image: UIImage(named: "scan_ic_light")).then {
             $0.autoresizingMask = .flexibleWidth
             $0.frame = CGRect(x: 0, y: 0, width: self.scanView.width, height: 2)
         }
@@ -85,7 +86,9 @@ class GXQRCodeReaderVC: GXBaseViewController {
     override func setupViewController() {
         self.scanView.addSubview(self.scanImageView)
         self.scanImageView.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
+            make.top.equalToSuperview()
+            make.left.equalToSuperview().offset(-14)
+            make.right.equalToSuperview().offset(14)
         }
     }
 
@@ -93,12 +96,27 @@ class GXQRCodeReaderVC: GXBaseViewController {
         self.scanImageView.layer.removeAllAnimations()
         let animation: CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.y")
         animation.isRemovedOnCompletion = false
-        animation.duration = 2.0
+        animation.duration = 2.5
         animation.fromValue = 0.0
         animation.toValue = self.scanView.frame.height
-        animation.repeatCount = 1000000
+        animation.repeatCount = MAXFLOAT
         animation.setValue("scanAnimation", forKey: "animationName")
-        self.scanImageView.layer.add(animation, forKey: nil)
+        
+        let animation1: CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+        animation1.isRemovedOnCompletion = false
+        animation1.duration = 0.5
+        animation1.fromValue = 1.0
+        animation1.toValue = 0.0
+        animation1.repeatCount = MAXFLOAT
+        animation1.beginTime = 2.0
+        animation1.setValue("opacityAnimation", forKey: "animationName")
+        
+        let group = CAAnimationGroup()
+        group.animations = [animation, animation1]
+        group.duration = 2.5
+        group.repeatCount = MAXFLOAT
+        
+        self.scanImageView.layer.add(group, forKey: nil)
     }
 
     private func checkScanPermissions() -> Bool {
@@ -143,4 +161,25 @@ extension GXQRCodeReaderVC {
         sender.isSelected = !sender.isSelected
     }
 
+    @IBAction func photoButtonClicked(_ sender: UIButton) {
+        var config: PickerConfiguration = PickerConfiguration()
+        config.modalPresentationStyle = .fullScreen
+        config.photoSelectionTapAction = .openEditor
+        config.selectMode = .single
+        config.selectOptions = .photo
+        config.photoList.rowNumber = 3
+        config.photoList.allowAddCamera = false
+        let vc = PhotoPickerController.init(config: config)
+        vc.finishHandler = {[weak self] (result, picker) in
+            result.photoAssets.first?.getImage(completion: { image in
+                guard let `self` = self else { return }
+                guard let letImage = image else { return }
+                let value = self.codeReaderToImage(letImage)
+                
+                print("Completion with result code: \(String(describing: value))")
+            })
+        }
+        self.present(vc, animated: true, completion: nil)
+    }
+    
 }

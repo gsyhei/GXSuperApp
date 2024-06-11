@@ -19,11 +19,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXHomeVC" customModule="GXSuperApp" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="bMh-a2-s08" id="evy-GR-yzY"/>
                 <outlet property="myLocationButton" destination="t2R-fG-5FA" id="rN1-5k-1WO"/>
                 <outlet property="ongoingButton" destination="out-Pk-Y4P" id="fVq-zD-val"/>
                 <outlet property="ongoingView" destination="45r-Su-e17" id="nno-59-Ngh"/>
                 <outlet property="searchButton" destination="swG-i5-nkI" id="Tkv-jD-2mn"/>
+                <outlet property="selectTagsView" destination="xjf-HT-88T" id="9oJ-kl-rXi"/>
                 <outlet property="topContainerView" destination="LP5-oT-u49" id="DtT-Sc-MvK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -54,16 +54,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LP5-oT-u49" userLabel="topContainerView">
                     <rect key="frame" x="0.0" y="59" width="393" height="82"/>
                     <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bMh-a2-s08">
-                            <rect key="frame" x="0.0" y="40" width="353" height="42"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tlm-80-4pz">
-                                <size key="itemSize" width="128" height="128"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                        </collectionView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsm-wf-wUF">
                             <rect key="frame" x="353" y="48" width="36" height="24"/>
                             <constraints>
@@ -106,20 +96,27 @@
                                 <constraint firstAttribute="width" constant="85" id="qFo-pL-48i"/>
                             </constraints>
                         </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjf-HT-88T" customClass="GXSelectTagsView" customModule="GXSuperApp" customModuleProvider="target">
+                            <rect key="frame" x="12" y="48" width="329" height="24"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="eOB-O5-vDw"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="swG-i5-nkI" firstAttribute="leading" secondItem="kYi-ud-P86" secondAttribute="trailing" constant="10" id="6I2-qh-Pfx"/>
-                        <constraint firstAttribute="bottom" secondItem="bMh-a2-s08" secondAttribute="bottom" id="E4p-nN-o7W"/>
-                        <constraint firstItem="bMh-a2-s08" firstAttribute="leading" secondItem="LP5-oT-u49" secondAttribute="leading" id="JbU-z8-QWb"/>
+                        <constraint firstItem="xsm-wf-wUF" firstAttribute="centerY" secondItem="xjf-HT-88T" secondAttribute="centerY" id="SHF-dV-SnK"/>
                         <constraint firstItem="swG-i5-nkI" firstAttribute="top" secondItem="LP5-oT-u49" secondAttribute="top" constant="6" id="WNx-dx-U4T"/>
                         <constraint firstAttribute="trailing" secondItem="xsm-wf-wUF" secondAttribute="trailing" constant="4" id="WOD-KW-PMJ"/>
+                        <constraint firstItem="swG-i5-nkI" firstAttribute="top" secondItem="LP5-oT-u49" secondAttribute="top" constant="6" id="XZm-Tt-B9K"/>
                         <constraint firstAttribute="trailing" secondItem="swG-i5-nkI" secondAttribute="trailing" constant="12" id="aQi-GI-Wzw"/>
-                        <constraint firstItem="bMh-a2-s08" firstAttribute="top" secondItem="swG-i5-nkI" secondAttribute="bottom" constant="2" id="apL-WR-RPh"/>
                         <constraint firstAttribute="height" constant="82" id="cLi-Kf-EqA"/>
                         <constraint firstItem="kYi-ud-P86" firstAttribute="leading" secondItem="LP5-oT-u49" secondAttribute="leading" constant="12" id="fpg-cg-GTF"/>
-                        <constraint firstItem="xsm-wf-wUF" firstAttribute="leading" secondItem="bMh-a2-s08" secondAttribute="trailing" id="iQH-8u-xyU"/>
+                        <constraint firstItem="xjf-HT-88T" firstAttribute="leading" secondItem="LP5-oT-u49" secondAttribute="leading" constant="12" id="lo2-6b-kcS"/>
                         <constraint firstAttribute="bottom" secondItem="xsm-wf-wUF" secondAttribute="bottom" constant="10" id="oYI-LF-0Ag"/>
+                        <constraint firstItem="xsm-wf-wUF" firstAttribute="leading" secondItem="xjf-HT-88T" secondAttribute="trailing" constant="12" id="qYj-pR-Uzr"/>
                         <constraint firstItem="kYi-ud-P86" firstAttribute="top" secondItem="LP5-oT-u49" secondAttribute="top" constant="14" id="u93-uv-qjy"/>
                     </constraints>
                 </view>

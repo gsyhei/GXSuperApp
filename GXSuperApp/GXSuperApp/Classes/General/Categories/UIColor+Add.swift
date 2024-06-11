@@ -43,7 +43,7 @@ extension UIColor {
     }
     
     class var gx_gray: UIColor {
-        return UIColor(hexString: "#999999")
+        return UIColor(hexString: "#CECFD3")
     }
     
     class var gx_lightGray: UIColor {
