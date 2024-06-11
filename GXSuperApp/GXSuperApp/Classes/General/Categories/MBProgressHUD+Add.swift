@@ -106,7 +106,7 @@ extension MBProgressHUD {
     }
 }
 
-fileprivate extension MBProgressHUD {
+extension MBProgressHUD {
 
     class WaveBallHUDView: UIView {
         required init(frame: CGRect, ballColor: UIColor) {
@@ -165,8 +165,8 @@ fileprivate extension MBProgressHUD {
             fatalError("init(coder:) has not been implemented")
         }
         func createSubviews() {
-            let lineWidth: CGFloat = 3
-            let lineMargin: CGFloat = lineWidth / 2
+            let lineWidth: CGFloat = 2
+            let lineMargin: CGFloat = 0
             let arcCenter = CGPoint(x: self.bounds.width / 2 - lineMargin, y: self.bounds.height / 2 - lineMargin)
             let smoothedPath = UIBezierPath(
                 arcCenter: arcCenter,
@@ -180,7 +180,7 @@ fileprivate extension MBProgressHUD {
                 $0.frame = CGRect(x: lineMargin, y: lineMargin, width: arcCenter.x * 2, height: arcCenter.y * 2)
                 $0.fillColor = UIColor.clear.cgColor
                 $0.strokeColor = UIColor.white.cgColor
-                $0.lineWidth = 3
+                $0.lineWidth = lineWidth
                 $0.lineCap = CAShapeLayerLineCap.round
                 $0.lineJoin = CAShapeLayerLineJoin.bevel
                 $0.path = smoothedPath.cgPath

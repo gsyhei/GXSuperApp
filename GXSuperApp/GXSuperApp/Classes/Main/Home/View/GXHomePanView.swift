@@ -143,6 +143,11 @@ extension GXHomePanView: UITableViewDataSource, UITableViewDelegate {
         let velocity = scrollView.panGestureRecognizer.velocity(in: scrollView.panGestureRecognizer.view).y
         self.tableView.showsVerticalScrollIndicator = (scrollView.contentOffset.y > 0) || (velocity < 0)
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        XCGLogger.info("indexPath = \(indexPath)")
+
+    }
 }
 
 extension GXHomePanView: UIGestureRecognizerDelegate {

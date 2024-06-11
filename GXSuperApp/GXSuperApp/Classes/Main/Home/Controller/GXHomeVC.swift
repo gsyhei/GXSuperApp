@@ -9,6 +9,7 @@ import UIKit
 import GoogleMaps
 import PromiseKit
 import XCGLogger
+import MBProgressHUD
 
 class GXHomeVC: GXBaseViewController {
     @IBOutlet weak var topContainerView: UIView!
@@ -18,6 +19,7 @@ class GXHomeVC: GXBaseViewController {
     @IBOutlet weak var ongoingView: UIView!
     @IBOutlet weak var ongoingButton: UIButton!
     
+    private let zoomLarge: Float = 15.0
     private var lastTarget: CLLocationCoordinate2D?
     private var lastIsZoomLarge: Bool = false
     private var locationMarker: GMSMarker?
@@ -79,6 +81,10 @@ class GXHomeVC: GXBaseViewController {
         self.ongoingView.setLayerShadow(color: .gx_green, offset: .zero, radius: 8.0)
         self.ongoingView.layer.shadowOpacity = 0.5
         self.ongoingButton.setBackgroundColor(.gx_green, for: .normal)
+        
+        let frame = CGRect(x: 12, y: 10, width: 16, height: 16)
+        let circleHUDView = MBProgressHUD.CircleHUDView(frame: frame)
+        self.ongoingView.addSubview(circleHUDView)
         
         self.view.insertSubview(self.mapView, belowSubview: self.myLocationButton)
         self.view.insertSubview(self.panView, aboveSubview: self.myLocationButton)
@@ -232,17 +238,19 @@ extension GXHomeVC: GMSMapViewDelegate {
         XCGLogger.info("mapView position.zoom = \(position.zoom)")
         XCGLogger.info("mapView position.target = \(mapView.camera.target)")
         
-        let isZoomLarge = position.zoom >= 15
+        let isZoomLarge = position.zoom >= self.zoomLarge
         if let lastTarget = self.lastTarget {
             let distance = GXLocationManager.getDistanceTo(coordinate1: lastTarget, coordinate2: position.target)
             if distance > 50000 {
                 self.lastTarget = position.target
                 self.lastIsZoomLarge = isZoomLarge
+                // 重新拉取地图场站
                 return
             }
         } else {
             self.lastTarget = position.target
             self.lastIsZoomLarge = isZoomLarge
+            // 首次拉取地图场站
             return
         }
         self.mapViewUpdateMarkers(isZoomLarge: isZoomLarge)
