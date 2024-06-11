@@ -27,7 +27,7 @@ class GXMarkerIconView: UIView {
         return UILabel().then {
             $0.textAlignment = .center
             $0.textColor = .gx_blue
-            $0.text = "18 / 20"
+            $0.text = "18/20"
             $0.font = .gx_font(size: 13)
         }
     }()
@@ -75,6 +75,12 @@ class GXMarkerIconView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateNumber(title: String) {
+        self.numberLabel.text = title
+        let width = title.width(font: self.numberLabel.font)
+        self.frame.size.width = width + 58
     }
     
 }

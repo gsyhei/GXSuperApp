@@ -63,7 +63,6 @@
 		33EC55F72C101BA100D4CCD0 /* GXMarqueeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D22C101BA100D4CCD0 /* GXMarqueeTextView.swift */; };
 		33EC55F82C101BA100D4CCD0 /* GXQRCodeReaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D32C101BA100D4CCD0 /* GXQRCodeReaderVC.swift */; };
 		33EC55F92C101BA100D4CCD0 /* GXQRCodeReaderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33EC53D42C101BA100D4CCD0 /* GXQRCodeReaderVC.xib */; };
-		33EC55FA2C101BA100D4CCD0 /* GXRoundedBevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D52C101BA100D4CCD0 /* GXRoundedBevelView.swift */; };
 		33EC55FB2C101BA100D4CCD0 /* GXSelectItemsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D62C101BA100D4CCD0 /* GXSelectItemsMenu.swift */; };
 		33EC55FC2C101BA100D4CCD0 /* GXTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D72C101BA100D4CCD0 /* GXTagsView.swift */; };
 		33EC55FD2C101BA100D4CCD0 /* GXTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D82C101BA100D4CCD0 /* GXTextView.swift */; };
@@ -143,7 +142,6 @@
 		33EC53D22C101BA100D4CCD0 /* GXMarqueeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMarqueeTextView.swift; sourceTree = "<group>"; };
 		33EC53D32C101BA100D4CCD0 /* GXQRCodeReaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXQRCodeReaderVC.swift; sourceTree = "<group>"; };
 		33EC53D42C101BA100D4CCD0 /* GXQRCodeReaderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXQRCodeReaderVC.xib; sourceTree = "<group>"; };
-		33EC53D52C101BA100D4CCD0 /* GXRoundedBevelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXRoundedBevelView.swift; sourceTree = "<group>"; };
 		33EC53D62C101BA100D4CCD0 /* GXSelectItemsMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXSelectItemsMenu.swift; sourceTree = "<group>"; };
 		33EC53D72C101BA100D4CCD0 /* GXTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXTagsView.swift; sourceTree = "<group>"; };
 		33EC53D82C101BA100D4CCD0 /* GXTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXTextView.swift; sourceTree = "<group>"; };
@@ -354,19 +352,18 @@
 				33EC53A22C101BA100D4CCD0 /* GXAlertView */,
 				33EC53B12C101BA100D4CCD0 /* GXMessageTableView */,
 				33EC53CC2C101BA100D4CCD0 /* XYNavigationManager */,
-				33EC53CD2C101BA100D4CCD0 /* GXAddImages9View.swift */,
-				33EC53CE2C101BA100D4CCD0 /* GXAddImagesView.swift */,
-				33EC53CF2C101BA100D4CCD0 /* GXAddItemsView.swift */,
+				33EC53D92C101BA100D4CCD0 /* GXToast.swift */,
+				33EC53D82C101BA100D4CCD0 /* GXTextView.swift */,
+				33EC53D72C101BA100D4CCD0 /* GXTagsView.swift */,
 				33EC53D02C101BA100D4CCD0 /* GXBadgeView.swift */,
+				33EC53CE2C101BA100D4CCD0 /* GXAddImagesView.swift */,
+				33EC53CD2C101BA100D4CCD0 /* GXAddImages9View.swift */,
+				33EC53CF2C101BA100D4CCD0 /* GXAddItemsView.swift */,
 				33EC53D12C101BA100D4CCD0 /* GXCollectionTagsView.swift */,
 				33EC53D22C101BA100D4CCD0 /* GXMarqueeTextView.swift */,
 				33EC53D32C101BA100D4CCD0 /* GXQRCodeReaderVC.swift */,
 				33EC53D42C101BA100D4CCD0 /* GXQRCodeReaderVC.xib */,
-				33EC53D52C101BA100D4CCD0 /* GXRoundedBevelView.swift */,
 				33EC53D62C101BA100D4CCD0 /* GXSelectItemsMenu.swift */,
-				33EC53D72C101BA100D4CCD0 /* GXTagsView.swift */,
-				33EC53D82C101BA100D4CCD0 /* GXTextView.swift */,
-				33EC53D92C101BA100D4CCD0 /* GXToast.swift */,
 				33EC53DA2C101BA100D4CCD0 /* GXWebViewController.swift */,
 				33EC57912C1021E300D4CCD0 /* GXApproveFailInfoView.swift */,
 				33EC57922C1021E300D4CCD0 /* GXApproveFailInfoView.xib */,
@@ -594,7 +591,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33EC55FA2C101BA100D4CCD0 /* GXRoundedBevelView.swift in Sources */,
 				33EC55BF2C101BA100D4CCD0 /* PhotoAsset+Add.swift in Sources */,
 				33BF81BA2C14A86D0089431E /* GXSelectedMarkerInfoView.swift in Sources */,
 				33EC55B42C101BA100D4CCD0 /* GXBaseViewModel.swift in Sources */,
@@ -816,7 +812,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -858,7 +854,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

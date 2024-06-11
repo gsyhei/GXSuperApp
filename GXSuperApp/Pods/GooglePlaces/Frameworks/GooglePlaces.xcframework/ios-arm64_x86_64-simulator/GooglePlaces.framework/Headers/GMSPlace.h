@@ -13,12 +13,12 @@
 
 #import "GMSPlacesDeprecationUtils.h"
 
-
 @class GMSAddressComponent;
 @class GMSOpeningHours;
 @class GMSPlacePhotoMetadata;
 @class GMSPlaceViewportInfo;
 @class GMSPlusCode;
+@class GMSPlaceReview;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -81,7 +81,6 @@ typedef NS_ENUM(NSInteger, GMSPlacesBusinessStatus) {
 
 /**@}*/
 
-
 /**
  * \defgroup BooleanPlaceAttribute GMSBooleanPlaceAttribute
  * @{
@@ -98,7 +97,6 @@ typedef NS_ENUM(NSInteger, GMSBooleanPlaceAttribute) {
 };
 
 /**@}*/
-
 
 /**
  * Represents a particular physical place. A GMSPlace encapsulates information about a physical
@@ -136,6 +134,7 @@ typedef NS_ENUM(NSInteger, GMSBooleanPlaceAttribute) {
  * enough users have reviewed this place).
  */
 @property(nonatomic, readonly, assign) float rating;
+
 
 /**
  * Price level for this place, as integers from 0 to 4.
@@ -188,10 +187,33 @@ typedef NS_ENUM(NSInteger, GMSBooleanPlaceAttribute) {
 @property(nonatomic, strong, readonly, nullable) GMSPlusCode *plusCode;
 
 /**
- * The Opening Hours information for this place. Includes open status, periods and weekday text when
- * available.
+ * The normal business Opening Hours information for this place. Includes open status, periods and
+ * weekday text when available.
  */
 @property(nonatomic, strong, readonly, nullable) GMSOpeningHours *openingHours;
+
+/**
+ * Returns this place's hours of operation over the next seven days.
+ *
+ * The time period starts at midnight on the date of the request and ends at 11:59 pm
+ * six days later.
+ *
+ * |GMSPlaceSpecialDay| entries on |GMSOpeningHours| will only be present for |GMSPlace|
+ * |currentOpeningHours| and |GMSPlace| |secondaryOpeningHours|.
+ */
+@property(nonatomic, strong, readonly, nullable) GMSOpeningHours *currentOpeningHours;
+
+/**
+ * Returns an array of this place's secondary hour(s) of operation over the next seven days.
+ *
+ * Secondary hours are different from a business's main hours. For example, a
+ * restaurant can specify drive through hours or delivery hours as its secondary hours.
+ * See |GMSPlaceHoursType| for the different types of secondary hours.
+ *
+ * |GMSPlaceSpecialDay| entries on |GMSOpeningHours| will only be present for |GMSPlace|
+ * |currentOpeningHours| and |GMSPlace| |secondaryOpeningHours|.
+ */
+@property(nonatomic, copy, readonly, nullable) NSArray<GMSOpeningHours *> *secondaryOpeningHours;
 
 /** Represents how many reviews make up this place's rating. */
 @property(nonatomic, readonly, assign) NSUInteger userRatingsTotal;
@@ -205,6 +227,11 @@ typedef NS_ENUM(NSInteger, GMSBooleanPlaceAttribute) {
 /** The |GMSPlaceBusinessStatus| of the place. */
 @property(nonatomic, readonly) GMSPlacesBusinessStatus businessStatus;
 
+/**
+ * Returns this place's editorial summary.
+ */
+@property(nonatomic, copy, readonly, nullable) NSString *editorialSummary;
+
 /** Default init is not available. */
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -215,7 +242,11 @@ typedef NS_ENUM(NSInteger, GMSBooleanPlaceAttribute) {
  * @return GMSPlaceOpenStatusOpen if the place is open, GMSPlaceOpenStatusClosed if the place is
  *     closed, and GMSPlaceOpenStatusUnknown if the open status is unknown.
  */
-- (GMSPlaceOpenStatus)isOpenAtDate:(NSDate *)date;
+- (GMSPlaceOpenStatus)isOpenAtDate:(NSDate *)date
+    __GMS_AVAILABLE_BUT_DEPRECATED_MSG("(This method is deprecated in favor of "
+                                       "<code>GMSPlacesClient#isOpenAtDate:place:date:callback</"
+                                       "code> and will be removed in a future release.");
+;
 
 /**
  * Calculates if a place is open based on |openingHours|, |UTCOffsetMinutes|, and current date
@@ -224,7 +255,10 @@ typedef NS_ENUM(NSInteger, GMSBooleanPlaceAttribute) {
  * @return GMSPlaceOpenStatusOpen if the place is open, GMSPlaceOpenStatusClosed if the place is
  *     closed, and GMSPlaceOpenStatusUnknown if the open status is unknown.
  */
-- (GMSPlaceOpenStatus)isOpen;
+- (GMSPlaceOpenStatus)isOpen __GMS_AVAILABLE_BUT_DEPRECATED_MSG(
+    "(This method is deprecated in favor of <code>GMSPlacesClient#isOpen:place:callback</code> and "
+    "will be removed in a future release.");
+;
 
 /** Background color of the icon according to Place type, to color the view behind the icon. */
 @property(nonatomic, readonly, nullable) UIColor *iconBackgroundColor;
@@ -235,7 +269,6 @@ typedef NS_ENUM(NSInteger, GMSBooleanPlaceAttribute) {
  * type.
  */
 @property(nonatomic, readonly, nullable) NSURL *iconImageURL;
-
 
 /** Place Attribute for takeout experience. */
 @property(nonatomic, readonly) GMSBooleanPlaceAttribute takeout;
@@ -275,7 +308,6 @@ typedef NS_ENUM(NSInteger, GMSBooleanPlaceAttribute) {
 
 /** Place Attribute indicating place is wheelchair accessible at the entrance. */
 @property(nonatomic, readonly) GMSBooleanPlaceAttribute wheelchairAccessibleEntrance;
-
 
 @end
 

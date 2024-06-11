@@ -41,9 +41,9 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MarsEnergy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSX-MA-STi">
-                                <rect key="frame" x="12" y="13" width="93.333333333333329" height="20"/>
+                                <rect key="frame" x="12" y="14" width="93.333333333333329" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="DxR-rG-jd0"/>
+                                    <constraint firstAttribute="height" constant="18" id="DxR-rG-jd0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Mukta-SemiBold" family="Mukta" pointSize="18"/>
                                 <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -89,17 +89,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Convenience store  │  Toilet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojX-ne-ebh">
-                                <rect key="frame" x="12" y="38" width="272" height="14"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="h7R-nz-8BA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Mukta-Light" family="Mukta" pointSize="13"/>
-                                <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 1.55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLz-bh-fK6">
-                                <rect key="frame" x="11.999999999999996" y="61" width="59.666666666666657" height="25"/>
+                                <rect key="frame" x="11.999999999999996" y="59" width="59.666666666666657" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="dwU-mp-zhO"/>
                                 </constraints>
@@ -108,7 +99,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ kWh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72r-gs-VCV">
-                                <rect key="frame" x="74.666666666666671" y="66" width="31.666666666666671" height="20"/>
+                                <rect key="frame" x="74.666666666666671" y="64" width="31.666666666666671" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="sMj-2F-Guh"/>
                                 </constraints>
@@ -117,7 +108,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0D-s9-QYP" userLabel="TagView">
-                                <rect key="frame" x="215" y="65.666666666666671" width="69" height="16"/>
+                                <rect key="frame" x="215" y="63.666666666666657" width="69" height="16"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_map_ic_fast_normal" translatesAutoresizingMaskIntoConstraints="NO" id="9ao-1C-H3b">
                                         <rect key="frame" x="0.0" y="0.0" width="31" height="16"/>
@@ -157,26 +148,43 @@
                                     <constraint firstAttribute="width" constant="12" id="bEH-wJ-ezl"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1H-v5-ep8" customClass="GXTagsView" customModule="GXSuperApp" customModuleProvider="target">
+                                <rect key="frame" x="12" y="36" width="272" height="13"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="umg-5H-S96"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhg-R7-Xhq" customClass="GXTagsView" customModule="GXSuperApp" customModuleProvider="target">
+                                <rect key="frame" x="24" y="95.666666666666671" width="260" height="13"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="EHn-bq-JEG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ojX-ne-ebh" firstAttribute="top" secondItem="MSX-MA-STi" secondAttribute="bottom" constant="5" id="5KT-zm-0Lr"/>
                             <constraint firstItem="3Mf-m4-Llb" firstAttribute="top" secondItem="Yiz-kU-x97" secondAttribute="top" constant="16" id="7PQ-xE-H2c"/>
+                            <constraint firstAttribute="trailing" secondItem="m1H-v5-ep8" secondAttribute="trailing" constant="12" id="CKA-yz-Anz"/>
                             <constraint firstItem="Qw1-xf-FcR" firstAttribute="centerY" secondItem="3Mf-m4-Llb" secondAttribute="centerY" id="CYV-DQ-rce"/>
+                            <constraint firstItem="hhg-R7-Xhq" firstAttribute="leading" secondItem="XYp-al-gPh" secondAttribute="trailing" id="HdC-jD-8Ki"/>
                             <constraint firstItem="72r-gs-VCV" firstAttribute="bottom" secondItem="RLz-bh-fK6" secondAttribute="bottom" id="ILE-l9-MNy"/>
                             <constraint firstItem="72r-gs-VCV" firstAttribute="leading" secondItem="RLz-bh-fK6" secondAttribute="trailing" constant="3" id="JaA-ga-2P8"/>
-                            <constraint firstItem="ojX-ne-ebh" firstAttribute="leading" secondItem="MSX-MA-STi" secondAttribute="leading" id="Kwv-uu-9lw"/>
                             <constraint firstAttribute="bottom" secondItem="XYp-al-gPh" secondAttribute="bottom" constant="12" id="WUI-gH-J60"/>
                             <constraint firstAttribute="trailing" secondItem="q0D-s9-QYP" secondAttribute="trailing" constant="12" id="YfX-3n-Zpf"/>
                             <constraint firstAttribute="trailing" secondItem="Qw1-xf-FcR" secondAttribute="trailing" constant="12" id="ZSG-4J-1QB"/>
                             <constraint firstItem="RLz-bh-fK6" firstAttribute="leading" secondItem="MSX-MA-STi" secondAttribute="leading" id="aht-U0-eZT"/>
+                            <constraint firstAttribute="trailing" secondItem="hhg-R7-Xhq" secondAttribute="trailing" constant="12" id="dXr-fg-WOR"/>
                             <constraint firstItem="MSX-MA-STi" firstAttribute="centerY" secondItem="3Mf-m4-Llb" secondAttribute="centerY" id="g9L-8N-Uy5"/>
                             <constraint firstItem="MSX-MA-STi" firstAttribute="leading" secondItem="Yiz-kU-x97" secondAttribute="leading" constant="12" id="gB7-gL-EUj"/>
-                            <constraint firstAttribute="trailing" secondItem="ojX-ne-ebh" secondAttribute="trailing" constant="12" id="iKK-mU-k0V"/>
+                            <constraint firstItem="hhg-R7-Xhq" firstAttribute="centerY" secondItem="XYp-al-gPh" secondAttribute="centerY" id="gbj-Pl-qxD"/>
                             <constraint firstItem="3Mf-m4-Llb" firstAttribute="leading" secondItem="Yiz-kU-x97" secondAttribute="leading" id="ihi-Zl-XQS"/>
+                            <constraint firstItem="m1H-v5-ep8" firstAttribute="leading" secondItem="Yiz-kU-x97" secondAttribute="leading" constant="12" id="jJQ-GX-H1b"/>
                             <constraint firstItem="q0D-s9-QYP" firstAttribute="centerY" secondItem="RLz-bh-fK6" secondAttribute="centerY" id="kXB-Rg-298"/>
-                            <constraint firstItem="RLz-bh-fK6" firstAttribute="top" secondItem="ojX-ne-ebh" secondAttribute="bottom" constant="9" id="lS0-W8-N9l"/>
                             <constraint firstItem="XYp-al-gPh" firstAttribute="leading" secondItem="Yiz-kU-x97" secondAttribute="leading" constant="12" id="mB9-ME-wTl"/>
+                            <constraint firstItem="m1H-v5-ep8" firstAttribute="top" secondItem="MSX-MA-STi" secondAttribute="bottom" constant="4" id="pnY-Ii-IIP"/>
+                            <constraint firstItem="RLz-bh-fK6" firstAttribute="top" secondItem="m1H-v5-ep8" secondAttribute="bottom" constant="10" id="ri1-RB-xhf"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -195,7 +203,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" red="0.92941176470588238" green="0.93725490196078431" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="bottomTagsView" destination="hhg-R7-Xhq" id="cfl-1t-gHp"/>
                 <outlet property="containerView" destination="Yiz-kU-x97" id="RR8-Wv-T9x"/>
+                <outlet property="leftLineView" destination="3Mf-m4-Llb" id="N8c-On-yug"/>
+                <outlet property="topTagsView" destination="m1H-v5-ep8" id="U5r-Wx-yyg"/>
             </connections>
             <point key="canvasLocation" x="-977.0992366412213" y="-80.633802816901408"/>
         </tableViewCell>

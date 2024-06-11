@@ -36,8 +36,9 @@ class GXHomeVC: GXBaseViewController {
     }()
     
     lazy var mapView: GMSMapView = {
-        let camera = GMSCameraPosition(latitude: -33.868, longitude: 151.2086, zoom: 12)
-        return GMSMapView(frame: .zero, camera: camera).then {
+        let options = GMSMapViewOptions()
+        options.camera = GMSCameraPosition(latitude: -33.868, longitude: 151.2086, zoom: 12)
+        return GMSMapView(options: options).then {
             $0.settings.compassButton = false
             $0.settings.myLocationButton = false
             $0.settings.rotateGestures = false
@@ -164,6 +165,7 @@ private extension GXHomeVC {
         let target = self.locationMarker?.position ?? self.mapView.camera.target
         
         let iconView = GXMarkerIconView.createIconView()
+        iconView.updateNumber(title: "222/222")
         let coordinate1 = CLLocationCoordinate2D(latitude: target.latitude + 0.0002, longitude: target.longitude + 0.0002)
         let marker = GMSMarker(position: coordinate1)
         marker.iconView = iconView

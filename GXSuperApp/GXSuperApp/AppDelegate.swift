@@ -33,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 谷歌地图
         GMSServices.provideAPIKey(GX_GOOGLE_APIKEY)
         GMSPlacesClient.provideAPIKey(GX_GOOGLE_APIKEY)
-        GMSServices.setMetalRendererEnabled(true)
         
         // 主题预设
         UIApplication.shared.applicationIconBadgeNumber = 0

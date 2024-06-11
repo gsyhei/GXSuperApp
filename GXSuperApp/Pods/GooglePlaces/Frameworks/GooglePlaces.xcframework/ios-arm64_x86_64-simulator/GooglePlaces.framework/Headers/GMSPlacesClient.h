@@ -11,10 +11,10 @@
 #import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
 
+#import "GMSPlace.h"
 #import "GMSPlaceFieldMask.h"
 #import "GMSPlacesDeprecationUtils.h"
 #import "GMSPlacesErrors.h"
-
 
 @class GMSAutocompleteFilter;
 @class GMSAutocompletePrediction;
@@ -24,7 +24,7 @@
 @class GMSPlaceLikelihoodList;
 @class GMSPlacePhotoMetadata;
 @class GMSPlacePhotoMetadataList;
-
+@class GMSPlaceSearchByTextRequest;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -92,6 +92,28 @@ typedef void (^GMSPlacePhotoImageResultCallback)(UIImage *_Nullable photo,
                                                  NSError *_Nullable error);
 
 /**
+ * Callback type for receiving the opening hours status for the Place. If an error occurred,
+ * |result| will be GMSPlaceOpenStatusUnknown and |error| will contain information about the error.
+ * @param result The |GMSPlaceOpenStatus| that was returned.
+ * @param error The error that occurred, if any.
+ *
+ * @related GMSPlacesClient
+ */
+typedef void (^GMSPlaceOpenStatusCallback)(GMSPlaceOpenStatus result, NSError *_Nullable error);
+
+/**
+ * Callback type for receiving search by text results. |results| is an array of
+ * GMSPlace representing individual results matching the query.
+ * @param results An array of |GMSPlace|s.
+ * @param error The error that occurred, if any.
+ *
+ * @related GMSPlacesClient
+ */
+
+typedef void (^GMSPlaceSearchByTextResultCallback)(NSArray<GMSPlace *> *_Nullable places,
+                                                   NSError *_Nullable error);
+
+/**
  * Main interface to the Places SDK. Used for searching and getting details about places. This class
  * should be accessed through the [GMSPlacesClient sharedClient] method.
  *
@@ -141,6 +163,7 @@ typedef void (^GMSPlacePhotoImageResultCallback)(UIImage *_Nullable photo,
  * @param callback The callback to invoke with the lookup result.
  */
 - (void)lookUpPlaceID:(NSString *)placeID callback:(GMSPlaceResultCallback)callback;
+
 
 /**
  * Gets the metadata for up to 10 photos associated with a place.
@@ -247,7 +270,6 @@ typedef void (^GMSPlacePhotoImageResultCallback)(UIImage *_Nullable photo,
                  sessionToken:(nullable GMSAutocompleteSessionToken *)sessionToken
                      callback:(GMSPlaceResultCallback)callback;
 
-
 /**
  * Find place likelihoods using the user's current location. This method is non-blocking.
  *
@@ -257,10 +279,60 @@ typedef void (^GMSPlacePhotoImageResultCallback)(UIImage *_Nullable photo,
  * @param placeFields The individual place fields requested for the place objects in the list.
  * @param callback The callback to invoke with place likelihoods.
  */
-
 - (void)findPlaceLikelihoodsFromCurrentLocationWithPlaceFields:(GMSPlaceField)placeFields
                                                       callback:
                                                           (GMSPlaceLikelihoodsCallback)callback;
+
+/**
+ * Gets details for a place including all fields necessary to determine |GMSPlaceOpenStatus| at the
+ * current time. This method is non-blocking.
+ * @param placeID The place ID to lookup.
+ * @param callback The callback to invoke with the place result.
+ */
+- (void)isOpenWithPlaceID:(NSString *)placeID callback:(GMSPlaceOpenStatusCallback)callback;
+
+/**
+ * Gets details for a place including all fields necessary to determine |GMSPlaceOpenStatus| at the
+ * specified |NSDate|. This method is non-blocking.
+ * @param placeID The place ID to lookup.
+ * @param date The |NSDate| to determine open status for.
+ * @param callback The callback to invoke with the place result.
+ */
+- (void)isOpenWithPlaceID:(NSString *)placeID
+                     date:(NSDate *)date
+                 callback:(GMSPlaceOpenStatusCallback)callback;
+
+/**
+ * Gets details for a place including all fields necessary to determine |GMSPlaceOpenStatus| at the
+ * current time. Only requests additional fields if the |GMSPlace| does not have all necessary
+ * fields, otherwise |GMSPlaceOpenStatus| will be returned in the callback immediately. This method
+ * is non-blocking.
+ * @param place The |GMSPlace| to lookup.
+ * @param callback The callback to invoke with the place result.
+ */
+- (void)isOpenWithPlace:(GMSPlace *)place callback:(GMSPlaceOpenStatusCallback)callback;
+
+/**
+ * Gets details for a place including all fields necessary to determine |GMSPlaceOpenStatus| at the
+ * specified |NSDate|. Only requests additional fields if the |GMSPlace| does not have all necessary
+ * fields, otherwise |GMSPlaceOpenStatus\ will be returned in the callback immediately. This method
+ * is non-blocking.
+ * @param place The |GMSPlace| to lookup.
+ * @param date The |NSDate| to determine open status for.
+ * @param callback The callback to invoke with the place result.
+ */
+- (void)isOpenWithPlace:(GMSPlace *)place
+                   date:(NSDate *)date
+               callback:(GMSPlaceOpenStatusCallback)callback;
+
+/**
+ * Search for places by text and restrictions. This method is non-blocking.
+ * @param textSearchRequest |GMSPlaceSearchByTextRequest| The text request to use for the query.
+ * @param callback The callback to invoke with the lookup result.
+ */
+
+- (void)searchByTextWithRequest:(GMSPlaceSearchByTextRequest *)textSearchRequest
+                       callback:(GMSPlaceSearchByTextResultCallback)callback;
 
 
 @end
