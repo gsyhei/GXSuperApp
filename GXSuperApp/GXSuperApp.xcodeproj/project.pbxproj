@@ -12,6 +12,7 @@
 		33396A232C11E530000A1944 /* GXHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33396A212C11E530000A1944 /* GXHomeVC.xib */; };
 		33396A252C121A60000A1944 /* GXHomePanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33396A242C121A60000A1944 /* GXHomePanView.swift */; };
 		3340F7612C18498900B97923 /* GXRoundedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7602C18498900B97923 /* GXRoundedInView.swift */; };
+		3340F7632C18861600B97923 /* GXTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7622C18861600B97923 /* GXTabBar.swift */; };
 		339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398898F2C182CD800EA489A /* GXSelectTagsView.swift */; };
 		33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B52C1414CE0089431E /* GXLocationManager.swift */; };
 		33BF81B82C14964F0089431E /* GXMarkerIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B72C14964F0089431E /* GXMarkerIconView.swift */; };
@@ -88,6 +89,7 @@
 		33396A242C121A60000A1944 /* GXHomePanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomePanView.swift; sourceTree = "<group>"; };
 		33396A262C123170000A1944 /* GXSuperApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GXSuperApp.entitlements; sourceTree = "<group>"; };
 		3340F7602C18498900B97923 /* GXRoundedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXRoundedInView.swift; sourceTree = "<group>"; };
+		3340F7622C18861600B97923 /* GXTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXTabBar.swift; sourceTree = "<group>"; };
 		3398898F2C182CD800EA489A /* GXSelectTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXSelectTagsView.swift; sourceTree = "<group>"; };
 		33BF81B52C1414CE0089431E /* GXLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLocationManager.swift; sourceTree = "<group>"; };
 		33BF81B72C14964F0089431E /* GXMarkerIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMarkerIconView.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			children = (
 				33EC537C2C101BA100D4CCD0 /* GXBaseModel.swift */,
 				33EC53792C101BA100D4CCD0 /* GXArrowButton.swift */,
+				3340F7622C18861600B97923 /* GXTabBar.swift */,
 				33EC537D2C101BA100D4CCD0 /* GXBaseNavigationController.swift */,
 				33EC537E2C101BA100D4CCD0 /* GXBaseTableView.swift */,
 				33EC537F2C101BA100D4CCD0 /* GXBaseTableViewController.swift */,
@@ -618,6 +621,7 @@
 				33EC55FE2C101BA100D4CCD0 /* GXToast.swift in Sources */,
 				33EC56042C101BA100D4CCD0 /* GXServiceManager.swift in Sources */,
 				33EC55C12C101BA100D4CCD0 /* UIAlertController+Add.swift in Sources */,
+				3340F7632C18861600B97923 /* GXTabBar.swift in Sources */,
 				33EC55BE2C101BA100D4CCD0 /* NSAttributedString+Add.swift in Sources */,
 				33EC55BA2C101BA100D4CCD0 /* GXCopyable+Add.swift in Sources */,
 				33EC55BB2C101BA100D4CCD0 /* GXRefreshNormalHeader+Add.swift in Sources */,

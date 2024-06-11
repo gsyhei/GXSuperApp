@@ -50,9 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nbAppearance.doneButtonAppearance = bbiAppearance
         nbAppearance.backButtonAppearance = bbiAppearance
         UINavigationBar.appearance().standardAppearance = nbAppearance
-        if #available(iOS 13.0, *) {
+        if #available(iOS 15.0, *) {
             let nbAppearance = UINavigationBarAppearance()
             nbAppearance.configureWithTransparentBackground()
+            nbAppearance.backgroundColor = UIColor.white
             nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]
             let bbiAppearance = UIBarButtonItemAppearance(style: .plain)
             bbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]
@@ -64,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let appearance = UITabBarAppearance()
-        appearance.configureWithOpaqueBackground()
+        appearance.configureWithTransparentBackground()
         appearance.backgroundColor = UIColor.white
         appearance.shadowColor = .gx_lightGray
         let tbiAppearance = UITabBarItemAppearance(style: .stacked)
@@ -75,6 +76,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearance.stackedLayoutAppearance = tbiAppearance
         UITabBar.appearance().standardAppearance = appearance
         if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithTransparentBackground()
+            appearance.backgroundColor = UIColor.white
+            let tbiAppearance = UITabBarItemAppearance(style: .stacked)
+            tbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_drakGray, .font: UIFont.gx_font(size: 13)]
+            tbiAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.gx_green, .font: UIFont.gx_semiBoldFont(size: 13)]
+            tbiAppearance.normal.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -2)
+            tbiAppearance.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -2)
+            appearance.stackedLayoutAppearance = tbiAppearance
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
         

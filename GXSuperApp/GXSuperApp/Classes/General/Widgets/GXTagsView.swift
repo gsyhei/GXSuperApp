@@ -12,6 +12,8 @@ class GXTagsView: UIView {
     
     @discardableResult
     func updateTitles(titles: [String], width: CGFloat, numberOfLines: Int = 1, isShowFristLine: Bool = false) -> CGFloat {
+        self.removeAllSubviews()
+        
         let xSpacing: CGFloat = 19.0, ySpacing: CGFloat = 2.0
         let lineW: CGFloat = 1.0, lineH: CGFloat = 9.0
         let labelH: CGFloat = self.font.pointSize

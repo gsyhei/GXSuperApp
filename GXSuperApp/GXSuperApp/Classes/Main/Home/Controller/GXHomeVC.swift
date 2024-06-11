@@ -64,7 +64,7 @@ class GXHomeVC: GXBaseViewController {
         let width = self.view.bounds.width
         let height = self.view.bounds.height - top - self.view.safeAreaInsets.bottom
         let panTopY = top
-        let panCenterY = top + height/2 - 30.0
+        let panCenterY = top + height/2 - 44.0
         let panBottomY = top + height - 176.0
         self.mapView.frame = CGRect(x: 0, y: top, width: width, height: height)
         self.panView.frame = CGRect(x: 0, y: top, width: width, height: height)

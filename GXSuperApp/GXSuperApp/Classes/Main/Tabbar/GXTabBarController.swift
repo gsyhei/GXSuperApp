@@ -38,6 +38,11 @@ class GXTabBarController: UITabBarController {
         self.clickNotification()
     }
     
+    override func loadView() {
+        super.loadView()
+        //object_setClass(self.tabBar, GXTabBar.self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
@@ -97,6 +102,7 @@ extension GXTabBarController {
         else {
             childVC.tabBarItem.selectedImage = nil
         }
+        childVC.tabBarItem.imageInsets = UIEdgeInsets(top: 2, left: 0, bottom: -2, right: 0)
         self.addChild(childVC)
     }
 }
