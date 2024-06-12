@@ -19,7 +19,15 @@ extension UIColor {
     }
     
     class var gx_red: UIColor {
-        return UIColor(hexString: "#E34D59")
+        return UIColor(hexString: "#F26658")
+    }
+    
+    class var gx_drakRed: UIColor {
+        return UIColor(hexString: "#D04132")
+    }
+    
+    class var gx_lightRed: UIColor {
+        return UIColor(hexString: "#FAECEA")
     }
 
     class var gx_black: UIColor {

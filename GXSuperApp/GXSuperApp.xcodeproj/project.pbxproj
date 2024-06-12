@@ -14,6 +14,7 @@
 		3340F7612C18498900B97923 /* GXRoundedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7602C18498900B97923 /* GXRoundedInView.swift */; };
 		3340F7632C18861600B97923 /* GXTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7622C18861600B97923 /* GXTabBar.swift */; };
 		339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398898F2C182CD800EA489A /* GXSelectTagsView.swift */; };
+		33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */; };
 		33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B52C1414CE0089431E /* GXLocationManager.swift */; };
 		33BF81B82C14964F0089431E /* GXMarkerIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B72C14964F0089431E /* GXMarkerIconView.swift */; };
 		33BF81BA2C14A86D0089431E /* GXSelectedMarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B92C14A86D0089431E /* GXSelectedMarkerInfoView.swift */; };
@@ -91,6 +92,7 @@
 		3340F7602C18498900B97923 /* GXRoundedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXRoundedInView.swift; sourceTree = "<group>"; };
 		3340F7622C18861600B97923 /* GXTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXTabBar.swift; sourceTree = "<group>"; };
 		3398898F2C182CD800EA489A /* GXSelectTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXSelectTagsView.swift; sourceTree = "<group>"; };
+		33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXMarkerIconView.xib; sourceTree = "<group>"; };
 		33BF81B52C1414CE0089431E /* GXLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLocationManager.swift; sourceTree = "<group>"; };
 		33BF81B72C14964F0089431E /* GXMarkerIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMarkerIconView.swift; sourceTree = "<group>"; };
 		33BF81B92C14A86D0089431E /* GXSelectedMarkerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXSelectedMarkerInfoView.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				33396A242C121A60000A1944 /* GXHomePanView.swift */,
 				33BF81B72C14964F0089431E /* GXMarkerIconView.swift */,
+				33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */,
 				33BF81B92C14A86D0089431E /* GXSelectedMarkerInfoView.swift */,
 				33BF81BF2C14AB7F0089431E /* GXSelectedMarkerInfoView.xib */,
 				33BF81BB2C14AB720089431E /* GXHomeMarkerCell.swift */,
@@ -524,6 +527,7 @@
 				33EC55F92C101BA100D4CCD0 /* GXQRCodeReaderVC.xib in Resources */,
 				33BF81C02C14AB7F0089431E /* GXSelectedMarkerInfoView.xib in Resources */,
 				33EC57A22C116B2300D4CCD0 /* Mukta-Light.ttf in Resources */,
+				33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */,
 				33BF81BD2C14AB720089431E /* GXHomeMarkerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

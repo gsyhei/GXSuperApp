@@ -177,7 +177,6 @@ private extension GXHomeVC {
         let target = self.locationMarker?.position ?? self.mapView.camera.target
         
         let iconView = GXMarkerIconView.createIconView()
-        iconView.updateNumber(title: "222/222")
         let coordinate1 = CLLocationCoordinate2D(latitude: target.latitude + 0.0002, longitude: target.longitude + 0.0002)
         let marker = GMSMarker(position: coordinate1)
         marker.iconView = iconView
@@ -222,7 +221,10 @@ private extension GXHomeVC {
     
     @IBAction func filterButtonClicked(_ sender: Any?) {
         self.panView.setCurrentPanPosition(position: .none, animated: true)
-        
+        let menu = GXSelectedMarkerInfoView.showSelectedMarkerInfoView(to: self)
+        menu.closeAction = {[weak self] in
+            self?.panView.setCurrentPanPosition(position: .center, animated: true)
+        }
     }
     
     @IBAction func myLocationButtonClicked(_ sender: Any?) {

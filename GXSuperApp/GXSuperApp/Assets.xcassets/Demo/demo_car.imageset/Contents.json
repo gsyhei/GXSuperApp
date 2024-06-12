@@ -1,16 +1,15 @@
 {
   "images" : [
     {
+      "filename" : "demo_car.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "home_map_ic_fast_normal@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "home_map_ic_fast_normal@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

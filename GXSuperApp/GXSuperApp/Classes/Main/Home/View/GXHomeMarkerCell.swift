@@ -13,7 +13,16 @@ class GXHomeMarkerCell: UITableViewCell, NibReusable {
     @IBOutlet weak var leftLineView: UIView!
     @IBOutlet weak var topTagsView: GXTagsView!
     @IBOutlet weak var bottomTagsView: GXTagsView!
-
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var usNumberBgView: UIView!
+    @IBOutlet weak var tslNumberBgView: UIView!
+    @IBOutlet weak var usNumberImgView: UIImageView!
+    @IBOutlet weak var tslNumberImgView: UIImageView!
+    @IBOutlet weak var usNumberLabel: UILabel!
+    @IBOutlet weak var tslNumberLabel: UILabel!
+    
     private var highlightedEnable: Bool = false
 
     override func awakeFromNib() {
