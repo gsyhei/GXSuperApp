@@ -35,17 +35,14 @@ class GXLocationManager: NSObject {
     func requestGeocodeCompletion(_ hander: @escaping ((Bool, String?, CLLocation?) -> Void)) {
         self.completionHandler = hander
 
-        if CLLocationManager.authorizationStatus() == .notDetermined {
+        if self.locationManager?.authorizationStatus == .notDetermined {
             self.locationManager?.requestWhenInUseAuthorization()
         }
-        else if CLLocationManager.authorizationStatus() == .authorizedAlways {
+        else if self.locationManager?.authorizationStatus == .authorizedAlways {
             self.locationManager?.startUpdatingLocation()
         }
-        else if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+        else if self.locationManager?.authorizationStatus == .authorizedWhenInUse {
             self.locationManager?.startUpdatingLocation()
-        }
-        else {
-            self.completionHandler?(false, nil, nil)
         }
     }
 

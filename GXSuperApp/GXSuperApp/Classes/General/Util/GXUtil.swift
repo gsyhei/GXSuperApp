@@ -53,6 +53,12 @@ class GXUtil: NSObject {
         if qrCode.hasPrefix("HTTPS://") {
             return .url
         }    
+        if qrCode.hasPrefix("http://") {
+            return .url
+        }
+        if qrCode.hasPrefix("https://") {
+            return .url
+        }
         return .none
     }
 
@@ -184,7 +190,10 @@ class GXUtil: NSObject {
             let cancelAction = GXAlertAction()
             cancelAction.title = cancelTitle
             cancelAction.titleFont = .gx_font(size: 17)
-            cancelAction.titleColor = .gx_black
+            cancelAction.titleColor = .gx_green
+            cancelAction.borderWidth = 1.0
+            cancelAction.backgroundColor = .white
+            cancelAction.selBackgroundColor = .gx_background
             cancelAction.action = { alertView in
                 handler?(alertView, 0)
                 alertView.hide(animated: true)
@@ -194,17 +203,20 @@ class GXUtil: NSObject {
             let action = GXAlertAction()
             action.title = actionTitle
             if actionStyle == .destructive {
-                action.titleFont = .gx_boldFont(size: 17)
+                action.titleFont = .gx_font(size: 17)
                 action.titleColor = .gx_red
             }
             else if actionStyle == .default {
-                action.titleFont = .gx_boldFont(size: 17)
-                action.titleColor = .gx_green
+                action.titleFont = .gx_font(size: 17)
+                action.titleColor = .white
             }
             else {
                 action.titleFont = .gx_font(size: 17)
                 action.titleColor = .gx_black
             }
+            action.backgroundColor = .gx_green
+            action.selBackgroundColor = .gx_lightGreen
+            
             action.action = { alertView in
                 handler?(alertView, 1)
                 alertView.hide(animated: true)
@@ -215,17 +227,19 @@ class GXUtil: NSObject {
             let cancelAction = GXAlertAction()
             cancelAction.title = cancelTitle
             if actionStyle == .destructive {
-                cancelAction.titleFont = .gx_boldFont(size: 17)
+                cancelAction.titleFont = .gx_font(size: 17)
                 cancelAction.titleColor = .gx_red
             }
             else if actionStyle == .default {
-                cancelAction.titleFont = .gx_boldFont(size: 17)
-                cancelAction.titleColor = .gx_green
+                cancelAction.titleFont = .gx_font(size: 17)
+                cancelAction.titleColor = .white
             }
             else {
                 cancelAction.titleFont = .gx_font(size: 17)
                 cancelAction.titleColor = .gx_black
             }
+            cancelAction.backgroundColor = .gx_green
+            cancelAction.selBackgroundColor = .gx_lightGreen
             cancelAction.action = { alertView in
                 handler?(alertView, 0)
                 alertView.hide(animated: true)
@@ -234,72 +248,6 @@ class GXUtil: NSObject {
         }
         alert.createAlert(title: title, message: message, actions: actions)
         alert.show(to: view, style: .alert, backgoundTapDismissEnable: false, usingSpring: true)
-    }
-
-    class func showReturnAlert(to view: UIView? = nil,
-                               title: String? = nil,
-                               message: String? = nil,
-                               cancelTitle: String? = "取消",
-                               actionTitle: String? = nil,
-                               actionStyle: UIAlertAction.Style = .default,
-                               handler: ((GXAlertView, Int) -> Void)? = nil) -> UIView? {
-        let alert = GXAlertView(frame: .zero)
-        var actions: [GXAlertAction] = []
-        if (actionTitle != nil) {
-            let cancelAction = GXAlertAction()
-            cancelAction.title = cancelTitle
-            cancelAction.titleFont = .gx_font(size: 17)
-            cancelAction.titleColor = .gx_black
-            cancelAction.action = { alertView in
-                handler?(alertView, 0)
-                alertView.hide(animated: true)
-            }
-            actions.append(cancelAction)
-
-            let action = GXAlertAction()
-            action.title = actionTitle
-            if actionStyle == .destructive {
-                action.titleFont = .gx_boldFont(size: 17)
-                action.titleColor = .gx_red
-            }
-            else if actionStyle == .default {
-                action.titleFont = .gx_boldFont(size: 17)
-                action.titleColor = .gx_green
-            }
-            else {
-                action.titleFont = .gx_font(size: 17)
-                action.titleColor = .gx_black
-            }
-            action.action = { alertView in
-                handler?(alertView, 1)
-                alertView.hide(animated: true)
-            }
-            actions.append(action)
-        }
-        else {
-            let cancelAction = GXAlertAction()
-            cancelAction.title = cancelTitle
-            if actionStyle == .destructive {
-                cancelAction.titleFont = .gx_boldFont(size: 17)
-                cancelAction.titleColor = .gx_red
-            }
-            else if actionStyle == .default {
-                cancelAction.titleFont = .gx_boldFont(size: 17)
-                cancelAction.titleColor = .gx_green
-            }
-            else {
-                cancelAction.titleFont = .gx_font(size: 17)
-                cancelAction.titleColor = .gx_black
-            }
-            cancelAction.action = { alertView in
-                handler?(alertView, 0)
-                alertView.hide(animated: true)
-            }
-            actions.append(cancelAction)
-        }
-        alert.createAlert(title: title, message: message, actions: actions)
-        alert.show(to: view, style: .alert, backgoundTapDismissEnable: false, usingSpring: true)
-        return alert
     }
 
     class func showInputAlert(title: String? = nil,
@@ -314,7 +262,10 @@ class GXUtil: NSObject {
         let cancelAction = GXAlertAction()
         cancelAction.title = cancelTitle
         cancelAction.titleFont = .gx_font(size: 17)
-        cancelAction.titleColor = .gx_black
+        cancelAction.titleColor = .gx_green
+        cancelAction.borderWidth = 1.0
+        cancelAction.backgroundColor = .white
+        cancelAction.selBackgroundColor = .gx_background
         cancelAction.action = { alertView in
             handler?(alertView, 0)
             alertView.hide(animated: true)
@@ -324,17 +275,19 @@ class GXUtil: NSObject {
         let action = GXAlertAction()
         action.title = actionTitle
         if actionStyle == .destructive {
-            action.titleFont = .gx_boldFont(size: 17)
+            action.titleFont = .gx_font(size: 17)
             action.titleColor = .gx_red
         }
         else if actionStyle == .default {
-            action.titleFont = .gx_boldFont(size: 17)
-            action.titleColor = .gx_green
+            action.titleFont = .gx_font(size: 17)
+            action.titleColor = .white
         }
         else {
             action.titleFont = .gx_font(size: 17)
             action.titleColor = .gx_black
         }
+        action.backgroundColor = .gx_green
+        action.selBackgroundColor = .gx_lightGreen
         action.action = { alertView in
             alertView.endEditing(true)
             handler?(alertView, 1)
@@ -397,7 +350,10 @@ class GXUtil: NSObject {
             let cancelAction = GXAlertAction()
             cancelAction.title = cancelTitle
             cancelAction.titleFont = .gx_font(size: 17)
-            cancelAction.titleColor = .gx_black
+            cancelAction.titleColor = .gx_green
+            cancelAction.borderWidth = 1.0
+            cancelAction.backgroundColor = .white
+            cancelAction.selBackgroundColor = .gx_background
             cancelAction.action = { alertView in
                 handler?(alertView, 0)
                 alertView.hide(animated: true)
@@ -407,17 +363,20 @@ class GXUtil: NSObject {
             let action = GXAlertAction()
             action.title = actionTitle
             if actionStyle == .destructive {
-                action.titleFont = .gx_boldFont(size: 17)
+                action.titleFont = .gx_font(size: 17)
                 action.titleColor = .gx_red
             }
             else if actionStyle == .default {
-                action.titleFont = .gx_boldFont(size: 17)
-                action.titleColor = .gx_green
+                action.titleFont = .gx_font(size: 17)
+                action.titleColor = .white
             }
             else {
                 action.titleFont = .gx_font(size: 17)
                 action.titleColor = .gx_black
             }
+            action.backgroundColor = .gx_green
+            action.selBackgroundColor = .gx_lightGreen
+            
             action.action = { alertView in
                 handler?(alertView, 1)
                 alertView.hide(animated: true)
@@ -428,17 +387,19 @@ class GXUtil: NSObject {
             let cancelAction = GXAlertAction()
             cancelAction.title = cancelTitle
             if actionStyle == .destructive {
-                cancelAction.titleFont = .gx_boldFont(size: 17)
+                cancelAction.titleFont = .gx_font(size: 17)
                 cancelAction.titleColor = .gx_red
             }
             else if actionStyle == .default {
-                cancelAction.titleFont = .gx_boldFont(size: 17)
-                cancelAction.titleColor = .gx_green
+                cancelAction.titleFont = .gx_font(size: 17)
+                cancelAction.titleColor = .white
             }
             else {
                 cancelAction.titleFont = .gx_font(size: 17)
                 cancelAction.titleColor = .gx_black
             }
+            cancelAction.backgroundColor = .gx_green
+            cancelAction.selBackgroundColor = .gx_lightGreen
             cancelAction.action = { alertView in
                 handler?(alertView, 0)
                 alertView.hide(animated: true)

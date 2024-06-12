@@ -123,8 +123,8 @@ class GXHomeVC: GXBaseViewController {
         GXLocationManager.shared.requestGeocodeCompletion {[weak self] (isAuth, cityName, location) in
             guard let `self` = self else { return }
             guard isAuth else {
-                // 去设置
                 self.mapView.delegate = self
+                self.showAlertNotLocation()
                 return
             }
             guard let letLocation = location else {
@@ -154,6 +154,18 @@ class GXHomeVC: GXBaseViewController {
 }
 
 private extension GXHomeVC {
+    
+    func showAlertNotLocation() {
+        let title = "Location permission"
+        let message = "Can better recommend the station around you"
+        GXUtil.showAlert(title: title, message: message, cancelTitle: "Disagree", actionTitle: "Agree") { alert, index in
+            guard index == 1 else { return }
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSettings, completionHandler: nil)
+            }
+        }
+    }
+    
     func mapViewClearMarkers() {
         self.markerList.forEach { marker in
             marker.map = nil

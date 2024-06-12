@@ -14,7 +14,10 @@ class GXAlertAction: NSObject {
     public var title: String? = nil
     public var titleFont: UIFont? = nil
     public var titleColor: UIColor? = nil
-    public var height: CGFloat = 56.0
+    public var backgroundColor: UIColor? = nil
+    public var selBackgroundColor: UIColor? = nil
+    public var height: CGFloat = 40.0
+    public var borderWidth: CGFloat = .zero
     public var action: GXActionBlockItem<GXAlertView>?
 }
 
@@ -28,8 +31,9 @@ class GXAlertInput: NSObject {
     public var inputHeight: CGFloat = 48.0
 }
 
-private let GXALERT_XMARGIN: CGFloat = 24.0
-private let GXALERT_YMARGIN: CGFloat = 32.0
+private let GXALERT_XMARGIN: CGFloat = 16.0
+private let GXALERT_YMARGIN: CGFloat = 20.0
+private let GXALERT_XSPACE: CGFloat = 16.0
 private let GXALERT_YSPACE: CGFloat = 16.0
 private let GXALERT_MAXSIZE = CGSize(width: SCREEN_MIN_WIDTH - 100, height: SCREEN_HEIGHT - 200)
 
@@ -45,8 +49,8 @@ class GXAlertView: UIView {
     private(set) lazy var titleLabel: UILabel = {
         return UILabel().then {
             $0.textAlignment = .center
-            $0.textColor = .gx_black
-            $0.font = .gx_boldFont(size: 17)
+            $0.textColor = .gx_textBlack
+            $0.font = .gx_semiBoldFont(size: 19)
             $0.numberOfLines = 0
         }
     }()
@@ -55,7 +59,7 @@ class GXAlertView: UIView {
         return UILabel().then {
             $0.textAlignment = .center
             $0.textColor = .gx_drakGray
-            $0.font = .gx_font(size: 15)
+            $0.font = .gx_font(size: 16)
             $0.numberOfLines = 0
         }
     }()
@@ -76,7 +80,7 @@ class GXAlertView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .gx_lightGray
+        self.backgroundColor = .white
         self.addSubview(self.contentView)
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 12.0
@@ -97,7 +101,7 @@ class GXAlertView: UIView {
         let width = GXALERT_MAXSIZE.width - GXALERT_XMARGIN * 2
         if let letTitle = title {
             self.titleLabel.text = letTitle
-            let height = letTitle.height(width: width, font: .gx_boldFont(size: 17))
+            let height = letTitle.height(width: width, font: self.titleLabel.font)
             self.titleLabel.frame = CGRect(x: left, y: top, width: width, height: ceil(height))
             self.contentView.addSubview(self.titleLabel)
             top = self.titleLabel.bottom
@@ -105,7 +109,7 @@ class GXAlertView: UIView {
         if let letMessage = message {
             top += GXALERT_YSPACE/2
             self.messageLabel.text = letMessage
-            let height = letMessage.height(width: width, font: .gx_font(size: 15))
+            let height = letMessage.height(width: width, font: self.messageLabel.font)
             self.messageLabel.frame = CGRect(x: left, y: top, width: width, height: ceil(height))
             self.contentView.addSubview(self.messageLabel)
             top = self.messageLabel.bottom
@@ -144,17 +148,23 @@ class GXAlertView: UIView {
         if actions.count == 2 {
             top += 1.0
 
-            let btnWidth = GXALERT_MAXSIZE.width / 2 - 0.5
-            let letfItem = actions[0]
+            let btnWidth = (GXALERT_MAXSIZE.width - GXALERT_XMARGIN * 2 - GXALERT_XSPACE) / 2
+            let leftItem = actions[0]
             let leftButton = UIButton(type: .custom).then {
-                $0.titleLabel?.font = letfItem.titleFont
-                $0.setTitle(letfItem.title, for: .normal)
-                $0.setTitleColor(letfItem.titleColor, for: .normal)
-                $0.setBackgroundColor(.white, for: .normal)
-                $0.setBackgroundColor(.gx_lightGray, for: .highlighted)
+                $0.titleLabel?.font = leftItem.titleFont
+                $0.setTitle(leftItem.title, for: .normal)
+                $0.setTitleColor(leftItem.titleColor, for: .normal)
+                $0.setBackgroundColor(leftItem.backgroundColor, for: .normal)
+                $0.setBackgroundColor(leftItem.selBackgroundColor, for: .highlighted)
+                $0.layer.masksToBounds = true
+                if leftItem.borderWidth > 0 {
+                    $0.layer.borderWidth = leftItem.borderWidth
+                    $0.layer.borderColor = leftItem.titleColor?.cgColor
+                }
+                $0.layer.cornerRadius = leftItem.height / 2
                 $0.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
             }
-            leftButton.frame = CGRect(x: 0, y: top, width: btnWidth, height: letfItem.height)
+            leftButton.frame = CGRect(x: GXALERT_XMARGIN, y: top, width: btnWidth, height: leftItem.height)
             self.buttonList.append(leftButton)
             self.addSubview(leftButton)
 
@@ -163,15 +173,21 @@ class GXAlertView: UIView {
                 $0.titleLabel?.font = rightItem.titleFont
                 $0.setTitle(rightItem.title, for: .normal)
                 $0.setTitleColor(rightItem.titleColor, for: .normal)
-                $0.setBackgroundColor(.white, for: .normal)
-                $0.setBackgroundColor(.gx_lightGray, for: .highlighted)
+                $0.setBackgroundColor(rightItem.backgroundColor, for: .normal)
+                $0.setBackgroundColor(rightItem.selBackgroundColor, for: .highlighted)
+                $0.layer.masksToBounds = true
+                if rightItem.borderWidth > 0 {
+                    $0.layer.borderWidth = rightItem.borderWidth
+                    $0.layer.borderColor = rightItem.titleColor?.cgColor
+                }
+                $0.layer.cornerRadius = rightItem.height / 2
                 $0.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
             }
-            rightButton.frame = CGRect(x: leftButton.right + 1, y: top, width: btnWidth, height: rightItem.height)
+            rightButton.frame = CGRect(x: leftButton.right + GXALERT_XSPACE, y: top, width: btnWidth, height: rightItem.height)
             self.buttonList.append(rightButton)
             self.addSubview(rightButton)
 
-            top = rightButton.bottom
+            top = rightButton.bottom + GXALERT_YSPACE
         }
         else {
             for item in actions {
@@ -180,14 +196,21 @@ class GXAlertView: UIView {
                     $0.titleLabel?.font = item.titleFont
                     $0.setTitle(item.title, for: .normal)
                     $0.setTitleColor(item.titleColor, for: .normal)
-                    $0.setBackgroundColor(.white, for: .normal)
-                    $0.setBackgroundColor(.gx_lightGray, for: .highlighted)
+                    $0.setBackgroundColor(item.backgroundColor, for: .normal)
+                    $0.setBackgroundColor(item.selBackgroundColor, for: .highlighted)
+                    $0.layer.masksToBounds = true
+                    if item.borderWidth > 0 {
+                        $0.layer.borderWidth = item.borderWidth
+                        $0.layer.borderColor = item.titleColor?.cgColor
+                    }
+                    $0.layer.cornerRadius = item.height / 2
                     $0.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
                 }
-                button.frame = CGRect(x: 0, y: top, width: GXALERT_MAXSIZE.width, height: item.height)
+                let btnWidth = GXALERT_MAXSIZE.width - GXALERT_XMARGIN * 2
+                button.frame = CGRect(x: GXALERT_XMARGIN, y: top, width: btnWidth, height: item.height)
                 self.buttonList.append(button)
                 self.addSubview(button)
-                top = button.bottom
+                top = button.bottom + GXALERT_YSPACE
             }
         }
         self.frame = CGRect(x: 0, y: 0, width: GXALERT_MAXSIZE.width, height: top)
@@ -202,7 +225,7 @@ class GXAlertView: UIView {
         let textWidth = SCREEN_MIN_WIDTH - GXALERT_XMARGIN * 2
         if let letTitle = title {
             self.titleLabel.text = letTitle
-            let height = letTitle.height(width: textWidth, font: .gx_boldFont(size: 17))
+            let height = letTitle.height(width: textWidth, font: self.titleLabel.font)
             self.titleLabel.frame = CGRect(x: left, y: top, width: textWidth, height: ceil(height))
             self.contentView.addSubview(self.titleLabel)
             top = self.titleLabel.bottom
@@ -210,7 +233,7 @@ class GXAlertView: UIView {
         if let letMessage = message {
             top += GXALERT_YSPACE/2
             self.messageLabel.text = letMessage
-            let height = letMessage.height(width: textWidth, font: .gx_font(size: 15))
+            let height = letMessage.height(width: textWidth, font: self.messageLabel.font)
             self.messageLabel.frame = CGRect(x: left, y: top, width: textWidth, height: ceil(height))
             self.contentView.addSubview(self.messageLabel)
             top = self.messageLabel.bottom
@@ -270,7 +293,7 @@ class GXAlertView: UIView {
         if let letTitle = title {
             self.titleLabel.text = letTitle
             self.titleLabel.font = .gx_font(size: 15)
-            let height = letTitle.height(width: width, font: .gx_font(size: 15))
+            let height = letTitle.height(width: width, font: self.titleLabel.font)
             self.titleLabel.frame = CGRect(x: left, y: top, width: width, height: ceil(height))
             self.contentView.addSubview(self.titleLabel)
             top = self.titleLabel.bottom
@@ -278,8 +301,7 @@ class GXAlertView: UIView {
         if let letMessage = message {
             top += GXALERT_YSPACE/2
             self.messageLabel.text = letMessage
-            self.messageLabel.font = .gx_boldFont(size: 17)
-            let height = letMessage.height(width: width, font: .gx_boldFont(size: 17))
+            let height = letMessage.height(width: width, font: self.messageLabel.font)
             self.messageLabel.frame = CGRect(x: left, y: top, width: width, height: ceil(height))
             self.contentView.addSubview(self.messageLabel)
             top = self.messageLabel.bottom
@@ -288,7 +310,6 @@ class GXAlertView: UIView {
             top += GXALERT_YSPACE/2
             self.infoLabel.text = letInfo
             self.infoLabel.textAlignment = .center
-            self.infoLabel.font = .gx_font(size: 15)
             self.infoLabel.frame = CGRect(x: left, y: top, width: width, height: 18)
             self.contentView.addSubview(self.infoLabel)
             top = self.infoLabel.bottom
@@ -299,17 +320,23 @@ class GXAlertView: UIView {
         if actions.count == 2 {
             top += 1.0
 
-            let btnWidth = GXALERT_MAXSIZE.width / 2 - 0.5
-            let letfItem = actions[0]
+            let btnWidth = (GXALERT_MAXSIZE.width - GXALERT_XMARGIN * 2 - GXALERT_XSPACE) / 2
+            let leftItem = actions[0]
             let leftButton = UIButton(type: .custom).then {
-                $0.titleLabel?.font = letfItem.titleFont
-                $0.setTitle(letfItem.title, for: .normal)
-                $0.setTitleColor(letfItem.titleColor, for: .normal)
-                $0.setBackgroundColor(.white, for: .normal)
-                $0.setBackgroundColor(.gx_lightGray, for: .highlighted)
+                $0.titleLabel?.font = leftItem.titleFont
+                $0.setTitle(leftItem.title, for: .normal)
+                $0.setTitleColor(leftItem.titleColor, for: .normal)
+                $0.setBackgroundColor(leftItem.backgroundColor, for: .normal)
+                $0.setBackgroundColor(leftItem.selBackgroundColor, for: .highlighted)
+                $0.layer.masksToBounds = true
+                if leftItem.borderWidth > 0 {
+                    $0.layer.borderWidth = leftItem.borderWidth
+                    $0.layer.borderColor = leftItem.titleColor?.cgColor
+                }
+                $0.cornerRadius = leftItem.height / 2
                 $0.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
             }
-            leftButton.frame = CGRect(x: 0, y: top, width: btnWidth, height: letfItem.height)
+            leftButton.frame = CGRect(x: GXALERT_XMARGIN, y: top, width: btnWidth, height: leftItem.height)
             self.buttonList.append(leftButton)
             self.addSubview(leftButton)
 
@@ -318,15 +345,21 @@ class GXAlertView: UIView {
                 $0.titleLabel?.font = rightItem.titleFont
                 $0.setTitle(rightItem.title, for: .normal)
                 $0.setTitleColor(rightItem.titleColor, for: .normal)
-                $0.setBackgroundColor(.white, for: .normal)
-                $0.setBackgroundColor(.gx_lightGray, for: .highlighted)
+                $0.setBackgroundColor(leftItem.backgroundColor, for: .normal)
+                $0.setBackgroundColor(leftItem.selBackgroundColor, for: .highlighted)
+                $0.layer.masksToBounds = true
+                if rightItem.borderWidth > 0 {
+                    $0.layer.borderWidth = rightItem.borderWidth
+                    $0.layer.borderColor = rightItem.titleColor?.cgColor
+                }
+                $0.layer.cornerRadius = leftItem.height / 2
                 $0.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
             }
-            rightButton.frame = CGRect(x: leftButton.right + 1, y: top, width: btnWidth, height: rightItem.height)
+            rightButton.frame = CGRect(x: leftButton.right + GXALERT_XSPACE, y: top, width: btnWidth, height: rightItem.height)
             self.buttonList.append(rightButton)
             self.addSubview(rightButton)
 
-            top = rightButton.bottom
+            top = rightButton.bottom + GXALERT_YSPACE
         }
         else {
             for item in actions {
@@ -335,14 +368,21 @@ class GXAlertView: UIView {
                     $0.titleLabel?.font = item.titleFont
                     $0.setTitle(item.title, for: .normal)
                     $0.setTitleColor(item.titleColor, for: .normal)
-                    $0.setBackgroundColor(.white, for: .normal)
-                    $0.setBackgroundColor(.gx_lightGray, for: .highlighted)
+                    $0.setBackgroundColor(item.backgroundColor, for: .normal)
+                    $0.setBackgroundColor(item.selBackgroundColor, for: .highlighted)
+                    $0.layer.masksToBounds = true
+                    if item.borderWidth > 0 {
+                        $0.layer.borderWidth = item.borderWidth
+                        $0.layer.borderColor = item.titleColor?.cgColor
+                    }
+                    $0.layer.cornerRadius = item.height / 2
                     $0.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
                 }
-                button.frame = CGRect(x: 0, y: top, width: GXALERT_MAXSIZE.width, height: item.height)
+                let btnWidth = GXALERT_MAXSIZE.width - GXALERT_XMARGIN * 2
+                button.frame = CGRect(x: GXALERT_XMARGIN, y: top, width: btnWidth, height: item.height)
                 self.buttonList.append(button)
                 self.addSubview(button)
-                top = button.bottom
+                top = button.bottom + GXALERT_YSPACE
             }
         }
         self.frame = CGRect(x: 0, y: 0, width: GXALERT_MAXSIZE.width, height: top)

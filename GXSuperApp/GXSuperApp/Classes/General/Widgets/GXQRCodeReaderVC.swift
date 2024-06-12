@@ -123,8 +123,9 @@ class GXQRCodeReaderVC: GXBaseViewController {
         do {
             return try QRCodeReader.supportsMetadataObjectTypes()
         } catch _ as NSError {
-            let title = "您摄像头权限未开启，无法使用扫码！"
-            GXUtil.showAlert(title: title, actionTitle: "去设置") { alert, index in
+            let title = "Camera permission"
+            let message = "Your camera permission is not enabled, can not use scan code"
+            GXUtil.showAlert(title: title, message: message, cancelTitle: "Disagree", actionTitle: "Agree") { alert, index in
                 guard index == 1 else { return }
                 DispatchQueue.main.async {
                     if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
