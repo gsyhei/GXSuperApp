@@ -163,6 +163,7 @@ extension GXQRCodeReaderVC {
     }
 
     @IBAction func photoButtonClicked(_ sender: UIButton) {
+        self.torchButtonClicked(self.torchButton)
         var config: PickerConfiguration = PickerConfiguration()
         config.modalPresentationStyle = .fullScreen
         config.photoSelectionTapAction = .openEditor

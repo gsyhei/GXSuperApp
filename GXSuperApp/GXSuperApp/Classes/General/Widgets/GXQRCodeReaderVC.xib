@@ -52,7 +52,7 @@
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="scan_ic_flashlight"/>
-                    <state key="selected" image="qr_torch_select"/>
+                    <state key="selected" image="scan_ic_flashlight_selected"/>
                     <connections>
                         <action selector="torchButtonClicked:" destination="-1" eventType="touchUpInside" id="vRI-9K-zLC"/>
                     </connections>
@@ -143,6 +143,7 @@
     <resources>
         <image name="qr_torch_select" width="40" height="40"/>
         <image name="scan_ic_flashlight" width="54" height="54"/>
+        <image name="scan_ic_flashlight_selected" width="54" height="54"/>
         <image name="scan_ic_picture" width="54" height="54"/>
         <image name="scan_nav_ic_close" width="44" height="44"/>
     </resources>
