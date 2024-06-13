@@ -46,15 +46,22 @@ extension GXMarkerIconView {
     func updateStatus(isSelected: Bool) {
         if isSelected {
             self.backgroundColor = .gx_green
+            self.layer.borderWidth = 0.0
+            self.layer.borderColor = nil
+            
             self.usNumberBgView.backgroundColor = .gx_drakGreen
             self.tslNumberBgView.backgroundColor = .gx_drakGreen
             self.usNumberImgView.image = UIImage(named: "home_map_ic_us_selected")
             self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_selected")
             self.usNumberLabel.textColor = .white
             self.tslNumberLabel.textColor = .white
+            
         }
         else {
             self.backgroundColor = .white
+            self.layer.borderWidth = 1.0
+            self.layer.borderColor = UIColor.gx_lightGray.cgColor
+            
             self.usNumberBgView.backgroundColor = .gx_lightBlue
             self.tslNumberBgView.backgroundColor = .gx_lightRed
             self.usNumberImgView.image = UIImage(named: "home_map_ic_us_normal")

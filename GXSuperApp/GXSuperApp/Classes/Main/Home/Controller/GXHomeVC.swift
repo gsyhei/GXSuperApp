@@ -98,21 +98,21 @@ class GXHomeVC: GXBaseViewController {
                 self.myLocationButton.isHidden = false
                 self.mapView.isUserInteractionEnabled = true
                 let bottom = self.mapView.bottom - self.panView.panCenterY - 22.0
-                UIView.animate(.promise, duration: 0.3) {
+                UIView.animate(.promise, duration: 0.2) {
                     self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
                 }
             case .bottom:
                 self.myLocationButton.isHidden = false
                 self.mapView.isUserInteractionEnabled = true
                 let bottom = self.mapView.bottom - self.panView.panBottomY - 22.0
-                UIView.animate(.promise, duration: 0.3) {
+                UIView.animate(.promise, duration: 0.2) {
                     self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
                 }
             default:
                 self.myLocationButton.isHidden = false
                 self.mapView.isUserInteractionEnabled = true
                 let bottom = self.mapView.bottom - (SCREEN_HEIGHT - GXSelectedMarkerInfoView.menuHeight())
-                UIView.animate(.promise, duration: 0.3) {
+                UIView.animate(.promise, duration: 0.2) {
                     self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
                 }
             }

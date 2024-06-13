@@ -103,7 +103,7 @@ class GXHomePanView: UIView {
         if animated {
             var duration = abs(top - self.frame.origin.y) / velocity + 0.1
             duration = min(0.5, duration)
-            duration = max(0.2, duration)
+            duration = max(0.3, duration)
             UIView.animate(.promise, duration: duration, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.9) {
                 self.top = top
             }.done { finished in
