@@ -13,6 +13,7 @@
 		33396A252C121A60000A1944 /* GXHomePanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33396A242C121A60000A1944 /* GXHomePanView.swift */; };
 		3340F7612C18498900B97923 /* GXRoundedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7602C18498900B97923 /* GXRoundedInView.swift */; };
 		3340F7632C18861600B97923 /* GXTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7622C18861600B97923 /* GXTabBar.swift */; };
+		336B2C2A2C1B29A600A752C7 /* GXCustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336B2C292C1B29A600A752C7 /* GXCustomMarker.swift */; };
 		339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398898F2C182CD800EA489A /* GXSelectTagsView.swift */; };
 		33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */; };
 		33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B52C1414CE0089431E /* GXLocationManager.swift */; };
@@ -91,6 +92,7 @@
 		33396A262C123170000A1944 /* GXSuperApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GXSuperApp.entitlements; sourceTree = "<group>"; };
 		3340F7602C18498900B97923 /* GXRoundedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXRoundedInView.swift; sourceTree = "<group>"; };
 		3340F7622C18861600B97923 /* GXTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXTabBar.swift; sourceTree = "<group>"; };
+		336B2C292C1B29A600A752C7 /* GXCustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCustomMarker.swift; sourceTree = "<group>"; };
 		3398898F2C182CD800EA489A /* GXSelectTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXSelectTagsView.swift; sourceTree = "<group>"; };
 		33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXMarkerIconView.xib; sourceTree = "<group>"; };
 		33BF81B52C1414CE0089431E /* GXLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLocationManager.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				33396A242C121A60000A1944 /* GXHomePanView.swift */,
 				33BF81B72C14964F0089431E /* GXMarkerIconView.swift */,
 				33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */,
+				336B2C292C1B29A600A752C7 /* GXCustomMarker.swift */,
 				33BF81B92C14A86D0089431E /* GXSelectedMarkerInfoView.swift */,
 				33BF81BF2C14AB7F0089431E /* GXSelectedMarkerInfoView.xib */,
 				33BF81BB2C14AB720089431E /* GXHomeMarkerCell.swift */,
@@ -647,6 +650,7 @@
 				33EC55AB2C101BA100D4CCD0 /* GXArrowButton.swift in Sources */,
 				33396A222C11E530000A1944 /* GXHomeVC.swift in Sources */,
 				33EC55F52C101BA100D4CCD0 /* GXBadgeView.swift in Sources */,
+				336B2C2A2C1B29A600A752C7 /* GXCustomMarker.swift in Sources */,
 				33EC55FD2C101BA100D4CCD0 /* GXTextView.swift in Sources */,
 				33EC55CA2C101BA100D4CCD0 /* GXNotificationName.swift in Sources */,
 				33EC55CD2C101BA100D4CCD0 /* GXUtil.swift in Sources */,

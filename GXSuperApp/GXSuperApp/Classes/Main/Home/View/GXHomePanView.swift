@@ -20,6 +20,7 @@ class GXHomePanView: UIView {
     private(set) var panCenterY: CGFloat = .zero
     private(set) var panBottomY: CGFloat = .zero
     private(set) var currentPanPosition: PanPosition = .bottom
+    private(set) var lastPanPosition: PanPosition = .bottom
     private var isMoveDirUp: Bool = false
     private var panGesture: UIPanGestureRecognizer?
     var changePositionAction: GXActionBlockItem<PanPosition>?
@@ -85,6 +86,7 @@ class GXHomePanView: UIView {
     }
     
     func setCurrentPanPosition(position: PanPosition, velocity: CGFloat = 1000, animated: Bool = true) {
+        self.lastPanPosition = self.currentPanPosition
         self.currentPanPosition = position
         var top = self.frame.origin.y
         switch position {
@@ -108,8 +110,8 @@ class GXHomePanView: UIView {
                 self.arrowButton.isSelected = isPanTop
                 self.tableView.isScrollEnabled = isPanTop
                 self.panGesture?.isEnabled = true
-                self.changePositionAction?(position)
             }
+            self.changePositionAction?(position)
         }
         else {
             self.top = top

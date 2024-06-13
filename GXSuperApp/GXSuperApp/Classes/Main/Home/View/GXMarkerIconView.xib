@@ -20,13 +20,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWC-it-LIJ" userLabel="TagView_L">
-                    <rect key="frame" x="6" y="6" width="57" height="16"/>
+                    <rect key="frame" x="6.0000000000000036" y="6" width="60.333333333333343" height="16"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_map_ic_tesla_normal" translatesAutoresizingMaskIntoConstraints="NO" id="K3m-D1-XiF">
                             <rect key="frame" x="0.0" y="0.0" width="19" height="16"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5P0-gx-17z">
-                            <rect key="frame" x="23" y="0.0" width="30" height="16"/>
+                            <rect key="frame" x="23.000000000000004" y="0.0" width="33.333333333333343" height="16"/>
                             <fontDescription key="fontDescription" name="Mukta-Light" family="Mukta" pointSize="13"/>
                             <color key="textColor" red="0.81568627449999997" green="0.25490196079999999" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -51,13 +51,13 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1H-8y-SRV" userLabel="TagView_R">
-                    <rect key="frame" x="6" y="28" width="57" height="16"/>
+                    <rect key="frame" x="6.0000000000000036" y="28" width="60.333333333333343" height="16"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_map_ic_us_normal" translatesAutoresizingMaskIntoConstraints="NO" id="6bY-Q0-6hv">
                             <rect key="frame" x="0.0" y="0.0" width="19" height="16"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pal-oc-kwK">
-                            <rect key="frame" x="23" y="0.0" width="30" height="16"/>
+                            <rect key="frame" x="23.000000000000004" y="0.0" width="33.333333333333343" height="16"/>
                             <fontDescription key="fontDescription" name="Mukta-Light" family="Mukta" pointSize="13"/>
                             <color key="textColor" red="0.090196078430000007" green="0.46666666670000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -91,7 +91,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="tslNumberBgView" destination="oWC-it-LIJ" id="Af0-sk-N4d"/>
+                <outlet property="tslNumberImgView" destination="K3m-D1-XiF" id="4t0-ac-UOA"/>
                 <outlet property="tslNumberLabel" destination="5P0-gx-17z" id="W80-Oz-6jf"/>
+                <outlet property="usNumberBgView" destination="v1H-8y-SRV" id="M5A-Z6-olO"/>
+                <outlet property="usNumberImgView" destination="6bY-Q0-6hv" id="4W6-Nb-YwZ"/>
                 <outlet property="usNumberLabel" destination="Pal-oc-kwK" id="63A-lJ-i3U"/>
             </connections>
             <point key="canvasLocation" x="-51.145038167938928" y="-146.47887323943664"/>

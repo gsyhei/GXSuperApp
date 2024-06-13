@@ -10,7 +10,7 @@ import Reusable
 
 class GXHomeMarkerCell: UITableViewCell, NibReusable {
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var leftLineView: UIView!
+    @IBOutlet weak var leftLineImgView: UIImageView!
     @IBOutlet weak var topTagsView: GXTagsView!
     @IBOutlet weak var bottomTagsView: GXTagsView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -29,13 +29,15 @@ class GXHomeMarkerCell: UITableViewCell, NibReusable {
         super.awakeFromNib()
         self.selectionStyle = .none
         
+        let gradientColors: [UIColor] = [.gx_green, UIColor(hexString: "#278CFF")]
+        self.leftLineImgView.image = UIImage(gradientColors: gradientColors, style: .vertical, size: CGSize(width: 4, height: 14))
         self.topTagsView.updateTitles(titles: ["Convenience store", "Toilet"], width: SCREEN_WIDTH - 48, isShowFristLine: false)
         self.bottomTagsView.updateTitles(titles: ["Parking discount", "Idle fee $0.17 / min"], width: SCREEN_WIDTH - 60, isShowFristLine: true)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.leftLineView.setRoundedCorners([.topRight, .bottomRight], radius: 2.0)
+        self.leftLineImgView.setRoundedCorners([.topRight, .bottomRight], radius: 2.0)
     }
 
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

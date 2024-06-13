@@ -62,6 +62,10 @@ extension UIColor {
         return UIColor(hexString: "#05C160")
     }
     
+    class var gx_drakGreen: UIColor {
+        return UIColor(hexString: "#37CD7F")
+    }
+    
     class var gx_lightGreen: UIColor {
         return UIColor(hexString: "#e1f7eb")
     }

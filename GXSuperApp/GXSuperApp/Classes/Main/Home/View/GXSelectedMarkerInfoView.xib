@@ -28,6 +28,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w0W-R2-FdK" userLabel="ContainerView">
                     <rect key="frame" x="12" y="12" width="369" height="121"/>
                     <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="utw-RR-ZyB" userLabel="LineImgView">
+                            <rect key="frame" x="0.0" y="16" width="4" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="BIf-eY-Vhq"/>
+                                <constraint firstAttribute="width" constant="4" id="qpc-uT-0Vz"/>
+                            </constraints>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWr-ve-KgI">
                             <rect key="frame" x="331" y="0.0" width="38" height="38"/>
                             <constraints>
@@ -40,14 +47,6 @@
                                 <action selector="closeButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="Eoa-r3-sUG"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHU-yQ-P0T" userLabel="LineView">
-                            <rect key="frame" x="0.0" y="16" width="4" height="14"/>
-                            <color key="backgroundColor" red="0.019607843140000001" green="0.75686274509999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="14" id="W9F-Fp-ohf"/>
-                                <constraint firstAttribute="width" constant="4" id="jX6-hD-XEJ"/>
-                            </constraints>
-                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hengjie Supercharge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDW-En-Iv7">
                             <rect key="frame" x="12" y="14" width="162" height="18"/>
                             <constraints>
@@ -170,17 +169,17 @@
                         <constraint firstItem="HUZ-dx-v96" firstAttribute="leading" secondItem="jwf-B3-xeM" secondAttribute="trailing" constant="6" id="DhC-rJ-yPb"/>
                         <constraint firstItem="8Ti-98-aCE" firstAttribute="leading" secondItem="40b-JU-Pta" secondAttribute="trailing" id="FX6-Sx-hvX"/>
                         <constraint firstItem="8Ti-98-aCE" firstAttribute="centerY" secondItem="40b-JU-Pta" secondAttribute="centerY" id="G82-DS-K4A"/>
+                        <constraint firstItem="utw-RR-ZyB" firstAttribute="leading" secondItem="w0W-R2-FdK" secondAttribute="leading" id="GWO-ts-Ccf"/>
                         <constraint firstAttribute="bottom" secondItem="40b-JU-Pta" secondAttribute="bottom" constant="12" id="HS6-Ga-Xl7"/>
-                        <constraint firstItem="IHU-yQ-P0T" firstAttribute="leading" secondItem="w0W-R2-FdK" secondAttribute="leading" id="JV1-ji-9i5"/>
                         <constraint firstItem="aDW-En-Iv7" firstAttribute="leading" secondItem="w0W-R2-FdK" secondAttribute="leading" constant="12" id="Lfd-9E-XqZ"/>
-                        <constraint firstItem="aDW-En-Iv7" firstAttribute="centerY" secondItem="IHU-yQ-P0T" secondAttribute="centerY" id="Nqe-hn-Iwb"/>
                         <constraint firstAttribute="trailing" secondItem="huO-FY-V2s" secondAttribute="trailing" constant="12" id="O3j-A8-26z"/>
-                        <constraint firstItem="IHU-yQ-P0T" firstAttribute="top" secondItem="w0W-R2-FdK" secondAttribute="top" constant="16" id="S5M-0U-pKA"/>
                         <constraint firstItem="huO-FY-V2s" firstAttribute="leading" secondItem="w0W-R2-FdK" secondAttribute="leading" constant="12" id="V3v-cC-Nus"/>
                         <constraint firstAttribute="trailing" secondItem="HUZ-dx-v96" secondAttribute="trailing" constant="12" id="YCX-lc-ngo"/>
+                        <constraint firstItem="aDW-En-Iv7" firstAttribute="centerY" secondItem="utw-RR-ZyB" secondAttribute="centerY" id="c6K-U9-EWf"/>
                         <constraint firstAttribute="trailing" secondItem="dWr-ve-KgI" secondAttribute="trailing" id="gIr-oW-QWm"/>
                         <constraint firstAttribute="height" constant="121" id="gfM-dt-0mI"/>
                         <constraint firstItem="KOH-uJ-CEz" firstAttribute="leading" secondItem="She-Wy-bjg" secondAttribute="trailing" constant="3" id="gnq-FM-iYl"/>
+                        <constraint firstItem="utw-RR-ZyB" firstAttribute="top" secondItem="w0W-R2-FdK" secondAttribute="top" constant="16" id="l1h-SC-wKG"/>
                         <constraint firstItem="huO-FY-V2s" firstAttribute="top" secondItem="aDW-En-Iv7" secondAttribute="bottom" constant="4" id="l7d-Xo-eGX"/>
                         <constraint firstItem="KOH-uJ-CEz" firstAttribute="bottom" secondItem="She-Wy-bjg" secondAttribute="bottom" id="tX0-B4-AFB"/>
                         <constraint firstItem="40b-JU-Pta" firstAttribute="leading" secondItem="w0W-R2-FdK" secondAttribute="leading" constant="12" id="uhq-BN-iFL"/>
@@ -293,7 +292,7 @@
             <connections>
                 <outlet property="bottomTagsView" destination="8Ti-98-aCE" id="hgv-N1-ZMU"/>
                 <outlet property="distanceLabel" destination="AKh-aZ-pPT" id="nat-BK-cTX"/>
-                <outlet property="leftLineView" destination="IHU-yQ-P0T" id="f2u-Jb-uOz"/>
+                <outlet property="leftLineImgView" destination="utw-RR-ZyB" id="pBP-M8-ZIi"/>
                 <outlet property="nameLabel" destination="aDW-En-Iv7" id="OAV-kP-3yQ"/>
                 <outlet property="navigateButton" destination="fLg-LL-7rk" id="1VX-dM-I5J"/>
                 <outlet property="priceLabel" destination="She-Wy-bjg" id="Pke-kO-Kql"/>

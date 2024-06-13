@@ -23,12 +23,10 @@ class GXHomeVC: GXBaseViewController {
     private var lastTarget: CLLocationCoordinate2D?
     private var lastIsZoomLarge: Bool = false
     private var locationMarker: GMSMarker?
-    private var markerList: [GMSMarker] = []
-    private var selectedMarker: GMSMarker?
+    private var markerList: [GXCustomMarker] = []
+    private var selectedMarker: GXCustomMarker?
+    private var selectedMarkerMenu: GXSelectedMarkerInfoView?
 
-    private var menuHeight: CGFloat {
-        return 286.0 + self.view.safeAreaInsets.bottom
-    }
     private lazy var panView: GXHomePanView = {
         return GXHomePanView(frame: self.view.bounds).then {
             $0.backgroundColor = .clear
@@ -99,21 +97,21 @@ class GXHomeVC: GXBaseViewController {
             case .center:
                 self.myLocationButton.isHidden = false
                 self.mapView.isUserInteractionEnabled = true
-                let bottom = self.mapView.bottom - self.panView.panCenterY
+                let bottom = self.mapView.bottom - self.panView.panCenterY - 22.0
                 UIView.animate(.promise, duration: 0.3) {
                     self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
                 }
             case .bottom:
                 self.myLocationButton.isHidden = false
                 self.mapView.isUserInteractionEnabled = true
-                let bottom = self.mapView.bottom - self.panView.panBottomY
+                let bottom = self.mapView.bottom - self.panView.panBottomY - 22.0
                 UIView.animate(.promise, duration: 0.3) {
                     self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
                 }
             default:
                 self.myLocationButton.isHidden = false
                 self.mapView.isUserInteractionEnabled = true
-                let bottom = self.mapView.bottom - (SCREEN_HEIGHT - self.menuHeight)
+                let bottom = self.mapView.bottom - (SCREEN_HEIGHT - GXSelectedMarkerInfoView.menuHeight())
                 UIView.animate(.promise, duration: 0.3) {
                     self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
                 }
@@ -143,7 +141,8 @@ class GXHomeVC: GXBaseViewController {
                 marker.rotation = letLocation.course
                 marker.map = self.mapView
                 self.locationMarker = marker
-                self.mapView.animate(with: GMSCameraUpdate.setTarget(letLocation.coordinate, zoom: 17))
+                self.mapView.animate(with: GMSCameraUpdate.setTarget(letLocation.coordinate, zoom: self.zoomLarge))
+                self.lastIsZoomLarge = true
                 self.mapView.delegate = self
                 
                 self.mapViewSetMarkers()
@@ -176,39 +175,55 @@ private extension GXHomeVC {
     func mapViewSetMarkers() {
         let target = self.locationMarker?.position ?? self.mapView.camera.target
         
-        let iconView = GXMarkerIconView.createIconView()
-        let coordinate1 = CLLocationCoordinate2D(latitude: target.latitude + 0.0002, longitude: target.longitude + 0.0002)
-        let marker = GMSMarker(position: coordinate1)
-        marker.iconView = iconView
+        let coordinate1 = CLLocationCoordinate2D(latitude: target.latitude + 0.0008, longitude: target.longitude + 0.0008)
+        let marker = GXCustomMarker(position: coordinate1)
+        marker.icon = UIImage(named: "home_map_ic_station")
+        marker.setMarkerStatus(isSelected: false, isZoomLarge: self.lastIsZoomLarge)
         marker.map = self.mapView
-        self.selectedMarker = marker
+        self.markerList.append(marker)
         
-        let coordinate2 = CLLocationCoordinate2D(latitude: target.latitude - 0.0002, longitude: target.longitude - 0.0002)
-        let marker1 = GMSMarker(position: coordinate2)
+        let coordinate2 = CLLocationCoordinate2D(latitude: target.latitude - 0.0008, longitude: target.longitude - 0.0008)
+        let marker1 = GXCustomMarker(position: coordinate2)
         marker1.icon = UIImage(named: "home_map_ic_station")
+        marker1.setMarkerStatus(isSelected: false, isZoomLarge: self.lastIsZoomLarge)
         marker1.map = self.mapView
+        self.markerList.append(marker1)
     }
     
     func mapViewUpdateMarkers(isZoomLarge: Bool) {
         guard self.lastIsZoomLarge != isZoomLarge else { return }
         self.lastIsZoomLarge = isZoomLarge
-        self.mapViewClearMarkers()
+        
+        self.markerList.forEach { marker in
+            let isSelected = marker == self.selectedMarker
+            marker.setMarkerStatus(isSelected: isSelected, isZoomLarge: isZoomLarge)
+        }
     }
     
-    func mapViewDidTapMarker(marker: GMSMarker) {
+    func mapViewDidTapMarker(marker: GXCustomMarker) {
         guard marker != self.selectedMarker else { return }
         
-        self.selectedMarker?.iconView = nil
-        self.selectedMarker?.icon = UIImage(named: "home_map_ic_station")
-
+        self.selectedMarker?.setMarkerStatus(isSelected: false, isZoomLarge: self.lastIsZoomLarge)
+        marker.setMarkerStatus(isSelected: true, isZoomLarge: self.lastIsZoomLarge)
         self.selectedMarker = marker
-        if let iconView = marker.iconView {
-            iconView.backgroundColor = .gx_green
+        
+        // 菜单设置
+        if self.selectedMarkerMenu == nil {
+            self.panView.setCurrentPanPosition(position: .none, animated: true)
+            let menu = GXSelectedMarkerInfoView.showSelectedMarkerInfoView(to: self)
+            menu.closeAction = {[weak self] in
+                guard let `self` = self else { return }
+                self.panView.setCurrentPanPosition(position: self.panView.lastPanPosition, animated: true)
+                self.selectedMarker?.setMarkerStatus(isSelected: false, isZoomLarge: self.lastIsZoomLarge)
+                self.selectedMarker = nil
+                self.selectedMarkerMenu = nil
+            }
+            self.selectedMarkerMenu = menu
         }
         else {
-            let iconView = GXMarkerIconView.createIconView()
-            marker.iconView = iconView
+            // 更新当前self.selectedMarkerMenu
         }
+        
     }
     
 }
@@ -220,11 +235,7 @@ private extension GXHomeVC {
     }
     
     @IBAction func filterButtonClicked(_ sender: Any?) {
-        self.panView.setCurrentPanPosition(position: .none, animated: true)
-        let menu = GXSelectedMarkerInfoView.showSelectedMarkerInfoView(to: self)
-        menu.closeAction = {[weak self] in
-            self?.panView.setCurrentPanPosition(position: .center, animated: true)
-        }
+        
     }
     
     @IBAction func myLocationButtonClicked(_ sender: Any?) {
@@ -244,15 +255,15 @@ private extension GXHomeVC {
 
 extension GXHomeVC: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        guard marker != self.locationMarker else { return false }
-        self.mapViewDidTapMarker(marker: marker)
+        guard let tapMarker = marker as? GXCustomMarker else { return false }
+        self.mapViewDidTapMarker(marker: tapMarker)
         
         return true
     }
 
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         XCGLogger.info("mapView position.zoom = \(position.zoom)")
-        XCGLogger.info("mapView position.target = \(mapView.camera.target)")
+        XCGLogger.info("mapView position.target = \(position.target)")
         
         let isZoomLarge = position.zoom >= self.zoomLarge
         if let lastTarget = self.lastTarget {
@@ -261,15 +272,16 @@ extension GXHomeVC: GMSMapViewDelegate {
                 self.lastTarget = position.target
                 self.lastIsZoomLarge = isZoomLarge
                 // 重新拉取地图场站
-                return
+            }
+            else {
+                // 更新场站Markers大小
+                self.mapViewUpdateMarkers(isZoomLarge: isZoomLarge)
             }
         } else {
             self.lastTarget = position.target
             self.lastIsZoomLarge = isZoomLarge
             // 首次拉取地图场站
-            return
         }
-        self.mapViewUpdateMarkers(isZoomLarge: isZoomLarge)
     }
     
 }
