@@ -167,7 +167,9 @@ private extension GXHomeVC {
     
     func mapViewClearMarkers() {
         if !Thread.isMainThread {
-            self.mapViewClearMarkers()
+            DispatchQueue.main.async {
+                self.mapViewClearMarkers()
+            }
         }
         self.markerList.forEach { marker in
             marker.map = nil
@@ -177,7 +179,9 @@ private extension GXHomeVC {
     
     func mapViewSetMarkers() {
         if !Thread.isMainThread {
-            self.mapViewSetMarkers()
+            DispatchQueue.main.async {
+                self.mapViewSetMarkers()
+            }
         }
         let target = self.locationMarker?.position ?? self.mapView.camera.target
         
@@ -198,7 +202,9 @@ private extension GXHomeVC {
     
     func mapViewUpdateMarkers(isZoomLarge: Bool) {
         if !Thread.isMainThread {
-            self.mapViewUpdateMarkers(isZoomLarge: isZoomLarge)
+            DispatchQueue.main.async {
+                self.mapViewUpdateMarkers(isZoomLarge: isZoomLarge)
+            }
         }
         guard self.lastIsZoomLarge != isZoomLarge else { return }
         self.lastIsZoomLarge = isZoomLarge
@@ -211,7 +217,9 @@ private extension GXHomeVC {
     
     func mapViewDidTapMarker(marker: GXCustomMarker) {
         if !Thread.isMainThread {
-            self.mapViewDidTapMarker(marker: marker)
+            DispatchQueue.main.async {
+                self.mapViewDidTapMarker(marker: marker)
+            }
         }
         guard marker != self.selectedMarker else { return }
 

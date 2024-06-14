@@ -265,6 +265,17 @@ public final class QRCodeReader: NSObject, AVCaptureMetadataOutputObjectsDelegat
     }
     catch _ { }
   }
+    
+    public func toggleTorch(mode: AVCaptureDevice.TorchMode) {
+      do {
+        try defaultDevice?.lockForConfiguration()
+
+        defaultDevice?.torchMode = mode
+
+        defaultDevice?.unlockForConfiguration()
+      }
+      catch _ { }
+    }
 
   // MARK: - Managing the Orientation
 
