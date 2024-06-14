@@ -61,6 +61,9 @@ class GXSelectedMarkerInfoView: UIView {
     
     @discardableResult
     class func showSelectedMarkerInfoView(to vc: UIViewController) -> GXSelectedMarkerInfoView {
+        if !Thread.isMainThread {
+            assertionFailure()
+        }
         let infoView = GXSelectedMarkerInfoView.xibView().then {
             $0.superVC = vc
             $0.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: menuHeight())

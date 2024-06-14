@@ -75,7 +75,9 @@ extension GXLocationManager: CLLocationManagerDelegate {
             self.locationManager?.startUpdatingLocation()
         }
         else {
-            self.completionHandler?(false, nil, nil)
+            DispatchQueue.main.async {
+                self.completionHandler?(false, nil, nil)
+            }
         }
     }
     
@@ -88,19 +90,25 @@ extension GXLocationManager: CLLocationManagerDelegate {
     
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         self.locationManager?.stopUpdatingLocation()
-        self.completionHandler?(true, nil, nil)
+        DispatchQueue.main.async {
+            self.completionHandler?(true, nil, nil)
+        }
     }
     
     private func reverseGeocoder(currentLocation: CLLocation) {
         self.currentLocation = currentLocation
         CLGeocoder().reverseGeocodeLocation(currentLocation) { placemarks, error in
             if error != nil || (placemarks?.count ?? 0) == 0 {
-                self.completionHandler?(true, nil, currentLocation)
+                DispatchQueue.main.async {
+                    self.completionHandler?(true, nil, currentLocation)
+                }
             }
             else if let placemark: CLPlacemark = placemarks?.first {
                 let cityName = (placemark.locality != nil) ? placemark.locality:placemark.administrativeArea
                 self.cityName = cityName
-                self.completionHandler?(true, cityName, currentLocation)
+                DispatchQueue.main.async {
+                    self.completionHandler?(true, cityName, currentLocation)
+                }
             }
         }
     }
