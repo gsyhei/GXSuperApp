@@ -19,13 +19,13 @@ class GXHomeVC: GXBaseViewController {
     @IBOutlet weak var ongoingView: UIView!
     @IBOutlet weak var ongoingButton: UIButton!
     
+    private weak var locationMarker: GMSMarker?
+    private weak var selectedMarker: GXCustomMarker?
+    private weak var selectedMarkerMenu: GXSelectedMarkerInfoView?
     private let zoomLarge: Float = 15.0
     private var lastTarget: CLLocationCoordinate2D?
     private var lastIsZoomLarge: Bool = false
-    private var locationMarker: GMSMarker?
     private var markerList: [GXCustomMarker] = []
-    private var selectedMarker: GXCustomMarker?
-    private var selectedMarkerMenu: GXSelectedMarkerInfoView?
 
     private lazy var panView: GXHomePanView = {
         return GXHomePanView(frame: self.view.bounds).then {
@@ -251,7 +251,12 @@ private extension GXHomeVC {
 private extension GXHomeVC {
     
     @IBAction func searchButtonClicked(_ sender: Any?) {
-        
+        let vc = GXHomeSearchVC.xibViewController()
+        let navc = GXBaseNavigationController(rootViewController: vc)
+        self.searchButton.hero.id = vc.homeSearchVCHeroId
+        navc.hero.isEnabled = true
+        navc.modalPresentationStyle = .fullScreen
+        self.present(navc, animated: true)
     }
     
     @IBAction func filterButtonClicked(_ sender: Any?) {

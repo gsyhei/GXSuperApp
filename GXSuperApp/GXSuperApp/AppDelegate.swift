@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nbAppearance.configureWithTransparentBackground()
         nbAppearance.backgroundColor = UIColor.white
         nbAppearance.shadowColor = .gx_lightGray
-        nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]
+        nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_semiBoldFont(size: 19)]
         let bbiAppearance = UIBarButtonItemAppearance(style: .plain)
         bbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]
         bbiAppearance.highlighted.titleTextAttributes = [.foregroundColor: UIColor.gx_gray, .font: UIFont.gx_boldFont(size: 15)]
@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let nbAppearance = UINavigationBarAppearance()
             nbAppearance.configureWithTransparentBackground()
             nbAppearance.backgroundColor = UIColor.white
-            nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]
+            nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_semiBoldFont(size: 19)]
             let bbiAppearance = UIBarButtonItemAppearance(style: .plain)
             bbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]
             bbiAppearance.highlighted.titleTextAttributes = [.foregroundColor: UIColor.gx_gray, .font: UIFont.gx_boldFont(size: 15)]

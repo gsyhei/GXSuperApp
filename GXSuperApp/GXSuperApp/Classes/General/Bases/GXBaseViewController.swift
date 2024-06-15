@@ -55,7 +55,7 @@ class GXBaseViewController: UIViewController {
     }
 
     public func gx_addBackBarButtonItem(action: Selector = #selector(gx_backBarButtonItemTapped)) {
-        let normalImage = UIImage(named: "l_back")?.withRenderingMode(.automatic)
+        let normalImage = UIImage(named: "com_nav_ic_back")?.withRenderingMode(.automatic)
         let leftBarButtonItem = UIBarButtonItem(image: normalImage, style: .plain, target: self, action: action)
         self.navigationItem.leftBarButtonItem = leftBarButtonItem
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
