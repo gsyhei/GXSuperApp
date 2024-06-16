@@ -33,10 +33,11 @@ class GXHomeVC: GXBaseViewController {
         }
     }()
     
-    lazy var mapView: GMSMapView = {
+    private lazy var mapView: GMSMapView = {
         let options = GMSMapViewOptions()
         options.camera = GMSCameraPosition(latitude: -33.868, longitude: 151.2086, zoom: 12)
         return GMSMapView(options: options).then {
+            $0.preferredFrameRate = .maximum
             $0.settings.compassButton = false
             $0.settings.myLocationButton = false
             $0.settings.rotateGestures = false
@@ -68,12 +69,10 @@ class GXHomeVC: GXBaseViewController {
         self.panView.frame = CGRect(x: 0, y: top, width: width, height: height)
         self.panView.setupPanMovedY(top: panTopY, center: panCenterY, bottom: panBottomY)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func setupViewController() {
+
+    override func loadView() {
+        super.loadView()
+        
         self.myLocationButton.setLayerShadow(color: .lightGray, offset: .zero, radius: 3.0)
         self.myLocationButton.layer.shadowOpacity = 0.5
         
@@ -85,9 +84,15 @@ class GXHomeVC: GXBaseViewController {
         let circleHUDView = MBProgressHUD.CircleHUDView(frame: frame)
         self.ongoingView.addSubview(circleHUDView)
         
-        self.view.insertSubview(self.mapView, belowSubview: self.myLocationButton)
         self.view.insertSubview(self.panView, aboveSubview: self.myLocationButton)
-        
+        self.view.insertSubview(self.mapView, belowSubview: self.myLocationButton)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func setupViewController() {
         self.panView.changePositionAction = {[weak self] position in
             guard let `self` = self else { return }
             switch position {
@@ -121,20 +126,15 @@ class GXHomeVC: GXBaseViewController {
         GXLocationManager.shared.requestGeocodeCompletion {[weak self] (isAuth, cityName, location) in
             guard let `self` = self else { return }
             guard isAuth else {
-                self.mapView.delegate = self
-                self.showAlertNotLocation()
-                return
+                self.showAlertNotLocation(); return
             }
-            guard let letLocation = location else {
-                self.mapView.delegate = self
-                return
-            }
+            guard let letLocation = location else { return }
+            
             if let existingMaker = self.locationMarker {
-                CATransaction.begin()
-                CATransaction.setAnimationDuration(2.0)
-                existingMaker.position = letLocation.coordinate
-                existingMaker.rotation = letLocation.course
-                CATransaction.commit()
+                UIView.animate(.promise, duration: 0.2) {
+                    existingMaker.position = letLocation.coordinate
+                    existingMaker.rotation = letLocation.course
+                }
             } else {
                 let marker = GMSMarker(position: letLocation.coordinate)
                 marker.icon = UIImage(named: "home_map_ic_direction")

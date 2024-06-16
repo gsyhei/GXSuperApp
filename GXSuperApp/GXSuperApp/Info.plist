@@ -13,5 +13,9 @@
 		<string>Mukta-Light.ttf</string>
 		<string>Mukta-SemiBold.ttf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 </dict>
 </plist>
