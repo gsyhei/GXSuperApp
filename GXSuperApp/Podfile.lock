@@ -6,12 +6,12 @@ PODS:
   - CollectionKit/Core (2.4.0)
   - CryptoSwift (1.8.2)
   - Differentiator (5.0.0)
-  - GoogleMaps (8.4.0):
-    - GoogleMaps/Maps (= 8.4.0)
-  - GoogleMaps/Base (8.4.0)
-  - GoogleMaps/Maps (8.4.0):
+  - GoogleMaps (9.0.0):
+    - GoogleMaps/Maps (= 9.0.0)
+  - GoogleMaps/Base (9.0.0)
+  - GoogleMaps/Maps (9.0.0):
     - GoogleMaps/Base
-  - GooglePlaces (8.5.0)
+  - GooglePlaces (9.0.0)
   - GXAlert-Swift (1.0.1)
   - GXBanner (1.1.0)
   - GXCategories (1.0.9)
@@ -193,8 +193,8 @@ SPEC CHECKSUMS:
   CollectionKit: 8f01e7629185bb81072c4aa734d105df5c2d1c8b
   CryptoSwift: c63a805d8bb5e5538e88af4e44bb537776af11ea
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
-  GoogleMaps: 8939898920281c649150e0af74aa291c60f2e77d
-  GooglePlaces: 426efb69051e7b460e16300ba63598687d10fa1a
+  GoogleMaps: 4907d0d42bf8cd58f56743e31f91d23c10682745
+  GooglePlaces: cf1f5b61297da7ac64bcb147cfa7b435d74ed6d9
   GXAlert-Swift: c60dc53cb2ce0516c994ce1f370b826ac9b1ac16
   GXBanner: 9589d3281ce0b182ec5ca85bb1ce18e94a021013
   GXCategories: 7f1b5ab3bfdd781d7482b39d0942928c355c6d4d
@@ -227,6 +227,6 @@ SPEC CHECKSUMS:
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
   XCGLogger: 399c5885210b4e2ad79d9f7a29b105d672ef724f
 
-PODFILE CHECKSUM: 787beddb38488af1b23d2a5c230a4aa0214a7837
+PODFILE CHECKSUM: 893b64217bc4727c6cd0c47cb68fd6270295449a
 
 COCOAPODS: 1.15.2

@@ -80,9 +80,9 @@ class GXHomeVC: GXBaseViewController {
         self.ongoingView.layer.shadowOpacity = 0.5
         self.ongoingButton.setBackgroundColor(.gx_green, for: .normal)
         
-        let frame = CGRect(x: 12, y: 10, width: 16, height: 16)
-        let circleHUDView = MBProgressHUD.CircleHUDView(frame: frame)
-        self.ongoingView.addSubview(circleHUDView)
+//        let frame = CGRect(x: 12, y: 10, width: 16, height: 16)
+//        let circleHUDView = MBProgressHUD.CircleHUDView(frame: frame)
+//        self.ongoingView.addSubview(circleHUDView)
         
         self.view.insertSubview(self.panView, aboveSubview: self.myLocationButton)
         self.view.insertSubview(self.mapView, belowSubview: self.myLocationButton)
@@ -129,7 +129,6 @@ class GXHomeVC: GXBaseViewController {
                 self.showAlertNotLocation(); return
             }
             guard let letLocation = location else { return }
-            
             if let existingMaker = self.locationMarker {
                 UIView.animate(.promise, duration: 0.2) {
                     existingMaker.position = letLocation.coordinate
