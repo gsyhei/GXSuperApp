@@ -186,14 +186,12 @@ private extension GXHomeVC {
         
         let coordinate1 = CLLocationCoordinate2D(latitude: target.latitude + 0.0008, longitude: target.longitude + 0.0008)
         let marker = GXCustomMarker(position: coordinate1)
-        marker.icon = UIImage(named: "home_map_ic_station")
         marker.setMarkerStatus(isSelected: false, isZoomLarge: self.lastIsZoomLarge)
         marker.map = self.mapView
         self.markerList.append(marker)
         
         let coordinate2 = CLLocationCoordinate2D(latitude: target.latitude - 0.0008, longitude: target.longitude - 0.0008)
         let marker1 = GXCustomMarker(position: coordinate2)
-        marker1.icon = UIImage(named: "home_map_ic_station")
         marker1.setMarkerStatus(isSelected: false, isZoomLarge: self.lastIsZoomLarge)
         marker1.map = self.mapView
         self.markerList.append(marker1)

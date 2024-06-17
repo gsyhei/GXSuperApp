@@ -110,18 +110,18 @@ class GXSelectedMarkerInfoView: UIView {
         frame.origin.y = windowRect.height
         self.frame = frame
         frame.origin.y = windowRect.height - self.frame.height
-        GXAlertManager.gx_animate(withUsingSpring: true, animations: {
+        UIView.animate(.promise, duration: 0.3, options: .curveEaseOut) {
             self.frame = frame
-        }, completion: nil)
+        }
     }
 
     func hideMenu() {
         let windowRect = UIWindow.gx_frontWindow?.frame ?? CGRect(origin: .zero, size: SCREEN_SIZE)
         var frame = self.frame
         frame.origin.y = windowRect.height
-        GXAlertManager.gx_animate(withUsingSpring: true, animations: {
+        UIView.animate(.promise, duration: 0.3, options: .curveEaseOut) {
             self.frame = frame
-        }) { (finished) in
+        }.done { finished in
             self.removeFromSuperview()
         }
     }

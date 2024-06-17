@@ -85,7 +85,7 @@ class GXHomePanView: UIView {
         self.isUserInteractionEnabled = true
     }
     
-    func setCurrentPanPosition(position: PanPosition, velocity: CGFloat = 1000, animated: Bool = true) {
+    func setCurrentPanPosition(position: PanPosition, velocity: CGFloat = 600, animated: Bool = true) {
         self.lastPanPosition = self.currentPanPosition
         self.currentPanPosition = position
         var top = self.frame.origin.y
@@ -101,10 +101,11 @@ class GXHomePanView: UIView {
         }
         let isPanTop = position == .top
         if animated {
-            var duration = abs(top - self.frame.origin.y) / velocity + 0.1
+            let velocityY = max(velocity, 100)
+            var duration = abs(top - self.frame.origin.y) / velocityY
             duration = min(0.5, duration)
-            duration = max(0.3, duration)
-            UIView.animate(.promise, duration: duration, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.9) {
+            duration = max(0.2, duration)
+            UIView.animate(.promise, duration: duration, options: .curveEaseOut) {
                 self.top = top
             }.done { finished in
                 self.arrowButton.isSelected = isPanTop
