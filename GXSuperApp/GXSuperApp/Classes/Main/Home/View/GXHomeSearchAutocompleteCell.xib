@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Mukta-Light.ttf">
+            <string>Mukta-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="GXHomeSearchAutocompleteCell" customModule="GXSuperApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Hengjie Supercharge" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQ6-zG-0fV">
+                        <rect key="frame" x="15" y="10" width="269" height="24"/>
+                        <fontDescription key="fontDescription" name="Mukta-Light" family="Mukta" pointSize="16"/>
+                        <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="com_list_ic_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="O6L-v8-DZp">
+                        <rect key="frame" x="298" y="16" width="7" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="Sk4-y0-vYk"/>
+                            <constraint firstAttribute="width" constant="7" id="hEU-em-whz"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qQ6-zG-0fV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Pdc-A9-JeM"/>
+                    <constraint firstAttribute="trailing" secondItem="O6L-v8-DZp" secondAttribute="trailing" constant="15" id="U4X-iF-HW0"/>
+                    <constraint firstItem="qQ6-zG-0fV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dXh-ot-MQd"/>
+                    <constraint firstAttribute="trailing" secondItem="qQ6-zG-0fV" secondAttribute="trailing" constant="36" id="hFs-Bu-HKi"/>
+                    <constraint firstAttribute="bottom" secondItem="qQ6-zG-0fV" secondAttribute="bottom" constant="10" id="rsE-Kc-iel"/>
+                    <constraint firstItem="O6L-v8-DZp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="stg-XK-jGh"/>
+                    <constraint firstItem="qQ6-zG-0fV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="yV5-pc-Mmd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+            <connections>
+                <outlet property="nameLabel" destination="qQ6-zG-0fV" id="79w-Bb-3RC"/>
+            </connections>
+            <point key="canvasLocation" x="131" y="-11"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="com_list_ic_arrow" width="7" height="13"/>
+    </resources>
+</document>

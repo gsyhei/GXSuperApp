@@ -15,5 +15,12 @@ extension NSAttributedString {
                                      context: nil)
         return rect.height
     }
+    
+    func width() -> CGFloat {
+        let rect = self.boundingRect(with: CGSize(width: CGFLOAT_MAX, height: CGFLOAT_MAX),
+                                     options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                     context: nil)
+        return rect.width
+    }
 
 }

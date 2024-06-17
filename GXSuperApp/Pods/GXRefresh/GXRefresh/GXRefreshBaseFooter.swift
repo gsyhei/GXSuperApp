@@ -15,6 +15,8 @@ open class GXRefreshBaseFooter: GXRefreshComponent {
     open var isTextHidden: Bool = false
     /// 没有更多数据的情况下内容未超出屏幕是否隐藏footer
     open var isHiddenNoMoreByContent: Bool = true
+    /// 内容未超出屏幕是否隐藏footer
+    open var isHiddenByContent: Bool = false
     /// 是否开启自动刷新
     open var automaticallyRefresh: Bool = true
     /// 上拉需要的百分比（下拉到多少刷新）
@@ -153,12 +155,12 @@ public extension GXRefreshBaseFooter {
         super.scrollViewContentSizeDidChange(change: change)
         self.isHidden = (self.svContentSize.height == 0)
         // 有内容才进行设置
-        guard (self.scrollView!.gx_height > 0) else { return }
+        guard (self.svContentSize.height > 0) else { return }
         self.gx_top = self.svContentHeight() + self.scrollViewOriginalInset.bottom
         // 内容没有超出屏幕
         guard !self.isContentBeyondScreen() else { return }
         self.alpha = 1.0
-        self.isHidden = self.isHiddenNoMoreByContent && (self.state == .noMore)
+        self.isHidden = self.isHiddenByContent || (self.isHiddenNoMoreByContent && (self.state == .noMore))
     }
     override func scrollViewPanStateDidChange(change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewPanStateDidChange(change: change)
@@ -230,12 +232,12 @@ fileprivate extension GXRefreshBaseFooter {
             self.state = .idle
         }
         if self.automaticallyChangeAlpha && isContentBeyondScreen() {
-            self.alpha = 0.0
+            self.alpha = 1.0
         }
         if self.endRefreshingAction != nil {
             self.endRefreshingAction!()
         }
-        self.isHidden = self.isHiddenNoMoreByContent && (self.state == .noMore)
+        self.isHidden = self.isHiddenByContent || (self.isHiddenNoMoreByContent && !isContentBeyondScreen() && (self.state == .noMore))
     }
     @objc func contentClicked(_ sender: UIControl) {
         guard self.state == .idle else { return }

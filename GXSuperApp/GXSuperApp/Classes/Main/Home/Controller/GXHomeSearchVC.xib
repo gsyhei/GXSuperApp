@@ -17,7 +17,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXHomeSearchVC" customModule="GXSuperApp" customModuleProvider="target">
             <connections>
                 <outlet property="searchBar" destination="BOn-xs-gOD" id="Ysa-in-PfC"/>
+                <outlet property="searchButton" destination="Htk-Lb-5vd" id="nDU-Cb-uvn"/>
                 <outlet property="searchTF" destination="KFb-YC-xo8" id="joQ-Qh-YNH"/>
+                <outlet property="tableView" destination="alJ-AU-JZ6" id="QUz-Lk-wcQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -78,18 +80,29 @@
                             <real key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="searchButtonClicked:" destination="-1" eventType="touchUpInside" id="JTb-ER-roI"/>
+                    </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="alJ-AU-JZ6" customClass="GXBaseTableView" customModule="GXSuperApp" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="109" width="393" height="743"/>
+                    <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Htk-Lb-5vd" firstAttribute="leading" secondItem="BOn-xs-gOD" secondAttribute="trailing" constant="6" id="2gI-ld-jir"/>
+                <constraint firstItem="alJ-AU-JZ6" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="3lt-tk-cj2"/>
                 <constraint firstItem="Htk-Lb-5vd" firstAttribute="top" secondItem="BOn-xs-gOD" secondAttribute="top" id="Bkh-PD-jUv"/>
+                <constraint firstItem="alJ-AU-JZ6" firstAttribute="top" secondItem="BOn-xs-gOD" secondAttribute="bottom" constant="10" id="NbO-Yh-aXw"/>
                 <constraint firstItem="BOn-xs-gOD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="cHs-F0-aER"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Htk-Lb-5vd" secondAttribute="trailing" constant="15" id="d37-Z5-Fd3"/>
+                <constraint firstItem="alJ-AU-JZ6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hg7-2Y-MAp"/>
                 <constraint firstItem="BOn-xs-gOD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="rGy-IP-Vvd"/>
+                <constraint firstAttribute="bottom" secondItem="alJ-AU-JZ6" secondAttribute="bottom" id="uVe-fh-Q5x"/>
             </constraints>
-            <point key="canvasLocation" x="-150" y="-11"/>
+            <point key="canvasLocation" x="-150.38167938931298" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>

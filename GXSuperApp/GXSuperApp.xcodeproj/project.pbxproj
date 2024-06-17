@@ -14,6 +14,9 @@
 		3340F7612C18498900B97923 /* GXRoundedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7602C18498900B97923 /* GXRoundedInView.swift */; };
 		3340F7632C18861600B97923 /* GXTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7622C18861600B97923 /* GXTabBar.swift */; };
 		336B2C2A2C1B29A600A752C7 /* GXCustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336B2C292C1B29A600A752C7 /* GXCustomMarker.swift */; };
+		33953F642C20846E0049C76C /* GXHomeSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33953F632C20846E0049C76C /* GXHomeSearchViewModel.swift */; };
+		33953F672C208B240049C76C /* GXHomeSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33953F652C208B240049C76C /* GXHomeSearchResultCell.swift */; };
+		33953F682C208B240049C76C /* GXHomeSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33953F662C208B240049C76C /* GXHomeSearchResultCell.xib */; };
 		339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398898F2C182CD800EA489A /* GXSelectTagsView.swift */; };
 		33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */; };
 		33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B52C1414CE0089431E /* GXLocationManager.swift */; };
@@ -22,6 +25,16 @@
 		33BF81BD2C14AB720089431E /* GXHomeMarkerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33BF81BC2C14AB720089431E /* GXHomeMarkerCell.xib */; };
 		33BF81BE2C14AB720089431E /* GXHomeMarkerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81BB2C14AB720089431E /* GXHomeMarkerCell.swift */; };
 		33BF81C02C14AB7F0089431E /* GXSelectedMarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33BF81BF2C14AB7F0089431E /* GXSelectedMarkerInfoView.xib */; };
+		33CB38212C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB381F2C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift */; };
+		33CB38222C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38202C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib */; };
+		33CB38242C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB38232C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift */; };
+		33CB382C2C20CADE005A0227 /* Mukta-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38252C20CADE005A0227 /* Mukta-Medium.ttf */; };
+		33CB382D2C20CADE005A0227 /* Mukta-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38262C20CADE005A0227 /* Mukta-Regular.ttf */; };
+		33CB382E2C20CADE005A0227 /* Mukta-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38272C20CADE005A0227 /* Mukta-ExtraLight.ttf */; };
+		33CB382F2C20CADF005A0227 /* Mukta-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38282C20CADE005A0227 /* Mukta-Bold.ttf */; };
+		33CB38302C20CADF005A0227 /* Mukta-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38292C20CADE005A0227 /* Mukta-Light.ttf */; };
+		33CB38312C20CADF005A0227 /* Mukta-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB382A2C20CADE005A0227 /* Mukta-SemiBold.ttf */; };
+		33CB38322C20CADF005A0227 /* Mukta-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB382B2C20CADE005A0227 /* Mukta-ExtraBold.ttf */; };
 		33D1109E2C1D8DFA006331EC /* GXHomeSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D1109D2C1D8DFA006331EC /* GXHomeSearchVC.xib */; };
 		33D1109F2C1D8DFA006331EC /* GXHomeSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1109C2C1D8DFA006331EC /* GXHomeSearchVC.swift */; };
 		33D9DFE22C0EFA0700A282D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */; };
@@ -80,9 +93,6 @@
 		33EC57932C1021E300D4CCD0 /* GXApproveFailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC57912C1021E300D4CCD0 /* GXApproveFailInfoView.swift */; };
 		33EC57942C1021E300D4CCD0 /* GXApproveFailInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33EC57922C1021E300D4CCD0 /* GXApproveFailInfoView.xib */; };
 		33EC579C2C11643500D4CCD0 /* MBProgressHUD+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC579B2C11643500D4CCD0 /* MBProgressHUD+Add.swift */; };
-		33EC57A02C116B2300D4CCD0 /* Mukta-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33EC579D2C116B2300D4CCD0 /* Mukta-SemiBold.ttf */; };
-		33EC57A12C116B2300D4CCD0 /* Mukta-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33EC579E2C116B2300D4CCD0 /* Mukta-Bold.ttf */; };
-		33EC57A22C116B2300D4CCD0 /* Mukta-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33EC579F2C116B2300D4CCD0 /* Mukta-Light.ttf */; };
 		6818C78D9B51E2909BC88500 /* Pods_GXSuperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F37FD32A5D4D283B3BF19 /* Pods_GXSuperApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +105,9 @@
 		3340F7602C18498900B97923 /* GXRoundedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXRoundedInView.swift; sourceTree = "<group>"; };
 		3340F7622C18861600B97923 /* GXTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXTabBar.swift; sourceTree = "<group>"; };
 		336B2C292C1B29A600A752C7 /* GXCustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCustomMarker.swift; sourceTree = "<group>"; };
+		33953F632C20846E0049C76C /* GXHomeSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchViewModel.swift; sourceTree = "<group>"; };
+		33953F652C208B240049C76C /* GXHomeSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchResultCell.swift; sourceTree = "<group>"; };
+		33953F662C208B240049C76C /* GXHomeSearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchResultCell.xib; sourceTree = "<group>"; };
 		3398898F2C182CD800EA489A /* GXSelectTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXSelectTagsView.swift; sourceTree = "<group>"; };
 		33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXMarkerIconView.xib; sourceTree = "<group>"; };
 		33BF81B52C1414CE0089431E /* GXLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLocationManager.swift; sourceTree = "<group>"; };
@@ -103,6 +116,16 @@
 		33BF81BB2C14AB720089431E /* GXHomeMarkerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeMarkerCell.swift; sourceTree = "<group>"; };
 		33BF81BC2C14AB720089431E /* GXHomeMarkerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeMarkerCell.xib; sourceTree = "<group>"; };
 		33BF81BF2C14AB7F0089431E /* GXSelectedMarkerInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXSelectedMarkerInfoView.xib; sourceTree = "<group>"; };
+		33CB381F2C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchAutocompleteCell.swift; sourceTree = "<group>"; };
+		33CB38202C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchAutocompleteCell.xib; sourceTree = "<group>"; };
+		33CB38232C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchHistoryCell.swift; sourceTree = "<group>"; };
+		33CB38252C20CADE005A0227 /* Mukta-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-Medium.ttf"; sourceTree = "<group>"; };
+		33CB38262C20CADE005A0227 /* Mukta-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-Regular.ttf"; sourceTree = "<group>"; };
+		33CB38272C20CADE005A0227 /* Mukta-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-ExtraLight.ttf"; sourceTree = "<group>"; };
+		33CB38282C20CADE005A0227 /* Mukta-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-Bold.ttf"; sourceTree = "<group>"; };
+		33CB38292C20CADE005A0227 /* Mukta-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-Light.ttf"; sourceTree = "<group>"; };
+		33CB382A2C20CADE005A0227 /* Mukta-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-SemiBold.ttf"; sourceTree = "<group>"; };
+		33CB382B2C20CADE005A0227 /* Mukta-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-ExtraBold.ttf"; sourceTree = "<group>"; };
 		33D1109C2C1D8DFA006331EC /* GXHomeSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchVC.swift; sourceTree = "<group>"; };
 		33D1109D2C1D8DFA006331EC /* GXHomeSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchVC.xib; sourceTree = "<group>"; };
 		33D9DFDE2C0EFA0700A282D5 /* GXSuperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GXSuperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,9 +187,6 @@
 		33EC57912C1021E300D4CCD0 /* GXApproveFailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXApproveFailInfoView.swift; sourceTree = "<group>"; };
 		33EC57922C1021E300D4CCD0 /* GXApproveFailInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXApproveFailInfoView.xib; sourceTree = "<group>"; };
 		33EC579B2C11643500D4CCD0 /* MBProgressHUD+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Add.swift"; sourceTree = "<group>"; };
-		33EC579D2C116B2300D4CCD0 /* Mukta-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-SemiBold.ttf"; sourceTree = "<group>"; };
-		33EC579E2C116B2300D4CCD0 /* Mukta-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-Bold.ttf"; sourceTree = "<group>"; };
-		33EC579F2C116B2300D4CCD0 /* Mukta-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-Light.ttf"; sourceTree = "<group>"; };
 		5D6F37FD32A5D4D283B3BF19 /* Pods_GXSuperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GXSuperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE37990042C7D6C00FD87875 /* Pods-GXSuperApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GXSuperApp.release.xcconfig"; path = "Target Support Files/Pods-GXSuperApp/Pods-GXSuperApp.release.xcconfig"; sourceTree = "<group>"; };
 		BE467C8C83E2954639F9764B /* Pods-GXSuperApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GXSuperApp.debug.xcconfig"; path = "Target Support Files/Pods-GXSuperApp/Pods-GXSuperApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -221,6 +241,11 @@
 				33BF81BF2C14AB7F0089431E /* GXSelectedMarkerInfoView.xib */,
 				33BF81BB2C14AB720089431E /* GXHomeMarkerCell.swift */,
 				33BF81BC2C14AB720089431E /* GXHomeMarkerCell.xib */,
+				33CB38232C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift */,
+				33953F652C208B240049C76C /* GXHomeSearchResultCell.swift */,
+				33953F662C208B240049C76C /* GXHomeSearchResultCell.xib */,
+				33CB381F2C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift */,
+				33CB38202C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +253,7 @@
 		33396A1E2C11E450000A1944 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				33953F632C20846E0049C76C /* GXHomeSearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -420,9 +446,13 @@
 		33EC55A52C101BA100D4CCD0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				33EC579E2C116B2300D4CCD0 /* Mukta-Bold.ttf */,
-				33EC579F2C116B2300D4CCD0 /* Mukta-Light.ttf */,
-				33EC579D2C116B2300D4CCD0 /* Mukta-SemiBold.ttf */,
+				33CB38282C20CADE005A0227 /* Mukta-Bold.ttf */,
+				33CB382B2C20CADE005A0227 /* Mukta-ExtraBold.ttf */,
+				33CB38272C20CADE005A0227 /* Mukta-ExtraLight.ttf */,
+				33CB38292C20CADE005A0227 /* Mukta-Light.ttf */,
+				33CB38252C20CADE005A0227 /* Mukta-Medium.ttf */,
+				33CB38262C20CADE005A0227 /* Mukta-Regular.ttf */,
+				33CB382A2C20CADE005A0227 /* Mukta-SemiBold.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -528,17 +558,23 @@
 			files = (
 				33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */,
 				33D1109E2C1D8DFA006331EC /* GXHomeSearchVC.xib in Resources */,
+				33CB382D2C20CADE005A0227 /* Mukta-Regular.ttf in Resources */,
 				33EC57942C1021E300D4CCD0 /* GXApproveFailInfoView.xib in Resources */,
-				33EC57A12C116B2300D4CCD0 /* Mukta-Bold.ttf in Resources */,
 				33EC55BC2C101BA100D4CCD0 /* MBProgressHUD.bundle in Resources */,
+				33CB382C2C20CADE005A0227 /* Mukta-Medium.ttf in Resources */,
 				33396A232C11E530000A1944 /* GXHomeVC.xib in Resources */,
-				33EC57A02C116B2300D4CCD0 /* Mukta-SemiBold.ttf in Resources */,
 				33D9DFEE2C0EFA0900A282D5 /* Base in Resources */,
+				33CB38312C20CADF005A0227 /* Mukta-SemiBold.ttf in Resources */,
 				33EC55F92C101BA100D4CCD0 /* GXQRCodeReaderVC.xib in Resources */,
 				33BF81C02C14AB7F0089431E /* GXSelectedMarkerInfoView.xib in Resources */,
-				33EC57A22C116B2300D4CCD0 /* Mukta-Light.ttf in Resources */,
+				33CB382F2C20CADF005A0227 /* Mukta-Bold.ttf in Resources */,
+				33CB38222C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib in Resources */,
 				33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */,
+				33CB38302C20CADF005A0227 /* Mukta-Light.ttf in Resources */,
+				33953F682C208B240049C76C /* GXHomeSearchResultCell.xib in Resources */,
+				33CB382E2C20CADE005A0227 /* Mukta-ExtraLight.ttf in Resources */,
 				33BF81BD2C14AB720089431E /* GXHomeMarkerCell.xib in Resources */,
+				33CB38322C20CADF005A0227 /* Mukta-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +644,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33953F642C20846E0049C76C /* GXHomeSearchViewModel.swift in Sources */,
 				33EC55BF2C101BA100D4CCD0 /* PhotoAsset+Add.swift in Sources */,
 				33BF81BA2C14A86D0089431E /* GXSelectedMarkerInfoView.swift in Sources */,
 				33EC55B42C101BA100D4CCD0 /* GXBaseViewModel.swift in Sources */,
@@ -640,6 +677,7 @@
 				33EC55BA2C101BA100D4CCD0 /* GXCopyable+Add.swift in Sources */,
 				33EC55BB2C101BA100D4CCD0 /* GXRefreshNormalHeader+Add.swift in Sources */,
 				33EC578E2C101BA200D4CCD0 /* GXApi.swift in Sources */,
+				33CB38242C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift in Sources */,
 				33EC55F22C101BA100D4CCD0 /* GXAddImages9View.swift in Sources */,
 				33EC55B12C101BA100D4CCD0 /* GXBaseTableViewController.swift in Sources */,
 				33EC55DB2C101BA100D4CCD0 /* GXMessagesLoadHeader.swift in Sources */,
@@ -648,9 +686,11 @@
 				33EC55CE2C101BA100D4CCD0 /* ObjectUnicode.swift in Sources */,
 				33EC55AF2C101BA100D4CCD0 /* GXBaseNavigationController.swift in Sources */,
 				33EC55F12C101BA100D4CCD0 /* XYNavigationManager.m in Sources */,
+				33953F672C208B240049C76C /* GXHomeSearchResultCell.swift in Sources */,
 				3340F7612C18498900B97923 /* GXRoundedInView.swift in Sources */,
 				33EC55C32C101BA100D4CCD0 /* UIColor+Add.swift in Sources */,
 				33EC55DC2C101BA100D4CCD0 /* GXMessagesLoadTableView.swift in Sources */,
+				33CB38212C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift in Sources */,
 				339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */,
 				33EC55B82C101BA100D4CCD0 /* GXSearchController.swift in Sources */,
 				33EC55B02C101BA100D4CCD0 /* GXBaseTableView.swift in Sources */,

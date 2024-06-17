@@ -32,6 +32,7 @@ extension GXRefreshBaseFooter {
     func updateRefreshTitles() {
         self.textLabel.textColor = .gx_drakGray
         self.textLabel.font = .gx_font(size: 14.0)
+//        self.isHiddenNoMoreByContent = false
 //        return [.idle: "点击或上拉加载更多",
 //                .pulling: "上拉加载更多",
 //                .will: "放开立即加载更多",

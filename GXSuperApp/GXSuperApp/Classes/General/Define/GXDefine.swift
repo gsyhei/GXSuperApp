@@ -32,4 +32,4 @@ typealias GXActionBlockItemBack<T1: Any, T2: Any> = ((T1) -> T2)
 let GX_BUGLY_APPID = "36156d5fa8"
 
 /// Google api key
-let GX_GOOGLE_APIKEY = "AIzaSyBfUXs3Ro214ffY3JKV3XKXyb4YI5jfSoM"
+let GX_GOOGLE_APIKEY = "AIzaSyD5LO03bldAHcKkTqpzRW9DTiFV5dRhtbA"

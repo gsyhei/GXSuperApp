@@ -29,6 +29,12 @@ class GXBaseTableView: UITableView {
             self.placeholderLabel.text = placeholder
         }
     }
+    
+    var placeholderImageName: String = "com_empty_ic_nodata" {
+        didSet {
+            self.placeholderImageView.image = UIImage(named: placeholderImageName)
+        }
+    }
 
     private(set) lazy var placeholderView: GXPlaceholderView = {
         return GXPlaceholderView(frame: self.bounds).then {
@@ -41,21 +47,13 @@ class GXBaseTableView: UITableView {
         return UILabel().then {
             $0.font = .gx_font(size: 15)
             $0.textAlignment = .center
-            $0.textColor = .gx_gray
-            $0.text = "暂无数据"
+            $0.textColor = .gx_drakGray
+            $0.text = "Apologies, I didn't find anything"
         }
     }()
 
-    private var addAction: GXActionBlock?
-    private(set) lazy var addButton: UIButton = {
-        return UIButton(type: .custom).then {
-            $0.frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 44))
-            $0.titleLabel?.font = .gx_boldFont(size: 17)
-            $0.layer.masksToBounds = true
-            $0.layer.cornerRadius = 22.0
-            $0.isHidden = true
-            $0.addTarget(self, action: #selector(self.addButtonClicked(_:)), for: .touchUpInside)
-        }
+    private(set) lazy var placeholderImageView: UIImageView = {
+        return UIImageView(image: UIImage(named: "com_empty_ic_nodata"))
     }()
 
     convenience init(_frame: CGRect, _style: UITableView.Style) {
@@ -72,18 +70,18 @@ class GXBaseTableView: UITableView {
         self.configuration()
         self.separatorColor = .gx_lightGray
         
-        self.placeholderView.addSubview(self.placeholderLabel)
-        self.placeholderLabel.snp.makeConstraints { make in
+        self.placeholderView.addSubview(self.placeholderImageView)
+        self.placeholderImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(self.placeholderView.snp.centerY).offset(-100)
         }
-        self.placeholderView.addSubview(self.addButton)
-        self.addButton.snp.makeConstraints { make in
-            make.top.equalTo(self.placeholderLabel.snp.bottom).offset(80)
-            make.left.equalToSuperview().offset(16)
-            make.right.equalToSuperview().offset(-16)
-            make.height.equalTo(44)
+        
+        self.placeholderView.addSubview(self.placeholderLabel)
+        self.placeholderLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(self.placeholderImageView.snp.bottom).offset(14)
         }
+        
     }
 
     override func didMoveToSuperview() {
@@ -118,8 +116,8 @@ class GXBaseTableView: UITableView {
         }
     }
     
-    public func gx_setPlaceholderLocation(isTop: Bool = false, offset: CGFloat = -100) {
-        self.placeholderLabel.snp.updateConstraints { make in
+    public func gx_setPlaceholder(isTop: Bool = false, offset: CGFloat = -100) {
+        self.placeholderImageView.snp.updateConstraints { make in
             if isTop {
                 make.top.equalToSuperview().offset(offset)
             }
@@ -131,28 +129,6 @@ class GXBaseTableView: UITableView {
 }
 
 extension GXBaseTableView {
-
-    @objc func addButtonClicked(_ sender: UIButton) {
-        self.addAction?()
-    }
-
-    /// 设置添加按钮
-    /// - Parameters:
-    ///   - title: 按钮标题
-    ///   - type: 按钮类型  0-【标题黑、背景绿】， 1-【标题绿、背景黑】
-    public func setAddButton(title: String, type: Int = 0, action: GXActionBlock?) {
-        self.addButton.isHidden = false
-        self.addButton.setTitle(title, for: .normal)
-        switch type {
-        case 1:
-            self.addButton.setTitleColor(.gx_green, for: .normal)
-            self.addButton.setBackgroundColor(.gx_black, for: .normal)
-        default:
-            self.addButton.setTitleColor(.gx_black, for: .normal)
-            self.addButton.setBackgroundColor(.gx_green, for: .normal)
-        }
-        self.addAction = action
-    }
 
     /// 设置tableFooterView并赋予高度
     /// - Parameter height: 高度

@@ -32,12 +32,46 @@ class GXMarkerIconView: UIView {
 
 extension GXMarkerIconView {
     
-    func updateNumber(usNumber: String, tslNumber: String) {
-        self.usNumberLabel.text = usNumber
-        let usWidth = usNumber.width(font: self.usNumberLabel.font)
+    func updateNumber(usNumber: Int, tslNumber: Int) {
+        /// TSL
+        let tslAttributedString = NSMutableAttributedString()
+        let tslNumberText = String(format: "%d", usNumber)
+        let tslNumAttributes: [NSAttributedString.Key : Any] = [
+            .font: UIFont.gx_boldFont(size: 13),
+            .foregroundColor: UIColor.gx_drakRed
+        ]
+        let numberAttributed = NSAttributedString(string: tslNumberText, attributes: tslNumAttributes)
+        tslAttributedString.append(numberAttributed)
+
+        let tslMaxNumberText = String(format: "/%d", 20)
+        let tslMaxNumAttributes: [NSAttributedString.Key : Any] = [
+            .font: UIFont.gx_font(size: 13),
+            .foregroundColor: UIColor.gx_drakRed
+        ]
+        let tslNumberAttributed = NSAttributedString(string: tslMaxNumberText, attributes: tslMaxNumAttributes)
+        tslAttributedString.append(tslNumberAttributed)
+        self.tslNumberLabel.attributedText = tslAttributedString
+        let tslWidth = tslAttributedString.width()
         
-        self.tslNumberLabel.text = tslNumber
-        let tslWidth = usNumber.width(font: self.tslNumberLabel.font)
+        /// US
+        let usAttributedString = NSMutableAttributedString()
+        let usNumberText = String(format: "%d", usNumber)
+        let usNumAttributes: [NSAttributedString.Key : Any] = [
+            .font: UIFont.gx_boldFont(size: 13),
+            .foregroundColor: UIColor.gx_blue
+        ]
+        let usNumberAttributed = NSAttributedString(string: usNumberText, attributes: usNumAttributes)
+        usAttributedString.append(usNumberAttributed)
+        
+        let usMaxNumberText = String(format: "/%d", 20)
+        let usMaxNumAttributes: [NSAttributedString.Key : Any] = [
+            .font: UIFont.gx_font(size: 13),
+            .foregroundColor: UIColor.gx_blue
+        ]
+        let usMaxNumberAttributed = NSAttributedString(string: usMaxNumberText, attributes: usMaxNumAttributes)
+        usAttributedString.append(usMaxNumberAttributed)
+        self.usNumberLabel.attributedText = usAttributedString
+        let usWidth = usAttributedString.width()
         
         let width = max(usWidth, tslWidth)
         self.frame.size.width = width + 58
@@ -55,7 +89,6 @@ extension GXMarkerIconView {
             self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_selected")
             self.usNumberLabel.textColor = .white
             self.tslNumberLabel.textColor = .white
-            
         }
         else {
             self.backgroundColor = .white
