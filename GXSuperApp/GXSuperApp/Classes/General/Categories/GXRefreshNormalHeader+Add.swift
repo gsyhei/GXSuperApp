@@ -42,6 +42,6 @@ extension GXRefreshBaseFooter {
         self.setRefreshTitles("Pull up to load more", for: .pulling)
         self.setRefreshTitles("Release to load more", for: .will)
         self.setRefreshTitles("Loading...", for: .did)
-        self.setRefreshTitles("—— No more ——", for: .noMore)
+        self.setRefreshTitles("一 No more 一", for: .noMore)
     }
 }
