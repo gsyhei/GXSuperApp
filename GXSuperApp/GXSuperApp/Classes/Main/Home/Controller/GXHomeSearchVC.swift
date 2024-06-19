@@ -33,6 +33,11 @@ class GXHomeSearchVC: GXBaseViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.searchTF.resignFirstResponder()
+    }
+    
     override func loadView() {
         super.loadView()
         self.searchBar.hero.id = self.homeSearchVCHeroId
@@ -49,7 +54,7 @@ class GXHomeSearchVC: GXBaseViewController {
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
+        self.tableView.register(headerFooterViewType: GXHomeSearchHeader.self)
         self.tableView.register(cellType: GXHomeSearchResultCell.self)
         self.tableView.register(cellType: GXHomeSearchHistoryCell.self)
         self.tableView.register(cellType: GXHomeSearchAutocompleteCell.self)
@@ -61,16 +66,20 @@ class GXHomeSearchVC: GXBaseViewController {
             footer.updateRefreshTitles()
         }
         
+        (self.searchTF.rx.text <-> self.viewModel.searchWord).disposed(by: disposeBag)
         self.searchTF.delegate = self
-        (self.searchTF.rx.textInput <-> self.viewModel.searchWord).disposed(by: disposeBag)
-        self.searchTF.rx.text.orEmpty.throttle(.milliseconds(500), scheduler: MainScheduler.instance).subscribe (onNext: { [weak self] text in
-            guard let `self` = self else { return }
-            if text.count == 0 {
-                self.requestShowHistory()
-            } else {
-                self.requestAutocomplete()
-            }
-            XCGLogger.info("self.searchTF.rx.text.orEmpty = \(text)")
+        self.searchTF.rx.text.orEmpty.distinctUntilChanged()
+            .throttle(.milliseconds(100), scheduler: MainScheduler.instance)
+            .subscribe (onNext: { [weak self] text in
+                XCGLogger.info("self.searchTF.rx.text.orEmpty = \(text)")
+                guard let `self` = self else { return }
+                guard !self.viewModel.isSearchResult else { return }
+                if text.count == 0 {
+                    self.requestShowHistory()
+                } 
+                else {
+                    self.requestAutocomplete()
+                }
         }).disposed(by: disposeBag)
     }
     
@@ -98,8 +107,14 @@ class GXHomeSearchVC: GXBaseViewController {
         }
     }
     
-    func requestSearchByText() {
-        MBProgressHUD.showContentLoading()
+    func requestSearchByText(_ text: String? = nil) {
+        MBProgressHUD.showLoading()
+        self.viewModel.isSearchResult = true
+        if let text = text {
+            self.viewModel.searchWord.accept(text)
+            self.searchTF.sendActions(for: .valueChanged)
+        }
+        self.searchTF.resignFirstResponder()
         firstly {
             self.viewModel.requestSearchByText()
         }.done { results in
@@ -107,9 +122,11 @@ class GXHomeSearchVC: GXBaseViewController {
             self.tableView.backgroundColor = .white
             self.tableView.reloadData()
             self.tableView.gx_footer?.endRefreshing(isNoMore: true)
+            self.viewModel.isSearchResult = false
             MBProgressHUD.dismiss()
         }.catch { error in
             XCGLogger.info("error = \(error.localizedDescription)")
+            self.viewModel.isSearchResult = false
             MBProgressHUD.dismiss()
             MBProgressHUD.showInfo(text: error.localizedDescription)
         }
@@ -134,6 +151,10 @@ extension GXHomeSearchVC: UITableViewDataSource, UITableViewDelegate {
         switch self.viewModel.searchType {
         case .history:
             let cell: GXHomeSearchHistoryCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.action = {[weak self] text in
+                guard let `self` = self else { return }
+                self.requestSearchByText(text)
+            }
             return cell
         case .autocomplete:
             let cell: GXHomeSearchAutocompleteCell = tableView.dequeueReusableCell(for: indexPath)
@@ -174,14 +195,42 @@ extension GXHomeSearchVC: UITableViewDataSource, UITableViewDelegate {
             return 133
         }
     }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch self.viewModel.searchType {
+        case .history:
+            return 44
+        case .autocomplete:
+            return 0
+        case .result:
+            return 44
+        case .data:
+            return 0
+        }
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch self.viewModel.searchType {
+        case .history: 
+            let header = tableView.dequeueReusableHeaderFooterView(GXHomeSearchHeader.self)
+            header?.updateHeader(name: "History", iconName: "search_list_ic_history", isShowButton: true)
+            header?.deleteAction = {
+                XCGLogger.info("History delete clicked.")
+            }
+            return header
+        case .autocomplete: return nil
+        case .result:
+            let header = tableView.dequeueReusableHeaderFooterView(GXHomeSearchHeader.self)
+            header?.updateHeader(name: "Result", iconName: "search_list_ic_result", isShowButton: true)
+            return header
+        case .data: return nil
+        }
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch self.viewModel.searchType {
         case .history: break
         case .autocomplete:
             let model = self.viewModel.autocompleteList[indexPath.row]
-            self.searchTF.text = model.placeSuggestion?.attributedPrimaryText.string
-            self.requestSearchByText()
+            self.requestSearchByText(model.placeSuggestion?.attributedPrimaryText.string)
         case .result: break
         case .data: break
         }

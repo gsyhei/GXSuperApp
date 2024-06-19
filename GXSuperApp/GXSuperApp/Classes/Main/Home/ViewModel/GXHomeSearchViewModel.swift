@@ -22,6 +22,7 @@ class GXHomeSearchViewModel: GXBaseViewModel {
         /// 充电站数据
         case data
     }
+    var isSearchResult: Bool = false
     /// 活动名称搜素
     var searchWord = BehaviorRelay<String?>(value: nil)
     /// 当前搜索类型
@@ -51,6 +52,7 @@ extension GXHomeSearchViewModel {
                     seal.reject(error)
                 } 
                 else if let results = results, results.count > 0 {
+                    self.placeResults = []
                     self.autocompleteList = results
                     seal.fulfill(results)
                 }
@@ -79,6 +81,7 @@ extension GXHomeSearchViewModel {
                     seal.reject(error)
                 }
                 else if let results = results, results.count > 0 {
+                    self.autocompleteList = []
                     self.placeResults = results
                     seal.fulfill(results)
                 }

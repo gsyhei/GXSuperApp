@@ -32,15 +32,15 @@ extension MBProgressHUD {
         case waveBall //小球波浪运动 waveBall
     }
     
-    class func showLoading(text: String? = nil, style: Style = .waveBall, ballColor: UIColor = .gx_black, position: Position = .center, to view: UIView? = nil) {
+    class func showLoading(text: String? = nil, style: Style = .circle, ballColor: UIColor = .gx_black, position: Position = .center, to view: UIView? = nil) {
         let hud = MBProgressHUD.showHUD(to: view)
         switch style {
         case .system:
             hud?.mode = .indeterminate
         case .circle:
             hud?.mode = .customView
-            let frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-            hud?.customView = MBProgressHUD.CircleHUDView(frame: frame)
+            let frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+            hud?.customView = MBProgressHUD.CircleHUDView(frame: frame, lineWidth: 3.0)
         case .waveBall:
             hud?.bezelView.color = .clear
             hud?.mode = .customView
@@ -53,8 +53,6 @@ extension MBProgressHUD {
 
     class func showContentLoading(text: String? = nil, position: Position = .center, to view: UIView? = nil) {
         let hud = MBProgressHUD.showHUD(to: view)
-        hud?.contentColor = .gx_black
-        hud?.bezelView.color = .clear
         hud?.setPosition(position)
         hud?.mode = .indeterminate
         hud?.label.text = text
@@ -153,15 +151,15 @@ extension MBProgressHUD {
     }
 
     class CircleHUDView: UIView {
-        override init(frame: CGRect) {
+        required init(frame: CGRect, lineWidth: CGFloat) {
             super.init(frame: frame)
-            self.createSubviews()
+            self.createSubviews(lineWidth: lineWidth)
         }
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
-        func createSubviews() {
-            let lineWidth: CGFloat = 2
+        func createSubviews(lineWidth: CGFloat = 2) {
+            let lineWidth: CGFloat = lineWidth
             let lineMargin: CGFloat = 0
             let arcCenter = CGPoint(x: self.bounds.width / 2 - lineMargin, y: self.bounds.height / 2 - lineMargin)
             let smoothedPath = UIBezierPath(

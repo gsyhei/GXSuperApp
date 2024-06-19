@@ -12,13 +12,14 @@ import CollectionKit
 class GXHomeSearchHistoryCell: UITableViewCell, Reusable {
     private var font = UIFont.gx_font(size: 14)
     var dataSource = ArrayDataSource<String>()
-    
+    var action: GXActionBlockItem<String>?
+
     private lazy var collectionView: CollectionView = {
         let viewSource = ClosureViewSource(viewUpdater: { (view: UIButton, data: String, index: Int) in
             view.titleLabel?.font = self.font
             view.setTitle(data, for: .normal)
             view.setTitleColor(.gx_drakGray, for: .normal)
-            view.setTitleColor(.white, for: .selected)
+            view.setTitleColor(.white, for: .highlighted)
             view.setBackgroundColor(.gx_background, for: .normal)
             view.layer.masksToBounds = true
             view.layer.cornerRadius = 16.0
@@ -63,6 +64,6 @@ class GXHomeSearchHistoryCell: UITableViewCell, Reusable {
 extension GXHomeSearchHistoryCell {
     @objc func buttonClicked(_ sender: UIButton) {
         guard let title = sender.title(for: .normal) else { return }
-        
+        self.action?(title)
     }
 }
