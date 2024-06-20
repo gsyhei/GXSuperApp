@@ -22,6 +22,8 @@
 		339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398898F2C182CD800EA489A /* GXSelectTagsView.swift */; };
 		33A588DA2C24015100451FE1 /* GXHomeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */; };
 		33A588DC2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */; };
+		33A588E42C241CF900451FE1 /* GXHomeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */; };
+		33A588E52C241CF900451FE1 /* GXHomeDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A588E32C241CF900451FE1 /* GXHomeDetailVC.xib */; };
 		33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */; };
 		33B834B92C233C16003BEC24 /* GXHomeSearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */; };
 		33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B52C1414CE0089431E /* GXLocationManager.swift */; };
@@ -33,13 +35,6 @@
 		33CB38212C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB381F2C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift */; };
 		33CB38222C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38202C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib */; };
 		33CB38242C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB38232C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift */; };
-		33CB382C2C20CADE005A0227 /* Mukta-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38252C20CADE005A0227 /* Mukta-Medium.ttf */; };
-		33CB382D2C20CADE005A0227 /* Mukta-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38262C20CADE005A0227 /* Mukta-Regular.ttf */; };
-		33CB382E2C20CADE005A0227 /* Mukta-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38272C20CADE005A0227 /* Mukta-ExtraLight.ttf */; };
-		33CB382F2C20CADF005A0227 /* Mukta-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38282C20CADE005A0227 /* Mukta-Bold.ttf */; };
-		33CB38302C20CADF005A0227 /* Mukta-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38292C20CADE005A0227 /* Mukta-Light.ttf */; };
-		33CB38312C20CADF005A0227 /* Mukta-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB382A2C20CADE005A0227 /* Mukta-SemiBold.ttf */; };
-		33CB38322C20CADF005A0227 /* Mukta-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33CB382B2C20CADE005A0227 /* Mukta-ExtraBold.ttf */; };
 		33D1109E2C1D8DFA006331EC /* GXHomeSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D1109D2C1D8DFA006331EC /* GXHomeSearchVC.xib */; };
 		33D1109F2C1D8DFA006331EC /* GXHomeSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1109C2C1D8DFA006331EC /* GXHomeSearchVC.swift */; };
 		33D9DFE22C0EFA0700A282D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */; };
@@ -118,6 +113,8 @@
 		3398898F2C182CD800EA489A /* GXSelectTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXSelectTagsView.swift; sourceTree = "<group>"; };
 		33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeFilterCell.swift; sourceTree = "<group>"; };
 		33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCollectionViewAlignmentLeftLayout.swift; sourceTree = "<group>"; };
+		33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVC.swift; sourceTree = "<group>"; };
+		33A588E32C241CF900451FE1 /* GXHomeDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailVC.xib; sourceTree = "<group>"; };
 		33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXMarkerIconView.xib; sourceTree = "<group>"; };
 		33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchHeader.swift; sourceTree = "<group>"; };
 		33BF81B52C1414CE0089431E /* GXLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLocationManager.swift; sourceTree = "<group>"; };
@@ -129,13 +126,6 @@
 		33CB381F2C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchAutocompleteCell.swift; sourceTree = "<group>"; };
 		33CB38202C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchAutocompleteCell.xib; sourceTree = "<group>"; };
 		33CB38232C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchHistoryCell.swift; sourceTree = "<group>"; };
-		33CB38252C20CADE005A0227 /* Mukta-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-Medium.ttf"; sourceTree = "<group>"; };
-		33CB38262C20CADE005A0227 /* Mukta-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-Regular.ttf"; sourceTree = "<group>"; };
-		33CB38272C20CADE005A0227 /* Mukta-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-ExtraLight.ttf"; sourceTree = "<group>"; };
-		33CB38282C20CADE005A0227 /* Mukta-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-Bold.ttf"; sourceTree = "<group>"; };
-		33CB38292C20CADE005A0227 /* Mukta-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-Light.ttf"; sourceTree = "<group>"; };
-		33CB382A2C20CADE005A0227 /* Mukta-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-SemiBold.ttf"; sourceTree = "<group>"; };
-		33CB382B2C20CADE005A0227 /* Mukta-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mukta-ExtraBold.ttf"; sourceTree = "<group>"; };
 		33D1109C2C1D8DFA006331EC /* GXHomeSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchVC.swift; sourceTree = "<group>"; };
 		33D1109D2C1D8DFA006331EC /* GXHomeSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchVC.xib; sourceTree = "<group>"; };
 		33D9DFDE2C0EFA0700A282D5 /* GXSuperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GXSuperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,6 +270,47 @@
 				33396A1B2C11E450000A1944 /* Controller */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		33A588DD2C241CBA00451FE1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */,
+				33A588E32C241CF900451FE1 /* GXHomeDetailVC.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		33A588DE2C241CBA00451FE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		33A588DF2C241CBA00451FE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		33A588E02C241CBA00451FE1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		33A588E12C241CBA00451FE1 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				33A588DE2C241CBA00451FE1 /* Model */,
+				33A588DF2C241CBA00451FE1 /* View */,
+				33A588E02C241CBA00451FE1 /* ViewModel */,
+				33A588DD2C241CBA00451FE1 /* Controller */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		33D9DFD52C0EFA0700A282D5 = {
@@ -454,6 +485,7 @@
 			children = (
 				33396A172C1172E1000A1944 /* Tabbar */,
 				33396A1F2C11E450000A1944 /* Home */,
+				33A588E12C241CBA00451FE1 /* Detail */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -461,13 +493,6 @@
 		33EC55A52C101BA100D4CCD0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				33CB38282C20CADE005A0227 /* Mukta-Bold.ttf */,
-				33CB382B2C20CADE005A0227 /* Mukta-ExtraBold.ttf */,
-				33CB38272C20CADE005A0227 /* Mukta-ExtraLight.ttf */,
-				33CB38292C20CADE005A0227 /* Mukta-Light.ttf */,
-				33CB38252C20CADE005A0227 /* Mukta-Medium.ttf */,
-				33CB38262C20CADE005A0227 /* Mukta-Regular.ttf */,
-				33CB382A2C20CADE005A0227 /* Mukta-SemiBold.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -573,23 +598,17 @@
 			files = (
 				33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */,
 				33D1109E2C1D8DFA006331EC /* GXHomeSearchVC.xib in Resources */,
-				33CB382D2C20CADE005A0227 /* Mukta-Regular.ttf in Resources */,
 				33EC57942C1021E300D4CCD0 /* GXApproveFailInfoView.xib in Resources */,
 				33EC55BC2C101BA100D4CCD0 /* MBProgressHUD.bundle in Resources */,
-				33CB382C2C20CADE005A0227 /* Mukta-Medium.ttf in Resources */,
 				33396A232C11E530000A1944 /* GXHomeVC.xib in Resources */,
+				33A588E52C241CF900451FE1 /* GXHomeDetailVC.xib in Resources */,
 				33D9DFEE2C0EFA0900A282D5 /* Base in Resources */,
-				33CB38312C20CADF005A0227 /* Mukta-SemiBold.ttf in Resources */,
 				33EC55F92C101BA100D4CCD0 /* GXQRCodeReaderVC.xib in Resources */,
 				33BF81C02C14AB7F0089431E /* GXSelectedMarkerInfoView.xib in Resources */,
-				33CB382F2C20CADF005A0227 /* Mukta-Bold.ttf in Resources */,
 				33CB38222C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib in Resources */,
 				33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */,
-				33CB38302C20CADF005A0227 /* Mukta-Light.ttf in Resources */,
 				33953F682C208B240049C76C /* GXHomeSearchResultCell.xib in Resources */,
-				33CB382E2C20CADE005A0227 /* Mukta-ExtraLight.ttf in Resources */,
 				33BF81BD2C14AB720089431E /* GXHomeMarkerCell.xib in Resources */,
-				33CB38322C20CADF005A0227 /* Mukta-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -720,6 +739,7 @@
 				336B2C2A2C1B29A600A752C7 /* GXCustomMarker.swift in Sources */,
 				33EC55FD2C101BA100D4CCD0 /* GXTextView.swift in Sources */,
 				33EC55CA2C101BA100D4CCD0 /* GXNotificationName.swift in Sources */,
+				33A588E42C241CF900451FE1 /* GXHomeDetailVC.swift in Sources */,
 				33EC55CD2C101BA100D4CCD0 /* GXUtil.swift in Sources */,
 				33EC55C52C101BA100D4CCD0 /* UIImage+Add.swift in Sources */,
 				33EC55B52C101BA100D4CCD0 /* GXBaseWarnViewController.swift in Sources */,

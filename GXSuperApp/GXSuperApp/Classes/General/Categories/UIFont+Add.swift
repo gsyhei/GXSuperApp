@@ -32,15 +32,15 @@ extension UIFont {
     }
 
     class func gx_font(size fontSize: CGFloat) -> UIFont {
-        return UIFont(name: "Mukta-Light", size: fontSize) ?? .systemFont(ofSize: fontSize)
+        return UIFont(name: "Mukta Mahee-Light", size: fontSize) ?? .systemFont(ofSize: fontSize)
     }
 
     class func gx_boldFont(size fontSize: CGFloat) -> UIFont {
-        return UIFont(name: "Mukta-Bold", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
+        return UIFont(name: "Mukta Mahee-Bold", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
     }
 
-    class func gx_semiBoldFont(size fontSize: CGFloat) -> UIFont {
-        return UIFont(name: "Mukta-SemiBold", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
+    class func gx_regularFont(size fontSize: CGFloat) -> UIFont {
+        return UIFont(name: "Mukta Mahee-Regular", size: fontSize) ?? .boldSystemFont(ofSize: fontSize)
     }
 
     class func gx_PFSCfont(size fontSize: CGFloat, type: PingFangSCType) -> UIFont {

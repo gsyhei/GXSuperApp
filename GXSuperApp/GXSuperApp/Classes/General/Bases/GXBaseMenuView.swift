@@ -12,7 +12,7 @@ class GXBaseMenuView: UIView {
     private(set) lazy var titleLabel: UILabel = {
         return UILabel().then {
             $0.textColor = .gx_textBlack
-            $0.font = .gx_semiBoldFont(size: 18)
+            $0.font = .gx_boldFont(size: 18)
             $0.text = "Filter"
         }
     }()

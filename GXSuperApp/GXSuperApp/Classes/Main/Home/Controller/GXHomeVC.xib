@@ -8,14 +8,6 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Mukta-Light.ttf">
-            <string>Mukta-Light</string>
-        </array>
-        <array key="Mukta-SemiBold.ttf">
-            <string>Mukta-SemiBold</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXHomeVC" customModule="GXSuperApp" customModuleProvider="target">
             <connections>
@@ -72,7 +64,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="32" id="m1x-Wt-3nC"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Mukta-Light" family="Mukta" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="16"/>
                             <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="-10" maxY="0.0"/>
                             <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="-8" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -144,8 +136,8 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ongoing order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdg-rl-MVj">
-                            <rect key="frame" x="38" y="5.6666666666666288" width="95" height="25"/>
-                            <fontDescription key="fontDescription" name="Mukta-SemiBold" family="Mukta" pointSize="15"/>
+                            <rect key="frame" x="38" y="5.6666666666666288" width="96" height="25"/>
+                            <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>

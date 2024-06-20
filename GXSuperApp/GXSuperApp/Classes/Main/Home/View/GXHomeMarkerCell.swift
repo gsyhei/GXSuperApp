@@ -27,6 +27,7 @@ class GXHomeMarkerCell: UITableViewCell, NibReusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = .gx_background
         self.selectionStyle = .none
         
         let gradientColors: [UIColor] = [.gx_green, UIColor(hexString: "#278CFF")]

@@ -7,16 +7,6 @@
 		<string>googlechromes</string>
 		<string>comgooglemaps</string>
 	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Mukta-Bold.ttf</string>
-		<string>Mukta-Light.ttf</string>
-		<string>Mukta-Regular.ttf</string>
-		<string>Mukta-Medium.ttf</string>
-		<string>Mukta-SemiBold.ttf</string>
-		<string>Mukta-ExtraBold.ttf</string>
-		<string>Mukta-ExtraLight.ttf</string>
-	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

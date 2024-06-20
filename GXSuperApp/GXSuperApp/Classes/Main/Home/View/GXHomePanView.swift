@@ -24,7 +24,8 @@ class GXHomePanView: UIView {
     private var isMoveDirUp: Bool = false
     private var panGesture: UIPanGestureRecognizer?
     var changePositionAction: GXActionBlockItem<PanPosition>?
-    
+    var didSelectRowAtAction: GXActionBlockItem<IndexPath>?
+
     lazy var arrowButton: UIButton = {
         return UIButton(type: .custom).then {
             $0.isUserInteractionEnabled = false
@@ -149,7 +150,7 @@ extension GXHomePanView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         XCGLogger.info("indexPath = \(indexPath)")
-
+        self.didSelectRowAtAction?(indexPath)
     }
 }
 

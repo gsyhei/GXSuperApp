@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nbAppearance.configureWithTransparentBackground()
         nbAppearance.backgroundColor = UIColor.white
         nbAppearance.shadowColor = .gx_lightGray
-        nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_semiBoldFont(size: 19)]
+        nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 19)]
         let bbiAppearance = UIBarButtonItemAppearance(style: .plain)
         bbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]
         bbiAppearance.highlighted.titleTextAttributes = [.foregroundColor: UIColor.gx_gray, .font: UIFont.gx_boldFont(size: 15)]
@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let nbAppearance = UINavigationBarAppearance()
             nbAppearance.configureWithTransparentBackground()
             nbAppearance.backgroundColor = UIColor.white
-            nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_semiBoldFont(size: 19)]
+            nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 19)]
             let bbiAppearance = UIBarButtonItemAppearance(style: .plain)
             bbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]
             bbiAppearance.highlighted.titleTextAttributes = [.foregroundColor: UIColor.gx_gray, .font: UIFont.gx_boldFont(size: 15)]
@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearance.shadowColor = .gx_lightGray
         let tbiAppearance = UITabBarItemAppearance(style: .stacked)
         tbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_drakGray, .font: UIFont.gx_font(size: 13)]
-        tbiAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.gx_green, .font: UIFont.gx_semiBoldFont(size: 13)]
+        tbiAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.gx_green, .font: UIFont.gx_boldFont(size: 13)]
         tbiAppearance.normal.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
         tbiAppearance.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
         appearance.stackedLayoutAppearance = tbiAppearance
@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appearance.backgroundColor = UIColor.white
             let tbiAppearance = UITabBarItemAppearance(style: .stacked)
             tbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_drakGray, .font: UIFont.gx_font(size: 13)]
-            tbiAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.gx_green, .font: UIFont.gx_semiBoldFont(size: 13)]
+            tbiAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.gx_green, .font: UIFont.gx_boldFont(size: 13)]
             tbiAppearance.normal.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -2)
             tbiAppearance.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -2)
             appearance.stackedLayoutAppearance = tbiAppearance
@@ -92,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.setWindowRootViewController(to: vc)
         // 开始监测网络状态
         // GXServiceManager.startListening()
+        UIFont.gx_printAllFonts()
         
         return true
     }

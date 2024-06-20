@@ -122,6 +122,12 @@ class GXHomeVC: GXBaseViewController {
                 }
             }
         }
+        self.panView.didSelectRowAtAction = {[weak self] indexPath in
+            guard let `self` = self else { return }
+            let vc = GXHomeDetailVC.xibViewController()
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
         GXLocationManager.shared.requestGeocodeCompletion {[weak self] (isAuth, cityName, location) in
             guard let `self` = self else { return }

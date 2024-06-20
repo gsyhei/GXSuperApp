@@ -50,7 +50,7 @@ class GXAlertView: UIView {
         return UILabel().then {
             $0.textAlignment = .center
             $0.textColor = .gx_textBlack
-            $0.font = .gx_semiBoldFont(size: 19)
+            $0.font = .gx_boldFont(size: 19)
             $0.numberOfLines = 0
         }
     }()

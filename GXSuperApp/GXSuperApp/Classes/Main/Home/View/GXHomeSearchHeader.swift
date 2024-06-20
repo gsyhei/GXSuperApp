@@ -25,7 +25,7 @@ class GXHomeSearchHeader: UITableViewHeaderFooterView, Reusable {
     private lazy var nameLabel: UILabel = {
         return UILabel().then {
             $0.textColor = .gx_textBlack
-            $0.font = .gx_semiBoldFont(size: 18)
+            $0.font = .gx_boldFont(size: 18)
         }
     }()
     var deleteAction: GXActionBlock?
