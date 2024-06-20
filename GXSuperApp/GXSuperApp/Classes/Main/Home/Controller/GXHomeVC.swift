@@ -257,7 +257,9 @@ private extension GXHomeVC {
     }
     
     @IBAction func filterButtonClicked(_ sender: Any?) {
-        
+        let height: CGFloat = SCREEN_HEIGHT - self.view.safeAreaInsets.top - 150
+        let menu = GXHomeFilterMenu(height: height)
+        menu.show(style: .sheetBottom, usingSpring: true)
     }
     
     @IBAction func myLocationButtonClicked(_ sender: Any?) {

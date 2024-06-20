@@ -13,11 +13,15 @@
 		33396A252C121A60000A1944 /* GXHomePanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33396A242C121A60000A1944 /* GXHomePanView.swift */; };
 		3340F7612C18498900B97923 /* GXRoundedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7602C18498900B97923 /* GXRoundedInView.swift */; };
 		3340F7632C18861600B97923 /* GXTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7622C18861600B97923 /* GXTabBar.swift */; };
+		336477A92C2371530013AAF1 /* GXBaseMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336477A82C2371530013AAF1 /* GXBaseMenuView.swift */; };
+		336477AB2C2379690013AAF1 /* GXHomeFilterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336477AA2C2379690013AAF1 /* GXHomeFilterMenu.swift */; };
 		336B2C2A2C1B29A600A752C7 /* GXCustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336B2C292C1B29A600A752C7 /* GXCustomMarker.swift */; };
 		33953F642C20846E0049C76C /* GXHomeSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33953F632C20846E0049C76C /* GXHomeSearchViewModel.swift */; };
 		33953F672C208B240049C76C /* GXHomeSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33953F652C208B240049C76C /* GXHomeSearchResultCell.swift */; };
 		33953F682C208B240049C76C /* GXHomeSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33953F662C208B240049C76C /* GXHomeSearchResultCell.xib */; };
 		339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398898F2C182CD800EA489A /* GXSelectTagsView.swift */; };
+		33A588DA2C24015100451FE1 /* GXHomeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */; };
+		33A588DC2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */; };
 		33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */; };
 		33B834B92C233C16003BEC24 /* GXHomeSearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */; };
 		33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B52C1414CE0089431E /* GXLocationManager.swift */; };
@@ -105,11 +109,15 @@
 		33396A262C123170000A1944 /* GXSuperApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GXSuperApp.entitlements; sourceTree = "<group>"; };
 		3340F7602C18498900B97923 /* GXRoundedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXRoundedInView.swift; sourceTree = "<group>"; };
 		3340F7622C18861600B97923 /* GXTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXTabBar.swift; sourceTree = "<group>"; };
+		336477A82C2371530013AAF1 /* GXBaseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXBaseMenuView.swift; sourceTree = "<group>"; };
+		336477AA2C2379690013AAF1 /* GXHomeFilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeFilterMenu.swift; sourceTree = "<group>"; };
 		336B2C292C1B29A600A752C7 /* GXCustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCustomMarker.swift; sourceTree = "<group>"; };
 		33953F632C20846E0049C76C /* GXHomeSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchViewModel.swift; sourceTree = "<group>"; };
 		33953F652C208B240049C76C /* GXHomeSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchResultCell.swift; sourceTree = "<group>"; };
 		33953F662C208B240049C76C /* GXHomeSearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchResultCell.xib; sourceTree = "<group>"; };
 		3398898F2C182CD800EA489A /* GXSelectTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXSelectTagsView.swift; sourceTree = "<group>"; };
+		33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeFilterCell.swift; sourceTree = "<group>"; };
+		33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCollectionViewAlignmentLeftLayout.swift; sourceTree = "<group>"; };
 		33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXMarkerIconView.xib; sourceTree = "<group>"; };
 		33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchHeader.swift; sourceTree = "<group>"; };
 		33BF81B52C1414CE0089431E /* GXLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLocationManager.swift; sourceTree = "<group>"; };
@@ -249,6 +257,8 @@
 				33953F662C208B240049C76C /* GXHomeSearchResultCell.xib */,
 				33CB381F2C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift */,
 				33CB38202C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib */,
+				33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */,
+				336477AA2C2379690013AAF1 /* GXHomeFilterMenu.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -321,6 +331,8 @@
 				33EC53852C101BA100D4CCD0 /* GXLinkTextView.swift */,
 				33EC53862C101BA100D4CCD0 /* GXSearchController.swift */,
 				33EC53872C101BA100D4CCD0 /* GXSlideTableView.swift */,
+				336477A82C2371530013AAF1 /* GXBaseMenuView.swift */,
+				33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */,
 			);
 			path = Bases;
 			sourceTree = "<group>";
@@ -649,6 +661,7 @@
 			files = (
 				33953F642C20846E0049C76C /* GXHomeSearchViewModel.swift in Sources */,
 				33EC55BF2C101BA100D4CCD0 /* PhotoAsset+Add.swift in Sources */,
+				33A588DC2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift in Sources */,
 				33BF81BA2C14A86D0089431E /* GXSelectedMarkerInfoView.swift in Sources */,
 				33EC55B42C101BA100D4CCD0 /* GXBaseViewModel.swift in Sources */,
 				33EC55C82C101BA100D4CCD0 /* GXApiDefine.swift in Sources */,
@@ -662,12 +675,14 @@
 				33EC55F32C101BA100D4CCD0 /* GXAddImagesView.swift in Sources */,
 				33EC55F72C101BA100D4CCD0 /* GXMarqueeTextView.swift in Sources */,
 				33D9DFE62C0EFA0700A282D5 /* ViewController.swift in Sources */,
+				336477A92C2371530013AAF1 /* GXBaseMenuView.swift in Sources */,
 				33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */,
 				33EC55FC2C101BA100D4CCD0 /* GXTagsView.swift in Sources */,
 				33BF81BE2C14AB720089431E /* GXHomeMarkerCell.swift in Sources */,
 				33EC55C92C101BA100D4CCD0 /* GXDefine.swift in Sources */,
 				33EC578F2C101BA200D4CCD0 /* GXMoyaProvider.swift in Sources */,
 				33EC55B92C101BA100D4CCD0 /* GXSlideTableView.swift in Sources */,
+				336477AB2C2379690013AAF1 /* GXHomeFilterMenu.swift in Sources */,
 				33EC55C42C101BA100D4CCD0 /* UIFont+Add.swift in Sources */,
 				33EC55B62C101BA100D4CCD0 /* GXConfigTVC.swift in Sources */,
 				33D9DFE22C0EFA0700A282D5 /* AppDelegate.swift in Sources */,
@@ -708,6 +723,7 @@
 				33EC55CD2C101BA100D4CCD0 /* GXUtil.swift in Sources */,
 				33EC55C52C101BA100D4CCD0 /* UIImage+Add.swift in Sources */,
 				33EC55B52C101BA100D4CCD0 /* GXBaseWarnViewController.swift in Sources */,
+				33A588DA2C24015100451FE1 /* GXHomeFilterCell.swift in Sources */,
 				33EC55F82C101BA100D4CCD0 /* GXQRCodeReaderVC.swift in Sources */,
 				33EC57932C1021E300D4CCD0 /* GXApproveFailInfoView.swift in Sources */,
 				33EC55B72C101BA100D4CCD0 /* GXLinkTextView.swift in Sources */,
