@@ -4,6 +4,7 @@
 <dict>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>iosamap</string>
 		<string>googlechromes</string>
 		<string>comgooglemaps</string>
 	</array>
