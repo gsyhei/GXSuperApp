@@ -33,12 +33,51 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2B9-RO-QeB">
-                                <rect key="frame" x="240" y="14" width="49" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2B9-RO-QeB">
+                                <rect key="frame" x="221" y="12" width="48" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="eLX-d7-Z8X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="14"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="details_list_ic_explain"/>
+                                <state key="normal" title="Cost" image="details_list_ic_explain">
+                                    <color key="titleColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFy-Uy-uEx">
+                                <rect key="frame" x="281" y="12" width="58" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="qxW-ee-uq3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Safety" image="details_list_ic_explain">
+                                    <color key="titleColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LzP-pV-TWT">
+                                <rect key="frame" x="0.0" y="52" width="351" height="156"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEi-DW-Ue2">
+                                <rect key="frame" x="12" y="208" width="327" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Hgz-4Q-01c" userLabel="height = 44"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="All time slots" image="com_list_ic_arrow">
+                                    <color key="titleColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -47,7 +86,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fJz-ZH-KGR" firstAttribute="leading" secondItem="Jog-LF-f9f" secondAttribute="leading" constant="12" id="0VG-Yi-TCf"/>
+                            <constraint firstItem="oFy-Uy-uEx" firstAttribute="leading" secondItem="2B9-RO-QeB" secondAttribute="trailing" constant="12" id="9Bx-Nd-1b6"/>
+                            <constraint firstItem="aEi-DW-Ue2" firstAttribute="leading" secondItem="Jog-LF-f9f" secondAttribute="leading" constant="12" id="FXR-Dl-9kg"/>
+                            <constraint firstAttribute="trailing" secondItem="aEi-DW-Ue2" secondAttribute="trailing" constant="12" id="KMx-Y9-3hm"/>
+                            <constraint firstItem="2B9-RO-QeB" firstAttribute="centerY" secondItem="fJz-ZH-KGR" secondAttribute="centerY" id="RHi-4B-Bhy"/>
+                            <constraint firstItem="LzP-pV-TWT" firstAttribute="leading" secondItem="Jog-LF-f9f" secondAttribute="leading" id="b8D-9E-fsx"/>
                             <constraint firstItem="fJz-ZH-KGR" firstAttribute="top" secondItem="Jog-LF-f9f" secondAttribute="top" constant="13" id="cBj-bw-JLO"/>
+                            <constraint firstAttribute="trailing" secondItem="oFy-Uy-uEx" secondAttribute="trailing" constant="12" id="gFb-wA-Ulz"/>
+                            <constraint firstItem="aEi-DW-Ue2" firstAttribute="top" secondItem="LzP-pV-TWT" secondAttribute="bottom" id="glq-H8-pF9"/>
+                            <constraint firstAttribute="bottom" secondItem="aEi-DW-Ue2" secondAttribute="bottom" id="jeJ-Kk-iGw"/>
+                            <constraint firstItem="LzP-pV-TWT" firstAttribute="top" secondItem="Jog-LF-f9f" secondAttribute="top" constant="52" id="nBa-9C-FdO"/>
+                            <constraint firstAttribute="trailing" secondItem="LzP-pV-TWT" secondAttribute="trailing" id="ohd-F0-gLo"/>
+                            <constraint firstAttribute="height" constant="252" id="rB8-gd-LmJ"/>
+                            <constraint firstItem="oFy-Uy-uEx" firstAttribute="centerY" secondItem="fJz-ZH-KGR" secondAttribute="centerY" id="th7-lk-IvT"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
@@ -73,10 +124,18 @@
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="allTimeButton" destination="aEi-DW-Ue2" id="b6O-yL-pV6"/>
+                <outlet property="containerView" destination="Jog-LF-f9f" id="tGa-ci-oTa"/>
+                <outlet property="costButton" destination="2B9-RO-QeB" id="jnb-mi-Jwy"/>
+                <outlet property="safetyButton" destination="oFy-Uy-uEx" id="8Aa-ln-n8e"/>
+                <outlet property="tableView" destination="LzP-pV-TWT" id="LpQ-mc-uzf"/>
+            </connections>
             <point key="canvasLocation" x="255.72519083969465" y="38.732394366197184"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="com_list_ic_arrow" width="7" height="13"/>
         <image name="details_list_ic_explain" width="14" height="14"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
