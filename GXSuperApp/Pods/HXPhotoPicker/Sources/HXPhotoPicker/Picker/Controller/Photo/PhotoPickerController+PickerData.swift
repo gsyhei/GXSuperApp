@@ -9,6 +9,10 @@ import UIKit
 import Photos
 
 extension PhotoPickerController: PhotoPickerDataDelegate {
+    public func pickerData(_ pickerData: PhotoPickerData, canSelectAsset photoAsset: PhotoAsset) -> Bool {
+        pickerDelegate?.pickerController(self, canSelectAsset: photoAsset) ?? true
+    }
+    
     public func pickerData(_ pickerData: PhotoPickerData, shouldSelectedAsset photoAsset: PhotoAsset, at index: Int) -> Bool {
         pickerDelegate?.pickerController(self, shouldSelectedAsset: photoAsset, atIndex: index) ?? true
     }
@@ -30,7 +34,12 @@ extension PhotoPickerController: PhotoPickerDataDelegate {
     }
     
     public func pickerData(_ pickerData: PhotoPickerData, removeSelectedAssetWhenRemovingAssets photoAssets: [PhotoAsset]) {
-        previewViewController?.removeSelectedAssetWhenRemovingAssets(photoAssets)
+        if let presentedViewController = presentedViewController as? PhotoPickerController,
+           let previewViewController = presentedViewController.previewViewController {
+            previewViewController.removeSelectedAssetWhenRemovingAssets(photoAssets)
+        }else {
+            previewViewController?.removeSelectedAssetWhenRemovingAssets(photoAssets)
+        }
     }
 }
 
@@ -44,7 +53,7 @@ extension PhotoPickerController: PhotoFetchDataDelegate {
     }
     
     public func fetchData(fetchCameraAssetCollectionCompletion fetchData: PhotoFetchData) {
-        ProgressHUD.hide(forView: view)
+        PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: view)
         switch config.albumShowMode {
         case .normal:
             photoAlbumViewController?.selectedAssetCollection = fetchData.cameraAssetCollection
@@ -55,6 +64,10 @@ extension PhotoPickerController: PhotoFetchDataDelegate {
             pushViewController(vc, animated: false)
         default:
             pickerViewController?.updateAssetCollection(fetchData.cameraAssetCollection, isShow: false)
+            if let assetCollection = fetchData.cameraAssetCollection {
+                pickerViewController?.updateAssetCollections([assetCollection])
+            }
+            fetchData.fetchAssetCollections()
         }
         if let splitViewController = splitViewController as? PhotoSplitViewController,
            let collection = fetchData.cameraAssetCollection {
@@ -71,10 +84,10 @@ extension PhotoPickerController: PhotoFetchDataDelegate {
     
     public func fetchData(fetchAssetCollectionsCompletion fetchData: PhotoFetchData) {
         isFetchAssetCollection = false
-        ProgressHUD.hide(forView: view)
+        PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: view)
         switch config.albumShowMode {
         case .normal:
-            ProgressHUD.hide(forView: photoAlbumViewController?.view)
+            PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: photoAlbumViewController?.view)
             photoAlbumViewController?.assetCollections = fetchData.assetCollections
             photoAlbumViewController?.reloadData()
         default:

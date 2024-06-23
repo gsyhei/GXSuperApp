@@ -33,7 +33,6 @@ extension EditorViewController: EditorViewDelegate {
                 checkSelectedTool()
                 hideMusicView()
                 showToolsView()
-                showChangeButton()
                 return
             default:
                 break
@@ -41,10 +40,8 @@ extension EditorViewController: EditorViewDelegate {
         }
         if isToolsDisplay {
             hideToolsView()
-            hideChangeButton()
         }else {
             showToolsView()
-            showChangeButton()
         }
         isToolsDisplay = !isToolsDisplay
     }
@@ -202,6 +199,10 @@ extension EditorViewController: EditorViewDelegate {
     public func editorView(_ editorView: EditorView, videoDidPlayAt time: CMTime) {
         videoControlView.isPlaying = true
         startPlayVideo()
+        if videoCoverView != nil {
+            videoCoverView?.removeFromSuperview()
+            videoCoverView = nil
+        }
     }
     /// 视频暂停播放
     public func editorView(_ editorView: EditorView, videoDidPauseAt time: CMTime) {

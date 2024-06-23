@@ -203,15 +203,10 @@ extension PhotoPickerView: UICollectionViewDelegate {
         if isCameraCell {
             #if !targetEnvironment(macCatalyst)
             if !UIImagePickerController.isSourceTypeAvailable(.camera) {
-                ProgressHUD.showWarning(
-                    addedTo: UIApplication.shared.keyWindow,
-                    text: "相机不可用!".localized,
-                    animated: true,
-                    delayHide: 1.5
-                )
+                PhotoManager.HUDView.showInfo(with: .textPhotoList.cameraUnavailableHudTitle.text, delay: 1.5, animated: true, addedTo: UIApplication.shared.keyWindow)
                 return
             }
-            AssetManager.requestCameraAccess { (granted) in
+            AssetPermissionsUtil.requestCameraAccess { (granted) in
                 if granted {
                     self.presentCameraViewController()
                 }else {
@@ -378,7 +373,7 @@ extension PhotoPickerView: UICollectionViewDelegate {
         let isSourceTypeAvailable: Bool
         #if !targetEnvironment(macCatalyst)
         isCameraCell = sCell is PickerCameraViewCell
-        isAuthorized = AssetManager.cameraAuthorizationStatus() == .authorized
+        isAuthorized = AssetPermissionsUtil.cameraAuthorizationStatus == .authorized
         isSourceTypeAvailable = UIImagePickerController.isSourceTypeAvailable(.camera)
         #else
         isCameraCell = false
@@ -427,11 +422,11 @@ extension PhotoPickerView: UICollectionViewDelegate {
                 let image: UIImage?
                 let attributes: UIMenuElement.Attributes
                 if photoAsset.isSelected {
-                    title = "取消选择".localized
+                    title = .textPhotoList.hapticTouchDeselectedTitle.text
                     image = UIImage(systemName: "minus.circle")
                     attributes = [.destructive]
                 }else {
-                    title = "选择".localized
+                    title = .textPhotoList.hapticTouchSelectedTitle.text
                     image = UIImage(systemName: "checkmark.circle")
                     attributes = []
                 }
@@ -457,7 +452,7 @@ extension PhotoPickerView: UICollectionViewDelegate {
             }
             if self.manager.config.editorOptions.contains(options) {
                 let edit = UIAction(
-                    title: "编辑".localized,
+                    title: .textPhotoList.hapticTouchEditTitle.text,
                     image: UIImage(systemName: "slider.horizontal.3")
                 ) { _ in
                     self.openEditor(

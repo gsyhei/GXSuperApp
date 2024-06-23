@@ -38,6 +38,8 @@ open class PhotoFetchData {
     let assetCollectionsQueue: OperationQueue
     let assetsQueue: OperationQueue
     
+    public var isFetchCamera: Bool = false
+    
     /// fetch Assets 时的选项配置
     public var options: PHFetchOptions = .init()
     
@@ -66,7 +68,11 @@ open class PhotoFetchData {
     }
     
     /// 获取相机胶卷资源集合
-    public func fetchCameraAssetCollection() {
+    open func fetchCameraAssetCollection() {
+        if isFetchCamera {
+            return
+        }
+        isFetchCamera = true
         DispatchQueue.global().async {
             let fetchAssetCollection = self.config.fetchAssetCollection
             let assetCollection = fetchAssetCollection.fetchCameraAssetCollection(
@@ -81,7 +87,7 @@ open class PhotoFetchData {
                 }
             }else {
                 cameraAssetCollection = PhotoAssetCollection(
-                    albumName: self.config.emptyAlbumName.localized,
+                    albumName: .textManager.picker.albumList.emptyAlbumName.text,
                     coverImage: self.config.emptyCoverImageName.image
                 )
             }
@@ -89,17 +95,19 @@ open class PhotoFetchData {
             self.cameraAssetCollection = cameraAssetCollection
             DispatchQueue.main.async {
                 self.delegate?.fetchData(fetchCameraAssetCollectionCompletion: self)
+                self.isFetchCamera = false
             }
         }
     }
     
     /// 获取相册集合
-    public func fetchAssetCollections() {
+    open func fetchAssetCollections() {
         cancelAssetCollectionsQueue()
         let localAssets = pickerData.localAssets
         let localCameraAssets = pickerData.localCameraAssets
         let operation = BlockOperation()
-        operation.addExecutionBlock { [unowned operation] in
+        operation.addExecutionBlock { [unowned operation, weak self] in
+            guard let self = self else { return }
             var localCount = localAssets.count + localCameraAssets.count
             var coverImage = localCameraAssets.first?.originalImage
             if coverImage == nil {
@@ -125,7 +133,7 @@ open class PhotoFetchData {
                     localCount += 1
                 }
             }
-            let assetCollections = self.config.fetchAssetCollection.fetchAssetCollections(
+            var assetCollections = self.config.fetchAssetCollection.fetchAssetCollections(
                 self.config,
                 localCount: localCount,
                 coverImage: coverImage,
@@ -143,18 +151,31 @@ open class PhotoFetchData {
             }
             self.assetCollections = []
             if var collection = assetCollections.first {
-                if let cameraAssetCollection = self.cameraAssetCollection {
-                    collection = cameraAssetCollection
+                if let cameraAssetCollection = self.cameraAssetCollection,
+                   !cameraAssetCollection.isCameraRoll {
+                    var needReplace: Bool = false
+                    for (index, assetCollection) in assetCollections.enumerated() where assetCollection.collection?.localIdentifier == cameraAssetCollection.collection?.localIdentifier {
+                        assetCollections[index] = cameraAssetCollection
+                        needReplace = true
+                        break
+                    }
+                    if !needReplace {
+                        assetCollections.insert(collection, at: 0)
+                    }
                 }else {
-                    collection.isSelected = true
-                    self.cameraAssetCollection = collection
+                    if let cameraAssetCollection = self.cameraAssetCollection {
+                        collection = cameraAssetCollection
+                    }else {
+                        collection.isSelected = true
+                        self.cameraAssetCollection = collection
+                    }
+                    assetCollections[0] = collection
                 }
                 collection.count += localCount
                 if let coverImage = coverImage {
                     collection.realCoverImage = coverImage
                 }
                 self.assetCollections = assetCollections
-                self.assetCollections[0] = collection
             }else {
                 if let cameraAssetCollection = self.cameraAssetCollection {
                     cameraAssetCollection.count += localCount
@@ -171,7 +192,7 @@ open class PhotoFetchData {
         assetCollectionsQueue.addOperation(operation)
     }
     
-    public func fetchPhotoAssets(
+    open func fetchPhotoAssets(
         assetCollection: PhotoAssetCollection,
         completion: @escaping (PhotoFetchAssetResult) -> Void
     ) {
@@ -179,8 +200,9 @@ open class PhotoFetchData {
         let localAssets = pickerData.localAssets
         let localCameraAssets = pickerData.localCameraAssets
         let operation = BlockOperation()
-        operation.addExecutionBlock { [unowned operation] in
+        operation.addExecutionBlock { [unowned operation, weak self] in
             if operation.isCancelled { return }
+            guard let self = self else { return}
             localAssets.forEach { $0.isSelected = false }
             localCameraAssets.forEach { $0.isSelected = false }
             let result = self.config.fetchAsset.fetchPhotoAssets(

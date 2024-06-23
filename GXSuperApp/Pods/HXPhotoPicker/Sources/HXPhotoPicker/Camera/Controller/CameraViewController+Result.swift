@@ -34,8 +34,9 @@ extension CameraViewController: CameraResultViewControllerDelegate {
         let result = CameraController.Result.image(image)
         if config.isSaveSystemAlbum {
             navigationController?.view.hx.show()
-            AssetManager.save(
+            AssetSaveUtil.save(
                 type: .image(image),
+                albumType: config.saveSystemAlbumType,
                 location: location
             ) {
                 self.navigationController?.view.hx.hide()
@@ -43,12 +44,7 @@ extension CameraViewController: CameraResultViewControllerDelegate {
                 case .success(let phAsset):
                     self.didFinish(result, phAsset: phAsset, location: location)
                 case .failure:
-                    ProgressHUD.showWarning(
-                        addedTo: self.navigationController?.view,
-                        text: "保存失败".localized,
-                        animated: true,
-                        delayHide: 1.5
-                    )
+                    PhotoManager.HUDView.showInfo(with: .textManager.camera.saveSystemAlbumFailedHudTitle.text, delay: 1.5, animated: true, addedTo: self.navigationController?.view)
                 }
             }
             return
@@ -63,8 +59,9 @@ extension CameraViewController: CameraResultViewControllerDelegate {
         let result = CameraController.Result.video(videoURL)
         if config.isSaveSystemAlbum {
             navigationController?.view.hx.show()
-            AssetManager.save(
+            AssetSaveUtil.save(
                 type: .videoURL(videoURL),
+                albumType: config.saveSystemAlbumType,
                 location: location
             ) {
                 self.navigationController?.view.hx.hide()
@@ -72,12 +69,7 @@ extension CameraViewController: CameraResultViewControllerDelegate {
                 case .success(let phAsset):
                     self.didFinish(result, phAsset: phAsset, location: location)
                 case .failure:
-                    ProgressHUD.showWarning(
-                        addedTo: self.navigationController?.view,
-                        text: "保存失败".localized,
-                        animated: true,
-                        delayHide: 1.5
-                    )
+                    PhotoManager.HUDView.showInfo(with: .textManager.camera.saveSystemAlbumFailedHudTitle.text, delay: 1.5, animated: true, addedTo: self.navigationController?.view)
                 }
             }
             return
@@ -103,7 +95,12 @@ extension CameraViewController: CameraResultViewControllerDelegate {
     }
     
     func saveCameraImage(_ image: UIImage) {
-        let previewSize = previewView.size
+        let previewSize: CGSize
+        if config.cameraType == .metal {
+            previewSize = previewView.size
+        }else {
+            previewSize = normalPreviewView.size
+        }
         DispatchQueue.global().async {
             let thumbImage = image.scaleToFillSize(size: previewSize)
             PhotoManager.shared.cameraPreviewImage = thumbImage

@@ -77,7 +77,7 @@ class CameraPreviewView: UIView {
         
         focusView = CameraFocusView(
             size: CGSize(width: 80, height: 80),
-            color: config.tintColor
+            color: config.focusColor
         )
         focusView.layer.opacity = 0
         focusView.isUserInteractionEnabled = false
@@ -118,7 +118,7 @@ class CameraPreviewView: UIView {
         if pinch.state == .changed {
             let scale = beginGestureScale * pinch.scale
             effectiveScale = min(scale, maxScale)
-            effectiveScale = max(scale, 1)
+            effectiveScale = max(effectiveScale, 1)
             delegate?.previewView(self, pinchGestureScale: effectiveScale)
         }
     }

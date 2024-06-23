@@ -23,7 +23,7 @@ protocol EditorChartletViewControllerDelegate: AnyObject {
     )
 }
 
-public class EditorChartletViewController: BaseViewController, EditorChartletListProtocol {
+public class EditorChartletViewController: HXBaseViewController, EditorChartletListProtocol {
     public weak var delegate: EditorChartletListDelegate?
     weak var chartletDelegate: EditorChartletViewControllerDelegate?
     private var loadingView: UIActivityIndicatorView!
@@ -77,7 +77,7 @@ public class EditorChartletViewController: BaseViewController, EditorChartletLis
         
         backButton = UIButton(type: .system)
         backButton.tintColor = .white
-        backButton.setImage("hx_photo_edit_pull_down".image, for: .normal)
+        backButton.setImage(.imageResource.editor.sticker.back.image, for: .normal)
         backButton.addTarget(self, action: #selector(didBackButtonClick), for: .touchUpInside)
         
         titleFlowLayout = UICollectionViewFlowLayout()
@@ -136,10 +136,10 @@ public class EditorChartletViewController: BaseViewController, EditorChartletLis
                 if let url = title.url {
                     titleChartlet = EditorChartletTitle(url: url)
                 }else {
-                    titleChartlet = .init(image: "hx_picker_album_empty".image)
+                    titleChartlet = .init(image: .imageResource.editor.sticker.albumEmptyCover.image)
                 }
                 #else
-                titleChartlet = .init(image: "hx_picker_album_empty".image)
+                titleChartlet = .init(image: .imageResource.editor.sticker.albumEmptyCover.image)
                 #endif
             }
             if index == 0 {
@@ -408,7 +408,7 @@ extension EditorChartletViewController: UICollectionViewDataSource,
                     pickerConfig
                 ) { [weak self] pickerResult, pickerController in
                     guard let self = self else { return }
-                    ProgressHUD.showLoading(addedTo: pickerController.view)
+                    PhotoManager.HUDView.show(with: nil, delay: 0, animated: true, addedTo: pickerController.view)
                     var completionCount = 0
                     for photoAsset in pickerResult.photoAssets {
                         if photoAsset.isGifAsset {
@@ -424,7 +424,7 @@ extension EditorChartletViewController: UICollectionViewDataSource,
                                 }
                                 completionCount += 1
                                 if completionCount == pickerResult.photoAssets.count {
-                                    ProgressHUD.hide(forView: pickerController.view)
+                                    PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: pickerController.view)
                                     self.presentingViewController?.dismiss(animated: true)
                                 }
                             }
@@ -436,7 +436,7 @@ extension EditorChartletViewController: UICollectionViewDataSource,
                                 }
                                 completionCount += 1
                                 if completionCount == pickerResult.photoAssets.count {
-                                    ProgressHUD.hide(forView: pickerController.view)
+                                    PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: pickerController.view)
                                     self.presentingViewController?.dismiss(animated: true)
                                 }
                             }

@@ -18,7 +18,7 @@ extension PhotoPickerViewController {
             }
         }else {
             if showLoading {
-                ProgressHUD.showLoading(addedTo: view, afterDelay: 0.15, animated: true)
+                PhotoManager.HUDView.show(with: nil, delay: 0.15, animated: true, addedTo: view)
             }
             fetchPhotoAssets()
         }
@@ -26,10 +26,10 @@ extension PhotoPickerViewController {
     func fetchPhotoAssets() {
         guard let assetCollection = assetCollection else {
             if showLoading {
-                ProgressHUD.hide(forView: view, animated: true)
+                PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: view)
                 showLoading = false
             }else {
-                ProgressHUD.hide(forView: navigationController?.view, animated: false)
+                PhotoManager.HUDView.dismiss(delay: 0, animated: false, for: navigationController?.view)
             }
             return
         }
@@ -58,27 +58,31 @@ extension PhotoPickerViewController {
             self.listView.assetResult = result
             self.scrollToAppropriatePlace(photoAsset: result.selectedAsset)
             if self.showLoading {
-                ProgressHUD.hide(forView: self.view, animated: true)
+                PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
                 self.showLoading = false
             }else {
-                ProgressHUD.hide(forView: self.navigationController?.view, animated: false)
+                PhotoManager.HUDView.dismiss(delay: 0, animated: false, for: self.navigationController?.view)
             }
-            if AssetManager.authorizationStatusIsLimited(),
-               self.pickerConfig.isRemoveSelectedAssetWhenRemovingAssets {
-                self.photoToolbar.selectedAssetDidChanged(self.pickerController.selectedAssetArray)
-                self.photoToolbar.updateSelectedAssets(self.pickerController.selectedAssetArray)
-                self.finishItem?.selectedAssetDidChanged(self.pickerController.selectedAssetArray)
-                self.requestSelectedAssetFileSize()
+            if AssetPermissionsUtil.isLimitedAuthorizationStatus {
+                if self.pickerConfig.isRemoveSelectedAssetWhenRemovingAssets {
+                    self.photoToolbar.selectedAssetDidChanged(self.pickerController.selectedAssetArray)
+                    self.photoToolbar.updateSelectedAssets(self.pickerController.selectedAssetArray)
+                    self.finishItem?.selectedAssetDidChanged(self.pickerController.selectedAssetArray)
+                    self.requestSelectedAssetFileSize()
+                }
+                if let previewViewController = self.navigationController?.topViewController as? PhotoPreviewViewController {
+                    previewViewController.updateAsstes(for: result.assets)
+                }else if let presentedViewController = self.presentedViewController as? PhotoPickerController,
+                         let previewViewController = presentedViewController.previewViewController {
+                    previewViewController.updateAsstes(for: result.assets)
+                }
             }
         }
     }
     
     func updateAssetCollection(_ collection: PhotoAssetCollection?, isShow: Bool = true) {
         if isShow {
-            ProgressHUD.showLoading(
-                addedTo: navigationController?.view,
-                animated: true
-            )
+            PhotoManager.HUDView.show(with: nil, delay: 0, animated: true, addedTo: navigationController?.view)
         }
         if let collection = collection {
             if pickerConfig.albumShowMode.isPop {
@@ -87,6 +91,7 @@ extension PhotoPickerViewController {
             }
             assetCollection = collection
         }
+        initView()
         updateTitle()
         fetchPhotoAssets()
         reloadAlbumData()

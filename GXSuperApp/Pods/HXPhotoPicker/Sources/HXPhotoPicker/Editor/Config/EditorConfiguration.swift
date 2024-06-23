@@ -7,17 +7,27 @@
 
 import UIKit
 
-public struct EditorConfiguration: IndicatorTypeConfig {
+public struct EditorConfiguration: IndicatorTypeConfig, PhotoHUDConfig {
+    
+    /// 图片资源
+    public var imageResource: HX.ImageResource { HX.ImageResource.shared }
+    
+    /// 文本管理
+    public var textManager: HX.TextManager { HX.TextManager.shared }
     
     public var modalPresentationStyle: UIModalPresentationStyle
     
     /// If the built-in language is not enough, you can add a custom language text
-    /// PhotoManager.shared.customLanguages - custom language array
-    /// PhotoManager.shared.fixedCustomLanguage - If there are multiple custom languages, one can be fixed to display
+    /// customLanguages - custom language array
     /// 如果自带的语言不够，可以添加自定义的语言文字
-    /// PhotoManager.shared.customLanguages - 自定义语言数组
-    /// PhotoManager.shared.fixedCustomLanguage - 如果有多种自定义语言，可以固定显示某一种
+    /// customLanguages - 自定义语言数组
     public var languageType: LanguageType = .system
+    
+    /// 自定义语言
+    public var customLanguages: [CustomLanguage] {
+        get { PhotoManager.shared.customLanguages }
+        set { PhotoManager.shared.customLanguages = newValue }
+    }
     
     /// hide status bar
     /// 隐藏状态栏
@@ -251,14 +261,14 @@ public extension EditorConfiguration {
         public var angleScaleColor: UIColor = "#FDCC00".hx.color
         
         /// round crop box
-        /// isResetToOriginal = true, which can avoid restoring the original width and height when resetting
+        /// isResetToOriginal = false, which can avoid restoring the original width and height when resetting
         /// 圆形裁剪框
-        /// isResetToOriginal = true，可以避免重置时恢复原始宽高
+        /// isResetToOriginal = false，可以避免重置时恢复原始宽高
         public var isRoundCrop: Bool = false
         
         /// default fixed ratio
         /// 默认固定比例
-        /// ```
+        /// ```swift
         /// /// Leave `aspectRatios` empty if you don't want other ratios at the bottom
         /// /// 如果不想要底部其他的比例请将`aspectRatios`置空
         /// aspectRatios = []
@@ -281,7 +291,8 @@ public extension EditorConfiguration {
         /// Selecting does not mean that the default is the corresponding aspect ratio
         /// 宽高比数组默认选择的下标
         /// 选中不代表默认就是对应的宽高比
-        /// ```
+        /// isRoundCrop = true 时无效
+        /// ```swift
         /// // If you want the default corresponding aspect ratio also set `aspectRatio`
         /// // 如果想要默认对应的宽高比也要设置 `aspectRatio`
         /// var cropSize = CropSize()
@@ -303,15 +314,15 @@ public extension EditorConfiguration {
         /// aspect ratio configuration
         /// 宽高比配置
         public var aspectRatios: [EditorRatioToolConfig] = [
-            .init(title: "原始比例", ratio: .init(width: -1, height: -1)),
-            .init(title: "自由格式", ratio: .zero),
-            .init(title: "正方形", ratio: .init(width: 1, height: 1)),
-            .init(title: "16:9", ratio: .init(width: 16, height: 9)),
-            .init(title: "5:4", ratio: .init(width: 5, height: 4)),
-            .init(title: "7:5", ratio: .init(width: 7, height: 5)),
-            .init(title: "4:3", ratio: .init(width: 4, height: 3)),
-            .init(title: "5:3", ratio: .init(width: 5, height: 3)),
-            .init(title: "3:2", ratio: .init(width: 3, height: 2))
+            .init(title: .localized("原始比例"), ratio: .init(width: -1, height: -1)),
+            .init(title: .localized("自由格式"), ratio: .zero),
+            .init(title: .localized("正方形"), ratio: .init(width: 1, height: 1)),
+            .init(title: .custom("16:9"), ratio: .init(width: 16, height: 9)),
+            .init(title: .custom("5:4"), ratio: .init(width: 5, height: 4)),
+            .init(title: .custom("7:5"), ratio: .init(width: 7, height: 5)),
+            .init(title: .custom("4:3"), ratio: .init(width: 4, height: 3)),
+            .init(title: .custom("5:3"), ratio: .init(width: 5, height: 3)),
+            .init(title: .custom("3:2"), ratio: .init(width: 3, height: 2))
         ]
         
         /// When the default fixed ratio, click restore to reset to the original aspect ratio
@@ -321,6 +332,8 @@ public extension EditorConfiguration {
         /// true：重置到原始宽高比
         /// false：重置到设置的默认宽高比`aspectRatio`，居中显示
         public var isResetToOriginal: Bool = false
+        
+        public var maskListProtcol: EditorMaskListProtocol.Type = EditorMaskListViewController.self
         
         /// Mask material list
         /// 蒙版素材列表
@@ -396,6 +409,9 @@ public extension EditorConfiguration {
         /// 涂抹的宽度
         public var smearWidth: CGFloat = 30
         
+        /// 当滤镜发生改变时更改马赛克背景
+        public var isFilterApply: Bool = true
+        
         /// Hide texture view while drawing
         /// 绘制时隐藏贴图视图
         public var isHideStickersDuringDrawing: Bool = true
@@ -446,7 +462,10 @@ public extension EditorConfiguration {
         /// 完成按钮背景颜色
         public var finishButtonBackgroundColor: UIColor = .clear
         /// 搜索框的 placeholder
-        public var placeholder: String = ""
+        public var placeholder: String {
+            get { .textManager.editor.music.searchPlaceholder.text }
+            set { HX.TextManager.shared.editor.music.searchPlaceholder = .custom(newValue) }
+        }
         /// 滚动停止时自动播放音乐
         public var autoPlayWhenScrollingStops: Bool = false
         /// 配乐信息 / 搜索列表默认的第一页
@@ -489,9 +508,12 @@ public extension EditorConfiguration {
         
         #if HXPICKER_ENABLE_PICKER
         /// 是否允许添加 从相册选取
-        public var allowAddAlbum: Bool = true
+        public var allowAddAlbum: Bool = false
         /// 相册图标
-        public var albumImageName: String = "hx_editor_tools_chartle_album"
+        public var albumImageName: String {
+            get { .imageResource.editor.sticker.album.name }
+            set { HX.imageResource.editor.sticker.album = .local(newValue) }
+        }
         /// 相册配置
         public var albumPickerConfigHandler: (() -> PickerConfiguration)?
         #endif
@@ -538,14 +560,14 @@ public extension EditorConfiguration {
         public struct Options {
             
             /// icon图标
-            public let imageName: String
+            public let imageType: HX.ImageResource.ImageType
             
             /// 类型
             public let type: `Type`
             
-            public init(imageName: String,
+            public init(imageType: HX.ImageResource.ImageType,
                         type: `Type`) {
-                self.imageName = imageName
+                self.imageType = imageType
                 self.type = type
             }
             
@@ -583,39 +605,39 @@ public extension EditorConfiguration {
         
         public static var `default`: ToolsView {
             let time = Options(
-                imageName: "hx_editor_tools_play",
+                imageType: .imageResource.editor.tools.video,
                 type: .time
             )
             let graffiti = Options(
-                imageName: "hx_editor_tools_graffiti",
+                imageType: .imageResource.editor.tools.graffiti,
                 type: .graffiti
             )
             let chartlet = Options(
-                imageName: "hx_editor_photo_tools_emoji",
+                imageType: .imageResource.editor.tools.chartlet,
                 type: .chartlet
             )
             let text = Options(
-                imageName: "hx_editor_photo_tools_text",
+                imageType: .imageResource.editor.tools.text,
                 type: .text
             )
             let cropSize = Options(
-                imageName: "hx_editor_photo_crop",
+                imageType: .imageResource.editor.tools.cropSize,
                 type: .cropSize
             )
             let music = Options(
-                imageName: "hx_editor_tools_music",
+                imageType:.imageResource.editor.tools.music,
                 type: .music
             )
             let mosaic = Options(
-                imageName: "hx_editor_tools_mosaic",
+                imageType: .imageResource.editor.tools.mosaic,
                 type: .mosaic
             )
             let filterEdit = Options(
-                imageName: "hx_editor_tools_filter_change",
+                imageType: .imageResource.editor.tools.adjustment,
                 type: .filterEdit
             )
             let filter = Options(
-                imageName: "hx_editor_tools_filter",
+                imageType: .imageResource.editor.tools.filter,
                 type: .filter
             )
             return .init(toolOptions: [time, graffiti, chartlet, text, music, cropSize, mosaic, filterEdit, filter])

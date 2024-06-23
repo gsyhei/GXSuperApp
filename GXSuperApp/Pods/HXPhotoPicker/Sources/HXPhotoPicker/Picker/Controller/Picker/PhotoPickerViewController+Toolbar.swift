@@ -10,7 +10,7 @@ import UIKit
 extension PhotoPickerViewController: PhotoToolBarDelegate {
     
     func initToolbar() {
-        if AssetManager.authorizationStatus() == .notDetermined {
+        if AssetPermissionsUtil.authorizationStatus == .notDetermined {
             photoToolbar = PhotoToolBarEmptyView(pickerConfig, type: .picker)
             return
         }
@@ -103,6 +103,10 @@ extension PhotoPickerViewController: PhotoToolBarDelegate {
         #endif
         listView.updateCellSelectedTitle()
         photoToolbar.removeSelectedAssets([asset])
+        if pickerController.isOriginal {
+            photoToolbar.requestOriginalAssetBtyes()
+        }
+        photoToolbar.selectedAssetDidChanged(pickerController.selectedAssetArray)
         updateToolbarFrame()
     }
     

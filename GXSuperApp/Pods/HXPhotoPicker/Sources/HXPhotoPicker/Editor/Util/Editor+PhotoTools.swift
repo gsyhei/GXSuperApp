@@ -24,7 +24,10 @@ extension PhotoTools {
     }
     
     public static func defaultColors() -> [String] {
-        ["#ffffff", "#2B2B2B", "#FA5150", "#FEC200", "#07C160", "#10ADFF", "#6467EF"]
+        if #available(iOS 14.0, *) {
+            return ["#ffffff", "#2B2B2B", "#FA5150", "#FEC200", "#07C160", "#10ADFF", "#6467EF", "#9EB6DC"]
+        }
+        return ["#ffffff", "#2B2B2B", "#FA5150", "#FEC200", "#07C160", "#10ADFF", "#6467EF"]
     }
     static func defaultMusicInfos() -> [VideoEditorMusicInfo] {
         var infos: [VideoEditorMusicInfo] = []
@@ -64,22 +67,22 @@ extension PhotoTools {
         var filters: [PhotoEditorFilterInfo] = []
         filters.append(contentsOf: [
             PhotoEditorFilterInfo(
-                filterName: "唯美"
+                filterName: .localized("唯美")
             ) { image, _, _, _ in
                 nashvilleFilter(image)
             },
             PhotoEditorFilterInfo(
-                filterName: "梦幻"
+                filterName: .localized("梦幻")
             ) { (image, _, _, _) in
                 toasterFilter(image)
             },
             PhotoEditorFilterInfo(
-                filterName: "1977"
+                filterName: .custom("1977")
             ) { (image, _, _, _) in
                 apply1977Filter(image)
             },
             PhotoEditorFilterInfo(
-                filterName: "怀旧"
+                filterName: .localized("怀旧")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectInstant",
@@ -87,7 +90,7 @@ extension PhotoTools {
                 )
             },
             PhotoEditorFilterInfo(
-                filterName: "岁月"
+                filterName: .localized("岁月")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectTransfer",
@@ -95,13 +98,13 @@ extension PhotoTools {
                 )
             },
             PhotoEditorFilterInfo(
-                filterName: "模糊",
+                filterName: .localized("模糊"),
                 parameters: [.init(defaultValue: 0.2)],
                 filterHandler: { image, _, parameters, isCover in
                     image.blurredImage(isCover ? 10 : 50 * parameters[0].value)
             }),
             PhotoEditorFilterInfo(
-                filterName: "褪色"
+                filterName: .localized("褪色")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectFade",
@@ -109,7 +112,7 @@ extension PhotoTools {
                 )
             },
             PhotoEditorFilterInfo(
-                filterName: "冲印"
+                filterName: .localized("冲印")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectProcess",
@@ -117,7 +120,7 @@ extension PhotoTools {
                 )
             },
             PhotoEditorFilterInfo(
-                filterName: "铬黄"
+                filterName: .localized("铬黄")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectChrome",
@@ -125,13 +128,13 @@ extension PhotoTools {
                 )
             },
             PhotoEditorFilterInfo(
-                filterName: "老电影",
+                filterName: .localized("老电影"),
                 parameters: [.init(defaultValue: 1)],
                 filterHandler: { image, _, parameters, isCover in
                     return oldMovie(image, value: isCover ? 1 : parameters[0].value)
             }),
             PhotoEditorFilterInfo(
-                filterName: "色调"
+                filterName: .localized("色调")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectTonal",
@@ -139,7 +142,7 @@ extension PhotoTools {
                 )
             },
             PhotoEditorFilterInfo(
-                filterName: "单色"
+                filterName: .localized("单色")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectMono",
@@ -147,7 +150,7 @@ extension PhotoTools {
                 )
             },
             PhotoEditorFilterInfo(
-                filterName: "黑白"
+                filterName: .localized("黑白")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectNoir",
@@ -161,28 +164,28 @@ extension PhotoTools {
     public static func defaultVideoFilters() -> [PhotoEditorFilterInfo] {
         [
             PhotoEditorFilterInfo(
-                filterName: "唯美"
+                filterName: .localized("唯美")
             ) { (image, _, _, _) in
                 nashvilleFilter(image)
             } videoFilterHandler: { ciImage, _ in
                 nashvilleFilter(ciImage)
             },
             PhotoEditorFilterInfo(
-                filterName: "梦幻"
+                filterName: .localized("梦幻")
             ) { (image, _, _, _) in
                 toasterFilter(image)
             } videoFilterHandler: { ciImage, _ in
                 toasterFilter(ciImage)
             },
             PhotoEditorFilterInfo(
-                filterName: "1977"
+                filterName: .custom("1977")
             ) { (image, _, _, _) in
                 apply1977Filter(image)
             } videoFilterHandler: { ciImage, _ in
                 apply1977Filter(ciImage)
             },
             PhotoEditorFilterInfo(
-                filterName: "怀旧"
+                filterName: .localized("怀旧")
             ) { image, _, _, _ in
                 image.filter(
                     name: "CIPhotoEffectInstant",
@@ -192,7 +195,7 @@ extension PhotoTools {
                 ciImage.filter(name: "CIPhotoEffectInstant", parameters: [:])
             },
             PhotoEditorFilterInfo(
-                filterName: "岁月"
+                filterName: .localized("岁月")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectTransfer",
@@ -202,7 +205,7 @@ extension PhotoTools {
                 ciImage.filter(name: "CIPhotoEffectTransfer", parameters: [:])
             },
             PhotoEditorFilterInfo(
-                filterName: "模糊",
+                filterName: .localized("模糊"),
                 parameters: [.init(defaultValue: 0.2)],
                 filterHandler: { image, _, _, _ in
                     return image.blurredImage(10)
@@ -213,7 +216,7 @@ extension PhotoTools {
                 )
             }),
             PhotoEditorFilterInfo(
-                filterName: "褪色"
+                filterName: .localized("褪色")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectFade",
@@ -223,7 +226,7 @@ extension PhotoTools {
                 ciImage.filter(name: "CIPhotoEffectFade", parameters: [:])
             },
             PhotoEditorFilterInfo(
-                filterName: "冲印"
+                filterName: .localized("冲印")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectProcess",
@@ -233,7 +236,7 @@ extension PhotoTools {
                 ciImage.filter(name: "CIPhotoEffectProcess", parameters: [:])
             },
             PhotoEditorFilterInfo(
-                filterName: "铬黄"
+                filterName: .localized("铬黄")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectChrome",
@@ -243,7 +246,7 @@ extension PhotoTools {
                 ciImage.filter(name: "CIPhotoEffectChrome", parameters: [:])
             },
             PhotoEditorFilterInfo(
-                filterName: "老电影",
+                filterName: .localized("老电影"),
                 parameters: [.init(defaultValue: 1)],
                 filterHandler: { image, _, _, _ in
                     oldMovie(image, value: 1)
@@ -251,7 +254,7 @@ extension PhotoTools {
                 oldMovie($0, value: $1[0].value)
             }),
             PhotoEditorFilterInfo(
-                filterName: "色调"
+                filterName: .localized("色调")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectTonal",
@@ -261,7 +264,7 @@ extension PhotoTools {
                 ciImage.filter(name: "CIPhotoEffectTonal", parameters: [:])
             },
             PhotoEditorFilterInfo(
-                filterName: "单色"
+                filterName: .localized("单色")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectMono",
@@ -271,7 +274,7 @@ extension PhotoTools {
                 ciImage.filter(name: "CIPhotoEffectMono", parameters: [:])
             },
             PhotoEditorFilterInfo(
-                filterName: "黑白"
+                filterName: .localized("黑白")
             ) { (image, _, _, _) in
                 image.filter(
                     name: "CIPhotoEffectNoir",

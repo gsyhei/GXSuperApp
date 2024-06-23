@@ -10,22 +10,32 @@ import AVFoundation
 
 // MARK: 相机配置类
 #if !targetEnvironment(macCatalyst)
-public struct CameraConfiguration: IndicatorTypeConfig {
+public struct CameraConfiguration: IndicatorTypeConfig, PhotoHUDConfig {
+    
+    /// 图片资源
+    public var imageResource: HX.ImageResource { HX.ImageResource.shared }
+    
+    /// 文本管理
+    public var textManager: HX.TextManager { HX.TextManager.shared }
     
     public var modalPresentationStyle: UIModalPresentationStyle
     
     /// If the built-in language is not enough, you can add a custom language text
-    /// PhotoManager.shared.customLanguages - custom language array
-    /// PhotoManager.shared.fixedCustomLanguage - If there are multiple custom languages, one can be fixed to display
+    /// customLanguages - custom language array
     /// 如果自带的语言不够，可以添加自定义的语言文字
-    /// PhotoManager.shared.customLanguages - 自定义语言数组
-    /// PhotoManager.shared.fixedCustomLanguage - 如果有多种自定义语言，可以固定显示某一种
+    /// customLanguages - 自定义语言数组
     public var languageType: LanguageType = .system {
         didSet {
             #if HXPICKER_ENABLE_EDITOR
             editor.languageType = languageType
             #endif
         }
+    }
+    
+    /// 自定义语言
+    public var customLanguages: [CustomLanguage] {
+        get { PhotoManager.shared.customLanguages }
+        set { PhotoManager.shared.customLanguages = newValue }
     }
     
     /// hide status bar
@@ -55,11 +65,18 @@ public struct CameraConfiguration: IndicatorTypeConfig {
     /// 拍照完成后保存到系统相册
     public var isSaveSystemAlbum: Bool = false
     
+    /// 保存到自定义相册的类型
+    public var saveSystemAlbumType: AssetSaveUtil.AlbumType = .displayName
+    
     /// 相机类型
     public var cameraType: CameraController.CameraType = .normal
     
     /// 相机分辨率
     public var sessionPreset: Preset = .hd1280x720
+    
+    /// 相机画面比例
+    /// iPad无效
+    public var aspectRatio: AspectRatio = ._9x16
     
     /// 摄像头默认位置
     public var position: DevicePosition = .back
@@ -89,23 +106,34 @@ public struct CameraConfiguration: IndicatorTypeConfig {
     public var takePhotoMode: TakePhotoMode = .press
     
     /// 主题色
-    public var tintColor: UIColor = .systemBlue
+    public var tintColor: UIColor = .systemBlue {
+        didSet {
+            focusColor = tintColor
+        }
+    }
+    
+    /// 聚焦框的颜色
+    public var focusColor: UIColor = .systemBlue
     
     /// 摄像头最大缩放比例
     public var videoMaxZoomScale: CGFloat = 6
     
+    /// cameraType == .metal 时才有效
     /// 默认滤镜对应滤镜数组的下标，为 -1 默认不加滤镜
     public var defaultFilterIndex: Int = -1
     
+    /// cameraType == .metal 时才有效
     /// 切换滤镜显示名称
     public var changeFilterShowName: Bool = true
     
+    /// cameraType == .metal 时才有效
     /// 拍照时的滤镜数组，请与 videoFilters 效果保持一致
     /// 左滑/右滑切换滤镜
     public var photoFilters: [CameraFilter] = [
         InstantFilter(), Apply1977Filter(), ToasterFilter(), TransferFilter()
     ]
     
+    /// cameraType == .metal 时才有效
     /// 录制视频的滤镜数组，请与 photoFilters 效果保持一致
     /// 左滑/右滑切换滤镜
     public var videoFilters: [CameraFilter] = [
@@ -147,6 +175,32 @@ extension CameraConfiguration {
         case back
         /// 前置
         case front
+    }
+    
+    public enum AspectRatio {
+        case fullScreen
+        case _9x16
+        case _16x9
+        case _3x4
+        case _1x1
+        case custom(CGSize)
+        
+        var size: CGSize {
+            switch self {
+            case .fullScreen:
+                return .init(width: -1, height: -1)
+            case ._9x16:
+                return .init(width: 9, height: 16)
+            case ._16x9:
+                return .init(width: 16, height: 9)
+            case ._3x4:
+                return .init(width: 3, height: 4)
+            case ._1x1:
+                return .init(width: 1, height: 1)
+            case .custom(let size):
+                return size
+            }
+        }
     }
     
     public enum TakePhotoMode {

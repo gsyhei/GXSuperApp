@@ -49,7 +49,7 @@ public class PhotoAlbumViewCell: UITableViewCell {
         contentView.addSubview(lineView)
         countLb = UILabel()
         contentView.addSubview(countLb)
-        arrowView = UIImageView(image: "hx_picker_photolist_bottom_prompt_arrow".image?.withRenderingMode(.alwaysTemplate))
+        arrowView = UIImageView(image: .imageResource.picker.albumList.cell.arrow.image?.withRenderingMode(.alwaysTemplate))
         contentView.addSubview(arrowView)
         updateColors()
     }
@@ -141,6 +141,10 @@ fileprivate extension PhotoAssetCollection {
             return .init(systemName: "livephoto")
         case .smartAlbumAnimated:
             return .init(systemName: "square.stack.3d.down.dottedline")
+        case .smartAlbumRAW:
+            return .init(systemName: "r.square.on.square")
+        case .smartAlbumCinematic:
+            return .init(systemName: "video.circle")
         default:
             return nil
         }

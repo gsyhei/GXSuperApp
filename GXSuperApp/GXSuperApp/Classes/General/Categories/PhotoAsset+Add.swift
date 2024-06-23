@@ -12,7 +12,7 @@ extension PhotoAsset {
     class func gx_imageUrlsString(assets: [PhotoAsset]) -> String? {
         var picsArr: [String] = []
         assets.forEach { asset in
-            if let urlStr = asset.networkImageAsset?.originalURL.absoluteString {
+            if let urlStr = asset.networkImageAsset?.originalURL?.absoluteString {
                 picsArr.append(urlStr)
             }
         }

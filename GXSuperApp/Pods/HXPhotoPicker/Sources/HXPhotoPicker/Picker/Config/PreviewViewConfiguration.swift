@@ -67,16 +67,27 @@ public struct PreviewViewConfiguration {
     public var cancelPosition: PhotoPickerViewController.CancelPosition = .right
     
     /// 取消按钮图片名
-    public var cancelImageName: String = "hx_picker_photolist_cancel"
+    public var cancelImageName: String {
+        get { .imageResource.picker.preview.cancel.name }
+        set { HX.imageResource.picker.preview.cancel = .local(newValue) }
+    }
     
     /// 暗黑模式下取消按钮图片名
-    public var cancelDarkImageName: String = "hx_picker_photolist_cancel"
+    public var cancelDarkImageName: String {
+        get { .imageResource.picker.preview.cancelDark.name }
+        set { HX.imageResource.picker.preview.cancelDark = .local(newValue) }
+    }
     
     public init() {
         PhotoManager.shared.loadNetworkVideoMode = loadNetworkVideoMode
         var bottomConfig = PickerBottomViewConfiguration()
         bottomConfig.disableFinishButtonWhenNotSelected = false
         self.bottomView = bottomConfig
+    }
+    
+    public mutating func setThemeColor(_ color: UIColor) {
+        selectBox.setThemeColor(color)
+        bottomView.setThemeColor(color)
     }
 }
 

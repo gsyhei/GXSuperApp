@@ -13,6 +13,10 @@
 		33396A252C121A60000A1944 /* GXHomePanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33396A242C121A60000A1944 /* GXHomePanView.swift */; };
 		3340F7612C18498900B97923 /* GXRoundedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7602C18498900B97923 /* GXRoundedInView.swift */; };
 		3340F7632C18861600B97923 /* GXTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7622C18861600B97923 /* GXTabBar.swift */; };
+		336401DE2C277FC700A312BC /* GXHomeDetailCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336401DC2C277FC700A312BC /* GXHomeDetailCell2.swift */; };
+		336401DF2C277FC700A312BC /* GXHomeDetailCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 336401DD2C277FC700A312BC /* GXHomeDetailCell2.xib */; };
+		336401E22C2788E900A312BC /* GXHomeDetailCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336401E02C2788E900A312BC /* GXHomeDetailCell3.swift */; };
+		336401E32C2788E900A312BC /* GXHomeDetailCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 336401E12C2788E900A312BC /* GXHomeDetailCell3.xib */; };
 		336477A92C2371530013AAF1 /* GXBaseMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336477A82C2371530013AAF1 /* GXBaseMenuView.swift */; };
 		336477AB2C2379690013AAF1 /* GXHomeFilterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336477AA2C2379690013AAF1 /* GXHomeFilterMenu.swift */; };
 		336B2C2A2C1B29A600A752C7 /* GXCustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336B2C292C1B29A600A752C7 /* GXCustomMarker.swift */; };
@@ -38,6 +42,8 @@
 		33D1109E2C1D8DFA006331EC /* GXHomeSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D1109D2C1D8DFA006331EC /* GXHomeSearchVC.xib */; };
 		33D1109F2C1D8DFA006331EC /* GXHomeSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1109C2C1D8DFA006331EC /* GXHomeSearchVC.swift */; };
 		33D7BFE82C26C9CE006B97C6 /* GXHomeDetailCell0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D7BFE72C26C9CE006B97C6 /* GXHomeDetailCell0.swift */; };
+		33D7BFEC2C26E4CC006B97C6 /* GXHomeDetailCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D7BFEB2C26E4CC006B97C6 /* GXHomeDetailCell1.xib */; };
+		33D7BFED2C26E4CC006B97C6 /* GXHomeDetailCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D7BFEA2C26E4CC006B97C6 /* GXHomeDetailCell1.swift */; };
 		33D9DFE22C0EFA0700A282D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */; };
 		33D9DFE62C0EFA0700A282D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9DFE52C0EFA0700A282D5 /* ViewController.swift */; };
 		33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33D9DFEA2C0EFA0900A282D5 /* Assets.xcassets */; };
@@ -105,6 +111,10 @@
 		33396A262C123170000A1944 /* GXSuperApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GXSuperApp.entitlements; sourceTree = "<group>"; };
 		3340F7602C18498900B97923 /* GXRoundedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXRoundedInView.swift; sourceTree = "<group>"; };
 		3340F7622C18861600B97923 /* GXTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXTabBar.swift; sourceTree = "<group>"; };
+		336401DC2C277FC700A312BC /* GXHomeDetailCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell2.swift; sourceTree = "<group>"; };
+		336401DD2C277FC700A312BC /* GXHomeDetailCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell2.xib; sourceTree = "<group>"; };
+		336401E02C2788E900A312BC /* GXHomeDetailCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell3.swift; sourceTree = "<group>"; };
+		336401E12C2788E900A312BC /* GXHomeDetailCell3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell3.xib; sourceTree = "<group>"; };
 		336477A82C2371530013AAF1 /* GXBaseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXBaseMenuView.swift; sourceTree = "<group>"; };
 		336477AA2C2379690013AAF1 /* GXHomeFilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeFilterMenu.swift; sourceTree = "<group>"; };
 		336B2C292C1B29A600A752C7 /* GXCustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCustomMarker.swift; sourceTree = "<group>"; };
@@ -130,6 +140,8 @@
 		33D1109C2C1D8DFA006331EC /* GXHomeSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchVC.swift; sourceTree = "<group>"; };
 		33D1109D2C1D8DFA006331EC /* GXHomeSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchVC.xib; sourceTree = "<group>"; };
 		33D7BFE72C26C9CE006B97C6 /* GXHomeDetailCell0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell0.swift; sourceTree = "<group>"; };
+		33D7BFEA2C26E4CC006B97C6 /* GXHomeDetailCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell1.swift; sourceTree = "<group>"; };
+		33D7BFEB2C26E4CC006B97C6 /* GXHomeDetailCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell1.xib; sourceTree = "<group>"; };
 		33D9DFDE2C0EFA0700A282D5 /* GXSuperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GXSuperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33D9DFE52C0EFA0700A282D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +306,12 @@
 			isa = PBXGroup;
 			children = (
 				33D7BFE72C26C9CE006B97C6 /* GXHomeDetailCell0.swift */,
+				33D7BFEA2C26E4CC006B97C6 /* GXHomeDetailCell1.swift */,
+				33D7BFEB2C26E4CC006B97C6 /* GXHomeDetailCell1.xib */,
+				336401DC2C277FC700A312BC /* GXHomeDetailCell2.swift */,
+				336401DD2C277FC700A312BC /* GXHomeDetailCell2.xib */,
+				336401E02C2788E900A312BC /* GXHomeDetailCell3.swift */,
+				336401E12C2788E900A312BC /* GXHomeDetailCell3.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -599,9 +617,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33D7BFEC2C26E4CC006B97C6 /* GXHomeDetailCell1.xib in Resources */,
 				33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */,
 				33D1109E2C1D8DFA006331EC /* GXHomeSearchVC.xib in Resources */,
 				33EC57942C1021E300D4CCD0 /* GXApproveFailInfoView.xib in Resources */,
+				336401E32C2788E900A312BC /* GXHomeDetailCell3.xib in Resources */,
+				336401DF2C277FC700A312BC /* GXHomeDetailCell2.xib in Resources */,
 				33EC55BC2C101BA100D4CCD0 /* MBProgressHUD.bundle in Resources */,
 				33396A232C11E530000A1944 /* GXHomeVC.xib in Resources */,
 				33A588E52C241CF900451FE1 /* GXHomeDetailVC.xib in Resources */,
@@ -682,6 +703,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33953F642C20846E0049C76C /* GXHomeSearchViewModel.swift in Sources */,
+				33D7BFED2C26E4CC006B97C6 /* GXHomeDetailCell1.swift in Sources */,
 				33EC55BF2C101BA100D4CCD0 /* PhotoAsset+Add.swift in Sources */,
 				33A588DC2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift in Sources */,
 				33BF81BA2C14A86D0089431E /* GXSelectedMarkerInfoView.swift in Sources */,
@@ -711,6 +733,7 @@
 				33EC579C2C11643500D4CCD0 /* MBProgressHUD+Add.swift in Sources */,
 				33396A1A2C117326000A1944 /* GXTabBarController.swift in Sources */,
 				33EC55FE2C101BA100D4CCD0 /* GXToast.swift in Sources */,
+				336401DE2C277FC700A312BC /* GXHomeDetailCell2.swift in Sources */,
 				33EC56042C101BA100D4CCD0 /* GXServiceManager.swift in Sources */,
 				33EC55C12C101BA100D4CCD0 /* UIAlertController+Add.swift in Sources */,
 				3340F7632C18861600B97923 /* GXTabBar.swift in Sources */,
@@ -737,6 +760,7 @@
 				33EC55B82C101BA100D4CCD0 /* GXSearchController.swift in Sources */,
 				33EC55B02C101BA100D4CCD0 /* GXBaseTableView.swift in Sources */,
 				33EC55C02C101BA100D4CCD0 /* String+Add.swift in Sources */,
+				336401E22C2788E900A312BC /* GXHomeDetailCell3.swift in Sources */,
 				33EC55AB2C101BA100D4CCD0 /* GXArrowButton.swift in Sources */,
 				33396A222C11E530000A1944 /* GXHomeVC.swift in Sources */,
 				33EC55F52C101BA100D4CCD0 /* GXBadgeView.swift in Sources */,

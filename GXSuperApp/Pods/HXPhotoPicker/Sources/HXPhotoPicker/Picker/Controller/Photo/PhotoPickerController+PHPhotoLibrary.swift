@@ -12,7 +12,7 @@ import Photos
 extension PhotoPickerController: PHPhotoLibraryChangeObserver {
     
     public func photoLibraryDidChange(_ changeInstance: PHChange) {
-        if !AssetManager.authorizationStatusIsLimited() || !config.allowLoadPhotoLibrary {
+        if !AssetPermissionsUtil.isLimitedAuthorizationStatus || !config.allowLoadPhotoLibrary {
             return
         }
         var needReload = false
@@ -66,7 +66,7 @@ extension PhotoPickerController: PHPhotoLibraryChangeObserver {
             assetCollection.updateResult(for: result)
             if assetCollection == self.fetchData.cameraAssetCollection && result.count == 0 {
                 assetCollection.update(
-                    albumName: self.config.emptyAlbumName.localized,
+                    albumName: .textManager.picker.albumList.emptyAlbumName.text,
                     coverImage: self.config.emptyCoverImageName.image
                 )
             }

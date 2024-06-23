@@ -15,7 +15,7 @@ extension EditorViewController {
     
     enum LoadAssetStatus {
         case loadding(Bool = false)
-        case successful(EditorAsset.AssetType)
+        case succeed(EditorAsset.AssetType)
         case failure
     }
     
@@ -28,7 +28,7 @@ extension EditorViewController {
         switch type {
         case .image(let image):
             if !isTransitionCompletion {
-                loadAssetStatus = .successful(.image(image))
+                loadAssetStatus = .succeed(.image(image))
                 return
             }
             editorView.setImage(image)
@@ -39,7 +39,7 @@ extension EditorViewController {
             loadLastEditedData()
         case .imageData(let imageData):
             if !isTransitionCompletion {
-                loadAssetStatus = .successful(.imageData(imageData))
+                loadAssetStatus = .succeed(.imageData(imageData))
                 return
             }
             editorView.setImageData(imageData)
@@ -51,7 +51,7 @@ extension EditorViewController {
             loadLastEditedData()
         case .video(let url):
             if !isTransitionCompletion {
-                loadAssetStatus = .successful(.video(url))
+                loadAssetStatus = .succeed(.video(url))
                 return
             }
             let avAsset = AVAsset(url: url)
@@ -62,7 +62,7 @@ extension EditorViewController {
             loadLastEditedData()
         case .videoAsset(let avAsset):
             if !isTransitionCompletion {
-                loadAssetStatus = .successful(.videoAsset(avAsset))
+                loadAssetStatus = .succeed(.videoAsset(avAsset))
                 return
             }
             let image = avAsset.getImage(at: 0.1)
@@ -257,7 +257,8 @@ extension EditorViewController {
             let lastImage = editorView.image
             imageFilterQueue.cancelAllOperations()
             let operation = BlockOperation()
-            operation.addExecutionBlock { [unowned operation] in
+            operation.addExecutionBlock { [unowned operation, weak self] in
+                guard let self = self else { return }
                 if operation.isCancelled { return }
                 var ciImage = originalImage?.ci_Image
                 if self.filterEditFator.isApply {
@@ -295,7 +296,8 @@ extension EditorViewController {
             if filterEditFator.isApply {
                 imageFilterQueue.cancelAllOperations()
                 let operation = BlockOperation()
-                operation.addExecutionBlock { [unowned operation] in
+                operation.addExecutionBlock { [unowned operation, weak self] in
+                    guard let self = self else { return }
                     if operation.isCancelled { return }
                     var ciImage = originalImage?.ci_Image
                     if self.filterEditFator.isApply {
@@ -371,7 +373,7 @@ extension EditorViewController {
         }
         ratioToolView.layoutSubviews()
         rotateScaleView.layoutSubviews()
-        func loadData(_ data: EditorCropSizeFator?) {
+        func loadData(_ data: EditorCropSizeFator?, isRound: Bool) {
             guard let data = data else {
                 return
             }
@@ -384,7 +386,7 @@ extension EditorViewController {
                     }
                     let scale1 = CGFloat(Int(aspectRatio.ratio.width / aspectRatio.ratio.height * 1000)) / 1000
                     let scale2 = CGFloat(Int(data.aspectRatio.width / data.aspectRatio.height * 1000)) / 1000
-                    if scale1 == scale2 {
+                    if scale1 == scale2, !isRound {
                         finishRatioIndex = index
                         break
                     }
@@ -406,10 +408,16 @@ extension EditorViewController {
         }
         DispatchQueue.main.async {
             switch result {
-            case .image(_, let editedData):
-                loadData(editedData.cropSize)
-            case .video(_, let editedData):
-                loadData(editedData.cropSize)
+            case .image(let editedResult, let editedData):
+                loadData(
+                    editedData.cropSize,
+                    isRound: editedResult.data?.content.adjustedFactor?.isRoundMask ?? false
+                )
+            case .video(let editedResult, let editedData):
+                loadData(
+                    editedData.cropSize,
+                    isRound: editedResult.data?.content.adjustedFactor?.isRoundMask ?? false
+                )
             }
         }
     }
@@ -464,7 +472,7 @@ extension EditorViewController {
         if PhotoTools.isCached(forVideo: key) {
             let localURL = PhotoTools.getVideoCacheURL(for: key)
             if !isTransitionCompletion {
-                loadAssetStatus = .successful(.video(localURL))
+                loadAssetStatus = .succeed(.video(localURL))
                 return
             }
             let avAsset = AVAsset(url: localURL)
@@ -476,7 +484,7 @@ extension EditorViewController {
             return
         }
         if isTransitionCompletion {
-            assetLoadingView = ProgressHUD.showLoading(addedTo: view, text: "视频下载中".localized, animated: true)
+            assetLoadingView = PhotoManager.HUDView.show(with: .textManager.editor.videoLoadTitle.text, delay: 0, animated: true, addedTo: view)
             bringViews()
         }else {
             loadAssetStatus = .loadding(true)
@@ -485,8 +493,7 @@ extension EditorViewController {
             with: videoURL
         ) { [weak self] (progress, _) in
             if progress > 0 {
-                self?.assetLoadingView?.mode = .circleProgress
-                self?.assetLoadingView?.progress = CGFloat(progress)
+                self?.assetLoadingView?.setProgress(.init(progress))
             }
         } completionHandler: { [weak self] (url, error, _) in
             guard let self = self else {
@@ -494,7 +501,7 @@ extension EditorViewController {
             }
             if let url = url {
                 if !self.isTransitionCompletion {
-                    self.loadAssetStatus = .successful(.video(url))
+                    self.loadAssetStatus = .succeed(.video(url))
                     return
                 }
                 #if HXPICKER_ENABLE_PICKER
@@ -503,7 +510,7 @@ extension EditorViewController {
                 }
                 #endif
                 self.assetLoadingView = nil
-                ProgressHUD.hide(forView: self.view, animated: false)
+                PhotoManager.HUDView.dismiss(delay: 0, animated: false, for: self.view)
                 let avAsset = AVAsset(url: url)
                 let image = avAsset.getImage(at: 0.1)
                 self.editorView.setAVAsset(avAsset, coverImage: image)
@@ -519,7 +526,7 @@ extension EditorViewController {
                     return
                 }
                 self.assetLoadingView = nil
-                ProgressHUD.hide(forView: self.view, animated: false)
+                PhotoManager.HUDView.dismiss(delay: 0, animated: false, for: self.view)
                 self.loadFailure()
             }
         }
@@ -528,7 +535,7 @@ extension EditorViewController {
     #if canImport(Kingfisher)
     func downloadNetworkImage(_ url: URL) {
         if isTransitionCompletion {
-            assetLoadingView = ProgressHUD.showLoading(addedTo: view, animated: true)
+            assetLoadingView = PhotoManager.HUDView.show(with: nil, delay: 0, animated: true, addedTo: view)
         }else {
             loadAssetStatus = .loadding(true)
         }
@@ -538,16 +545,15 @@ extension EditorViewController {
         ) { [weak self] (receiveSize, totalSize) in
             let progress = CGFloat(receiveSize) / CGFloat(totalSize)
             if progress > 0 {
-                self?.assetLoadingView?.mode = .circleProgress
-                self?.assetLoadingView?.text = "图片下载中".localized
-                self?.assetLoadingView?.progress = progress
+                self?.assetLoadingView?.setText(.textManager.editor.photoLoadTitle.text)
+                self?.assetLoadingView?.setProgress(.init(progress))
             }
         } completionHandler: { [weak self] (image) in
             guard let self = self else { return }
             self.assetLoadingView = nil
             if let image = image {
                 if !self.isTransitionCompletion {
-                    self.loadAssetStatus = .successful(.image(image))
+                    self.loadAssetStatus = .succeed(.image(image))
                     return
                 }
                 self.editorView.setImage(image)
@@ -557,13 +563,13 @@ extension EditorViewController {
                 DispatchQueue.global().async {
                     self.loadThumbnailImage(image, viewSize: viewSize)
                 }
-                ProgressHUD.hide(forView: self.view, animated: true)
+                PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
             }else {
                 if !self.isTransitionCompletion {
                     self.loadAssetStatus = .failure
                     return
                 }
-                self.loadFailure(message: "图片获取失败!".localized)
+                self.loadFailure(message: .textManager.editor.photoLoadFailedAlertMessage.text)
             }
         }
     }
@@ -598,7 +604,7 @@ extension EditorViewController {
             return
         }
         if isTransitionCompletion {
-            ProgressHUD.showLoading(addedTo: view, animated: true)
+            PhotoManager.HUDView.show(with: nil, delay: 0, animated: true, addedTo: view)
         }
         let viewSize = UIDevice.screenSize
         DispatchQueue.global().async {
@@ -637,10 +643,10 @@ extension EditorViewController {
                 DispatchQueue.main.async {
                     if let image = image {
                         if !self.isTransitionCompletion {
-                            self.loadAssetStatus = .successful(.image(image))
+                            self.loadAssetStatus = .succeed(.image(image))
                             return
                         }
-                        ProgressHUD.hide(forView: self.view, animated: true)
+                        PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
                         self.editorView.setImage(image)
                         self.loadCompletion()
                         self.loadLastEditedData()
@@ -652,15 +658,15 @@ extension EditorViewController {
                             self.loadAssetStatus = .failure
                             return
                         }
-                        ProgressHUD.hide(forView: self.view, animated: true)
-                        self.loadFailure(message: "图片获取失败!".localized)
+                        PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
+                        self.loadFailure(message: .textManager.editor.photoLoadFailedAlertMessage.text)
                     }
                 }
             }else {
                 let image = photoAsset.localVideoAsset?.image
                 DispatchQueue.main.async {
                     if !self.isTransitionCompletion {
-                        self.loadAssetStatus = .successful(.image(image!))
+                        self.loadAssetStatus = .succeed(.image(image!))
                         return
                     }
                     self.editorView.setImage(image)
@@ -670,7 +676,7 @@ extension EditorViewController {
                     DispatchQueue.global().async {
                         self.loadThumbnailImage(image, viewSize: viewSize)
                     }
-                    ProgressHUD.hide(forView: self.view, animated: true)
+                    PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
                 }
             }
         }
@@ -681,26 +687,25 @@ extension EditorViewController {
             return
         }
         if isTransitionCompletion {
-            assetLoadingView = ProgressHUD.showLoading(addedTo: view, animated: true)
+            assetLoadingView = PhotoManager.HUDView.show(with: nil, delay: 0, animated: true, addedTo: view)
         }else {
             loadAssetStatus = .loadding(true)
         }
         photoAsset.getNetworkImage(urlType: .original, filterEditor: true) { [weak self] (receiveSize, totalSize) in
             let progress = CGFloat(receiveSize) / CGFloat(totalSize)
             if progress > 0 {
-                self?.assetLoadingView?.mode = .circleProgress
-                self?.assetLoadingView?.text = "图片下载中".localized
-                self?.assetLoadingView?.progress = progress
+                self?.assetLoadingView?.setText(.textManager.editor.photoLoadTitle.text)
+                self?.assetLoadingView?.setProgress(progress)
             }
         } resultHandler: { [weak self] (image) in
             guard let self = self else { return }
             self.assetLoadingView = nil
             if let image = image?.normalizedImage() {
                 if !self.isTransitionCompletion {
-                    self.loadAssetStatus = .successful(.image(image))
+                    self.loadAssetStatus = .succeed(.image(image))
                     return
                 }
-                ProgressHUD.hide(forView: self.view, animated: true)
+                PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
                 self.editorView.setImage(image)
                 self.loadCompletion()
                 self.loadLastEditedData()
@@ -713,8 +718,8 @@ extension EditorViewController {
                     self.loadAssetStatus = .failure
                     return
                 }
-                ProgressHUD.hide(forView: self.view, animated: true)
-                self.loadFailure(message: "图片获取失败!".localized)
+                PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
+                self.loadFailure(message: .textManager.editor.photoLoadFailedAlertMessage.text)
             }
         }
         #endif
@@ -725,7 +730,7 @@ extension EditorViewController {
             return
         }
         if isTransitionCompletion {
-            assetLoadingView = ProgressHUD.showLoading(addedTo: view, animated: true)
+            assetLoadingView = PhotoManager.HUDView.show(with: nil, delay: 0, animated: true, addedTo: view)
             bringViews()
         }else {
             loadAssetStatus = .loadding(true)
@@ -734,12 +739,11 @@ extension EditorViewController {
             filterEditor: true
         ) { [weak self] _, requestID in
             self?.assetRequestID = requestID
-            self?.assetLoadingView?.mode = .circleProgress
-            self?.assetLoadingView?.text = "正在同步iCloud".localized + "..."
+            self?.assetLoadingView?.setText(.textManager.editor.iCloudSyncHudTitle.text + "...")
         } progressHandler: { [weak self] _, progress in
             if progress > 0 {
                 DispatchQueue.main.async {
-                    self?.assetLoadingView?.progress = CGFloat(progress)
+                    self?.assetLoadingView?.setProgress(CGFloat(progress))
                 }
             }
         } resultHandler: { [weak self] _, image, info in
@@ -751,17 +755,17 @@ extension EditorViewController {
                         self.loadAssetStatus = .failure
                         return
                     }
-                    ProgressHUD.hide(forView: self.view, animated: true)
+                    PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
                     if let inICloud = info?.inICloud {
-                        self.loadFailure(message: inICloud ? "iCloud同步失败".localized : "图片获取失败!".localized)
+                        self.loadFailure(message: inICloud ? .textManager.editor.iCloudSyncFailedAlertMessage.text : .textManager.editor.photoLoadFailedAlertMessage.text)
                     }else {
-                        self.loadFailure(message: "图片获取失败!".localized)
+                        self.loadFailure(message: .textManager.editor.photoLoadFailedAlertMessage.text)
                     }
                     return
                 }
                 if AssetManager.assetDownloadFinined(for: info) || AssetManager.assetCancelDownload(for: info) {
                     if !self.isTransitionCompletion {
-                        self.loadAssetStatus = .successful(.image(image))
+                        self.loadAssetStatus = .succeed(.image(image))
                         return
                     }
                     self.editorView.setImage(image)
@@ -771,82 +775,10 @@ extension EditorViewController {
                     DispatchQueue.global().async {
                         self.loadThumbnailImage(image, viewSize: viewSize)
                     }
-                    ProgressHUD.hide(forView: self.view, animated: true)
+                    PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
                 }
             }
         }
-        
-//        let isHEIC = photoAsset.photoFormat == "heic"
-//        editorView.isHEICImage = isHEIC
-//        assetRequestID = photoAsset.requestImageData(
-//            filterEditor: true
-//        ) { [weak self] _, result in
-//            guard let self = self else { return }
-//            self.assetLoadingView = nil
-//            switch result {
-//            case .success(let dataResult):
-//                DispatchQueue.global().async {
-//                    func handler(_ result: UIImage? = nil) {
-//                        var image = result
-//                        if image == nil {
-//                            image = UIImage(data: dataResult.imageData)
-//                        }
-//                        guard let image = image?.normalizedImage() else {
-//                            DispatchQueue.main.async {
-//                                if !self.isTransitionCompletion {
-//                                    self.loadAssetStatus = .failure
-//                                    return
-//                                }
-//                                ProgressHUD.hide(forView: self.view, animated: true)
-//                                self.loadFailure(message: "图片获取失败!".localized)
-//                            }
-//                            return
-//                        }
-//                        DispatchQueue.main.async {
-//                            if !self.isTransitionCompletion {
-//                                self.loadAssetStatus = .successful(.image(image))
-//                                return
-//                            }
-//                            self.editorView.setImage(image)
-//                            self.loadCompletion()
-//                            self.loadLastEditedData()
-//                            let viewSize = UIDevice.screenSize
-//                            DispatchQueue.global().async {
-//                                self.loadThumbnailImage(image, viewSize: viewSize)
-//                            }
-//                            ProgressHUD.hide(forView: self.view, animated: true)
-//                        }
-//                    }
-//                    let dataCount = CGFloat(dataResult.imageData.count)
-//                    if dataCount > 3000000 {
-//                        PhotoTools.compressImageData(
-//                            dataResult.imageData,
-//                            compressionQuality: dataCount.compressionQuality,
-//                            queueLabel: "com.hxphotopicker.previewrequest"
-//                        ) {
-//                            guard let imageData = $0 else {
-//                                handler()
-//                                return
-//                            }
-//                            handler(.init(data: imageData))
-//                        }
-//                        return
-//                    }
-//                    handler()
-//                }
-//            case .failure(let error):
-//                if !self.isTransitionCompletion {
-//                    self.loadAssetStatus = .failure
-//                    return
-//                }
-//                ProgressHUD.hide(forView: self.view, animated: true)
-//                if let inICloud = error.info?.inICloud {
-//                    self.loadFailure(message: inICloud ? "iCloud同步失败".localized : "图片获取失败!".localized)
-//                }else {
-//                    self.loadFailure(message: "图片获取失败!".localized)
-//                }
-//            }
-//        }
     }
     
     func requestAssetURL() {
@@ -854,7 +786,7 @@ extension EditorViewController {
             return
         }
         if isTransitionCompletion {
-            ProgressHUD.showLoading(addedTo: view, animated: true)
+            PhotoManager.HUDView.show(with: nil, delay: 0, animated: true, addedTo: view)
             bringViews()
         }else {
             loadAssetStatus = .loadding(true)
@@ -872,7 +804,7 @@ extension EditorViewController {
                        let imageData = try? Data(contentsOf: imageURL) {
                         DispatchQueue.main.async {
                             if !self.isTransitionCompletion {
-                                self.loadAssetStatus = .successful(.imageData(imageData))
+                                self.loadAssetStatus = .succeed(.imageData(imageData))
                                 return
                             }
                             self.editorView.setImageData(imageData)
@@ -882,7 +814,7 @@ extension EditorViewController {
                             DispatchQueue.global().async {
                                 self.loadThumbnailImage(.init(contentsOfFile: imageURL.path), viewSize: viewSize)
                             }
-                            ProgressHUD.hide(forView: self.view, animated: true)
+                            PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
                         }
                         return
                     }
@@ -890,7 +822,7 @@ extension EditorViewController {
                     if let image = UIImage(contentsOfFile: imageURL.path)?.scaleSuitableSize()?.normalizedImage() {
                         DispatchQueue.main.async {
                             if !self.isTransitionCompletion {
-                                self.loadAssetStatus = .successful(.image(image))
+                                self.loadAssetStatus = .succeed(.image(image))
                                 return
                             }
                             self.editorView.setImage(image)
@@ -900,7 +832,7 @@ extension EditorViewController {
                             DispatchQueue.global().async {
                                 self.loadThumbnailImage(image, viewSize: viewSize)
                             }
-                            ProgressHUD.hide(forView: self.view, animated: true)
+                            PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
                         }
                         return
                     }
@@ -910,8 +842,8 @@ extension EditorViewController {
                     self.loadAssetStatus = .failure
                     return
                 }
-                ProgressHUD.hide(forView: self.view, animated: true)
-                self.loadFailure(message: "图片获取失败!".localized)
+                PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
+                self.loadFailure(message: .textManager.editor.photoLoadFailedAlertMessage.text)
             }
         }
     }
@@ -926,7 +858,7 @@ extension EditorViewController {
             return
         }
         if isTransitionCompletion {
-            assetLoadingView = ProgressHUD.showLoading(addedTo: view, animated: true)
+            assetLoadingView = PhotoManager.HUDView.show(with: nil, delay: 0, animated: true, addedTo: view)
             bringViews()
         }else {
             loadAssetStatus = .loadding(true)
@@ -936,20 +868,19 @@ extension EditorViewController {
             deliveryMode: .highQualityFormat
         ) { [weak self] (_, requestID) in
             self?.assetRequestID = requestID
-            self?.assetLoadingView?.mode = .circleProgress
-            self?.assetLoadingView?.text = "正在同步iCloud".localized + "..."
+            self?.assetLoadingView?.setText(.textManager.editor.iCloudSyncHudTitle.text + "...")
         } progressHandler: { [weak self] (_, progress) in
             if progress > 0 {
-                self?.assetLoadingView?.progress = CGFloat(progress)
+                self?.assetLoadingView?.setProgress(CGFloat(progress))
             }
         } success: { [weak self] _, avAsset, _ in
             guard let self = self else { return }
             self.assetLoadingView = nil
             if !self.isTransitionCompletion {
-                self.loadAssetStatus = .successful(.videoAsset(avAsset))
+                self.loadAssetStatus = .succeed(.videoAsset(avAsset))
                 return
             }
-            ProgressHUD.hide(forView: self.view, animated: false)
+            PhotoManager.HUDView.dismiss(delay: 0, animated: false, for: self.view)
             let image = avAsset.getImage(at: 0.1)
             self.editorView.setAVAsset(avAsset, coverImage: image)
             self.editorView.loadVideo(isPlay: false)
@@ -962,12 +893,12 @@ extension EditorViewController {
                 self.loadAssetStatus = .failure
                 return
             }
-            ProgressHUD.hide(forView: self.view, animated: false)
+            PhotoManager.HUDView.dismiss(delay: 0, animated: false, for: self.view)
             guard let info = info else {
-                self.loadFailure(message: "视频获取失败!".localized)
+                self.loadFailure(message: .textManager.editor.videoLoadFailedAlertMessage.text)
                 return
             }
-            self.loadFailure(message: info.inICloud ? "iCloud同步失败".localized : "视频获取失败!".localized)
+            self.loadFailure(message: info.inICloud ? .textManager.editor.iCloudSyncFailedAlertMessage.text : .textManager.editor.videoLoadFailedAlertMessage.text)
         }
     }
     #endif
@@ -1083,8 +1014,6 @@ extension EditorViewController {
                     self.showTools(optionType == .cropSize)
                 }
                 toolsView.selectedOptionType(optionType)
-            }else {
-                showChangeButton()
             }
         }else if selectedAsset.contentType == .video {
             if let optionType = config.video.defaultSelectedToolOption {
@@ -1092,23 +1021,19 @@ extension EditorViewController {
                     self.showTools(optionType == .cropSize)
                 }
                 toolsView.selectedOptionType(optionType)
-            }else {
-                showChangeButton()
             }
-        }else {
-            showChangeButton()
         }
     }
     
-    func loadFailure(message: String = "视频获取失败!".localized) {
+    func loadFailure(message: String = .textManager.editor.videoLoadFailedAlertMessage.text) {
         if isDismissed {
             return
         }
         PhotoTools.showConfirm(
             viewController: self,
-            title: "提示".localized,
+            title: .textManager.editor.loadFailedAlertTitle.text,
             message: message,
-            actionTitle: "确定".localized
+            actionTitle: .textManager.editor.loadFailedAlertDoneTitle.text
         ) { [weak self] _ in
             self?.backClick(true)
         }

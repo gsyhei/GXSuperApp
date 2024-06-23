@@ -202,4 +202,27 @@ public struct PickerBottomViewConfiguration {
         boxConfig.tickWidth = 1
         self.originalSelectBox = boxConfig
     }
+    
+    public mutating func setThemeColor(_ color: UIColor) {
+        originalSelectBox.setThemeColor(color)
+        originalSelectBox.borderColor = color
+        previewButtonTitleColor = color
+        originalButtonTitleColor = color
+        finishButtonBackgroundColor = color
+        finishButtonDarkBackgroundColor = color
+        finishButtonDisableBackgroundColor = color.withAlphaComponent(0.4)
+        finishButtonDisableDarkBackgroundColor = color.withAlphaComponent(0.4)
+        #if HXPICKER_ENABLE_EDITOR
+        editButtonTitleColor = color
+        #endif
+        promptIconColor = color
+        promptIconDarkColor = color
+        promptTitleColor = color
+        promptArrowColor = color
+        promptArrowDarkColor = color
+        previewListTickBgColor = color
+        previewListTickBgDarkColor = color
+        selectedViewTickColor = color
+        selectedViewTickDarkColor = color
+    }
 }

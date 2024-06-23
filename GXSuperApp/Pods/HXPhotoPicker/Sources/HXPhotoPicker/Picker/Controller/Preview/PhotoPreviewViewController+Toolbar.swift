@@ -31,7 +31,11 @@ extension PhotoPreviewViewController: PhotoToolBarDelegate {
             photoToolbar.selectedAssetDidChanged(selectedAssetArray)
             photoToolbar.configPreviewList(previewAssets, page: currentPreviewIndex)
         }else {
-            photoToolbar.updateSelectedAssets(previewAssets)
+            if config.bottomView.isShowPreviewList {
+                photoToolbar.configPreviewList(previewAssets, page: currentPreviewIndex)
+            }else {
+                photoToolbar.updateSelectedAssets(previewAssets)
+            }
         }
     }
     
@@ -246,12 +250,7 @@ extension PhotoPreviewViewController: PhotoToolBarDelegate {
             return
         }
         if assetCount == 0 {
-            ProgressHUD.showWarning(
-                addedTo: view,
-                text: "没有可选资源".localized,
-                animated: true,
-                delayHide: 1.5
-            )
+            PhotoManager.HUDView.showInfo(with: .textPreview.emptyAssetHudTitle.text, delay: 1.5, animated: true, addedTo: view)
             return
         }
         guard let photoAsset = photoAsset(for: currentPreviewIndex) else {

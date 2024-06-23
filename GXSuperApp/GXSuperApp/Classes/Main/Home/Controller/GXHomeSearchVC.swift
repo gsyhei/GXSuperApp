@@ -19,7 +19,17 @@ class GXHomeSearchVC: GXBaseViewController {
     @IBOutlet weak var searchBar: UIView!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchTF: UITextField!
-    @IBOutlet weak var tableView: GXBaseTableView!
+    @IBOutlet weak var tableView: GXBaseTableView! {
+        didSet {
+            tableView.dataSource = self
+            tableView.delegate = self
+            tableView.register(headerFooterViewType: GXHomeSearchHeader.self)
+            tableView.register(cellType: GXHomeSearchResultCell.self)
+            tableView.register(cellType: GXHomeSearchHistoryCell.self)
+            tableView.register(cellType: GXHomeSearchAutocompleteCell.self)
+            tableView.register(cellType: GXHomeMarkerCell.self)
+        }
+    }
     
     private lazy var viewModel: GXHomeSearchViewModel = {
         return GXHomeSearchViewModel()
@@ -52,14 +62,6 @@ class GXHomeSearchVC: GXBaseViewController {
     override func setupViewController() {
         self.searchButton.setBackgroundColor(.gx_green, for: .normal)
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.register(headerFooterViewType: GXHomeSearchHeader.self)
-        self.tableView.register(cellType: GXHomeSearchResultCell.self)
-        self.tableView.register(cellType: GXHomeSearchHistoryCell.self)
-        self.tableView.register(cellType: GXHomeSearchAutocompleteCell.self)
-        self.tableView.register(cellType: GXHomeMarkerCell.self)
-
         self.tableView.gx_footer = GXRefreshNormalFooter(completion: {
             
         }).then { footer in

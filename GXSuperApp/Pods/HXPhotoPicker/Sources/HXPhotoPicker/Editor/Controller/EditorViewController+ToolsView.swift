@@ -27,7 +27,6 @@ extension EditorViewController: EditorToolsViewDelegate {
                 lastSelectedTool = model
                 return
             }else {
-                hideChangeButton()
                 selectedTool = model
             }
         case .text:
@@ -43,7 +42,6 @@ extension EditorViewController: EditorToolsViewDelegate {
             present(vc, animated: true)
             return
         default:
-            hideChangeButton()
             selectedTool = model
         }
         hideLastToolView()
@@ -70,7 +68,7 @@ extension EditorViewController: EditorToolsViewDelegate {
                 guard let self = self else {
                     return
                 }
-                if let ratio = self.ratioToolView.selectedRatio?.ratio, !ratio.equalTo(.zero) {
+                if let ratio = self.ratioToolView.selectedRatio?.ratio, !ratio.equalTo(.zero), !self.editorView.isRoundMask {
                     self.ratioToolView(self.ratioToolView, didSelectedRatioAt: ratio)
                 }
             }
@@ -109,7 +107,6 @@ extension EditorViewController: EditorToolsViewDelegate {
         }
         editorView.isStickerEnabled = true
         updateBottomMaskLayer()
-        showChangeButton()
     }
     
     func showToolsView() {
@@ -504,12 +501,7 @@ extension EditorViewController: EditorToolsViewDelegate {
                 }else {
                     let infos = PhotoTools.defaultMusicInfos()
                     if infos.isEmpty {
-                        ProgressHUD.showWarning(
-                            addedTo: view,
-                            text: "暂无配乐".localized,
-                            animated: true,
-                            delayHide: 1.5
-                        )
+                        PhotoManager.HUDView.showInfo(with: .textManager.editor.music.emptyHudTitle.text, delay: 1.5, animated: true, addedTo: view)
                         return
                     }else {
                         musicView.reloadData(infos: infos)
@@ -700,35 +692,6 @@ extension EditorViewController: EditorToolsViewDelegate {
         }
     }
     
-    func showChangeButton() {
-        if assets.count <= 1 {
-            return
-        }
-        if !changeButton.isHidden && changeButton.alpha == 1 {
-            return
-        }
-        if selectedTool != nil {
-            return
-        }
-        changeButton.isHidden = false
-        UIView.animate(withDuration: 0.2) {
-            self.changeButton.alpha = 1
-        }
-    }
-    
-    func hideChangeButton() {
-        if changeButton.isHidden || changeButton.alpha == 0 {
-            return
-        }
-        UIView.animate(withDuration: 0.2) {
-            self.changeButton.alpha = 0
-        } completion: {
-            if $0 {
-                self.changeButton.isHidden = true
-            }
-        }
-    }
-    
     func presentText(_ text: EditorStickerText? = nil) {
         let textVC = EditorStickerTextViewController(config: config.text, stickerText: text)
         textVC.delegate = self
@@ -738,12 +701,8 @@ extension EditorViewController: EditorToolsViewDelegate {
     }
 }
 
-extension EditorViewController: EditorMaskListViewControllerDelegate {
-    
-    func editorMaskListViewController(
-        _ editorMaskListViewController: EditorMaskListViewController,
-        didSelected image: UIImage
-    ) {
+extension EditorViewController: EditorMaskListDelete {
+    public func editorMaskList(_ chartletList: EditorMaskListProtocol, didSelectedWith image: UIImage) {
         let imageAspectRatio = image.size
         editorView.isFixedRatio = true
         editorView.setMaskImage(image, animated: true)

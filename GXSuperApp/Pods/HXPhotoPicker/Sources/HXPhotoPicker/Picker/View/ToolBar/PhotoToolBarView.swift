@@ -86,7 +86,7 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
     
     private var isShowPrompt: Bool {
         type == .picker &&
-        AssetManager.authorizationStatusIsLimited() &&
+        AssetPermissionsUtil.isLimitedAuthorizationStatus &&
         pickerConfig.photoList.bottomView.isShowPrompt &&
         pickerConfig.allowLoadPhotoLibrary
     }
@@ -97,17 +97,15 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
         case .preview:
             return pickerConfig.previewView.bottomView.isShowSelectedView && pickerConfig.selectMode == .multiple && !isShowPreviewList
         case .browser:
-            return true
+            return !isShowPreviewList
         }
     }
     private var isShowPreviewList: Bool {
         switch type {
         case .picker:
             return false
-        case .preview:
+        case .preview, .browser:
             return pickerConfig.previewView.bottomView.isShowPreviewList
-        case .browser:
-            return false
         }
     }
     
@@ -141,8 +139,8 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
                 initSelectedView()
             }
             previewBtn = UIButton(type: .custom)
-            previewBtn.setTitle("预览".localized, for: .normal)
-            previewBtn.titleLabel?.font = .systemFont(ofSize: 17)
+            previewBtn.setTitle(.textPhotoList.bottomView.previewTitle.text, for: .normal)
+            previewBtn.titleLabel?.font = .textPhotoList.bottomView.previewTitleFont
             previewBtn.isEnabled = false
             previewBtn.addTarget(self, action: #selector(didPreviewButtonClick), for: .touchUpInside)
             previewBtn.height = 50
@@ -167,8 +165,8 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
             }
             #if HXPICKER_ENABLE_EDITOR
             editBtn = UIButton(type: .custom)
-            editBtn.setTitle("编辑".localized, for: .normal)
-            editBtn.titleLabel?.font = .systemFont(ofSize: 17)
+            editBtn.setTitle(.textPreview.bottomView.editTitle.text, for: .normal)
+            editBtn.titleLabel?.font = .textPreview.bottomView.editTitleFont
             editBtn.addTarget(self, action: #selector(didEditBtnButtonClick), for: .touchUpInside)
             editBtn.height = 50
             editBtn.isHidden = viewConfig.isHiddenEditButton
@@ -181,8 +179,16 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
             #endif
         }else {
             viewConfig = pickerConfig.previewView.bottomView
-            initSelectedView()
-            selectedView.allowDrop = false
+            if isShowPreviewList {
+                previewListView = PhotoPreviewListView(frame: .init(x: 0, y: 0, width: width, height: 55))
+                previewListView.dataSource = self
+                addSubview(previewListView)
+            }else {
+                if isShowSelectedView {
+                    initSelectedView()
+                    selectedView.allowDrop = false
+                }
+            }
         }
         
         if type != .browser {
@@ -191,8 +197,13 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
             contentView.addSubview(originalView)
             
             originalTitleLb = UILabel()
-            originalTitleLb.text = "原图".localized
-            originalTitleLb.font = .systemFont(ofSize: 17)
+            if type == .picker {
+                originalTitleLb.text = .textPhotoList.bottomView.originalTitle.text
+                originalTitleLb.font = .textPhotoList.bottomView.originalTitleFont
+            }else {
+                originalTitleLb.text = .textPreview.bottomView.originalTitle.text
+                originalTitleLb.font = .textPreview.bottomView.originalTitleFont
+            }
             originalTitleLb.lineBreakMode = .byTruncatingHead
             originalView.addSubview(originalTitleLb)
             
@@ -221,15 +232,32 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
             }
             
             finishBtn = UIButton(type: .custom)
-            finishBtn.setTitle("完成".localized, for: .normal)
-            finishBtn.titleLabel?.font = .mediumPingFang(ofSize: 16)
+            if type == .picker {
+                finishBtn.setTitle(.textPhotoList.bottomView.finishTitle.text, for: .normal)
+                finishBtn.titleLabel?.font = .textPhotoList.bottomView.finishTitleFont
+            }else {
+                finishBtn.setTitle(.textPreview.bottomView.finishTitle.text, for: .normal)
+                finishBtn.titleLabel?.font = .textPreview.bottomView.finishTitleFont
+            }
             finishBtn.layer.cornerRadius = 3
             finishBtn.layer.masksToBounds = true
-            finishBtn.isEnabled = false
+            if config.selectMode == .multiple {
+                finishBtn.isEnabled = false
+            }
             finishBtn.addTarget(self, action: #selector(didFinishButtonClick), for: .touchUpInside)
             contentView.addSubview(finishBtn)
         }
         layoutSubviews()
+        bringSubviewToFront(contentView)
+        if selectedView != nil {
+            bringSubviewToFront(selectedView)
+        }
+        if previewListView != nil {
+            bringSubviewToFront(previewListView)
+        }
+        if promptView != nil {
+            bringSubviewToFront(promptView)
+        }
         configColor()
     }
     
@@ -313,8 +341,12 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
     
     public func updateSelectedAssets(_ photoAssets: [PhotoAsset]) {
         if !isShowSelectedView { return }
-        if isShowPrompt, selectedView.photoAssetArray.isEmpty, !photoAssets.isEmpty {
-            promptView.alpha = 0
+        if isShowPrompt {
+            if selectedView.photoAssetArray.isEmpty, !photoAssets.isEmpty {
+                promptView.alpha = 0
+            }else if photoAssets.isEmpty {
+                promptView.alpha = 1
+            }
         }
         selectedView.reloadData(photoAssets: photoAssets)
     }
@@ -365,7 +397,11 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
     
     private func startOriginalLoading() {
         isOriginalLoading = true
-        originalTitleLb.text = "原图".localized
+        if type == .picker {
+            originalTitleLb.text = .textPhotoList.bottomView.originalTitle.text
+        }else {
+            originalTitleLb.text = .textPreview.bottomView.originalTitle.text
+        }
         originalLoadingView.startAnimating()
         updateOriginalViewFrame()
     }
@@ -373,10 +409,16 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
     private func stopOriginalLoading(bytes: Int, bytesString: String) {
         isOriginalLoading = false
         originalLoadingView.stopAnimating()
-        if bytes > 0 {
-            originalTitleLb.text = "原图".localized + " (" + bytesString + ")"
+        let originalTitle: String
+        if type == .picker {
+            originalTitle = .textPhotoList.bottomView.originalTitle.text
         }else {
-            originalTitleLb.text = "原图".localized
+            originalTitle = .textPreview.bottomView.originalTitle.text
+        }
+        if bytes > 0 {
+            originalTitleLb.text = originalTitle + " (" + bytesString + ")"
+        }else {
+            originalTitleLb.text = originalTitle
         }
         updateOriginalViewFrame()
     }
@@ -462,8 +504,15 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
             updateFinishButtonFrame()
             updateOriginalViewFrame()
         }else {
-            selectedView.y = 0
-            selectedView.width = width
+            if isShowPreviewList {
+                previewListView.y = 10
+                previewListView.width = width
+            }else {
+                if isShowSelectedView {
+                    selectedView.y = 0
+                    selectedView.width = width
+                }
+            }
         }
     }
     
@@ -505,6 +554,7 @@ extension PhotoToolBarView: PhotoPreviewListViewDataSource {
         switch reason {
         case .tapOnPageThumbnail, .scrollingBar:
             allowPreviewDidScroll = false
+            previewPage = page
             toolbarDelegate?.photoToolbar(self, previewMoveTo: previewAssets[page])
         case .configuration, .interactivePaging:
             break
@@ -600,6 +650,7 @@ extension PhotoToolBarView: PhotoPreviewListViewDataSource {
         let isMovingToNextPage = progress0To2 > 1
         let rawProgress = isMovingToNextPage ? (progress0To2 - 1) : (1 - progress0To2)
         let progress = didChange ? 1 : min(max(rawProgress, 0), 1)
+        
         switch previewListView.state {
         case .transitioningInteractively(_, let forwards):
             if progress == 1 {
@@ -610,7 +661,7 @@ extension PhotoToolBarView: PhotoPreviewListViewDataSource {
                 previewListView.cancelInteractivePaging()
             }
         case .collapsing, .collapsed, .expanding, .expanded:
-            if progress != 0 {
+            if progress != 0, !didChange {
                 previewListView.startInteractivePaging(forwards: isMovingToNextPage)
             }
         }
@@ -726,7 +777,13 @@ extension PhotoToolBarView {
                 for: .disabled
             )
         }else {
-            selectedView.tickColor = isDark ? config.selectedViewTickDarkColor : config.selectedViewTickColor
+            if isShowPreviewList {
+                previewListView.selectColor = isDark ? config.previewListTickDarkColor : config.previewListTickColor
+                previewListView.selectBgColor = isDark ? config.previewListTickBgDarkColor : config.previewListTickBgColor
+            }
+            if isShowSelectedView {
+                selectedView.tickColor = isDark ? config.selectedViewTickDarkColor : config.selectedViewTickColor
+            }
         }
     }
 }
@@ -790,18 +847,24 @@ extension PhotoToolBarView {
     private func updateFinishButtonTitle(_ photoAssets: [PhotoAsset]) {
         let count = photoAssets.count
         assetCount = count
+        let finishTitle: String
+        if type == .picker {
+            finishTitle = .textPhotoList.bottomView.finishTitle.text
+        }else {
+            finishTitle = .textPreview.bottomView.finishTitle.text
+        }
         if count > 0 {
             finishBtn.isEnabled = true
             if type == .picker {
                 previewBtn.isEnabled = true
             }
             finishBtn.setTitle(
-                "完成".localized + " (\(count))",
+                finishTitle + " (\(count))",
                 for: .normal
             )
         }else {
             if type == .preview {
-                if pickerConfig.maximumSelectedVideoCount == 1 {
+                if pickerConfig.maximumSelectedVideoCount == 1 || pickerConfig.selectMode == .single {
                     finishBtn.isEnabled = true
                 }else {
                     finishBtn.isEnabled = !pickerConfig.previewView.bottomView.disableFinishButtonWhenNotSelected
@@ -812,7 +875,7 @@ extension PhotoToolBarView {
             if type == .picker {
                 previewBtn.isEnabled = false
             }
-            finishBtn.setTitle("完成".localized, for: .normal)
+            finishBtn.setTitle(finishTitle, for: .normal)
         }
         updateFinishButtonFrame()
     }

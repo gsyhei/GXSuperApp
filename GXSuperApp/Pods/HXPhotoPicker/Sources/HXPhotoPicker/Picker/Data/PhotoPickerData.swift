@@ -10,6 +10,11 @@ import UIKit
 import Photos
 
 public protocol PhotoPickerDataDelegate: AnyObject {
+    /// 是否可以选择 Asset
+    func pickerData(
+        _ pickerData: PhotoPickerData,
+        canSelectAsset photoAsset: PhotoAsset
+    ) -> Bool
     
     /// 将要选择Asset
     func pickerData(
@@ -104,8 +109,8 @@ open class PhotoPickerData {
     
     public let config: PickerConfiguration
     
-    let requestAssetBytesQueue: OperationQueue
-    let previewRequestAssetBytesQueue: OperationQueue
+    public let requestAssetBytesQueue: OperationQueue
+    public let previewRequestAssetBytesQueue: OperationQueue
     
     public required init(config: PickerConfiguration) {
         self.config = config
@@ -122,7 +127,7 @@ open class PhotoPickerData {
     
     /// 添加根据本地资源生成的PhotoAsset对象
     /// - Parameter photoAsset: 对应的PhotoAsset对象
-    public func addedLocalCamera(_ photoAsset: PhotoAsset) {
+    open func addedLocalCamera(_ photoAsset: PhotoAsset) {
         photoAsset.localIndex = localCameraAssets.count
         localCameraAssets.append(photoAsset)
     }
@@ -131,7 +136,7 @@ open class PhotoPickerData {
     /// - Parameter photoAsset: 对应的PhotoAsset对象
     /// - Returns: 添加结果
     @discardableResult
-    public func append(
+    open func append(
         _ photoAsset: PhotoAsset,
         isFilterEditor: Bool = false
     ) -> Bool {
@@ -140,6 +145,9 @@ open class PhotoPickerData {
         }
         if config.selectMode == .single {
             // 单选模式不可添加
+            return false
+        }
+        if let shouldSelect = delegate?.pickerData(self, shouldSelectedAsset: photoAsset, at: selectedAssets.count), !shouldSelect {
             return false
         }
         if selectedAssets.contains(photoAsset) {
@@ -166,28 +174,28 @@ open class PhotoPickerData {
         return canSelect
     }
     
-    public func canSelectPhoto(_ photoAsset: PhotoAsset) -> (Bool, String?) {
+    open func canSelectPhoto(_ photoAsset: PhotoAsset) -> (Bool, String?) {
         var canSelect = true
         var text: String?
         if photoAsset.mediaType == .photo {
             if config.maximumSelectedPhotoFileSize > 0 {
                 if photoAsset.fileSize > config.maximumSelectedPhotoFileSize {
-                    text = "照片大小超过最大限制".localized + config.maximumSelectedPhotoFileSize.bytesString
+                    text = .textManager.picker.maximumSelectedPhotoFileSizeHudTitle.text + config.maximumSelectedPhotoFileSize.bytesString
                     canSelect = false
                 }
             }
             if !config.allowSelectedTogether {
                 if selectedVideoAssets.count > 0 {
-                    text = "照片和视频不能同时选择".localized
+                    text = .textManager.picker.photoTogetherSelectHudTitle.text
                     canSelect = false
                 }
             }
             if config.maximumSelectedPhotoCount > 0, selectedPhotoAssets.count >= config.maximumSelectedPhotoCount {
-                text = String.init(format: "最多只能选择%d张照片".localized, arguments: [config.maximumSelectedPhotoCount])
+                text = String.init(format: .textManager.picker.maximumSelectedPhotoHudTitle.text, arguments: [config.maximumSelectedPhotoCount])
                 canSelect = false
             }else {
                 if selectedAssets.count >= config.maximumSelectedCount && config.maximumSelectedCount > 0 {
-                    text = String.init(format: "已达到最大选择数".localized, arguments: [config.maximumSelectedPhotoCount])
+                    text = .textManager.picker.maximumSelectedHudTitle.text
                     canSelect = false
                 }
             }
@@ -195,7 +203,7 @@ open class PhotoPickerData {
         return (canSelect, text)
     }
     
-    public func canSelectVideo(
+    open func canSelectVideo(
         _ photoAsset: PhotoAsset,
         isFilterEditor: Bool
     ) -> (Bool, String?) {
@@ -204,7 +212,7 @@ open class PhotoPickerData {
         if photoAsset.mediaType == .video {
             if config.maximumSelectedVideoFileSize > 0 {
                 if photoAsset.fileSize > config.maximumSelectedVideoFileSize {
-                    text = "视频大小超过最大限制".localized + config.maximumSelectedVideoFileSize.bytesString
+                    text = .textManager.picker.maximumSelectedVideoFileSizeHudTitle.text + config.maximumSelectedVideoFileSize.bytesString
                     canSelect = false
                 }
             }
@@ -213,7 +221,7 @@ open class PhotoPickerData {
                     #if HXPICKER_ENABLE_EDITOR
                     if !config.editorOptions.contains(.video) || isFilterEditor {
                         text = String(
-                            format: "视频最大时长为%d秒，无法选择".localized,
+                            format: .textManager.picker.maximumSelectedVideoDurationHudTitle.text,
                             arguments: [config.maximumSelectedVideoDuration]
                         )
                         canSelect = false
@@ -221,7 +229,7 @@ open class PhotoPickerData {
                         if config.maximumVideoEditDuration > 0 &&
                             round(photoAsset.videoDuration) > Double(config.maximumVideoEditDuration) {
                             text = String(
-                                format: "视频可编辑最大时长为%d秒，无法编辑".localized,
+                                format: .textManager.picker.maximumVideoEditDurationHudTitle.text,
                                 arguments: [config.maximumVideoEditDuration]
                             )
                             canSelect = false
@@ -229,7 +237,7 @@ open class PhotoPickerData {
                     }
                     #else
                     text = String(
-                        format: "视频最大时长为%d秒，无法选择".localized,
+                        format: .textManager.picker.maximumSelectedVideoDurationHudTitle.text,
                         arguments: [config.maximumSelectedVideoDuration]
                     )
                     canSelect = false
@@ -239,7 +247,7 @@ open class PhotoPickerData {
             if config.minimumSelectedVideoDuration > 0 {
                 if round(photoAsset.videoDuration) < Double(config.minimumSelectedVideoDuration) {
                     text = String(
-                        format: "视频最小时长为%d秒，无法选择".localized,
+                        format: .textManager.picker.minimumSelectedVideoDurationHudTitle.text,
                         arguments: [config.minimumSelectedVideoDuration]
                     )
                     canSelect = false
@@ -247,16 +255,16 @@ open class PhotoPickerData {
             }
             if !config.allowSelectedTogether {
                 if selectedPhotoAssets.count > 0 {
-                    text = "视频和照片不能同时选择".localized
+                    text = .textManager.picker.videoTogetherSelectHudTitle.text
                     canSelect = false
                 }
             }
             if config.maximumSelectedVideoCount > 0, selectedVideoAssets.count >= config.maximumSelectedVideoCount {
-                text = String.init(format: "最多只能选择%d个视频".localized, arguments: [config.maximumSelectedVideoCount])
+                text = String.init(format: .textManager.picker.maximumSelectedVideoHudTitle.text, arguments: [config.maximumSelectedVideoCount])
                 canSelect = false
             }else {
                 if selectedAssets.count >= config.maximumSelectedCount && config.maximumSelectedCount > 0 {
-                    text = String.init(format: "已达到最大选择数".localized, arguments: [config.maximumSelectedPhotoCount])
+                    text = .textManager.picker.maximumSelectedHudTitle.text
                     canSelect = false
                 }
             }
@@ -269,11 +277,14 @@ open class PhotoPickerData {
     ///   - photoAsset: 对应的PhotoAsset
     ///   - isShowHUD: 是否显示HUD
     /// - Returns: 结果
-    public func canSelect(
+    open func canSelect(
         _ photoAsset: PhotoAsset,
         isShowHUD: Bool,
         isFilterEditor: Bool = false
     ) -> Bool {
+        if let shouldSelect = delegate?.pickerData(self, canSelectAsset: photoAsset), !shouldSelect {
+            return false
+        }
         var canSelect = true
         let text: String?
         if photoAsset.mediaType == .photo {
@@ -285,18 +296,13 @@ open class PhotoPickerData {
             canSelect = result.0
             text = result.1
         }
-        if let shouldSelect = delegate?.pickerData(self, shouldSelectedAsset: photoAsset, at: selectedAssets.count) {
-            if canSelect {
-                canSelect = shouldSelect
-            }
-        }
         if let text = text, !canSelect, isShowHUD {
             DispatchQueue.main.async {
-                ProgressHUD.showWarning(
-                    addedTo: UIViewController.topViewController?.navigationController?.view,
-                    text: text,
+                PhotoManager.HUDView.showInfo(
+                    with: text,
+                    delay: 1.5,
                     animated: true,
-                    delayHide: 1.5
+                    addedTo: UIViewController.topViewController?.navigationController?.view
                 )
             }
         }
@@ -307,7 +313,7 @@ open class PhotoPickerData {
     /// - Parameter photoAsset: 对应PhotoAsset对象
     /// - Returns: 移除结果
     @discardableResult
-    public func remove(_ photoAsset: PhotoAsset) -> Bool {
+    open func remove(_ photoAsset: PhotoAsset) -> Bool {
         guard let index = selectedAssets.firstIndex(of: photoAsset) else {
             return false
         }
@@ -342,7 +348,7 @@ open class PhotoPickerData {
     
     /// 视频时长是否超过最大限制
     /// - Parameter photoAsset: 对应的PhotoAsset对象
-    public func videoDurationExceedsTheLimit(_ photoAsset: PhotoAsset) -> Bool {
+    open func videoDurationExceedsTheLimit(_ photoAsset: PhotoAsset) -> Bool {
         photoAsset.mediaType == .video &&
            config.maximumSelectedVideoDuration > 0 &&
            round(photoAsset.videoDuration) > Double(config.maximumSelectedVideoDuration)

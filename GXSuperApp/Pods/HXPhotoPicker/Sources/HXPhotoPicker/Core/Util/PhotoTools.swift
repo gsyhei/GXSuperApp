@@ -255,7 +255,7 @@ public struct PhotoTools {
         )
     }
     
-    static func transformImageSize(
+    public static func transformImageSize(
         _ imageSize: CGSize,
         toViewSize viewSize: CGSize,
         directions: [PhotoToolsTransformImageSizeDirections] = [.horizontal, .vertical]
@@ -352,8 +352,7 @@ public struct PhotoTools {
     
     static func imageCompress(
         _ data: Data,
-        compressionQuality: CGFloat,
-        isHEIC: Bool = false
+        compressionQuality: CGFloat
     ) -> Data? {
         guard var resultImage = UIImage(data: data)?.normalizedImage() else {
             return nil
@@ -525,7 +524,7 @@ public struct PhotoTools {
         return layer
     }
     
-    #if HXPICKER_ENABLE_EDITOR || HXPICKER_ENABLE_CAMERA
+    #if HXPICKER_ENABLE_EDITOR || HXPICKER_ENABLE_EDITOR_VIEW || HXPICKER_ENABLE_CAMERA
     static func getColor(red: Int, green: Int, blue: Int, alpha: Int = 255) -> CIColor {
         return CIColor(red: CGFloat(Double(red) / 255.0),
                        green: CGFloat(Double(green) / 255.0),
@@ -537,12 +536,27 @@ public struct PhotoTools {
         let color = self.getColor(red: red, green: green, blue: blue, alpha: alpha)
         return CIImage(color: color).cropped(to: rect)
     }
+    
+    
+    static func createPixelBuffer(_ size: CGSize) -> CVPixelBuffer? {
+        var pixelBuffer: CVPixelBuffer?
+        let pixelBufferAttributes = [kCVPixelBufferIOSurfacePropertiesKey: [:] as [String: Any]]
+        CVPixelBufferCreate(
+            nil,
+            Int(size.width),
+            Int(size.height),
+            kCVPixelFormatType_32BGRA,
+            pixelBufferAttributes as CFDictionary,
+            &pixelBuffer
+        )
+        return pixelBuffer
+    }
     #endif
      
     private init() { }
 }
 
-enum PhotoToolsTransformImageSizeDirections {
+public enum PhotoToolsTransformImageSizeDirections {
     case horizontal
     case vertical
 }

@@ -7,12 +7,14 @@
 
 import UIKit
 import CollectionKit
+import Reusable
 
-class GXHomeDetailCell0: UITableViewCell {
+class GXHomeDetailCell0: UITableViewCell, Reusable {
     
     private var dataSource = ArrayDataSource<String>()
     private lazy var collectionView: CollectionView = {
         let viewSource = ClosureViewSource(viewUpdater: { (view: UIImageView, data: String, index: Int) in
+            view.isSkeletonable = true
             view.image = UIImage(named: "demo_car")
             view.layer.masksToBounds = true
             view.layer.cornerRadius = 8.0
@@ -43,13 +45,17 @@ class GXHomeDetailCell0: UITableViewCell {
     }
     
     private func createSubviews() {
+        self.contentView.backgroundColor = .gx_background
+        self.isSkeletonable = true
+        self.collectionView.isSkeletonable = true
         self.collectionView.showsHorizontalScrollIndicator = false
-        self.addSubview(self.collectionView)
+        self.contentView.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(145)
+            make.top.equalToSuperview().offset(12)
             make.left.equalToSuperview().offset(12)
             make.right.equalToSuperview().offset(-12)
-            make.height.equalTo(70)
+            make.height.equalTo(100)
+            make.bottom.equalToSuperview()
         }
         self.dataSource.data = ["", "", "", "", ""]
     }

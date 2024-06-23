@@ -16,7 +16,11 @@ open class PhotoBrowser: PhotoPickerController {
     /// 当前页面
     public var pageIndex: Int {
         get { currentPreviewIndex }
-        set { previewViewController?.scrollToItem(newValue) }
+        set { setPageIndex(newValue, animated: false) }
+    }
+    
+    public func setPageIndex(_ page: Int, animated: Bool) {
+        previewViewController?.scrollToItem(page, animated: animated)
     }
     
     /// 页面数
@@ -48,6 +52,9 @@ open class PhotoBrowser: PhotoPickerController {
     
     /// 转场动画时触发
     public var transitionAnimator: TransitionAnimator?
+    
+    /// 转场动画结束时触发
+    public var transitionCompletion: TransitionCompletion?
     
     /// 删除预览资源时触发
     public var deleteAssetHandler: AssetHandler?
@@ -84,6 +91,12 @@ open class PhotoBrowser: PhotoPickerController {
     
     /// cell已经消失
     public var cellDidEndDisplaying: ContextUpdate?
+    
+    /// cell准备点击
+    public var cellShouldSingleClick: SingleClickHandler?
+    
+    /// cell点击事件
+    public var cellSingleClick: SingleClickHandler?
     
     /// 界面发生滚动时触发
     public var viewDidScroll: ContextUpdate?
@@ -130,6 +143,7 @@ open class PhotoBrowser: PhotoPickerController {
         numberOfPages: @escaping NumberOfPagesHandler,
         assetForIndex: @escaping RequiredAsset,
         transitionAnimator: TransitionAnimator? = nil,
+        transitionCompletion: TransitionCompletion? = nil,
         cellForIndex: CellReloadContext? = nil,
         cellWillDisplay: ContextUpdate? = nil,
         cellDidEndDisplaying: ContextUpdate? = nil,
@@ -143,6 +157,7 @@ open class PhotoBrowser: PhotoPickerController {
             transitionalImage: transitionalImage
         )
         browser.transitionAnimator = transitionAnimator
+        browser.transitionCompletion = transitionCompletion
         browser.numberOfPages = numberOfPages
         browser.assetForIndex = assetForIndex
         browser.cellWillDisplay = cellWillDisplay
@@ -173,6 +188,7 @@ open class PhotoBrowser: PhotoPickerController {
         fromVC: UIViewController? = nil,
         transitionalImage: UIImage? = nil,
         transitionHandler: TransitionAnimator? = nil,
+        transitionCompletion: TransitionCompletion? = nil,
         deleteAssetHandler: AssetHandler? = nil,
         longPressHandler: AssetHandler? = nil
     ) -> PhotoBrowser {
@@ -183,6 +199,7 @@ open class PhotoBrowser: PhotoPickerController {
             transitionalImage: transitionalImage
         )
         browser.transitionAnimator = transitionHandler
+        browser.transitionCompletion = transitionCompletion
         browser.deleteAssetHandler = deleteAssetHandler
         browser.longPressHandler = longPressHandler
         browser.show(fromVC)
@@ -277,16 +294,18 @@ open class PhotoBrowser: PhotoPickerController {
         previewConfig.prefersStatusBarHidden = true
         previewConfig.statusBarStyle = .lightContent
         previewConfig.adaptiveBarAppearance = false
+        previewConfig.browserTransitionAnimator = config.transitionAnimator
+        previewConfig.browserInteractiveTransitionAnimator = config.interactiveTransitionAnimator
         
         var pConfig = PreviewViewConfiguration()
         pConfig.singleClickCellAutoPlayVideo = false
         pConfig.isShowBottomView = false
+        pConfig.bottomView.isShowPreviewList = false
         pConfig.cancelType = .image
         pConfig.cancelPosition = .left
         pConfig.livePhotoMark.blurStyle = .dark
         pConfig.livePhotoMark.imageColor = "#ffffff".color
         pConfig.livePhotoMark.textColor = "#ffffff".color
-        
         
         pConfig.loadNetworkVideoMode = config.loadNetworkVideoMode
         pConfig.customVideoCellClass = config.customVideoCellClass
@@ -296,17 +315,20 @@ open class PhotoBrowser: PhotoPickerController {
         
         previewConfig.previewView = pConfig
         previewConfig.languageType = config.languageType
+        previewConfig.customLanguages = config.customLanguages
         previewConfig.navigationTintColor = config.tintColor
         previewConfig.modalPresentationStyle = config.modalPresentationStyle
         
         return previewConfig
     }
     
-    let hideSourceView: Bool
+    public let hideSourceView: Bool
     
-    fileprivate var gradualShadowImageView: UIImageView!
+    /// 导航栏阴影背景
+    public var gradualShadowImageView: UIImageView!
     
-    fileprivate var didHidden: Bool = false
+    /// 点击 cell 之后导航栏、页面指示器是否隐藏
+    public var didHidden: Bool = false
     
     @objc func deletePreviewAsset() {
         if pageCount == 0 {
@@ -326,7 +348,7 @@ open class PhotoBrowser: PhotoPickerController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        initViews()
+        setupViews()
         
         if previewAssets.isEmpty {
             assert(
@@ -337,7 +359,7 @@ open class PhotoBrowser: PhotoPickerController {
         }
         if isShowDelete {
             previewViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: "删除".localized,
+                title: .textManager.picker.browserDeleteTitle.text,
                 style: .done,
                 target: self,
                 action: #selector(deletePreviewAsset)
@@ -373,7 +395,7 @@ open class PhotoBrowser: PhotoPickerController {
         )
     }
     
-    private func initViews() {
+    func setupViews() {
         pageIndicator?.pageControlChanged = { [weak self] index in
             self?.pageIndex = index
         }
@@ -450,23 +472,28 @@ extension PhotoBrowser {
     public typealias NumberOfPagesHandler = () -> Int
     /// (当前界面显示的Cell，当前界面显示的index)
     public typealias ContextUpdate = (PhotoPreviewViewCell, Int, PhotoBrowser) -> Void
-    /// (当前转场动画对应的index) -> 动画开始/结束位置对应的View，用于获取坐标
-    public typealias TransitionAnimator = (Int) -> UIView?
+    /// (当前转场动画对应的index，转场类型) -> 动画开始/结束位置对应的View，用于获取坐标
+    public typealias TransitionAnimator = (Int, TransitionType) -> UIView?
+    public typealias TransitionCompletion = (Int, TransitionType) -> Void
     /// (当前界面显示的index，对应的 PhotoAsset 对象，照片浏览器对象)
     public typealias AssetHandler = (Int, PhotoAsset, PhotoBrowser) -> Void
-    /// (当前界面显示的index，照片浏览器对象)
+    /// (当前界面显示的index，对应的 PhotoAsset 对象，照片浏览器对象)  -> true：按照内部逻辑处理，false：内部不做处理
+    public typealias SingleClickHandler = (Int, PhotoAsset, PhotoBrowser) -> Bool
+    /// (照片浏览器对象)
     public typealias ViewLifeCycleHandler = (PhotoBrowser) -> Void
     
-    public struct Configuration {
+    public struct Configuration: PhotoHUDConfig {
         
         /// If the built-in language is not enough, you can add a custom language text
-        /// PhotoManager.shared.customLanguages - custom language array
-        /// PhotoManager.shared.fixedCustomLanguage - If there are multiple custom languages, one can be fixed to display
+        /// customLanguages - custom language array
         /// 如果自带的语言不够，可以添加自定义的语言文字
         /// PhotoManager.shared.customLanguages - 自定义语言数组
-        /// PhotoManager.shared.fixedCustomLanguage - 如果有多种自定义语言，可以固定显示某一种
         public var languageType: LanguageType = .system
-        
+        /// 自定义语言
+        public var customLanguages: [CustomLanguage] {
+            get { PhotoManager.shared.customLanguages }
+            set { PhotoManager.shared.customLanguages = newValue }
+        }
         /// 导航栏 删除、取消 按钮颜色
         public var tintColor: UIColor = .white
         /// 网络视频加载方式
@@ -485,6 +512,10 @@ extension PhotoBrowser {
         public var hideSourceView: Bool = true
         /// 跳转样式
         public var modalPresentationStyle: UIModalPresentationStyle = .custom
+        /// 自定义转场动画实现
+        public var transitionAnimator: PhotoBrowserAnimationTransitioning.Type = PhotoBrowserAnimator.self
+        /// 自定义手势转场动画实现
+        public var interactiveTransitionAnimator: PhotoBrowserInteractiveTransition.Type = PhotoBrowserInteractiveAnimator.self
         
         public init() { }
     }
@@ -492,6 +523,11 @@ extension PhotoBrowser {
     public enum PageIndicatorType {
         case titleView
         case bottom
+    }
+    
+    public enum TransitionType {
+        case present
+        case dismiss
     }
 }
 
@@ -531,9 +567,25 @@ extension PhotoBrowser: PhotoPickerControllerDelegate {
     
     public func pickerController(
         _ pickerController: PhotoPickerController,
+        previewShouldSingleClick photoAsset: PhotoAsset,
+        at index: Int
+    ) -> Bool {
+        if let cellShouldSingleClick,
+           !cellShouldSingleClick(index, photoAsset, self) {
+            return false
+        }
+        return true
+    }
+    
+    public func pickerController(
+        _ pickerController: PhotoPickerController,
         previewSingleClick photoAsset: PhotoAsset,
         atIndex: Int
     ) {
+        if let cellSingleClick,
+           !cellSingleClick(atIndex, photoAsset, self) {
+            return
+        }
         if photoAsset.mediaType == .photo {
             pickerController.dismiss(animated: true, completion: nil)
         }else {
@@ -622,7 +674,7 @@ extension PhotoBrowser: PhotoPickerControllerDelegate {
         _ pickerController: PhotoPickerController,
         presentPreviewViewForIndexAt index: Int
     ) -> UIView? {
-        transitionAnimator?(index)
+        transitionAnimator?(index, .present)
     }
     
     /// dismiss 结束时对应的视图，用于获取位置大小。与 dismissPreviewFrameForIndexAt 一样
@@ -630,7 +682,7 @@ extension PhotoBrowser: PhotoPickerControllerDelegate {
         _ pickerController: PhotoPickerController,
         dismissPreviewViewForIndexAt index: Int
     ) -> UIView? {
-        transitionAnimator?(index)
+        transitionAnimator?(index, .dismiss)
     }
     
     public func pickerController(
@@ -667,6 +719,14 @@ extension PhotoBrowser: PhotoPickerControllerDelegate {
             pageIndicator?.alpha = 1
             gradualShadowImageView.alpha = 1
         }
+    }
+    
+    public func pickerController(_ pickerController: PhotoPickerController, previewPresentComplete atIndex: Int) {
+        transitionCompletion?(atIndex, .present)
+    }
+    
+    public func pickerController(_ pickerController: PhotoPickerController, previewDismissComplete atIndex: Int) {
+        transitionCompletion?(atIndex, .dismiss)
     }
 }
 
@@ -801,7 +861,7 @@ open class PhotoBrowserVideoCell: PreviewVideoControlViewCell {
             x: 0,
             y: height - 50 - UIDevice.bottomMargin - 30,
             width: width,
-            height: 50 + UIDevice.bottomMargin
+            height: 50 + (UIDevice.bottomMargin == 0 ? 20 : UIDevice.bottomMargin)
         )
         maskBackgroundView.frame = sliderView.frame
         maskLayer.frame = maskBackgroundView.bounds

@@ -23,42 +23,44 @@ PODS:
   - GXWaterfallViewLayout (1.0.1)
   - HandyJSON (5.0.2)
   - Hero (1.6.3)
-  - HXPhotoPicker (4.1.2):
-    - HXPhotoPicker/Full (= 4.1.2)
-  - HXPhotoPicker/Camera (4.1.2):
-    - HXPhotoPicker/Camera/Lite (= 4.1.2)
-    - HXPhotoPicker/Camera/Location (= 4.1.2)
-  - HXPhotoPicker/Camera/Lite (4.1.2):
+  - HXPhotoPicker (4.2.1):
+    - HXPhotoPicker/Full (= 4.2.1)
+  - HXPhotoPicker/Camera (4.2.1):
+    - HXPhotoPicker/Camera/Lite (= 4.2.1)
+    - HXPhotoPicker/Camera/Location (= 4.2.1)
+  - HXPhotoPicker/Camera/Lite (4.2.1):
     - HXPhotoPicker/Core
-  - HXPhotoPicker/Camera/Location (4.1.2):
+  - HXPhotoPicker/Camera/Location (4.2.1):
     - HXPhotoPicker/Camera/Lite
-  - HXPhotoPicker/Core (4.1.2)
-  - HXPhotoPicker/Editor (4.1.2):
-    - HXPhotoPicker/Editor/KF (= 4.1.2)
-    - HXPhotoPicker/Editor/Lite (= 4.1.2)
-  - HXPhotoPicker/Editor/KF (4.1.2):
+  - HXPhotoPicker/Core (4.2.1):
+    - HXPhotoPicker/Resources
+  - HXPhotoPicker/Editor (4.2.1):
+    - HXPhotoPicker/Editor/KF (= 4.2.1)
+    - HXPhotoPicker/Editor/Lite (= 4.2.1)
+  - HXPhotoPicker/Editor/KF (4.2.1):
     - HXPhotoPicker/Editor/Lite
     - HXPhotoPicker/EditorView/KF
     - Kingfisher (~> 7.0)
-  - HXPhotoPicker/Editor/Lite (4.1.2):
+  - HXPhotoPicker/Editor/Lite (4.2.1):
     - HXPhotoPicker/EditorView/Lite
-  - HXPhotoPicker/EditorView/KF (4.1.2):
+  - HXPhotoPicker/EditorView/KF (4.2.1):
     - HXPhotoPicker/EditorView/Lite
     - Kingfisher (~> 7.0)
-  - HXPhotoPicker/EditorView/Lite (4.1.2):
+  - HXPhotoPicker/EditorView/Lite (4.2.1):
     - HXPhotoPicker/Core
-  - HXPhotoPicker/Full (4.1.2):
+  - HXPhotoPicker/Full (4.2.1):
     - HXPhotoPicker/Camera
     - HXPhotoPicker/Editor
     - HXPhotoPicker/Picker
-  - HXPhotoPicker/Picker (4.1.2):
-    - HXPhotoPicker/Picker/KF (= 4.1.2)
-    - HXPhotoPicker/Picker/Lite (= 4.1.2)
-  - HXPhotoPicker/Picker/KF (4.1.2):
+  - HXPhotoPicker/Picker (4.2.1):
+    - HXPhotoPicker/Picker/KF (= 4.2.1)
+    - HXPhotoPicker/Picker/Lite (= 4.2.1)
+  - HXPhotoPicker/Picker/KF (4.2.1):
     - HXPhotoPicker/Picker/Lite
     - Kingfisher (~> 7.0)
-  - HXPhotoPicker/Picker/Lite (4.1.2):
+  - HXPhotoPicker/Picker/Lite (4.2.1):
     - HXPhotoPicker/Core
+  - HXPhotoPicker/Resources (4.2.1)
   - IQKeyboardManagerSwift (7.0.3)
   - Kingfisher (7.11.0)
   - MBProgressHUD (1.2.0)
@@ -100,6 +102,7 @@ PODS:
   - RxRelay (6.7.1):
     - RxSwift (= 6.7.1)
   - RxSwift (6.7.1)
+  - SkeletonView (1.30.4)
   - SnapKit (5.7.1)
   - SnapKitExtend (1.1.0):
     - SnapKit
@@ -128,7 +131,7 @@ DEPENDENCIES:
   - GXWaterfallViewLayout
   - HandyJSON
   - Hero
-  - HXPhotoPicker (= 4.1.2)
+  - HXPhotoPicker
   - IQKeyboardManagerSwift
   - Kingfisher
   - MBProgressHUD
@@ -139,6 +142,7 @@ DEPENDENCIES:
   - QRCodeReader.swift
   - Reusable
   - RxDataSources
+  - SkeletonView
   - SnapKitExtend
   - SwiftTheme
   - SwiftyUserDefaults
@@ -179,6 +183,7 @@ SPEC REPOS:
     - RxDataSources
     - RxRelay
     - RxSwift
+    - SkeletonView
     - SnapKit
     - SnapKitExtend
     - SwiftTheme
@@ -205,7 +210,7 @@ SPEC CHECKSUMS:
   GXWaterfallViewLayout: 1030bd57d37eedd3146e638d262f0869380a59c8
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Hero: 419d43384355b3168512bd8ac6a33aadd3dc575b
-  HXPhotoPicker: aa1b5620b40fad3100741b83ac750364cdeb4615
+  HXPhotoPicker: e1835b71c58b48058955ea15eb557f1e26e8b784
   IQKeyboardManagerSwift: f9c5dc36cba16ddd2e51fa7d51c34a2e083029b5
   Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
@@ -219,6 +224,7 @@ SPEC CHECKSUMS:
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxRelay: 4151ba01152436b08271e08410135e099880eae5
   RxSwift: b9a93a26031785159e11abd40d1a55bcb8057e52
+  SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   SnapKitExtend: aa30cf37196195fae9c4354686cc7710184ebfcc
   SwiftTheme: 007cbaf1f9e171caf6448a4657533e54c682b285
@@ -227,6 +233,6 @@ SPEC CHECKSUMS:
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
   XCGLogger: 399c5885210b4e2ad79d9f7a29b105d672ef724f
 
-PODFILE CHECKSUM: 893b64217bc4727c6cd0c47cb68fd6270295449a
+PODFILE CHECKSUM: b5a195c86582aed8b3312195c3a9856af14ab5c3
 
 COCOAPODS: 1.15.2

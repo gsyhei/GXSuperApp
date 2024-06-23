@@ -17,11 +17,13 @@ class CameraResultViewController: UIViewController {
     weak var delegate: CameraResultViewControllerDelegate?
     let type: ResultType
     let color: UIColor
+    var ratioSize: CGSize = .zero
     var image: UIImage?
     init(image: UIImage, tintColor: UIColor) {
         self.type = .photo
         self.image = image
         self.color = tintColor
+        self.ratioSize = image.size
         super.init(nibName: nil, bundle: nil)
     }
     var videoURL: URL?
@@ -61,14 +63,16 @@ class CameraResultViewController: UIViewController {
         }else {
             playerView = CameraResultVideoView()
             if let videoURL = videoURL {
-                playerView.avAsset = AVAsset(url: videoURL)
+                let avAsset = AVAsset(url: videoURL)
+                playerView.avAsset = avAsset
+                ratioSize = avAsset.getImage(at: 0.1)?.size ?? .zero
             }
             view.addSubview(playerView)
         }
         
         doneButton = UIButton(type: .system)
-        doneButton.setTitle("完成".localized, for: .normal)
-        doneButton.titleLabel?.font = .mediumPingFang(ofSize: 16)
+        doneButton.setTitle(.textManager.camera.resultFinishTitle.text, for: .normal)
+        doneButton.titleLabel?.font = .textManager.camera.resultFinishTitleFont
         doneButton.layer.cornerRadius = 3
         doneButton.layer.masksToBounds = true
         doneButton.addTarget(self, action: #selector(didDoneButtonClick(button:)), for: .touchUpInside)
@@ -104,21 +108,19 @@ class CameraResultViewController: UIViewController {
             if UIDevice.isPad {
                 rect = view.bounds
             }else {
-                let size = CGSize(width: view.height * 16 / 9, height: view.height)
+                let size = CGSize(width: view.height * ratioSize.height / ratioSize.width, height: view.height)
                 rect = CGRect(
                     x: (view.width - size.width) * 0.5,
                     y: (view.height - size.height) * 0.5,
-                    width: size.width,
-                    height: size.height
+                    width: size.width, height: size.height
                 )
             }
         }else {
-            let size = CGSize(width: view.width, height: view.width / 9 * 16)
+            let size = CGSize(width: view.width, height: view.width / ratioSize.width * ratioSize.height)
             rect = CGRect(
                 x: (view.width - size.width) * 0.5,
                 y: (view.height - size.height) * 0.5,
-                width: size.width,
-                height: size.height
+                width: size.width, height: size.height
             )
         }
         if type == .photo {

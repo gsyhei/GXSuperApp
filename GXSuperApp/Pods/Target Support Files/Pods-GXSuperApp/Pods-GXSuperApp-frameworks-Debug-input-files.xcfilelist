@@ -27,6 +27,7 @@ ${BUILT_PRODUCTS_DIR}/RxCocoaPlus/RxCocoaPlus.framework
 ${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework
 ${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
 ${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/SnapKitExtend/SnapKitExtend.framework
 ${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework

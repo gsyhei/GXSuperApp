@@ -181,7 +181,10 @@ class PhotoPreviewListView: UIView {
         }
         numberOfPages += indexs.count
         collectionView.insertItems(at: indexPaths)
-        correctExpandingItemAspectRatioIfNeeded()
+        DispatchQueue.main.async {
+            self.correctExpandingItemAspectRatioIfNeeded()
+        }
+
     }
     
     func removeData(with indexs: [Int]) {
@@ -191,7 +194,10 @@ class PhotoPreviewListView: UIView {
         }
         numberOfPages -= indexs.count
         collectionView.deleteItems(at: indexPaths)
-        correctExpandingItemAspectRatioIfNeeded()
+        DispatchQueue.main.async {
+            self.correctExpandingItemAspectRatioIfNeeded()
+        }
+
     }
     
     func reloadData(with indexs: [Int]) {
@@ -200,12 +206,18 @@ class PhotoPreviewListView: UIView {
             indexPaths.append(.init(item: index, section: 0))
         }
         collectionView.reloadItems(at: indexPaths)
-        correctExpandingItemAspectRatioIfNeeded()
+        
+        DispatchQueue.main.async {
+            self.correctExpandingItemAspectRatioIfNeeded()
+        }
     }
     
     func reloadData() {
         collectionView.reloadData()
-        correctExpandingItemAspectRatioIfNeeded()
+        DispatchQueue.main.async {
+            self.correctExpandingItemAspectRatioIfNeeded()
+        }
+
     }
     
     func stopScroll(to page: Int, animated: Bool) {
@@ -243,6 +255,12 @@ class PhotoPreviewListView: UIView {
         }
         let layout = PhotoPreviewListViewLayout(style: style)
         collectionView.setCollectionViewLayout(layout, animated: animated)
+        if let indexPath {
+            DispatchQueue.main.async {
+                let cell = self.collectionView.cellForItem(at: indexPath) as? PhotoPreviewListViewCell
+                cell?.reqeustAssetImage(3)
+            }
+        }
     }
     
     /// Expand an item and scroll there.
