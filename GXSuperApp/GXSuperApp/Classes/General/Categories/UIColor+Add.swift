@@ -67,7 +67,7 @@ extension UIColor {
     }
     
     class var gx_lightGreen: UIColor {
-        return UIColor(hexString: "#e1f7eb")
+        return UIColor(hexString: "#E1F7EB")
     }
     
     class var gx_yellow: UIColor {

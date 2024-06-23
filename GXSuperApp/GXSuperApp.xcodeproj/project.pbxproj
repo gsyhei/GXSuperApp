@@ -27,10 +27,21 @@
 		3398F7332C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3398F7322C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.xib */; };
 		3398F7342C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398F7312C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.swift */; };
 		3398F7362C27D76200A02CEF /* GXHomeDetailChargingFeeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398F7352C27D76200A02CEF /* GXHomeDetailChargingFeeHeader.swift */; };
+		3398F7392C288EF400A02CEF /* GXHomeDetailCell4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3398F7382C288EF400A02CEF /* GXHomeDetailCell4.xib */; };
+		3398F73A2C288EF400A02CEF /* GXHomeDetailCell4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398F7372C288EF400A02CEF /* GXHomeDetailCell4.swift */; };
 		33A588DA2C24015100451FE1 /* GXHomeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */; };
 		33A588DC2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */; };
 		33A588E42C241CF900451FE1 /* GXHomeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */; };
 		33A588E52C241CF900451FE1 /* GXHomeDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A588E32C241CF900451FE1 /* GXHomeDetailVC.xib */; };
+		33A91E2D2C289ADE00F7E214 /* GXHomeDetailCell5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A91E2C2C289ADE00F7E214 /* GXHomeDetailCell5.xib */; };
+		33A91E2E2C289ADE00F7E214 /* GXHomeDetailCell5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A91E2B2C289ADE00F7E214 /* GXHomeDetailCell5.swift */; };
+		33A91E312C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A91E302C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.xib */; };
+		33A91E322C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A91E2F2C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.swift */; };
+		33A91E352C28A53100F7E214 /* GXHomeDetailCell6.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A91E342C28A53100F7E214 /* GXHomeDetailCell6.xib */; };
+		33A91E362C28A53100F7E214 /* GXHomeDetailCell6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A91E332C28A53100F7E214 /* GXHomeDetailCell6.swift */; };
+		33A91E382C28A83B00F7E214 /* GXHomeDetailFacilitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A91E372C28A83B00F7E214 /* GXHomeDetailFacilitiesView.swift */; };
+		33A91E3B2C28AEF400F7E214 /* GXHomeDetailCell7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A91E3A2C28AEF400F7E214 /* GXHomeDetailCell7.xib */; };
+		33A91E3C2C28AEF400F7E214 /* GXHomeDetailCell7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A91E392C28AEF400F7E214 /* GXHomeDetailCell7.swift */; };
 		33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */; };
 		33B834B92C233C16003BEC24 /* GXHomeSearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */; };
 		33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B52C1414CE0089431E /* GXLocationManager.swift */; };
@@ -128,10 +139,21 @@
 		3398F7312C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailChargingFeeCell.swift; sourceTree = "<group>"; };
 		3398F7322C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailChargingFeeCell.xib; sourceTree = "<group>"; };
 		3398F7352C27D76200A02CEF /* GXHomeDetailChargingFeeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailChargingFeeHeader.swift; sourceTree = "<group>"; };
+		3398F7372C288EF400A02CEF /* GXHomeDetailCell4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell4.swift; sourceTree = "<group>"; };
+		3398F7382C288EF400A02CEF /* GXHomeDetailCell4.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell4.xib; sourceTree = "<group>"; };
 		33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeFilterCell.swift; sourceTree = "<group>"; };
 		33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCollectionViewAlignmentLeftLayout.swift; sourceTree = "<group>"; };
 		33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVC.swift; sourceTree = "<group>"; };
 		33A588E32C241CF900451FE1 /* GXHomeDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailVC.xib; sourceTree = "<group>"; };
+		33A91E2B2C289ADE00F7E214 /* GXHomeDetailCell5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell5.swift; sourceTree = "<group>"; };
+		33A91E2C2C289ADE00F7E214 /* GXHomeDetailCell5.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell5.xib; sourceTree = "<group>"; };
+		33A91E2F2C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailChargerStatusCell.swift; sourceTree = "<group>"; };
+		33A91E302C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailChargerStatusCell.xib; sourceTree = "<group>"; };
+		33A91E332C28A53100F7E214 /* GXHomeDetailCell6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell6.swift; sourceTree = "<group>"; };
+		33A91E342C28A53100F7E214 /* GXHomeDetailCell6.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell6.xib; sourceTree = "<group>"; };
+		33A91E372C28A83B00F7E214 /* GXHomeDetailFacilitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailFacilitiesView.swift; sourceTree = "<group>"; };
+		33A91E392C28AEF400F7E214 /* GXHomeDetailCell7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell7.swift; sourceTree = "<group>"; };
+		33A91E3A2C28AEF400F7E214 /* GXHomeDetailCell7.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell7.xib; sourceTree = "<group>"; };
 		33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXMarkerIconView.xib; sourceTree = "<group>"; };
 		33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchHeader.swift; sourceTree = "<group>"; };
 		33BF81B52C1414CE0089431E /* GXLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLocationManager.swift; sourceTree = "<group>"; };
@@ -314,6 +336,9 @@
 				3398F7312C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.swift */,
 				3398F7322C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.xib */,
 				3398F7352C27D76200A02CEF /* GXHomeDetailChargingFeeHeader.swift */,
+				33A91E2F2C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.swift */,
+				33A91E302C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.xib */,
+				33A91E372C28A83B00F7E214 /* GXHomeDetailFacilitiesView.swift */,
 				33D7BFE72C26C9CE006B97C6 /* GXHomeDetailCell0.swift */,
 				33D7BFEA2C26E4CC006B97C6 /* GXHomeDetailCell1.swift */,
 				33D7BFEB2C26E4CC006B97C6 /* GXHomeDetailCell1.xib */,
@@ -321,6 +346,14 @@
 				336401DD2C277FC700A312BC /* GXHomeDetailCell2.xib */,
 				336401E02C2788E900A312BC /* GXHomeDetailCell3.swift */,
 				336401E12C2788E900A312BC /* GXHomeDetailCell3.xib */,
+				3398F7372C288EF400A02CEF /* GXHomeDetailCell4.swift */,
+				3398F7382C288EF400A02CEF /* GXHomeDetailCell4.xib */,
+				33A91E2B2C289ADE00F7E214 /* GXHomeDetailCell5.swift */,
+				33A91E2C2C289ADE00F7E214 /* GXHomeDetailCell5.xib */,
+				33A91E332C28A53100F7E214 /* GXHomeDetailCell6.swift */,
+				33A91E342C28A53100F7E214 /* GXHomeDetailCell6.xib */,
+				33A91E392C28AEF400F7E214 /* GXHomeDetailCell7.swift */,
+				33A91E3A2C28AEF400F7E214 /* GXHomeDetailCell7.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -626,16 +659,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A91E2D2C289ADE00F7E214 /* GXHomeDetailCell5.xib in Resources */,
 				33D7BFEC2C26E4CC006B97C6 /* GXHomeDetailCell1.xib in Resources */,
+				3398F7392C288EF400A02CEF /* GXHomeDetailCell4.xib in Resources */,
 				33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */,
 				3398F7332C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.xib in Resources */,
 				33D1109E2C1D8DFA006331EC /* GXHomeSearchVC.xib in Resources */,
+				33A91E3B2C28AEF400F7E214 /* GXHomeDetailCell7.xib in Resources */,
 				33EC57942C1021E300D4CCD0 /* GXApproveFailInfoView.xib in Resources */,
 				336401E32C2788E900A312BC /* GXHomeDetailCell3.xib in Resources */,
 				336401DF2C277FC700A312BC /* GXHomeDetailCell2.xib in Resources */,
 				33EC55BC2C101BA100D4CCD0 /* MBProgressHUD.bundle in Resources */,
 				33396A232C11E530000A1944 /* GXHomeVC.xib in Resources */,
+				33A91E312C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.xib in Resources */,
 				33A588E52C241CF900451FE1 /* GXHomeDetailVC.xib in Resources */,
+				33A91E352C28A53100F7E214 /* GXHomeDetailCell6.xib in Resources */,
 				33D9DFEE2C0EFA0900A282D5 /* Base in Resources */,
 				33EC55F92C101BA100D4CCD0 /* GXQRCodeReaderVC.xib in Resources */,
 				33BF81C02C14AB7F0089431E /* GXSelectedMarkerInfoView.xib in Resources */,
@@ -713,6 +751,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33953F642C20846E0049C76C /* GXHomeSearchViewModel.swift in Sources */,
+				3398F73A2C288EF400A02CEF /* GXHomeDetailCell4.swift in Sources */,
 				3398F7362C27D76200A02CEF /* GXHomeDetailChargingFeeHeader.swift in Sources */,
 				33D7BFED2C26E4CC006B97C6 /* GXHomeDetailCell1.swift in Sources */,
 				33EC55BF2C101BA100D4CCD0 /* PhotoAsset+Add.swift in Sources */,
@@ -735,6 +774,7 @@
 				33EC55FC2C101BA100D4CCD0 /* GXTagsView.swift in Sources */,
 				33BF81BE2C14AB720089431E /* GXHomeMarkerCell.swift in Sources */,
 				33EC55C92C101BA100D4CCD0 /* GXDefine.swift in Sources */,
+				33A91E382C28A83B00F7E214 /* GXHomeDetailFacilitiesView.swift in Sources */,
 				33EC578F2C101BA200D4CCD0 /* GXMoyaProvider.swift in Sources */,
 				33EC55B92C101BA100D4CCD0 /* GXSlideTableView.swift in Sources */,
 				336477AB2C2379690013AAF1 /* GXHomeFilterMenu.swift in Sources */,
@@ -745,6 +785,8 @@
 				33396A1A2C117326000A1944 /* GXTabBarController.swift in Sources */,
 				33EC55FE2C101BA100D4CCD0 /* GXToast.swift in Sources */,
 				336401DE2C277FC700A312BC /* GXHomeDetailCell2.swift in Sources */,
+				33A91E3C2C28AEF400F7E214 /* GXHomeDetailCell7.swift in Sources */,
+				33A91E2E2C289ADE00F7E214 /* GXHomeDetailCell5.swift in Sources */,
 				33EC56042C101BA100D4CCD0 /* GXServiceManager.swift in Sources */,
 				33EC55C12C101BA100D4CCD0 /* UIAlertController+Add.swift in Sources */,
 				3340F7632C18861600B97923 /* GXTabBar.swift in Sources */,
@@ -755,6 +797,7 @@
 				33CB38242C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift in Sources */,
 				33EC55F22C101BA100D4CCD0 /* GXAddImages9View.swift in Sources */,
 				33EC55B12C101BA100D4CCD0 /* GXBaseTableViewController.swift in Sources */,
+				33A91E322C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.swift in Sources */,
 				33EC55DB2C101BA100D4CCD0 /* GXMessagesLoadHeader.swift in Sources */,
 				33D1109F2C1D8DFA006331EC /* GXHomeSearchVC.swift in Sources */,
 				33EC55C62C101BA100D4CCD0 /* UITextField+Add.swift in Sources */,
@@ -768,6 +811,7 @@
 				33EC55DC2C101BA100D4CCD0 /* GXMessagesLoadTableView.swift in Sources */,
 				33CB38212C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift in Sources */,
 				3398F7342C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.swift in Sources */,
+				33A91E362C28A53100F7E214 /* GXHomeDetailCell6.swift in Sources */,
 				339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */,
 				33EC55B82C101BA100D4CCD0 /* GXSearchController.swift in Sources */,
 				33EC55B02C101BA100D4CCD0 /* GXBaseTableView.swift in Sources */,

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="253" id="KGk-i7-Jjw" customClass="GXHomeDetailCell4" customModule="GXSuperApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="253"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="253"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFw-lZ-IkU" userLabel="ContainerView">
+                        <rect key="frame" x="12" y="12" width="351" height="241"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Parking Fee Reduction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhW-TX-Nzw">
+                                <rect key="frame" x="12" y="12" width="177" height="30"/>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="18"/>
+                                <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSR-sc-6Au">
+                                <rect key="frame" x="12" y="47.999999999999993" width="327" height="79.333333333333314"/>
+                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipisicing 
+sed do eiusmod tempor incididunt ut labore et dolore
+magna aliqua. Ut enim ad minim veniam</string>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="14"/>
+                                <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSE-Fp-tvO">
+                                <rect key="frame" x="12" y="139.33333333333334" width="327" height="0.33333333333334281"/>
+                                <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="VI8-nT-ST2"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Vehicle Plate Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tb1-hs-ac1">
+                                <rect key="frame" x="12" y="149.66666666666666" width="151" height="26.666666666666657"/>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="16"/>
+                                <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoR-2t-Xw6">
+                                <rect key="frame" x="12" y="182.33333333333334" width="327" height="46.666666666666657"/>
+                                <string key="text">Add vehicle information to enjoy limited-time parking fee
+reduction privileges</string>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="14"/>
+                                <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzT-pF-mFG">
+                                <rect key="frame" x="295" y="152" width="44" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="JpG-hY-try"/>
+                                    <constraint firstAttribute="height" constant="22" id="Swv-7Y-i9r"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="details_list_ic_addcar"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nhW-TX-Nzw" firstAttribute="leading" secondItem="PFw-lZ-IkU" secondAttribute="leading" constant="12" id="7Im-Jk-Q5q"/>
+                            <constraint firstItem="LSE-Fp-tvO" firstAttribute="top" secondItem="uSR-sc-6Au" secondAttribute="bottom" constant="12" id="9Rw-7m-oSK"/>
+                            <constraint firstAttribute="trailing" secondItem="HzT-pF-mFG" secondAttribute="trailing" constant="12" id="Dc0-kc-A30"/>
+                            <constraint firstItem="LSE-Fp-tvO" firstAttribute="leading" secondItem="PFw-lZ-IkU" secondAttribute="leading" constant="12" id="FO8-Tc-WEJ"/>
+                            <constraint firstItem="nhW-TX-Nzw" firstAttribute="top" secondItem="PFw-lZ-IkU" secondAttribute="top" constant="12" id="G8O-VJ-0pm"/>
+                            <constraint firstItem="HzT-pF-mFG" firstAttribute="centerY" secondItem="Tb1-hs-ac1" secondAttribute="centerY" id="USn-IA-NkZ"/>
+                            <constraint firstItem="uSR-sc-6Au" firstAttribute="leading" secondItem="PFw-lZ-IkU" secondAttribute="leading" constant="12" id="Uy4-vD-56r"/>
+                            <constraint firstItem="Tb1-hs-ac1" firstAttribute="leading" secondItem="PFw-lZ-IkU" secondAttribute="leading" constant="12" id="VCA-zM-YNW"/>
+                            <constraint firstItem="ZoR-2t-Xw6" firstAttribute="top" secondItem="Tb1-hs-ac1" secondAttribute="bottom" constant="6" id="WHi-IC-nBG"/>
+                            <constraint firstItem="ZoR-2t-Xw6" firstAttribute="leading" secondItem="PFw-lZ-IkU" secondAttribute="leading" constant="12" id="Wmf-tt-jba"/>
+                            <constraint firstAttribute="trailing" secondItem="LSE-Fp-tvO" secondAttribute="trailing" constant="12" id="Yms-xx-X2B"/>
+                            <constraint firstAttribute="bottom" secondItem="ZoR-2t-Xw6" secondAttribute="bottom" constant="12" id="aKg-tC-ZSI"/>
+                            <constraint firstAttribute="trailing" secondItem="ZoR-2t-Xw6" secondAttribute="trailing" constant="12" id="b4e-4g-L47"/>
+                            <constraint firstAttribute="trailing" secondItem="uSR-sc-6Au" secondAttribute="trailing" constant="12" id="gng-8q-eQw"/>
+                            <constraint firstItem="uSR-sc-6Au" firstAttribute="top" secondItem="nhW-TX-Nzw" secondAttribute="bottom" constant="6" id="rpd-UQ-7cB"/>
+                            <constraint firstItem="Tb1-hs-ac1" firstAttribute="top" secondItem="LSE-Fp-tvO" secondAttribute="bottom" constant="10" id="vob-at-f89"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="PFw-lZ-IkU" secondAttribute="bottom" id="Hly-jq-Agq"/>
+                    <constraint firstItem="PFw-lZ-IkU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Zaa-1w-73j"/>
+                    <constraint firstItem="PFw-lZ-IkU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="prF-T2-Bpc"/>
+                    <constraint firstAttribute="trailing" secondItem="PFw-lZ-IkU" secondAttribute="trailing" constant="12" id="wd9-DM-MWU"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="287.78625954198475" y="63.732394366197184"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="details_list_ic_addcar" width="20" height="20"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

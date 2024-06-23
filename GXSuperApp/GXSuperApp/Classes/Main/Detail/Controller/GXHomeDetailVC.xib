@@ -142,17 +142,17 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1f9-B3-70E" userLabel="AdvertView">
-                    <rect key="frame" x="0.0" y="664" width="393" height="90"/>
+                    <rect key="frame" x="0.0" y="658" width="393" height="96"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="details_list_bg_vip" translatesAutoresizingMaskIntoConstraints="NO" id="41x-am-EQ6">
-                            <rect key="frame" x="12" y="6" width="369" height="72"/>
+                            <rect key="frame" x="12" y="12" width="369" height="72"/>
                             <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current time period  11:00-18:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDa-sI-vMV">
-                            <rect key="frame" x="24" y="46" width="180.33333333333334" height="20"/>
+                            <rect key="frame" x="24" y="52" width="180.33333333333334" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="DSx-bg-6hM"/>
                             </constraints>
@@ -164,7 +164,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a VIP for Discounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7Q-I7-rh3">
-                            <rect key="frame" x="24" y="20" width="202.66666666666666" height="20"/>
+                            <rect key="frame" x="24" y="26" width="202.66666666666666" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="nJG-qJ-jIV"/>
                             </constraints>
@@ -176,7 +176,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdk-X5-2E6">
-                            <rect key="frame" x="283.33333333333331" y="41" width="50.666666666666686" height="25"/>
+                            <rect key="frame" x="283.33333333333331" y="47" width="50.666666666666686" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="Vpr-S5-GlL"/>
                             </constraints>
@@ -188,7 +188,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ kWh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3v-UI-VHj">
-                            <rect key="frame" x="337" y="46" width="32" height="20"/>
+                            <rect key="frame" x="337" y="52" width="32" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Dxy-YS-7Eb"/>
                             </constraints>
@@ -204,11 +204,11 @@
                     <constraints>
                         <constraint firstItem="m3v-UI-VHj" firstAttribute="leading" secondItem="cdk-X5-2E6" secondAttribute="trailing" constant="3" id="0dd-JI-9OP"/>
                         <constraint firstAttribute="bottom" secondItem="41x-am-EQ6" secondAttribute="bottom" constant="12" id="FdW-q6-9Hi"/>
-                        <constraint firstAttribute="height" constant="90" id="Guk-uL-1Ru"/>
+                        <constraint firstAttribute="height" constant="96" id="Guk-uL-1Ru"/>
                         <constraint firstItem="cdk-X5-2E6" firstAttribute="bottom" secondItem="41x-am-EQ6" secondAttribute="bottom" constant="-12" id="JVo-DS-egL"/>
                         <constraint firstItem="MDa-sI-vMV" firstAttribute="leading" secondItem="Q7Q-I7-rh3" secondAttribute="leading" id="Kns-bA-gPl"/>
                         <constraint firstItem="41x-am-EQ6" firstAttribute="leading" secondItem="1f9-B3-70E" secondAttribute="leading" constant="12" id="KoT-I8-3kk"/>
-                        <constraint firstItem="41x-am-EQ6" firstAttribute="top" secondItem="1f9-B3-70E" secondAttribute="top" constant="6" id="RF1-zj-b2I"/>
+                        <constraint firstItem="41x-am-EQ6" firstAttribute="top" secondItem="1f9-B3-70E" secondAttribute="top" constant="12" id="RF1-zj-b2I"/>
                         <constraint firstItem="m3v-UI-VHj" firstAttribute="bottom" secondItem="cdk-X5-2E6" secondAttribute="bottom" id="URv-AO-MYw"/>
                         <constraint firstItem="Q7Q-I7-rh3" firstAttribute="top" secondItem="41x-am-EQ6" secondAttribute="top" constant="14" id="cIE-hS-dPD"/>
                         <constraint firstItem="Q7Q-I7-rh3" firstAttribute="leading" secondItem="41x-am-EQ6" secondAttribute="leading" constant="12" id="eH6-vY-6jr"/>
@@ -221,7 +221,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2We-ga-MCK">
-                    <rect key="frame" x="0.0" y="59" width="393" height="605"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="599"/>
                     <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -237,7 +237,7 @@
             <constraints>
                 <constraint firstItem="YaA-Su-x7S" firstAttribute="top" secondItem="1f9-B3-70E" secondAttribute="bottom" id="0wT-p3-0e4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1f9-B3-70E" secondAttribute="trailing" id="GeS-yQ-Gre"/>
-                <constraint firstItem="YaA-Su-x7S" firstAttribute="top" secondItem="2We-ga-MCK" secondAttribute="bottom" constant="90" id="KwG-aK-QPO"/>
+                <constraint firstItem="YaA-Su-x7S" firstAttribute="top" secondItem="2We-ga-MCK" secondAttribute="bottom" constant="96" id="KwG-aK-QPO"/>
                 <constraint firstItem="1f9-B3-70E" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PoM-U6-gI5"/>
                 <constraint firstItem="2We-ga-MCK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aaz-W3-Z3q"/>
                 <constraint firstItem="YaA-Su-x7S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bkn-na-myl"/>

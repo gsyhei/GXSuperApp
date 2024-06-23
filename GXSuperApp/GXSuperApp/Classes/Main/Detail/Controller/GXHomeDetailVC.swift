@@ -18,6 +18,10 @@ class GXHomeDetailVC: GXBaseViewController {
             tableView.register(cellType: GXHomeDetailCell1.self)
             tableView.register(cellType: GXHomeDetailCell2.self)
             tableView.register(cellType: GXHomeDetailCell3.self)
+            tableView.register(cellType: GXHomeDetailCell4.self)
+            tableView.register(cellType: GXHomeDetailCell5.self)
+            tableView.register(cellType: GXHomeDetailCell6.self)
+            tableView.register(cellType: GXHomeDetailCell7.self)
         }
     }
     @IBOutlet weak var advertView: UIView!
@@ -49,34 +53,10 @@ class GXHomeDetailVC: GXBaseViewController {
 
 extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
     
-    // MARK: - UITableViewDataSource
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell: GXHomeDetailCell0 = tableView.dequeueReusableCell(for: indexPath)
-            return cell
-        case 1:
-            let cell: GXHomeDetailCell1 = tableView.dequeueReusableCell(for: indexPath)
-            return cell
-        case 2:
-            let cell: GXHomeDetailCell2 = tableView.dequeueReusableCell(for: indexPath)
-            return cell
-        case 3:
-            let cell: GXHomeDetailCell3 = tableView.dequeueReusableCell(for: indexPath)
-            return cell
-        default: return UITableViewCell()
-        }
-    }
-    
     // MARK - SkeletonTableViewDataSource
     
     func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 6
     }
     
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
@@ -89,6 +69,10 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             return GXHomeDetailCell2.reuseIdentifier
         case 3:
             return GXHomeDetailCell3.reuseIdentifier
+        case 4:
+            return GXHomeDetailCell4.reuseIdentifier
+        case 5:
+            return GXHomeDetailCell5.reuseIdentifier
         default:
             return ""
         }
@@ -108,6 +92,12 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
         case 3:
             let cell: GXHomeDetailCell3 = skeletonView.dequeueReusableCell(for: indexPath)
             return cell
+        case 4:
+            let cell: GXHomeDetailCell4 = skeletonView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 5:
+            let cell: GXHomeDetailCell5 = skeletonView.dequeueReusableCell(for: indexPath)
+            return cell
         default:
             return UITableViewCell()
         }
@@ -115,6 +105,42 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
     
     func collectionSkeletonView(_ skeletonView: UITableView, prepareCellForSkeleton cell: UITableViewCell, at indexPath: IndexPath) {
         
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            let cell: GXHomeDetailCell0 = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 1:
+            let cell: GXHomeDetailCell1 = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 2:
+            let cell: GXHomeDetailCell2 = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 3:
+            let cell: GXHomeDetailCell3 = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 4:
+            let cell: GXHomeDetailCell4 = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 5:
+            let cell: GXHomeDetailCell5 = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 6:
+            let cell: GXHomeDetailCell6 = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 7:
+            let cell: GXHomeDetailCell7 = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+        default: return UITableViewCell()
+        }
     }
     
     // MARK: - UITableViewDelegate
@@ -131,6 +157,12 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             return 264
         case 4:
             return 216
+        case 5:
+            return 252
+        case 6:
+            return 126
+        case 7:
+            return 66
         default:
             return .zero
         }
@@ -147,7 +179,13 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
         case 3:
             return 264
         case 4:
-            return 216
+            return UITableView.automaticDimension
+        case 5:
+            return 252
+        case 6:
+            return 126
+        case 7:
+            return 66
         default:
             return .zero
         }
