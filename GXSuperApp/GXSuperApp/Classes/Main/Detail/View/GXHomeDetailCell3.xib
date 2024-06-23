@@ -22,7 +22,7 @@
                         <rect key="frame" x="12" y="12" width="351" height="252"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charging Fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJz-ZH-KGR">
-                                <rect key="frame" x="12" y="13" width="103.66666666666669" height="22"/>
+                                <rect key="frame" x="12" y="13" width="103.66666666666667" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="T1t-CP-94H"/>
                                 </constraints>
@@ -46,6 +46,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="costButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DjO-cS-unk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFy-Uy-uEx">
                                 <rect key="frame" x="281" y="12" width="58" height="24"/>
@@ -60,6 +63,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="safetyButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ZR9-FI-mc4"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LzP-pV-TWT">
                                 <rect key="frame" x="0.0" y="52" width="351" height="156"/>
@@ -81,6 +87,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="allTimeButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6VT-SO-zPl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

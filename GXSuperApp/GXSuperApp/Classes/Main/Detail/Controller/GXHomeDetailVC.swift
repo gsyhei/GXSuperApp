@@ -46,7 +46,6 @@ class GXHomeDetailVC: GXBaseViewController {
         self.navigationItem.title = "Station Details"
         self.gx_addBackBarButtonItem()
         
-
     }
 
 }
@@ -126,6 +125,10 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             return cell
         case 3:
             let cell: GXHomeDetailCell3 = tableView.dequeueReusableCell(for: indexPath)
+            cell.allTimeAction = {[weak self] in
+                guard let `self` = self else { return }
+                self.showAllTimeMenu()
+            }
             return cell
         case 4:
             let cell: GXHomeDetailCell4 = tableView.dequeueReusableCell(for: indexPath)
@@ -197,4 +200,12 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
     
 }
 
-
+private extension GXHomeDetailVC {
+    
+    func showAllTimeMenu() {
+        let height: CGFloat = SCREEN_HEIGHT - self.view.safeAreaInsets.top - 250
+        let menu = GXHomeDetailPriceDetailsMenu(height: height)
+        menu.show(style: .sheetBottom, usingSpring: true)
+    }
+    
+}
