@@ -36,6 +36,7 @@ class GXHomeDetailPriceDetailsMenu: GXBaseMenuView {
     override func createSubviews() {
         super.createSubviews()
         
+        self.titleLabel.text = "Price Details"
         self.addSubview(self.infoLabel)
         self.infoLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(15)

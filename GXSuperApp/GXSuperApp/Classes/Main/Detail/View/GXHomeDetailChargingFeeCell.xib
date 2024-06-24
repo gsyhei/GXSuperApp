@@ -122,11 +122,37 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEB-xQ-G5e" userLabel="TopView">
+                        <rect key="frame" x="12" y="4" width="37.666666666666664" height="12"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lowest" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnY-H5-XQj">
+                                <rect key="frame" x="3.0000000000000018" y="0.0" width="31.666666666666671" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="BHG-gW-laE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.019607843140000001" green="0.75686274509999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BnY-H5-XQj" secondAttribute="trailing" constant="3" id="0Gy-0g-AfA"/>
+                            <constraint firstAttribute="bottom" secondItem="BnY-H5-XQj" secondAttribute="bottom" id="70T-0k-ufM"/>
+                            <constraint firstItem="BnY-H5-XQj" firstAttribute="leading" secondItem="iEB-xQ-G5e" secondAttribute="leading" constant="3" id="jmJ-cz-zNo"/>
+                            <constraint firstItem="BnY-H5-XQj" firstAttribute="top" secondItem="iEB-xQ-G5e" secondAttribute="top" id="qa9-La-z5e"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="e1X-oy-kWO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="4w6-y6-gci"/>
+                    <constraint firstItem="e1X-oy-kWO" firstAttribute="top" secondItem="iEB-xQ-G5e" secondAttribute="top" constant="4" id="cbs-Ih-aeb"/>
                     <constraint firstItem="e1X-oy-kWO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="jzK-Zy-svz"/>
                     <constraint firstAttribute="trailing" secondItem="e1X-oy-kWO" secondAttribute="trailing" constant="12" id="mDs-F5-GGN"/>
+                    <constraint firstItem="e1X-oy-kWO" firstAttribute="leading" secondItem="iEB-xQ-G5e" secondAttribute="leading" id="nng-UY-Pmz"/>
                     <constraint firstAttribute="bottom" secondItem="e1X-oy-kWO" secondAttribute="bottom" id="tg2-Lp-WLd"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
@@ -138,12 +164,15 @@
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="containerView" destination="e1X-oy-kWO" id="ZUv-w9-9IH"/>
                 <outlet property="feeLabel" destination="te9-sm-YsA" id="bRz-wp-nue"/>
                 <outlet property="kWhLabel" destination="4le-1Z-rCP" id="qCj-UO-461"/>
                 <outlet property="timeLabel" destination="R9h-Q6-RMN" id="78M-1d-cVb"/>
+                <outlet property="topLabel" destination="BnY-H5-XQj" id="X7f-7a-a5B"/>
+                <outlet property="topView" destination="iEB-xQ-G5e" id="DCJ-kW-NTM"/>
                 <outlet property="vipKWhLabel" destination="fa6-4e-OVw" id="Ice-Cw-FKY"/>
             </connections>
-            <point key="canvasLocation" x="465" y="-63"/>
+            <point key="canvasLocation" x="362.59541984732823" y="-104.22535211267606"/>
         </tableViewCell>
     </objects>
 </document>

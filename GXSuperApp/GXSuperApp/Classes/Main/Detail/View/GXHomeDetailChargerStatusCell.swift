@@ -9,6 +9,7 @@ import UIKit
 import Reusable
 
 class GXHomeDetailChargerStatusCell: UITableViewCell, NibReusable {
+    @IBOutlet weak var containerView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,8 +18,6 @@ class GXHomeDetailChargerStatusCell: UITableViewCell, NibReusable {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
