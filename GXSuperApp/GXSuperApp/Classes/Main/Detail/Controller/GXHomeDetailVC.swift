@@ -30,10 +30,8 @@ class GXHomeDetailVC: GXBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.tableView.backgroundColor = .white
         self.view.showAnimatedGradientSkeleton()
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            self.tableView.backgroundColor = .gx_background
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             self.view.hideSkeleton()
         })
     }
@@ -129,12 +127,20 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
                 guard let `self` = self else { return }
                 self.showAllTimeMenu()
             }
+            cell.safetyAction = {[weak self] in
+                guard let `self` = self else { return }
+                self.showSafetyMenu()
+            }
             return cell
         case 4:
             let cell: GXHomeDetailCell4 = tableView.dequeueReusableCell(for: indexPath)
             return cell
         case 5:
             let cell: GXHomeDetailCell5 = tableView.dequeueReusableCell(for: indexPath)
+            cell.moreAction = {[weak self] in
+                guard let `self` = self else { return }
+                self.showChargerStatusMenu()
+            }
             return cell
         case 6:
             let cell: GXHomeDetailCell6 = tableView.dequeueReusableCell(for: indexPath)
@@ -207,5 +213,13 @@ private extension GXHomeDetailVC {
         let menu = GXHomeDetailPriceDetailsMenu(height: height)
         menu.show(style: .sheetBottom, usingSpring: true)
     }
-    
+    func showChargerStatusMenu() {
+        let height: CGFloat = SCREEN_HEIGHT - self.view.safeAreaInsets.top - 280
+        let menu = GXHomeDetailChargerStatusMenu(height: height)
+        menu.show(style: .sheetBottom, usingSpring: true)
+    }
+    func showSafetyMenu() {
+        let vc = GXWebViewController(urlString: "https://www.baidu.com", title: "Safety Instructions")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

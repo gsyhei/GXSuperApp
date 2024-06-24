@@ -45,7 +45,7 @@ class GXHomeDetailPriceDetailsMenu: GXBaseMenuView {
         }
         self.addSubview(self.tableView)
         self.tableView.snp.makeConstraints { make in
-            make.top.equalTo(self.topLineView.snp.bottom).offset(20)
+            make.top.equalTo(self.topLineView.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(3)
             make.right.equalToSuperview().offset(-3)
             make.bottom.equalTo(self.infoLabel.snp.top).offset(-12)

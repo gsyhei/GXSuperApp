@@ -25,7 +25,8 @@ class GXHomeDetailCell5: UITableViewCell, NibReusable {
             tableView.register(cellType: GXHomeDetailChargerStatusCell.self)
         }
     }
-    
+    var moreAction: GXActionBlock?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.isSkeletonable = true
@@ -81,3 +82,8 @@ extension GXHomeDetailCell5: SkeletonTableViewDataSource, SkeletonTableViewDeleg
     
 }
 
+private extension GXHomeDetailCell5 {
+    @IBAction func moreButtonClicked(_ sender: Any?) {
+        self.moreAction?()
+    }
+}

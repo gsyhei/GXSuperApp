@@ -26,6 +26,8 @@ class GXHomeDetailCell3: UITableViewCell, NibReusable {
             tableView.register(cellType: GXHomeDetailChargingFeeCell.self)
         }
     }
+    var costAction: GXActionBlock?
+    var safetyAction: GXActionBlock?
     var allTimeAction: GXActionBlock?
 
     override func awakeFromNib() {
@@ -99,11 +101,11 @@ extension GXHomeDetailCell3: SkeletonTableViewDataSource, SkeletonTableViewDeleg
 private extension GXHomeDetailCell3 {
     
     @IBAction func costButtonClicked(_ sender: Any?) {
-
+        self.costAction?()
     }
     
     @IBAction func safetyButtonClicked(_ sender: Any?) {
-
+        self.safetyAction?()
     }
     
     @IBAction func allTimeButtonClicked(_ sender: Any?) {
