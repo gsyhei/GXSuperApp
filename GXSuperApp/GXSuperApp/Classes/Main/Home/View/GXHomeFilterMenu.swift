@@ -48,7 +48,13 @@ class GXHomeFilterMenu: GXBaseMenuView {
     }()
     
     private var titleList: [String] = ["Sort", "Station Service", "Station Location", "Parking Discount", "My Preferences"]
-    private var titleCellList: [String] = ["Restroom", "Store", "Restauraut", "Lounge", "Favorite Stations"]
+    private var titleCellList: [Int: [String]] = [
+        0 : ["Nearest", "Lowest Price"],
+        1 : ["Restroom", "Store", "Restauraut", "Lounge", "Gym"],
+        2 : ["Ground", "Parking Lot"],
+        3 : ["Yes"],
+        4 : ["Favorite Stations"],
+    ]
 
     override func createSubviews() {
         super.createSubviews()
@@ -91,7 +97,10 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.titleCellList.count
+        if let nameList = self.titleCellList[section] {
+            return nameList.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -107,7 +116,9 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: GXHomeFilterCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.nameLabel.text = self.titleCellList[indexPath.item]
+        if let nameList = self.titleCellList[indexPath.section] {
+            cell.nameLabel.text = nameList[indexPath.item]
+        }
         return cell
     }
 
@@ -118,9 +129,12 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let title = self.titleCellList[indexPath.item]
-        let width = title.width(font: .gx_font(size: 14)) + 20
-        return CGSize(width: width, height: 32)
+        if let nameList = self.titleCellList[indexPath.section] {
+            let title = nameList[indexPath.item]
+            let width = title.width(font: .gx_font(size: 14)) + 20
+            return CGSize(width: width, height: 32)
+        }
+        return .zero
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

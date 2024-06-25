@@ -70,7 +70,7 @@ extension GXApi: TargetType {
 
     var headers: [String: String]? {
 //        if let token = GXUserManager.shared.token {
-//            return ["token": token]
+//            return ["Authorization": token]
 //        }
         return nil
     }

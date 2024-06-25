@@ -22,7 +22,7 @@ class GXHomeFilterCell: UICollectionViewCell, Reusable {
         }
     }()
     
-    override var isSelected: Bool {
+    var isChecked: Bool = false {
         didSet {
             self.nameLabel.backgroundColor = isSelected ? .gx_green : .gx_background
             self.nameLabel.textColor = isSelected ? .white : .gx_drakGray

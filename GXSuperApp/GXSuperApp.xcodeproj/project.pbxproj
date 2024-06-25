@@ -31,6 +31,8 @@
 		3398F73A2C288EF400A02CEF /* GXHomeDetailCell4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398F7372C288EF400A02CEF /* GXHomeDetailCell4.swift */; };
 		339A5ED82C29BFA8004F1B7F /* GXCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5ED72C29BFA8004F1B7F /* GXCircleProgressBar.swift */; };
 		339A5EDA2C29C8DA004F1B7F /* GXHomeDetailChargerStatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5ED92C29C8D9004F1B7F /* GXHomeDetailChargerStatusMenu.swift */; };
+		339A5EDC2C2AD5A7004F1B7F /* GXUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EDB2C2AD5A7004F1B7F /* GXUserManager.swift */; };
+		339A5EDE2C2AD788004F1B7F /* GXHomeFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EDD2C2AD788004F1B7F /* GXHomeFilterModel.swift */; };
 		33A588DA2C24015100451FE1 /* GXHomeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */; };
 		33A588DC2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */; };
 		33A588E42C241CF900451FE1 /* GXHomeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */; };
@@ -146,6 +148,8 @@
 		3398F7382C288EF400A02CEF /* GXHomeDetailCell4.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell4.xib; sourceTree = "<group>"; };
 		339A5ED72C29BFA8004F1B7F /* GXCircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCircleProgressBar.swift; sourceTree = "<group>"; };
 		339A5ED92C29C8D9004F1B7F /* GXHomeDetailChargerStatusMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXHomeDetailChargerStatusMenu.swift; sourceTree = "<group>"; };
+		339A5EDB2C2AD5A7004F1B7F /* GXUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXUserManager.swift; sourceTree = "<group>"; };
+		339A5EDD2C2AD788004F1B7F /* GXHomeFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeFilterModel.swift; sourceTree = "<group>"; };
 		33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeFilterCell.swift; sourceTree = "<group>"; };
 		33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCollectionViewAlignmentLeftLayout.swift; sourceTree = "<group>"; };
 		33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVC.swift; sourceTree = "<group>"; };
@@ -274,6 +278,7 @@
 		33396A1C2C11E450000A1944 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				339A5EDD2C2AD788004F1B7F /* GXHomeFilterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -548,6 +553,7 @@
 				33EC53DE2C101BA100D4CCD0 /* GXAppleManager.swift */,
 				33EC53E12C101BA100D4CCD0 /* GXServiceManager.swift */,
 				33BF81B52C1414CE0089431E /* GXLocationManager.swift */,
+				339A5EDB2C2AD5A7004F1B7F /* GXUserManager.swift */,
 			);
 			path = Gobal;
 			sourceTree = "<group>";
@@ -788,12 +794,14 @@
 				33EC578F2C101BA200D4CCD0 /* GXMoyaProvider.swift in Sources */,
 				33EC55B92C101BA100D4CCD0 /* GXSlideTableView.swift in Sources */,
 				336477AB2C2379690013AAF1 /* GXHomeFilterMenu.swift in Sources */,
+				339A5EDE2C2AD788004F1B7F /* GXHomeFilterModel.swift in Sources */,
 				33EC55C42C101BA100D4CCD0 /* UIFont+Add.swift in Sources */,
 				33EC55B62C101BA100D4CCD0 /* GXConfigTVC.swift in Sources */,
 				33D9DFE22C0EFA0700A282D5 /* AppDelegate.swift in Sources */,
 				33EC579C2C11643500D4CCD0 /* MBProgressHUD+Add.swift in Sources */,
 				33396A1A2C117326000A1944 /* GXTabBarController.swift in Sources */,
 				33EC55FE2C101BA100D4CCD0 /* GXToast.swift in Sources */,
+				339A5EDC2C2AD5A7004F1B7F /* GXUserManager.swift in Sources */,
 				336401DE2C277FC700A312BC /* GXHomeDetailCell2.swift in Sources */,
 				33A91E3C2C28AEF400F7E214 /* GXHomeDetailCell7.swift in Sources */,
 				33A91E2E2C289ADE00F7E214 /* GXHomeDetailCell5.swift in Sources */,
