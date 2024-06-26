@@ -29,10 +29,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hengjie Supercharge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSX-MA-STi">
-                                <rect key="frame" x="12" y="14" width="164.33333333333334" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="DxR-rG-jd0"/>
-                                </constraints>
+                                <rect key="frame" x="12" y="8" width="164.33333333333334" height="30"/>
                                 <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="18"/>
                                 <color key="textColor" red="0.15686274509803921" green="0.16078431372549018" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -78,7 +75,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 1.55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLz-bh-fK6">
-                                <rect key="frame" x="12.000000000000004" y="61" width="57.333333333333343" height="25"/>
+                                <rect key="frame" x="12.000000000000004" y="65" width="57.333333333333343" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="dwU-mp-zhO"/>
                                 </constraints>
@@ -87,7 +84,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ kWh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72r-gs-VCV">
-                                <rect key="frame" x="72.333333333333329" y="66" width="32" height="20"/>
+                                <rect key="frame" x="72.333333333333329" y="70" width="32" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="sMj-2F-Guh"/>
                                 </constraints>
@@ -96,7 +93,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPs-NU-1jU" userLabel="TagView_L">
-                                <rect key="frame" x="223" y="65.666666666666671" width="55" height="16"/>
+                                <rect key="frame" x="223" y="69.666666666666671" width="55" height="16"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_map_ic_tesla_normal" translatesAutoresizingMaskIntoConstraints="NO" id="aIQ-bE-G96">
                                         <rect key="frame" x="0.0" y="0.0" width="19" height="16"/>
@@ -127,7 +124,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0D-s9-QYP" userLabel="TagView_R">
-                                <rect key="frame" x="284" y="65.666666666666671" width="55" height="16"/>
+                                <rect key="frame" x="284" y="69.666666666666671" width="55" height="16"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_map_ic_us_normal" translatesAutoresizingMaskIntoConstraints="NO" id="9ao-1C-H3b">
                                         <rect key="frame" x="0.0" y="0.0" width="19" height="16"/>
@@ -165,7 +162,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1H-v5-ep8" customClass="GXTagsView" customModule="GXSuperApp" customModuleProvider="target">
-                                <rect key="frame" x="12" y="38" width="327" height="13"/>
+                                <rect key="frame" x="12" y="42" width="327" height="13"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13" id="umg-5H-S96"/>
@@ -201,7 +198,7 @@
                             <constraint firstItem="MSX-MA-STi" firstAttribute="centerY" secondItem="jtd-AF-D7d" secondAttribute="centerY" id="jLu-hW-ELO"/>
                             <constraint firstItem="q0D-s9-QYP" firstAttribute="centerY" secondItem="RLz-bh-fK6" secondAttribute="centerY" id="kXB-Rg-298"/>
                             <constraint firstItem="XYp-al-gPh" firstAttribute="leading" secondItem="Yiz-kU-x97" secondAttribute="leading" constant="12" id="mB9-ME-wTl"/>
-                            <constraint firstItem="m1H-v5-ep8" firstAttribute="top" secondItem="MSX-MA-STi" secondAttribute="bottom" constant="6" id="pnY-Ii-IIP"/>
+                            <constraint firstItem="m1H-v5-ep8" firstAttribute="top" secondItem="MSX-MA-STi" secondAttribute="bottom" constant="4" id="pnY-Ii-IIP"/>
                             <constraint firstItem="RLz-bh-fK6" firstAttribute="top" secondItem="m1H-v5-ep8" secondAttribute="bottom" constant="10" id="ri1-RB-xhf"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

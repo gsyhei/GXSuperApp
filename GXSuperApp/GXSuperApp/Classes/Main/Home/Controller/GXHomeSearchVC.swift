@@ -61,7 +61,8 @@ class GXHomeSearchVC: GXBaseViewController {
 
     override func setupViewController() {
         self.searchButton.setBackgroundColor(.gx_green, for: .normal)
-        
+        self.searchButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
+
         self.tableView.gx_footer = GXRefreshNormalFooter(completion: {
             
         }).then { footer in

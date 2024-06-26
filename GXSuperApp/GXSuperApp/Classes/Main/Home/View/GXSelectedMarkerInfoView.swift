@@ -90,7 +90,7 @@ class GXSelectedMarkerInfoView: UIView {
         self.navigateButton.setBackgroundColor(.white, for: .normal)
         self.navigateButton.setBackgroundColor(.gx_background, for: .highlighted)
         self.scanButton.setBackgroundColor(.gx_green, for: .normal)
-        self.scanButton.setBackgroundColor(.gx_lightGreen, for: .highlighted)
+        self.scanButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
         
         let gradientColors: [UIColor] = [.gx_green, UIColor(hexString: "#278CFF")]
         self.leftLineImgView.image = UIImage(gradientColors: gradientColors, style: .vertical, size: CGSize(width: 4, height: 14))

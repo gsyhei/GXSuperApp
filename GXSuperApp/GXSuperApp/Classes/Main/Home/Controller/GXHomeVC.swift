@@ -80,13 +80,15 @@ class GXHomeVC: GXBaseViewController {
         self.myLocationButton.setLayerShadow(color: .lightGray, offset: .zero, radius: 3.0)
         self.myLocationButton.layer.shadowOpacity = 0.5
         
-        self.ongoingView.setLayerShadow(color: .gx_green, offset: .zero, radius: 8.0)
-        self.ongoingView.layer.shadowOpacity = 0.5
-        self.ongoingButton.setBackgroundColor(.gx_green, for: .normal)
-        
-        let frame = CGRect(x: 12, y: 10, width: 16, height: 16)
-        let circleHUDView = MBProgressHUD.CircleHUDView(frame: frame, lineWidth: 2.0)
-        self.ongoingView.addSubview(circleHUDView)
+//        进行中的订单
+//        self.ongoingView.setLayerShadow(color: .gx_green, offset: .zero, radius: 8.0)
+//        self.ongoingView.layer.shadowOpacity = 0.5
+//        self.ongoingView.isHidden = true
+//        self.ongoingButton.setBackgroundColor(.gx_green, for: .normal)
+//        self.ongoingButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
+//        let frame = CGRect(x: 12, y: 10, width: 16, height: 16)
+//        let circleHUDView = MBProgressHUD.CircleHUDView(frame: frame, lineWidth: 2.0)
+//        self.ongoingView.addSubview(circleHUDView)
         
         self.view.insertSubview(self.panView, aboveSubview: self.myLocationButton)
         self.view.insertSubview(self.mapView, belowSubview: self.myLocationButton)

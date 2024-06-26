@@ -27,6 +27,7 @@ class GXHomeFilterMenu: GXBaseMenuView {
             $0.setTitle("Reset", for: .normal)
             $0.setTitleColor(.gx_green, for: .normal)
             $0.setBackgroundColor(.white, for: .normal)
+            $0.setBackgroundColor(.gx_background, for: .highlighted)
             $0.layer.masksToBounds = true
             $0.layer.cornerRadius = 20
             $0.layer.borderWidth = 1.0
@@ -34,13 +35,14 @@ class GXHomeFilterMenu: GXBaseMenuView {
             $0.addTarget(self, action: #selector(resetButtonClicked(_:)), for: .touchUpInside)
         }
     }()
-    
+
     private lazy var confirmButton: UIButton = {
         return UIButton(type: .custom).then {
             $0.titleLabel?.font = .gx_font(size: 16)
             $0.setTitle("Confirm", for: .normal)
             $0.setTitleColor(.white, for: .normal)
             $0.setBackgroundColor(.gx_green, for: .normal)
+            $0.setBackgroundColor(.gx_drakGreen, for: .highlighted)
             $0.layer.masksToBounds = true
             $0.layer.cornerRadius = 20
             $0.addTarget(self, action: #selector(confirmButtonClicked(_:)), for: .touchUpInside)
