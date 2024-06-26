@@ -28,7 +28,7 @@ class GXHomeVC: GXBaseViewController {
     private var markerList: [GXCustomMarker] = []
 
     private lazy var panView: GXHomePanView = {
-        return GXHomePanView(frame: self.view.bounds).then {
+        return GXHomePanView(frame: self.view.bounds, viewModel: self.viewModel).then {
             $0.backgroundColor = .clear
         }
     }()
@@ -129,8 +129,9 @@ class GXHomeVC: GXBaseViewController {
                 }
             }
         }
-        self.panView.didSelectRowAtAction = {[weak self] indexPath in
+        self.panView.didSelectRowAtAction = {[weak self] model in
             guard let `self` = self else { return }
+            
             let vc = GXHomeDetailVC.xibViewController()
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
@@ -178,6 +179,7 @@ private extension GXHomeVC {
         }.done { model in
             MBProgressHUD.dismiss()
             self.mapViewSetMarkers()
+            self.panView.tableView.gx_reloadData()
         }.catch { error in
             MBProgressHUD.dismiss()
             MBProgressHUD.showError(text:error.localizedDescription)
@@ -284,7 +286,7 @@ private extension GXHomeVC {
             self.selectedMarkerMenu = menu
         }
         else {
-            self.selectedMarkerMenu?.bindModel(model: marker.model)
+            self.selectedMarkerMenu?.bindView(model: marker.model)
         }
     }
     
@@ -304,6 +306,10 @@ private extension GXHomeVC {
     @IBAction func filterButtonClicked(_ sender: Any?) {
         let height: CGFloat = 580 + UIWindow.gx_safeAreaInsets.bottom
         let menu = GXHomeFilterMenu(height: height)
+        menu.confirmAction = {[weak self] in
+            self?.selectTagsView.updateSelectedTags()
+            self?.requestStationConsumerQuery()
+        }
         menu.show(style: .sheetBottom, usingSpring: true)
     }
     

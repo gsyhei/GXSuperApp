@@ -64,6 +64,7 @@ class GXHomeFilterMenu: GXBaseMenuView {
     private lazy var stationServiceList: [Int] = {
         return self.selectedModel.getSelectedAroundFacilities()
     }()
+    var confirmAction: GXActionBlock?
 
     override func createSubviews() {
         super.createSubviews()
@@ -105,7 +106,9 @@ class GXHomeFilterMenu: GXBaseMenuView {
         GXUserManager.shared.filter.position = self.selectedModel.position
         GXUserManager.shared.filter.freeParking = self.selectedModel.freeParking
         GXUserManager.shared.filter.favorite = self.selectedModel.favorite
-        //
+        
+        self.hide(animated: true)
+        self.confirmAction?()
     }
 }
 
@@ -116,6 +119,9 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 1 {
+            return GXUserManager.shared.dictListAvailable.count
+        }
         if let nameList = self.titleCellList[section] {
             return nameList.count
         }
@@ -135,14 +141,17 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: GXHomeFilterCell = collectionView.dequeueReusableCell(for: indexPath)
-        if let nameList = self.titleCellList[indexPath.section] {
+        if indexPath.section == 1 {
+            let item = GXUserManager.shared.dictListAvailable[indexPath.item]
+            cell.nameLabel.text = item.name
+            cell.isChecked = self.stationServiceList.contains(item.id)
+        }
+        else if let nameList = self.titleCellList[indexPath.section] {
             cell.nameLabel.text = nameList[indexPath.item]
         }
         switch indexPath.section {
         case 0:
             cell.isChecked = ((self.selectedModel.orderType ?? 1) == (indexPath.item + 1))
-        case 1:
-            cell.isChecked = self.stationServiceList.contains(indexPath.item)
         case 2:
             cell.isChecked = (self.selectedModel.getSelectedPositionIndex() == indexPath.item)
         case 3:
@@ -162,6 +171,11 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 1 {
+            let item = GXUserManager.shared.dictListAvailable[indexPath.item]
+            let width = item.name.width(font: .gx_font(size: 14)) + 20
+            return CGSize(width: width, height: 32)
+        }
         if let nameList = self.titleCellList[indexPath.section] {
             let title = nameList[indexPath.item]
             let width = title.width(font: .gx_font(size: 14)) + 20
@@ -187,10 +201,11 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
         case 0:
             self.selectedModel.orderType = indexPath.row + 1
         case 1:
-            if self.stationServiceList.contains(indexPath.item) {
-                self.stationServiceList.removeAll(where: { return $0 == indexPath.item })
+            let item = GXUserManager.shared.dictListAvailable[indexPath.item]
+            if self.stationServiceList.contains(item.id) {
+                self.stationServiceList.removeAll(where: { return $0 == item.id })
             } else {
-                self.stationServiceList.append(indexPath.item)
+                self.stationServiceList.append(item.id)
             }
         case 2:
             if self.selectedModel.getSelectedPositionIndex() == indexPath.item {
@@ -209,9 +224,4 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
             self.collectionView.reloadSections(IndexSet(integer: indexPath.section))
         }
     }
-}
-
-private extension GXHomeFilterMenu {
-    
-    
 }

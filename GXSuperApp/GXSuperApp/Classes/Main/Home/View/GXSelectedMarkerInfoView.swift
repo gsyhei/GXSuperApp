@@ -68,7 +68,7 @@ class GXSelectedMarkerInfoView: UIView {
         let infoView = GXSelectedMarkerInfoView.xibView().then {
             $0.superVC = vc
             $0.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: menuHeight())
-            $0.bindModel(model: model)
+            $0.bindView(model: model)
         }
         UIWindow.gx_frontWindow?.addSubview(infoView)
         infoView.showMenu()
@@ -124,7 +124,7 @@ class GXSelectedMarkerInfoView: UIView {
         }
     }
     
-    func bindModel(model: GXStationConsumerRowsModel?) {
+    func bindView(model: GXStationConsumerRowsModel?) {
         guard let model = model else { return }
         self.model = model
         
@@ -153,9 +153,9 @@ class GXSelectedMarkerInfoView: UIView {
             self.usNumberBgView.backgroundColor = .gx_lightBlue
             self.usNumberImgView.image = UIImage(named: "home_map_ic_us_normal")
         }
-        let tslAttrText: NSAttributedString = .gx_getStationNumAttributedText(type: .tsl, isSelected: false, count: model.teslaIdleCount, maxCount: model.teslaCount)
+        let tslAttrText: NSAttributedString = .gx_stationAttrText(type: .tsl, isSelected: false, count: model.teslaIdleCount, maxCount: model.teslaCount)
         self.tslNumberLabel.attributedText = tslAttrText
-        let usAttrText: NSAttributedString = .gx_getStationNumAttributedText(type: .us, isSelected: false, count: model.usIdleCount, maxCount: model.usCount)
+        let usAttrText: NSAttributedString = .gx_stationAttrText(type: .us, isSelected: false, count: model.usIdleCount, maxCount: model.usCount)
         self.usNumberLabel.attributedText = usAttrText
         
         // 停车减免、服务费

@@ -23,8 +23,9 @@ class GXHomePanView: UIView {
     private(set) var lastPanPosition: PanPosition = .bottom
     private var isMoveDirUp: Bool = false
     private var panGesture: UIPanGestureRecognizer?
+    weak var viewModel: GXHomeViewModel?
     var changePositionAction: GXActionBlockItem<PanPosition>?
-    var didSelectRowAtAction: GXActionBlockItem<IndexPath>?
+    var didSelectRowAtAction: GXActionBlockItem<GXStationConsumerRowsModel>?
 
     lazy var arrowButton: UIButton = {
         return UIButton(type: .custom).then {
@@ -45,8 +46,8 @@ class GXHomePanView: UIView {
             $0.register(cellType: GXHomeMarkerCell.self)
         }
     }()
-    
-    override init(frame: CGRect) {
+
+    required init(frame: CGRect, viewModel: GXHomeViewModel) {
         super.init(frame: frame)
         
         self.addSubview(self.arrowButton)
@@ -67,15 +68,16 @@ class GXHomePanView: UIView {
         self.panGesture = panGesture
         self.addGestureRecognizer(panGesture)
         self.isUserInteractionEnabled = false
+        self.viewModel = viewModel
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.arrowButton.setRoundedCorners([.topLeft, .topRight], radius: 12)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     func setupPanMovedY(top: CGFloat, center: CGFloat, bottom: CGFloat, position: PanPosition = .center) {
@@ -129,11 +131,13 @@ class GXHomePanView: UIView {
 extension GXHomePanView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return self.viewModel?.stationConsumerList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXHomeMarkerCell = tableView.dequeueReusableCell(for: indexPath)
+        let model = self.viewModel?.stationConsumerList[indexPath.row]
+        cell.bindCell(model: model)
         
         return cell
     }
@@ -150,7 +154,9 @@ extension GXHomePanView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         XCGLogger.info("indexPath = \(indexPath)")
-        self.didSelectRowAtAction?(indexPath)
+        if let model = self.viewModel?.stationConsumerList[indexPath.row] {
+            self.didSelectRowAtAction?(model)
+        }
     }
 }
 

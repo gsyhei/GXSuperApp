@@ -32,7 +32,7 @@ extension NSAttributedString {
     case us
     }
     
-    class func gx_getStationNumAttributedText(type: StationType, isSelected: Bool, count: Int, maxCount: Int) -> NSAttributedString {
+    class func gx_stationAttrText(type: StationType, isSelected: Bool, count: Int, maxCount: Int) -> NSAttributedString {
         let countFont: UIFont = .gx_boldFont(size: 13)
         let maxCountFont: UIFont = .gx_font(size: 13)
         var countTextColor: UIColor, maxCountTextColor: UIColor

@@ -30,12 +30,12 @@ class GXCustomMarker: GMSMarker {
         self.isZoomLarge = isZoomLarge
         
         if isSelected {
-            self.iconOriginalView.bindModel(model: model, isSelected: true)
+            self.iconOriginalView.bindView(model: model, isSelected: true)
             self.icon = self.iconOriginalView.snapshotImage()
         }
         else {
             if isZoomLarge {
-                self.iconOriginalView.bindModel(model: model, isSelected: false)
+                self.iconOriginalView.bindView(model: model, isSelected: false)
                 self.icon = iconOriginalView.snapshotImage()
             }
             else {

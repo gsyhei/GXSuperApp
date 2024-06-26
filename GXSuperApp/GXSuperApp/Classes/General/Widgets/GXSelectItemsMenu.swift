@@ -65,7 +65,7 @@ class GXSelectItemCell: UITableViewCell, Reusable {
         }
     }
 
-    func bindModel(_ model: GXSelectItem) {
+    func bindCell(model: GXSelectItem) {
         self.textLabel?.text = model.title
     }
 }
@@ -192,7 +192,7 @@ extension GXSelectItemsMenu: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXSelectItemCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.bindModel(self.items[indexPath.row])
+        cell.bindCell(model: self.items[indexPath.row])
 
         return cell
     }

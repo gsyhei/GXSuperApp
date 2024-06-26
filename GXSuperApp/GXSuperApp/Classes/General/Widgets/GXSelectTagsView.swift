@@ -24,9 +24,10 @@ class GXSelectTagsView: UIView {
             view.setTitleColor(.white, for: .selected)
             view.setBackgroundColor(.white, for: .normal)
             view.setBackgroundColor(.gx_green, for: .selected)
+            view.isSelected = self.stationServiceList.contains(data.id)
             view.layer.masksToBounds = true
             view.layer.cornerRadius = 12.0
-            view.layer.borderWidth = 1.0
+            view.layer.borderWidth = view.isSelected ? 0.0 : 1.0
             view.layer.borderColor = UIColor.gx_gray.cgColor
             view.isUserInteractionEnabled = false
         })
@@ -44,8 +45,10 @@ class GXSelectTagsView: UIView {
                 
                 var selectedList = GXUserManager.shared.filter.getSelectedAroundFacilities()
                 if tapContext.view.isSelected {
+                    tapContext.view.layer.borderWidth = 0.0
                     selectedList.append(tapContext.data.id)
                 } else {
+                    tapContext.view.layer.borderWidth = 1.0
                     selectedList.removeAll(where: { return $0 == tapContext.data.id })
                 }
                 GXUserManager.shared.filter.setSelectedAroundFacilities(list: selectedList)
@@ -66,4 +69,8 @@ class GXSelectTagsView: UIView {
         }
     }
     
+    func updateSelectedTags() {
+        self.stationServiceList = GXUserManager.shared.filter.getSelectedAroundFacilities()
+        self.collectionView.reloadData()
+    }
 }
