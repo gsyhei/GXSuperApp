@@ -55,6 +55,13 @@ class GXHomeFilterMenu: GXBaseMenuView {
         3 : ["Yes"],
         4 : ["Favorite Stations"],
     ]
+    
+    private lazy var selectedModel: GXHomeFilterModel = {
+        return GXUserManager.shared.filter.gx_copy()
+    }()
+    private lazy var stationServiceList: [Int] = {
+        return self.selectedModel.getSelectedAroundFacilities()
+    }()
 
     override func createSubviews() {
         super.createSubviews()
@@ -82,11 +89,21 @@ class GXHomeFilterMenu: GXBaseMenuView {
     }
     
     @objc func resetButtonClicked(_ sender: Any?) {
-        
+        self.selectedModel.orderType = nil
+        self.stationServiceList.removeAll()
+        self.selectedModel.setSelectedPosition(index: nil)
+        self.selectedModel.freeParking = nil
+        self.selectedModel.favorite = nil
+        self.collectionView.reloadData()
     }
     
     @objc func confirmButtonClicked(_ sender: Any?) {
-        
+        GXUserManager.shared.filter.orderType = self.selectedModel.orderType
+        GXUserManager.shared.filter.setSelectedAroundFacilities(list: self.stationServiceList)
+        GXUserManager.shared.filter.position = self.selectedModel.position
+        GXUserManager.shared.filter.freeParking = self.selectedModel.freeParking
+        GXUserManager.shared.filter.favorite = self.selectedModel.favorite
+        //
     }
 }
 
@@ -106,7 +123,7 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             let header: GXHomeFilterHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
-            header.titleLabel.text = self.titleList[indexPath.item]
+            header.titleLabel.text = self.titleList[indexPath.section]
             return header
         }
         else {
@@ -119,6 +136,20 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
         if let nameList = self.titleCellList[indexPath.section] {
             cell.nameLabel.text = nameList[indexPath.item]
         }
+        switch indexPath.section {
+        case 0:
+            cell.isChecked = ((self.selectedModel.orderType ?? 1) == (indexPath.item + 1))
+        case 1:
+            cell.isChecked = self.stationServiceList.contains(indexPath.item)
+        case 2:
+            cell.isChecked = (self.selectedModel.getSelectedPositionIndex() == indexPath.item)
+        case 3:
+            cell.isChecked = (self.selectedModel.freeParking == true)
+        case 4:
+            cell.isChecked = (self.selectedModel.favorite == true)
+        default: break
+        }
+        
         return cell
     }
 
@@ -150,6 +181,35 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        switch indexPath.section {
+        case 0:
+            self.selectedModel.orderType = indexPath.row + 1
+        case 1:
+            if self.stationServiceList.contains(indexPath.item) {
+                self.stationServiceList.removeAll(where: { return $0 == indexPath.item })
+            } else {
+                self.stationServiceList.append(indexPath.item)
+            }
+        case 2:
+            if self.selectedModel.getSelectedPositionIndex() == indexPath.item {
+                self.selectedModel.setSelectedPosition(index: nil)
+            }
+            else {
+                self.selectedModel.setSelectedPosition(index: indexPath.item)
+            }
+        case 3:
+            self.selectedModel.freeParking = (self.selectedModel.freeParking == nil) ? true : nil
+        case 4:
+            self.selectedModel.favorite = (self.selectedModel.favorite == nil) ? true : nil
+        default: break
+        }
+        UIView.performWithoutAnimation {
+            self.collectionView.reloadSections(IndexSet(integer: indexPath.section))
+        }
     }
+}
+
+private extension GXHomeFilterMenu {
+    
+    
 }

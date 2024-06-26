@@ -25,82 +25,58 @@ class GXMarkerIconView: UIView {
         super.awakeFromNib()
         self.backgroundColor = .white
         self.layer.cornerRadius = 6.0
-        self.layer.borderWidth = 1.0
-        self.layer.borderColor = UIColor.gx_lightGray.cgColor
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor.gx_background.cgColor
     }
 }
 
 extension GXMarkerIconView {
     
-    func updateNumber(usNumber: Int, tslNumber: Int) {
-        /// TSL
-        let tslAttributedString = NSMutableAttributedString()
-        let tslNumberText = String(format: "%d", usNumber)
-        let tslNumAttributes: [NSAttributedString.Key : Any] = [
-            .font: UIFont.gx_boldFont(size: 13),
-            .foregroundColor: UIColor.gx_drakRed
-        ]
-        let numberAttributed = NSAttributedString(string: tslNumberText, attributes: tslNumAttributes)
-        tslAttributedString.append(numberAttributed)
-
-        let tslMaxNumberText = String(format: "/%d", 20)
-        let tslMaxNumAttributes: [NSAttributedString.Key : Any] = [
-            .font: UIFont.gx_font(size: 13),
-            .foregroundColor: UIColor.gx_drakRed
-        ]
-        let tslNumberAttributed = NSAttributedString(string: tslMaxNumberText, attributes: tslMaxNumAttributes)
-        tslAttributedString.append(tslNumberAttributed)
-        self.tslNumberLabel.attributedText = tslAttributedString
-        let tslWidth = tslAttributedString.width()
-        
-        /// US
-        let usAttributedString = NSMutableAttributedString()
-        let usNumberText = String(format: "%d", usNumber)
-        let usNumAttributes: [NSAttributedString.Key : Any] = [
-            .font: UIFont.gx_boldFont(size: 13),
-            .foregroundColor: UIColor.gx_blue
-        ]
-        let usNumberAttributed = NSAttributedString(string: usNumberText, attributes: usNumAttributes)
-        usAttributedString.append(usNumberAttributed)
-        
-        let usMaxNumberText = String(format: "/%d", 20)
-        let usMaxNumAttributes: [NSAttributedString.Key : Any] = [
-            .font: UIFont.gx_font(size: 13),
-            .foregroundColor: UIColor.gx_blue
-        ]
-        let usMaxNumberAttributed = NSAttributedString(string: usMaxNumberText, attributes: usMaxNumAttributes)
-        usAttributedString.append(usMaxNumberAttributed)
-        self.usNumberLabel.attributedText = usAttributedString
-        let usWidth = usAttributedString.width()
-        
-        let width = max(usWidth, tslWidth)
-        self.frame.size.width = width + 58
-    }
-    
-    func updateStatus(isSelected: Bool) {
+    func bindModel(model: GXStationConsumerRowsModel?, isSelected: Bool) {
+        guard let model = model else { return }
         if isSelected {
             self.backgroundColor = .gx_green
             self.layer.borderWidth = 0.0
             self.layer.borderColor = nil
-            
             self.usNumberBgView.backgroundColor = .gx_drakGreen
             self.tslNumberBgView.backgroundColor = .gx_drakGreen
             self.usNumberImgView.image = UIImage(named: "home_map_ic_us_selected")
             self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_selected")
-            self.usNumberLabel.textColor = .white
-            self.tslNumberLabel.textColor = .white
         }
         else {
             self.backgroundColor = .white
-            self.layer.borderWidth = 1.0
+            self.layer.borderWidth = 0.5
             self.layer.borderColor = UIColor.gx_lightGray.cgColor
-            
-            self.usNumberBgView.backgroundColor = .gx_lightBlue
-            self.tslNumberBgView.backgroundColor = .gx_lightRed
-            self.usNumberImgView.image = UIImage(named: "home_map_ic_us_normal")
-            self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_normal")
-            self.usNumberLabel.textColor = .gx_blue
-            self.tslNumberLabel.textColor = .gx_drakRed
+            if model.teslaIdleCount == model.teslaCount {
+                self.tslNumberBgView.backgroundColor = .gx_background
+                self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_disable")
+            }
+            else {
+                self.tslNumberBgView.backgroundColor = .gx_lightRed
+                self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_normal")
+            }
+            if model.usIdleCount == model.usCount {
+                self.usNumberBgView.backgroundColor = .gx_background
+                self.usNumberImgView.image = UIImage(named: "home_map_ic_us_disable")
+            }
+            else {
+                self.usNumberBgView.backgroundColor = .gx_lightBlue
+                self.usNumberImgView.image = UIImage(named: "home_map_ic_us_normal")
+            }
         }
+        /// TSL
+        let tslAttrText: NSAttributedString = .gx_getStationNumAttributedText(type: .tsl, isSelected: isSelected, count: model.teslaIdleCount, maxCount: model.teslaCount)
+        self.tslNumberLabel.attributedText = tslAttrText
+        let tslWidth = tslAttrText.width()
+        
+        /// US
+        let usAttrText: NSAttributedString = .gx_getStationNumAttributedText(type: .us, isSelected: isSelected, count: model.usIdleCount, maxCount: model.usCount)
+        self.usNumberLabel.attributedText = usAttrText
+        let usWidth = usAttrText.width()
+        
+        let width = max(usWidth, tslWidth)
+        self.frame.size.width = width + 40
+        self.layoutIfNeeded()
     }
+
 }

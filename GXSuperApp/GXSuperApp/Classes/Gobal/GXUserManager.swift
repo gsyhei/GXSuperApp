@@ -8,10 +8,7 @@
 import UIKit
 
 class GXUserManager: NSObject {
-    static let shared: GXAppleManager = {
-        let instance = GXAppleManager()
-        return instance
-    }()
+    static let shared: GXUserManager = GXUserManager()
 
     /// 登录相关
     var token: String?
@@ -23,5 +20,12 @@ class GXUserManager: NSObject {
     lazy var filter: GXHomeFilterModel = {
         return GXHomeFilterModel()
     }()
+    /// App版本更新model
+    var appUpdateLatestData: GXAppUpdateLatestData?
+    /// 系统参数
+    var paramConsumerData: GXParamConsumerData?
+    /// 周边设施
+    var dictListAvailable: [GXDictListAvailableData] = []
     
+    override init() {}
 }

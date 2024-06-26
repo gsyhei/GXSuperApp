@@ -8,6 +8,7 @@
 import Moya
 import XCGLogger
 import HandyJSON
+import PromiseKit
 
 typealias GXSuccess<T:Any> = (T) -> Void
 typealias GXFailure = (CustomNSError) -> Void
@@ -41,14 +42,14 @@ class GXMoyaProvider: MoyaProvider<GXApi> {
                     let data = try? JSONSerialization.jsonObject(with: response.data, options: .mutableContainers)
                     if let dataJSON = data as? Dictionary<String, Any>, let model:T = T.deserialize(from: dataJSON)
                     {
-                        if model.code == 10000 {
+                        if model.code == 200 {
                             self.gx_logger(target: target, error: nil, json: dataJSON)
                             DispatchQueue.main.async {
                                 success(model)
                             }
                         }
                         else {
-                            let error = GXError(code: model.code, info: model.message)
+                            let error = GXError(code: model.code, info: model.msg)
                             self.gx_logger(target: target, error: error, json: nil)
                             DispatchQueue.main.async {
                                 failure(error)
@@ -116,7 +117,7 @@ fileprivate extension GXMoyaProvider {
                 XCGLogger.debug("Request headers: \(target.headers ?? [:])")
                 if let dataJSON = json {
                     XCGLogger.debug("Response: \(dataJSON.unicodeDescription)")
-//                    XCGLogger.debug("Response: \(String(describing: json))")
+                    XCGLogger.debug("Response: \(String(describing: dataJSON.jsonStringEncoded()))")
                 }
                 XCGLogger.debug("<<--------------END------------------")
                 XCGLogger.debug("")

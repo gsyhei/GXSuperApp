@@ -31,7 +31,7 @@ class GXHomeFilterModel: NSObject, GXCopyable, HandyJSON {
     /// 分页参数，起始页，从1开始
     var pageNum: Int = 1
     /// 分页参数，每页显示条数
-    var pageSize: Int = PAGE_SIZE
+    var pageSize: Int = 10000
     
     
     /// 设置经纬度
@@ -56,6 +56,23 @@ class GXHomeFilterModel: NSObject, GXCopyable, HandyJSON {
         else {
             self.position = nil
         }
+    }
+    /// 场站位置索引
+    func getSelectedPositionIndex() -> Int? {
+        if self.position == "LAND" {
+            return 0
+        }
+        else if self.position == "UNDERGROUND" {
+            return 1
+        }
+        else {
+            return nil
+        }
+    }
+    /// 获得场站服务id数组
+    func getSelectedAroundFacilities() -> [Int] {
+        let stringArr = self.aroundFacilities?.components(separatedBy: ",")
+        return stringArr?.compactMap { Int($0) } ?? []
     }
 
     required override init() {}

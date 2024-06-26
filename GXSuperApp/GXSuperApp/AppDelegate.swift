@@ -88,11 +88,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
         
-        let vc = GXTabBarController()
+        
+        let vc = GXLaunchScreenVC.xibViewController()
         self.setWindowRootViewController(to: vc)
+
+//        let vc = GXTabBarController()
+//        self.setWindowRootViewController(to: vc)
         // 开始监测网络状态
         // GXServiceManager.startListening()
-        UIFont.gx_printAllFonts()
         
         return true
     }
@@ -139,7 +142,7 @@ extension AppDelegate {
             return
         }
         viewController.modalTransitionStyle = .crossDissolve
-        UIView.transition(with: self.window!, duration: 1.0, options: .transitionCrossDissolve, animations: {
+        UIView.transition(with: self.window!, duration: 0.5, options: .transitionCrossDissolve, animations: {
             let oldState = UIView.areAnimationsEnabled
             UIView.setAnimationsEnabled(false)
             self.window?.rootViewController = viewController

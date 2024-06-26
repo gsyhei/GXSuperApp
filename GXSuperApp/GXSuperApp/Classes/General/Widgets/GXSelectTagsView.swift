@@ -10,12 +10,16 @@ import CollectionKit
 
 class GXSelectTagsView: UIView {
     private var font = UIFont.gx_font(size: 13)
-    var dataSource = ArrayDataSource<String>()
+    var dataSource = ArrayDataSource<GXDictListAvailableData>()
+    private lazy var stationServiceList: [Int] = {
+        return GXUserManager.shared.filter.getSelectedAroundFacilities()
+    }()
+    var itemAction: GXActionBlock?
     
     private lazy var collectionView: CollectionView = {
-        let viewSource = ClosureViewSource(viewUpdater: { (view: UIButton, data: String, index: Int) in
+        let viewSource = ClosureViewSource(viewUpdater: { (view: UIButton, data: GXDictListAvailableData, index: Int) in
             view.titleLabel?.font = self.font
-            view.setTitle(data, for: .normal)
+            view.setTitle(data.name, for: .normal)
             view.setTitleColor(.gx_drakGray, for: .normal)
             view.setTitleColor(.white, for: .selected)
             view.setBackgroundColor(.white, for: .normal)
@@ -26,8 +30,8 @@ class GXSelectTagsView: UIView {
             view.layer.borderColor = UIColor.gx_gray.cgColor
             view.isUserInteractionEnabled = false
         })
-        let sizeSource = { (index: Int, data: String, collectionSize: CGSize) -> CGSize in
-            let width = data.width(font: self.font) + 20
+        let sizeSource = { (index: Int, data: GXDictListAvailableData, collectionSize: CGSize) -> CGSize in
+            let width = data.name.width(font: self.font) + 20
             return CGSize(width: width, height: 24)
         }
         let provider = BasicProvider (
@@ -37,6 +41,15 @@ class GXSelectTagsView: UIView {
             tapHandler: {[weak self] tapContext in
                 guard let `self` = self else { return }
                 tapContext.view.isSelected = !tapContext.view.isSelected
+                
+                var selectedList = GXUserManager.shared.filter.getSelectedAroundFacilities()
+                if tapContext.view.isSelected {
+                    selectedList.append(tapContext.data.id)
+                } else {
+                    selectedList.removeAll(where: { return $0 == tapContext.data.id })
+                }
+                GXUserManager.shared.filter.setSelectedAroundFacilities(list: selectedList)
+                self.itemAction?()
             }
         )
         provider.layout = RowLayout(spacing: 6.0)
@@ -51,7 +64,6 @@ class GXSelectTagsView: UIView {
         self.collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        self.dataSource.data = ["Super charge", "Fast charge", "Slow charge", "Parking charge", "Last charge"]
     }
     
 }

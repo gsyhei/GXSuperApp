@@ -188,7 +188,7 @@ extension MBProgressHUD {
                 $0.toValue = (Double.pi * 2)
                 $0.duration = 1
                 $0.isRemovedOnCompletion = false
-                $0.repeatCount = Float(Int.max)
+                $0.repeatCount = Float.greatestFiniteMagnitude
                 $0.autoreverses = false
                 return $0
             }(CABasicAnimation(keyPath: "transform.rotation"))

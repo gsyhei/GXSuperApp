@@ -33,6 +33,13 @@
 		339A5EDA2C29C8DA004F1B7F /* GXHomeDetailChargerStatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5ED92C29C8D9004F1B7F /* GXHomeDetailChargerStatusMenu.swift */; };
 		339A5EDC2C2AD5A7004F1B7F /* GXUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EDB2C2AD5A7004F1B7F /* GXUserManager.swift */; };
 		339A5EDE2C2AD788004F1B7F /* GXHomeFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EDD2C2AD788004F1B7F /* GXHomeFilterModel.swift */; };
+		339A5EE62C2B9DE3004F1B7F /* GXLaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EE42C2B9DE3004F1B7F /* GXLaunchScreenVC.swift */; };
+		339A5EE72C2B9DE3004F1B7F /* GXLaunchScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339A5EE52C2B9DE3004F1B7F /* GXLaunchScreenVC.xib */; };
+		339A5EE92C2BA256004F1B7F /* GXAppUpdateLatestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EE82C2BA256004F1B7F /* GXAppUpdateLatestModel.swift */; };
+		339A5EEB2C2BCA81004F1B7F /* GXHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EEA2C2BCA81004F1B7F /* GXHomeViewModel.swift */; };
+		339A5EED2C2C0D4F004F1B7F /* GXParamConsumerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EEC2C2C0D4F004F1B7F /* GXParamConsumerModel.swift */; };
+		339A5EEF2C2C13BC004F1B7F /* GXDictListAvailableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EEE2C2C13BC004F1B7F /* GXDictListAvailableModel.swift */; };
+		339A5EF12C2C24BF004F1B7F /* GXStationConsumerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EF02C2C24BF004F1B7F /* GXStationConsumerModel.swift */; };
 		33A588DA2C24015100451FE1 /* GXHomeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */; };
 		33A588DC2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */; };
 		33A588E42C241CF900451FE1 /* GXHomeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */; };
@@ -64,7 +71,6 @@
 		33D7BFEC2C26E4CC006B97C6 /* GXHomeDetailCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D7BFEB2C26E4CC006B97C6 /* GXHomeDetailCell1.xib */; };
 		33D7BFED2C26E4CC006B97C6 /* GXHomeDetailCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D7BFEA2C26E4CC006B97C6 /* GXHomeDetailCell1.swift */; };
 		33D9DFE22C0EFA0700A282D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */; };
-		33D9DFE62C0EFA0700A282D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9DFE52C0EFA0700A282D5 /* ViewController.swift */; };
 		33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33D9DFEA2C0EFA0900A282D5 /* Assets.xcassets */; };
 		33D9DFEE2C0EFA0900A282D5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 33D9DFED2C0EFA0900A282D5 /* Base */; };
 		33EC55AB2C101BA100D4CCD0 /* GXArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53792C101BA100D4CCD0 /* GXArrowButton.swift */; };
@@ -150,6 +156,13 @@
 		339A5ED92C29C8D9004F1B7F /* GXHomeDetailChargerStatusMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXHomeDetailChargerStatusMenu.swift; sourceTree = "<group>"; };
 		339A5EDB2C2AD5A7004F1B7F /* GXUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXUserManager.swift; sourceTree = "<group>"; };
 		339A5EDD2C2AD788004F1B7F /* GXHomeFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeFilterModel.swift; sourceTree = "<group>"; };
+		339A5EE42C2B9DE3004F1B7F /* GXLaunchScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLaunchScreenVC.swift; sourceTree = "<group>"; };
+		339A5EE52C2B9DE3004F1B7F /* GXLaunchScreenVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXLaunchScreenVC.xib; sourceTree = "<group>"; };
+		339A5EE82C2BA256004F1B7F /* GXAppUpdateLatestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXAppUpdateLatestModel.swift; sourceTree = "<group>"; };
+		339A5EEA2C2BCA81004F1B7F /* GXHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeViewModel.swift; sourceTree = "<group>"; };
+		339A5EEC2C2C0D4F004F1B7F /* GXParamConsumerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXParamConsumerModel.swift; sourceTree = "<group>"; };
+		339A5EEE2C2C13BC004F1B7F /* GXDictListAvailableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXDictListAvailableModel.swift; sourceTree = "<group>"; };
+		339A5EF02C2C24BF004F1B7F /* GXStationConsumerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXStationConsumerModel.swift; sourceTree = "<group>"; };
 		33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeFilterCell.swift; sourceTree = "<group>"; };
 		33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCollectionViewAlignmentLeftLayout.swift; sourceTree = "<group>"; };
 		33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVC.swift; sourceTree = "<group>"; };
@@ -182,7 +195,6 @@
 		33D7BFEB2C26E4CC006B97C6 /* GXHomeDetailCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell1.xib; sourceTree = "<group>"; };
 		33D9DFDE2C0EFA0700A282D5 /* GXSuperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GXSuperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		33D9DFE52C0EFA0700A282D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		33D9DFEA2C0EFA0900A282D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33D9DFED2C0EFA0900A282D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33D9DFEF2C0EFA0900A282D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -279,6 +291,9 @@
 			isa = PBXGroup;
 			children = (
 				339A5EDD2C2AD788004F1B7F /* GXHomeFilterModel.swift */,
+				339A5EEC2C2C0D4F004F1B7F /* GXParamConsumerModel.swift */,
+				339A5EEE2C2C13BC004F1B7F /* GXDictListAvailableModel.swift */,
+				339A5EF02C2C24BF004F1B7F /* GXStationConsumerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,6 +324,7 @@
 		33396A1E2C11E450000A1944 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				339A5EEA2C2BCA81004F1B7F /* GXHomeViewModel.swift */,
 				33953F632C20846E0049C76C /* GXHomeSearchViewModel.swift */,
 			);
 			path = ViewModel;
@@ -323,6 +339,48 @@
 				33396A1B2C11E450000A1944 /* Controller */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		339A5EDF2C2B9DB8004F1B7F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				339A5EE42C2B9DE3004F1B7F /* GXLaunchScreenVC.swift */,
+				339A5EE52C2B9DE3004F1B7F /* GXLaunchScreenVC.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		339A5EE02C2B9DB8004F1B7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				339A5EE82C2BA256004F1B7F /* GXAppUpdateLatestModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		339A5EE12C2B9DB8004F1B7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		339A5EE22C2B9DB8004F1B7F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		339A5EE32C2B9DB8004F1B7F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				339A5EE02C2B9DB8004F1B7F /* Model */,
+				339A5EE12C2B9DB8004F1B7F /* View */,
+				339A5EE22C2B9DB8004F1B7F /* ViewModel */,
+				339A5EDF2C2B9DB8004F1B7F /* Controller */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		33A588DD2C241CBA00451FE1 /* Controller */ = {
@@ -413,7 +471,6 @@
 				33396A262C123170000A1944 /* GXSuperApp.entitlements */,
 				33EC55AA2C101BA100D4CCD0 /* Classes */,
 				33D9DFE12C0EFA0700A282D5 /* AppDelegate.swift */,
-				33D9DFE52C0EFA0700A282D5 /* ViewController.swift */,
 				33D9DFEA2C0EFA0900A282D5 /* Assets.xcassets */,
 				33D9DFEC2C0EFA0900A282D5 /* LaunchScreen.storyboard */,
 				33D9DFEF2C0EFA0900A282D5 /* Info.plist */,
@@ -424,9 +481,10 @@
 		33EC53882C101BA100D4CCD0 /* Bases */ = {
 			isa = PBXGroup;
 			children = (
+				3340F7622C18861600B97923 /* GXTabBar.swift */,
+				33EC53842C101BA100D4CCD0 /* GXConfigTVC.swift */,
 				33EC537C2C101BA100D4CCD0 /* GXBaseModel.swift */,
 				33EC53792C101BA100D4CCD0 /* GXArrowButton.swift */,
-				3340F7622C18861600B97923 /* GXTabBar.swift */,
 				33EC537D2C101BA100D4CCD0 /* GXBaseNavigationController.swift */,
 				33EC537E2C101BA100D4CCD0 /* GXBaseTableView.swift */,
 				33EC537F2C101BA100D4CCD0 /* GXBaseTableViewController.swift */,
@@ -434,7 +492,6 @@
 				33EC53812C101BA100D4CCD0 /* GXBaseViewController.swift */,
 				33EC53822C101BA100D4CCD0 /* GXBaseViewModel.swift */,
 				33EC53832C101BA100D4CCD0 /* GXBaseWarnViewController.swift */,
-				33EC53842C101BA100D4CCD0 /* GXConfigTVC.swift */,
 				33EC53852C101BA100D4CCD0 /* GXLinkTextView.swift */,
 				33EC53862C101BA100D4CCD0 /* GXSearchController.swift */,
 				33EC53872C101BA100D4CCD0 /* GXSlideTableView.swift */,
@@ -562,6 +619,7 @@
 			isa = PBXGroup;
 			children = (
 				33396A172C1172E1000A1944 /* Tabbar */,
+				339A5EE32C2B9DB8004F1B7F /* Login */,
 				33396A1F2C11E450000A1944 /* Home */,
 				33A588E12C241CBA00451FE1 /* Detail */,
 			);
@@ -693,6 +751,7 @@
 				33EC55F92C101BA100D4CCD0 /* GXQRCodeReaderVC.xib in Resources */,
 				33BF81C02C14AB7F0089431E /* GXSelectedMarkerInfoView.xib in Resources */,
 				33CB38222C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib in Resources */,
+				339A5EE72C2B9DE3004F1B7F /* GXLaunchScreenVC.xib in Resources */,
 				33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */,
 				33953F682C208B240049C76C /* GXHomeSearchResultCell.xib in Resources */,
 				33BF81BD2C14AB720089431E /* GXHomeMarkerCell.xib in Resources */,
@@ -771,8 +830,10 @@
 				33D7BFED2C26E4CC006B97C6 /* GXHomeDetailCell1.swift in Sources */,
 				339A5ED82C29BFA8004F1B7F /* GXCircleProgressBar.swift in Sources */,
 				33EC55BF2C101BA100D4CCD0 /* PhotoAsset+Add.swift in Sources */,
+				339A5EE62C2B9DE3004F1B7F /* GXLaunchScreenVC.swift in Sources */,
 				33A588DC2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift in Sources */,
 				33BF81BA2C14A86D0089431E /* GXSelectedMarkerInfoView.swift in Sources */,
+				339A5EE92C2BA256004F1B7F /* GXAppUpdateLatestModel.swift in Sources */,
 				33EC55B42C101BA100D4CCD0 /* GXBaseViewModel.swift in Sources */,
 				33EC55C82C101BA100D4CCD0 /* GXApiDefine.swift in Sources */,
 				33EC55C72C101BA100D4CCD0 /* UITextView+Add.swift in Sources */,
@@ -784,10 +845,10 @@
 				33396A252C121A60000A1944 /* GXHomePanView.swift in Sources */,
 				33EC55F32C101BA100D4CCD0 /* GXAddImagesView.swift in Sources */,
 				33EC55F72C101BA100D4CCD0 /* GXMarqueeTextView.swift in Sources */,
-				33D9DFE62C0EFA0700A282D5 /* ViewController.swift in Sources */,
 				336477A92C2371530013AAF1 /* GXBaseMenuView.swift in Sources */,
 				33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */,
 				33EC55FC2C101BA100D4CCD0 /* GXTagsView.swift in Sources */,
+				339A5EED2C2C0D4F004F1B7F /* GXParamConsumerModel.swift in Sources */,
 				33BF81BE2C14AB720089431E /* GXHomeMarkerCell.swift in Sources */,
 				33EC55C92C101BA100D4CCD0 /* GXDefine.swift in Sources */,
 				33A91E382C28A83B00F7E214 /* GXHomeDetailFacilitiesView.swift in Sources */,
@@ -796,6 +857,7 @@
 				336477AB2C2379690013AAF1 /* GXHomeFilterMenu.swift in Sources */,
 				339A5EDE2C2AD788004F1B7F /* GXHomeFilterModel.swift in Sources */,
 				33EC55C42C101BA100D4CCD0 /* UIFont+Add.swift in Sources */,
+				339A5EEB2C2BCA81004F1B7F /* GXHomeViewModel.swift in Sources */,
 				33EC55B62C101BA100D4CCD0 /* GXConfigTVC.swift in Sources */,
 				33D9DFE22C0EFA0700A282D5 /* AppDelegate.swift in Sources */,
 				33EC579C2C11643500D4CCD0 /* MBProgressHUD+Add.swift in Sources */,
@@ -835,6 +897,7 @@
 				339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */,
 				33EC55B82C101BA100D4CCD0 /* GXSearchController.swift in Sources */,
 				33EC55B02C101BA100D4CCD0 /* GXBaseTableView.swift in Sources */,
+				339A5EEF2C2C13BC004F1B7F /* GXDictListAvailableModel.swift in Sources */,
 				33EC55C02C101BA100D4CCD0 /* String+Add.swift in Sources */,
 				336401E22C2788E900A312BC /* GXHomeDetailCell3.swift in Sources */,
 				33EC55AB2C101BA100D4CCD0 /* GXArrowButton.swift in Sources */,
@@ -854,6 +917,7 @@
 				33EC56012C101BA100D4CCD0 /* GXAppleManager.swift in Sources */,
 				33EC55B22C101BA100D4CCD0 /* GXBaseTextField.swift in Sources */,
 				33EC55FB2C101BA100D4CCD0 /* GXSelectItemsMenu.swift in Sources */,
+				339A5EF12C2C24BF004F1B7F /* GXStationConsumerModel.swift in Sources */,
 				33EC55CF2C101BA100D4CCD0 /* GXAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

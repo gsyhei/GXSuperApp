@@ -15,13 +15,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWC-it-LIJ" userLabel="TagView_L">
-                    <rect key="frame" x="6" y="6" width="55" height="16"/>
+                    <rect key="frame" x="6" y="6" width="57" height="16"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_map_ic_tesla_normal" translatesAutoresizingMaskIntoConstraints="NO" id="K3m-D1-XiF">
                             <rect key="frame" x="0.0" y="0.0" width="19" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="19" id="QOh-eB-BCH"/>
+                            </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5P0-gx-17z">
-                            <rect key="frame" x="23" y="0.0" width="28" height="16"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="12/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5P0-gx-17z">
+                            <rect key="frame" x="23" y="0.0" width="30" height="16"/>
                             <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="13"/>
                             <color key="textColor" red="0.81568627449999997" green="0.25490196079999999" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -46,13 +49,16 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1H-8y-SRV" userLabel="TagView_R">
-                    <rect key="frame" x="6" y="28" width="55" height="16"/>
+                    <rect key="frame" x="6" y="28" width="57" height="16"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_map_ic_us_normal" translatesAutoresizingMaskIntoConstraints="NO" id="6bY-Q0-6hv">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="home_map_ic_us_normal" translatesAutoresizingMaskIntoConstraints="NO" id="6bY-Q0-6hv">
                             <rect key="frame" x="0.0" y="0.0" width="19" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="19" id="fsV-28-cCe"/>
+                            </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pal-oc-kwK">
-                            <rect key="frame" x="23" y="0.0" width="28" height="16"/>
+                            <rect key="frame" x="23" y="0.0" width="30" height="16"/>
                             <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="13"/>
                             <color key="textColor" red="0.090196078430000007" green="0.46666666670000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -81,6 +87,8 @@
             <constraints>
                 <constraint firstItem="oWC-it-LIJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="7Ld-by-Knb"/>
                 <constraint firstItem="v1H-8y-SRV" firstAttribute="top" secondItem="oWC-it-LIJ" secondAttribute="bottom" constant="6" id="MzD-NE-XY4"/>
+                <constraint firstAttribute="trailing" secondItem="v1H-8y-SRV" secondAttribute="trailing" constant="6" id="Ykq-D0-AMK"/>
+                <constraint firstAttribute="trailing" secondItem="oWC-it-LIJ" secondAttribute="trailing" constant="6" id="aCU-Mw-XXU"/>
                 <constraint firstItem="oWC-it-LIJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="6" id="cpu-ce-c1A"/>
                 <constraint firstItem="v1H-8y-SRV" firstAttribute="leading" secondItem="oWC-it-LIJ" secondAttribute="leading" id="oRj-i1-O0I"/>
             </constraints>
@@ -93,7 +101,7 @@
                 <outlet property="usNumberImgView" destination="6bY-Q0-6hv" id="4W6-Nb-YwZ"/>
                 <outlet property="usNumberLabel" destination="Pal-oc-kwK" id="63A-lJ-i3U"/>
             </connections>
-            <point key="canvasLocation" x="-127" y="-124"/>
+            <point key="canvasLocation" x="-187.02290076335876" y="-125.35211267605635"/>
         </view>
     </objects>
     <resources>

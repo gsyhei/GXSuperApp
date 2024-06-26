@@ -32,6 +32,21 @@ class GXBaseViewController: UIViewController {
         if let viewModel = self.cancelViewModel {
             viewModel.gx_cancellablesAll()
         }
+        if self.isModalInPresentation {
+            
+        }
+        if self.isMovingToParent {
+            
+        }
+        if self.isMovingFromParent {
+            
+        }
+        if self.isBeingPresented {
+            
+        }
+        if self.isBeingDismissed {
+            
+        }
     }
 
     override func viewDidLoad() {

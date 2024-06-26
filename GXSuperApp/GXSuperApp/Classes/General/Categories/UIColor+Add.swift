@@ -38,6 +38,10 @@ extension UIColor {
         return UIColor(hexString: "#1777FF")
     }
     
+    class var gx_markerLightBlue: UIColor {
+        return UIColor(hexString: "#3D8DFF")
+    }
+    
     class var gx_lightBlue: UIColor {
         return UIColor(hexString: "#E1EDFF")
     }

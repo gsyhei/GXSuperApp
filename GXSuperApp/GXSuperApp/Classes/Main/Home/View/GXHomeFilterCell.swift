@@ -24,8 +24,8 @@ class GXHomeFilterCell: UICollectionViewCell, Reusable {
     
     var isChecked: Bool = false {
         didSet {
-            self.nameLabel.backgroundColor = isSelected ? .gx_green : .gx_background
-            self.nameLabel.textColor = isSelected ? .white : .gx_drakGray
+            self.nameLabel.backgroundColor = isChecked ? .gx_green : .gx_background
+            self.nameLabel.textColor = isChecked ? .white : .gx_drakGray
         }
     }
     

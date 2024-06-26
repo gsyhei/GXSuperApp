@@ -24,3 +24,56 @@ extension NSAttributedString {
     }
 
 }
+
+
+extension NSAttributedString {
+    enum StationType {
+    case tsl
+    case us
+    }
+    
+    class func gx_getStationNumAttributedText(type: StationType, isSelected: Bool, count: Int, maxCount: Int) -> NSAttributedString {
+        let countFont: UIFont = .gx_boldFont(size: 13)
+        let maxCountFont: UIFont = .gx_font(size: 13)
+        var countTextColor: UIColor, maxCountTextColor: UIColor
+        if isSelected {
+            countTextColor = .white
+            maxCountTextColor = .white
+        }
+        else {
+            if count == maxCount {
+                countTextColor = .gx_drakGray
+                maxCountTextColor = .gx_drakGray
+            }
+            else {
+                if type == .tsl {
+                    countTextColor = .gx_drakRed
+                    maxCountTextColor = .gx_lightRed
+                }
+                else {
+                    countTextColor = .gx_blue
+                    maxCountTextColor = .gx_markerLightBlue
+                }
+            }
+        }
+        
+        let attributedString = NSMutableAttributedString()
+        let numberText = String(format: "%d", count)
+        let numAttributes: [NSAttributedString.Key : Any] = [
+            .font: countFont,
+            .foregroundColor: countTextColor
+        ]
+        let numberAttrStr = NSAttributedString(string: numberText, attributes: numAttributes)
+        attributedString.append(numberAttrStr)
+
+        let maxNumberText = String(format: "/%d", maxCount)
+        let maxNumAttributes: [NSAttributedString.Key : Any] = [
+            .font: maxCountFont,
+            .foregroundColor: maxCountTextColor
+        ]
+        let maxNumAttrStr = NSAttributedString(string: maxNumberText, attributes: maxNumAttributes)
+        attributedString.append(maxNumAttrStr)
+        
+        return attributedString
+    }
+}

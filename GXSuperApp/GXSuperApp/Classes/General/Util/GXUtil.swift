@@ -183,6 +183,7 @@ class GXUtil: NSObject {
                          cancelTitle: String? = "取消",
                          actionTitle: String? = nil,
                          actionStyle: UIAlertAction.Style = .default,
+                         actionHandler: ((GXAlertView, Int) -> Void)? = nil,
                          handler: ((GXAlertView, Int) -> Void)? = nil) {
         let alert = GXAlertView(frame: .zero)
         var actions: [GXAlertAction] = []
@@ -194,9 +195,17 @@ class GXUtil: NSObject {
             cancelAction.borderWidth = 1.0
             cancelAction.backgroundColor = .white
             cancelAction.selBackgroundColor = .gx_background
-            cancelAction.action = { alertView in
-                handler?(alertView, 0)
-                alertView.hide(animated: true)
+            if (actionHandler != nil) {
+                cancelAction.action = { alertView in
+                    actionHandler?(alertView, 0)
+                    alertView.hide(animated: true)
+                }
+            }
+            else {
+                cancelAction.action = { alertView in
+                    handler?(alertView, 0)
+                    alertView.hide(animated: true)
+                }
             }
             actions.append(cancelAction)
 
@@ -215,11 +224,17 @@ class GXUtil: NSObject {
                 action.titleColor = .gx_black
             }
             action.backgroundColor = .gx_green
-            action.selBackgroundColor = .gx_lightGreen
-            
-            action.action = { alertView in
-                handler?(alertView, 1)
-                alertView.hide(animated: true)
+            action.selBackgroundColor = .gx_drakGreen
+            if (actionHandler != nil) {
+                action.action = { alertView in
+                    actionHandler?(alert, 1)
+                }
+            }
+            else {
+                action.action = { alertView in
+                    handler?(alertView, 1)
+                    alertView.hide(animated: true)
+                }
             }
             actions.append(action)
         }
@@ -239,10 +254,17 @@ class GXUtil: NSObject {
                 cancelAction.titleColor = .gx_black
             }
             cancelAction.backgroundColor = .gx_green
-            cancelAction.selBackgroundColor = .gx_lightGreen
-            cancelAction.action = { alertView in
-                handler?(alertView, 0)
-                alertView.hide(animated: true)
+            cancelAction.selBackgroundColor = .gx_drakGreen
+            if (actionHandler != nil) {
+                cancelAction.action = { alertView in
+                    actionHandler?(alert, 0)
+                }
+            }
+            else {
+                cancelAction.action = { alertView in
+                    handler?(alertView, 0)
+                    alertView.hide(animated: true)
+                }
             }
             actions.append(cancelAction)
         }

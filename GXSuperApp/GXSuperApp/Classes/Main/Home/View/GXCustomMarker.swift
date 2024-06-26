@@ -12,24 +12,30 @@ class GXCustomMarker: GMSMarker {
     var isSelected: Bool = false
     var isZoomLarge: Bool = false
     
+    private(set) var model: GXStationConsumerRowsModel?
     private lazy var iconOriginalView: GXMarkerIconView = {
         return GXMarkerIconView.createIconView()
     }()
     
-    func setMarkerStatus(isSelected: Bool, isZoomLarge: Bool) {
-        guard self.isSelected != isSelected || self.isZoomLarge != isZoomLarge else {
+    required convenience init(position: CLLocationCoordinate2D, model: GXStationConsumerRowsModel?) {
+        self.init(position: position)
+        self.model = model
+    }
+    
+    func updateMarker(isSelected: Bool, isZoomLarge: Bool, isCreate: Bool = false) {
+        guard isCreate || (self.isSelected != isSelected || self.isZoomLarge != isZoomLarge) else {
             return
         }
         self.isSelected = isSelected
         self.isZoomLarge = isZoomLarge
         
         if isSelected {
-            iconOriginalView.updateStatus(isSelected: true)
-            self.icon = iconOriginalView.snapshotImage()
+            self.iconOriginalView.bindModel(model: model, isSelected: true)
+            self.icon = self.iconOriginalView.snapshotImage()
         }
         else {
             if isZoomLarge {
-                iconOriginalView.updateStatus(isSelected: false)
+                self.iconOriginalView.bindModel(model: model, isSelected: false)
                 self.icon = iconOriginalView.snapshotImage()
             }
             else {

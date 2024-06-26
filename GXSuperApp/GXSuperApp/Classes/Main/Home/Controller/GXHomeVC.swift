@@ -46,6 +46,10 @@ class GXHomeVC: GXBaseViewController {
         }
     }()
     
+    private lazy var viewModel: GXHomeViewModel = {
+        return GXHomeViewModel()
+    }()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -90,6 +94,7 @@ class GXHomeVC: GXBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.requestDictListAvailable()
     }
     
     override func setupViewController() {
@@ -129,6 +134,13 @@ class GXHomeVC: GXBaseViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
+        self.selectTagsView.itemAction = {[weak self] in
+            guard let `self` = self else { return }
+            guard let _ = self.locationMarker else { return }
+            /// 判断已获取到位置
+            self.requestStationConsumerQuery()
+        }
+        
         GXLocationManager.shared.requestGeocodeCompletion {[weak self] (isAuth, cityName, location) in
             guard let `self` = self else { return }
             guard isAuth else {
@@ -149,8 +161,6 @@ class GXHomeVC: GXBaseViewController {
                 self.mapView.animate(with: GMSCameraUpdate.setTarget(letLocation.coordinate, zoom: self.zoomLarge))
                 self.lastIsZoomLarge = true
                 self.mapView.delegate = self
-                
-                self.mapViewSetMarkers()
             }
         }
     }
@@ -159,15 +169,45 @@ class GXHomeVC: GXBaseViewController {
 
 private extension GXHomeVC {
     
+    func requestStationConsumerQuery() {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestStationConsumerQuery()
+        }.done { model in
+            MBProgressHUD.dismiss()
+            self.mapViewSetMarkers()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            MBProgressHUD.showError(text:error.localizedDescription)
+        }
+    }
+    
+    func requestDictListAvailable() {
+        MBProgressHUD.showLoading()
+        let combinedPromise = when(fulfilled: [
+            self.viewModel.requestParamConsumer(),
+            self.viewModel.requestDictListAvailable()
+        ])
+        firstly {
+            combinedPromise
+        }.done { models in
+            self.selectTagsView.dataSource.data = GXUserManager.shared.dictListAvailable
+            MBProgressHUD.dismiss()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            MBProgressHUD.showError(text:error.localizedDescription)
+        }
+    }
+    
     func showAlertNotLocation() {
         let title = "Location permission"
         let message = "Can better recommend the station around you"
-        GXUtil.showAlert(title: title, message: message, cancelTitle: "Disagree", actionTitle: "Agree") { alert, index in
+        GXUtil.showAlert(title: title, message: message, cancelTitle: "Disagree", actionTitle: "Agree", handler: { alert, index in
             guard index == 1 else { return }
             if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(appSettings, completionHandler: nil)
             }
-        }
+        })
     }
     
     func mapViewClearMarkers() {
@@ -177,9 +217,13 @@ private extension GXHomeVC {
             }
         }
         self.markerList.forEach { marker in
-            marker.map = nil
+            if marker != self.selectedMarker {
+                marker.map = nil
+            }
         }
-        self.markerList.removeAll()
+        if let marker = self.selectedMarker {
+            self.markerList = [marker]
+        }
     }
     
     func mapViewSetMarkers() {
@@ -188,19 +232,14 @@ private extension GXHomeVC {
                 self.mapViewSetMarkers()
             }
         }
-        let target = self.locationMarker?.position ?? self.mapView.camera.target
-        
-        let coordinate1 = CLLocationCoordinate2D(latitude: target.latitude + 0.0008, longitude: target.longitude + 0.0008)
-        let marker = GXCustomMarker(position: coordinate1)
-        marker.setMarkerStatus(isSelected: false, isZoomLarge: self.lastIsZoomLarge)
-        marker.map = self.mapView
-        self.markerList.append(marker)
-        
-        let coordinate2 = CLLocationCoordinate2D(latitude: target.latitude - 0.0008, longitude: target.longitude - 0.0008)
-        let marker1 = GXCustomMarker(position: coordinate2)
-        marker1.setMarkerStatus(isSelected: false, isZoomLarge: self.lastIsZoomLarge)
-        marker1.map = self.mapView
-        self.markerList.append(marker1)
+        self.mapViewClearMarkers()
+        for item in self.viewModel.stationConsumerList {
+            let coordinate = CLLocationCoordinate2D(latitude: item.lat, longitude: item.lng)
+            let marker = GXCustomMarker(position: coordinate, model: item)
+            marker.updateMarker(isSelected: false, isZoomLarge: self.lastIsZoomLarge, isCreate: true)
+            marker.map = self.mapView
+            self.markerList.append(marker)
+        }
     }
     
     func mapViewUpdateMarkers(isZoomLarge: Bool) {
@@ -213,8 +252,8 @@ private extension GXHomeVC {
         self.lastIsZoomLarge = isZoomLarge
         
         self.markerList.forEach { marker in
-            let isSelected = marker == self.selectedMarker
-            marker.setMarkerStatus(isSelected: isSelected, isZoomLarge: isZoomLarge)
+            let isSelected = (marker == self.selectedMarker)
+            marker.updateMarker(isSelected: isSelected, isZoomLarge: isZoomLarge)
         }
     }
     
@@ -226,27 +265,25 @@ private extension GXHomeVC {
         }
         guard marker != self.selectedMarker else { return }
 
-        self.selectedMarker?.setMarkerStatus(isSelected: false, isZoomLarge: self.lastIsZoomLarge)
-        marker.setMarkerStatus(isSelected: true, isZoomLarge: self.lastIsZoomLarge)
+        self.selectedMarker?.updateMarker(isSelected: false, isZoomLarge: self.lastIsZoomLarge)
+        marker.updateMarker(isSelected: true, isZoomLarge: self.lastIsZoomLarge)
         self.selectedMarker = marker
         
-        // 菜单设置
         if self.selectedMarkerMenu == nil {
             self.panView.setCurrentPanPosition(position: .none, animated: true)
-            let menu = GXSelectedMarkerInfoView.showSelectedMarkerInfoView(to: self)
+            let menu = GXSelectedMarkerInfoView.showSelectedMarkerInfoView(to: self, model: marker.model)
             menu.closeAction = {[weak self] in
                 guard let `self` = self else { return }
                 self.panView.setCurrentPanPosition(position: self.panView.lastPanPosition, animated: true)
-                self.selectedMarker?.setMarkerStatus(isSelected: false, isZoomLarge: self.lastIsZoomLarge)
+                self.selectedMarker?.updateMarker(isSelected: false, isZoomLarge: self.lastIsZoomLarge)
                 self.selectedMarker = nil
                 self.selectedMarkerMenu = nil
             }
             self.selectedMarkerMenu = menu
         }
         else {
-            // 更新当前self.selectedMarkerMenu
+            self.selectedMarkerMenu?.bindModel(model: marker.model)
         }
-        
     }
     
 }
@@ -263,7 +300,7 @@ private extension GXHomeVC {
     }
     
     @IBAction func filterButtonClicked(_ sender: Any?) {
-        let height: CGFloat = SCREEN_HEIGHT - self.view.safeAreaInsets.top - 150
+        let height: CGFloat = 580 + UIWindow.gx_safeAreaInsets.bottom
         let menu = GXHomeFilterMenu(height: height)
         menu.show(style: .sheetBottom, usingSpring: true)
     }
@@ -298,10 +335,14 @@ extension GXHomeVC: GMSMapViewDelegate {
         let isZoomLarge = position.zoom >= self.zoomLarge
         if let lastTarget = self.lastTarget {
             let distance = GXLocationManager.getDistanceTo(coordinate1: lastTarget, coordinate2: position.target)
-            if distance > 50000 {
+            let maxDistance = (GXUserManager.shared.paramConsumerData?.queryDistance ?? 50) * 1000
+            XCGLogger.info("mapView move distance = \(distance), maxDistance = \(maxDistance)")
+            if distance > maxDistance {
                 self.lastTarget = position.target
                 self.lastIsZoomLarge = isZoomLarge
                 // 重新拉取地图场站
+                GXUserManager.shared.filter.setSelectedCoordinate(position.target)
+                self.requestStationConsumerQuery()
             }
             else {
                 // 更新场站Markers大小
@@ -311,6 +352,8 @@ extension GXHomeVC: GMSMapViewDelegate {
             self.lastTarget = position.target
             self.lastIsZoomLarge = isZoomLarge
             // 首次拉取地图场站
+            GXUserManager.shared.filter.setSelectedCoordinate(position.target)
+            self.requestStationConsumerQuery()
         }
     }
     

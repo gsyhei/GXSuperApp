@@ -78,7 +78,7 @@ class GXHomePanView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupPanMovedY(top: CGFloat, center: CGFloat, bottom: CGFloat, position: PanPosition = .bottom) {
+    func setupPanMovedY(top: CGFloat, center: CGFloat, bottom: CGFloat, position: PanPosition = .center) {
         self.panTopY = top
         self.panCenterY = center
         self.panBottomY = bottom

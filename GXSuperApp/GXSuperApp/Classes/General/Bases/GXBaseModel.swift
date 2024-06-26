@@ -8,11 +8,11 @@
 import UIKit
 import HandyJSON
 
-class GXBaseModel: HandyJSON {
+class GXBaseModel: NSObject, HandyJSON {
     var code: Int = -1
-    var message: String = ""
+    var msg: String = ""
 
-    required init() {}
+    required override init() {}
 }
 
 class GXBaseDataModel: GXBaseModel {

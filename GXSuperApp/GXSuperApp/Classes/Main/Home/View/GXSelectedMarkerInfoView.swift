@@ -25,6 +25,7 @@ class GXSelectedMarkerInfoView: UIView {
     @IBOutlet weak var usNumberLabel: UILabel!
     @IBOutlet weak var tslNumberLabel: UILabel!
     weak var superVC: UIViewController?
+    var model: GXStationConsumerRowsModel?
     var closeAction: GXActionBlock?
     
     deinit {
@@ -60,13 +61,14 @@ class GXSelectedMarkerInfoView: UIView {
     }
     
     @discardableResult
-    class func showSelectedMarkerInfoView(to vc: UIViewController) -> GXSelectedMarkerInfoView {
+    class func showSelectedMarkerInfoView(to vc: UIViewController, model: GXStationConsumerRowsModel?) -> GXSelectedMarkerInfoView {
         if !Thread.isMainThread {
             assertionFailure()
         }
         let infoView = GXSelectedMarkerInfoView.xibView().then {
             $0.superVC = vc
             $0.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: menuHeight())
+            $0.bindModel(model: model)
         }
         UIWindow.gx_frontWindow?.addSubview(infoView)
         infoView.showMenu()
@@ -85,8 +87,6 @@ class GXSelectedMarkerInfoView: UIView {
             make.right.equalToSuperview().offset(-12)
             make.height.equalTo(70)
         }
-        self.dataSource.data = ["", "", "", "", ""]
-        
         self.navigateButton.setBackgroundColor(.white, for: .normal)
         self.navigateButton.setBackgroundColor(.gx_background, for: .highlighted)
         self.scanButton.setBackgroundColor(.gx_green, for: .normal)
@@ -94,8 +94,6 @@ class GXSelectedMarkerInfoView: UIView {
         
         let gradientColors: [UIColor] = [.gx_green, UIColor(hexString: "#278CFF")]
         self.leftLineImgView.image = UIImage(gradientColors: gradientColors, style: .vertical, size: CGSize(width: 4, height: 14))
-        self.topTagsView.updateTitles(titles: ["Convenience store", "Toilet"], width: SCREEN_WIDTH - 48, isShowFristLine: false)
-        self.bottomTagsView.updateTitles(titles: ["Parking discount", "Idle fee $0.17 / min"], width: SCREEN_WIDTH - 60, isShowFristLine: true)
     }
     
     override func layoutSubviews() {
@@ -124,6 +122,50 @@ class GXSelectedMarkerInfoView: UIView {
         }.done { finished in
             self.removeFromSuperview()
         }
+    }
+    
+    func bindModel(model: GXStationConsumerRowsModel?) {
+        guard let model = model else { return }
+        self.model = model
+        
+        // 名称
+        self.nameLabel.text = model.name
+        // 站点服务
+        let titles = model.aroundFacilitiesList.compactMap { $0.name }
+        self.topTagsView.updateTitles(titles: titles, width: SCREEN_WIDTH - 48, isShowFristLine: false)
+        // 电费
+        self.priceLabel.text = "$ \(model.electricFee)"
+        
+        // 充电枪信息
+        if model.teslaIdleCount == model.teslaCount {
+            self.tslNumberBgView.backgroundColor = .gx_background
+            self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_disable")
+        }
+        else {
+            self.tslNumberBgView.backgroundColor = .gx_lightRed
+            self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_normal")
+        }
+        if model.usIdleCount == model.usCount {
+            self.usNumberBgView.backgroundColor = .gx_background
+            self.usNumberImgView.image = UIImage(named: "home_map_ic_us_disable")
+        }
+        else {
+            self.usNumberBgView.backgroundColor = .gx_lightBlue
+            self.usNumberImgView.image = UIImage(named: "home_map_ic_us_normal")
+        }
+        let tslAttrText: NSAttributedString = .gx_getStationNumAttributedText(type: .tsl, isSelected: false, count: model.teslaIdleCount, maxCount: model.teslaCount)
+        self.tslNumberLabel.attributedText = tslAttrText
+        let usAttrText: NSAttributedString = .gx_getStationNumAttributedText(type: .us, isSelected: false, count: model.usIdleCount, maxCount: model.usCount)
+        self.usNumberLabel.attributedText = usAttrText
+        
+        // 停车减免、服务费
+        let occupyFeeInfo = "Idle fee $\(model.occupyFee) / min"
+        self.bottomTagsView.updateTitles(titles: [model.freeParking, occupyFeeInfo], width: SCREEN_WIDTH - 60, isShowFristLine: true)
+        // 站点图片
+        self.dataSource.data = model.aroundServicesArr
+        // 距离
+        let distance: Float = Float(model.distance)/1000.0
+        self.distanceLabel.text = String(format: "%.1fkm", distance)
     }
 }
 

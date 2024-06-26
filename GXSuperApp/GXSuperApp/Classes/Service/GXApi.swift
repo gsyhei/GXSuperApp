@@ -22,11 +22,11 @@ extension GXApi: TargetType {
     var baseURL: URL {
         switch self {
         case .normalApi:
-            return URL(string: Api_BaseUrl)!
+            return URL(string: Api_baseUrl)!
         case .bodyApi:
-            return URL(string: Api_BaseUrl)!
+            return URL(string: Api_baseUrl)!
         case .uploadApi:
-            return URL(string: Api_BaseUrl)!
+            return URL(string: Api_baseUrl)!
         }
     }
 
@@ -69,9 +69,9 @@ extension GXApi: TargetType {
     }
 
     var headers: [String: String]? {
-//        if let token = GXUserManager.shared.token {
-//            return ["Authorization": token]
-//        }
+        if let token = GXUserManager.shared.token {
+            return ["Authorization": token]
+        }
         return nil
     }
     
