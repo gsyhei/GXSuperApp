@@ -132,8 +132,10 @@ class GXHomeVC: GXBaseViewController {
         self.panView.didSelectRowAtAction = {[weak self] model in
             guard let `self` = self else { return }
             
-            let vc = GXHomeDetailVC.xibViewController()
-            vc.hidesBottomBarWhenPushed = true
+            let vc = GXHomeDetailVC.xibViewController().then {
+                $0.viewModel.rowModel = model
+                $0.hidesBottomBarWhenPushed = true
+            }
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

@@ -124,6 +124,9 @@
 		33EC57932C1021E300D4CCD0 /* GXApproveFailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC57912C1021E300D4CCD0 /* GXApproveFailInfoView.swift */; };
 		33EC57942C1021E300D4CCD0 /* GXApproveFailInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33EC57922C1021E300D4CCD0 /* GXApproveFailInfoView.xib */; };
 		33EC579C2C11643500D4CCD0 /* MBProgressHUD+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC579B2C11643500D4CCD0 /* MBProgressHUD+Add.swift */; };
+		33FB14DB2C2D386F00059CB0 /* GXHomeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FB14DA2C2D386E00059CB0 /* GXHomeDetailViewModel.swift */; };
+		33FB14DD2C2D4BF600059CB0 /* GXConnectorConsumerListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FB14DC2C2D4BF600059CB0 /* GXConnectorConsumerListModel.swift */; };
+		33FB14DF2C2D513200059CB0 /* GXStationConsumerDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FB14DE2C2D513200059CB0 /* GXStationConsumerDetailModel.swift */; };
 		6818C78D9B51E2909BC88500 /* Pods_GXSuperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F37FD32A5D4D283B3BF19 /* Pods_GXSuperApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -250,6 +253,9 @@
 		33EC57922C1021E300D4CCD0 /* GXApproveFailInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXApproveFailInfoView.xib; sourceTree = "<group>"; };
 		33EC579B2C11643500D4CCD0 /* MBProgressHUD+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Add.swift"; sourceTree = "<group>"; };
 		33FB14D92C2D31CA00059CB0 /* GXSuperApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GXSuperApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		33FB14DA2C2D386E00059CB0 /* GXHomeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailViewModel.swift; sourceTree = "<group>"; };
+		33FB14DC2C2D4BF600059CB0 /* GXConnectorConsumerListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXConnectorConsumerListModel.swift; sourceTree = "<group>"; };
+		33FB14DE2C2D513200059CB0 /* GXStationConsumerDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXStationConsumerDetailModel.swift; sourceTree = "<group>"; };
 		5D6F37FD32A5D4D283B3BF19 /* Pods_GXSuperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GXSuperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE37990042C7D6C00FD87875 /* Pods-GXSuperApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GXSuperApp.release.xcconfig"; path = "Target Support Files/Pods-GXSuperApp/Pods-GXSuperApp.release.xcconfig"; sourceTree = "<group>"; };
 		BE467C8C83E2954639F9764B /* Pods-GXSuperApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GXSuperApp.debug.xcconfig"; path = "Target Support Files/Pods-GXSuperApp/Pods-GXSuperApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -394,6 +400,8 @@
 		33A588DE2C241CBA00451FE1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				33FB14DC2C2D4BF600059CB0 /* GXConnectorConsumerListModel.swift */,
+				33FB14DE2C2D513200059CB0 /* GXStationConsumerDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -431,6 +439,7 @@
 		33A588E02C241CBA00451FE1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				33FB14DA2C2D386E00059CB0 /* GXHomeDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -856,10 +865,12 @@
 				336477AB2C2379690013AAF1 /* GXHomeFilterMenu.swift in Sources */,
 				339A5EDE2C2AD788004F1B7F /* GXHomeFilterModel.swift in Sources */,
 				33EC55C42C101BA100D4CCD0 /* UIFont+Add.swift in Sources */,
+				33FB14DF2C2D513200059CB0 /* GXStationConsumerDetailModel.swift in Sources */,
 				339A5EEB2C2BCA81004F1B7F /* GXHomeViewModel.swift in Sources */,
 				33EC55B62C101BA100D4CCD0 /* GXConfigTVC.swift in Sources */,
 				33D9DFE22C0EFA0700A282D5 /* AppDelegate.swift in Sources */,
 				33EC579C2C11643500D4CCD0 /* MBProgressHUD+Add.swift in Sources */,
+				33FB14DB2C2D386F00059CB0 /* GXHomeDetailViewModel.swift in Sources */,
 				33396A1A2C117326000A1944 /* GXTabBarController.swift in Sources */,
 				33EC55FE2C101BA100D4CCD0 /* GXToast.swift in Sources */,
 				339A5EDC2C2AD5A7004F1B7F /* GXUserManager.swift in Sources */,
@@ -886,6 +897,7 @@
 				33D7BFE82C26C9CE006B97C6 /* GXHomeDetailCell0.swift in Sources */,
 				33EC55F12C101BA100D4CCD0 /* XYNavigationManager.m in Sources */,
 				33953F672C208B240049C76C /* GXHomeSearchResultCell.swift in Sources */,
+				33FB14DD2C2D4BF600059CB0 /* GXConnectorConsumerListModel.swift in Sources */,
 				3340F7612C18498900B97923 /* GXRoundedInView.swift in Sources */,
 				33EC55C32C101BA100D4CCD0 /* UIColor+Add.swift in Sources */,
 				33EC55DC2C101BA100D4CCD0 /* GXMessagesLoadTableView.swift in Sources */,

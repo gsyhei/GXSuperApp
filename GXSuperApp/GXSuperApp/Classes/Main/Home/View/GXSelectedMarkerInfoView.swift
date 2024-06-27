@@ -162,7 +162,8 @@ class GXSelectedMarkerInfoView: UIView {
         
         // 停车减免、服务费
         let occupyFeeInfo = "Idle fee $\(model.occupyFee) / min"
-        self.bottomTagsView.updateTitles(titles: [model.freeParking, occupyFeeInfo], width: SCREEN_WIDTH - 60, isShowFristLine: true)
+        let btmTitles = (model.occupyFlag == "YES") ? ["Parking discount", occupyFeeInfo] : [occupyFeeInfo]
+        self.bottomTagsView.updateTitles(titles: btmTitles, width: SCREEN_WIDTH - 60, isShowFristLine: true)
         // 站点图片
         self.dataSource.data = model.aroundServicesArr
         // 距离

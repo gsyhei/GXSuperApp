@@ -7,8 +7,12 @@
 
 import UIKit
 import SkeletonView
+import PromiseKit
+import MBProgressHUD
 
 class GXHomeDetailVC: GXBaseViewController {
+    @IBOutlet weak var advertView: UIView!
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.configuration(estimated: true)
@@ -24,28 +28,21 @@ class GXHomeDetailVC: GXBaseViewController {
             tableView.register(cellType: GXHomeDetailCell7.self)
         }
     }
-    @IBOutlet weak var advertView: UIView!
-    @IBOutlet weak var bottomView: UIView!
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.view.showAnimatedGradientSkeleton()
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.view.hideSkeleton()
-        })
-    }
+    private(set) lazy var viewModel: GXHomeDetailViewModel = {
+        return GXHomeDetailViewModel()
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.requestStationConsumerDetail()
     }
     
     override func setupViewController() {
         self.navigationItem.title = "Station Details"
         self.gx_addBackBarButtonItem()
-        
     }
-
+    
 }
 
 extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
@@ -53,7 +50,7 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
     // MARK - SkeletonTableViewDataSource
     
     func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 5
     }
     
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
@@ -68,8 +65,6 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             return GXHomeDetailCell3.reuseIdentifier
         case 4:
             return GXHomeDetailCell4.reuseIdentifier
-        case 5:
-            return GXHomeDetailCell5.reuseIdentifier
         default:
             return ""
         }
@@ -92,26 +87,20 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
         case 4:
             let cell: GXHomeDetailCell4 = skeletonView.dequeueReusableCell(for: indexPath)
             return cell
-        case 5:
-            let cell: GXHomeDetailCell5 = skeletonView.dequeueReusableCell(for: indexPath)
-            return cell
         default:
             return UITableViewCell()
         }
     }
     
-    func collectionSkeletonView(_ skeletonView: UITableView, prepareCellForSkeleton cell: UITableViewCell, at indexPath: IndexPath) {
-        
-    }
-    
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return self.viewModel.cellIndexs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
+        let index = self.viewModel.cellIndexs[indexPath.row]
+        switch index {
         case 0:
             let cell: GXHomeDetailCell0 = tableView.dequeueReusableCell(for: indexPath)
             return cell
@@ -147,6 +136,11 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             return cell
         case 7:
             let cell: GXHomeDetailCell7 = tableView.dequeueReusableCell(for: indexPath)
+            cell.setCell7Type(model: self.viewModel.detailData)
+            return cell
+        case 8:
+            let cell: GXHomeDetailCell7 = tableView.dequeueReusableCell(for: indexPath)
+            cell.setCell8Type()
             return cell
         default: return UITableViewCell()
         }
@@ -155,7 +149,8 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
     // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
+        let index = self.viewModel.cellIndexs[indexPath.row]
+        switch index {
         case 0:
             return 112
         case 1:
@@ -178,7 +173,8 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
+        let index = self.viewModel.cellIndexs[indexPath.row]
+        switch index {
         case 0:
             return 112
         case 1:
@@ -201,12 +197,32 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = self.viewModel.cellIndexs[indexPath.row]
         
     }
     
 }
 
 private extension GXHomeDetailVC {
+    
+    func requestStationConsumerDetail() {
+        self.view.layoutSkeletonIfNeeded()
+        self.view.showAnimatedGradientSkeleton()
+        
+        let combinedPromise = when(fulfilled: [
+            self.viewModel.requestStationConsumerDetail(),
+            self.viewModel.requestConnectorConsumerList()
+        ])
+        firstly {
+            combinedPromise
+        }.done { models in
+            self.view.hideSkeleton()
+            self.tableView.reloadData()
+        }.catch { error in
+            self.view.hideSkeleton()
+            MBProgressHUD.showError(text:error.localizedDescription)
+        }
+    }
     
     func showAllTimeMenu() {
         let height: CGFloat = SCREEN_HEIGHT - self.view.safeAreaInsets.top - 250
