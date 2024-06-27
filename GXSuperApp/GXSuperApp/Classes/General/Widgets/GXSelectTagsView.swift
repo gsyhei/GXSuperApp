@@ -73,4 +73,8 @@ class GXSelectTagsView: UIView {
         self.stationServiceList = GXUserManager.shared.filter.getSelectedAroundFacilities()
         self.collectionView.reloadData()
     }
+    
+    func updateDataSource() {
+        self.dataSource.data = GXUserManager.shared.showDictListAvailable
+    }
 }
