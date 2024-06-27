@@ -14,6 +14,7 @@ class GXHomeDetailCell3: UITableViewCell, NibReusable {
     @IBOutlet weak var costButton: UIButton!
     @IBOutlet weak var safetyButton: UIButton!
     @IBOutlet weak var allTimeButton: UIButton!
+    @IBOutlet weak var tvHeightLC: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.configuration(estimated: true)
@@ -26,6 +27,8 @@ class GXHomeDetailCell3: UITableViewCell, NibReusable {
             tableView.register(cellType: GXHomeDetailChargingFeeCell.self)
         }
     }
+    private var showPrices:[GXStationConsumerDetailPricesItem] = []
+
     var costAction: GXActionBlock?
     var safetyAction: GXActionBlock?
     var allTimeAction: GXActionBlock?
@@ -44,6 +47,15 @@ class GXHomeDetailCell3: UITableViewCell, NibReusable {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func bindCell(showPrices:[GXStationConsumerDetailPricesItem]?) {
+        guard let showPrices = showPrices else { return }
+        
+        self.showPrices = showPrices
+        let height = tableView.rowHeight * CGFloat(showPrices.count) + tableView.sectionHeaderHeight
+        self.tvHeightLC.constant = height
+        self.tableView.reloadData()
     }
 }
 
@@ -77,11 +89,12 @@ extension GXHomeDetailCell3: SkeletonTableViewDataSource, SkeletonTableViewDeleg
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.showPrices.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXHomeDetailChargingFeeCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.bindCell(model: self.showPrices[indexPath.row])
         return cell
     }
     

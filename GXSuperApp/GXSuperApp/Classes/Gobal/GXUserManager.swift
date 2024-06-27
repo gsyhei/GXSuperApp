@@ -26,6 +26,8 @@ class GXUserManager: NSObject {
     var paramConsumerData: GXParamConsumerData?
     /// 周边设施
     var dictListAvailable: [GXDictListAvailableData] = []
+    /// 周边设施
+    var showDictListAvailable: [GXDictListAvailableData] = []
     
     override init() {}
 }

@@ -14,7 +14,7 @@ class GXHomeDetailCell0: UITableViewCell, Reusable {
     private var dataSource = ArrayDataSource<String>()
     private lazy var collectionView: CollectionView = {
         let viewSource = ClosureViewSource(viewUpdater: { (view: UIImageView, data: String, index: Int) in
-            view.image = UIImage(named: "demo_car")
+            view.kf.setImage(with: URL(string: data), placeholder: UIImage.gx_default)
             view.layer.masksToBounds = true
             view.layer.cornerRadius = 8.0
         })
@@ -58,6 +58,11 @@ class GXHomeDetailCell0: UITableViewCell, Reusable {
             make.bottom.equalToSuperview()
         }
         self.collectionView.layoutIfNeeded()
+    }
+    
+    func bindCell(model: GXStationConsumerDetailData?) {
+        guard let model = model else { return }
+        self.dataSource.data = model.aroundServicesArr
     }
 
 }

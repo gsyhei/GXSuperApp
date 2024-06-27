@@ -197,7 +197,7 @@ private extension GXHomeVC {
         firstly {
             combinedPromise
         }.done { models in
-            self.selectTagsView.dataSource.data = GXUserManager.shared.dictListAvailable
+            self.selectTagsView.dataSource.data = GXUserManager.shared.showDictListAvailable
             MBProgressHUD.dismiss()
         }.catch { error in
             MBProgressHUD.dismiss()

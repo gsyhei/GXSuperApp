@@ -22,9 +22,9 @@
                         <rect key="frame" x="12" y="12" width="366" height="54"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Partner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Es-8w-r15">
-                                <rect key="frame" x="12" y="12" width="70" height="30"/>
+                                <rect key="frame" x="12" y="12" width="80" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="g7d-HE-2zv"/>
+                                    <constraint firstAttribute="width" constant="80" id="g7d-HE-2zv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="18"/>
                                 <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -34,7 +34,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Facilities" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abg-QB-7wa">
-                                <rect key="frame" x="90" y="15.333333333333334" width="264" height="23.333333333333329"/>
+                                <rect key="frame" x="100" y="15.333333333333334" width="254" height="23.333333333333329"/>
                                 <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="14"/>
                                 <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>

@@ -13,6 +13,7 @@ class GXHomeDetailCell5: UITableViewCell, NibReusable {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var tvHeightLC: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.configuration(estimated: true)
@@ -25,6 +26,7 @@ class GXHomeDetailCell5: UITableViewCell, NibReusable {
             tableView.register(cellType: GXHomeDetailChargerStatusCell.self)
         }
     }
+    var showItems: [GXConnectorConsumerRowsItem] = []
     var moreAction: GXActionBlock?
 
     override func awakeFromNib() {
@@ -41,10 +43,17 @@ class GXHomeDetailCell5: UITableViewCell, NibReusable {
         super.setSelected(selected, animated: animated)
     }
     
+    func bindCell(items: [GXConnectorConsumerRowsItem]?) {
+        guard let items = items else { return }
+        self.showItems = items
+        let count = min(self.showItems.count, 3)
+        let height = tableView.rowHeight * CGFloat(count)
+        self.tvHeightLC.constant = height
+        self.tableView.reloadData()
+    }
 }
 
 extension GXHomeDetailCell5: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
-
     // MARK: - SkeletonTableViewDataSource
     
     func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,13 +76,15 @@ extension GXHomeDetailCell5: SkeletonTableViewDataSource, SkeletonTableViewDeleg
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return min(self.showItems.count, 3)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXHomeDetailChargerStatusCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.bindCell(model: self.showItems[indexPath.row])
         return cell
     }
+    
     // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

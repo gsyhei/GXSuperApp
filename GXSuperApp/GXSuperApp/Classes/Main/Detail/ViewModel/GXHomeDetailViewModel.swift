@@ -14,19 +14,19 @@ class GXHomeDetailViewModel: GXBaseViewModel {
     /// 站点信息
     var rowModel: GXStationConsumerRowsModel? {
         didSet {
-            guard let model = rowModel else { return }
-            if model.occupyFlag == "YES" {
-                self.cellIndexs = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-            }
-            else {
-                self.cellIndexs = [0, 1, 2, 3, 5, 6, 7, 8]
-            }
+            self.updateCellIndexs()
         }
     }
     /// 枪列表
     var ccRowsList: [GXConnectorConsumerRowsItem] = []
+    /// 需要显示的时段
+    var showPrices:[GXStationConsumerDetailPricesItem] = []
     /// 站点详情数据
-    var detailData: GXStationConsumerDetailData?
+    var detailData: GXStationConsumerDetailData? {
+        didSet {
+            self.updateShowPrices()
+        }
+    }
     
     /// 站点详情
     func requestStationConsumerDetail() -> Promise<GXStationConsumerDetailModel> {
@@ -60,6 +60,38 @@ class GXHomeDetailViewModel: GXBaseViewModel {
             }, failure: { error in
                 seal.reject(error)
             })
+        }
+    }
+    
+}
+
+extension GXHomeDetailViewModel {
+    
+    func updateCellIndexs() {
+        guard let model = rowModel else { return }
+        if model.occupyFlag == "YES" {
+            self.cellIndexs = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+        }
+        else {
+            self.cellIndexs = [0, 1, 2, 3, 5, 6, 7, 8]
+        }
+    }
+    
+    func updateShowPrices() {
+        guard let detail = self.detailData else { return }
+
+        self.showPrices.removeAll()
+        let currTimeIndex = detail.prices.firstIndex { item in
+            return item.priceType == 1 || item.priceType == 3
+        }
+        let count = detail.prices.count
+        if let currIndex = currTimeIndex {
+            let beCount = min(count, 3)
+            for index in 0..<beCount {
+                let beIndex = (currIndex + index) % count
+                let bePrice = detail.prices[beIndex]
+                self.showPrices.append(bePrice)
+            }
         }
     }
     

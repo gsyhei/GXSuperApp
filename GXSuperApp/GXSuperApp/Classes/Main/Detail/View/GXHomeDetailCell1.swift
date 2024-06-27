@@ -10,8 +10,10 @@ import Reusable
 
 class GXHomeDetailCell1: UITableViewCell, NibReusable {
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var leftLineImgView: UIImageView!
     @IBOutlet weak var tagsView: GXTagsView!
+    @IBOutlet weak var tagsHeightLC: NSLayoutConstraint!
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -27,6 +29,7 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
         self.leftLineImgView.image = UIImage(gradientColors: lineColors, style: .vertical, size: CGSize(width: 4, height: 14))
         let bottomColors: [UIColor] = [.gx_lightGreen, .white]
         self.bottomImgView.image = UIImage(gradientColors: bottomColors, style: .vertical, size: CGSize(width: 10, height: 40))
+        
         self.tagsView.updateTitles(titles: ["Convenience store", "Toilet"], width: SCREEN_WIDTH - 48, isShowFristLine: false)
     }
     
@@ -40,6 +43,19 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    func bindCell(model: GXStationConsumerDetailData?) {
+        guard let model = model else { return }
+        
+        self.nameLabel.text = model.name
+        let titles = model.aroundFacilitiesList.compactMap { $0.name }
+        let height = self.tagsView.updateTitles(titles: titles, width: SCREEN_WIDTH - 48, isShowFristLine: false)
+        self.tagsHeightLC.constant = height
+        self.favoritedButton.isSelected = (model.favoriteFlag == "YES")
+        self.addressLabel.text = model.address
+        self.addressDetailLabel.text = model.siteGuidance
+    }
+    
 }
 
 extension GXHomeDetailCell1 {

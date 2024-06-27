@@ -232,6 +232,8 @@
                 <outlet property="containerView" destination="yEe-uV-xgp" id="Qfh-v2-vGi"/>
                 <outlet property="favoritedButton" destination="EdI-Ql-DG5" id="Nrg-xb-Mw3"/>
                 <outlet property="leftLineImgView" destination="ZTm-Ud-XHC" id="fAo-tE-7W3"/>
+                <outlet property="nameLabel" destination="CUC-Ty-DfW" id="X91-zL-5bP"/>
+                <outlet property="tagsHeightLC" destination="6ha-SW-S97" id="tDX-uH-rBe"/>
                 <outlet property="tagsView" destination="jRA-CN-ilb" id="9jw-Cn-Rko"/>
                 <outlet property="timeLabel" destination="QLc-x2-4SB" id="VLy-So-2rX"/>
                 <outlet property="timeView" destination="Rh6-qj-jZx" id="nA1-FQ-Fij"/>

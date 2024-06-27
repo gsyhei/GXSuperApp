@@ -32,9 +32,9 @@ extension NSAttributedString {
     case us
     }
     
-    class func gx_stationAttrText(type: StationType, isSelected: Bool, count: Int, maxCount: Int) -> NSAttributedString {
-        let countFont: UIFont = .gx_boldFont(size: 13)
-        let maxCountFont: UIFont = .gx_font(size: 13)
+    class func gx_stationAttrText(type: StationType, isSelected: Bool, count: Int, maxCount: Int, fontSize: CGFloat = 13) -> NSAttributedString {
+        let countFont: UIFont = .gx_boldFont(size: fontSize)
+        let maxCountFont: UIFont = .gx_font(size: fontSize)
         var countTextColor: UIColor, maxCountTextColor: UIColor
         if isSelected {
             countTextColor = .white

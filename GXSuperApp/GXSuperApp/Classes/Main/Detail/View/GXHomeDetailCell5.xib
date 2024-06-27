@@ -102,6 +102,7 @@
                 <outlet property="moreButton" destination="ZxF-RE-aUu" id="w3d-i9-PJu"/>
                 <outlet property="nameLabel" destination="p6O-vu-Grv" id="xMN-1n-nuf"/>
                 <outlet property="tableView" destination="sVq-tK-fT2" id="74X-O2-cOu"/>
+                <outlet property="tvHeightLC" destination="tfS-vU-9s0" id="adg-0N-o95"/>
             </connections>
             <point key="canvasLocation" x="75.572519083969468" y="35.91549295774648"/>
         </tableViewCell>

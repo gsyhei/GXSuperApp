@@ -22,17 +22,51 @@ class GXHomeDetailChargerStatusCell: UITableViewCell, NibReusable {
         self.isSkeletonable = true
         
         self.chargerButton.addSubview(self.progressBar)
-        self.progressBar.setProgress(to: 0.75, animated: false)
-        
-        self.chargerButton.backgroundColor = .gx_lightBlue
-        self.chargerButton.setTitleColor(.gx_blue, for: .normal)
-        self.chargerButton.setTitle("75%", for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    func bindCell(model: GXConnectorConsumerRowsItem?) {
+        guard let model = model else { return }
+        
+        self.chargerNumLabel.text = model.qrcode
+        self.maximumPowerLabel.text = "\(model.maxPower)KW"
+        if model.idleFlag == "YES" {
+            switch model.status {
+            case "Available":
+                self.chargerButton.backgroundColor = .gx_lightGreen
+                self.chargerButton.setTitleColor(.gx_green, for: .normal)
+                self.chargerButton.setTitle("Idle", for: .normal)
+                self.chargerButton.setImage(nil, for: .normal)
+                self.progressBar.isHidden = true
+                break
+            case "Charging", "Finishing":
+                self.chargerButton.backgroundColor = .gx_lightBlue
+                self.chargerButton.setTitleColor(.gx_blue, for: .normal)
+                self.chargerButton.setTitle("\(model.soc)%", for: .normal)
+                self.chargerButton.setImage(nil, for: .normal)
+                self.progressBar.isHidden = false
+                self.progressBar.setProgress(to: CGFloat(model.soc)/100.0, animated: false)
+                break
+            default: 
+                self.chargerButton.backgroundColor = .gx_background
+                self.chargerButton.setTitleColor(.gx_drakGray, for: .normal)
+                self.chargerButton.setTitle(nil, for: .normal)
+                self.chargerButton.setImage(UIImage(named: "details_list_ic_fault"), for: .normal)
+                self.progressBar.isHidden = true
+                break
+            }
+        }
+        else {
+            self.chargerButton.backgroundColor = .gx_background
+            self.chargerButton.setTitleColor(.gx_drakGray, for: .normal)
+            self.chargerButton.setTitle(nil, for: .normal)
+            self.chargerButton.setImage(UIImage(named: "details_list_ic_fault"), for: .normal)
+            self.progressBar.isHidden = true
+        }
+    }
 }
 
 private extension GXHomeDetailChargerStatusCell {

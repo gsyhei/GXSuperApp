@@ -70,6 +70,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LzP-pV-TWT">
                                 <rect key="frame" x="0.0" y="52" width="351" height="156"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="156" id="A4g-kf-JZr"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -106,7 +109,6 @@
                             <constraint firstAttribute="bottom" secondItem="aEi-DW-Ue2" secondAttribute="bottom" id="jeJ-Kk-iGw"/>
                             <constraint firstItem="LzP-pV-TWT" firstAttribute="top" secondItem="Jog-LF-f9f" secondAttribute="top" constant="52" id="nBa-9C-FdO"/>
                             <constraint firstAttribute="trailing" secondItem="LzP-pV-TWT" secondAttribute="trailing" id="ohd-F0-gLo"/>
-                            <constraint firstAttribute="height" constant="252" id="rB8-gd-LmJ"/>
                             <constraint firstItem="oFy-Uy-uEx" firstAttribute="centerY" secondItem="fJz-ZH-KGR" secondAttribute="centerY" id="th7-lk-IvT"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -139,6 +141,7 @@
                 <outlet property="costButton" destination="2B9-RO-QeB" id="jnb-mi-Jwy"/>
                 <outlet property="safetyButton" destination="oFy-Uy-uEx" id="8Aa-ln-n8e"/>
                 <outlet property="tableView" destination="LzP-pV-TWT" id="LpQ-mc-uzf"/>
+                <outlet property="tvHeightLC" destination="A4g-kf-JZr" id="J7X-tF-DCe"/>
             </connections>
             <point key="canvasLocation" x="-115" y="40"/>
         </tableViewCell>

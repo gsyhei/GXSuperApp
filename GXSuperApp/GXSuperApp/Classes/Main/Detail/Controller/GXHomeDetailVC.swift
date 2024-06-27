@@ -103,15 +103,19 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
         switch index {
         case 0:
             let cell: GXHomeDetailCell0 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(model: self.viewModel.detailData)
             return cell
         case 1:
             let cell: GXHomeDetailCell1 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(model: self.viewModel.detailData)
             return cell
         case 2:
             let cell: GXHomeDetailCell2 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(model: self.viewModel.detailData)
             return cell
         case 3:
             let cell: GXHomeDetailCell3 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(showPrices: self.viewModel.showPrices)
             cell.allTimeAction = {[weak self] in
                 guard let `self` = self else { return }
                 self.showAllTimeMenu()
@@ -126,6 +130,7 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             return cell
         case 5:
             let cell: GXHomeDetailCell5 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(items: self.viewModel.ccRowsList)
             cell.moreAction = {[weak self] in
                 guard let `self` = self else { return }
                 self.showChargerStatusMenu()
@@ -133,6 +138,7 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             return cell
         case 6:
             let cell: GXHomeDetailCell6 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(list: self.viewModel.detailData?.aroundFacilitiesList)
             return cell
         case 7:
             let cell: GXHomeDetailCell7 = tableView.dequeueReusableCell(for: indexPath)
@@ -151,49 +157,21 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         let index = self.viewModel.cellIndexs[indexPath.row]
         switch index {
-        case 0:
-            return 112
-        case 1:
-            return 198
-        case 2:
-            return 56
-        case 3:
-            return 264
-        case 4:
-            return 216
-        case 5:
-            return 252
-        case 6:
-            return 126
-        case 7:
-            return 66
-        default:
-            return .zero
+        case 0: return 112
+        case 1: return 198
+        case 2: return 56
+        case 3: return 264
+        case 4: return 216
+        case 5: return 252
+        case 6: return 126
+        case 7: return 66
+        case 8: return 66
+        default: return .zero
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let index = self.viewModel.cellIndexs[indexPath.row]
-        switch index {
-        case 0:
-            return 112
-        case 1:
-            return UITableView.automaticDimension
-        case 2:
-            return 56
-        case 3:
-            return 264
-        case 4:
-            return UITableView.automaticDimension
-        case 5:
-            return 252
-        case 6:
-            return 126
-        case 7:
-            return 66
-        default:
-            return .zero
-        }
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

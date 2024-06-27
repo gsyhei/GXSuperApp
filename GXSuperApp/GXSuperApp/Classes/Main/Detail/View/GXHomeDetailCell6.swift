@@ -8,18 +8,33 @@
 import UIKit
 import Reusable
 import CollectionKit
+import Kingfisher
 
 class GXHomeDetailCell6: UITableViewCell, NibReusable {
     @IBOutlet weak var nameLabel: UILabel!
-    var dataSource = ArrayDataSource<String>()
-    var action: GXActionBlockItem<String>?
+    @IBOutlet weak var cvHeightLC: NSLayoutConstraint!
+    var selectList: [GXStationConsumerDetailTagslistItem] = []
+    var dataSource = ArrayDataSource<GXDictListAvailableData>()
+    var action: GXActionBlockItem<GXDictListAvailableData>?
 
     private lazy var collectionView: CollectionView = {
-        let viewSource = ClosureViewSource(viewUpdater: { (view: GXHomeDetailFacilitiesView, data: String, index: Int) in
-            view.nameLabel.text = data
-            view.iconIView.image = UIImage(named: "details_list_ic_store_normal")
+        let viewSource = ClosureViewSource(viewUpdater: { (view: GXHomeDetailFacilitiesView, data: GXDictListAvailableData, index: Int) in
+            view.nameLabel.text = data.name
+            view.iconIView.kf.setImage(with: URL(string: data.icon), placeholder: UIImage.gx_default)
+            let isSelected = self.selectList.contains(where: { $0.id == data.id })
+            if isSelected {
+                view.iconIView.tintColor = .gx_drakGray
+                view.nameLabel.textColor = .gx_drakGray
+            }
+            else {
+                view.iconIView.tintColor = .gx_lightGray
+                view.nameLabel.textColor = .gx_lightGray
+            }
+            view.contentMode = .scaleAspectFit
+            view.masksToBounds = true
+            
         })
-        let sizeSource = { (index: Int, data: String, collectionSize: CGSize) -> CGSize in
+        let sizeSource = { (index: Int, data: GXDictListAvailableData, collectionSize: CGSize) -> CGSize in
             let width = collectionSize.width / 5
             return CGSize(width: width, height: 44)
         }
@@ -45,7 +60,14 @@ class GXHomeDetailCell6: UITableViewCell, NibReusable {
             make.bottom.equalToSuperview().offset(-18)
             make.height.equalTo(44)
         }
-        self.dataSource.data = ["Restroom", "Store", "Restauraut", "Lounge", "Gym"]
+        self.dataSource.data = GXUserManager.shared.dictListAvailable
+        self.layoutIfNeeded()
+        self.cvHeightLC.constant = self.collectionView.contentSize.height + 70
     }
     
+    func bindCell(list: [GXStationConsumerDetailTagslistItem]?) {
+        guard let list = list else { return }
+        self.selectList = list
+        self.collectionView.reloadData()
+    }
 }
