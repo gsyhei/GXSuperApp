@@ -54,7 +54,7 @@ class GXHomeMarkerCell: UITableViewCell, NibReusable {
         let titles = model.aroundFacilitiesList.compactMap { $0.name }
         self.topTagsView.updateTitles(titles: titles, width: SCREEN_WIDTH - 48, isShowFristLine: false)
         // 电费
-        self.priceLabel.text = "$ \(model.electricFee)"
+        self.priceLabel.text = GXUserManager.shared.isLogin ? "$\(model.electricFee)" : "$*****"
         
         // 充电枪信息
         if model.teslaIdleCount == model.teslaCount {

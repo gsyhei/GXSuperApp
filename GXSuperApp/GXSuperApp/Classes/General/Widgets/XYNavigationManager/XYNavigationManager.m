@@ -25,35 +25,13 @@
     
     //苹果地图
     NSMutableDictionary *iosMapDic = [NSMutableDictionary dictionary];
-    iosMapDic[XY_NAV_TITLE_KEY] = @"苹果地图";
+    iosMapDic[XY_NAV_TITLE_KEY] = @"Apple Maps";
     [maps addObject:iosMapDic];
-    
-    //百度地图
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"baidumap://"]]) {
-        NSMutableDictionary *baiduMapDic = [NSMutableDictionary dictionary];
-        baiduMapDic[XY_NAV_TITLE_KEY] = @"百度地图";
-        NSString *urlString = [[NSString stringWithFormat:@"baidumap://map/direction?origin={{我的位置}}&destination=latlng:%f,%f|name=%@&mode=driving&coord_type=gcj02",
-                                endLocation.latitude,endLocation.longitude,endAddress]
-                               stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        baiduMapDic[XY_NAV_URL_KEY] = urlString;
-        [maps addObject:baiduMapDic];
-    }
-    
-    //高德地图
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"iosamap://"]]) {
-        NSMutableDictionary *gaodeMapDic = [NSMutableDictionary dictionary];
-        gaodeMapDic[XY_NAV_TITLE_KEY] = @"高德地图";
-        NSString *urlString = [[NSString stringWithFormat:@"iosamap://path?sourceApplication=%@&backScheme=%@&dlat=%f&dlon=%f&dname=%@&dev=0&style=2",
-                                APP_NAME,@"iosamapnavi",endLocation.latitude,endLocation.longitude,endAddress]
-                               stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        gaodeMapDic[XY_NAV_URL_KEY] = urlString;
-        [maps addObject:gaodeMapDic];
-    }
     
     //谷歌地图
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps://"]]) {
         NSMutableDictionary *googleMapDic = [NSMutableDictionary dictionary];
-        googleMapDic[XY_NAV_TITLE_KEY] = @"谷歌地图";
+        googleMapDic[XY_NAV_TITLE_KEY] = @"Google Maps";
         NSString *urlString = [[NSString stringWithFormat:@"comgooglemaps://?x-source=%@&x-success=%@&saddr=&daddr=%f,%f&directionsmode=driving",
                                 APP_NAME,@"comgooglemapsnavi",endLocation.latitude, endLocation.longitude]
                                stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -61,26 +39,14 @@
         [maps addObject:googleMapDic];
     }
     
-    //腾讯地图
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"qqmap://"]]) {
-        NSMutableDictionary *qqMapDic = [NSMutableDictionary dictionary];
-        qqMapDic[XY_NAV_TITLE_KEY] = @"腾讯地图";
-        NSString *urlString = [[NSString stringWithFormat:@"qqmap://map/routeplan?from=我的位置&type=drive&tocoord=%f,%f&to=%@&coord_type=1&policy=0",
-                                endLocation.latitude, endLocation.longitude, endAddress]
-                               stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        qqMapDic[XY_NAV_URL_KEY] = urlString;
-        [maps addObject:qqMapDic];
-    }
-    
     return maps;
 }
-
 
 + (void)showWithViewController:(UIViewController*)vc
                     coordinate:(CLLocationCoordinate2D)coordinate
                     endAddress:(NSString*)endAddress
 {
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"选择地图进行导航" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Select the map to navigate" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     NSArray *maps = [XYNavigationManager getInstalledMapEndLocation:coordinate endAddress:endAddress];
     NSInteger index = maps.count;
     for (int i = 0; i < index; i++) {
@@ -93,16 +59,12 @@
         } else {
             UIAlertAction * action = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 NSString *urlString = maps[i][XY_NAV_URL_KEY];
-                if (@available(iOS 10.0, *)) {
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:nil];
-                } else {
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
-                }
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:nil];
             }];
             [alert addAction:action];
         }
     }
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:NULL];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:NULL];
     [alert addAction:action];
     [vc presentViewController:alert animated:YES completion:nil];
 }

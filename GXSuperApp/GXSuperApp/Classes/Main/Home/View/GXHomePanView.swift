@@ -7,6 +7,7 @@
 
 import UIKit
 import XCGLogger
+import GXRefresh
 
 class GXHomePanView: UIView {
     enum PanPosition {
@@ -69,6 +70,13 @@ class GXHomePanView: UIView {
         self.addGestureRecognizer(panGesture)
         self.isUserInteractionEnabled = false
         self.viewModel = viewModel
+        
+        /// 只为显示noMore
+        self.tableView.gx_footer = GXRefreshNormalFooter(completion: {}).then { footer in
+            footer.footerHeight = 30.0
+            footer.updateRefreshTitles()
+            footer.isHiddenNoMoreByContent = false
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -81,11 +89,14 @@ class GXHomePanView: UIView {
     }
     
     func setupPanMovedY(top: CGFloat, center: CGFloat, bottom: CGFloat, position: PanPosition = .center) {
+        self.isUserInteractionEnabled = true
         self.panTopY = top
         self.panCenterY = center
         self.panBottomY = bottom
         self.setCurrentPanPosition(position: position, velocity: 0, animated: false)
-        self.isUserInteractionEnabled = true
+        
+        let offsetY = (self.frame.height - center - 140) / 2
+        self.tableView.gx_setPlaceholder(isTop: true, offset: offsetY)
     }
     
     func setCurrentPanPosition(position: PanPosition, velocity: CGFloat = 600, animated: Bool = true) {
@@ -126,6 +137,10 @@ class GXHomePanView: UIView {
         }
     }
     
+    func tableViewReloadData() {
+        self.tableView.gx_footer?.endRefreshing(isNoMore: true)
+        self.tableView.gx_reloadData()
+    }
 }
 
 extension GXHomePanView: UITableViewDataSource, UITableViewDelegate {

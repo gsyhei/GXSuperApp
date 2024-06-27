@@ -74,7 +74,7 @@ extension GXLocationManager: CLLocationManagerDelegate {
         else if status == .authorizedWhenInUse || status == .authorizedAlways {
             self.locationManager?.startUpdatingLocation()
         }
-        else {
+        else if status == .denied {
             DispatchQueue.main.async {
                 self.completionHandler?(false, nil, nil)
             }

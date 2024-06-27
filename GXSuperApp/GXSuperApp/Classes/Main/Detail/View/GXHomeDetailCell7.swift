@@ -9,16 +9,29 @@ import UIKit
 import Reusable
 
 class GXHomeDetailCell7: UITableViewCell, NibReusable {
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var arrowIView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        guard !self.arrowIView.isHidden else { return }
+        self.containerView.backgroundColor = highlighted ? .gx_lightGray : .white
+    }
+    
+    func setCell7Type(name: String, info: String? = nil, isSelection: Bool) {
+        self.nameLabel.text = name
+        self.infoLabel.text = info
+        self.arrowIView.isHidden = !isSelection
     }
     
 }

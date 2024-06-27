@@ -11,7 +11,7 @@ class GXUserManager: NSObject {
     static let shared: GXUserManager = GXUserManager()
 
     /// 登录相关
-    var token: String?
+    var token: String? = nil
     var isLogin: Bool {
         return self.token != nil
     }

@@ -79,7 +79,7 @@ class GXBaseTableView: UITableView {
         self.placeholderView.addSubview(self.placeholderLabel)
         self.placeholderLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(self.placeholderImageView.snp.bottom).offset(14)
+            make.top.equalTo(self.placeholderImageView.snp.bottom).offset(20)
         }
         
     }
@@ -117,7 +117,8 @@ class GXBaseTableView: UITableView {
     }
     
     public func gx_setPlaceholder(isTop: Bool = false, offset: CGFloat = -100) {
-        self.placeholderImageView.snp.updateConstraints { make in
+        self.placeholderImageView.snp.remakeConstraints { make in
+            make.centerX.equalToSuperview()
             if isTop {
                 make.top.equalToSuperview().offset(offset)
             }

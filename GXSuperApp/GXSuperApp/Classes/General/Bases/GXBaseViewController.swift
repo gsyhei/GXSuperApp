@@ -29,23 +29,16 @@ class GXBaseViewController: UIViewController {
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if let viewModel = self.cancelViewModel {
-            viewModel.gx_cancellablesAll()
-        }
-        if self.isModalInPresentation {
-            
-        }
-        if self.isMovingToParent {
-            
-        }
-        if self.isMovingFromParent {
-            
-        }
-        if self.isBeingPresented {
-            
-        }
+        
         if self.isBeingDismissed {
-            
+            if let viewModel = self.cancelViewModel {
+                viewModel.gx_cancellablesAll()
+            }
+        } 
+        else if self.isMovingFromParent {
+            if let viewModel = self.cancelViewModel {
+                viewModel.gx_cancellablesAll()
+            }
         }
     }
 

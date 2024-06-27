@@ -42,11 +42,20 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="com_list_ic_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ESt-tC-vdX">
+                                <rect key="frame" x="347" y="20.666666666666664" width="7" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="Aid-1x-ZBu"/>
+                                    <constraint firstAttribute="width" constant="7" id="gzm-J4-h1M"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ESt-tC-vdX" secondAttribute="trailing" constant="12" id="3sA-cU-IbG"/>
                             <constraint firstItem="8Es-8w-r15" firstAttribute="centerY" secondItem="wpK-Ax-jhQ" secondAttribute="centerY" id="CAj-6y-OIv"/>
                             <constraint firstItem="Abg-QB-7wa" firstAttribute="centerY" secondItem="wpK-Ax-jhQ" secondAttribute="centerY" id="Gwn-Sa-l61"/>
+                            <constraint firstItem="ESt-tC-vdX" firstAttribute="centerY" secondItem="wpK-Ax-jhQ" secondAttribute="centerY" id="hLP-NK-cS0"/>
                             <constraint firstItem="8Es-8w-r15" firstAttribute="leading" secondItem="wpK-Ax-jhQ" secondAttribute="leading" constant="12" id="r5g-lo-ZUM"/>
                             <constraint firstAttribute="height" constant="54" id="rpe-bx-SVh"/>
                             <constraint firstItem="Abg-QB-7wa" firstAttribute="leading" secondItem="8Es-8w-r15" secondAttribute="trailing" constant="8" id="rzp-3F-gtv"/>
@@ -69,10 +78,17 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="arrowIView" destination="ESt-tC-vdX" id="BFo-S3-cpf"/>
+                <outlet property="containerView" destination="wpK-Ax-jhQ" id="PcW-3l-uYY"/>
+                <outlet property="infoLabel" destination="Abg-QB-7wa" id="Cia-F0-Jfp"/>
+                <outlet property="nameLabel" destination="8Es-8w-r15" id="akL-RJ-PQl"/>
+            </connections>
             <point key="canvasLocation" x="183.20610687022901" y="-3.5211267605633805"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="com_list_ic_arrow" width="7" height="13"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

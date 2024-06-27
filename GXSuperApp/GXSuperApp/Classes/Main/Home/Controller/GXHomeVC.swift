@@ -80,10 +80,10 @@ class GXHomeVC: GXBaseViewController {
         self.myLocationButton.setLayerShadow(color: .lightGray, offset: .zero, radius: 3.0)
         self.myLocationButton.layer.shadowOpacity = 0.5
         
+        self.ongoingView.isHidden = true
 //        进行中的订单
 //        self.ongoingView.setLayerShadow(color: .gx_green, offset: .zero, radius: 8.0)
 //        self.ongoingView.layer.shadowOpacity = 0.5
-//        self.ongoingView.isHidden = true
 //        self.ongoingButton.setBackgroundColor(.gx_green, for: .normal)
 //        self.ongoingButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
 //        let frame = CGRect(x: 12, y: 10, width: 16, height: 16)
@@ -179,7 +179,7 @@ private extension GXHomeVC {
         }.done { model in
             MBProgressHUD.dismiss()
             self.mapViewSetMarkers()
-            self.panView.tableView.gx_reloadData()
+            self.panView.tableViewReloadData()
         }.catch { error in
             MBProgressHUD.dismiss()
             MBProgressHUD.showError(text:error.localizedDescription)
@@ -206,7 +206,7 @@ private extension GXHomeVC {
     func showAlertNotLocation() {
         let title = "Location permission"
         let message = "Can better recommend the station around you"
-        GXUtil.showAlert(title: title, message: message, cancelTitle: "Disagree", actionTitle: "Agree", handler: { alert, index in
+        GXUtil.showAlert(title: title, message: message, cancelTitle: "Disagree", actionTitle: "Agree", actionHandler: { alert, index in
             guard index == 1 else { return }
             if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(appSettings, completionHandler: nil)
@@ -238,6 +238,7 @@ private extension GXHomeVC {
         }
         self.mapViewClearMarkers()
         for item in self.viewModel.stationConsumerList {
+            guard item.id != self.selectedMarker?.model?.id else { continue }
             let coordinate = CLLocationCoordinate2D(latitude: item.lat, longitude: item.lng)
             let marker = GXCustomMarker(position: coordinate, model: item)
             marker.updateMarker(isSelected: false, isZoomLarge: self.lastIsZoomLarge, isCreate: true)

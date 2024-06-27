@@ -8,6 +8,8 @@
 import UIKit
 import CollectionKit
 import GXAlert_Swift
+import Kingfisher
+import CoreLocation
 
 class GXSelectedMarkerInfoView: UIView {
     @IBOutlet weak var navigateButton: UIButton!
@@ -35,7 +37,7 @@ class GXSelectedMarkerInfoView: UIView {
     private var dataSource = ArrayDataSource<String>()
     private lazy var collectionView: CollectionView = {
         let viewSource = ClosureViewSource(viewUpdater: { (view: UIImageView, data: String, index: Int) in
-            view.image = UIImage(named: "demo_car")
+            view.kf.setImage(with: URL(string: data), placeholder: UIImage.gx_default)
             view.layer.masksToBounds = true
             view.layer.cornerRadius = 8.0
         })
@@ -134,7 +136,7 @@ class GXSelectedMarkerInfoView: UIView {
         let titles = model.aroundFacilitiesList.compactMap { $0.name }
         self.topTagsView.updateTitles(titles: titles, width: SCREEN_WIDTH - 48, isShowFristLine: false)
         // 电费
-        self.priceLabel.text = "$ \(model.electricFee)"
+        self.priceLabel.text = GXUserManager.shared.isLogin ? "$\(model.electricFee)" : "$*****"
         
         // 充电枪信息
         if model.teslaIdleCount == model.teslaCount {
@@ -176,7 +178,9 @@ extension GXSelectedMarkerInfoView {
     }
     
     @IBAction func navigateButtonClicked(_ sender: UIButton) {
-        
+        guard let model = self.model else { return }
+        let coordinate = CLLocationCoordinate2D(latitude: model.lat, longitude: model.lng)
+        XYNavigationManager.show(with: self.superVC, coordinate: coordinate, endAddress: model.address)
     }
     
     @IBAction func scanButtonClicked(_ sender: UIButton) {

@@ -77,7 +77,6 @@
 		33EC55AE2C101BA100D4CCD0 /* GXBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC537C2C101BA100D4CCD0 /* GXBaseModel.swift */; };
 		33EC55AF2C101BA100D4CCD0 /* GXBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC537D2C101BA100D4CCD0 /* GXBaseNavigationController.swift */; };
 		33EC55B02C101BA100D4CCD0 /* GXBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC537E2C101BA100D4CCD0 /* GXBaseTableView.swift */; };
-		33EC55B12C101BA100D4CCD0 /* GXBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC537F2C101BA100D4CCD0 /* GXBaseTableViewController.swift */; };
 		33EC55B22C101BA100D4CCD0 /* GXBaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53802C101BA100D4CCD0 /* GXBaseTextField.swift */; };
 		33EC55B32C101BA100D4CCD0 /* GXBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53812C101BA100D4CCD0 /* GXBaseViewController.swift */; };
 		33EC55B42C101BA100D4CCD0 /* GXBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53822C101BA100D4CCD0 /* GXBaseViewModel.swift */; };
@@ -202,7 +201,6 @@
 		33EC537C2C101BA100D4CCD0 /* GXBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseModel.swift; sourceTree = "<group>"; };
 		33EC537D2C101BA100D4CCD0 /* GXBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseNavigationController.swift; sourceTree = "<group>"; };
 		33EC537E2C101BA100D4CCD0 /* GXBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseTableView.swift; sourceTree = "<group>"; };
-		33EC537F2C101BA100D4CCD0 /* GXBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseTableViewController.swift; sourceTree = "<group>"; };
 		33EC53802C101BA100D4CCD0 /* GXBaseTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseTextField.swift; sourceTree = "<group>"; };
 		33EC53812C101BA100D4CCD0 /* GXBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseViewController.swift; sourceTree = "<group>"; };
 		33EC53822C101BA100D4CCD0 /* GXBaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXBaseViewModel.swift; sourceTree = "<group>"; };
@@ -251,6 +249,7 @@
 		33EC57912C1021E300D4CCD0 /* GXApproveFailInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXApproveFailInfoView.swift; sourceTree = "<group>"; };
 		33EC57922C1021E300D4CCD0 /* GXApproveFailInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXApproveFailInfoView.xib; sourceTree = "<group>"; };
 		33EC579B2C11643500D4CCD0 /* MBProgressHUD+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Add.swift"; sourceTree = "<group>"; };
+		33FB14D92C2D31CA00059CB0 /* GXSuperApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GXSuperApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		5D6F37FD32A5D4D283B3BF19 /* Pods_GXSuperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GXSuperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE37990042C7D6C00FD87875 /* Pods-GXSuperApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GXSuperApp.release.xcconfig"; path = "Target Support Files/Pods-GXSuperApp/Pods-GXSuperApp.release.xcconfig"; sourceTree = "<group>"; };
 		BE467C8C83E2954639F9764B /* Pods-GXSuperApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GXSuperApp.debug.xcconfig"; path = "Target Support Files/Pods-GXSuperApp/Pods-GXSuperApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -486,10 +485,9 @@
 				33EC537C2C101BA100D4CCD0 /* GXBaseModel.swift */,
 				33EC53792C101BA100D4CCD0 /* GXArrowButton.swift */,
 				33EC537D2C101BA100D4CCD0 /* GXBaseNavigationController.swift */,
-				33EC537E2C101BA100D4CCD0 /* GXBaseTableView.swift */,
-				33EC537F2C101BA100D4CCD0 /* GXBaseTableViewController.swift */,
-				33EC53802C101BA100D4CCD0 /* GXBaseTextField.swift */,
 				33EC53812C101BA100D4CCD0 /* GXBaseViewController.swift */,
+				33EC537E2C101BA100D4CCD0 /* GXBaseTableView.swift */,
+				33EC53802C101BA100D4CCD0 /* GXBaseTextField.swift */,
 				33EC53822C101BA100D4CCD0 /* GXBaseViewModel.swift */,
 				33EC53832C101BA100D4CCD0 /* GXBaseWarnViewController.swift */,
 				33EC53852C101BA100D4CCD0 /* GXLinkTextView.swift */,
@@ -629,6 +627,7 @@
 		33EC55A52C101BA100D4CCD0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				33FB14D92C2D31CA00059CB0 /* GXSuperApp-Bridging-Header.h */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -877,7 +876,6 @@
 				33CB38242C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift in Sources */,
 				339A5EDA2C29C8DA004F1B7F /* GXHomeDetailChargerStatusMenu.swift in Sources */,
 				33EC55F22C101BA100D4CCD0 /* GXAddImages9View.swift in Sources */,
-				33EC55B12C101BA100D4CCD0 /* GXBaseTableViewController.swift in Sources */,
 				33A91E322C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.swift in Sources */,
 				33A91E3E2C28B1E200F7E214 /* GXHomeDetailPriceDetailsMenu.swift in Sources */,
 				33EC55DB2C101BA100D4CCD0 /* GXMessagesLoadHeader.swift in Sources */,
@@ -1093,6 +1091,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "GXSuperApp/Classes/Resources/GXSuperApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1136,6 +1135,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "GXSuperApp/Classes/Resources/GXSuperApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

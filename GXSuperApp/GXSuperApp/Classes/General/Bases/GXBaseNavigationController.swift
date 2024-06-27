@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import XCGLogger
 
 class GXBaseNavigationController: UINavigationController, UINavigationControllerDelegate {
     var popDelegate: UIGestureRecognizerDelegate?
@@ -31,6 +32,18 @@ class GXBaseNavigationController: UINavigationController, UINavigationController
         self.modalPresentationCapturesStatusBarAppearance = true
         self.popDelegate = self.interactivePopGestureRecognizer?.delegate
         self.delegate = self
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if self.isBeingDismissed {
+            self.viewControllers.forEach { vc in
+                if let baseVc = vc as? GXBaseViewController {
+                    baseVc.cancelViewModel?.gx_cancellablesAll()
+                }
+            }
+        }
     }
 
    // MARK: - UINavigationControllerDelegate方法
