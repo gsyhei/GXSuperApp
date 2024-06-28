@@ -96,34 +96,24 @@ fileprivate extension GXMoyaProvider {
     func gx_logger(target: GXApi, error: CustomNSError?, json: Dictionary<String, Any>?) {
         DispatchQueue.global().sync {
             if let error = error {
-                print("")
-                print("--------------------BEGIN-------------------->>")
+                print("\n--------------------BEGIN-------------------->>")
                 print("Request URL: \(target.baseURL)\(target.path)")
                 print("Request Method: \(target.method.rawValue)")
                 print("Request Params:\n\(target.parameters.jsonStringEncoded(options: .prettyPrinted) ?? "")")
                 print("Request headers:\n\(target.headers?.jsonStringEncoded(options: .prettyPrinted) ?? "")")
                 print("Response:\n\(error)")
-                print("<<-------------------END-----------------------")
-                print("")
+                print("<<-------------------END-----------------------\n")
             }
             else {
-                print("")
-                print("--------------------BEGIN-------------------->>")
+                print("\n--------------------BEGIN-------------------->>")
                 print("Request URL: \(target.baseURL)\(target.path)")
                 print("Request Method: \(target.method.rawValue)")
                 print("Request Params:\n\(target.parameters.jsonStringEncoded(options: .prettyPrinted) ?? "")")
                 print("Request headers:\n\(target.headers?.jsonStringEncoded(options: .prettyPrinted) ?? "")")
-                if let dataJSON = json {
-                    guard let prettyPrintedJson = try? JSONSerialization.data(withJSONObject: dataJSON, options: .prettyPrinted) else {
-                        print("Response: \(dataJSON.unicodeDescription)"); return
-                    }
-                    guard let jsonString = String(data: prettyPrintedJson, encoding: .utf8) else {
-                        print("Response: \(dataJSON.unicodeDescription)"); return
-                    }
-                    print("Response:\n\(jsonString)")
+                if let json = json, let dataString = json.jsonStringEncoded(options: .prettyPrinted) {
+                    print("Response:\n\(dataString)")
                 }
-                print("<<-------------------END-----------------------")
-                print("")
+                print("<<-------------------END-----------------------\n")
             }
         }
     }

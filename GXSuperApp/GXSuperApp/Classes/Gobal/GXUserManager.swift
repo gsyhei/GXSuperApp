@@ -7,13 +7,21 @@
 
 import UIKit
 
+let GX_PramConsumer = GXUserManager.shared.paramConsumerData
+let GX_DictListAvailable = GXUserManager.shared.dictListAvailable
+let GX_ShowDictListAvailable = GXUserManager.shared.showDictListAvailable
+
 class GXUserManager: NSObject {
     static let shared: GXUserManager = GXUserManager()
 
-    /// 登录相关
     var token: String? = nil
+    /// 是否登录
     var isLogin: Bool {
         return self.token != nil
+    }
+    /// 是否vip
+    var isVip: Bool {
+        return true
     }
     
     /// 全局筛选配置model

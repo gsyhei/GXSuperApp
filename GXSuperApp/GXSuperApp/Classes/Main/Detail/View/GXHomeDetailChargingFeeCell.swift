@@ -55,11 +55,18 @@ class GXHomeDetailChargingFeeCell: UITableViewCell, NibReusable {
                 self.vipKWhLabel.font = .gx_boldFont(size: 20)
             }
         }
-        let kWhFee = model.electricFee + model.serviceFee
-        self.kWhLabel.text = String(format: "%.2f", kWhFee)
-        let vipkWhFee = model.electricFee + model.serviceFeeVip
-        self.vipKWhLabel.text = String(format: "%.2f", vipkWhFee)
-        self.feeLabel.text = String(format: "%.2f", model.occupyFee)
+        if GXUserManager.shared.isLogin {
+            let kWhFee = model.electricFee + model.serviceFee
+            self.kWhLabel.text = String(format: "%.2f", kWhFee)
+            let vipkWhFee = model.electricFee + model.serviceFeeVip
+            self.vipKWhLabel.text = String(format: "%.2f", vipkWhFee)
+            self.feeLabel.text = String(format: "%.2f", model.occupyFee)
+        }
+        else {
+            self.kWhLabel.text = "*****"
+            self.vipKWhLabel.text = "*****"
+            self.feeLabel.text = "*****"
+        }
     }
     
 }

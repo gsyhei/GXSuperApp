@@ -9,13 +9,14 @@ import UIKit
 import HandyJSON
 
 class GXParamConsumerData: NSObject, HandyJSON {
-    var forceFlag: String = ""
-    var id: Int = 0
-    var releaseDate: String = ""
-    var type: String = ""
-    var downloadUrl: String = ""
-    var version: String = ""
-    var queryDistance: Double = 0 //千米
+    var states = [String]()
+    var occupyStartTime: Int = 0
+    var occupyMax: String = ""
+    var memberReduction: String = ""
+    var memberFee: String = ""
+    var memberFeeAutoRenew: String = ""
+    var queryDistance: CGFloat = 0
+    var memberDescription: String = ""
 
     override required init() {}
 }

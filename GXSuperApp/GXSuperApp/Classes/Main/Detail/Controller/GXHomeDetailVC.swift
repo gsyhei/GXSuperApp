@@ -12,7 +12,20 @@ import MBProgressHUD
 
 class GXHomeDetailVC: GXBaseViewController {
     @IBOutlet weak var advertView: UIView!
+    @IBOutlet weak var advertTitleLabel: UILabel!
+    @IBOutlet weak var advertInfoLabel: UILabel!
+    @IBOutlet weak var advertKWhLabel: UILabel!
+    
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var bottomLeftFee: UILabel!
+    @IBOutlet weak var bottomLeftDw: UILabel!
+    @IBOutlet weak var bottomRightFee: UILabel!
+    @IBOutlet weak var bottomVipIV: UIImageView!
+    @IBOutlet weak var bottomRightFeeLeftLC: NSLayoutConstraint!
+    @IBOutlet weak var bottomTimeD: UILabel!
+    @IBOutlet weak var bottomScanButton: UIButton!
+
+    @IBOutlet weak var tvBottomHeightLC: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.configuration(estimated: true)
@@ -195,10 +208,68 @@ private extension GXHomeDetailVC {
             combinedPromise
         }.done { models in
             self.view.hideSkeleton()
-            self.tableView.reloadData()
+            self.updateDetailDataSource()
         }.catch { error in
             self.view.hideSkeleton()
             MBProgressHUD.showError(text:error.localizedDescription)
+        }
+    }
+    
+    func updateDetailDataSource() {
+        guard let detail = self.viewModel.detailData else { return }
+        
+        self.tableView.reloadData()
+        
+        /// advertView
+        if GXUserManager.shared.isLogin {
+            self.tvBottomHeightLC.constant = 96.0
+            self.advertView.isHidden = false
+            if GXUserManager.shared.isVip {
+                self.advertTitleLabel.text = "VIP for Discounts"
+            }
+            else {
+                self.advertTitleLabel.text = "Become a VIP for Discounts"
+            }
+            self.advertInfoLabel.text = "Save up to $\(GX_PramConsumer?.occupyMax ?? "")/year"
+            self.advertKWhLabel.text = "$\(GX_PramConsumer?.memberFee ?? "")"
+        }
+        else {
+            self.tvBottomHeightLC.constant = 12.0
+            self.advertView.isHidden = true
+        }
+    
+        /// bottomView
+        self.bottomScanButton.setBackgroundColor(.gx_green, for: .normal)
+        self.bottomScanButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
+        self.bottomTimeD.text = "Current time period \(self.viewModel.detailData?.period ?? "")"
+        if GXUserManager.shared.isVip {
+            self.bottomLeftFee.textColor = .gx_orange
+            self.bottomLeftDw.textColor = .gx_orange
+            self.bottomVipIV.isHidden = true
+            self.bottomRightFeeLeftLC.constant = 8.0
+            let vipFee = detail.electricFee + detail.serviceFeeVip
+            self.bottomLeftFee.text = String(format: "$%.2f", vipFee)
+            let omzFee = detail.electricFee + detail.serviceFee
+            let omzFeeStr = String(format: "$%.2f/kWh", omzFee)
+            let attrText = NSAttributedString.gx_strikethroughText(omzFeeStr, color: .gx_drakGray, font: .gx_font(size: 14))
+            self.bottomRightFee.attributedText = attrText
+        }
+        else {
+            self.bottomLeftFee.textColor = .gx_green
+            self.bottomLeftDw.textColor = .gx_green
+            self.bottomVipIV.isHidden = false
+            self.bottomRightFeeLeftLC.constant = 40.0
+            if GXUserManager.shared.isLogin {
+                let omzFee = detail.electricFee + detail.serviceFee
+                self.bottomLeftFee.text = String(format: "$%.2f", omzFee)
+                let vipFee = detail.electricFee + detail.serviceFeeVip
+                self.bottomRightFee.text = String(format: "$%.2f/kWh", vipFee)
+            }
+            else {
+                self.bottomLeftFee.text = "$*****"
+                let attrText = NSAttributedString.gx_strikethroughText("$*****/kWh", color: .gx_drakGray, font: .gx_font(size: 14))
+                self.bottomRightFee.attributedText = attrText
+            }
         }
     }
     

@@ -74,6 +74,10 @@ extension UIColor {
         return UIColor(hexString: "#E1F7EB")
     }
     
+    class var gx_orange: UIColor {
+        return UIColor(hexString: "#FF9A08")
+    }
+    
     class var gx_yellow: UIColor {
         return UIColor(hexString: "#FD9B25")
     }

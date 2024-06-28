@@ -76,4 +76,14 @@ extension NSAttributedString {
         
         return attributedString
     }
+    
+    class func gx_strikethroughText(_ text: String, color: UIColor, font: UIFont) -> NSAttributedString {
+        let attrDic: [NSAttributedString.Key: Any] = [
+            .strikethroughStyle: NSNumber(value: 1),
+            .foregroundColor: color,
+            .font: font
+        ]
+        return NSAttributedString(string: text, attributes: attrDic)
+    }
+    
 }

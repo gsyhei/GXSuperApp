@@ -346,7 +346,7 @@ extension GXHomeVC: GMSMapViewDelegate {
         let isZoomLarge = position.zoom >= self.zoomLarge
         if let lastTarget = self.lastTarget {
             let distance = GXLocationManager.getDistanceTo(coordinate1: lastTarget, coordinate2: position.target)
-            let maxDistance = (GXUserManager.shared.paramConsumerData?.queryDistance ?? 50) * 1000
+            let maxDistance = (GX_PramConsumer?.queryDistance ?? 50) * 1000
             XCGLogger.info("mapView move distance = \(distance), maxDistance = \(maxDistance)")
             if distance > maxDistance {
                 self.lastTarget = position.target
