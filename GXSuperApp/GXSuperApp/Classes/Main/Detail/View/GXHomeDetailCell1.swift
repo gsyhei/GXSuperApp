@@ -29,8 +29,7 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
         self.leftLineImgView.image = UIImage(gradientColors: lineColors, style: .vertical, size: CGSize(width: 4, height: 14))
         let bottomColors: [UIColor] = [.gx_lightGreen, .white]
         self.bottomImgView.image = UIImage(gradientColors: bottomColors, style: .vertical, size: CGSize(width: 10, height: 40))
-        
-        self.tagsView.updateTitles(titles: ["Convenience store", "Toilet"], width: SCREEN_WIDTH - 48, isShowFristLine: false)
+        self.tagsView.updateTitles(titles: [], width: SCREEN_WIDTH - 48, isShowFristLine: false)
     }
     
     override func layoutSubviews() {

@@ -17,6 +17,11 @@ class GXServiceManager: NSObject {
     private(set) var timeDifference: TimeInterval = 0
     /// 网络监听管理器 www.google.com / www.baidu.com
     private let networkManager = NetworkReachabilityManager(host: "www.baidu.com")
+    /// 当前时区差值
+    private(set) lazy var currentTimeZoneValue: String = {
+        let timeZoneDifference = TimeInterval(TimeZone.current.secondsFromGMT()) / 3600.0
+        return String(format: "%.1f", timeZoneDifference)
+    }()
 
     static let shared: GXServiceManager = {
         let instance = GXServiceManager()

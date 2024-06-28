@@ -69,10 +69,12 @@ extension GXApi: TargetType {
     }
 
     var headers: [String: String]? {
+        var headersDic: [String: String] = [:]
+        headersDic["timeZone"] = GXServiceManager.shared.currentTimeZoneValue
         if let token = GXUserManager.shared.token {
-            return ["Authorization": token]
+            headersDic["Authorization"] = token
         }
-        return nil
+        return headersDic
     }
     
     var validationType: ValidationType {

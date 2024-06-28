@@ -32,7 +32,6 @@ class GXHomeDetailCell6: UITableViewCell, NibReusable {
             }
             view.contentMode = .scaleAspectFit
             view.masksToBounds = true
-            
         })
         let sizeSource = { (index: Int, data: GXDictListAvailableData, collectionSize: CGSize) -> CGSize in
             let width = collectionSize.width / 5

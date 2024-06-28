@@ -76,7 +76,6 @@ class GXMoyaProvider: MoyaProvider<GXApi> {
                 }
                 else {
                     let error = GXError(code: response.statusCode, info: response.description)
-                    self.gx_logger(target: target, error: error, json: nil)
                     DispatchQueue.main.async {
                         failure(error)
                     }
@@ -96,31 +95,35 @@ fileprivate extension GXMoyaProvider {
     
     func gx_logger(target: GXApi, error: CustomNSError?, json: Dictionary<String, Any>?) {
         DispatchQueue.global().sync {
-            if let err = error {
-                XCGLogger.debug("")
-                XCGLogger.debug("---------------BEGIN--------------->>")
-                XCGLogger.debug("Request URL: \(target.baseURL)\(target.path)")
-                XCGLogger.debug("Request Params: \(target.parameters.jsonStringEncoded() ?? "")")
-                XCGLogger.debug("Request Method: \(target.method)")
-                XCGLogger.debug("Request headers: \(target.headers ?? [:])")
-                XCGLogger.debug("ErrorCode: \(err.errorCode), Description: \(err.localizedDescription)")
-                // XCGLogger.debug("Error = \(err)")
-                XCGLogger.debug("<<--------------END------------------")
-                XCGLogger.debug("")
+            if let error = error {
+                print("")
+                print("--------------------BEGIN-------------------->>")
+                print("Request URL: \(target.baseURL)\(target.path)")
+                print("Request Method: \(target.method.rawValue)")
+                print("Request Params:\n\(target.parameters.jsonStringEncoded(options: .prettyPrinted) ?? "")")
+                print("Request headers:\n\(target.headers?.jsonStringEncoded(options: .prettyPrinted) ?? "")")
+                print("Response:\n\(error)")
+                print("<<-------------------END-----------------------")
+                print("")
             }
             else {
-                XCGLogger.debug("")
-                XCGLogger.debug("---------------BEGIN--------------->>")
-                XCGLogger.debug("Request URL: \(target.baseURL)\(target.path)")
-                XCGLogger.debug("Request Params: \(target.parameters.jsonStringEncoded() ?? "")")
-                XCGLogger.debug("Request Method: \(target.method)")
-                XCGLogger.debug("Request headers: \(target.headers ?? [:])")
+                print("")
+                print("--------------------BEGIN-------------------->>")
+                print("Request URL: \(target.baseURL)\(target.path)")
+                print("Request Method: \(target.method.rawValue)")
+                print("Request Params:\n\(target.parameters.jsonStringEncoded(options: .prettyPrinted) ?? "")")
+                print("Request headers:\n\(target.headers?.jsonStringEncoded(options: .prettyPrinted) ?? "")")
                 if let dataJSON = json {
-                    XCGLogger.debug("Response: \(dataJSON.unicodeDescription)")
-                    XCGLogger.debug("Response: \(String(describing: dataJSON.jsonStringEncoded()))")
+                    guard let prettyPrintedJson = try? JSONSerialization.data(withJSONObject: dataJSON, options: .prettyPrinted) else {
+                        print("Response: \(dataJSON.unicodeDescription)"); return
+                    }
+                    guard let jsonString = String(data: prettyPrintedJson, encoding: .utf8) else {
+                        print("Response: \(dataJSON.unicodeDescription)"); return
+                    }
+                    print("Response:\n\(jsonString)")
                 }
-                XCGLogger.debug("<<--------------END------------------")
-                XCGLogger.debug("")
+                print("<<-------------------END-----------------------")
+                print("")
             }
         }
     }
