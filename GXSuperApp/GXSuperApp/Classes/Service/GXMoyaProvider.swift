@@ -92,7 +92,6 @@ class GXMoyaProvider: MoyaProvider<GXApi> {
 }
 
 fileprivate extension GXMoyaProvider {
-    
     func gx_logger(target: GXApi, error: CustomNSError?, json: Dictionary<String, Any>?) {
         DispatchQueue.global().sync {
             if let error = error {
