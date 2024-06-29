@@ -196,8 +196,7 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let index = self.viewModel.cellIndexs[indexPath.row]
-        
+       // let index = self.viewModel.cellIndexs[indexPath.row]
     }
     
 }
@@ -205,11 +204,11 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
 private extension GXHomeDetailVC {
     
     @IBAction func advertButtonClicked(_ sender: Any?) {
-        
+        GXAppDelegate?.gotoLogin(from: self)
     }
     
     @IBAction func scanButtonClicked(_ sender: Any?) {
-        
+        GXAppDelegate?.gotoLogin(from: self)
     }
     
 }
@@ -290,29 +289,33 @@ private extension GXHomeDetailVC {
             }
         }
     }
-    
     func showAllTimeMenu() {
         let maxHeight = SCREEN_HEIGHT - 200
         let menu = GXHomeDetailPriceDetailsMenu(height: maxHeight)
         menu.bindView(viewModel: self.viewModel)
         menu.show(style: .sheetBottom, usingSpring: true)
     }
+    
     func showChargerStatusMenu() {
         let maxHeight = SCREEN_HEIGHT - 200
         let menu = GXHomeDetailChargerStatusMenu(height: maxHeight)
         menu.bindView(viewModel: self.viewModel)
         menu.show(style: .sheetBottom, usingSpring: true)
     }
+    
     func gotoSafetyWebVC() {
         let vc = GXWebViewController(urlString: "https://www.baidu.com", title: "Safety Instructions")
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     func gotoCostWebVC() {
         let vc = GXWebViewController(urlString: "https://www.baidu.com", title: "Fee Description")
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     func gotoAddVehicleVC() {
         let vc = GXHomeDetailVehicleMVC.xibViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
 }

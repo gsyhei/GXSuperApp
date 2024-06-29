@@ -33,6 +33,11 @@
 		339A070C2C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A07092C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.swift */; };
 		339A070F2C2F891900BDDD46 /* GXHomeDetailVehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339A070E2C2F891900BDDD46 /* GXHomeDetailVehicleCell.xib */; };
 		339A07102C2F891900BDDD46 /* GXHomeDetailVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A070D2C2F891900BDDD46 /* GXHomeDetailVehicleCell.swift */; };
+		339A07132C2F996200BDDD46 /* GXLoginInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A07112C2F996200BDDD46 /* GXLoginInputCell.swift */; };
+		339A07142C2F996200BDDD46 /* GXLoginInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339A07122C2F996200BDDD46 /* GXLoginInputCell.xib */; };
+		339A07162C2F99A000BDDD46 /* GXLoginAllViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A07152C2F99A000BDDD46 /* GXLoginAllViewModel.swift */; };
+		339A07192C2F99AA00BDDD46 /* GXLoginAllVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A07172C2F99AA00BDDD46 /* GXLoginAllVC.swift */; };
+		339A071A2C2F99AA00BDDD46 /* GXLoginAllVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339A07182C2F99AA00BDDD46 /* GXLoginAllVC.xib */; };
 		339A5ED82C29BFA8004F1B7F /* GXCircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5ED72C29BFA8004F1B7F /* GXCircleProgressBar.swift */; };
 		339A5EDA2C29C8DA004F1B7F /* GXHomeDetailChargerStatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5ED92C29C8D9004F1B7F /* GXHomeDetailChargerStatusMenu.swift */; };
 		339A5EDC2C2AD5A7004F1B7F /* GXUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EDB2C2AD5A7004F1B7F /* GXUserManager.swift */; };
@@ -162,6 +167,11 @@
 		339A070A2C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailVehicleMVC.xib; sourceTree = "<group>"; };
 		339A070D2C2F891900BDDD46 /* GXHomeDetailVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVehicleCell.swift; sourceTree = "<group>"; };
 		339A070E2C2F891900BDDD46 /* GXHomeDetailVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailVehicleCell.xib; sourceTree = "<group>"; };
+		339A07112C2F996200BDDD46 /* GXLoginInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GXLoginInputCell.swift; path = ../../../../../../../GXHeiVibe/GXHeiVibe/GXHeiVibe/Classes/Main/Public/Login/View/GXLoginInputCell.swift; sourceTree = "<group>"; };
+		339A07122C2F996200BDDD46 /* GXLoginInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GXLoginInputCell.xib; path = ../../../../../../../GXHeiVibe/GXHeiVibe/GXHeiVibe/Classes/Main/Public/Login/View/GXLoginInputCell.xib; sourceTree = "<group>"; };
+		339A07152C2F99A000BDDD46 /* GXLoginAllViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLoginAllViewModel.swift; sourceTree = "<group>"; };
+		339A07172C2F99AA00BDDD46 /* GXLoginAllVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLoginAllVC.swift; sourceTree = "<group>"; };
+		339A07182C2F99AA00BDDD46 /* GXLoginAllVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXLoginAllVC.xib; sourceTree = "<group>"; };
 		339A5ED72C29BFA8004F1B7F /* GXCircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCircleProgressBar.swift; sourceTree = "<group>"; };
 		339A5ED92C29C8D9004F1B7F /* GXHomeDetailChargerStatusMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXHomeDetailChargerStatusMenu.swift; sourceTree = "<group>"; };
 		339A5EDB2C2AD5A7004F1B7F /* GXUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXUserManager.swift; sourceTree = "<group>"; };
@@ -359,6 +369,8 @@
 			children = (
 				339A5EE42C2B9DE3004F1B7F /* GXLaunchScreenVC.swift */,
 				339A5EE52C2B9DE3004F1B7F /* GXLaunchScreenVC.xib */,
+				339A07172C2F99AA00BDDD46 /* GXLoginAllVC.swift */,
+				339A07182C2F99AA00BDDD46 /* GXLoginAllVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -374,6 +386,8 @@
 		339A5EE12C2B9DB8004F1B7F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				339A07112C2F996200BDDD46 /* GXLoginInputCell.swift */,
+				339A07122C2F996200BDDD46 /* GXLoginInputCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -381,6 +395,7 @@
 		339A5EE22C2B9DB8004F1B7F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				339A07152C2F99A000BDDD46 /* GXLoginAllViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -757,6 +772,7 @@
 				3398F7392C288EF400A02CEF /* GXHomeDetailCell4.xib in Resources */,
 				33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */,
 				3398F7332C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.xib in Resources */,
+				339A07142C2F996200BDDD46 /* GXLoginInputCell.xib in Resources */,
 				33D1109E2C1D8DFA006331EC /* GXHomeSearchVC.xib in Resources */,
 				33A91E3B2C28AEF400F7E214 /* GXHomeDetailCell7.xib in Resources */,
 				33EC57942C1021E300D4CCD0 /* GXApproveFailInfoView.xib in Resources */,
@@ -770,6 +786,7 @@
 				33A91E352C28A53100F7E214 /* GXHomeDetailCell6.xib in Resources */,
 				33D9DFEE2C0EFA0900A282D5 /* Base in Resources */,
 				33EC55F92C101BA100D4CCD0 /* GXQRCodeReaderVC.xib in Resources */,
+				339A071A2C2F99AA00BDDD46 /* GXLoginAllVC.xib in Resources */,
 				33BF81C02C14AB7F0089431E /* GXSelectedMarkerInfoView.xib in Resources */,
 				33CB38222C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib in Resources */,
 				339A5EE72C2B9DE3004F1B7F /* GXLaunchScreenVC.xib in Resources */,
@@ -875,6 +892,7 @@
 				33BF81BE2C14AB720089431E /* GXHomeMarkerCell.swift in Sources */,
 				33EC55C92C101BA100D4CCD0 /* GXDefine.swift in Sources */,
 				33A91E382C28A83B00F7E214 /* GXHomeDetailFacilitiesView.swift in Sources */,
+				339A07132C2F996200BDDD46 /* GXLoginInputCell.swift in Sources */,
 				33EC578F2C101BA200D4CCD0 /* GXMoyaProvider.swift in Sources */,
 				33EC55B92C101BA100D4CCD0 /* GXSlideTableView.swift in Sources */,
 				336477AB2C2379690013AAF1 /* GXHomeFilterMenu.swift in Sources */,
@@ -921,6 +939,7 @@
 				33A91E362C28A53100F7E214 /* GXHomeDetailCell6.swift in Sources */,
 				339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */,
 				33EC55B82C101BA100D4CCD0 /* GXSearchController.swift in Sources */,
+				339A07162C2F99A000BDDD46 /* GXLoginAllViewModel.swift in Sources */,
 				33EC55B02C101BA100D4CCD0 /* GXBaseTableView.swift in Sources */,
 				339A5EEF2C2C13BC004F1B7F /* GXDictListAvailableModel.swift in Sources */,
 				33EC55C02C101BA100D4CCD0 /* String+Add.swift in Sources */,
@@ -935,6 +954,7 @@
 				33A588E42C241CF900451FE1 /* GXHomeDetailVC.swift in Sources */,
 				33EC55CD2C101BA100D4CCD0 /* GXUtil.swift in Sources */,
 				33EC55C52C101BA100D4CCD0 /* UIImage+Add.swift in Sources */,
+				339A07192C2F99AA00BDDD46 /* GXLoginAllVC.swift in Sources */,
 				33EC55B52C101BA100D4CCD0 /* GXBaseWarnViewController.swift in Sources */,
 				33A588DA2C24015100451FE1 /* GXHomeFilterCell.swift in Sources */,
 				33EC55F82C101BA100D4CCD0 /* GXQRCodeReaderVC.swift in Sources */,

@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.white
         UINavigationBar.appearance().tintColor = UIColor.gx_black
         let nbAppearance = UINavigationBarAppearance()
-        nbAppearance.configureWithOpaqueBackground()
+        nbAppearance.configureWithTransparentBackground()
         nbAppearance.backgroundColor = UIColor.white
         nbAppearance.shadowColor = .gx_lightGray
         nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 19)]
@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().standardAppearance = nbAppearance
         if #available(iOS 15.0, *) {
             let nbAppearance = UINavigationBarAppearance()
-            nbAppearance.configureWithOpaqueBackground()
+            nbAppearance.configureWithTransparentBackground()
             nbAppearance.backgroundColor = UIColor.white
             nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 19)]
             let bbiAppearance = UIBarButtonItemAppearance(style: .plain)
@@ -148,5 +148,11 @@ extension AppDelegate {
             self.window?.rootViewController = viewController
             UIView.setAnimationsEnabled(oldState)
         }, completion: nil)
+    }
+    func gotoLogin(from: UIViewController) {
+        let vc = GXLoginAllVC.xibViewController()
+        let navc = GXBaseNavigationController(rootViewController: vc)
+        navc.modalPresentationStyle = .fullScreen
+        from.present(navc, animated: true)
     }
 }
