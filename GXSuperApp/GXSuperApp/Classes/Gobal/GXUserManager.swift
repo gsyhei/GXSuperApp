@@ -17,11 +17,11 @@ class GXUserManager: NSObject {
     var token: String? = nil
     /// 是否登录
     var isLogin: Bool {
-        return self.token != nil
+        return false
     }
     /// 是否vip
     var isVip: Bool {
-        return true
+        return false
     }
     
     /// 全局筛选配置model

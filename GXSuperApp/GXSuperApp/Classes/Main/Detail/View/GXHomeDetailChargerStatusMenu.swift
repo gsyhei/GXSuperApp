@@ -8,6 +8,7 @@
 import UIKit
 
 class GXHomeDetailChargerStatusMenu: GXBaseMenuView {
+    private weak var viewModel: GXHomeDetailViewModel?
 
     private lazy var tableView: UITableView = {
         return UITableView(frame: self.bounds, style: .plain).then {
@@ -34,17 +35,27 @@ class GXHomeDetailChargerStatusMenu: GXBaseMenuView {
         }
     }
     
+    func bindView(viewModel: GXHomeDetailViewModel?) {
+        guard let viewModel = viewModel else { return }
+        self.viewModel = viewModel
+        self.tableView.reloadData()
+        
+        var height = tableView.rowHeight * CGFloat(viewModel.ccRowsList.count)
+        height += self.safeAreaHeight + 12
+        self.updateHeight(height: height)
+    }
 }
 
 extension GXHomeDetailChargerStatusMenu: UITableViewDataSource, UITableViewDelegate {
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.viewModel?.ccRowsList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXHomeDetailChargerStatusCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.bindCell(model: self.viewModel?.ccRowsList[indexPath.row])
         return cell
     }
     

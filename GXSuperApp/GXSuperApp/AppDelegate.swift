@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.white
         UINavigationBar.appearance().tintColor = UIColor.gx_black
         let nbAppearance = UINavigationBarAppearance()
-        nbAppearance.configureWithTransparentBackground()
+        nbAppearance.configureWithOpaqueBackground()
         nbAppearance.backgroundColor = UIColor.white
         nbAppearance.shadowColor = .gx_lightGray
         nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 19)]
@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().standardAppearance = nbAppearance
         if #available(iOS 15.0, *) {
             let nbAppearance = UINavigationBarAppearance()
-            nbAppearance.configureWithTransparentBackground()
+            nbAppearance.configureWithOpaqueBackground()
             nbAppearance.backgroundColor = UIColor.white
             nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 19)]
             let bbiAppearance = UIBarButtonItemAppearance(style: .plain)

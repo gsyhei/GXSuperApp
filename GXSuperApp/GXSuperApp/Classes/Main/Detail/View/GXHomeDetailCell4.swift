@@ -9,6 +9,8 @@ import UIKit
 import Reusable
 
 class GXHomeDetailCell4: UITableViewCell, NibReusable {
+    
+    var addAction: GXActionBlock?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,8 +19,10 @@ class GXHomeDetailCell4: UITableViewCell, NibReusable {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    @IBAction func addButtonClicked(_ sender: Any?) {
+        self.addAction?()
     }
     
 }

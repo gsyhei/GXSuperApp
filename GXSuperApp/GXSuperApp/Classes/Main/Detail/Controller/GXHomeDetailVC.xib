@@ -147,6 +147,9 @@
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="scanButtonClicked:" destination="-1" eventType="touchUpInside" id="mm5-W6-eWY"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -173,17 +176,16 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1f9-B3-70E" userLabel="AdvertView">
                     <rect key="frame" x="0.0" y="658" width="393" height="96"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="details_list_bg_vip" translatesAutoresizingMaskIntoConstraints="NO" id="41x-am-EQ6">
-                            <rect key="frame" x="12" y="12" width="369" height="72"/>
-                            <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ih-79-ixZ">
                             <rect key="frame" x="12" y="12" width="369" height="72"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" backgroundImage="details_list_bg_vip"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="advertButtonClicked:" destination="-1" eventType="touchUpInside" id="ne2-O2-6tV"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save up to $270.00/year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDa-sI-vMV">
                             <rect key="frame" x="24" y="52" width="136" height="20"/>
@@ -240,19 +242,15 @@
                         <constraint firstItem="m3v-UI-VHj" firstAttribute="leading" secondItem="cdk-X5-2E6" secondAttribute="trailing" constant="3" id="0dd-JI-9OP"/>
                         <constraint firstItem="2ih-79-ixZ" firstAttribute="top" secondItem="1f9-B3-70E" secondAttribute="top" constant="12" id="2GX-ns-wky"/>
                         <constraint firstAttribute="trailing" secondItem="2ih-79-ixZ" secondAttribute="trailing" constant="12" id="BHD-Gl-Hkq"/>
-                        <constraint firstAttribute="bottom" secondItem="41x-am-EQ6" secondAttribute="bottom" constant="12" id="FdW-q6-9Hi"/>
+                        <constraint firstItem="Q7Q-I7-rh3" firstAttribute="leading" secondItem="2ih-79-ixZ" secondAttribute="leading" constant="12" id="DSk-W0-owK"/>
                         <constraint firstAttribute="height" constant="96" id="Guk-uL-1Ru"/>
-                        <constraint firstItem="cdk-X5-2E6" firstAttribute="bottom" secondItem="41x-am-EQ6" secondAttribute="bottom" constant="-12" id="JVo-DS-egL"/>
                         <constraint firstItem="MDa-sI-vMV" firstAttribute="leading" secondItem="Q7Q-I7-rh3" secondAttribute="leading" id="Kns-bA-gPl"/>
-                        <constraint firstItem="41x-am-EQ6" firstAttribute="leading" secondItem="1f9-B3-70E" secondAttribute="leading" constant="12" id="KoT-I8-3kk"/>
-                        <constraint firstItem="41x-am-EQ6" firstAttribute="top" secondItem="1f9-B3-70E" secondAttribute="top" constant="12" id="RF1-zj-b2I"/>
                         <constraint firstItem="m3v-UI-VHj" firstAttribute="bottom" secondItem="cdk-X5-2E6" secondAttribute="bottom" id="URv-AO-MYw"/>
-                        <constraint firstItem="Q7Q-I7-rh3" firstAttribute="top" secondItem="41x-am-EQ6" secondAttribute="top" constant="14" id="cIE-hS-dPD"/>
                         <constraint firstAttribute="bottom" secondItem="2ih-79-ixZ" secondAttribute="bottom" constant="12" id="e9O-yc-JJk"/>
-                        <constraint firstItem="Q7Q-I7-rh3" firstAttribute="leading" secondItem="41x-am-EQ6" secondAttribute="leading" constant="12" id="eH6-vY-6jr"/>
+                        <constraint firstItem="Q7Q-I7-rh3" firstAttribute="top" secondItem="2ih-79-ixZ" secondAttribute="top" constant="14" id="f20-ZQ-gfZ"/>
                         <constraint firstItem="MDa-sI-vMV" firstAttribute="top" secondItem="Q7Q-I7-rh3" secondAttribute="bottom" constant="6" id="nD7-mw-hN1"/>
-                        <constraint firstAttribute="trailing" secondItem="41x-am-EQ6" secondAttribute="trailing" constant="12" id="oEY-lQ-WfR"/>
-                        <constraint firstItem="m3v-UI-VHj" firstAttribute="trailing" secondItem="41x-am-EQ6" secondAttribute="trailing" constant="-12" id="teI-D4-yXx"/>
+                        <constraint firstItem="m3v-UI-VHj" firstAttribute="trailing" secondItem="2ih-79-ixZ" secondAttribute="trailing" constant="-12" id="s1g-H6-6AG"/>
+                        <constraint firstItem="cdk-X5-2E6" firstAttribute="bottom" secondItem="2ih-79-ixZ" secondAttribute="bottom" constant="-12" id="xFu-Qe-OOU"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>

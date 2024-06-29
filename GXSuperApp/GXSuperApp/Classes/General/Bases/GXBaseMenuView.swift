@@ -33,6 +33,10 @@ class GXBaseMenuView: UIView {
         }
     }()
     
+    private(set) lazy var safeAreaHeight: CGFloat = {
+        return 49 + UIWindow.gx_safeAreaInsets.bottom
+    }()
+    
     required init(height: CGFloat) {
         super.init(frame: CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: height)))
         self.createSubviews()
@@ -40,6 +44,10 @@ class GXBaseMenuView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateHeight(height: CGFloat) {
+        self.frame.size.height = min(height, self.frame.height)
     }
     
     @objc func closeButtonClicked(_ sender: UIButton) {

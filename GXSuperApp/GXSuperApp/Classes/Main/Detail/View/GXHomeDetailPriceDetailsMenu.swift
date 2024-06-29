@@ -8,7 +8,11 @@
 import UIKit
 
 class GXHomeDetailPriceDetailsMenu: GXBaseMenuView {
+    private weak var viewModel: GXHomeDetailViewModel?
 
+    private lazy var infoText: String = {
+        return "Due to the fluctuation of service operating costs and electri-city prices, there are pricing differences between charging and different gun power"
+    }()
     private lazy var tableView: UITableView = {
         return UITableView(frame: self.bounds, style: .plain).then {
             $0.configuration(estimated: true)
@@ -29,7 +33,7 @@ class GXHomeDetailPriceDetailsMenu: GXBaseMenuView {
             $0.textColor = .gx_drakGray
             $0.font = .gx_font(size: 14)
             $0.numberOfLines = 0
-            $0.text = "Due to the fluctuation of service operating costs and electri-city prices, there are pricing differences between charging and different gun power"
+            $0.text = self.infoText
         }
     }()
 
@@ -52,17 +56,31 @@ class GXHomeDetailPriceDetailsMenu: GXBaseMenuView {
         }
     }
     
+    func bindView(viewModel: GXHomeDetailViewModel?) {
+        guard let viewModel = viewModel else { return }
+        self.viewModel = viewModel
+        self.tableView.reloadData()
+        
+        let infoHeight = self.infoText.height(width: SCREEN_WIDTH - 30, font: .gx_font(size: 14))
+        var height = tableView.sectionHeaderHeight + infoHeight + 32
+        height += tableView.rowHeight * CGFloat(viewModel.detailData?.prices.count ?? 0)
+        height += self.safeAreaHeight
+        self.updateHeight(height: height)
+    }
+    
 }
 
 extension GXHomeDetailPriceDetailsMenu: UITableViewDataSource, UITableViewDelegate {
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.viewModel?.detailData?.prices.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXHomeDetailChargingFeeCell = tableView.dequeueReusableCell(for: indexPath)
+        let price = self.viewModel?.detailData?.prices[indexPath.row]
+        cell.bindCell(model: price)
         return cell
     }
     

@@ -135,11 +135,19 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             }
             cell.safetyAction = {[weak self] in
                 guard let `self` = self else { return }
-                self.showSafetyMenu()
+                self.gotoSafetyWebVC()
+            }
+            cell.costAction = {[weak self] in
+                guard let `self` = self else { return }
+                self.gotoCostWebVC()
             }
             return cell
         case 4:
             let cell: GXHomeDetailCell4 = tableView.dequeueReusableCell(for: indexPath)
+            cell.addAction = {[weak self] in
+                guard let `self` = self else { return }
+                self.gotoAddVehicleVC()
+            }
             return cell
         case 5:
             let cell: GXHomeDetailCell5 = tableView.dequeueReusableCell(for: indexPath)
@@ -196,6 +204,18 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
 
 private extension GXHomeDetailVC {
     
+    @IBAction func advertButtonClicked(_ sender: Any?) {
+        
+    }
+    
+    @IBAction func scanButtonClicked(_ sender: Any?) {
+        
+    }
+    
+}
+
+private extension GXHomeDetailVC {
+    
     func requestStationConsumerDetail() {
         self.view.layoutSkeletonIfNeeded()
         self.view.showAnimatedGradientSkeleton()
@@ -219,7 +239,6 @@ private extension GXHomeDetailVC {
         guard let detail = self.viewModel.detailData else { return }
         
         self.tableView.reloadData()
-        
         /// advertView
         if GXUserManager.shared.isLogin {
             self.tvBottomHeightLC.constant = 96.0
@@ -237,8 +256,7 @@ private extension GXHomeDetailVC {
             self.tvBottomHeightLC.constant = 12.0
             self.advertView.isHidden = true
         }
-    
-        /// bottomView
+            /// bottomView
         self.bottomScanButton.setBackgroundColor(.gx_green, for: .normal)
         self.bottomScanButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
         self.bottomTimeD.text = "Current time period \(self.viewModel.detailData?.period ?? "")"
@@ -274,17 +292,27 @@ private extension GXHomeDetailVC {
     }
     
     func showAllTimeMenu() {
-        let height: CGFloat = SCREEN_HEIGHT - self.view.safeAreaInsets.top - 250
-        let menu = GXHomeDetailPriceDetailsMenu(height: height)
+        let maxHeight = SCREEN_HEIGHT - 200
+        let menu = GXHomeDetailPriceDetailsMenu(height: maxHeight)
+        menu.bindView(viewModel: self.viewModel)
         menu.show(style: .sheetBottom, usingSpring: true)
     }
     func showChargerStatusMenu() {
-        let height: CGFloat = SCREEN_HEIGHT - self.view.safeAreaInsets.top - 280
-        let menu = GXHomeDetailChargerStatusMenu(height: height)
+        let maxHeight = SCREEN_HEIGHT - 200
+        let menu = GXHomeDetailChargerStatusMenu(height: maxHeight)
+        menu.bindView(viewModel: self.viewModel)
         menu.show(style: .sheetBottom, usingSpring: true)
     }
-    func showSafetyMenu() {
+    func gotoSafetyWebVC() {
         let vc = GXWebViewController(urlString: "https://www.baidu.com", title: "Safety Instructions")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func gotoCostWebVC() {
+        let vc = GXWebViewController(urlString: "https://www.baidu.com", title: "Fee Description")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func gotoAddVehicleVC() {
+        let vc = GXHomeDetailVehicleMVC.xibViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
