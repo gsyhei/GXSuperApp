@@ -34,7 +34,7 @@ class GXHomeDetailViewModel: GXBaseViewModel {
         params["id"] = self.rowModel?.id
         let api = GXApi.normalApi(Api_station_consumer_detail, params, .get)
         return Promise { seal in
-            GXNWProvider.gx_request(api, type: GXStationConsumerDetailModel.self, success: { model in
+            GXNWProvider.login_request(api, type: GXStationConsumerDetailModel.self, success: { model in
                 self.detailData = model.data
                 seal.fulfill(model)
             }, failure: { error in
@@ -51,7 +51,7 @@ class GXHomeDetailViewModel: GXBaseViewModel {
         params["pageSize"] = PAGE_SIZE
         let api = GXApi.normalApi(Api_connector_consumer_list, params, .get)
         return Promise { seal in
-            GXNWProvider.gx_request(api, type: GXConnectorConsumerListModel.self, success: { model in
+            GXNWProvider.login_request(api, type: GXConnectorConsumerListModel.self, success: { model in
                 if let list = model.data?.rows {
                     self.ccRowsList.append(contentsOf: list)
                 }

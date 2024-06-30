@@ -128,7 +128,6 @@ extension GXToast {
     class func showError(_ error: CustomNSError? = nil, to view: UIView? = nil) {
         guard error?.errorCode != NSURLErrorCancelled else { return }
         guard error?.errorCode != 401 else { return }
-        guard error?.errorCode != 6 else { return }
         GXToast.showError(text: error?.localizedDescription, to: view)
     }
 

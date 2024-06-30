@@ -180,7 +180,7 @@ class GXUtil: NSObject {
     class func showAlert(to view: UIView? = nil,
                          title: String? = nil,
                          message: String? = nil,
-                         cancelTitle: String? = "取消",
+                         cancelTitle: String? = "Cancel",
                          actionTitle: String? = nil,
                          actionStyle: UIAlertAction.Style = .default,
                          actionHandler: ((GXAlertView, Int) -> Void)? = nil,

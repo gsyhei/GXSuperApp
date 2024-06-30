@@ -170,6 +170,9 @@ class GXHomeVC: GXBaseViewController {
         }
     }
     
+    override func loginReloadViewData() {
+        self.panView.tableViewReloadData()
+    }
 }
 
 private extension GXHomeVC {
@@ -208,8 +211,7 @@ private extension GXHomeVC {
     func showAlertNotLocation() {
         let title = "Location permission"
         let message = "Can better recommend the station around you"
-        GXUtil.showAlert(title: title, message: message, cancelTitle: "Disagree", actionTitle: "Agree", actionHandler: { alert, index in
-            guard index == 1 else { return }
+        GXUtil.showAlert(title: title, message: message, cancelTitle: "Go to Settings", actionHandler: { alert, index in
             if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(appSettings, completionHandler: nil)
             }

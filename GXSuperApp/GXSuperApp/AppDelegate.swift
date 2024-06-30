@@ -149,8 +149,9 @@ extension AppDelegate {
             UIView.setAnimationsEnabled(oldState)
         }, completion: nil)
     }
-    func gotoLogin(from: UIViewController) {
+    func gotoLogin(from: UIViewController, completion: GXActionBlock? = nil) {
         let vc = GXLoginAllVC.xibViewController()
+        vc.completion = completion
         let navc = GXBaseNavigationController(rootViewController: vc)
         navc.modalPresentationStyle = .fullScreen
         from.present(navc, animated: true)

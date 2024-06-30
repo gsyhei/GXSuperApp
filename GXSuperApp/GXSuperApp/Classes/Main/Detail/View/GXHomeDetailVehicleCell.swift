@@ -22,9 +22,5 @@ class GXHomeDetailVehicleCell: UITableViewCell, NibReusable {
         self.leftLineIView.image = UIImage(gradientColors: colors, style: .horizontal, size: CGSize(width: 14, height: 3))
         self.rightLineIView.image = UIImage(gradientColors: colors, style: .horizontal, size: CGSize(width: 14, height: 3))
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     
 }

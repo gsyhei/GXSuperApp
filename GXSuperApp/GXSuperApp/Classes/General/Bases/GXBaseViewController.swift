@@ -10,7 +10,6 @@ import RxSwift
 
 class GXBaseViewController: UIViewController {
     let disposeBag = DisposeBag()
-    weak var cancelViewModel: GXBaseViewModel?
     var didGetNetworktLoad: Bool = false
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -29,26 +28,37 @@ class GXBaseViewController: UIViewController {
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
+        /// 退出当前VC
         if self.isBeingDismissed {
-            if let viewModel = self.cancelViewModel {
-                viewModel.gx_cancellablesAll()
-            }
-        } 
+            self.viewDidDisappearPopOrDismissed()
+        }
         else if self.isMovingFromParent {
-            if let viewModel = self.cancelViewModel {
-                viewModel.gx_cancellablesAll()
-            }
+            self.viewDidDisappearPopOrDismissed()
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViewController()
+        
+        NotificationCenter.default.rx
+            .notification(GX_NotifName_Login)
+            .take(until: self.rx.deallocated)
+            .subscribe(onNext: {[weak self] notifi in
+                self?.loginReloadViewData()
+            }).disposed(by: disposeBag)
     }
     
     public func setupViewController() {
         fatalError("Must Override.")
+    }
+    
+    public func viewDidDisappearPopOrDismissed() {
+        
+    }
+    
+    public func loginReloadViewData() {
+        
     }
 
     public func gx_addNavTopView(color: UIColor) {

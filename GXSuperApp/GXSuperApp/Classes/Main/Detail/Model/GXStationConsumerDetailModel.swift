@@ -41,7 +41,7 @@ class GXStationConsumerDetailData: NSObject, HandyJSON {
     var period: String = ""
     var freeParking: String = ""
     var favoriteFlag: String = ""
-    var lng: String = ""
+    var lng: Double = 0
     var city: String = ""
     var name: String = ""
     var electricFee: CGFloat = 0
@@ -53,7 +53,7 @@ class GXStationConsumerDetailData: NSObject, HandyJSON {
     var memberFlag: String = ""
     var companyName: String = ""
     var teslaIdleCount: Int = 0
-    var lat: String = ""
+    var lat: Double = 0
     var maxPower: Int = 0
     var usCount: Int = 0
     var serviceFeeVip: CGFloat = 0

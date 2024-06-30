@@ -33,7 +33,6 @@ class GXHomeSearchViewModel: GXBaseViewModel {
     var autocompleteList: [GMSAutocompleteSuggestion] = []
     /// 地址搜素
     var placeResults: [GMSPlace] = []
-    
 }
 
 extension GXHomeSearchViewModel {

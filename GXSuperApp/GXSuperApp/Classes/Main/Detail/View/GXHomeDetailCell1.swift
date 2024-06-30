@@ -20,6 +20,9 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
     @IBOutlet weak var addressDetailLabel: UILabel!
     @IBOutlet weak var bottomImgView: UIImageView!
     @IBOutlet weak var favoritedButton: UIButton!
+    var sharedAction: GXActionBlock?
+    var favoritedAction: GXActionBlockItem<UIButton>?
+    var navigationAction: GXActionBlock?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -59,12 +62,13 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
 
 extension GXHomeDetailCell1 {
     @IBAction func shareButtonClicked(_ sender: UIButton) {
-        
+        self.sharedAction?()
     }
     @IBAction func favoritedButtonClicked(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        self.favoritedAction?(sender)
     }
     @IBAction func navigationButtonClicked(_ sender: UIButton) {
-        
+        self.navigationAction?()
     }
 }

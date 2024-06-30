@@ -17,7 +17,7 @@ class GXHomeViewModel: GXBaseViewModel {
         let params: Dictionary<String, Any> = [:]
         let api = GXApi.normalApi(Api_param_consumer_detail, params, .get)
         return Promise { seal in
-            GXNWProvider.gx_request(api, type: GXParamConsumerModel.self, success: { model in
+            GXNWProvider.login_request(api, type: GXParamConsumerModel.self, success: { model in
                 GXUserManager.shared.paramConsumerData = model.data
                 seal.fulfill(model)
             }, failure: { error in
@@ -32,7 +32,7 @@ class GXHomeViewModel: GXBaseViewModel {
         params["typeId"] = 2
         let api = GXApi.normalApi(Api_dict_list_available, params, .get)
         return Promise { seal in
-            GXNWProvider.gx_request(api, type: GXDictListAvailableModel.self, success: { model in
+            GXNWProvider.login_request(api, type: GXDictListAvailableModel.self, success: { model in
                 GXUserManager.shared.dictListAvailable = model.data
                 GXUserManager.shared.showDictListAvailable = model.data.filter({ $0.homeFlag == "YES" })
                 seal.fulfill(model)
@@ -47,7 +47,7 @@ class GXHomeViewModel: GXBaseViewModel {
         let params = GXUserManager.shared.filter.toJSON() ?? [:]
         let api = GXApi.normalApi(Api_station_consumer_query, params, .get)
         return Promise { seal in
-            GXNWProvider.gx_request(api, type: GXStationConsumerModel.self, success: { model in
+            GXNWProvider.login_request(api, type: GXStationConsumerModel.self, success: { model in
                 self.stationConsumerList = model.data?.rows ?? []
                 seal.fulfill(model)
             }, failure: { error in

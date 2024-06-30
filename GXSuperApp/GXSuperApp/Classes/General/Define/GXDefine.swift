@@ -28,6 +28,12 @@ typealias GXActionBlockItem3<T: Any, T1: Any, T2: Any> = ((T, T1, T2) -> Void)
 typealias GXActionBlockBack<T: Any> = (() -> T)
 typealias GXActionBlockItemBack<T1: Any, T2: Any> = ((T1) -> T2)
 
+enum GXBool: String {
+    /// 存储token的key
+    case YES = "YES"
+    case NO = "NO"
+}
+
 /// Bugly appID
 let GX_BUGLY_APPID = "36156d5fa8"
 

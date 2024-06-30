@@ -8,6 +8,7 @@
 import UIKit
 import XCGLogger
 import MBProgressHUD
+import PromiseKit
 
 class GXLoginAllVC: GXBaseViewController {
     enum GXLoginType {
@@ -23,8 +24,8 @@ class GXLoginAllVC: GXBaseViewController {
     @IBOutlet weak var errorLabel: UILabel!
 
     var loginType: GXLoginType = .login
-    var sendCodeCompletion: GXActionBlock?
-    var completion: GXActionBlockItem<UIViewController?>?
+    private var sendCodeCompletion: GXActionBlock?
+    var completion: GXActionBlock?
     
     private lazy var viewModel: GXLoginAllViewModel = {
         return GXLoginAllViewModel()
@@ -102,27 +103,31 @@ class GXLoginAllVC: GXBaseViewController {
 
         if self.loginType == .login {
             self.errorLabel.isHidden = true
-            MBProgressHUD.showLoading(to: self.view)
-            self.viewModel.requestLogin {[weak self] in
-                MBProgressHUD.dismiss(for: self?.view)
+            MBProgressHUD.showLoading()
+            firstly {
+                self.viewModel.requestLogin()
+            }.then { model in
+                GXNWProvider.login_requestUserInfo()
+            }.done { model in
+                MBProgressHUD.dismiss()
                 NotificationCenter.default.post(name: GX_NotifName_Login, object: nil)
-                self?.dismissRootViewController(animated: false, completion: nil)
-                self?.completion?(self)
-            } failure: {[weak self] error in
-                MBProgressHUD.dismiss(for: self?.view)
-                GXToast.showError(error, to: self?.view)
+                self.dismissRootViewController(animated: false, completion: nil)
+                self.completion?()
+            }.catch { error in
+                MBProgressHUD.dismiss()
+                GXToast.showError(error as? CustomNSError)
             }
         }
         else {
             self.errorLabel.isHidden = true
-            MBProgressHUD.showLoading(to: self.view)
+            MBProgressHUD.showLoading()
             self.viewModel.requestBindPhone {[weak self] in
-                MBProgressHUD.dismiss(for: self?.view)
+                MBProgressHUD.dismiss()
                 GXToast.showSuccess(text: "手机号绑定成功")
-                self?.completion?(self)
-            } failure: {[weak self] error in
-                MBProgressHUD.dismiss(for: self?.view)
-                GXToast.showError(error, to: self?.view)
+                self?.completion?()
+            } failure: { error in
+                MBProgressHUD.dismiss()
+                GXToast.showError(error)
             }
         }
     }
@@ -206,18 +211,20 @@ private extension GXLoginAllVC {
             self.errorLabel.text = "请输入11位手机号"
             return
         }
-
         self.errorLabel.isHidden = true
-        MBProgressHUD.showLoading(to: self.view)
-        self.viewModel.requestSendCode {[weak self] in
-            MBProgressHUD.dismiss(for: self?.view, animated: false)
-            GXToast.showSuccess(text: "验证码已发送", to: self?.view)
-            self?.sendCodeCompletion?()
-        } failure: {[weak self] error in
-            MBProgressHUD.dismiss(for: self?.view)
-            GXToast.showError(error, to: self?.view)
-            self?.errorLabel.isHidden = false
-            self?.errorLabel.text = error.localizedDescription
+        
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestSendCode()
+        }.done { model in
+            MBProgressHUD.dismiss(animated: false)
+            GXToast.showSuccess(text: "验证码已发送")
+            self.sendCodeCompletion?()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(error as? CustomNSError)
+            self.errorLabel.isHidden = false
+            self.errorLabel.text = error.localizedDescription
         }
     }
 }

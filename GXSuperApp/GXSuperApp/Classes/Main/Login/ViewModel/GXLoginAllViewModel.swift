@@ -7,43 +7,54 @@
 
 import UIKit
 import RxCocoa
+import PromiseKit
 
 class GXLoginAllViewModel: GXBaseViewModel {
     let account = BehaviorRelay<String?>(value: nil)
     let captcha = BehaviorRelay<String?>(value: nil)
 
     /// 获取短信验证码
-    func requestSendCode(success:@escaping(() -> Void), failure:@escaping GXFailure) {
-        let api = GXApi.normalApi(Api_app_update_latest, ["phone": self.account.value ?? ""], .post)
-        let cancellable = GXNWProvider.gx_request(api, type: GXBaseModel.self, success: { model in
-            success()
-        }, failure: failure)
-        self.gx_addCancellable(cancellable)
-    }
-
-    func requestLogin(success:@escaping(() -> Void), failure:@escaping GXFailure) {
+    func requestSendCode() -> Promise<GXBaseModel> {
         var params: Dictionary<String, Any> = [:]
-        params.updateValue(self.account.value ?? "", forKey: "account")
-        params.updateValue(self.captcha.value ?? "", forKey: "smsCode")
-        let api = GXApi.normalApi(Api_app_update_latest, params, .post)
-        let cancellable = GXNWProvider.gx_request(api, type: GXBaseDataModel.self, success: { model in
-            if let token = model.data as? String {
-                //GXUserManager.updateToken(token)
-            }
-            success()
-        }, failure: failure)
-        self.gx_addCancellable(cancellable)
+        params["nationCode"] = "86"
+        params["phoneNumber"] = self.account.value
+        let api = GXApi.normalApi(Api_auth_phone_code, params, .post)
+        return Promise { seal in
+            GXNWProvider.gx_request(api, type: GXBaseModel.self, success: { model in
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
     }
 
+    /// 手机验证码登录
+    func requestLogin() -> Promise<GXLoginModel> {
+        var params: Dictionary<String, Any> = [:]
+        params["nationCode"] = "86"
+        params["phoneNumber"] = self.account.value
+        params["smsCode"] = "123456"
+        let api = GXApi.normalApi(Api_auth_phone_login, params, .post)
+        return Promise { seal in
+            GXNWProvider.gx_request(api, type: GXLoginModel.self, success: { model in
+                GXUserManager.shared.token = model.data?.token
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+
+    /// 绑定手机
     func requestBindPhone(success:@escaping(() -> Void), failure:@escaping GXFailure) {
         var params: Dictionary<String, Any> = [:]
         params.updateValue(self.account.value ?? "", forKey: "phone")
         params.updateValue(self.captcha.value ?? "", forKey: "smsCode")
         let api = GXApi.normalApi(Api_app_update_latest, params, .post)
-        let cancellable = GXNWProvider.gx_request(api, type: GXBaseDataModel.self, success: { model in
+        GXNWProvider.login_request(api, type: GXBaseDataModel.self, success: { model in
             //GXUserManager.shared.user?.phone = self.account.value ?? ""
             success()
         }, failure: failure)
-        self.gx_addCancellable(cancellable)
     }
+    
 }

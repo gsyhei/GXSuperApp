@@ -111,10 +111,20 @@ extension GXTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController == tabBarController.viewControllers?[2] {
             // 扫码入口
-            let vc = GXQRCodeReaderVC.xibViewController()
-            vc.modalPresentationStyle = .fullScreen
-            tabBarController.present(vc, animated: true)
+            if GXUserManager.shared.isLogin {
+                let vc = GXQRCodeReaderVC.xibViewController()
+                vc.modalPresentationStyle = .fullScreen
+                tabBarController.present(vc, animated: true)
+            }
+            else {
+                GXAppDelegate?.gotoLogin(from: tabBarController)
+            }
             return false
+        }
+        if viewController == tabBarController.viewControllers?[3] {
+            if !GXUserManager.shared.isLogin {
+                GXAppDelegate?.gotoLogin(from: tabBarController)
+            }
         }
         return true
     }

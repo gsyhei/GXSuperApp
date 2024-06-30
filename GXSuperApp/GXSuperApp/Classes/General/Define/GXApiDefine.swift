@@ -24,30 +24,46 @@ let Api_questions_consumer_list = "/charging-system-server/param/consumer/detail
 
 // MARK: - 登录/注册
 
+/// 获取验证码
+let Api_auth_phone_code = "/charging-auth-server/auth/phone/code"
 
+/// 手机验证码登录
+let Api_auth_phone_login = "/charging-auth-server/auth/consumer/user/phone/login"
+
+/// 用户信息
+let Api_auth_user_profile = "/charging-auth-server/auth/consumer/user/profile"
+
+/// 用户信息修改
+let Api_auth_user_profile_edit = "/charging-auth-server/auth/consumer/user/profile/edit"
+
+/// 退出登录
+let Api_auth_user_logout = "/charging-auth-server/auth/consumer/user/logout"
+
+/// 注销
+let Api_auth_user_cancel = "/charging-auth-server/auth/consumer/user/cancel"
 
 // MARK: - 站点和桩信息
 
-// 站点查询
+/// 站点查询
 let Api_station_consumer_query = "/charging-order-server/station/consumer/query"
 
-// 站点详情
+/// 站点详情
 let Api_station_consumer_detail = "/charging-order-server/station/consumer/detail"
 
-// 站点枪列表
+/// 站点枪列表
 let Api_connector_consumer_list = "/charging-order-server/connector/consumer/list"
 
-// 站点枪详情
+/// 站点枪详情
 let Api_connector_consumer_detail = "/charging-order-server/connector/consumer/detail"
 
-// 枪扫二维码
+/// 枪扫二维码
 let Api_connector_consumer_scan = "/charging-order-server/connector/consumer/scan"
 
-// 车辆-列表
+/// 车辆-列表
 let Api_vehicle_consumer_list = "/charging-order-server/vehicle/consumer/list"
 
-// 车辆-新增修改
+/// 车辆-新增修改
 let Api_vehicle_consumer_save = "/charging-order-server/vehicle/consumer/save"
 
-// 车辆-删除
+/// 车辆-删除
 let Api_vehicle_consumer_delete = "/charging-order-server/vehicle/consumer/delete"

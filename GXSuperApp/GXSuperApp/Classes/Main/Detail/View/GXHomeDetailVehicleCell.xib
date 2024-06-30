@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,9 +18,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HL3-rv-6WR">
-                        <rect key="frame" x="12" y="6" width="296" height="120"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eD7-5y-TDh">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eD7-5y-TDh">
                                 <rect key="frame" x="12" y="12" width="8" height="8"/>
                                 <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -36,8 +35,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EE3-w4-KVY">
-                                <rect key="frame" x="276" y="12" width="8" height="8"/>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EE3-w4-KVY">
+                                <rect key="frame" x="300" y="12" width="8" height="8"/>
                                 <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="8" id="k7p-Vc-eGs"/>
@@ -52,7 +51,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CA-TW39253" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCD-WN-Iss">
-                                <rect key="frame" x="84.666666666666657" y="36" width="126.66666666666666" height="40"/>
+                                <rect key="frame" x="96.666666666666657" y="36" width="126.66666666666666" height="40"/>
                                 <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="24"/>
                                 <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -67,7 +66,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4oG-QB-FQT">
-                                <rect key="frame" x="58.666666666666671" y="54.666666666666664" width="14" height="3"/>
+                                <rect key="frame" x="70.666666666666671" y="54.666666666666664" width="14" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="5oI-Lj-VY3"/>
                                     <constraint firstAttribute="width" constant="14" id="E4y-BH-szU"/>
@@ -81,7 +80,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="had-Ve-f36">
-                                <rect key="frame" x="223.33333333333334" y="54.666666666666664" width="14" height="3"/>
+                                <rect key="frame" x="235.33333333333334" y="54.666666666666664" width="14" height="3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="14" id="CIp-pl-fhl"/>
                                     <constraint firstAttribute="height" constant="3" id="myh-gR-kzQ"/>
@@ -95,7 +94,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UD7-Rw-1b5">
-                                <rect key="frame" x="118" y="76" width="60" height="20"/>
+                                <rect key="frame" x="130" y="76" width="60" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="0wN-RJ-3qo"/>
                                     <constraint firstAttribute="width" constant="60" id="q5f-YK-XZ2"/>
@@ -114,13 +113,12 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vehicle_list_ic_line" translatesAutoresizingMaskIntoConstraints="NO" id="O0e-jW-0yc">
-                                <rect key="frame" x="5" y="105" width="286" height="15"/>
+                                <rect key="frame" x="5" y="117" width="310" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="qts-KJ-HHn"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="O0e-jW-0yc" secondAttribute="trailing" constant="5" id="7ZC-hY-fld"/>
                             <constraint firstItem="BCD-WN-Iss" firstAttribute="centerY" secondItem="4oG-QB-FQT" secondAttribute="centerY" id="Dw0-cD-fBF"/>
@@ -147,12 +145,11 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="HL3-rv-6WR" secondAttribute="bottom" constant="6" id="Gc4-Ii-Peh"/>
-                    <constraint firstAttribute="trailing" secondItem="HL3-rv-6WR" secondAttribute="trailing" constant="12" id="I7J-8e-p1F"/>
-                    <constraint firstItem="HL3-rv-6WR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Ibr-0Y-UC1"/>
-                    <constraint firstItem="HL3-rv-6WR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="iFM-SR-pGM"/>
+                    <constraint firstAttribute="bottom" secondItem="HL3-rv-6WR" secondAttribute="bottom" id="Gc4-Ii-Peh"/>
+                    <constraint firstAttribute="trailing" secondItem="HL3-rv-6WR" secondAttribute="trailing" id="I7J-8e-p1F"/>
+                    <constraint firstItem="HL3-rv-6WR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ibr-0Y-UC1"/>
+                    <constraint firstItem="HL3-rv-6WR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="iFM-SR-pGM"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -169,8 +166,5 @@
     </objects>
     <resources>
         <image name="vehicle_list_ic_line" width="340" height="15"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

@@ -15,7 +15,7 @@ class GXAppleManager: NSObject {
         let instance = GXAppleManager()
         return instance
     }()
-    private var completion: GXActionBlockItem2<String?, CustomNSError?>?
+    private var completion: GXActionBlockItem2<String?, GXError?>?
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
@@ -26,7 +26,7 @@ class GXAppleManager: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(handleSignInWithAppleStateChanged(noti:)), name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
     }
 
-    func appleLoginin(completion: @escaping GXActionBlockItem2<String?, CustomNSError?>) {
+    func appleLoginin(completion: @escaping GXActionBlockItem2<String?, GXError?>) {
         self.completion = completion
 
         let requests = [ASAuthorizationAppleIDProvider().createRequest()]

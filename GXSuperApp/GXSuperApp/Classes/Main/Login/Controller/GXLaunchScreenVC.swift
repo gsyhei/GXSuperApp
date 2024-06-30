@@ -67,7 +67,7 @@ class GXLaunchScreenVC: GXBaseViewController {
         }
         else {
             let title = "The app has an updated version."
-            GXUtil.showAlert(title: title, cancelTitle: "Cancel", actionTitle: "Update now", handler: { alert, index in
+            GXUtil.showAlert(title: title, cancelTitle: "Cancel", actionTitle: "Update now", actionHandler: { alert, index in
                 if index == 0 {
                     self.gotoMainTabbarController()
                 }

@@ -24,7 +24,7 @@ class GXHomeDetailVC: GXBaseViewController {
     @IBOutlet weak var bottomRightFeeLeftLC: NSLayoutConstraint!
     @IBOutlet weak var bottomTimeD: UILabel!
     @IBOutlet weak var bottomScanButton: UIButton!
-
+    
     @IBOutlet weak var tvBottomHeightLC: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -41,11 +41,11 @@ class GXHomeDetailVC: GXBaseViewController {
             tableView.register(cellType: GXHomeDetailCell7.self)
         }
     }
-
+    
     private(set) lazy var viewModel: GXHomeDetailViewModel = {
         return GXHomeDetailViewModel()
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.requestStationConsumerDetail()
@@ -56,6 +56,9 @@ class GXHomeDetailVC: GXBaseViewController {
         self.gx_addBackBarButtonItem()
     }
     
+    override func loginReloadViewData() {
+        self.updateDetailDataSource()
+    }
 }
 
 extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
@@ -121,6 +124,18 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
         case 1:
             let cell: GXHomeDetailCell1 = tableView.dequeueReusableCell(for: indexPath)
             cell.bindCell(model: self.viewModel.detailData)
+            cell.sharedAction = {[weak self] in
+                guard let `self` = self else { return }
+                self.showSharedMenu()
+            }
+            cell.navigationAction = {[weak self] in
+                guard let `self` = self else { return }
+                self.showNavigationMenu()
+            }
+            cell.favoritedAction = {[weak self] button in
+                guard let `self` = self else { return }
+                self.requestFavoritedAction(button: button)
+            }
             return cell
         case 2:
             let cell: GXHomeDetailCell2 = tableView.dequeueReusableCell(for: indexPath)
@@ -196,7 +211,7 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // let index = self.viewModel.cellIndexs[indexPath.row]
+        // let index = self.viewModel.cellIndexs[indexPath.row]
     }
     
 }
@@ -204,11 +219,17 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
 private extension GXHomeDetailVC {
     
     @IBAction func advertButtonClicked(_ sender: Any?) {
-        GXAppDelegate?.gotoLogin(from: self)
+        // 开通会员
     }
     
     @IBAction func scanButtonClicked(_ sender: Any?) {
-        GXAppDelegate?.gotoLogin(from: self)
+        if GXUserManager.shared.isLogin {
+            let vc = GXQRCodeReaderVC.xibViewController()
+            self.present(vc, animated: true)
+        }
+        else {
+            GXAppDelegate?.gotoLogin(from: self)
+        }
     }
     
 }
@@ -255,7 +276,7 @@ private extension GXHomeDetailVC {
             self.tvBottomHeightLC.constant = 12.0
             self.advertView.isHidden = true
         }
-            /// bottomView
+        /// bottomView
         self.bottomScanButton.setBackgroundColor(.gx_green, for: .normal)
         self.bottomScanButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
         self.bottomTimeD.text = "Current time period \(self.viewModel.detailData?.period ?? "")"
@@ -314,8 +335,36 @@ private extension GXHomeDetailVC {
     }
     
     func gotoAddVehicleVC() {
-        let vc = GXHomeDetailVehicleMVC.xibViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        if GXUserManager.shared.isLogin {
+            // 先判断
+            let vc = GXHomeDetailVehicleMVC.xibViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else {
+            GXAppDelegate?.gotoLogin(from: self)
+        }
+    }
+    
+    func showSharedMenu() {
+        let itemsToShare = ["Shared", URL(string: "https://www.apple.com")!] as [Any]
+        let activityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view 
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func showNavigationMenu() {
+        guard let detail = self.viewModel.detailData else { return }
+        let coordinate = CLLocationCoordinate2D(latitude: detail.lat, longitude: detail.lng)
+        XYNavigationManager.show(with: self, coordinate: coordinate, endAddress: detail.address)
+    }
+    
+    func requestFavoritedAction(button: UIButton) {
+        if GXUserManager.shared.isLogin {
+            // 收藏操作
+        }
+        else {
+            GXAppDelegate?.gotoLogin(from: self)
+        }
     }
     
 }
