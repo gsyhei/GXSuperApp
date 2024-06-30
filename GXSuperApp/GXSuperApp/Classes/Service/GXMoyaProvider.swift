@@ -8,7 +8,6 @@
 import Moya
 import XCGLogger
 import HandyJSON
-import PromiseKit
 
 typealias GXSuccess<T:Any> = (T) -> Void
 typealias GXFailure = (CustomNSError) -> Void
@@ -38,53 +37,38 @@ class GXMoyaProvider: MoyaProvider<GXApi> {
             switch result {
             case let .success(response):
                 GXServiceManager.updateSystemTime(response: response.response)
-                if response.statusCode == 200 {
-                    let data = try? JSONSerialization.jsonObject(with: response.data, options: .mutableContainers)
-                    if let dataJSON = data as? Dictionary<String, Any>, let model:T = T.deserialize(from: dataJSON)
-                    {
-                        if model.code == 200 {
-                            self.gx_logger(target: target, error: nil, json: dataJSON)
-                            DispatchQueue.main.async {
-                                success(model)
-                            }
-                        }
-                        else {
-                            let error = GXError(code: model.code, info: model.msg)
-                            self.gx_logger(target: target, error: error, json: nil)
-                            DispatchQueue.main.async {
-                                failure(error)
-                            }
-                        }
-                    }
-                    else {
-                        let dataStr = String(data: response.data, encoding: .utf8)
-                        XCGLogger.debug("Request String: \(String(describing: dataStr))")
-                        let error = MoyaError.jsonMapping(response)
-                        self.gx_logger(target: target, error: error, json: nil)
-                        DispatchQueue.main.async {
-                            failure(error)
-                        }
-                    }
-                }
-                else if response.statusCode == 401 {
-                    // 无token或过期
-                    let error = GXError(code: response.statusCode, info: response.description)
+                let data = try? JSONSerialization.jsonObject(with: response.data, options: .mutableContainers)
+                guard let dataJSON = data as? Dictionary<String, Any>, let model:T = T.deserialize(from: dataJSON) else {
+                    let dataStr = String(data: response.data, encoding: .utf8)
+                    let error = GXError(code: response.statusCode, info: dataStr ?? response.description)
                     self.gx_logger(target: target, error: error, json: nil)
-                    DispatchQueue.main.async {
-                        failure(error)
-                    }
+                    DispatchQueue.main.async { failure(error) }
+                    return
                 }
-                else {
-                    let error = GXError(code: response.statusCode, info: response.description)
-                    DispatchQueue.main.async {
-                        failure(error)
+                switch response.statusCode {
+                case 200: // 成功
+                    if model.code == 200 {
+                        self.gx_logger(target: target, error: nil, json: dataJSON)
+                        DispatchQueue.main.async { success(model) }
+                    } else {
+                        let error = GXError(code: model.code, info: model.msg)
+                        self.gx_logger(target: target, error: error, json: dataJSON)
+                        DispatchQueue.main.async { failure(error) }
                     }
+                case 401: // 无token或过期
+                    let errorInfo = (dataJSON["error"] as? String) ?? response.description
+                    let error = GXError(code: response.statusCode, info: errorInfo)
+                    self.gx_logger(target: target, error: error, json: dataJSON)
+                    DispatchQueue.main.async { failure(error) }
+                default:
+                    let errorInfo = (dataJSON["error"] as? String) ?? response.description
+                    let error = GXError(code: response.statusCode, info: errorInfo)
+                    self.gx_logger(target: target, error: error, json: dataJSON)
+                    DispatchQueue.main.async { failure(error) }
                 }
             case let .failure(error):
                 self.gx_logger(target: target, error: error, json: nil)
-                DispatchQueue.main.async {
-                    failure(error)
-                }
+                DispatchQueue.main.async { failure(error) }
             }
         }
     }
@@ -100,7 +84,11 @@ fileprivate extension GXMoyaProvider {
                 print("Request Method: \(target.method.rawValue)")
                 print("Request Params:\n\(target.parameters.jsonStringEncoded(options: .prettyPrinted) ?? "")")
                 print("Request headers:\n\(target.headers?.jsonStringEncoded(options: .prettyPrinted) ?? "")")
-                print("Response:\n\(error)")
+                if let json = json, let dataString = json.jsonStringEncoded(options: .prettyPrinted) {
+                    print("Response Data:\n\(dataString)")
+                } else {
+                    print("Request Error: \(error.localizedDescription)")
+                }
                 print("<<-------------------END-----------------------\n")
             }
             else {
@@ -110,7 +98,7 @@ fileprivate extension GXMoyaProvider {
                 print("Request Params:\n\(target.parameters.jsonStringEncoded(options: .prettyPrinted) ?? "")")
                 print("Request headers:\n\(target.headers?.jsonStringEncoded(options: .prettyPrinted) ?? "")")
                 if let json = json, let dataString = json.jsonStringEncoded(options: .prettyPrinted) {
-                    print("Response:\n\(dataString)")
+                    print("Response Data:\n\(dataString)")
                 }
                 print("<<-------------------END-----------------------\n")
             }
