@@ -35,7 +35,7 @@ class GXHomeDetailChargerStatusCell: UITableViewCell, NibReusable {
         self.maximumPowerLabel.text = "\(model.maxPower)KW"
         if model.idleFlag == "YES" {
             switch model.status {
-            case "Available":
+            case "Available", "Preparing":
                 self.chargerButton.backgroundColor = .gx_lightGreen
                 self.chargerButton.setTitleColor(.gx_green, for: .normal)
                 self.chargerButton.setTitle("Idle", for: .normal)

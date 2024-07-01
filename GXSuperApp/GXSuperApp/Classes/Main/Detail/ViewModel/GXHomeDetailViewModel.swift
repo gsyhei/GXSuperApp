@@ -21,6 +21,8 @@ class GXHomeDetailViewModel: GXBaseViewModel {
     var ccRowsList: [GXConnectorConsumerRowsItem] = []
     /// 需要显示的时段
     var showPrices:[GXStationConsumerDetailPricesItem] = []
+    /// 车辆列表
+    var vehicleList: [GXVehicleConsumerListItem] = []
     /// 站点详情数据
     var detailData: GXStationConsumerDetailData? {
         didSet {
@@ -57,6 +59,20 @@ class GXHomeDetailViewModel: GXBaseViewModel {
                 }
                 let isNoMore = (self.ccRowsList.count >= model.data?.total ?? 0)
                 seal.fulfill((model, isNoMore))
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+    
+    /// 车辆列表
+    func requestVehicleConsumerList() -> Promise<GXVehicleConsumerListModel> {
+        let params: Dictionary<String, Any> = [:]
+        let api = GXApi.normalApi(Api_vehicle_consumer_list, params, .get)
+        return Promise { seal in
+            GXNWProvider.login_request(api, type: GXVehicleConsumerListModel.self, success: { model in
+                self.vehicleList = model.data
+                seal.fulfill((model))
             }, failure: { error in
                 seal.reject(error)
             })

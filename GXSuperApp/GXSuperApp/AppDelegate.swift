@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 开启键盘管理
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
+        IQKeyboardManager.shared.disabledToolbarClasses = [GXHomeDetailAddVehicleVC.self]
+        IQKeyboardManager.shared.disabledDistanceHandlingClasses = [GXHomeDetailAddVehicleVC.self]
         
         // 谷歌地图
         GMSServices.provideAPIKey(GX_GOOGLE_APIKEY)

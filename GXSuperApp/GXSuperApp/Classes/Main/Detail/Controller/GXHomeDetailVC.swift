@@ -242,7 +242,8 @@ private extension GXHomeDetailVC {
         
         let combinedPromise = when(fulfilled: [
             self.viewModel.requestStationConsumerDetail(),
-            self.viewModel.requestConnectorConsumerList()
+            self.viewModel.requestConnectorConsumerList(),
+            self.viewModel.requestVehicleConsumerList()
         ])
         firstly {
             combinedPromise
@@ -336,9 +337,14 @@ private extension GXHomeDetailVC {
     
     func gotoAddVehicleVC() {
         if GXUserManager.shared.isLogin {
-            // 先判断
-            let vc = GXHomeDetailVehicleMVC.xibViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            if self.viewModel.vehicleList.count > 0 {
+                let vc = GXHomeDetailVehicleMVC.xibViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            else {
+                let vc = GXHomeDetailAddVehicleVC.xibViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
         else {
             GXAppDelegate?.gotoLogin(from: self)

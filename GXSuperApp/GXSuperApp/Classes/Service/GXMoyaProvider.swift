@@ -82,8 +82,16 @@ fileprivate extension GXMoyaProvider {
                 print("\n--------------------BEGIN-------------------->>")
                 print("Request URL: \(target.baseURL)\(target.path)")
                 print("Request Method: \(target.method.rawValue)")
-                print("Request Params:\n\(target.parameters.jsonStringEncoded(options: .prettyPrinted) ?? "")")
-                print("Request headers:\n\(target.headers?.jsonStringEncoded(options: .prettyPrinted) ?? "")")
+                if target.parameters.count > 0 {
+                    print("Request Params:\n\(target.parameters.jsonStringEncoded(options: .prettyPrinted) ?? "")")
+                } else {
+                    print("Request Params: {}")
+                }
+                if target.headers?.count ?? 0 > 0 {
+                    print("Request headers:\n\(target.headers?.jsonStringEncoded(options: .prettyPrinted) ?? "")")
+                } else {
+                    print("Request headers: {}")
+                }
                 if let json = json, let dataString = json.jsonStringEncoded(options: .prettyPrinted) {
                     print("Response Data:\n\(dataString)")
                 } else {
@@ -95,8 +103,16 @@ fileprivate extension GXMoyaProvider {
                 print("\n--------------------BEGIN-------------------->>")
                 print("Request URL: \(target.baseURL)\(target.path)")
                 print("Request Method: \(target.method.rawValue)")
-                print("Request Params:\n\(target.parameters.jsonStringEncoded(options: .prettyPrinted) ?? "")")
-                print("Request headers:\n\(target.headers?.jsonStringEncoded(options: .prettyPrinted) ?? "")")
+                if target.parameters.count > 0 {
+                    print("Request Params:\n\(target.parameters.jsonStringEncoded(options: .prettyPrinted) ?? "")")
+                } else {
+                    print("Request Params: {}")
+                }
+                if target.headers?.count ?? 0 > 0 {
+                    print("Request headers:\n\(target.headers?.jsonStringEncoded(options: .prettyPrinted) ?? "")")
+                } else {
+                    print("Request headers: {}")
+                }
                 if let json = json, let dataString = json.jsonStringEncoded(options: .prettyPrinted) {
                     print("Response Data:\n\(dataString)")
                 }

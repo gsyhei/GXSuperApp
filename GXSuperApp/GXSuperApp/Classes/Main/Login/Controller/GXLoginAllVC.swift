@@ -61,7 +61,6 @@ class GXLoginAllVC: GXBaseViewController {
         self.infoTextView.gx_setMarginZero()
         self.infoTextView.gx_appendLink(string: "《用户协议》", color: UIColor.gx_blue, urlString: "yhxy")
         self.infoTextView.gx_appendLink(string: "《隐私协议》", color: UIColor.gx_blue, urlString: "yszc")
-
         self.infoTextView.delegate = self
 
         self.tableView.dataSource = self

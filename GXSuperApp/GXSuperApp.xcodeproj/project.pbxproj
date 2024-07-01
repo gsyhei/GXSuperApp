@@ -66,6 +66,10 @@
 		33A91E3B2C28AEF400F7E214 /* GXHomeDetailCell7.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A91E3A2C28AEF400F7E214 /* GXHomeDetailCell7.xib */; };
 		33A91E3C2C28AEF400F7E214 /* GXHomeDetailCell7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A91E392C28AEF400F7E214 /* GXHomeDetailCell7.swift */; };
 		33A91E3E2C28B1E200F7E214 /* GXHomeDetailPriceDetailsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A91E3D2C28B1E200F7E214 /* GXHomeDetailPriceDetailsMenu.swift */; };
+		33AB9ACE2C321D530063BC39 /* GXVehicleConsumerListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AB9ACD2C321D530063BC39 /* GXVehicleConsumerListModel.swift */; };
+		33AB9AD12C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AB9ACF2C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.swift */; };
+		33AB9AD22C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AB9AD02C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib */; };
+		33AB9AD42C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AB9AD32C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift */; };
 		33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */; };
 		33B834B92C233C16003BEC24 /* GXHomeSearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */; };
 		33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B52C1414CE0089431E /* GXLocationManager.swift */; };
@@ -203,6 +207,10 @@
 		33A91E392C28AEF400F7E214 /* GXHomeDetailCell7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell7.swift; sourceTree = "<group>"; };
 		33A91E3A2C28AEF400F7E214 /* GXHomeDetailCell7.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell7.xib; sourceTree = "<group>"; };
 		33A91E3D2C28B1E200F7E214 /* GXHomeDetailPriceDetailsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailPriceDetailsMenu.swift; sourceTree = "<group>"; };
+		33AB9ACD2C321D530063BC39 /* GXVehicleConsumerListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXVehicleConsumerListModel.swift; sourceTree = "<group>"; };
+		33AB9ACF2C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailAddVehicleVC.swift; sourceTree = "<group>"; };
+		33AB9AD02C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailAddVehicleVC.xib; sourceTree = "<group>"; };
+		33AB9AD32C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVehicleCodeMenu.swift; sourceTree = "<group>"; };
 		33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXMarkerIconView.xib; sourceTree = "<group>"; };
 		33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchHeader.swift; sourceTree = "<group>"; };
 		33BF81B52C1414CE0089431E /* GXLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLocationManager.swift; sourceTree = "<group>"; };
@@ -426,6 +434,8 @@
 				33A588E32C241CF900451FE1 /* GXHomeDetailVC.xib */,
 				339A07092C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.swift */,
 				339A070A2C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.xib */,
+				33AB9ACF2C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.swift */,
+				33AB9AD02C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -435,6 +445,7 @@
 			children = (
 				33FB14DC2C2D4BF600059CB0 /* GXConnectorConsumerListModel.swift */,
 				33FB14DE2C2D513200059CB0 /* GXStationConsumerDetailModel.swift */,
+				33AB9ACD2C321D530063BC39 /* GXVehicleConsumerListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -467,6 +478,7 @@
 				33A91E3A2C28AEF400F7E214 /* GXHomeDetailCell7.xib */,
 				339A070D2C2F891900BDDD46 /* GXHomeDetailVehicleCell.swift */,
 				339A070E2C2F891900BDDD46 /* GXHomeDetailVehicleCell.xib */,
+				33AB9AD32C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -778,6 +790,7 @@
 			files = (
 				33A91E2D2C289ADE00F7E214 /* GXHomeDetailCell5.xib in Resources */,
 				33D7BFEC2C26E4CC006B97C6 /* GXHomeDetailCell1.xib in Resources */,
+				33AB9AD22C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib in Resources */,
 				3398F7392C288EF400A02CEF /* GXHomeDetailCell4.xib in Resources */,
 				33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */,
 				3398F7332C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.xib in Resources */,
@@ -897,6 +910,7 @@
 				336477A92C2371530013AAF1 /* GXBaseMenuView.swift in Sources */,
 				33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */,
 				33EC55FC2C101BA100D4CCD0 /* GXTagsView.swift in Sources */,
+				33AB9AD42C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift in Sources */,
 				339A5EED2C2C0D4F004F1B7F /* GXParamConsumerModel.swift in Sources */,
 				33BF81BE2C14AB720089431E /* GXHomeMarkerCell.swift in Sources */,
 				33EC55C92C101BA100D4CCD0 /* GXDefine.swift in Sources */,
@@ -916,6 +930,7 @@
 				33396A1A2C117326000A1944 /* GXTabBarController.swift in Sources */,
 				33EC55FE2C101BA100D4CCD0 /* GXToast.swift in Sources */,
 				339A5EDC2C2AD5A7004F1B7F /* GXUserManager.swift in Sources */,
+				33AB9ACE2C321D530063BC39 /* GXVehicleConsumerListModel.swift in Sources */,
 				336401DE2C277FC700A312BC /* GXHomeDetailCell2.swift in Sources */,
 				33A91E3C2C28AEF400F7E214 /* GXHomeDetailCell7.swift in Sources */,
 				33A91E2E2C289ADE00F7E214 /* GXHomeDetailCell5.swift in Sources */,
@@ -935,6 +950,7 @@
 				33D1109F2C1D8DFA006331EC /* GXHomeSearchVC.swift in Sources */,
 				33EC55C62C101BA100D4CCD0 /* UITextField+Add.swift in Sources */,
 				33EC55CE2C101BA100D4CCD0 /* ObjectUnicode.swift in Sources */,
+				33AB9AD12C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.swift in Sources */,
 				33EC55AF2C101BA100D4CCD0 /* GXBaseNavigationController.swift in Sources */,
 				33D7BFE82C26C9CE006B97C6 /* GXHomeDetailCell0.swift in Sources */,
 				33EC55F12C101BA100D4CCD0 /* XYNavigationManager.m in Sources */,
