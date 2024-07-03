@@ -23,4 +23,9 @@ class GXHomeDetailVehicleCell: UITableViewCell, NibReusable {
         self.rightLineIView.image = UIImage(gradientColors: colors, style: .horizontal, size: CGSize(width: 14, height: 3))
     }
     
+    func bindCell(model: GXVehicleConsumerListItem?) {
+        guard let model = model else { return }
+        self.numberLabel.text = model.state + "-" + model.carNumber
+    }
+    
 }

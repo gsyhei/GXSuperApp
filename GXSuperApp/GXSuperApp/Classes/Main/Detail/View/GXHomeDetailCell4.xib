@@ -128,6 +128,9 @@ reduction privileges</string>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="freeParkingLabel" destination="uSR-sc-6Au" id="kvx-og-H67"/>
+            </connections>
             <point key="canvasLocation" x="287.78625954198475" y="63.732394366197184"/>
         </tableViewCell>
     </objects>

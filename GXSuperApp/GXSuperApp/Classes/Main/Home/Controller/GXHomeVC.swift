@@ -187,7 +187,7 @@ private extension GXHomeVC {
             self.panView.tableViewReloadData()
         }.catch { error in
             MBProgressHUD.dismiss()
-            MBProgressHUD.showError(text:error.localizedDescription)
+            GXToast.showError(text:error.localizedDescription)
         }
     }
     
@@ -204,7 +204,7 @@ private extension GXHomeVC {
             self.selectTagsView.updateDataSource()
         }.catch { error in
             MBProgressHUD.dismiss()
-            MBProgressHUD.showError(text:error.localizedDescription)
+            GXToast.showError(text:error.localizedDescription)
         }
     }
     

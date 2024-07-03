@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import PromiseKit
+import MBProgressHUD
+import RxCocoaPlus
 
 class GXHomeDetailAddVehicleVC: GXBaseViewController {
     @IBOutlet weak var codeLabel: UILabel!
@@ -15,6 +18,17 @@ class GXHomeDetailAddVehicleVC: GXBaseViewController {
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
 
+    private lazy var viewModel: GXHomeDetailAddVehicleViewModel = {
+        return GXHomeDetailAddVehicleViewModel()
+    }()
+    var addCompletion: GXActionBlock?
+    
+    class func createVC(vehicle: GXVehicleConsumerListItem?) -> GXHomeDetailAddVehicleVC {
+        return GXHomeDetailAddVehicleVC.xibViewController().then {
+            $0.viewModel.vehicle = vehicle
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,8 +67,11 @@ class GXHomeDetailAddVehicleVC: GXBaseViewController {
             self.updateDoneButton()
         }).disposed(by: disposeBag)
         
-        self.codeLabel.text = GX_PramConsumer?.states.first
-        self.numberTF.text = nil
+        self.viewModel.state.subscribe {[weak self] text in
+            guard let `self` = self else { return }
+            self.codeLabel.text = text
+        }.disposed(by: disposeBag)
+        (self.numberTF.rx.textInput <-> self.viewModel.carTailNumber).disposed(by: disposeBag)
     }
     
     func updateDoneButton() {
@@ -63,6 +80,21 @@ class GXHomeDetailAddVehicleVC: GXBaseViewController {
         }
         else {
             self.doneButton.isEnabled = false
+        }
+    }
+    
+    func requestVehicleConsumerList() {
+        self.view.endEditing(true)
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestVehicleConsumerSave()
+        }.done { model in
+            MBProgressHUD.dismiss()
+            self.navigationController?.popViewController(animated: true)
+            self.addCompletion?()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
         }
     }
 
@@ -75,13 +107,14 @@ class GXHomeDetailAddVehicleVC: GXBaseViewController {
         let height = 300 + UIWindow.gx_safeAreaInsets.bottom
         let menu = GXHomeDetailVehicleCodeMenu(height: height)
         menu.action = {[weak self] code in
-            self?.codeLabel.text = code
+            guard let `self` = self else { return }
+            self.viewModel.state.accept(code)
         }
         menu.show(style: .sheetBottom, usingSpring: true)
     }
     
     @IBAction func doneButtonClicked(_ sender: UIButton) {
-        
+        self.requestVehicleConsumerList()
     }
 }
 

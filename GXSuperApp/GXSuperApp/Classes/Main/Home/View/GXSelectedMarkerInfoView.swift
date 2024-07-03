@@ -10,6 +10,7 @@ import CollectionKit
 import GXAlert_Swift
 import Kingfisher
 import CoreLocation
+import HXPhotoPicker
 
 class GXSelectedMarkerInfoView: UIView {
     @IBOutlet weak var navigateButton: UIButton!
@@ -51,7 +52,7 @@ class GXSelectedMarkerInfoView: UIView {
             sizeSource: sizeSource,
             tapHandler: {[weak self] tapContext in
                 guard let `self` = self else { return }
-
+                self.showPhotoPicker(index: tapContext.index, image: tapContext.view.image)
             }
         )
         provider.layout = RowLayout(spacing: 6.0)
@@ -162,13 +163,27 @@ class GXSelectedMarkerInfoView: UIView {
         
         // 停车减免、服务费
         let occupyFeeInfo = "Idle fee $\(model.occupyFee) / min"
-        let btmTitles = (model.occupyFlag == "YES") ? ["Parking discount", occupyFeeInfo] : [occupyFeeInfo]
+        let btmTitles = model.freeParking.count > 0  ? [model.freeParking, occupyFeeInfo] : [occupyFeeInfo]
         self.bottomTagsView.updateTitles(titles: btmTitles, width: SCREEN_WIDTH - 60, isShowFristLine: true)
         // 站点图片
         self.dataSource.data = model.aroundServicesArr
         // 距离
         let distance: Float = Float(model.distance)/1000.0
         self.distanceLabel.text = String(format: "%.1fkm", distance)
+    }
+    
+    func showPhotoPicker(index: Int, image: UIImage?) {
+        guard let model = self.model else { return }
+        
+        HXPhotoPicker.PhotoBrowser.show(pageIndex: index, transitionalImage: image) {
+            return model.aroundServicesArr.count
+        } assetForIndex: { index in
+            let urlString = model.aroundServicesArr[index]
+            return PhotoAsset(networkImageAsset: NetworkImageAsset(thumbnailURL: nil, originalURL: URL(string: urlString)))
+        } transitionAnimator: { index,arg  in
+            let cell = self.collectionView.cell(at: index) as? UIImageView
+            return cell
+        }
     }
 }
 

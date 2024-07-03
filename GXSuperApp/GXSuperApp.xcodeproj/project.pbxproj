@@ -29,8 +29,8 @@
 		3398F7362C27D76200A02CEF /* GXHomeDetailChargingFeeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398F7352C27D76200A02CEF /* GXHomeDetailChargingFeeHeader.swift */; };
 		3398F7392C288EF400A02CEF /* GXHomeDetailCell4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3398F7382C288EF400A02CEF /* GXHomeDetailCell4.xib */; };
 		3398F73A2C288EF400A02CEF /* GXHomeDetailCell4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398F7372C288EF400A02CEF /* GXHomeDetailCell4.swift */; };
-		339A070B2C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339A070A2C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.xib */; };
-		339A070C2C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A07092C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.swift */; };
+		339A070B2C2F85A500BDDD46 /* GXHomeDetailVehicleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339A070A2C2F85A500BDDD46 /* GXHomeDetailVehicleVC.xib */; };
+		339A070C2C2F85A500BDDD46 /* GXHomeDetailVehicleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A07092C2F85A500BDDD46 /* GXHomeDetailVehicleVC.swift */; };
 		339A070F2C2F891900BDDD46 /* GXHomeDetailVehicleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339A070E2C2F891900BDDD46 /* GXHomeDetailVehicleCell.xib */; };
 		339A07102C2F891900BDDD46 /* GXHomeDetailVehicleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A070D2C2F891900BDDD46 /* GXHomeDetailVehicleCell.swift */; };
 		339A07132C2F996200BDDD46 /* GXLoginInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A07112C2F996200BDDD46 /* GXLoginInputCell.swift */; };
@@ -81,6 +81,8 @@
 		33CB38212C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB381F2C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift */; };
 		33CB38222C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38202C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib */; };
 		33CB38242C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB38232C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift */; };
+		33CD2D942C3501C200D4B55B /* GXHomeDetailVehicleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CD2D932C3501C200D4B55B /* GXHomeDetailVehicleViewModel.swift */; };
+		33CD2D962C350B4900D4B55B /* GXHomeDetailAddVehicleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CD2D952C350B4900D4B55B /* GXHomeDetailAddVehicleViewModel.swift */; };
 		33D1109E2C1D8DFA006331EC /* GXHomeSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D1109D2C1D8DFA006331EC /* GXHomeSearchVC.xib */; };
 		33D1109F2C1D8DFA006331EC /* GXHomeSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1109C2C1D8DFA006331EC /* GXHomeSearchVC.swift */; };
 		33D7BFE82C26C9CE006B97C6 /* GXHomeDetailCell0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D7BFE72C26C9CE006B97C6 /* GXHomeDetailCell0.swift */; };
@@ -170,8 +172,8 @@
 		3398F7352C27D76200A02CEF /* GXHomeDetailChargingFeeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailChargingFeeHeader.swift; sourceTree = "<group>"; };
 		3398F7372C288EF400A02CEF /* GXHomeDetailCell4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell4.swift; sourceTree = "<group>"; };
 		3398F7382C288EF400A02CEF /* GXHomeDetailCell4.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell4.xib; sourceTree = "<group>"; };
-		339A07092C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVehicleMVC.swift; sourceTree = "<group>"; };
-		339A070A2C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailVehicleMVC.xib; sourceTree = "<group>"; };
+		339A07092C2F85A500BDDD46 /* GXHomeDetailVehicleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVehicleVC.swift; sourceTree = "<group>"; };
+		339A070A2C2F85A500BDDD46 /* GXHomeDetailVehicleVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailVehicleVC.xib; sourceTree = "<group>"; };
 		339A070D2C2F891900BDDD46 /* GXHomeDetailVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVehicleCell.swift; sourceTree = "<group>"; };
 		339A070E2C2F891900BDDD46 /* GXHomeDetailVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailVehicleCell.xib; sourceTree = "<group>"; };
 		339A07112C2F996200BDDD46 /* GXLoginInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GXLoginInputCell.swift; path = ../../../../../../../GXHeiVibe/GXHeiVibe/GXHeiVibe/Classes/Main/Public/Login/View/GXLoginInputCell.swift; sourceTree = "<group>"; };
@@ -222,6 +224,8 @@
 		33CB381F2C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchAutocompleteCell.swift; sourceTree = "<group>"; };
 		33CB38202C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchAutocompleteCell.xib; sourceTree = "<group>"; };
 		33CB38232C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchHistoryCell.swift; sourceTree = "<group>"; };
+		33CD2D932C3501C200D4B55B /* GXHomeDetailVehicleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVehicleViewModel.swift; sourceTree = "<group>"; };
+		33CD2D952C350B4900D4B55B /* GXHomeDetailAddVehicleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailAddVehicleViewModel.swift; sourceTree = "<group>"; };
 		33D1109C2C1D8DFA006331EC /* GXHomeSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchVC.swift; sourceTree = "<group>"; };
 		33D1109D2C1D8DFA006331EC /* GXHomeSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchVC.xib; sourceTree = "<group>"; };
 		33D7BFE72C26C9CE006B97C6 /* GXHomeDetailCell0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell0.swift; sourceTree = "<group>"; };
@@ -432,8 +436,8 @@
 			children = (
 				33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */,
 				33A588E32C241CF900451FE1 /* GXHomeDetailVC.xib */,
-				339A07092C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.swift */,
-				339A070A2C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.xib */,
+				339A07092C2F85A500BDDD46 /* GXHomeDetailVehicleVC.swift */,
+				339A070A2C2F85A500BDDD46 /* GXHomeDetailVehicleVC.xib */,
 				33AB9ACF2C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.swift */,
 				33AB9AD02C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib */,
 			);
@@ -487,6 +491,8 @@
 			isa = PBXGroup;
 			children = (
 				33FB14DA2C2D386E00059CB0 /* GXHomeDetailViewModel.swift */,
+				33CD2D932C3501C200D4B55B /* GXHomeDetailVehicleViewModel.swift */,
+				33CD2D952C350B4900D4B55B /* GXHomeDetailAddVehicleViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -812,7 +818,7 @@
 				33BF81C02C14AB7F0089431E /* GXSelectedMarkerInfoView.xib in Resources */,
 				33CB38222C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib in Resources */,
 				339A5EE72C2B9DE3004F1B7F /* GXLaunchScreenVC.xib in Resources */,
-				339A070B2C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.xib in Resources */,
+				339A070B2C2F85A500BDDD46 /* GXHomeDetailVehicleVC.xib in Resources */,
 				33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */,
 				33953F682C208B240049C76C /* GXHomeSearchResultCell.xib in Resources */,
 				33BF81BD2C14AB720089431E /* GXHomeMarkerCell.xib in Resources */,
@@ -907,6 +913,7 @@
 				33396A252C121A60000A1944 /* GXHomePanView.swift in Sources */,
 				33EC55F32C101BA100D4CCD0 /* GXAddImagesView.swift in Sources */,
 				33EC55F72C101BA100D4CCD0 /* GXMarqueeTextView.swift in Sources */,
+				33CD2D962C350B4900D4B55B /* GXHomeDetailAddVehicleViewModel.swift in Sources */,
 				336477A92C2371530013AAF1 /* GXBaseMenuView.swift in Sources */,
 				33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */,
 				33EC55FC2C101BA100D4CCD0 /* GXTagsView.swift in Sources */,
@@ -951,6 +958,7 @@
 				33EC55C62C101BA100D4CCD0 /* UITextField+Add.swift in Sources */,
 				33EC55CE2C101BA100D4CCD0 /* ObjectUnicode.swift in Sources */,
 				33AB9AD12C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.swift in Sources */,
+				33CD2D942C3501C200D4B55B /* GXHomeDetailVehicleViewModel.swift in Sources */,
 				33EC55AF2C101BA100D4CCD0 /* GXBaseNavigationController.swift in Sources */,
 				33D7BFE82C26C9CE006B97C6 /* GXHomeDetailCell0.swift in Sources */,
 				33EC55F12C101BA100D4CCD0 /* XYNavigationManager.m in Sources */,
@@ -973,7 +981,7 @@
 				336401E22C2788E900A312BC /* GXHomeDetailCell3.swift in Sources */,
 				33EC55AB2C101BA100D4CCD0 /* GXArrowButton.swift in Sources */,
 				33396A222C11E530000A1944 /* GXHomeVC.swift in Sources */,
-				339A070C2C2F85A500BDDD46 /* GXHomeDetailVehicleMVC.swift in Sources */,
+				339A070C2C2F85A500BDDD46 /* GXHomeDetailVehicleVC.swift in Sources */,
 				33EC55F52C101BA100D4CCD0 /* GXBadgeView.swift in Sources */,
 				336B2C2A2C1B29A600A752C7 /* GXCustomMarker.swift in Sources */,
 				33EC55FD2C101BA100D4CCD0 /* GXTextView.swift in Sources */,

@@ -66,13 +66,16 @@ class GXHomeDetailViewModel: GXBaseViewModel {
     }
     
     /// 车辆列表
-    func requestVehicleConsumerList() -> Promise<GXVehicleConsumerListModel> {
+    func requestVehicleConsumerList() -> Promise<GXVehicleConsumerListModel?> {
         let params: Dictionary<String, Any> = [:]
         let api = GXApi.normalApi(Api_vehicle_consumer_list, params, .get)
         return Promise { seal in
+            guard GXUserManager.shared.isLogin else {
+                seal.fulfill(nil); return
+            }
             GXNWProvider.login_request(api, type: GXVehicleConsumerListModel.self, success: { model in
                 self.vehicleList = model.data
-                seal.fulfill((model))
+                seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)
             })

@@ -56,7 +56,7 @@ class GXHomeSearchHistoryCell: UITableViewCell, Reusable {
             make.right.equalToSuperview().offset(-15)
             make.bottom.equalToSuperview().offset(-15)
         }
-        self.dataSource.data = ["Starbucks", "Starbucks", "Starbucks", "Starbucks", "Starbucks", "Starbucks", "Starbucks", "Starbucks", "Starbucks"]
+        self.dataSource.data = ["Starbucks", "Tesla"]
     }
     
 }

@@ -9,6 +9,7 @@ import UIKit
 import SkeletonView
 import PromiseKit
 import MBProgressHUD
+import GXRefresh
 
 class GXHomeDetailVC: GXBaseViewController {
     @IBOutlet weak var advertView: UIView!
@@ -54,10 +55,17 @@ class GXHomeDetailVC: GXBaseViewController {
     override func setupViewController() {
         self.navigationItem.title = "Station Details"
         self.gx_addBackBarButtonItem()
+        
+        self.tableView.gx_header = GXRefreshNormalHeader(completion: { [weak self] in
+            guard let `self` = self else { return }
+            self.requestStationConsumerDetail()
+        }).then { footer in
+            footer.updateRefreshTitles()
+        }
     }
     
     override func loginReloadViewData() {
-        self.updateDetailDataSource()
+        self.requestStationConsumerDetail()
     }
 }
 
@@ -252,7 +260,20 @@ private extension GXHomeDetailVC {
             self.updateDetailDataSource()
         }.catch { error in
             self.view.hideSkeleton()
-            MBProgressHUD.showError(text:error.localizedDescription)
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
+    func requestVehicleConsumerList() {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestVehicleConsumerList()
+        }.done { models in
+            MBProgressHUD.dismiss()
+            self.updateDetailDataSource()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
         }
     }
     
@@ -338,11 +359,15 @@ private extension GXHomeDetailVC {
     func gotoAddVehicleVC() {
         if GXUserManager.shared.isLogin {
             if self.viewModel.vehicleList.count > 0 {
-                let vc = GXHomeDetailVehicleMVC.xibViewController()
+                let vc = GXHomeDetailVehicleVC.createVC(vehicleList: self.viewModel.vehicleList)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             else {
                 let vc = GXHomeDetailAddVehicleVC.xibViewController()
+                vc.addCompletion = {[weak self] in
+                    guard let `self` = self else { return }
+                    self.requestVehicleConsumerList()
+                }
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }

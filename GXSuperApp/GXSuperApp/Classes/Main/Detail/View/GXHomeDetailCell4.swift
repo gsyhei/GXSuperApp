@@ -9,7 +9,7 @@ import UIKit
 import Reusable
 
 class GXHomeDetailCell4: UITableViewCell, NibReusable {
-    
+    @IBOutlet weak var freeParkingLabel: UILabel!
     var addAction: GXActionBlock?
 
     override func awakeFromNib() {
@@ -24,5 +24,6 @@ class GXHomeDetailCell4: UITableViewCell, NibReusable {
     @IBAction func addButtonClicked(_ sender: Any?) {
         self.addAction?()
     }
+    
     
 }

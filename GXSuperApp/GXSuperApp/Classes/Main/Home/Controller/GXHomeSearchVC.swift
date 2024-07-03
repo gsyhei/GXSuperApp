@@ -76,11 +76,11 @@ class GXHomeSearchVC: GXBaseViewController {
             .subscribe (onNext: { [weak self] text in
                 XCGLogger.info("self.searchTF.rx.text.orEmpty = \(text)")
                 guard let `self` = self else { return }
-                guard !self.viewModel.isSearchResult else { return }
                 if text.count == 0 {
                     self.requestShowHistory()
                 } 
                 else {
+                    guard !self.viewModel.isSearchResult else { return }
                     self.requestAutocomplete()
                 }
         }).disposed(by: disposeBag)
@@ -98,13 +98,16 @@ class GXHomeSearchVC: GXBaseViewController {
     }
     
     func requestAutocomplete() {
+        let searchWord = self.viewModel.searchWord.value
         firstly {
             self.viewModel.requestAutocomplete()
         }.done { results in
             self.viewModel.searchType = .autocomplete
             self.tableView.backgroundColor = .white
-            self.tableView.reloadData()
-            self.tableView.gx_footer?.endRefreshing(isNoMore: true)
+            if self.viewModel.searchWord.value == searchWord {
+                self.tableView.reloadData()
+                self.tableView.gx_footer?.endRefreshing(isNoMore: true)
+            }
         }.catch { error in
             XCGLogger.info("error = \(error.localizedDescription)")
         }
