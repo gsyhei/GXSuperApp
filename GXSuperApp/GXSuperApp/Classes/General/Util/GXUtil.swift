@@ -11,57 +11,6 @@ import GXAlert_Swift
 
 class GXUtil: NSObject {
 
-    enum GXQRCodeType: String {
-        case none     = ""
-        case url      = "http"
-        case user     = "heivibe://user?"
-        case event    = "heivibe://event?"
-        case ticket   = "heivibe://ticket?"
-        case activity = "heivibe://activity?"
-    }
-
-    /// 获得二维码字符串 - heivibe://<动作>?<参数>
-    class func gx_qrCode(type: GXQRCodeType, text: String?) -> String {
-        guard let text = text else { return type.rawValue }
-        return type.rawValue + text
-    }
-
-    /// 获得二维码类型 - heivibe://<动作>?<参数>
-    class func gx_qrCodeType(qrCode: String?) -> GXQRCodeType {
-        guard let qrCode = qrCode else { return .none }
-        if qrCode.hasPrefix(GXQRCodeType.user.rawValue) {
-            return .user
-        }
-        if qrCode.hasPrefix(GXQRCodeType.event.rawValue) {
-            return .event
-        }
-        if qrCode.hasPrefix(GXQRCodeType.ticket.rawValue) {
-            return .ticket
-        }
-        if qrCode.hasPrefix(GXQRCodeType.activity.rawValue) {
-            return .activity
-        }
-        if qrCode.hasPrefix(GXQRCodeType.url.rawValue + "://") {
-            return .url
-        }
-        if qrCode.hasPrefix(GXQRCodeType.url.rawValue + "s://") {
-            return .url
-        }
-        if qrCode.hasPrefix("HTTP://") {
-            return .url
-        }
-        if qrCode.hasPrefix("HTTPS://") {
-            return .url
-        }    
-        if qrCode.hasPrefix("http://") {
-            return .url
-        }
-        if qrCode.hasPrefix("https://") {
-            return .url
-        }
-        return .none
-    }
-
     class func gx_countdownTimer(second: Int, immediately: Bool = true, duration: ((Int) -> Void)?) -> Single<Void> {
         guard second > 0 else { return Single<Void>.just(()) }
         if immediately {  duration?(second) }

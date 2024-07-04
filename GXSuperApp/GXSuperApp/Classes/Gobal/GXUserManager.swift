@@ -7,13 +7,6 @@
 
 import UIKit
 
-/// 系统参数
-let GX_PramConsumer = GXUserManager.shared.paramConsumerData
-/// 周边设施
-let GX_DictListAvailable = GXUserManager.shared.dictListAvailable
-/// 主页显示的周边设施
-let GX_ShowDictListAvailable = GXUserManager.shared.showDictListAvailable
-
 class GXUserManager: NSObject {
     static let shared: GXUserManager = GXUserManager()
 
@@ -21,6 +14,8 @@ class GXUserManager: NSObject {
         /// 存储token的key
         case token = "gx_user_token"
     }
+    
+    // MARK: - 用户相关
     
     /// 用户token
     lazy var token: String? = {
@@ -46,21 +41,25 @@ class GXUserManager: NSObject {
     var isVip: Bool {
         return self.user?.memberFlag == GX_YES
     }
+    /// 车辆列表
+    var vehicleList: [GXVehicleConsumerListItem] = []
+    /// 进行中的订单
+    var orderDoing: GXOrderConsumerDoingData?
     
-    /// 全局筛选配置model
+    // MARK: - 全局相关
+    
+    /// 筛选配置model
     lazy var filter: GXHomeFilterModel = {
         return GXHomeFilterModel()
     }()
     /// App版本更新model
-    var appUpdateLatestData: GXAppUpdateLatestData?
+    var appUpdateData: GXAppUpdateLatestData?
     /// 系统参数
-    var paramConsumerData: GXParamConsumerData?
+    var paramsData: GXParamConsumerData?
     /// 周边设施
-    var dictListAvailable: [GXDictListAvailableData] = []
+    var availableList: [GXDictListAvailableData] = []
     /// 主页显示的周边设施
-    var showDictListAvailable: [GXDictListAvailableData] = []
-    /// 车辆列表
-    var vehicleList: [GXVehicleConsumerListItem] = []
-    
+    var showAvailableList: [GXDictListAvailableData] = []
+
     override init() {}
 }

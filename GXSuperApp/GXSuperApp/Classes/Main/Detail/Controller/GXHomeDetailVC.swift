@@ -316,8 +316,8 @@ private extension GXHomeDetailVC {
             else {
                 self.advertTitleLabel.text = "Become a VIP for Discounts"
             }
-            self.advertInfoLabel.text = "Save up to $\(GX_PramConsumer?.occupyMax ?? "")/year"
-            self.advertKWhLabel.text = "$\(GX_PramConsumer?.memberFee ?? "")"
+            self.advertInfoLabel.text = "Save up to $\(GXUserManager.shared.paramsData?.occupyMax ?? "")/year"
+            self.advertKWhLabel.text = "$\(GXUserManager.shared.paramsData?.memberFee ?? "")"
         }
         else {
             self.tvBottomHeightLC.constant = 12.0

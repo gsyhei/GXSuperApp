@@ -46,6 +46,11 @@ class GXHomeVC: GXBaseViewController {
         }
     }()
     
+    private lazy var circleHUDView: MBProgressHUD.CircleHUDView = {
+        let frame = CGRect(x: 12, y: 10, width: 16, height: 16)
+        return MBProgressHUD.CircleHUDView(frame: frame, lineWidth: 2.0)
+    }()
+    
     private lazy var viewModel: GXHomeViewModel = {
         return GXHomeViewModel()
     }()
@@ -80,16 +85,13 @@ class GXHomeVC: GXBaseViewController {
         self.myLocationButton.setLayerShadow(color: .lightGray, offset: .zero, radius: 3.0)
         self.myLocationButton.layer.shadowOpacity = 0.5
         
+        // 进行中的订单
         self.ongoingView.isHidden = true
-//        进行中的订单
-//        self.ongoingView.setLayerShadow(color: .gx_green, offset: .zero, radius: 8.0)
-//        self.ongoingView.layer.shadowOpacity = 0.5
-//        self.ongoingButton.setBackgroundColor(.gx_green, for: .normal)
-//        self.ongoingButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
-//        let frame = CGRect(x: 12, y: 10, width: 16, height: 16)
-//        let circleHUDView = MBProgressHUD.CircleHUDView(frame: frame, lineWidth: 2.0)
-//        self.ongoingView.addSubview(circleHUDView)
-        
+        self.ongoingView.setLayerShadow(color: .gx_green, offset: .zero, radius: 8.0)
+        self.ongoingView.layer.shadowOpacity = 0.5
+        self.ongoingButton.setBackgroundColor(.gx_green, for: .normal)
+        self.ongoingButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
+
         self.view.insertSubview(self.panView, aboveSubview: self.myLocationButton)
         self.view.insertSubview(self.mapView, belowSubview: self.myLocationButton)
     }
@@ -172,6 +174,7 @@ class GXHomeVC: GXBaseViewController {
     
     override func loginReloadViewData() {
         self.panView.tableViewReloadData()
+        self.requestOrderConsumerDoing()
     }
 }
 
@@ -195,7 +198,8 @@ private extension GXHomeVC {
         MBProgressHUD.showLoading()
         let combinedPromise = when(fulfilled: [
             self.viewModel.requestParamConsumer(),
-            self.viewModel.requestDictListAvailable()
+            self.viewModel.requestDictListAvailable(),
+            self.viewModel.requestOrderConsumerDoing()
         ])
         firstly {
             combinedPromise
@@ -205,6 +209,30 @@ private extension GXHomeVC {
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
+    func requestOrderConsumerDoing() {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestOrderConsumerDoing()
+        }.done { model in
+            MBProgressHUD.dismiss()
+            self.updateOrderConsumerDoing()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
+    func updateOrderConsumerDoing() {
+        if (GXUserManager.shared.orderDoing != nil) {
+            self.ongoingView.addSubview(self.circleHUDView)
+            self.ongoingView.isHidden = false
+        }
+        else {
+            self.circleHUDView.removeFromSuperview()
+            self.ongoingView.isHidden = true
         }
     }
     
@@ -328,6 +356,7 @@ private extension GXHomeVC {
     }
     
     @IBAction func ongoingButtonClicked(_ sender: Any?) {
+        // 进行中的订单
         
     }
     
@@ -348,7 +377,7 @@ extension GXHomeVC: GMSMapViewDelegate {
         let isZoomLarge = position.zoom >= self.zoomLarge
         if let lastTarget = self.lastTarget {
             let distance = GXLocationManager.getDistanceTo(coordinate1: lastTarget, coordinate2: position.target)
-            let maxDistance = (GX_PramConsumer?.queryDistance ?? 50) * 1000
+            let maxDistance = (GXUserManager.shared.paramsData?.queryDistance ?? 50) * 1000
             XCGLogger.info("mapView move distance = \(distance), maxDistance = \(maxDistance)")
             if distance > maxDistance {
                 self.lastTarget = position.target

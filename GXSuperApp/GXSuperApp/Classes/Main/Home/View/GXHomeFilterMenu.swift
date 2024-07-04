@@ -120,7 +120,7 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 1 {
-            return GXUserManager.shared.dictListAvailable.count
+            return GXUserManager.shared.availableList.count
         }
         if let nameList = self.titleCellList[section] {
             return nameList.count
@@ -142,7 +142,7 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: GXHomeFilterCell = collectionView.dequeueReusableCell(for: indexPath)
         if indexPath.section == 1 {
-            let item = GXUserManager.shared.dictListAvailable[indexPath.item]
+            let item = GXUserManager.shared.availableList[indexPath.item]
             cell.nameLabel.text = item.name
             cell.isChecked = self.stationServiceList.contains(item.id)
         }
@@ -172,7 +172,7 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 1 {
-            let item = GXUserManager.shared.dictListAvailable[indexPath.item]
+            let item = GXUserManager.shared.availableList[indexPath.item]
             let width = item.name.width(font: .gx_font(size: 14)) + 20
             return CGSize(width: width, height: 32)
         }
@@ -201,7 +201,7 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
         case 0:
             self.selectedModel.orderType = indexPath.row + 1
         case 1:
-            let item = GXUserManager.shared.dictListAvailable[indexPath.item]
+            let item = GXUserManager.shared.availableList[indexPath.item]
             if self.stationServiceList.contains(item.id) {
                 self.stationServiceList.removeAll(where: { return $0 == item.id })
             } else {

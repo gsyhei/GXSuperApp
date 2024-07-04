@@ -7,8 +7,12 @@
 
 import UIKit
 
+private let GXTextFont: UIFont = .gx_font(size: 15)
+private let GXTextMaxSize: CGSize = .init(width: SCREEN_WIDTH - 200, height: SCREEN_HEIGHT - 230)
 private let GXIconSize: CGSize = .init(width: 24, height: 24)
-private let GXMargin: CGFloat = 16
+private let GXInsets: UIEdgeInsets = .init(top: 8, left: 16, bottom: 8, right: 16)
+private let GXSpacing: CGFloat = 8
+
 class GXToast: UIControl {
     lazy var toastView: UIView = {
         return UIView(frame: CGRect(origin: .zero, size: GXIconSize)).then {
@@ -26,7 +30,7 @@ class GXToast: UIControl {
         return UILabel(frame: CGRect(origin: .zero, size: GXIconSize)).then {
             $0.textAlignment = .left
             $0.textColor = .white
-            $0.font = .gx_font(size: 15)
+            $0.font = GXTextFont
             $0.numberOfLines = 0
         }
     }()
@@ -51,15 +55,15 @@ class GXToast: UIControl {
         self.toastView.addSubview(self.titleLabel)
 
         self.iconIView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(GXMargin)
+            make.left.equalToSuperview().offset(GXInsets.left)
             make.centerY.equalToSuperview()
             make.size.equalTo(GXIconSize)
         }
         self.titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(GXMargin)
-            make.left.equalTo(self.iconIView.snp.right).offset(GXMargin/2)
-            make.right.equalToSuperview().offset(-GXMargin)
-            make.bottom.equalToSuperview().offset(-GXMargin)
+            make.top.equalToSuperview().offset(GXInsets.top)
+            make.left.equalTo(self.iconIView.snp.right).offset(GXSpacing)
+            make.right.equalToSuperview().offset(-GXInsets.right)
+            make.bottom.equalToSuperview().offset(-GXInsets.bottom)
         }
     }
 
@@ -106,11 +110,10 @@ extension GXToast {
         let backgroud = (view != nil) ? view : UIWindow.gx_frontWindow
         guard let backView = backgroud else { return }
 
-        let textMaxSize = CGSize(width: SCREEN_WIDTH - 200, height: SCREEN_HEIGHT - 230)
-        let textSize = text.size(size: textMaxSize, font: .gx_font(size: 15))
+        let textSize = text.size(size: GXTextMaxSize, font: GXTextFont)
         let contentHeight = max(ceil(textSize.height), GXIconSize.height)
-        let toastWidth = GXIconSize.width + textSize.width + GXMargin * 2 + GXMargin/2
-        let toastHeight = contentHeight + GXMargin * 2
+        let toastWidth = GXIconSize.width + textSize.width + GXInsets.left + GXInsets.right + GXSpacing
+        let toastHeight = contentHeight + GXInsets.top + GXInsets.bottom
         let toastSize = CGSize(width: toastWidth, height: toastHeight)
         
         let top = (backView.frame.height - toastSize.height)/2

@@ -59,7 +59,7 @@ class GXHomeDetailCell6: UITableViewCell, NibReusable {
             make.bottom.equalToSuperview().offset(-18)
             make.height.equalTo(44)
         }
-        self.dataSource.data = GXUserManager.shared.dictListAvailable
+        self.dataSource.data = GXUserManager.shared.availableList
         self.layoutIfNeeded()
         self.cvHeightLC.constant = self.collectionView.contentSize.height + 70
     }

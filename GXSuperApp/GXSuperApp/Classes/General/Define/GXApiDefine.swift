@@ -73,3 +73,8 @@ let Api_favorite_consumer_save = "/charging-order-server/favorite/consumer/save"
 
 /// 站点-收藏列表
 let Api_favorite_consumer_list = "/charging-order-server/favorite/consumer/list"
+
+// MARK: - 订单
+
+/// 进行中的订单
+let Api_order_consumer_doing = "/charging-order-server/order/consumer/doing"

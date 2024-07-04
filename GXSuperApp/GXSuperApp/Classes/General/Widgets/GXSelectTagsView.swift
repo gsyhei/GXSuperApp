@@ -75,6 +75,6 @@ class GXSelectTagsView: UIView {
     }
     
     func updateDataSource() {
-        self.dataSource.data = GXUserManager.shared.showDictListAvailable
+        self.dataSource.data = GXUserManager.shared.showAvailableList
     }
 }

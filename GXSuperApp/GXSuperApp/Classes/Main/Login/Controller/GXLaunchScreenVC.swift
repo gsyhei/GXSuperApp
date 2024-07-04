@@ -56,7 +56,7 @@ class GXLaunchScreenVC: GXBaseViewController {
             self.gotoMainTabbarController()
             return
         }
-        GXUserManager.shared.appUpdateLatestData = data
+        GXUserManager.shared.appUpdateData = data
         if data.version == UIApplication.appVersion() {
             self.gotoMainTabbarController()
         }

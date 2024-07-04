@@ -53,7 +53,7 @@ class GXHomeDetailVehicleCodeMenu: GXBaseMenuView {
     
     @objc func confirmButtonClicked(_ sender: Any?) {
         let selectRow = self.picker.selectedRow(inComponent: 0)
-        let code = GX_PramConsumer?.states[selectRow] ?? ""
+        let code = GXUserManager.shared.paramsData?.states[selectRow] ?? ""
         self.action?(code)
         self.hide(animated: true)
     }
@@ -65,11 +65,11 @@ extension GXHomeDetailVehicleCodeMenu: UIPickerViewDataSource, UIPickerViewDeleg
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return GX_PramConsumer?.states.count ?? 0
+        return GXUserManager.shared.paramsData?.states.count ?? 0
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return GX_PramConsumer?.states[row]
+        return GXUserManager.shared.paramsData?.states[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {

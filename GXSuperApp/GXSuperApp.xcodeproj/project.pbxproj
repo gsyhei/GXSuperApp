@@ -53,6 +53,7 @@
 		339A5EEF2C2C13BC004F1B7F /* GXDictListAvailableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EEE2C2C13BC004F1B7F /* GXDictListAvailableModel.swift */; };
 		339A5EF12C2C24BF004F1B7F /* GXStationConsumerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EF02C2C24BF004F1B7F /* GXStationConsumerModel.swift */; };
 		33A3742C2C362BDE00229ED7 /* GXFavoriteConsumerSaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A3742B2C362BDE00229ED7 /* GXFavoriteConsumerSaveModel.swift */; };
+		33A3742E2C36F33200229ED7 /* GXOrderConsumerDoingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A3742D2C36F33200229ED7 /* GXOrderConsumerDoingModel.swift */; };
 		33A588DA2C24015100451FE1 /* GXHomeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */; };
 		33A588DC2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */; };
 		33A588E42C241CF900451FE1 /* GXHomeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */; };
@@ -197,6 +198,7 @@
 		339A5EEE2C2C13BC004F1B7F /* GXDictListAvailableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXDictListAvailableModel.swift; sourceTree = "<group>"; };
 		339A5EF02C2C24BF004F1B7F /* GXStationConsumerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXStationConsumerModel.swift; sourceTree = "<group>"; };
 		33A3742B2C362BDE00229ED7 /* GXFavoriteConsumerSaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXFavoriteConsumerSaveModel.swift; sourceTree = "<group>"; };
+		33A3742D2C36F33200229ED7 /* GXOrderConsumerDoingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderConsumerDoingModel.swift; sourceTree = "<group>"; };
 		33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeFilterCell.swift; sourceTree = "<group>"; };
 		33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCollectionViewAlignmentLeftLayout.swift; sourceTree = "<group>"; };
 		33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVC.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				339A5EEC2C2C0D4F004F1B7F /* GXParamConsumerModel.swift */,
 				339A5EEE2C2C13BC004F1B7F /* GXDictListAvailableModel.swift */,
 				339A5EF02C2C24BF004F1B7F /* GXStationConsumerModel.swift */,
+				33A3742D2C36F33200229ED7 /* GXOrderConsumerDoingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -993,6 +996,7 @@
 				339A072D2C30691F00BDDD46 /* GXUserModel.swift in Sources */,
 				33A588E42C241CF900451FE1 /* GXHomeDetailVC.swift in Sources */,
 				33EC55CD2C101BA100D4CCD0 /* GXUtil.swift in Sources */,
+				33A3742E2C36F33200229ED7 /* GXOrderConsumerDoingModel.swift in Sources */,
 				33EC55C52C101BA100D4CCD0 /* UIImage+Add.swift in Sources */,
 				339A07192C2F99AA00BDDD46 /* GXLoginAllVC.swift in Sources */,
 				33EC55B52C101BA100D4CCD0 /* GXBaseWarnViewController.swift in Sources */,

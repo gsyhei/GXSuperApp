@@ -18,7 +18,24 @@ class GXHomeViewModel: GXBaseViewModel {
         let api = GXApi.normalApi(Api_param_consumer_detail, params, .get)
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXParamConsumerModel.self, success: { model in
-                GXUserManager.shared.paramConsumerData = model.data
+                GXUserManager.shared.paramsData = model.data
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+    
+    /// 进行中订单
+    func requestOrderConsumerDoing() -> Promise<GXOrderConsumerDoingModel?> {
+        let params: Dictionary<String, Any> = [:]
+        let api = GXApi.normalApi(Api_order_consumer_doing, params, .get)
+        return Promise { seal in
+            guard GXUserManager.shared.isLogin else {
+                seal.fulfill(nil); return
+            }
+            GXNWProvider.login_request(api, type: GXOrderConsumerDoingModel.self, success: { model in
+                
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)
@@ -33,8 +50,8 @@ class GXHomeViewModel: GXBaseViewModel {
         let api = GXApi.normalApi(Api_dict_list_available, params, .get)
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXDictListAvailableModel.self, success: { model in
-                GXUserManager.shared.dictListAvailable = model.data
-                GXUserManager.shared.showDictListAvailable = model.data.filter({ $0.homeFlag == GX_YES })
+                GXUserManager.shared.availableList = model.data
+                GXUserManager.shared.showAvailableList = model.data.filter({ $0.homeFlag == GX_YES })
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)

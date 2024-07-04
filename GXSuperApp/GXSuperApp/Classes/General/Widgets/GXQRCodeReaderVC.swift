@@ -29,21 +29,8 @@ class GXQRCodeReaderVC: GXBaseViewController {
             $0.didFindCode = {[weak self] result in
                 guard let `self` = self else { return }
                 print("Completion with result: \(result.value) of type \(result.metadataType)")
-                let codeType = GXUtil.gx_qrCodeType(qrCode: result.value)
-                var value = result.value
-                if codeType == .user {
-                    value = result.value.replacingOccurrences(of: GXUtil.GXQRCodeType.user.rawValue, with: "")
-                }
-                else if codeType == .event {
-                    value = result.value.replacingOccurrences(of: GXUtil.GXQRCodeType.event.rawValue, with: "")
-                }
-                else if codeType == .ticket {
-                    value = result.value.replacingOccurrences(of: GXUtil.GXQRCodeType.ticket.rawValue, with: "")
-                }
-                else if codeType == .activity {
-                    value = result.value.replacingOccurrences(of: GXUtil.GXQRCodeType.activity.rawValue, with: "")
-                }
-                self.didFindCodeAction?(codeType, value, self)
+                
+                self.didFindCodeAction?(result.value, self)
             }
         }
     }()
@@ -55,7 +42,7 @@ class GXQRCodeReaderVC: GXBaseViewController {
         }
     }()
 
-    var didFindCodeAction: GXActionBlockItem3<GXUtil.GXQRCodeType, String, GXQRCodeReaderVC>?
+    var didFindCodeAction: GXActionBlockItem2<String, GXQRCodeReaderVC>?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

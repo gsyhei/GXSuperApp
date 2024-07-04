@@ -11,7 +11,7 @@ import PromiseKit
 
 class GXHomeDetailAddVehicleViewModel: GXBaseViewModel {
     /// 州代码
-    var state = BehaviorRelay<String?>(value: GX_PramConsumer?.states.first)
+    var state = BehaviorRelay<String?>(value: GXUserManager.shared.paramsData?.states.first)
     /// 活动名称
     var carTailNumber = BehaviorRelay<String?>(value: nil)
     /// 修改车辆
