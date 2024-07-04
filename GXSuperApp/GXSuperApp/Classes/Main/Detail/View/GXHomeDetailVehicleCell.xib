@@ -111,6 +111,9 @@
                                         <real key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MKf-4D-44G"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vehicle_list_ic_line" translatesAutoresizingMaskIntoConstraints="NO" id="O0e-jW-0yc">
                                 <rect key="frame" x="5" y="117" width="310" height="15"/>

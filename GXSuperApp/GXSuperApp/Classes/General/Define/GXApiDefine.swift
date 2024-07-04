@@ -67,3 +67,9 @@ let Api_vehicle_consumer_save = "/charging-order-server/vehicle/consumer/save"
 
 /// 车辆-删除
 let Api_vehicle_consumer_delete = "/charging-order-server/vehicle/consumer/delete"
+
+/// 站点-收藏|取消收藏
+let Api_favorite_consumer_save = "/charging-order-server/favorite/consumer/save"
+
+/// 站点-收藏列表
+let Api_favorite_consumer_list = "/charging-order-server/favorite/consumer/list"

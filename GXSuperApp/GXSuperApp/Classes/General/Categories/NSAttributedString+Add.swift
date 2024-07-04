@@ -65,8 +65,17 @@ extension NSAttributedString {
         ]
         let numberAttrStr = NSAttributedString(string: numberText, attributes: numAttributes)
         attributedString.append(numberAttrStr)
+        
+        let centerText = " / "
+        let centerAttributes: [NSAttributedString.Key : Any] = [
+            .font: UIFont.gx_font(size: fontSize - 1),
+            .baselineOffset: 1,
+            .foregroundColor: maxCountTextColor
+        ]
+        let centerAttrStr = NSAttributedString(string: centerText, attributes: centerAttributes)
+        attributedString.append(centerAttrStr)
 
-        let maxNumberText = String(format: "/%d", maxCount)
+        let maxNumberText = String(format: "%d", maxCount)
         let maxNumAttributes: [NSAttributedString.Key : Any] = [
             .font: maxCountFont,
             .foregroundColor: maxCountTextColor

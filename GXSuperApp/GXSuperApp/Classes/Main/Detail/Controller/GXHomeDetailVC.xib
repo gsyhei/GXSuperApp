@@ -277,7 +277,7 @@
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="-199.23664122137404" y="-347.18309859154931"/>
+            <point key="canvasLocation" x="-512" y="-456"/>
         </view>
     </objects>
     <resources>

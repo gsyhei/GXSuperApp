@@ -21,14 +21,14 @@ class GXHomeDetailViewModel: GXBaseViewModel {
     var ccRowsList: [GXConnectorConsumerRowsItem] = []
     /// 需要显示的时段
     var showPrices:[GXStationConsumerDetailPricesItem] = []
-    /// 车辆列表
-    var vehicleList: [GXVehicleConsumerListItem] = []
     /// 站点详情数据
     var detailData: GXStationConsumerDetailData? {
         didSet {
             self.updateShowPrices()
         }
     }
+    /// 修改车辆
+    var selectedVehicle: GXVehicleConsumerListItem?
     
     /// 站点详情
     func requestStationConsumerDetail() -> Promise<GXStationConsumerDetailModel> {
@@ -74,8 +74,25 @@ class GXHomeDetailViewModel: GXBaseViewModel {
                 seal.fulfill(nil); return
             }
             GXNWProvider.login_request(api, type: GXVehicleConsumerListModel.self, success: { model in
-                self.vehicleList = model.data
+                GXUserManager.shared.vehicleList = model.data
+                self.selectedVehicle = model.data.first
                 seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+    
+    /// 收藏
+    func requestFavoriteConsumerSave() -> Promise<Bool> {
+        var params: Dictionary<String, Any> = [:]
+        params["stationId"] = self.rowModel?.id
+        let api = GXApi.normalApi(Api_favorite_consumer_save, params, .post)
+        return Promise { seal in
+            GXNWProvider.login_request(api, type: GXFavoriteConsumerSaveModel.self, success: { model in
+                let isFavorite = model.data?.favoriteFlag ?? false
+                self.detailData?.favoriteFlag = isFavorite ? GX_YES : GX_NO
+                seal.fulfill(isFavorite)
             }, failure: { error in
                 seal.reject(error)
             })
@@ -88,7 +105,7 @@ extension GXHomeDetailViewModel {
     
     func updateCellIndexs() {
         guard let model = rowModel else { return }
-        if model.occupyFlag == "YES" {
+        if model.occupyFlag == GX_YES {
             self.cellIndexs = [0, 1, 2, 3, 4, 5, 6, 7]
         }
         else {

@@ -9,6 +9,7 @@ import UIKit
 import SkeletonView
 import PromiseKit
 import MBProgressHUD
+import GXRefresh
 
 class GXHomeDetailVehicleVC: GXBaseViewController {
     @IBOutlet weak var addButton: UIButton!
@@ -31,16 +32,10 @@ class GXHomeDetailVehicleVC: GXBaseViewController {
         return GXHomeDetailVehicleViewModel()
     }()
     
-    class func createVC(vehicleList: [GXVehicleConsumerListItem] = []) -> GXHomeDetailVehicleVC {
-        return GXHomeDetailVehicleVC.xibViewController().then {
-            $0.viewModel.vehicleList = vehicleList
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.viewModel.vehicleList.count > 0 {
+        if GXUserManager.shared.vehicleList.count > 0 {
             self.tableView.reloadData()
         } else {
             self.requestVehicleConsumerList()
@@ -53,6 +48,13 @@ class GXHomeDetailVehicleVC: GXBaseViewController {
         
         self.addButton.setBackgroundColor(.gx_green, for: .normal)
         self.addButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
+        
+        self.tableView.gx_header = GXRefreshNormalHeader(completion: { [weak self] in
+            guard let `self` = self else { return }
+            self.requestVehicleConsumerList(isShowHud: false)
+        }).then { footer in
+            footer.updateRefreshTitles()
+        }
     }
     
 }
@@ -60,7 +62,57 @@ class GXHomeDetailVehicleVC: GXBaseViewController {
 private extension GXHomeDetailVehicleVC {
     
     @IBAction func addButtonClicked(_ sender: Any?) {
-        let vc = GXHomeDetailAddVehicleVC.xibViewController()
+        self.pushAddVehicleVC(vehicle: nil)
+    }
+    
+    func requestVehicleConsumerList(isShowHud: Bool = true) {
+        if isShowHud { self.view.showAnimatedGradientSkeleton() }
+        firstly {
+            self.viewModel.requestVehicleConsumerList()
+        }.done { model in
+            if isShowHud { 
+                self.view.hideSkeleton()
+            } else {
+                self.tableView.gx_header?.endRefreshing(isSucceed: true)
+            }
+            self.tableView.reloadData()
+        }.catch { error in
+            if isShowHud {
+                self.view.hideSkeleton()
+                GXToast.showError(text:error.localizedDescription)
+            } else {
+                self.tableView.gx_header?.endRefreshing(isSucceed: false, text: error.localizedDescription)
+            }
+        }
+    }
+    
+    func requestVehicleConsumerDelete(indexPath: IndexPath, completion: @escaping (Bool) -> Void) {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestVehicleConsumerDelete(indexPath: indexPath)
+        }.done { model in
+            MBProgressHUD.dismiss()
+            completion(true)
+            GXUserManager.shared.vehicleList.remove(at: indexPath.section)
+            self.tableView.performBatchUpdates {[weak self] in
+                self?.tableView.deleteSection(indexPath.section, with: .left)
+            }
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            completion(true)
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
+    func showDeleteAlert(indexPath: IndexPath, completion: @escaping (Bool) -> Void) {
+        GXUtil.showAlert(title: "Are you sure to delete the vehicle?", actionTitle: "OK", handler: { alert, index in
+            guard index == 1 else { completion(true); return }
+            self.requestVehicleConsumerDelete(indexPath: indexPath, completion: completion)
+        })
+    }
+    
+    func pushAddVehicleVC(vehicle: GXVehicleConsumerListItem?) {
+        let vc = GXHomeDetailAddVehicleVC.createVC(vehicle: vehicle)
         vc.addCompletion = {[weak self] in
             guard let `self` = self else { return }
             self.requestVehicleConsumerList()
@@ -68,36 +120,7 @@ private extension GXHomeDetailVehicleVC {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func requestVehicleConsumerList() {
-        self.view.showAnimatedGradientSkeleton()
-        firstly {
-            self.viewModel.requestVehicleConsumerList()
-        }.done { model in
-            self.view.hideSkeleton()
-            self.tableView.reloadData()
-        }.catch { error in
-            self.view.hideSkeleton()
-            GXToast.showError(text:error.localizedDescription)
-        }
-    }
-    
-    func requestVehicleConsumerDelete(indexPath: IndexPath) {
-        MBProgressHUD.showLoading()
-        firstly {
-            self.viewModel.requestVehicleConsumerDelete(indexPath: indexPath)
-        }.done { model in
-            MBProgressHUD.dismiss()
-            self.tableView.performBatchUpdates {[weak self] in
-                self?.tableView.deleteRow(at: indexPath, with: .left)
-            }
-        }.catch { error in
-            MBProgressHUD.dismiss()
-            GXToast.showError(text:error.localizedDescription)
-        }
-    }
-    
 }
-
 
 extension GXHomeDetailVehicleVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
     // MARK: - SkeletonTableViewDataSource
@@ -122,7 +145,7 @@ extension GXHomeDetailVehicleVC: SkeletonTableViewDataSource, SkeletonTableViewD
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.viewModel.vehicleList.count
+        return GXUserManager.shared.vehicleList.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -131,7 +154,12 @@ extension GXHomeDetailVehicleVC: SkeletonTableViewDataSource, SkeletonTableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXHomeDetailVehicleCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.bindCell(model: self.viewModel.vehicleList[indexPath.section])
+        cell.bindCell(model: GXUserManager.shared.vehicleList[indexPath.section])
+        cell.deleteAction = {[weak self] curCell in
+            guard let `self` = self else { return }
+            guard let curIndexPath = self.tableView.indexPath(for: curCell) else { return }
+            self.showDeleteAlert(indexPath: curIndexPath) { _ in }
+        }
         return cell
     }
     
@@ -139,8 +167,9 @@ extension GXHomeDetailVehicleVC: SkeletonTableViewDataSource, SkeletonTableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let model = self.viewModel.vehicleList[indexPath.section]
+        let model = GXUserManager.shared.vehicleList[indexPath.section]
         self.selectedAction?(model)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -149,21 +178,12 @@ extension GXHomeDetailVehicleVC: SkeletonTableViewDataSource, SkeletonTableViewD
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler: { (action, view, completion) in
-            GXUtil.showAlert(title: "Are you sure to delete the vehicle?", actionTitle: "OK", handler: { alert, index in
-                completion(true)
-                guard index == 1 else { return }
-                self.requestVehicleConsumerDelete(indexPath: indexPath)
-            })
+            self.showDeleteAlert(indexPath: indexPath, completion: completion)
         })
-        let model = self.viewModel.vehicleList[indexPath.section]
+        let model = GXUserManager.shared.vehicleList[indexPath.section]
         let defaultAction = UIContextualAction(style: .normal, title: "Edit", handler: { (action, view, completion) in
             completion(true)
-            let vc = GXHomeDetailAddVehicleVC.createVC(vehicle: model)
-            vc.addCompletion = {[weak self] in
-                guard let `self` = self else { return }
-                self.requestVehicleConsumerList()
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.pushAddVehicleVC(vehicle: model)
         })
         defaultAction.backgroundColor = .gx_black
         return UISwipeActionsConfiguration(actions: [deleteAction, defaultAction])

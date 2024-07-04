@@ -66,7 +66,7 @@ class GXLaunchScreenVC: GXBaseViewController {
     }
     
     func showAlertUpdate(data: GXAppUpdateLatestData) {
-        if data.forceFlag == "YES" {
+        if data.forceFlag == GX_YES {
             let title = "The app has an updated version."
             GXUtil.showAlert(title: title, cancelTitle: "Update now", actionHandler: { alert, index in
                 if let appSettings = URL(string: UIApplication.openSettingsURLString) {

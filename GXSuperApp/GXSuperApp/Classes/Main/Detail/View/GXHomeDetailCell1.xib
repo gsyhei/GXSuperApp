@@ -141,7 +141,7 @@
                                 <state key="normal" title="Favorited" image="details_list_ic_collect">
                                     <color key="titleColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <state key="selected" image="details_list_ic_collect 1"/>
+                                <state key="selected" image="details_list_ic_collect1"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -243,7 +243,7 @@
     </objects>
     <resources>
         <image name="details_list_ic_collect" width="14" height="14"/>
-        <image name="details_list_ic_collect 1" width="14" height="14"/>
+        <image name="details_list_ic_collect1" width="14" height="14"/>
         <image name="details_list_ic_navigation" width="14" height="14"/>
         <image name="details_list_ic_share" width="14" height="14"/>
         <systemColor name="systemBackgroundColor">

@@ -34,7 +34,7 @@ class GXHomeViewModel: GXBaseViewModel {
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXDictListAvailableModel.self, success: { model in
                 GXUserManager.shared.dictListAvailable = model.data
-                GXUserManager.shared.showDictListAvailable = model.data.filter({ $0.homeFlag == "YES" })
+                GXUserManager.shared.showDictListAvailable = model.data.filter({ $0.homeFlag == GX_YES })
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)

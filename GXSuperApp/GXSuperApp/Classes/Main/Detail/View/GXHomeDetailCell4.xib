@@ -69,10 +69,41 @@ reduction privileges</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzT-pF-mFG">
-                                <rect key="frame" x="295" y="152" width="44" height="22"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="al5-kP-xL1">
+                                <rect key="frame" x="214" y="151" width="110" height="24"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DlV-nW-lV4">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="24"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CA-TW3925312" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61F-aT-D0E">
+                                        <rect key="frame" x="6" y="0.0" width="98" height="24"/>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="JpG-hY-try"/>
+                                    <constraint firstAttribute="trailing" secondItem="61F-aT-D0E" secondAttribute="trailing" constant="6" id="4oY-0L-zAm"/>
+                                    <constraint firstAttribute="bottom" secondItem="DlV-nW-lV4" secondAttribute="bottom" id="Hq0-Ae-3jf"/>
+                                    <constraint firstItem="DlV-nW-lV4" firstAttribute="leading" secondItem="al5-kP-xL1" secondAttribute="leading" id="Oq1-Nh-kes"/>
+                                    <constraint firstAttribute="bottom" secondItem="61F-aT-D0E" secondAttribute="bottom" id="SLT-Xt-Fvm"/>
+                                    <constraint firstItem="61F-aT-D0E" firstAttribute="leading" secondItem="al5-kP-xL1" secondAttribute="leading" constant="6" id="aP8-Sa-8CA"/>
+                                    <constraint firstItem="DlV-nW-lV4" firstAttribute="top" secondItem="al5-kP-xL1" secondAttribute="top" id="cXc-Vn-6iO"/>
+                                    <constraint firstAttribute="trailing" secondItem="DlV-nW-lV4" secondAttribute="trailing" id="efU-u1-cQh"/>
+                                    <constraint firstItem="61F-aT-D0E" firstAttribute="top" secondItem="al5-kP-xL1" secondAttribute="top" id="nvX-m0-YxY"/>
+                                    <constraint firstAttribute="height" constant="24" id="rde-bE-aGe"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzT-pF-mFG">
+                                <rect key="frame" x="179" y="152" width="160" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="JpG-hY-try"/>
                                     <constraint firstAttribute="height" constant="22" id="Swv-7Y-i9r"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -91,6 +122,7 @@ reduction privileges</string>
                             <constraint firstItem="LSE-Fp-tvO" firstAttribute="top" secondItem="uSR-sc-6Au" secondAttribute="bottom" constant="12" id="9Rw-7m-oSK"/>
                             <constraint firstAttribute="trailing" secondItem="HzT-pF-mFG" secondAttribute="trailing" constant="12" id="Dc0-kc-A30"/>
                             <constraint firstItem="LSE-Fp-tvO" firstAttribute="leading" secondItem="PFw-lZ-IkU" secondAttribute="leading" constant="12" id="FO8-Tc-WEJ"/>
+                            <constraint firstAttribute="trailing" secondItem="al5-kP-xL1" secondAttribute="trailing" constant="27" id="G6H-yw-OWT"/>
                             <constraint firstItem="nhW-TX-Nzw" firstAttribute="top" secondItem="PFw-lZ-IkU" secondAttribute="top" constant="12" id="G8O-VJ-0pm"/>
                             <constraint firstItem="HzT-pF-mFG" firstAttribute="centerY" secondItem="Tb1-hs-ac1" secondAttribute="centerY" id="USn-IA-NkZ"/>
                             <constraint firstItem="uSR-sc-6Au" firstAttribute="leading" secondItem="PFw-lZ-IkU" secondAttribute="leading" constant="12" id="Uy4-vD-56r"/>
@@ -101,6 +133,7 @@ reduction privileges</string>
                             <constraint firstAttribute="bottom" secondItem="ZoR-2t-Xw6" secondAttribute="bottom" constant="12" id="aKg-tC-ZSI"/>
                             <constraint firstAttribute="trailing" secondItem="ZoR-2t-Xw6" secondAttribute="trailing" constant="12" id="b4e-4g-L47"/>
                             <constraint firstAttribute="trailing" secondItem="uSR-sc-6Au" secondAttribute="trailing" constant="12" id="gng-8q-eQw"/>
+                            <constraint firstItem="al5-kP-xL1" firstAttribute="centerY" secondItem="Tb1-hs-ac1" secondAttribute="centerY" id="ic6-9A-UiJ"/>
                             <constraint firstItem="uSR-sc-6Au" firstAttribute="top" secondItem="nhW-TX-Nzw" secondAttribute="bottom" constant="6" id="rpd-UQ-7cB"/>
                             <constraint firstItem="Tb1-hs-ac1" firstAttribute="top" secondItem="LSE-Fp-tvO" secondAttribute="bottom" constant="10" id="vob-at-f89"/>
                         </constraints>
@@ -129,7 +162,11 @@ reduction privileges</string>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
             </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="freeParkingLabel" destination="uSR-sc-6Au" id="kvx-og-H67"/>
+                <outlet property="freeParkingLabel" destination="uSR-sc-6Au" id="yQx-YB-Smr"/>
+                <outlet property="rightButton" destination="HzT-pF-mFG" id="0On-aZ-luQ"/>
+                <outlet property="vehicleBackIView" destination="DlV-nW-lV4" id="MSW-4a-vqB"/>
+                <outlet property="vehicleContainerView" destination="al5-kP-xL1" id="wcx-N1-4pR"/>
+                <outlet property="vehicleNumLabel" destination="61F-aT-D0E" id="Tqm-tK-1s9"/>
             </connections>
             <point key="canvasLocation" x="287.78625954198475" y="63.732394366197184"/>
         </tableViewCell>

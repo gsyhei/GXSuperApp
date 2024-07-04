@@ -125,14 +125,14 @@ class GXQRCodeReaderVC: GXBaseViewController {
         } catch _ as NSError {
             let title = "Camera permission"
             let message = "Your camera permission is not enabled, can not use scan code"
-            GXUtil.showAlert(title: title, message: message, cancelTitle: "Disagree", actionTitle: "Agree") { alert, index in
+            GXUtil.showAlert(title: title, message: message, cancelTitle: "Disagree", actionTitle: "Agree", handler: { alert, index in
                 guard index == 1 else { return }
                 DispatchQueue.main.async {
                     if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                         UIApplication.shared.open(settingsURL)
                     }
                 }
-            }
+            })
             return false
         }
     }

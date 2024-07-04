@@ -9,8 +9,6 @@ import UIKit
 import PromiseKit
 
 class GXHomeDetailVehicleViewModel: GXBaseViewModel {
-    /// 车辆列表
-    var vehicleList: [GXVehicleConsumerListItem] = []
     
     /// 车辆列表
     func requestVehicleConsumerList() -> Promise<GXVehicleConsumerListModel?> {
@@ -21,7 +19,7 @@ class GXHomeDetailVehicleViewModel: GXBaseViewModel {
                 seal.fulfill(nil); return
             }
             GXNWProvider.login_request(api, type: GXVehicleConsumerListModel.self, success: { model in
-                self.vehicleList = model.data
+                GXUserManager.shared.vehicleList = model.data
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)
@@ -30,8 +28,8 @@ class GXHomeDetailVehicleViewModel: GXBaseViewModel {
     }
     
     /// 删除车辆
-    func requestVehicleConsumerDelete(indexPath: IndexPath) -> Promise<(GXBaseModel?)> {
-        let model = self.vehicleList[indexPath.section]
+    func requestVehicleConsumerDelete(indexPath: IndexPath) -> Promise<GXBaseModel?> {
+        let model = GXUserManager.shared.vehicleList[indexPath.section]
         var params: Dictionary<String, Any> = [:]
         params["id"] = model.id
         let api = GXApi.normalApi(Api_vehicle_consumer_delete, params, .post)

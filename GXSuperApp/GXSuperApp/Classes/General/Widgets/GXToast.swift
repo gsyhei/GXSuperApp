@@ -7,10 +7,11 @@
 
 import UIKit
 
+private let GXIconSize: CGSize = .init(width: 24, height: 24)
+private let GXMargin: CGFloat = 16
 class GXToast: UIControl {
-
     lazy var toastView: UIView = {
-        return UIView(frame: CGRect(x: 0, y: 0, width: 28, height: 28)).then {
+        return UIView(frame: CGRect(origin: .zero, size: GXIconSize)).then {
             $0.backgroundColor = UIColor(white: 0, alpha: 0.8)
             $0.layer.masksToBounds = true
             $0.layer.cornerRadius = 8.0
@@ -18,11 +19,11 @@ class GXToast: UIControl {
     }()
 
     lazy var iconIView: UIImageView = {
-        return UIImageView(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
+        return UIImageView(frame: CGRect(origin: .zero, size: GXIconSize))
     }()
 
     lazy var titleLabel: UILabel = {
-        return UILabel(frame: CGRect(x: 0, y: 0, width: 28, height: 28)).then {
+        return UILabel(frame: CGRect(origin: .zero, size: GXIconSize)).then {
             $0.textAlignment = .left
             $0.textColor = .white
             $0.font = .gx_font(size: 15)
@@ -37,7 +38,6 @@ class GXToast: UIControl {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .clear
-        self.addTarget(self, action: #selector(self.dissmisClicked(_:)), for: .touchUpInside)
         self.createSubviews()
     }
     
@@ -51,20 +51,16 @@ class GXToast: UIControl {
         self.toastView.addSubview(self.titleLabel)
 
         self.iconIView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(24.0)
+            make.left.equalToSuperview().offset(GXMargin)
             make.centerY.equalToSuperview()
-            make.size.equalTo(CGSize(width: 28, height: 28))
+            make.size.equalTo(GXIconSize)
         }
         self.titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(15)
-            make.left.equalTo(self.iconIView.snp.right).offset(8)
-            make.right.equalToSuperview().offset(-24)
-            make.bottom.equalToSuperview().offset(-15)
+            make.top.equalToSuperview().offset(GXMargin)
+            make.left.equalTo(self.iconIView.snp.right).offset(GXMargin/2)
+            make.right.equalToSuperview().offset(-GXMargin)
+            make.bottom.equalToSuperview().offset(-GXMargin)
         }
-    }
-
-    @objc func dissmisClicked(_ sender: Any?) {
-
     }
 
     func showView(to view: UIView, animated: Bool = true) {
@@ -74,23 +70,23 @@ class GXToast: UIControl {
         let beginTransform = CGAffineTransform(scaleX: 0.2, y: 0.2)
         self.toastView.transform = beginTransform
         self.toastView.alpha = 0.0
-        UIView.animate(withDuration: 0.1) {
+        UIView.animate(withDuration: 0.2) {
             self.toastView.transform = .identity
             self.toastView.alpha = 1.0
         } completion: { finished in
-            self.autoHide()
+            self.autoHideToast()
         }
     }
 
-    func autoHide() {
+    func autoHideToast() {
         DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(2)) {
             DispatchQueue.main.async {
-                self.hideView(animated: true)
+                self.hideToast(animated: true)
             }
         }
     }
 
-    func hideView(animated: Bool = true) {
+    func hideToast(animated: Bool = true) {
         guard animated else {
             self.toastView.removeFromSuperview()
             return
@@ -110,14 +106,16 @@ extension GXToast {
         let backgroud = (view != nil) ? view : UIWindow.gx_frontWindow
         guard let backView = backgroud else { return }
 
-        let maxSize = CGSize(width: SCREEN_WIDTH - 204, height: SCREEN_HEIGHT - 200)
-        let textSize = text.size(size: maxSize, font: .gx_font(size: 15))
-        var toastSize = CGSize(width: textSize.width + 85, height: ceil(textSize.height) + 30)
-        toastSize.height = min(toastSize.height, SCREEN_HEIGHT - 228)
+        let textMaxSize = CGSize(width: SCREEN_WIDTH - 200, height: SCREEN_HEIGHT - 230)
+        let textSize = text.size(size: textMaxSize, font: .gx_font(size: 15))
+        let contentHeight = max(ceil(textSize.height), GXIconSize.height)
+        let toastWidth = GXIconSize.width + textSize.width + GXMargin * 2 + GXMargin/2
+        let toastHeight = contentHeight + GXMargin * 2
+        let toastSize = CGSize(width: toastWidth, height: toastHeight)
+        
         let top = (backView.frame.height - toastSize.height)/2
         let left = (backView.frame.width - toastSize.width)/2
         let frame = CGRect(origin: CGPoint(x: left, y: top), size: toastSize)
-
         let toast = GXToast(frame: backView.bounds)
         toast.toastView.frame = frame
         toast.iconIView.image = UIImage(named: icon)
@@ -127,7 +125,7 @@ extension GXToast {
 
     class func showError(_ error: CustomNSError? = nil, to view: UIView? = nil) {
         guard error?.errorCode != NSURLErrorCancelled else { return }
-        guard error?.errorCode != 401 else { return }
+        //guard error?.errorCode != 401 else { return }
         GXToast.showError(text: error?.localizedDescription, to: view)
     }
 

@@ -58,7 +58,8 @@ class GXHomeDetailVC: GXBaseViewController {
         
         self.tableView.gx_header = GXRefreshNormalHeader(completion: { [weak self] in
             guard let `self` = self else { return }
-            self.requestStationConsumerDetail()
+            self.requestStationConsumerDetail(isShowHud: false)
+            self.tableView.gx_header?.endRefreshing(isSucceed: true)
         }).then { footer in
             footer.updateRefreshTitles()
         }
@@ -167,6 +168,7 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             return cell
         case 4:
             let cell: GXHomeDetailCell4 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(model: self.viewModel.detailData, vehicle: self.viewModel.selectedVehicle)
             cell.addAction = {[weak self] in
                 guard let `self` = self else { return }
                 self.gotoAddVehicleVC()
@@ -233,6 +235,7 @@ private extension GXHomeDetailVC {
     @IBAction func scanButtonClicked(_ sender: Any?) {
         if GXUserManager.shared.isLogin {
             let vc = GXQRCodeReaderVC.xibViewController()
+            vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
         }
         else {
@@ -244,10 +247,11 @@ private extension GXHomeDetailVC {
 
 private extension GXHomeDetailVC {
     
-    func requestStationConsumerDetail() {
+    func requestStationConsumerDetail(isShowHud: Bool = true) {
         self.view.layoutSkeletonIfNeeded()
-        self.view.showAnimatedGradientSkeleton()
-        
+        if isShowHud {
+            self.view.showAnimatedGradientSkeleton()
+        }
         let combinedPromise = when(fulfilled: [
             self.viewModel.requestStationConsumerDetail(),
             self.viewModel.requestConnectorConsumerList(),
@@ -256,11 +260,19 @@ private extension GXHomeDetailVC {
         firstly {
             combinedPromise
         }.done { models in
-            self.view.hideSkeleton()
+            if isShowHud {
+                self.view.hideSkeleton()
+            } else {
+                self.tableView.gx_header?.endRefreshing(isSucceed: true)
+            }
             self.updateDetailDataSource()
         }.catch { error in
-            self.view.hideSkeleton()
-            GXToast.showError(text:error.localizedDescription)
+            if isShowHud {
+                self.view.hideSkeleton()
+                GXToast.showError(text:error.localizedDescription)
+            } else {
+                self.tableView.gx_header?.endRefreshing(isSucceed: false, text: error.localizedDescription)
+            }
         }
     }
     
@@ -271,6 +283,19 @@ private extension GXHomeDetailVC {
         }.done { models in
             MBProgressHUD.dismiss()
             self.updateDetailDataSource()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
+    func requestFavoriteConsumerSave() {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestFavoriteConsumerSave()
+        }.done { isFavorite in
+            MBProgressHUD.dismiss()
+            self.tableView.reloadData()
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
@@ -358,8 +383,13 @@ private extension GXHomeDetailVC {
     
     func gotoAddVehicleVC() {
         if GXUserManager.shared.isLogin {
-            if self.viewModel.vehicleList.count > 0 {
-                let vc = GXHomeDetailVehicleVC.createVC(vehicleList: self.viewModel.vehicleList)
+            if GXUserManager.shared.vehicleList.count > 0 {
+                let vc = GXHomeDetailVehicleVC.xibViewController()
+                vc.selectedAction = {[weak self] vehicle in
+                    guard let `self` = self else { return }
+                    self.viewModel.selectedVehicle = vehicle
+                    self.tableView.reloadData()
+                }
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             else {
@@ -391,7 +421,7 @@ private extension GXHomeDetailVC {
     
     func requestFavoritedAction(button: UIButton) {
         if GXUserManager.shared.isLogin {
-            // 收藏操作
+            self.requestFavoriteConsumerSave()
         }
         else {
             GXAppDelegate?.gotoLogin(from: self)

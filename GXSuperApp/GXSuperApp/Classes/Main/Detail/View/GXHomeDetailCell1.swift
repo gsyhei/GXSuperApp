@@ -53,7 +53,7 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
         let titles = model.aroundFacilitiesList.compactMap { $0.name }
         let height = self.tagsView.updateTitles(titles: titles, width: SCREEN_WIDTH - 48, isShowFristLine: false)
         self.tagsHeightLC.constant = height
-        self.favoritedButton.isSelected = (model.favoriteFlag == "YES")
+        self.favoritedButton.isSelected = (model.favoriteFlag == GX_YES)
         self.addressLabel.text = model.address
         self.addressDetailLabel.text = model.siteGuidance
     }

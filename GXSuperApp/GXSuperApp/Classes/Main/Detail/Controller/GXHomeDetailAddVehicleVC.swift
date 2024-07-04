@@ -29,6 +29,19 @@ class GXHomeDetailAddVehicleVC: GXBaseViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !self.didGetNetworktLoad {
+            self.didGetNetworktLoad = true
+            self.numberTF.becomeFirstResponder()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.numberTF.resignFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

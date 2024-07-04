@@ -7,8 +7,11 @@
 
 import UIKit
 
+/// 系统参数
 let GX_PramConsumer = GXUserManager.shared.paramConsumerData
+/// 周边设施
 let GX_DictListAvailable = GXUserManager.shared.dictListAvailable
+/// 主页显示的周边设施
 let GX_ShowDictListAvailable = GXUserManager.shared.showDictListAvailable
 
 class GXUserManager: NSObject {
@@ -32,19 +35,16 @@ class GXUserManager: NSObject {
             UserDefaults.standard.synchronize()
         }
     }
-    
     /// 用户信息
     var isGetUser: Bool = false
     var user: GXUserData?
-    
     /// 是否登录
     var isLogin: Bool {
         return self.token != nil
     }
-    
     /// 是否vip
     var isVip: Bool {
-        return self.user?.memberFlag == .YES
+        return self.user?.memberFlag == GX_YES
     }
     
     /// 全局筛选配置model
@@ -57,8 +57,10 @@ class GXUserManager: NSObject {
     var paramConsumerData: GXParamConsumerData?
     /// 周边设施
     var dictListAvailable: [GXDictListAvailableData] = []
-    /// 周边设施
+    /// 主页显示的周边设施
     var showDictListAvailable: [GXDictListAvailableData] = []
+    /// 车辆列表
+    var vehicleList: [GXVehicleConsumerListItem] = []
     
     override init() {}
 }

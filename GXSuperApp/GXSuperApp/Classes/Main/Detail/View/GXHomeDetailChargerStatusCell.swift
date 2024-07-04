@@ -33,7 +33,7 @@ class GXHomeDetailChargerStatusCell: UITableViewCell, NibReusable {
         
         self.chargerNumLabel.text = model.qrcode
         self.maximumPowerLabel.text = "\(model.maxPower)KW"
-        if model.idleFlag == "YES" {
+        if model.idleFlag == GX_YES {
             switch model.status {
             case "Available", "Preparing":
                 self.chargerButton.backgroundColor = .gx_lightGreen
@@ -71,6 +71,7 @@ class GXHomeDetailChargerStatusCell: UITableViewCell, NibReusable {
 
 private extension GXHomeDetailChargerStatusCell {
     @IBAction func copyButtonClicked(_ sender: Any?) {
-        
+        UIPasteboard.general.string = self.chargerNumLabel.text
+        GXToast.showSuccess(text: "Copied to pasteboard", to: self.superview?.superview)
     }
 }
