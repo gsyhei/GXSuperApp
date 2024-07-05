@@ -392,7 +392,7 @@ open class PhotoPickerController: UINavigationController {
         fetchData = config.fetchdata.init(config: config, pickerData: pickerData)
         splitType = .none
         super.init(nibName: nil, bundle: nil)
-        self.config.adaptiveBarAppearance = false
+        self.config.adaptiveBarAppearance = true
         pickerData.delegate = self
         fetchData.delegate = self
         isOriginal = config.isSelectedOriginal
@@ -514,12 +514,15 @@ extension PhotoPickerController {
         if #available(iOS 15.0, *), config.adaptiveBarAppearance {
             let appearance = UINavigationBarAppearance()
             appearance.titleTextAttributes = titleTextAttributes
-            switch barStyle {
-            case .`default`:
-                appearance.backgroundEffect = UIBlurEffect(style: .extraLight)
-            default:
-                appearance.backgroundEffect = UIBlurEffect(style: .dark)
-            }
+//            switch barStyle {
+//            case .`default`:
+//                appearance.backgroundEffect = UIBlurEffect(style: .extraLight)
+//            default:
+//                appearance.backgroundEffect = UIBlurEffect(style: .dark)
+//            }
+            appearance.backgroundEffect = nil
+            appearance.shadowImage = UIImage()
+            appearance.shadowColor = .clear
             if let image = navigationBackgroundImage {
                 appearance.backgroundImage = image
             }

@@ -259,6 +259,8 @@ public extension PhotoPickerViewController {
         case image
     }
     enum CancelPosition {
+        /// 无
+        case none
         /// 左边
         case left
         /// 右边

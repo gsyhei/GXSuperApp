@@ -61,10 +61,10 @@ public struct PreviewViewConfiguration {
     
     /// 取消按钮的配置只有当是外部预览时才有效，文字和图片颜色通过 navigationTintColor 设置
     /// 取消按钮类型
-    public var cancelType: PhotoPickerViewController.CancelType = .text
+    public var cancelType: PhotoPickerViewController.CancelType = .image
     
     /// 取消按钮位置
-    public var cancelPosition: PhotoPickerViewController.CancelPosition = .right
+    public var cancelPosition: PhotoPickerViewController.CancelPosition = .left
     
     /// 取消按钮图片名
     public var cancelImageName: String {

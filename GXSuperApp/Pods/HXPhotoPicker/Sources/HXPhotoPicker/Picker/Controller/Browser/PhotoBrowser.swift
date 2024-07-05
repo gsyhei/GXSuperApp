@@ -63,10 +63,10 @@ open class PhotoBrowser: PhotoPickerController {
     public var longPressHandler: AssetHandler?
     
     /// 页面指示器布局的位置
-    public var pageIndicatorType: PageIndicatorType = .bottom
+    public var pageIndicatorType: PageIndicatorType = .titleView
     
     /// 页面指示器，nil则不显示
-    public var pageIndicator: PhotoBrowserPageIndicator? = PhotoBrowserPageControlIndicator(frame: .init(x: 0, y: 0, width: 0, height: 30))
+    public var pageIndicator: PhotoBrowserPageIndicator? = PhotoBrowserDefaultPageIndicator(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
     
     /// 获取页数
     /// 动态设置数据时必须实现（assets.isEmpty）
@@ -293,7 +293,7 @@ open class PhotoBrowser: PhotoPickerController {
         var previewConfig = PickerConfiguration()
         previewConfig.prefersStatusBarHidden = true
         previewConfig.statusBarStyle = .lightContent
-        previewConfig.adaptiveBarAppearance = false
+        previewConfig.adaptiveBarAppearance = true
         previewConfig.browserTransitionAnimator = config.transitionAnimator
         previewConfig.browserInteractiveTransitionAnimator = config.interactiveTransitionAnimator
         
@@ -302,7 +302,7 @@ open class PhotoBrowser: PhotoPickerController {
         pConfig.isShowBottomView = false
         pConfig.bottomView.isShowPreviewList = false
         pConfig.cancelType = .image
-        pConfig.cancelPosition = .left
+        pConfig.cancelPosition = .none
         pConfig.livePhotoMark.blurStyle = .dark
         pConfig.livePhotoMark.imageColor = "#ffffff".color
         pConfig.livePhotoMark.textColor = "#ffffff".color
@@ -757,7 +757,7 @@ open class PhotoBrowserDefaultPageIndicator: UIView, PhotoBrowserPageIndicator {
     public var numberOfPages: Int = 0
     public var pageIndex: Int = 0 {
         didSet {
-            titleLabel.text = String(pageIndex + 1) + "/" + String(numberOfPages)
+            titleLabel.text = String(pageIndex + 1) + " / " + String(numberOfPages)
         }
     }
     
@@ -765,7 +765,7 @@ open class PhotoBrowserDefaultPageIndicator: UIView, PhotoBrowserPageIndicator {
         super.init(frame: frame)
         titleLabel = UILabel()
         titleLabel.textColor = .white
-        titleLabel.font = UIFont.semiboldPingFang(ofSize: 17)
+        titleLabel.font = UIFont.semiboldPingFang(ofSize: 20)
         titleLabel.textAlignment = .center
         addSubview(titleLabel)
     }

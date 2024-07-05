@@ -61,7 +61,7 @@ target 'GXSuperApp' do
   # 二维码扫码
   pod 'QRCodeReader.swift'
   # 相册
-  pod 'HXPhotoPicker', '4.1.2'
+  pod 'HXPhotoPicker'
   # 日志
   pod 'Bugly' 
   # 异步链式框架

@@ -315,7 +315,7 @@ extension PhotoPreviewViewController {
                 }
                 if config.cancelPosition == .left {
                     navigationItem.leftBarButtonItem = cancelItem
-                } else {
+                } else if config.cancelPosition == .right {
                     navigationItem.rightBarButtonItem = cancelItem
                 }
             }
