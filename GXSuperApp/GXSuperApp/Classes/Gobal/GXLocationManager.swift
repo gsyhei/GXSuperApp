@@ -34,7 +34,8 @@ class GXLocationManager: NSObject {
     
     func requestGeocodeCompletion(_ hander: @escaping ((Bool, String?, CLLocation?) -> Void)) {
         self.completionHandler = hander
-
+        self.locationManager?.stopUpdatingLocation()
+        
         if self.locationManager?.authorizationStatus == .notDetermined {
             self.locationManager?.requestWhenInUseAuthorization()
         }
@@ -67,7 +68,7 @@ class GXLocationManager: NSObject {
 
 extension GXLocationManager: CLLocationManagerDelegate {
     
-    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .notDetermined {
             self.locationManager?.requestWhenInUseAuthorization()
         }
@@ -82,13 +83,17 @@ extension GXLocationManager: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //self.locationManager?.stopUpdatingLocation()
+//        self.locationManager?.stopUpdatingLocation()
         if let location = locations.first {
             self.reverseGeocoder(currentLocation: location)
         }
     }
     
-    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+//      self.locationManager?.stopUpdatingHeading()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         self.locationManager?.stopUpdatingLocation()
         DispatchQueue.main.async {
             self.completionHandler?(true, nil, nil)

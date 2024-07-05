@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: 通知name
 
-/// 登录完成
+/// 登录完成/登出
 let GX_NotifName_Login = NSNotification.Name("GX_NN_Login")
 
 /// 网络状态监听

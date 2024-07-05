@@ -8,6 +8,7 @@
 import UIKit
 import PromiseKit
 import RxSwift
+import MBProgressHUD
 
 private let GX_NotifName_ChargingFeeConfirm_Scan = NSNotification.Name("GX_NotifName_ChargingFeeConfirm_Scan")
 
@@ -42,10 +43,8 @@ class GXChargingFeeConfirmVC: GXBaseViewController, GXChargingStoryboard {
     
 }
 
-extension GXChargingFeeConfirmVC {
-    
-    
-    
+private extension GXChargingFeeConfirmVC {
+        
     func requestConnectorConsumerScan() {
         self.view.layoutSkeletonIfNeeded()
         self.view.showAnimatedGradientSkeleton()
@@ -60,30 +59,35 @@ extension GXChargingFeeConfirmVC {
             self.updateBottomDataSource()
             self.notifiTableViewUpdateData()
         }.catch { error in
-            self.view.hideSkeleton()
             GXToast.showError(text:error.localizedDescription)
-            self.navigationController?.popViewController(animated: true)
+//            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func requestOrderConsumerStart() {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestOrderConsumerStart()
+        }.done { models in
+            MBProgressHUD.dismiss()
+            
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
         }
     }
     
     func updateBottomDataSource() {
         /// advertView
-        if GXUserManager.shared.isLogin {
-            self.tvBottomHeightLC.constant = 96.0
-            self.advertView.isHidden = false
-            if GXUserManager.shared.isVip {
-                self.advertTitleLabel.text = "VIP for Discounts"
-            }
-            else {
-                self.advertTitleLabel.text = "Become a VIP for Discounts"
-            }
-            self.advertInfoLabel.text = "Save up to $\(GXUserManager.shared.paramsData?.occupyMax ?? "")/year"
-            self.advertKWhLabel.text = "$\(GXUserManager.shared.paramsData?.memberFee ?? "")"
+        self.tvBottomHeightLC.constant = 96.0
+        self.advertView.isHidden = false
+        if GXUserManager.shared.isVip {
+            self.advertTitleLabel.text = "VIP for Discounts"
+        } else {
+            self.advertTitleLabel.text = "Become a VIP for Discounts"
         }
-        else {
-            self.tvBottomHeightLC.constant = 12.0
-            self.advertView.isHidden = true
-        }
+        self.advertInfoLabel.text = "Save up to $\(GXUserManager.shared.paramsData?.occupyMax ?? "")/year"
+        self.advertKWhLabel.text = "$\(GXUserManager.shared.paramsData?.memberFee ?? "")"
         
         guard let info = self.viewModel.scanData?.stationInfo else { return }
         /// bottomView
@@ -107,17 +111,10 @@ extension GXChargingFeeConfirmVC {
             self.bottomLeftDw.textColor = .gx_green
             self.bottomVipIV.isHidden = false
             self.bottomRightFeeLeftLC.constant = 40.0
-            if GXUserManager.shared.isLogin {
-                let omzFee = info.electricFee + info.serviceFee
-                self.bottomLeftFee.text = String(format: "$%.2f", omzFee)
-                let vipFee = info.electricFee + info.serviceFeeVip
-                self.bottomRightFee.text = String(format: "$%.2f/kWh", vipFee)
-            }
-            else {
-                self.bottomLeftFee.text = "$*****"
-                let attrText = NSAttributedString.gx_strikethroughText("$*****/kWh", color: .gx_drakGray, font: .gx_font(size: 14))
-                self.bottomRightFee.attributedText = attrText
-            }
+            let omzFee = info.electricFee + info.serviceFee
+            self.bottomLeftFee.text = String(format: "$%.2f", omzFee)
+            let vipFee = info.electricFee + info.serviceFeeVip
+            self.bottomRightFee.text = String(format: "$%.2f/kWh", vipFee)
         }
     }
     
@@ -125,8 +122,12 @@ extension GXChargingFeeConfirmVC {
         NotificationCenter.default.post(name: GX_NotifName_ChargingFeeConfirm_Scan, object: self.viewModel.scanData)
     }
     
+    @IBAction func advertButtonClicked(_ sender: Any?) {
+        // 开通会员
+    }
+    
     @IBAction func startChargingButtonClicked(_ sender: Any?) {
-        
+        self.requestOrderConsumerStart()
     }
     
 }
@@ -142,7 +143,13 @@ class GXChargingFeeConfirmTableVC: UITableViewController {
     @IBOutlet weak var vehicleBackIView: UIImageView!
     @IBOutlet weak var vehicleNumLabel: UILabel!
     // Cell 1
-    
+    @IBOutlet weak var chargingFeeLabel: UILabel!
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    // Cell 2
+    @IBOutlet weak var maxOccupyFeeLabel: UILabel!
+    @IBOutlet weak var occupyFeeLabel: UILabel!
+    // Cell 3
+    @IBOutlet weak var freeParkingLabel: UILabel!
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -175,6 +182,8 @@ class GXChargingFeeConfirmTableVC: UITableViewController {
     }
     
     func updateDataSource() {
+        self.tableView.reloadData()
+        // Cell 0
         if let vehicle = GXUserManager.shared.selectedVehicle {
             self.vehicleContainerView.isHidden = false
             self.vehicleNumLabel.text = vehicle.state + "-" + vehicle.carNumber
@@ -182,12 +191,39 @@ class GXChargingFeeConfirmTableVC: UITableViewController {
         else {
             self.vehicleContainerView.isHidden = true
         }
-        
         guard let scan = self.scanData else { return }
         guard let info = scan.stationInfo else { return }
         self.nameLabel.text = info.name
         self.qrcodeLabel.text = "Pile ID: \(scan.qrcode)"
-        
+        // Cell 1
+        self.currentTimeLabel.text = info.period
+        if GXUserManager.shared.isVip {
+            let vipFee = info.electricFee + info.serviceFeeVip
+            self.chargingFeeLabel.text = String(format: "$%.2f", vipFee)
+        }
+        else {
+            let omzFee = info.electricFee + info.serviceFee
+            self.chargingFeeLabel.text = String(format: "$%.2f", omzFee)
+        }
+        // Cell 2
+        self.maxOccupyFeeLabel.text = "Idle Fee Cap at $\(GXUserManager.shared.paramsData?.occupyMax ?? "")"
+        self.occupyFeeLabel.text = String(format: "$%.2f", info.occupyFee)
+        // Cell 3
+        self.freeParkingLabel.text = info.freeParking
+    }
+    
+}
+
+extension GXChargingFeeConfirmTableVC {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 2 {
+            if  self.scanData?.stationInfo?.occupyFlag == GX_YES {
+                return UITableView.automaticDimension
+            } else {
+                return 0
+            }
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
 }
@@ -203,4 +239,11 @@ extension GXChargingFeeConfirmTableVC {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func chargingFeeButtonClicked(_ sender: Any?) {
+        guard let prices = self.scanData?.stationInfo?.prices else { return }
+        let maxHeight = SCREEN_HEIGHT - 200
+        let menu = GXHomeDetailPriceDetailsMenu(height: maxHeight)
+        menu.bindView(prices: prices)
+        menu.show(style: .sheetBottom, usingSpring: true)
+    }
 }

@@ -358,9 +358,10 @@ private extension GXHomeDetailVC {
         }
     }
     func showAllTimeMenu() {
+        guard let prices = self.viewModel.detailData?.prices else { return }
         let maxHeight = SCREEN_HEIGHT - 200
         let menu = GXHomeDetailPriceDetailsMenu(height: maxHeight)
-        menu.bindView(viewModel: self.viewModel)
+        menu.bindView(prices: prices)
         menu.show(style: .sheetBottom, usingSpring: true)
     }
     

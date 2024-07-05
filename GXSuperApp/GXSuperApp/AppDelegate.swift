@@ -158,4 +158,12 @@ extension AppDelegate {
         navc.modalPresentationStyle = .fullScreen
         from.present(navc, animated: true)
     }
+    func gotoMainTabbarController(index: Int = 0) {
+        let vc = GXTabBarController()
+        vc.selectedIndex = index
+        self.setWindowRootViewController(to: vc)
+    }
+    func logout(index: Int = 0) {
+        self.gotoMainTabbarController(index: index)
+    }
 }

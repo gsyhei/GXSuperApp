@@ -63,5 +63,16 @@ class GXUserManager: NSObject {
     /// 主页显示的周边设施
     var showAvailableList: [GXDictListAvailableData] = []
 
-    override init() {}
+    /// 登出
+    class func logout() {
+//        guard GXUserManager.shared.isLogin else { return }
+        GXUserManager.shared.token = nil
+        GXUserManager.shared.vehicleList = []
+        GXUserManager.shared.selectedVehicle = nil
+        GXUserManager.shared.orderDoing = nil
+        
+        /// 清理完数据再通知
+        GXAppDelegate?.logout()
+    }
+    
 }

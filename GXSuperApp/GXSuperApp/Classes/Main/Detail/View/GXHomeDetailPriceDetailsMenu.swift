@@ -8,8 +8,8 @@
 import UIKit
 
 class GXHomeDetailPriceDetailsMenu: GXBaseMenuView {
-    private weak var viewModel: GXHomeDetailViewModel?
-
+    private var prices: [GXStationConsumerDetailPricesItem] = []
+    
     private lazy var infoText: String = {
         return "Due to the fluctuation of service operating costs and electri-city prices, there are pricing differences between charging and different gun power"
     }()
@@ -56,14 +56,13 @@ class GXHomeDetailPriceDetailsMenu: GXBaseMenuView {
         }
     }
     
-    func bindView(viewModel: GXHomeDetailViewModel?) {
-        guard let viewModel = viewModel else { return }
-        self.viewModel = viewModel
+    func bindView(prices: [GXStationConsumerDetailPricesItem]) {
+        self.prices = prices
         self.tableView.reloadData()
         
         let infoHeight = self.infoText.height(width: SCREEN_WIDTH - 30, font: .gx_font(size: 14))
         var height = tableView.sectionHeaderHeight + infoHeight + 32
-        height += tableView.rowHeight * CGFloat(viewModel.detailData?.prices.count ?? 0)
+        height += tableView.rowHeight * CGFloat(prices.count)
         height += self.safeAreaHeight
         self.updateHeight(height: height)
     }
@@ -74,12 +73,12 @@ extension GXHomeDetailPriceDetailsMenu: UITableViewDataSource, UITableViewDelega
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel?.detailData?.prices.count ?? 0
+        return self.prices.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXHomeDetailChargingFeeCell = tableView.dequeueReusableCell(for: indexPath)
-        let price = self.viewModel?.detailData?.prices[indexPath.row]
+        let price = self.prices[indexPath.row]
         cell.bindCell(model: price)
         return cell
     }

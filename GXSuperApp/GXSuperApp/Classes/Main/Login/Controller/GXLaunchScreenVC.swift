@@ -30,11 +30,6 @@ class GXLaunchScreenVC: GXBaseViewController {
         }
     }
     
-    func gotoMainTabbarController() {
-        let vc = GXTabBarController()
-        GXAppDelegate?.setWindowRootViewController(to: vc)
-    }
-    
     /// 检查版本更新
     func requestCheckVersion() {
         self.networkManager?.stopListening()
@@ -53,12 +48,12 @@ class GXLaunchScreenVC: GXBaseViewController {
         MBProgressHUD.dismiss(for: self.view)
 
         guard let data = data else {
-            self.gotoMainTabbarController()
+            GXAppDelegate?.gotoMainTabbarController()
             return
         }
         GXUserManager.shared.appUpdateData = data
         if data.version == UIApplication.appVersion() {
-            self.gotoMainTabbarController()
+            GXAppDelegate?.gotoMainTabbarController()
         }
         else {
             self.showAlertUpdate(data: data)
@@ -78,7 +73,7 @@ class GXLaunchScreenVC: GXBaseViewController {
             let title = "The app has an updated version."
             GXUtil.showAlert(title: title, cancelTitle: "Cancel", actionTitle: "Update now", actionHandler: { alert, index in
                 if index == 0 {
-                    self.gotoMainTabbarController()
+                    GXAppDelegate?.gotoMainTabbarController()
                 }
                 else {
                     if let appSettings = URL(string: UIApplication.openSettingsURLString) {

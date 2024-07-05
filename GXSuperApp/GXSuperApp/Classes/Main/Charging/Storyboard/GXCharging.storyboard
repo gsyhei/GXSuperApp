@@ -209,6 +209,9 @@ becoming invalid.</string>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="chargingFeeButtonClicked:" destination="257-w1-moU" eventType="touchUpInside" id="IoN-G1-cUz"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:00-18:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0I-gT-NWr">
                                                             <rect key="frame" x="156.66666666666666" y="15.333333333333334" width="61" height="23.333333333333329"/>
@@ -477,8 +480,13 @@ magna aliqua. Ut enim ad minim veniam</string>
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="chargingFeeLabel" destination="rHN-PX-taZ" id="Lde-CA-dCH"/>
+                        <outlet property="currentTimeLabel" destination="M0I-gT-NWr" id="Cxg-f4-gXf"/>
+                        <outlet property="freeParkingLabel" destination="yCO-GN-fZ6" id="i3J-qF-ka0"/>
                         <outlet property="leftLineImgView" destination="G80-2R-5DR" id="hyi-ZN-Emb"/>
+                        <outlet property="maxOccupyFeeLabel" destination="uPo-Z8-tq4" id="foZ-lv-nta"/>
                         <outlet property="nameLabel" destination="eHc-c3-FVa" id="nbn-M3-n8f"/>
+                        <outlet property="occupyFeeLabel" destination="gCx-xR-hFd" id="6Qw-gA-CHM"/>
                         <outlet property="qrcodeLabel" destination="QK1-zL-pFx" id="FMJ-s2-Dch"/>
                         <outlet property="vehicleBackIView" destination="EFW-Sy-jBJ" id="33a-4B-PD7"/>
                         <outlet property="vehicleContainerView" destination="SKE-wz-mx3" id="Stw-y3-gOq"/>
@@ -631,6 +639,9 @@ magna aliqua. Ut enim ad minim veniam</string>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="advertButtonClicked:" destination="uaL-cc-Pd4" eventType="touchUpInside" id="cYJ-4K-Wbg"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save up to $270.00/year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pE0-zg-IcI">
                                         <rect key="frame" x="24" y="52" width="136" height="20"/>

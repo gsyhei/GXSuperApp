@@ -55,6 +55,10 @@ class GXHomeVC: GXBaseViewController {
         return GXHomeViewModel()
     }()
     
+    deinit {
+        XCGLogger.info("GXHomeVC deinit")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)

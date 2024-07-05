@@ -59,6 +59,9 @@ let Api_connector_consumer_detail = "/charging-order-server/connector/consumer/d
 /// 枪扫二维码
 let Api_connector_consumer_scan = "/charging-order-server/connector/consumer/scan"
 
+/// 枪状态
+let Api_connector_consumer_status = "/charging-order-server/connector/consumer/status"
+
 /// 车辆-列表
 let Api_vehicle_consumer_list = "/charging-order-server/vehicle/consumer/list"
 
@@ -78,3 +81,7 @@ let Api_favorite_consumer_list = "/charging-order-server/favorite/consumer/list"
 
 /// 进行中的订单
 let Api_order_consumer_doing = "/charging-order-server/order/consumer/doing"
+
+/// 启动充电
+let Api_order_consumer_start = "/charging-order-server/order/consumer/start"
+

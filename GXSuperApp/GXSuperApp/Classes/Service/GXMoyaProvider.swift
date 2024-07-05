@@ -50,7 +50,13 @@ class GXMoyaProvider: MoyaProvider<GXApi> {
                     if model.code == 200 {
                         self.gx_logger(target: target, error: nil, json: dataJSON)
                         DispatchQueue.main.async { success(model) }
-                    } else {
+                    } 
+                    else if model.code == 401 { // 无token或过期
+                        let error = GXError(code: model.code, info: model.msg)
+                        self.gx_logger(target: target, error: error, json: dataJSON)
+                        DispatchQueue.main.async { failure(error); GXUserManager.logout() }
+                    }
+                    else {
                         let error = GXError(code: model.code, info: model.msg)
                         self.gx_logger(target: target, error: error, json: dataJSON)
                         DispatchQueue.main.async { failure(error) }
@@ -59,7 +65,7 @@ class GXMoyaProvider: MoyaProvider<GXApi> {
                     let errorInfo = (dataJSON["error"] as? String) ?? response.description
                     let error = GXError(code: response.statusCode, info: errorInfo)
                     self.gx_logger(target: target, error: error, json: dataJSON)
-                    DispatchQueue.main.async { failure(error) }
+                    DispatchQueue.main.async { failure(error); GXUserManager.logout() }
                 default:
                     let errorInfo = (dataJSON["error"] as? String) ?? response.description
                     let error = GXError(code: response.statusCode, info: errorInfo)
