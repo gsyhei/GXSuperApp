@@ -206,6 +206,7 @@ private extension GXHomeVC {
         }.done { models in
             MBProgressHUD.dismiss()
             self.selectTagsView.updateDataSource()
+            self.updateOrderConsumerDoing()
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
@@ -226,7 +227,8 @@ private extension GXHomeVC {
     }
     
     func updateOrderConsumerDoing() {
-        if (GXUserManager.shared.orderDoing != nil) {
+        /// 临时修改相反判断
+        if (GXUserManager.shared.orderDoing == nil) {
             self.ongoingView.addSubview(self.circleHUDView)
             self.ongoingView.isHidden = false
         }
@@ -357,7 +359,9 @@ private extension GXHomeVC {
     
     @IBAction func ongoingButtonClicked(_ sender: Any?) {
         // 进行中的订单
-        
+        let vc = GXChargingFeeConfirmVC.instantiate()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

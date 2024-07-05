@@ -26,7 +26,7 @@ class GXHomeDetailVehicleVC: GXBaseViewController {
             tableView.register(cellType: GXHomeDetailVehicleCell.self)
         }
     }
-    var selectedAction: GXActionBlockItem<GXVehicleConsumerListItem>?
+    var selectedAction: GXActionBlock?
     
     private lazy var viewModel: GXHomeDetailVehicleViewModel = {
         return GXHomeDetailVehicleViewModel()
@@ -168,7 +168,8 @@ extension GXHomeDetailVehicleVC: SkeletonTableViewDataSource, SkeletonTableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let model = GXUserManager.shared.vehicleList[indexPath.section]
-        self.selectedAction?(model)
+        GXUserManager.shared.selectedVehicle = model
+        self.selectedAction?()
         self.navigationController?.popViewController(animated: true)
     }
     

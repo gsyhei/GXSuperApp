@@ -43,6 +43,8 @@ class GXUserManager: NSObject {
     }
     /// 车辆列表
     var vehicleList: [GXVehicleConsumerListItem] = []
+    /// 选择车辆
+    var selectedVehicle: GXVehicleConsumerListItem?
     /// 进行中的订单
     var orderDoing: GXOrderConsumerDoingData?
     

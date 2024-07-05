@@ -27,8 +27,6 @@ class GXHomeDetailViewModel: GXBaseViewModel {
             self.updateShowPrices()
         }
     }
-    /// 修改车辆
-    var selectedVehicle: GXVehicleConsumerListItem?
     
     /// 站点详情
     func requestStationConsumerDetail() -> Promise<GXStationConsumerDetailModel> {
@@ -75,7 +73,9 @@ class GXHomeDetailViewModel: GXBaseViewModel {
             }
             GXNWProvider.login_request(api, type: GXVehicleConsumerListModel.self, success: { model in
                 GXUserManager.shared.vehicleList = model.data
-                self.selectedVehicle = model.data.first
+                if GXUserManager.shared.selectedVehicle == nil {
+                    GXUserManager.shared.selectedVehicle = model.data.first
+                }
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)

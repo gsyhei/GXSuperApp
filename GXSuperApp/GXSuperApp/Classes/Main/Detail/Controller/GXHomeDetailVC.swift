@@ -168,7 +168,7 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             return cell
         case 4:
             let cell: GXHomeDetailCell4 = tableView.dequeueReusableCell(for: indexPath)
-            cell.bindCell(model: self.viewModel.detailData, vehicle: self.viewModel.selectedVehicle)
+            cell.bindCell(model: self.viewModel.detailData, vehicle: GXUserManager.shared.selectedVehicle)
             cell.addAction = {[weak self] in
                 guard let `self` = self else { return }
                 self.gotoAddVehicleVC()
@@ -385,9 +385,8 @@ private extension GXHomeDetailVC {
         if GXUserManager.shared.isLogin {
             if GXUserManager.shared.vehicleList.count > 0 {
                 let vc = GXHomeDetailVehicleVC.xibViewController()
-                vc.selectedAction = {[weak self] vehicle in
+                vc.selectedAction = {[weak self] in
                     guard let `self` = self else { return }
-                    self.viewModel.selectedVehicle = vehicle
                     self.tableView.reloadData()
                 }
                 self.navigationController?.pushViewController(vc, animated: true)

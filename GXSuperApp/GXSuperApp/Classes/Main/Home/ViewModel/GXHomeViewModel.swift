@@ -35,7 +35,7 @@ class GXHomeViewModel: GXBaseViewModel {
                 seal.fulfill(nil); return
             }
             GXNWProvider.login_request(api, type: GXOrderConsumerDoingModel.self, success: { model in
-                
+                GXUserManager.shared.orderDoing = model.data
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)

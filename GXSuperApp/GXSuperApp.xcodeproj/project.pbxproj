@@ -54,6 +54,9 @@
 		339A5EF12C2C24BF004F1B7F /* GXStationConsumerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339A5EF02C2C24BF004F1B7F /* GXStationConsumerModel.swift */; };
 		33A3742C2C362BDE00229ED7 /* GXFavoriteConsumerSaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A3742B2C362BDE00229ED7 /* GXFavoriteConsumerSaveModel.swift */; };
 		33A3742E2C36F33200229ED7 /* GXOrderConsumerDoingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A3742D2C36F33200229ED7 /* GXOrderConsumerDoingModel.swift */; };
+		33A374392C36FD5D00229ED7 /* GXChargingFeeConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A374382C36FD5D00229ED7 /* GXChargingFeeConfirmVC.swift */; };
+		33A374402C37176F00229ED7 /* GXCharging.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33A3743F2C37176F00229ED7 /* GXCharging.storyboard */; };
+		33A374422C37179400229ED7 /* GXChargingStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A374412C37179400229ED7 /* GXChargingStoryboard.swift */; };
 		33A588DA2C24015100451FE1 /* GXHomeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */; };
 		33A588DC2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */; };
 		33A588E42C241CF900451FE1 /* GXHomeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */; };
@@ -74,6 +77,8 @@
 		33AB9AD42C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AB9AD32C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift */; };
 		33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */; };
 		33B834B92C233C16003BEC24 /* GXHomeSearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */; };
+		33BE2BE32C379FFC0084F7CB /* GXChargingFeeConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE2BE22C379FFC0084F7CB /* GXChargingFeeConfirmViewModel.swift */; };
+		33BE2BE52C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE2BE42C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift */; };
 		33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B52C1414CE0089431E /* GXLocationManager.swift */; };
 		33BF81B82C14964F0089431E /* GXMarkerIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B72C14964F0089431E /* GXMarkerIconView.swift */; };
 		33BF81BA2C14A86D0089431E /* GXSelectedMarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B92C14A86D0089431E /* GXSelectedMarkerInfoView.swift */; };
@@ -199,6 +204,9 @@
 		339A5EF02C2C24BF004F1B7F /* GXStationConsumerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXStationConsumerModel.swift; sourceTree = "<group>"; };
 		33A3742B2C362BDE00229ED7 /* GXFavoriteConsumerSaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXFavoriteConsumerSaveModel.swift; sourceTree = "<group>"; };
 		33A3742D2C36F33200229ED7 /* GXOrderConsumerDoingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderConsumerDoingModel.swift; sourceTree = "<group>"; };
+		33A374382C36FD5D00229ED7 /* GXChargingFeeConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingFeeConfirmVC.swift; sourceTree = "<group>"; };
+		33A3743F2C37176F00229ED7 /* GXCharging.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GXCharging.storyboard; sourceTree = "<group>"; };
+		33A374412C37179400229ED7 /* GXChargingStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXChargingStoryboard.swift; sourceTree = "<group>"; };
 		33A588D92C24015100451FE1 /* GXHomeFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeFilterCell.swift; sourceTree = "<group>"; };
 		33A588DB2C240AC200451FE1 /* GXCollectionViewAlignmentLeftLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCollectionViewAlignmentLeftLayout.swift; sourceTree = "<group>"; };
 		33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVC.swift; sourceTree = "<group>"; };
@@ -219,6 +227,8 @@
 		33AB9AD32C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVehicleCodeMenu.swift; sourceTree = "<group>"; };
 		33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXMarkerIconView.xib; sourceTree = "<group>"; };
 		33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchHeader.swift; sourceTree = "<group>"; };
+		33BE2BE22C379FFC0084F7CB /* GXChargingFeeConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingFeeConfirmViewModel.swift; sourceTree = "<group>"; };
+		33BE2BE42C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXConnectorConsumerScanModel.swift; sourceTree = "<group>"; };
 		33BF81B52C1414CE0089431E /* GXLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLocationManager.swift; sourceTree = "<group>"; };
 		33BF81B72C14964F0089431E /* GXMarkerIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMarkerIconView.swift; sourceTree = "<group>"; };
 		33BF81B92C14A86D0089431E /* GXSelectedMarkerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXSelectedMarkerInfoView.swift; sourceTree = "<group>"; };
@@ -434,6 +444,58 @@
 				339A5EDF2C2B9DB8004F1B7F /* Controller */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		33A374332C36FD1200229ED7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				33A374382C36FD5D00229ED7 /* GXChargingFeeConfirmVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		33A374342C36FD1200229ED7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				33BE2BE42C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		33A374352C36FD1200229ED7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		33A374362C36FD1200229ED7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				33BE2BE22C379FFC0084F7CB /* GXChargingFeeConfirmViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		33A374372C36FD1200229ED7 /* Charging */ = {
+			isa = PBXGroup;
+			children = (
+				33A3743E2C37174300229ED7 /* Storyboard */,
+				33A374342C36FD1200229ED7 /* Model */,
+				33A374352C36FD1200229ED7 /* View */,
+				33A374362C36FD1200229ED7 /* ViewModel */,
+				33A374332C36FD1200229ED7 /* Controller */,
+			);
+			path = Charging;
+			sourceTree = "<group>";
+		};
+		33A3743E2C37174300229ED7 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				33A3743F2C37176F00229ED7 /* GXCharging.storyboard */,
+				33A374412C37179400229ED7 /* GXChargingStoryboard.swift */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		33A588DD2C241CBA00451FE1 /* Controller */ = {
@@ -688,6 +750,7 @@
 				339A5EE32C2B9DB8004F1B7F /* Login */,
 				33396A1F2C11E450000A1944 /* Home */,
 				33A588E12C241CBA00451FE1 /* Detail */,
+				33A374372C36FD1200229ED7 /* Charging */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -800,6 +863,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A374402C37176F00229ED7 /* GXCharging.storyboard in Resources */,
 				33A91E2D2C289ADE00F7E214 /* GXHomeDetailCell5.xib in Resources */,
 				33D7BFEC2C26E4CC006B97C6 /* GXHomeDetailCell1.xib in Resources */,
 				33AB9AD22C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib in Resources */,
@@ -928,10 +992,12 @@
 				339A5EED2C2C0D4F004F1B7F /* GXParamConsumerModel.swift in Sources */,
 				33BF81BE2C14AB720089431E /* GXHomeMarkerCell.swift in Sources */,
 				33EC55C92C101BA100D4CCD0 /* GXDefine.swift in Sources */,
+				33A374422C37179400229ED7 /* GXChargingStoryboard.swift in Sources */,
 				33A91E382C28A83B00F7E214 /* GXHomeDetailFacilitiesView.swift in Sources */,
 				339A07132C2F996200BDDD46 /* GXLoginInputCell.swift in Sources */,
 				33EC578F2C101BA200D4CCD0 /* GXMoyaProvider.swift in Sources */,
 				33EC55B92C101BA100D4CCD0 /* GXSlideTableView.swift in Sources */,
+				33A374392C36FD5D00229ED7 /* GXChargingFeeConfirmVC.swift in Sources */,
 				336477AB2C2379690013AAF1 /* GXHomeFilterMenu.swift in Sources */,
 				339A5EDE2C2AD788004F1B7F /* GXHomeFilterModel.swift in Sources */,
 				33EC55C42C101BA100D4CCD0 /* UIFont+Add.swift in Sources */,
@@ -968,6 +1034,7 @@
 				33CD2D942C3501C200D4B55B /* GXHomeDetailVehicleViewModel.swift in Sources */,
 				33EC55AF2C101BA100D4CCD0 /* GXBaseNavigationController.swift in Sources */,
 				33D7BFE82C26C9CE006B97C6 /* GXHomeDetailCell0.swift in Sources */,
+				33BE2BE52C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift in Sources */,
 				33EC55F12C101BA100D4CCD0 /* XYNavigationManager.m in Sources */,
 				33953F672C208B240049C76C /* GXHomeSearchResultCell.swift in Sources */,
 				33FB14DD2C2D4BF600059CB0 /* GXConnectorConsumerListModel.swift in Sources */,
@@ -980,6 +1047,7 @@
 				33A91E362C28A53100F7E214 /* GXHomeDetailCell6.swift in Sources */,
 				339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */,
 				33EC55B82C101BA100D4CCD0 /* GXSearchController.swift in Sources */,
+				33BE2BE32C379FFC0084F7CB /* GXChargingFeeConfirmViewModel.swift in Sources */,
 				339A07162C2F99A000BDDD46 /* GXLoginAllViewModel.swift in Sources */,
 				33EC55B02C101BA100D4CCD0 /* GXBaseTableView.swift in Sources */,
 				339A072B2C304FFB00BDDD46 /* GXMoyaProvider+Add.swift in Sources */,
