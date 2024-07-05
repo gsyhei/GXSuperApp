@@ -175,11 +175,12 @@ class GXSelectedMarkerInfoView: UIView {
     func showPhotoPicker(index: Int, image: UIImage?) {
         guard let model = self.model else { return }
         
-        HXPhotoPicker.PhotoBrowser.show(pageIndex: index, transitionalImage: image) {
+        GXPhotoBrowser.show(pageIndex: index, transitionalImage: image) {
             return model.aroundServicesArr.count
         } assetForIndex: { index in
-            let urlString = model.aroundServicesArr[index]
-            return PhotoAsset(networkImageAsset: NetworkImageAsset(thumbnailURL: nil, originalURL: URL(string: urlString)))
+            let url = URL(string: "https://bbs.qn.img-space.com/201802/23/fae6366ec6b6c3f0cfd3d1b0c36eac77.jpg?imageView2/2/w/1800/q/75/ignore-error/1/&auth_key=1720236989-5760-0-43f16e4f1eee8fa3cdf545af72fa7f1a") // model.aroundServicesArr[index]
+            let imageAsset = NetworkImageAsset(thumbnailURL: nil, originalURL: url, placeholder: "com_empty_ic_nodata")
+            return PhotoAsset(networkImageAsset: imageAsset)
         } transitionAnimator: { index,arg  in
             let cell = self.collectionView.cell(at: index) as? UIImageView
             return cell
