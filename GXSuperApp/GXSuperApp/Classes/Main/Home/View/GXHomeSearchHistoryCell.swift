@@ -10,7 +10,7 @@ import Reusable
 import CollectionKit
 
 class GXHomeSearchHistoryCell: UITableViewCell, Reusable {
-    private var font = UIFont.gx_font(size: 14)
+    private var font = UIFont.gx_font(size: 15)
     var dataSource = ArrayDataSource<String>()
     var action: GXActionBlockItem<String>?
 

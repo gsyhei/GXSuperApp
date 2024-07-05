@@ -15,7 +15,7 @@ class GXHomeFilterCell: UICollectionViewCell, Reusable {
             $0.backgroundColor = .gx_background
             $0.textAlignment = .center
             $0.textColor = .gx_drakGray
-            $0.font = .gx_font(size: 14)
+            $0.font = .gx_font(size: 15)
             $0.layer.masksToBounds = true
             $0.layer.cornerRadius = 16
             $0.text = "Favorite Stations"
@@ -57,7 +57,7 @@ class GXHomeFilterHeader: UICollectionReusableView, Reusable {
             $0.backgroundColor = .white
             $0.textAlignment = .left
             $0.textColor = .gx_textBlack
-            $0.font = .gx_boldFont(size: 16)
+            $0.font = .gx_boldFont(size: 17)
             $0.text = "My Preferences"
         }
     }()

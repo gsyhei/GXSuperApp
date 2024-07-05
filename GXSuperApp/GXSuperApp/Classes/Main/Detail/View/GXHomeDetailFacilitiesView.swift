@@ -17,7 +17,7 @@ class GXHomeDetailFacilitiesView: UIView {
         return UILabel().then {
             $0.textAlignment = .center
             $0.textColor = .gx_drakGray
-            $0.font = .gx_font(size: 13)
+            $0.font = .gx_font(size: 15)
         }
     }()
 

@@ -8,7 +8,7 @@
 import UIKit
 
 class GXTagsView: UIView {
-    private let font = UIFont.gx_font(size: 13)
+    private let font = UIFont.gx_font(size: 14)
     
     @discardableResult
     func updateTitles(titles: [String], width: CGFloat, numberOfLines: Int = 1, isShowFristLine: Bool = false) -> CGFloat {

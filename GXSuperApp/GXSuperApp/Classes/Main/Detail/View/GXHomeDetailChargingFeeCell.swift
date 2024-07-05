@@ -37,16 +37,16 @@ class GXHomeDetailChargingFeeCell: UITableViewCell, NibReusable {
         self.timeLabel.text = "\(model.periodStart)-\(model.periodEnd)"
         if model.priceType == 0 {
             self.topView.isHidden = true
-            self.kWhLabel.font = .gx_regularFont(size: 14)
-            self.vipKWhLabel.font = .gx_regularFont(size: 14)
+            self.kWhLabel.font = .gx_regularFont(size: 15)
+            self.vipKWhLabel.font = .gx_regularFont(size: 15)
         }
         else {
             self.topView.isHidden = false
             if model.priceType == 2 {
                 self.topView.backgroundColor = .gx_green
                 self.topLabel.text = "Lowest"
-                self.kWhLabel.font = .gx_regularFont(size: 14)
-                self.vipKWhLabel.font = .gx_regularFont(size: 14)
+                self.kWhLabel.font = .gx_regularFont(size: 15)
+                self.vipKWhLabel.font = .gx_regularFont(size: 15)
             }
             else {
                 self.topView.backgroundColor = .gx_blue

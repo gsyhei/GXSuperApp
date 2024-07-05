@@ -34,7 +34,7 @@ class GXHomeDetailChargingFeeHeader: UITableViewHeaderFooterView, Reusable {
     private lazy var timeLabel: UILabel = {
         return UILabel().then {
             $0.textColor = .gx_textBlack
-            $0.font = .gx_font(size: 14)
+            $0.font = .gx_font(size: 15)
             $0.text = "Time"
         }
     }()
@@ -42,7 +42,7 @@ class GXHomeDetailChargingFeeHeader: UITableViewHeaderFooterView, Reusable {
     private lazy var kWhLabel: UILabel = {
         return UILabel().then {
             $0.textColor = .gx_textBlack
-            $0.font = .gx_font(size: 14)
+            $0.font = .gx_font(size: 15)
             $0.text = "$/kWh"
         }
     }()
@@ -54,7 +54,7 @@ class GXHomeDetailChargingFeeHeader: UITableViewHeaderFooterView, Reusable {
     private lazy var vipKWhLabel: UILabel = {
         return UILabel().then {
             $0.textColor = .gx_textBlack
-            $0.font = .gx_font(size: 14)
+            $0.font = .gx_font(size: 15)
             $0.text = "$/kWh"
         }
     }()
@@ -63,7 +63,7 @@ class GXHomeDetailChargingFeeHeader: UITableViewHeaderFooterView, Reusable {
         return UILabel().then {
             $0.textAlignment = .right
             $0.textColor = .gx_textBlack
-            $0.font = .gx_font(size: 14)
+            $0.font = .gx_font(size: 15)
             $0.text = "Idle fee"
         }
     }()    

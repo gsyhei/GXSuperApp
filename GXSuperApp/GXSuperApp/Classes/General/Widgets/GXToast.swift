@@ -10,7 +10,7 @@ import UIKit
 private let GXTextFont: UIFont = .gx_font(size: 15)
 private let GXTextMaxSize: CGSize = .init(width: SCREEN_WIDTH - 200, height: SCREEN_HEIGHT - 230)
 private let GXIconSize: CGSize = .init(width: 24, height: 24)
-private let GXInsets: UIEdgeInsets = .init(top: 8, left: 16, bottom: 8, right: 16)
+private let GXInsets: UIEdgeInsets = .init(top: 12, left: 16, bottom: 12, right: 16)
 private let GXSpacing: CGFloat = 8
 
 class GXToast: UIControl {

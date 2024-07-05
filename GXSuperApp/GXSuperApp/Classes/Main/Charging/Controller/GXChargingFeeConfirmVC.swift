@@ -60,7 +60,7 @@ private extension GXChargingFeeConfirmVC {
             self.notifiTableViewUpdateData()
         }.catch { error in
             GXToast.showError(text:error.localizedDescription)
-//            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

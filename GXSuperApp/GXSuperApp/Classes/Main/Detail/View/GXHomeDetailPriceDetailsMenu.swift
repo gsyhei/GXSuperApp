@@ -31,7 +31,7 @@ class GXHomeDetailPriceDetailsMenu: GXBaseMenuView {
     private lazy var infoLabel: UILabel = {
         return UILabel().then {
             $0.textColor = .gx_drakGray
-            $0.font = .gx_font(size: 14)
+            $0.font = .gx_font(size: 15)
             $0.numberOfLines = 0
             $0.text = self.infoText
         }
@@ -60,7 +60,7 @@ class GXHomeDetailPriceDetailsMenu: GXBaseMenuView {
         self.prices = prices
         self.tableView.reloadData()
         
-        let infoHeight = self.infoText.height(width: SCREEN_WIDTH - 30, font: .gx_font(size: 14))
+        let infoHeight = self.infoText.height(width: SCREEN_WIDTH - 30, font: .gx_font(size: 15))
         var height = tableView.sectionHeaderHeight + infoHeight + 32
         height += tableView.rowHeight * CGFloat(prices.count)
         height += self.safeAreaHeight
