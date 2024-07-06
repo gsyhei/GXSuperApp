@@ -10,7 +10,8 @@ import UIKit
 class GXChargingOrderDetailsViewModel: GXBaseViewModel {
     /// 动态cell配置
     var sectionIndexs: [[Int]] = [
-        [0]
+        [0],
+        [1]
     ]
     
 }

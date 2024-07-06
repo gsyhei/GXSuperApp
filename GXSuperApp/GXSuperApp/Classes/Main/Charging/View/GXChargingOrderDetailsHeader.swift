@@ -10,7 +10,7 @@ import UIKit
 class GXChargingOrderDetailsHeader: UIView {
     
     private lazy var iconImgView: UIImageView = {
-        return UIImageView(image: UIImage(named: "")).then {
+        return UIImageView().then {
             $0.backgroundColor = .gx_green
         }
     }()

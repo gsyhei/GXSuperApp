@@ -8,5 +8,10 @@
 import UIKit
 
 class GXRoundViewCell: UITableViewCell {
-    @IBOutlet weak var containerView: UIView?
+    var layoutSubviewsAction: GXActionBlock?
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layoutSubviewsAction?()
+    }
 }

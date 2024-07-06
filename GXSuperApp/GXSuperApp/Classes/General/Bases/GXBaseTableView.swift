@@ -137,18 +137,15 @@ extension GXBaseTableView {
         let width = self.frame.width > 0 ? self.frame.width:SCREEN_WIDTH
         self.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
     }
-
+    
     /// 设置Section圆角[需在willDisplay处调用]
-    public class func setTableView(_ tableView: UITableView, roundView: UIView?, margin: CGFloat = 12, at indexPath: IndexPath) {
-        guard let roundView = roundView else { return }
-        //圆角半径
-        let cornerRadius:CGFloat = 12.0
+    public class func setTableView(_ tableView: UITableView, cell: UITableViewCell?, margin: CGFloat = 12, radius: CGFloat = 12, at indexPath: IndexPath) {
+        guard let roundView = cell else { return }
         //下面为设置圆角操作（通过遮罩实现）
         let sectionCount = tableView.numberOfRows(inSection: indexPath.section)
         let shapeLayer = CAShapeLayer()
         roundView.layer.mask = nil
-        var bounds = roundView.bounds
-        bounds.size.width = tableView.width - margin * 2
+        var bounds = roundView.bounds.inset(by: UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin))
         //当前分区有多行数据时
         if sectionCount > 1 {
             switch indexPath.row {
@@ -157,7 +154,7 @@ extension GXBaseTableView {
                 bounds.origin.y += 1.0  //这样每一组首行顶部分割线不显示
                 let bezierPath = UIBezierPath(roundedRect: bounds,
                                               byRoundingCorners: [.topLeft,.topRight],
-                                              cornerRadii: CGSize(width: cornerRadius,height: cornerRadius))
+                                              cornerRadii: CGSize(width: radius, height: radius))
                 shapeLayer.path = bezierPath.cgPath
                 roundView.layer.mask = shapeLayer
                 //如果是最后一行,左下、右下角为圆角
@@ -165,7 +162,7 @@ extension GXBaseTableView {
                 bounds.size.height -= 1.0  //这样每一组尾行底部分割线不显示
                 let bezierPath = UIBezierPath(roundedRect: bounds,
                                               byRoundingCorners: [.bottomLeft,.bottomRight],
-                                              cornerRadii: CGSize(width: cornerRadius,height: cornerRadius))
+                                              cornerRadii: CGSize(width: radius, height: radius))
                 shapeLayer.path = bezierPath.cgPath
                 roundView.layer.mask = shapeLayer
             default: break
@@ -174,22 +171,20 @@ extension GXBaseTableView {
         //当前分区只有一行行数据时
         else {
             //四个角都为圆角（同样设置偏移隐藏首、尾分隔线）
-            let bezierPath = UIBezierPath(roundedRect: bounds.insetBy(dx: 0.0, dy: 2.0), cornerRadius: cornerRadius)
+            let bezierPath = UIBezierPath(roundedRect: bounds.insetBy(dx: 0.0, dy: 2.0), cornerRadius: radius)
             shapeLayer.path = bezierPath.cgPath
             roundView.layer.mask = shapeLayer
         }
     }
 
     /// 设置Section圆角[需在willDisplay处调用]<特殊可能关注的人第一个只有右边单圆角>
-    public class func setFollowTableView(_ tableView: UITableView, roundView: UIView, margin: CGFloat = 12, at indexPath: IndexPath) {
-        //圆角半径
-        let cornerRadius:CGFloat = 12.0
+    public class func setFollowTableView(_ tableView: UITableView, cell: UITableViewCell?, margin: CGFloat = 12, radius: CGFloat = 12, at indexPath: IndexPath) {
+        guard let roundView = cell else { return }
         //下面为设置圆角操作（通过遮罩实现）
         let sectionCount = tableView.numberOfRows(inSection: indexPath.section)
         let shapeLayer = CAShapeLayer()
         roundView.layer.mask = nil
-        var bounds = roundView.bounds
-        bounds.size.width = tableView.width - margin * 2
+        var bounds = roundView.bounds.inset(by: UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin))
         //当前分区有多行数据时
         if sectionCount > 1 {
             switch indexPath.row {
@@ -198,7 +193,7 @@ extension GXBaseTableView {
                 bounds.origin.y += 1.0  //这样每一组首行顶部分割线不显示
                 let bezierPath = UIBezierPath(roundedRect: bounds,
                                               byRoundingCorners: [.topRight],
-                                              cornerRadii: CGSize(width: cornerRadius,height: cornerRadius))
+                                              cornerRadii: CGSize(width: radius, height: radius))
                 shapeLayer.path = bezierPath.cgPath
                 roundView.layer.mask = shapeLayer
                 //如果是最后一行,左下、右下角为圆角
@@ -206,7 +201,7 @@ extension GXBaseTableView {
                 bounds.size.height -= 1.0  //这样每一组尾行底部分割线不显示
                 let bezierPath = UIBezierPath(roundedRect: bounds,
                                               byRoundingCorners: [.bottomLeft,.bottomRight],
-                                              cornerRadii: CGSize(width: cornerRadius,height: cornerRadius))
+                                              cornerRadii: CGSize(width: radius, height: radius))
                 shapeLayer.path = bezierPath.cgPath
                 roundView.layer.mask = shapeLayer
             default: break
@@ -215,7 +210,7 @@ extension GXBaseTableView {
         //当前分区只有一行行数据时
         else {
             //四个角都为圆角（同样设置偏移隐藏首、尾分隔线）
-            let bezierPath = UIBezierPath(roundedRect: bounds.insetBy(dx: 0.0, dy: 2.0), cornerRadius: cornerRadius)
+            let bezierPath = UIBezierPath(roundedRect: bounds.insetBy(dx: 0.0, dy: 2.0), cornerRadius: radius)
             shapeLayer.path = bezierPath.cgPath
             roundView.layer.mask = shapeLayer
         }

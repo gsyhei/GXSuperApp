@@ -13,9 +13,10 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
         didSet {
             tableView.dataSource = self
             tableView.delegate = self
-            tableView.sectionHeaderHeight = 12
+            tableView.sectionHeaderHeight = 10
             tableView.sectionFooterHeight = .leastNormalMagnitude
             tableView.register(cellType: GXChargingOrderDetailsCell0.self)
+            tableView.register(cellType: GXChargingOrderDetailsCell1.self)            
         }
     }
     
@@ -34,10 +35,10 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
     
     override func setupViewController() {
         self.navigationItem.title = "Order Details"
+        self.gx_addBackBarButtonItem()
         
         self.payNowButton.setBackgroundColor(.gx_green, for: .normal)
         self.payNowButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
-        
         self.tableView.tableHeaderView = self.tableHeader
     }
     
@@ -46,6 +47,7 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
 extension GXChargingOrderDetailsVC: UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - UITableViewDataSource
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.viewModel.sectionIndexs.count
     }
@@ -60,6 +62,10 @@ extension GXChargingOrderDetailsVC: UITableViewDataSource, UITableViewDelegate {
         case 0:
             let cell: GXChargingOrderDetailsCell0 = tableView.dequeueReusableCell(for: indexPath)
             return cell
+        case 1:
+            let cell: GXChargingOrderDetailsCell1 = tableView.dequeueReusableCell(for: indexPath)
+            cell.updateCell(type: 2)
+            return cell
         default: return UITableViewCell()
         }
     }
@@ -67,14 +73,14 @@ extension GXChargingOrderDetailsVC: UITableViewDataSource, UITableViewDelegate {
     // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let pageCell = cell as? GXRoundViewCell else { return }
-        GXBaseTableView.setTableView(tableView, roundView: pageCell.containerView, at: indexPath)
+        GXBaseTableView.setTableView(tableView, cell: cell, at: indexPath)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         let index = self.viewModel.sectionIndexs[indexPath.section][indexPath.row]
         switch index {
         case 0: return 44
+        case 1: return 200
         default: return .zero
         }
     }
