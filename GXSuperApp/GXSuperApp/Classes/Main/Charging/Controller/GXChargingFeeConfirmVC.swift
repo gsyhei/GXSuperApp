@@ -44,7 +44,7 @@ class GXChargingFeeConfirmVC: GXBaseViewController, GXChargingStoryboard {
 }
 
 private extension GXChargingFeeConfirmVC {
-        
+    
     func requestConnectorConsumerScan() {
         self.view.layoutSkeletonIfNeeded()
         self.view.showAnimatedGradientSkeleton()
@@ -74,6 +74,9 @@ private extension GXChargingFeeConfirmVC {
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
+            
+            let vc = GXChargingOrderDetailsVC.xibViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

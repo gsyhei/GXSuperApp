@@ -139,7 +139,8 @@ extension GXBaseTableView {
     }
 
     /// 设置Section圆角[需在willDisplay处调用]
-    public class func setTableView(_ tableView: UITableView, roundView: UIView, margin: CGFloat = 12, at indexPath: IndexPath) {
+    public class func setTableView(_ tableView: UITableView, roundView: UIView?, margin: CGFloat = 12, at indexPath: IndexPath) {
+        guard let roundView = roundView else { return }
         //圆角半径
         let cornerRadius:CGFloat = 12.0
         //下面为设置圆角操作（通过遮罩实现）
