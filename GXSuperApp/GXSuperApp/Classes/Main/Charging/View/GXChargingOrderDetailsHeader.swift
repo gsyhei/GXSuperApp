@@ -10,9 +10,7 @@ import UIKit
 class GXChargingOrderDetailsHeader: UIView {
     
     private lazy var iconImgView: UIImageView = {
-        return UIImageView().then {
-            $0.backgroundColor = .gx_green
-        }
+        return UIImageView(image: UIImage(named: "order_list_ic_done"))
     }()
     
     private lazy var chargingStateLabel: UILabel = {

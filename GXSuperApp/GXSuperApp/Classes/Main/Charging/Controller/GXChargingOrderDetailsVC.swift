@@ -24,6 +24,8 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
             tableView.register(cellType: GXChargingOrderDetailsCell4.self)
             tableView.register(cellType: GXChargingOrderDetailsCell5.self)
             tableView.register(cellType: GXChargingOrderDetailsCell6.self)
+            tableView.register(cellType: GXChargingOrderDetailsCell7.self)
+            tableView.register(cellType: GXChargingOrderDetailsCell8.self)
         }
     }
     
@@ -90,6 +92,12 @@ extension GXChargingOrderDetailsVC: UITableViewDataSource, UITableViewDelegate {
         case 6:
             let cell: GXChargingOrderDetailsCell6 = tableView.dequeueReusableCell(for: indexPath)
             return cell
+        case 7:
+            let cell: GXChargingOrderDetailsCell7 = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 8:
+            let cell: GXChargingOrderDetailsCell8 = tableView.dequeueReusableCell(for: indexPath)
+            return cell
         default: return UITableViewCell()
         }
     }
@@ -110,6 +118,8 @@ extension GXChargingOrderDetailsVC: UITableViewDataSource, UITableViewDelegate {
         case 4: return 142
         case 5: return 48
         case 6: return 54
+        case 7: return 110
+        case 8: return 146
         default: return .zero
         }
     }

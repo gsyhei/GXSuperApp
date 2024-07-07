@@ -73,4 +73,24 @@ class GXHomeViewModel: GXBaseViewModel {
         }
     }
     
+    /// 车辆列表
+    func requestVehicleConsumerList() -> Promise<GXVehicleConsumerListModel?> {
+        let params: Dictionary<String, Any> = [:]
+        let api = GXApi.normalApi(Api_vehicle_consumer_list, params, .get)
+        return Promise { seal in
+            guard GXUserManager.shared.isLogin else {
+                seal.fulfill(nil); return
+            }
+            GXNWProvider.login_request(api, type: GXVehicleConsumerListModel.self, success: { model in
+                GXUserManager.shared.vehicleList = model.data
+                if GXUserManager.shared.selectedVehicle == nil {
+                    GXUserManager.shared.selectedVehicle = model.data.first
+                }
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+    
 }

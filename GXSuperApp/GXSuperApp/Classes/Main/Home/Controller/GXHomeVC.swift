@@ -203,7 +203,8 @@ private extension GXHomeVC {
         let combinedPromise = when(fulfilled: [
             self.viewModel.requestParamConsumer(),
             self.viewModel.requestDictListAvailable(),
-            self.viewModel.requestOrderConsumerDoing()
+            self.viewModel.requestOrderConsumerDoing(),
+            self.viewModel.requestVehicleConsumerList()
         ])
         firstly {
             combinedPromise

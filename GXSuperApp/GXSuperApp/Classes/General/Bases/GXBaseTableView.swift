@@ -139,7 +139,7 @@ extension GXBaseTableView {
     }
     
     /// 设置Section圆角[需在willDisplay处调用]
-    public class func setTableView(_ tableView: UITableView, cell: UITableViewCell?, margin: CGFloat = 12, radius: CGFloat = 12, at indexPath: IndexPath) {
+    public class func setTableView(_ tableView: UITableView, cell: UITableViewCell?, margin: CGFloat = 12, radius: CGFloat = 8, at indexPath: IndexPath) {
         guard let roundView = cell else { return }
         //下面为设置圆角操作（通过遮罩实现）
         let sectionCount = tableView.numberOfRows(inSection: indexPath.section)
@@ -182,7 +182,7 @@ extension GXBaseTableView {
     }
     
     /// 设置Section圆角[需在willDisplay处调用]<特殊可能关注的人第一个只有右边单圆角>
-    public class func setFollowTableView(_ tableView: UITableView, cell: UITableViewCell?, margin: CGFloat = 12, radius: CGFloat = 12, at indexPath: IndexPath) {
+    public class func setFollowTableView(_ tableView: UITableView, cell: UITableViewCell?, margin: CGFloat = 12, radius: CGFloat = 8, at indexPath: IndexPath) {
         guard let roundView = cell else { return }
         //下面为设置圆角操作（通过遮罩实现）
         let sectionCount = tableView.numberOfRows(inSection: indexPath.section)
