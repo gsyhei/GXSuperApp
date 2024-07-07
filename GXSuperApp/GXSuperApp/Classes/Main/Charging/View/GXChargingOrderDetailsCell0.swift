@@ -8,7 +8,7 @@
 import UIKit
 import Reusable
 
-class GXChargingOrderDetailsCell0: GXRoundViewCell, NibReusable {
+class GXChargingOrderDetailsCell0: UITableViewCell, NibReusable {
     @IBOutlet weak var vehicleContainerView: UIView!
     @IBOutlet weak var vehicleBackIView: UIImageView!
     @IBOutlet weak var vehicleNumLabel: UILabel!

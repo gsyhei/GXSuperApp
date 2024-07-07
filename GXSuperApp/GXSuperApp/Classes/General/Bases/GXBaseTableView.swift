@@ -35,14 +35,14 @@ class GXBaseTableView: UITableView {
             self.placeholderImageView.image = UIImage(named: placeholderImageName)
         }
     }
-
+    
     private(set) lazy var placeholderView: GXPlaceholderView = {
         return GXPlaceholderView(frame: self.bounds).then {
             $0.backgroundColor = .clear
             $0.isHidden = true
         }
     }()
-
+    
     private(set) lazy var placeholderLabel: UILabel = {
         return UILabel().then {
             $0.font = .gx_font(size: 15)
@@ -51,11 +51,11 @@ class GXBaseTableView: UITableView {
             $0.text = "Apologies, I didn't find anything"
         }
     }()
-
+    
     private(set) lazy var placeholderImageView: UIImageView = {
         return UIImageView(image: UIImage(named: "com_empty_ic_nodata"))
     }()
-
+    
     convenience init(_frame: CGRect, _style: UITableView.Style) {
         self.init(frame: _frame, style: _style)
         self.initTableView()
@@ -68,7 +68,7 @@ class GXBaseTableView: UITableView {
     
     private func initTableView() {
         self.configuration()
-        self.separatorColor = .gx_lightGray
+        self.separatorColor = .gx_lineGray
         
         self.placeholderView.addSubview(self.placeholderImageView)
         self.placeholderImageView.snp.makeConstraints { make in
@@ -83,10 +83,10 @@ class GXBaseTableView: UITableView {
         }
         
     }
-
+    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-
+        
         guard let view = self.superview else { return }
         self.placeholderView.removeFromSuperview()
         view.addSubview(self.placeholderView)
@@ -95,7 +95,7 @@ class GXBaseTableView: UITableView {
             make.edges.equalTo(self)
         }
     }
-
+    
     private func numberOfRowsInAllSections() -> Int {
         let numberOfSections = self.dataSource?.numberOfSections?(in: self) ?? 1
         var rows = 0
@@ -104,7 +104,7 @@ class GXBaseTableView: UITableView {
         }
         return rows
     }
-
+    
     public func gx_reloadData() {
         if self.numberOfRowsInAllSections() == 0 {
             self.placeholderView.isHidden = false
@@ -130,7 +130,7 @@ class GXBaseTableView: UITableView {
 }
 
 extension GXBaseTableView {
-
+    
     /// 设置tableFooterView并赋予高度
     /// - Parameter height: 高度
     public func setTableFooterView(height: CGFloat) {
@@ -165,7 +165,11 @@ extension GXBaseTableView {
                                               cornerRadii: CGSize(width: radius, height: radius))
                 shapeLayer.path = bezierPath.cgPath
                 roundView.layer.mask = shapeLayer
-            default: break
+                //中间部分切掉margin
+            default:
+                let bezierPath = UIBezierPath(rect: bounds)
+                shapeLayer.path = bezierPath.cgPath
+                roundView.layer.mask = shapeLayer
             }
         }
         //当前分区只有一行行数据时
@@ -176,7 +180,7 @@ extension GXBaseTableView {
             roundView.layer.mask = shapeLayer
         }
     }
-
+    
     /// 设置Section圆角[需在willDisplay处调用]<特殊可能关注的人第一个只有右边单圆角>
     public class func setFollowTableView(_ tableView: UITableView, cell: UITableViewCell?, margin: CGFloat = 12, radius: CGFloat = 12, at indexPath: IndexPath) {
         guard let roundView = cell else { return }
@@ -204,7 +208,11 @@ extension GXBaseTableView {
                                               cornerRadii: CGSize(width: radius, height: radius))
                 shapeLayer.path = bezierPath.cgPath
                 roundView.layer.mask = shapeLayer
-            default: break
+                //中间部分切掉margin
+            default:
+                let bezierPath = UIBezierPath(rect: bounds)
+                shapeLayer.path = bezierPath.cgPath
+                roundView.layer.mask = shapeLayer
             }
         }
         //当前分区只有一行行数据时
@@ -215,5 +223,5 @@ extension GXBaseTableView {
             roundView.layer.mask = shapeLayer
         }
     }
-
+    
 }

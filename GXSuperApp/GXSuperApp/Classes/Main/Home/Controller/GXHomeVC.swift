@@ -362,8 +362,14 @@ private extension GXHomeVC {
     }
     
     @IBAction func ongoingButtonClicked(_ sender: Any?) {
-        // 进行中的订单
-        let vc = GXChargingFeeConfirmVC.instantiate()
+        
+//        // 费用确认
+//        let vc = GXChargingFeeConfirmVC.instantiate()
+//        vc.hidesBottomBarWhenPushed = true
+//        self.navigationController?.pushViewController(vc, animated: true)
+        
+        // 订单详情
+        let vc = GXChargingOrderDetailsVC.xibViewController()
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }

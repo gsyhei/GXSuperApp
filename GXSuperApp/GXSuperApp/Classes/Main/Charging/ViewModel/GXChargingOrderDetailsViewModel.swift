@@ -11,7 +11,8 @@ class GXChargingOrderDetailsViewModel: GXBaseViewModel {
     /// 动态cell配置
     var sectionIndexs: [[Int]] = [
         [0],
-        [1]
+        [1, 2, 3, 4, 5],
+        [6]
     ]
     
 }

@@ -10,260 +10,58 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="KGk-i7-Jjw" customClass="GXChargingOrderDetailsCell1" customModule="GXSuperApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="311"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="KGk-i7-Jjw" customClass="GXChargingOrderDetailsCell1" customModule="GXSuperApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="311"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="214"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXL-pr-9KG">
-                        <rect key="frame" x="12" y="0.0" width="296" height="311"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hengjie Supercharge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roX-Ls-f12">
-                                <rect key="frame" x="12" y="12" width="164.33333333333334" height="56"/>
-                                <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="18"/>
-                                <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tje-OM-692">
-                                <rect key="frame" x="216" y="27.666666666666671" width="68" height="25"/>
-                                <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="Pile ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeD-1h-18F">
-                                <rect key="frame" x="12" y="76" width="38" height="25"/>
-                                <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Order ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntr-M2-IAU">
-                                <rect key="frame" x="12" y="109" width="52" height="25"/>
-                                <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Start Charging" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lao-Ts-Ar5">
-                                <rect key="frame" x="12" y="142" width="90" height="25"/>
-                                <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="End Charging" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djh-02-y1H">
-                                <rect key="frame" x="12" y="175" width="82" height="25"/>
-                                <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="8220230320003" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAj-9I-Pwb">
-                                <rect key="frame" x="188.66666666666666" y="76" width="95.333333333333343" height="25"/>
-                                <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="8220230320003" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDa-Hn-s1C">
-                                <rect key="frame" x="162.66666666666666" y="109" width="95.333333333333343" height="25"/>
-                                <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5t-aS-QYf">
-                                <rect key="frame" x="256" y="109.66666666666667" width="28" height="24.000000000000014"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="28" id="A6A-Tn-Wp1"/>
-                                    <constraint firstAttribute="height" constant="24" id="V1s-Hn-DeS"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="details_list_ic_copy"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="copyOrderIdButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="c83-S7-nhK"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="2023-03-02 11:53:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0E-3W-Uwf">
-                                <rect key="frame" x="167.66666666666666" y="142" width="116.33333333333334" height="25"/>
-                                <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="2023-03-02 11:53:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eni-aA-sDw">
-                                <rect key="frame" x="167.66666666666666" y="175" width="116.33333333333334" height="25"/>
-                                <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G6L-Jf-SLJ">
-                                <rect key="frame" x="0.0" y="208" width="296" height="58"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Start Occupying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zh1-6i-mlJ">
-                                        <rect key="frame" x="12" y="0.0" width="98.333333333333329" height="25"/>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                        <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Occupying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sad-cB-MRB">
-                                        <rect key="frame" x="12" y="33" width="90.666666666666671" height="25"/>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                        <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="2023-03-02 11:53:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpO-5N-d6L">
-                                        <rect key="frame" x="167.66666666666666" y="0.0" width="116.33333333333334" height="25"/>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                        <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="2023-03-02 11:53:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4K-5g-fx9">
-                                        <rect key="frame" x="167.66666666666666" y="33" width="116.33333333333334" height="25"/>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                        <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="Zh1-6i-mlJ" firstAttribute="leading" secondItem="G6L-Jf-SLJ" secondAttribute="leading" constant="12" id="AqH-ia-tWM"/>
-                                    <constraint firstItem="sad-cB-MRB" firstAttribute="top" secondItem="Zh1-6i-mlJ" secondAttribute="bottom" constant="8" id="JeD-dJ-xAU"/>
-                                    <constraint firstAttribute="trailing" secondItem="mpO-5N-d6L" secondAttribute="trailing" constant="12" id="W2D-vq-KL1"/>
-                                    <constraint firstAttribute="bottom" secondItem="sad-cB-MRB" secondAttribute="bottom" id="W9r-2J-sJo"/>
-                                    <constraint firstItem="mpO-5N-d6L" firstAttribute="centerY" secondItem="Zh1-6i-mlJ" secondAttribute="centerY" id="XCY-cK-5sb"/>
-                                    <constraint firstItem="Zh1-6i-mlJ" firstAttribute="top" secondItem="G6L-Jf-SLJ" secondAttribute="top" id="bL3-Vk-W7B"/>
-                                    <constraint firstItem="l4K-5g-fx9" firstAttribute="centerY" secondItem="sad-cB-MRB" secondAttribute="centerY" id="cq6-nd-CAO"/>
-                                    <constraint firstAttribute="trailing" secondItem="l4K-5g-fx9" secondAttribute="trailing" constant="12" id="nd9-Rj-REa"/>
-                                    <constraint firstItem="sad-cB-MRB" firstAttribute="leading" secondItem="G6L-Jf-SLJ" secondAttribute="leading" constant="12" id="zI2-nw-ceM"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDX-AZ-5Ml">
-                                <rect key="frame" x="0.0" y="274" width="296" height="25"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="Vehicle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwh-Bu-6bd">
-                                        <rect key="frame" x="11.999999999999996" y="0.0" width="43.666666666666657" height="25"/>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                        <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" text="CA-TW39253" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpE-5Q-sXK">
-                                        <rect key="frame" x="208.66666666666666" y="0.0" width="75.333333333333343" height="25"/>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                        <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="qwh-Bu-6bd" secondAttribute="bottom" id="0Jn-JA-ch8"/>
-                                    <constraint firstItem="qwh-Bu-6bd" firstAttribute="top" secondItem="wDX-AZ-5Ml" secondAttribute="top" id="Gba-Qq-aRE"/>
-                                    <constraint firstAttribute="trailing" secondItem="QpE-5Q-sXK" secondAttribute="trailing" constant="12" id="HhE-Oz-uu2"/>
-                                    <constraint firstItem="QpE-5Q-sXK" firstAttribute="centerY" secondItem="qwh-Bu-6bd" secondAttribute="centerY" id="xAk-QF-cYX"/>
-                                    <constraint firstItem="qwh-Bu-6bd" firstAttribute="leading" secondItem="wDX-AZ-5Ml" secondAttribute="leading" constant="12" id="yKG-xx-g7e"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hengjie Supercharge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roX-Ls-f12">
+                        <rect key="frame" x="24" y="12" width="164.33333333333334" height="30"/>
+                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="18"/>
+                        <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tje-OM-692">
+                        <rect key="frame" x="228" y="14.666666666666664" width="68" height="25"/>
+                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
+                        <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zPv-2u-8ER">
+                        <rect key="frame" x="24" y="45" width="272" height="136"/>
                         <constraints>
-                            <constraint firstItem="U0E-3W-Uwf" firstAttribute="centerY" secondItem="Lao-Ts-Ar5" secondAttribute="centerY" id="1Ow-Kr-5MF"/>
-                            <constraint firstAttribute="trailing" secondItem="wDX-AZ-5Ml" secondAttribute="trailing" id="1kA-0R-7dm"/>
-                            <constraint firstItem="Lao-Ts-Ar5" firstAttribute="leading" secondItem="roX-Ls-f12" secondAttribute="leading" id="6Zy-iK-oA9"/>
-                            <constraint firstItem="EDa-Hn-s1C" firstAttribute="centerY" secondItem="Ntr-M2-IAU" secondAttribute="centerY" id="AOw-fl-r5Y"/>
-                            <constraint firstItem="Y5t-aS-QYf" firstAttribute="centerY" secondItem="Ntr-M2-IAU" secondAttribute="centerY" id="Avi-ZD-Xdv"/>
-                            <constraint firstItem="Ntr-M2-IAU" firstAttribute="top" secondItem="VeD-1h-18F" secondAttribute="bottom" constant="8" id="DmC-Op-n4R"/>
-                            <constraint firstAttribute="trailing" secondItem="Y5t-aS-QYf" secondAttribute="trailing" constant="12" id="Eb4-ul-DrV"/>
-                            <constraint firstItem="Tje-OM-692" firstAttribute="centerY" secondItem="roX-Ls-f12" secondAttribute="centerY" id="FqZ-AZ-BBW"/>
-                            <constraint firstItem="Djh-02-y1H" firstAttribute="leading" secondItem="roX-Ls-f12" secondAttribute="leading" id="HAR-2l-c0Z"/>
-                            <constraint firstAttribute="trailing" secondItem="eni-aA-sDw" secondAttribute="trailing" constant="12" id="J21-uJ-BHF"/>
-                            <constraint firstAttribute="trailing" secondItem="G6L-Jf-SLJ" secondAttribute="trailing" id="QMw-2K-hER"/>
-                            <constraint firstItem="ZAj-9I-Pwb" firstAttribute="centerY" secondItem="VeD-1h-18F" secondAttribute="centerY" id="QZm-Tq-hii"/>
-                            <constraint firstAttribute="trailing" secondItem="ZAj-9I-Pwb" secondAttribute="trailing" constant="12" id="UHF-CN-tiu"/>
-                            <constraint firstItem="Ntr-M2-IAU" firstAttribute="leading" secondItem="roX-Ls-f12" secondAttribute="leading" id="W9O-u4-osZ"/>
-                            <constraint firstItem="wDX-AZ-5Ml" firstAttribute="top" secondItem="Djh-02-y1H" secondAttribute="bottom" constant="74" id="YAb-1Z-8eC"/>
-                            <constraint firstAttribute="bottom" secondItem="Djh-02-y1H" secondAttribute="bottom" constant="111" id="ar7-PZ-sdq"/>
-                            <constraint firstItem="eni-aA-sDw" firstAttribute="centerY" secondItem="Djh-02-y1H" secondAttribute="centerY" id="awW-yt-20e"/>
-                            <constraint firstAttribute="trailing" secondItem="EDa-Hn-s1C" secondAttribute="trailing" constant="38" id="ccR-Ub-nzo"/>
-                            <constraint firstItem="VeD-1h-18F" firstAttribute="top" secondItem="roX-Ls-f12" secondAttribute="bottom" constant="8" id="ctl-4W-9Zx"/>
-                            <constraint firstItem="roX-Ls-f12" firstAttribute="top" secondItem="ZXL-pr-9KG" secondAttribute="top" constant="12" id="erW-gA-cxR"/>
-                            <constraint firstItem="G6L-Jf-SLJ" firstAttribute="top" secondItem="Djh-02-y1H" secondAttribute="bottom" constant="8" id="gTH-uL-j4l"/>
-                            <constraint firstAttribute="trailing" secondItem="U0E-3W-Uwf" secondAttribute="trailing" constant="12" id="miR-xK-ShT"/>
-                            <constraint firstItem="Lao-Ts-Ar5" firstAttribute="top" secondItem="Ntr-M2-IAU" secondAttribute="bottom" constant="8" id="r7D-3P-YqT"/>
-                            <constraint firstItem="Djh-02-y1H" firstAttribute="top" secondItem="Lao-Ts-Ar5" secondAttribute="bottom" constant="8" id="sX7-zq-bFp"/>
-                            <constraint firstItem="VeD-1h-18F" firstAttribute="leading" secondItem="roX-Ls-f12" secondAttribute="leading" id="tjM-Dp-wqt"/>
-                            <constraint firstItem="wDX-AZ-5Ml" firstAttribute="leading" secondItem="ZXL-pr-9KG" secondAttribute="leading" id="v4b-hy-mSV"/>
-                            <constraint firstItem="G6L-Jf-SLJ" firstAttribute="leading" secondItem="ZXL-pr-9KG" secondAttribute="leading" id="vB0-3Z-Deg"/>
-                            <constraint firstAttribute="trailing" secondItem="Tje-OM-692" secondAttribute="trailing" constant="12" id="wm9-6M-hH8"/>
-                            <constraint firstItem="roX-Ls-f12" firstAttribute="leading" secondItem="ZXL-pr-9KG" secondAttribute="leading" constant="12" id="x0l-Er-ePg"/>
+                            <constraint firstAttribute="height" constant="136" id="6bG-ZN-ZxU"/>
                         </constraints>
-                    </view>
+                    </tableView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="ZXL-pr-9KG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Emt-Ks-JHc"/>
-                    <constraint firstAttribute="trailing" secondItem="ZXL-pr-9KG" secondAttribute="trailing" constant="12" id="Vd5-mG-j16"/>
-                    <constraint firstItem="ZXL-pr-9KG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="cop-HY-RNO"/>
-                    <constraint firstAttribute="bottom" secondItem="ZXL-pr-9KG" secondAttribute="bottom" id="i2d-fx-KFm"/>
+                    <constraint firstItem="roX-Ls-f12" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="0nK-cN-vm6"/>
+                    <constraint firstAttribute="trailing" secondItem="zPv-2u-8ER" secondAttribute="trailing" constant="24" id="8ME-Mu-eJ9"/>
+                    <constraint firstItem="roX-Ls-f12" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="VOE-Df-asq"/>
+                    <constraint firstItem="zPv-2u-8ER" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="45" id="aaQ-vL-o1a"/>
+                    <constraint firstItem="Tje-OM-692" firstAttribute="centerY" secondItem="roX-Ls-f12" secondAttribute="centerY" id="buf-jk-G5T"/>
+                    <constraint firstAttribute="trailing" secondItem="Tje-OM-692" secondAttribute="trailing" constant="24" id="fc8-eO-S6y"/>
+                    <constraint firstAttribute="bottom" secondItem="zPv-2u-8ER" secondAttribute="bottom" constant="10" id="fnR-dy-dHP"/>
+                    <constraint firstItem="zPv-2u-8ER" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="gRj-v0-56r"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="endChargingBottomLC" destination="ar7-PZ-sdq" id="DLO-XT-gvW"/>
-                <outlet property="occupyingContanerView" destination="G6L-Jf-SLJ" id="IAu-4r-bQG"/>
-                <outlet property="vehicleContanerView" destination="wDX-AZ-5Ml" id="Nb3-tl-Zp0"/>
-                <outlet property="vehicleTopLC" destination="YAb-1Z-8eC" id="Ucf-wV-rC0"/>
+                <outlet property="nameLabel" destination="roX-Ls-f12" id="G10-6i-gJv"/>
+                <outlet property="stateLabel" destination="Tje-OM-692" id="07V-BL-L2m"/>
+                <outlet property="tableHeightLC" destination="6bG-ZN-ZxU" id="2zM-md-WFa"/>
+                <outlet property="tableView" destination="zPv-2u-8ER" id="29a-Sg-oW5"/>
             </connections>
-            <point key="canvasLocation" x="204.58015267175571" y="44.014084507042256"/>
+            <point key="canvasLocation" x="204.58015267175571" y="9.8591549295774659"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="details_list_ic_copy" width="16" height="16"/>
-    </resources>
 </document>

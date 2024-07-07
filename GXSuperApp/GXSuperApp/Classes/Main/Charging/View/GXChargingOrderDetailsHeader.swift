@@ -58,7 +58,7 @@ class GXChargingOrderDetailsHeader: UIView {
             make.right.equalToSuperview().offset(-15)
         }
         self.chargingInfoLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.chargingStateLabel.snp.bottom).offset(2)
+            make.top.equalTo(self.chargingStateLabel.snp.bottom).offset(4)
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
         }

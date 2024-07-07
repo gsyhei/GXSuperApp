@@ -9,14 +9,21 @@ import UIKit
 
 class GXChargingOrderDetailsVC: GXBaseViewController {
     @IBOutlet weak var payNowButton: UIButton!
-    @IBOutlet weak var tableView: GXBaseTableView! {
+    @IBOutlet weak var tableView: UITableView! {
         didSet {
+            tableView.configuration(separatorLeft: false)
+            tableView.separatorColor = .gx_lineGray
             tableView.dataSource = self
             tableView.delegate = self
             tableView.sectionHeaderHeight = 10
             tableView.sectionFooterHeight = .leastNormalMagnitude
             tableView.register(cellType: GXChargingOrderDetailsCell0.self)
-            tableView.register(cellType: GXChargingOrderDetailsCell1.self)            
+            tableView.register(cellType: GXChargingOrderDetailsCell1.self)
+            tableView.register(cellType: GXChargingOrderDetailsCell2.self)
+            tableView.register(cellType: GXChargingOrderDetailsCell3.self)
+            tableView.register(cellType: GXChargingOrderDetailsCell4.self)
+            tableView.register(cellType: GXChargingOrderDetailsCell5.self)
+            tableView.register(cellType: GXChargingOrderDetailsCell6.self)
         }
     }
     
@@ -64,7 +71,24 @@ extension GXChargingOrderDetailsVC: UITableViewDataSource, UITableViewDelegate {
             return cell
         case 1:
             let cell: GXChargingOrderDetailsCell1 = tableView.dequeueReusableCell(for: indexPath)
-            cell.updateCell(type: 2)
+            cell.bindCell(count: 6)
+            return cell
+        case 2:
+            let cell: GXChargingOrderDetailsCell2 = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 3:
+            let cell: GXChargingOrderDetailsCell3 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(count: 3)
+            return cell
+        case 4:
+            let cell: GXChargingOrderDetailsCell4 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(count: 4)
+            return cell
+        case 5:
+            let cell: GXChargingOrderDetailsCell5 = tableView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 6:
+            let cell: GXChargingOrderDetailsCell6 = tableView.dequeueReusableCell(for: indexPath)
             return cell
         default: return UITableViewCell()
         }
@@ -81,15 +105,17 @@ extension GXChargingOrderDetailsVC: UITableViewDataSource, UITableViewDelegate {
         switch index {
         case 0: return 44
         case 1: return 200
+        case 2: return 80
+        case 3: return 156
+        case 4: return 142
+        case 5: return 48
+        case 6: return 54
         default: return .zero
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
 }

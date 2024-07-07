@@ -1,17 +1,18 @@
 //
-//  GXChargingOrderDetailsCell1.swift
+//  GXChargingOrderDetailsCell3.swift
 //  GXSuperApp
 //
-//  Created by Gin on 2024/7/6.
+//  Created by Gin on 2024/7/8.
 //
 
 import UIKit
 import Reusable
-import XCGLogger
 
-class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
+class GXChargingOrderDetailsCell3: UITableViewCell, NibReusable {
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var stateLabel: UILabel!
+    @IBOutlet weak var feeLabel: UILabel!
+    @IBOutlet weak var tagView: UIView!
+    @IBOutlet weak var tagLabel: UILabel!
     @IBOutlet weak var tableHeightLC: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -30,14 +31,14 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
         super.setSelected(selected, animated: animated)
     }
     
-    var count: Int = 6
+    var count: Int = 3
     func bindCell(count: Int) {
         self.count = count
         self.tableHeightLC.constant = tableView.rowHeight * CGFloat(count)
     }
 }
 
-extension GXChargingOrderDetailsCell1: UITableViewDataSource {
+extension GXChargingOrderDetailsCell3: UITableViewDataSource {
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.count

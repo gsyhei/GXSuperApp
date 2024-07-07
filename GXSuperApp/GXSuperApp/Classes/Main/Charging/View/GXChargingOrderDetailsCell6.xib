@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="GXChargingOrderDetailsCell6" customModule="GXSuperApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="Account Balance: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vpp-yQ-71J">
+                        <rect key="frame" x="55.999999999999993" y="13.666666666666666" width="113.33333333333331" height="26.666666666666671"/>
+                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="16"/>
+                        <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="order_list_ic_balance" translatesAutoresizingMaskIntoConstraints="NO" id="5QE-gi-LNX">
+                        <rect key="frame" x="24" y="16" width="22" height="22"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="$15.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Jw-2x-YSj">
+                        <rect key="frame" x="169.33333333333334" y="12" width="49.333333333333343" height="30"/>
+                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="18"/>
+                        <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nuq-Vw-qAG">
+                        <rect key="frame" x="220" y="11" width="76" height="32"/>
+                        <color key="backgroundColor" red="0.019607843140000001" green="0.75686274509999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="Lv8-z6-LZg"/>
+                            <constraint firstAttribute="width" constant="76" id="kNj-uL-OjO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="16"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Recharge">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="rechargeButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="X6m-52-0XY"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="5Jw-2x-YSj" firstAttribute="leading" secondItem="Vpp-yQ-71J" secondAttribute="trailing" id="7xC-09-FAl"/>
+                    <constraint firstItem="5QE-gi-LNX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9tt-RB-YJS"/>
+                    <constraint firstItem="Nuq-Vw-qAG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="C2C-0C-Fd3"/>
+                    <constraint firstItem="5Jw-2x-YSj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Cin-Jf-wpj"/>
+                    <constraint firstItem="5QE-gi-LNX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="KRw-TI-7ng"/>
+                    <constraint firstAttribute="bottom" secondItem="5QE-gi-LNX" secondAttribute="bottom" constant="16" id="QhL-kf-87M"/>
+                    <constraint firstItem="Vpp-yQ-71J" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RRQ-Om-0PS"/>
+                    <constraint firstAttribute="trailing" secondItem="Nuq-Vw-qAG" secondAttribute="trailing" constant="24" id="eTl-ck-3cU"/>
+                    <constraint firstItem="5QE-gi-LNX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="t4N-2z-ON4"/>
+                    <constraint firstItem="Vpp-yQ-71J" firstAttribute="leading" secondItem="5QE-gi-LNX" secondAttribute="trailing" constant="10" id="vSO-4R-RFI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="leftLabel" destination="Vpp-yQ-71J" id="mU7-5b-C3T"/>
+                <outlet property="rechargeButton" destination="Nuq-Vw-qAG" id="4Y5-yL-7ao"/>
+                <outlet property="rightLabel" destination="5Jw-2x-YSj" id="CJS-Uz-ziO"/>
+            </connections>
+            <point key="canvasLocation" x="10.687022900763358" y="-17.605633802816904"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="order_list_ic_balance" width="22" height="22"/>
+    </resources>
+</document>

@@ -167,3 +167,124 @@ extension UIImage {
     }
 
 }
+
+extension UIImage {
+    /// 获取图片的主题色
+    func getDominantColors(count: Int, completion: @escaping ([UIColor]) -> Void) {
+        DispatchQueue.global().async {
+            guard let cgImage = self.cgImage else {
+                DispatchQueue.main.async {
+                    completion([])
+                }
+                return
+            }
+            
+            let thumbSize = CGSize(width: 100, height: 100)
+            let colorSpace = CGColorSpaceCreateDeviceRGB()
+            let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+            
+            guard let context = CGContext(data: nil,
+                                          width: Int(thumbSize.width),
+                                          height: Int(thumbSize.height),
+                                          bitsPerComponent: 8,
+                                          bytesPerRow: Int(thumbSize.width) * 4,
+                                          space: colorSpace,
+                                          bitmapInfo: bitmapInfo.rawValue) else {
+                DispatchQueue.main.async {
+                    completion([])
+                }
+                return
+            }
+            
+            let drawRect = CGRect(x: 0, y: 0, width: thumbSize.width, height: thumbSize.height)
+            context.draw(cgImage, in: drawRect)
+            
+            guard let data = context.data else {
+                DispatchQueue.main.async {
+                    completion([])
+                }
+                return
+            }
+            
+            var colors = [UIColor]()
+            for x in 0..<Int(thumbSize.width) {
+                for y in 0..<Int(thumbSize.height) {
+                    let offset = 4 * (x + y * Int(thumbSize.width))
+                    let red = data.load(fromByteOffset: offset, as: UInt8.self)
+                    let green = data.load(fromByteOffset: offset + 1, as: UInt8.self)
+                    let blue = data.load(fromByteOffset: offset + 2, as: UInt8.self)
+                    let alpha = data.load(fromByteOffset: offset + 3, as: UInt8.self)
+                    
+                    let color = UIColor(red: CGFloat(red) / 255.0,
+                                        green: CGFloat(green) / 255.0,
+                                        blue: CGFloat(blue) / 255.0,
+                                        alpha: CGFloat(alpha) / 255.0)
+                    colors.append(color)
+                }
+            }
+            
+            let kMeansColors = self.kMeans(colors, k: count)
+            DispatchQueue.main.async {
+                completion(kMeansColors)
+            }
+        }
+    }
+    
+    private func kMeans(_ colors: [UIColor], k: Int) -> [UIColor] {
+        guard !colors.isEmpty else { return [] }
+        
+        var centroids = Array(colors.prefix(k))
+        var clusters = [[UIColor]](repeating: [], count: k)
+        
+        for _ in 0..<10 { // Run for a fixed number of iterations
+            clusters = [[UIColor]](repeating: [], count: k)
+            
+            for color in colors {
+                let centroidIndex = centroids.enumerated().min(by: { lhs, rhs in
+                    return color.distance(to: lhs.element) < color.distance(to: rhs.element)
+                })!.offset
+                clusters[centroidIndex].append(color)
+            }
+            
+            centroids = clusters.map { cluster in
+                guard !cluster.isEmpty else { return UIColor.white }
+                let sumComponents = cluster.reduce(into: (r: 0.0, g: 0.0, b: 0.0, a: 0.0)) { acc, color in
+                    var r: CGFloat = 0
+                    var g: CGFloat = 0
+                    var b: CGFloat = 0
+                    var a: CGFloat = 0
+                    color.getRed(&r, green: &g, blue: &b, alpha: &a)
+                    acc.r += Double(r)
+                    acc.g += Double(g)
+                    acc.b += Double(b)
+                    acc.a += Double(a)
+                }
+                let count = CGFloat(cluster.count)
+                return UIColor(red: CGFloat(sumComponents.r) / count,
+                               green: CGFloat(sumComponents.g) / count,
+                               blue: CGFloat(sumComponents.b) / count,
+                               alpha: CGFloat(sumComponents.a) / count)
+            }
+        }
+        
+        return centroids
+    }
+}
+
+private extension UIColor {
+    func distance(to color: UIColor) -> CGFloat {
+        var r1: CGFloat = 0
+        var g1: CGFloat = 0
+        var b1: CGFloat = 0
+        var a1: CGFloat = 0
+        self.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+        
+        var r2: CGFloat = 0
+        var g2: CGFloat = 0
+        var b2: CGFloat = 0
+        var a2: CGFloat = 0
+        color.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+        
+        return sqrt(pow(r1 - r2, 2) + pow(g1 - g2, 2) + pow(b1 - b2, 2) + pow(a1 - a2, 2))
+    }
+}

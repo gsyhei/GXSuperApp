@@ -14,6 +14,10 @@ extension UIColor {
         return UIColor(hexString: "#EDEFF3")
     }
     
+    class var gx_lineGray: UIColor {
+        return UIColor(hexString: "#E8ECEF")
+    }
+    
     class var gx_inputBackground: UIColor {
         return UIColor(hexString: "#F1F1F1")
     }
