@@ -13,17 +13,10 @@ class GXChargingOrderDetailsCell5: UITableViewCell, NibReusable {
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var feeQueryButton: UIButton!
 
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        self.leftLabel.text = nil
-//        self.rightLabel.text = nil
-//    }
-//    
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        self.awakeFromNib()
-//    }
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.isSkeletonable = true
+    }
 
 }
 

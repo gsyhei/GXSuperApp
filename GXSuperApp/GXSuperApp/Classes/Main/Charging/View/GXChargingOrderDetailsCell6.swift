@@ -15,14 +15,9 @@ class GXChargingOrderDetailsCell6: UITableViewCell, NibReusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.isSkeletonable = true
         self.rechargeButton.setBackgroundColor(.gx_green, for: .normal)
         self.rechargeButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.awakeFromNib()
     }
     
 }

@@ -8,6 +8,7 @@
 import UIKit
 import Reusable
 import XCGLogger
+import SkeletonView
 
 class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
     @IBOutlet weak var nameLabel: UILabel!
@@ -17,13 +18,15 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
         didSet {
             tableView.configuration()
             tableView.dataSource = self
-            tableView.rowHeight = 34
+            tableView.estimatedRowHeight = 34
+            tableView.rowHeight = UITableView.automaticDimension
             tableView.register(cellType: GXChargingOrderLRTextCell.self)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.isSkeletonable = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,11 +36,23 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
     var count: Int = 6
     func bindCell(count: Int) {
         self.count = count
-        self.tableHeightLC.constant = tableView.rowHeight * CGFloat(count)
+        self.tableHeightLC.constant = tableView.estimatedRowHeight * CGFloat(count)
     }
 }
 
-extension GXChargingOrderDetailsCell1: UITableViewDataSource {
+extension GXChargingOrderDetailsCell1: SkeletonTableViewDataSource {
+    // MARK: - SkeletonTableViewDataSource
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return GXChargingOrderLRTextCell.reuseIdentifier
+    }
+    func collectionSkeletonView(_ skeletonView: UITableView, skeletonCellForRowAt indexPath: IndexPath) -> UITableViewCell? {
+        let cell: GXChargingOrderLRTextCell = skeletonView.dequeueReusableCell(for: indexPath)
+        return cell
+    }
+            
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.count

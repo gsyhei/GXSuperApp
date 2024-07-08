@@ -100,6 +100,7 @@
 		33AB9AD22C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AB9AD02C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib */; };
 		33AB9AD42C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AB9AD32C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift */; };
 		33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */; };
+		33B412542C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B412532C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift */; };
 		33B834B92C233C16003BEC24 /* GXHomeSearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */; };
 		33BE2BE32C379FFC0084F7CB /* GXChargingFeeConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE2BE22C379FFC0084F7CB /* GXChargingFeeConfirmViewModel.swift */; };
 		33BE2BE52C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE2BE42C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift */; };
@@ -274,6 +275,7 @@
 		33AB9AD02C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailAddVehicleVC.xib; sourceTree = "<group>"; };
 		33AB9AD32C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVehicleCodeMenu.swift; sourceTree = "<group>"; };
 		33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXMarkerIconView.xib; sourceTree = "<group>"; };
+		33B412532C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingOrderDetailModel.swift; sourceTree = "<group>"; };
 		33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchHeader.swift; sourceTree = "<group>"; };
 		33BE2BE22C379FFC0084F7CB /* GXChargingFeeConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingFeeConfirmViewModel.swift; sourceTree = "<group>"; };
 		33BE2BE42C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXConnectorConsumerScanModel.swift; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				33BE2BE42C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift */,
+				33B412532C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1116,6 +1119,7 @@
 				339A5EDA2C29C8DA004F1B7F /* GXHomeDetailChargerStatusMenu.swift in Sources */,
 				33EC55F22C101BA100D4CCD0 /* GXAddImages9View.swift in Sources */,
 				339A1C282C38CF03001FBA5E /* GXChargingOrderDetailsVC.swift in Sources */,
+				33B412542C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift in Sources */,
 				33A91E322C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.swift in Sources */,
 				33A91E3E2C28B1E200F7E214 /* GXHomeDetailPriceDetailsMenu.swift in Sources */,
 				33EC55DB2C101BA100D4CCD0 /* GXMessagesLoadHeader.swift in Sources */,

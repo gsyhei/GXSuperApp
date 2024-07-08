@@ -27,6 +27,9 @@
                                     <constraint firstAttribute="width" constant="1" id="8yG-hL-9jM"/>
                                     <constraint firstAttribute="height" constant="44" id="jCe-iT-3vE"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Countdown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeH-jE-8yk">
                                 <rect key="frame" x="318" y="47" width="72" height="25"/>
@@ -83,6 +86,9 @@
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZR0-41-Of8" secondAttribute="bottom" constant="10" id="uVZ-GN-pgf"/>
                             <constraint firstItem="eeH-jE-8yk" firstAttribute="leading" secondItem="MOH-4u-2sm" secondAttribute="trailing" constant="12" id="usQ-hB-52Z"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtQ-EE-Obx">
                         <rect key="frame" x="24" y="91" width="366" height="50"/>
@@ -105,8 +111,14 @@ promptly after the countdown ends!</string>
                     <constraint firstItem="V4X-iN-O9W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rCv-ZB-3dt"/>
                     <constraint firstItem="RtQ-EE-Obx" firstAttribute="top" secondItem="V4X-iN-O9W" secondAttribute="bottom" constant="10" id="tHy-mb-JMu"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="-148" y="38"/>
         </tableViewCell>
     </objects>

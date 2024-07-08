@@ -14,18 +14,10 @@ class GXChargingOrderLRTextCell: UITableViewCell, NibReusable {
     @IBOutlet weak var copyButton: UIButton!
     @IBOutlet weak var rightLBRightLC: NSLayoutConstraint!
 
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        self.leftLabel.text = nil
-//        self.rightLabel.text = nil
-//        self.copyButton.isHidden = true
-//        self.rightLBRightLC.constant = 0
-//    }
-//    
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        self.awakeFromNib()
-//    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.isSkeletonable = true        
+    }
     
     func bindCell(
         leftText: String,

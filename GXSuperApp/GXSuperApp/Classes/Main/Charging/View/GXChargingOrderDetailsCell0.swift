@@ -15,6 +15,7 @@ class GXChargingOrderDetailsCell0: UITableViewCell, NibReusable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.isSkeletonable = true
         
         let colors: [UIColor] = [.gx_green, .gx_blue]
         self.vehicleBackIView.image = UIImage(gradientColors: colors, style: .horizontal, size: CGSize(width: 10, height: 24))

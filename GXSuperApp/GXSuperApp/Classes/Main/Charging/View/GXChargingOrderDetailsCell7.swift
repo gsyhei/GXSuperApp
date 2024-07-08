@@ -12,6 +12,7 @@ class GXChargingOrderDetailsCell7: UITableViewCell, NibReusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.isSkeletonable = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

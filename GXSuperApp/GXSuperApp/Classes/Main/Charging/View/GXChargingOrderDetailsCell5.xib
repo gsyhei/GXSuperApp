@@ -61,9 +61,16 @@
                     <constraint firstItem="9oG-Uk-rqs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tLk-Mb-yCd"/>
                     <constraint firstItem="Vpp-yQ-71J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="z3R-h5-QtS"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="feeQueryButton" destination="9oG-Uk-rqs" id="Rqb-tN-dXa"/>
                 <outlet property="leftLabel" destination="Vpp-yQ-71J" id="vQE-rR-uZT"/>
                 <outlet property="rightLabel" destination="TAG-J1-MGc" id="u8O-E3-G1E"/>
             </connections>

@@ -47,6 +47,10 @@ class GXHomeDetailVC: GXBaseViewController {
         return GXHomeDetailViewModel()
     }()
     
+    override func viewDidLayoutSubviews() {
+        self.view.layoutSkeletonIfNeeded()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.requestStationConsumerDetail()
@@ -71,13 +75,10 @@ class GXHomeDetailVC: GXBaseViewController {
 }
 
 extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
-    
     // MARK - SkeletonTableViewDataSource
-    
     func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
-    
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
         switch indexPath.row {
         case 0:
@@ -94,7 +95,6 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             return ""
         }
     }
-    
     func collectionSkeletonView(_ skeletonView: UITableView, skeletonCellForRowAt indexPath: IndexPath) -> UITableViewCell? {
         switch indexPath.row {
         case 0:
@@ -248,7 +248,6 @@ private extension GXHomeDetailVC {
 private extension GXHomeDetailVC {
     
     func requestStationConsumerDetail(isShowHud: Bool = true) {
-        self.view.layoutSkeletonIfNeeded()
         if isShowHud {
             self.view.showAnimatedGradientSkeleton()
         }

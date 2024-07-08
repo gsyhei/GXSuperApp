@@ -11,6 +11,7 @@ import Bugly
 import IQKeyboardManagerSwift
 import GoogleMaps
 import GooglePlaces
+import SkeletonView
 
 let GXAppDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
 @main
@@ -31,6 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.resignOnTouchOutside = true
         IQKeyboardManager.shared.disabledToolbarClasses = [GXHomeDetailAddVehicleVC.self]
         IQKeyboardManager.shared.disabledDistanceHandlingClasses = [GXHomeDetailAddVehicleVC.self]
+        
+        // 配置过渡
+        SkeletonAppearance.default.gradient = SkeletonGradient(baseColor: .skeletonDefault)
+        SkeletonAppearance.default.skeletonCornerRadius = 3.0
         
         // 谷歌地图
         GMSServices.provideAPIKey(GX_GOOGLE_APIKEY)

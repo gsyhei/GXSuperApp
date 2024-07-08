@@ -7,6 +7,7 @@
 
 import UIKit
 import Reusable
+import SkeletonView
 
 class GXChargingOrderDetailsCell4: UITableViewCell, NibReusable {
     @IBOutlet weak var tableHeightLC: NSLayoutConstraint!
@@ -21,6 +22,7 @@ class GXChargingOrderDetailsCell4: UITableViewCell, NibReusable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.isSkeletonable = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -34,12 +36,23 @@ class GXChargingOrderDetailsCell4: UITableViewCell, NibReusable {
     }
 }
 
-extension GXChargingOrderDetailsCell4: UITableViewDataSource {
+extension GXChargingOrderDetailsCell4: SkeletonTableViewDataSource {
+    // MARK: - SkeletonTableViewDataSource
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return GXChargingOrderLRTextCell.reuseIdentifier
+    }
+    func collectionSkeletonView(_ skeletonView: UITableView, skeletonCellForRowAt indexPath: IndexPath) -> UITableViewCell? {
+        let cell: GXChargingOrderLRTextCell = skeletonView.dequeueReusableCell(for: indexPath)
+        return cell
+    }
+    
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXChargingOrderLRTextCell = tableView.dequeueReusableCell(for: indexPath)
         return cell

@@ -37,8 +37,8 @@ class GXMoyaProvider: MoyaProvider<GXApi> {
             switch result {
             case let .success(response):
                 GXServiceManager.updateSystemTime(response: response.response)
-                let data = try? JSONSerialization.jsonObject(with: response.data, options: .mutableContainers)
-                guard let dataJSON = data as? Dictionary<String, Any>, let model:T = T.deserialize(from: dataJSON) else {
+                let data = try? JSONSerialization.jsonObject(with: response.data, options: .fragmentsAllowed)
+                guard let dataJSON = data as? [String: Any], let model:T = T.deserialize(from: dataJSON) else {
                     let dataStr = String(data: response.data, encoding: .utf8)
                     let error = GXError(code: response.statusCode, info: dataStr ?? response.description)
                     self.gx_logger(target: target, error: error, json: nil)

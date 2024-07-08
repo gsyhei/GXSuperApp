@@ -28,6 +28,9 @@
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="order_list_ic_balance" translatesAutoresizingMaskIntoConstraints="NO" id="5QE-gi-LNX">
                         <rect key="frame" x="24" y="16" width="22" height="22"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="$15.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Jw-2x-YSj">
                         <rect key="frame" x="169.33333333333334" y="12" width="49.333333333333343" height="30"/>
@@ -74,8 +77,14 @@
                     <constraint firstItem="5QE-gi-LNX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="t4N-2z-ON4"/>
                     <constraint firstItem="Vpp-yQ-71J" firstAttribute="leading" secondItem="5QE-gi-LNX" secondAttribute="trailing" constant="10" id="vSO-4R-RFI"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="leftLabel" destination="Vpp-yQ-71J" id="mU7-5b-C3T"/>
                 <outlet property="rechargeButton" destination="Nuq-Vw-qAG" id="4Y5-yL-7ao"/>

@@ -42,6 +42,11 @@ class GXChargingOrderDetailsHeader: UIView {
     }
     
     func createSubviews() {
+        self.isSkeletonable = true
+        self.iconImgView.isSkeletonable = true
+        self.chargingStateLabel.isSkeletonable = true
+        self.chargingInfoLabel.isSkeletonable = true
+
         self.addSubview(self.iconImgView)
         self.addSubview(self.chargingStateLabel)
         self.addSubview(self.chargingInfoLabel)

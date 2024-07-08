@@ -55,6 +55,7 @@
                                 <real key="value" value="6"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
@@ -66,8 +67,14 @@
                     <constraint firstAttribute="trailing" secondItem="jQR-wB-TQt" secondAttribute="trailing" constant="24" id="nhw-4S-uLj"/>
                     <constraint firstAttribute="bottom" secondItem="jQR-wB-TQt" secondAttribute="bottom" constant="10" id="wkg-Cx-pEd"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="vehicleBackIView" destination="AfY-gC-mhu" id="Ljz-VV-ezO"/>
                 <outlet property="vehicleContainerView" destination="jQR-wB-TQt" id="owp-Co-OPH"/>

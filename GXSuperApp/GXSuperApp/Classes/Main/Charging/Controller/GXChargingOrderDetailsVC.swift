@@ -6,15 +6,16 @@
 //
 
 import UIKit
+import MBProgressHUD
+import PromiseKit
+import SkeletonView
 
 class GXChargingOrderDetailsVC: GXBaseViewController {
     @IBOutlet weak var payNowButton: UIButton!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
-            tableView.configuration(separatorLeft: false)
+            tableView.configuration(estimated: true, separatorLeft: false)
             tableView.separatorColor = .gx_lineGray
-            tableView.dataSource = self
-            tableView.delegate = self
             tableView.sectionHeaderHeight = 10
             tableView.sectionFooterHeight = .leastNormalMagnitude
             tableView.register(cellType: GXChargingOrderDetailsCell0.self)
@@ -38,8 +39,13 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
         return GXChargingOrderDetailsViewModel()
     }()
     
+    override func viewDidLayoutSubviews() {
+        self.view.layoutSkeletonIfNeeded()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.requestOrderConsumerStart()
     }
     
     override func setupViewController() {
@@ -49,11 +55,75 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
         self.payNowButton.setBackgroundColor(.gx_green, for: .normal)
         self.payNowButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
         self.tableView.tableHeaderView = self.tableHeader
+        self.view.isSkeletonable = true
+        self.tableView.isSkeletonable = true
     }
     
 }
 
-extension GXChargingOrderDetailsVC: UITableViewDataSource, UITableViewDelegate {
+extension GXChargingOrderDetailsVC {
+    
+    func requestOrderConsumerStart() {
+        self.view.showAnimatedGradientSkeleton()
+        self.tableView.tableHeaderView?.showAnimatedGradientSkeleton()
+        firstly {
+            self.viewModel.requestOrderConsumerDetail()
+        }.done { models in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+                self.view.hideSkeleton()
+                self.tableView.tableHeaderView?.hideSkeleton()
+                self.tableView.reloadData()
+            })
+        }.catch { error in
+            self.view.hideSkeleton()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
+}
+
+extension GXChargingOrderDetailsVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
+    // MARK - SkeletonTableViewDataSource
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        switch indexPath.row {
+        case 0:
+            return GXChargingOrderDetailsCell0.reuseIdentifier
+        case 1:
+            return GXChargingOrderDetailsCell1.reuseIdentifier
+        case 2:
+            return GXChargingOrderDetailsCell2.reuseIdentifier
+        case 3:
+            return GXChargingOrderDetailsCell3.reuseIdentifier
+        case 4:
+            return GXChargingOrderDetailsCell4.reuseIdentifier
+        default:
+            return ""
+        }
+    }
+    func collectionSkeletonView(_ skeletonView: UITableView, skeletonCellForRowAt indexPath: IndexPath) -> UITableViewCell? {
+        switch indexPath.row {
+        case 0:
+            let cell: GXChargingOrderDetailsCell0 = skeletonView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 1:
+            let cell: GXChargingOrderDetailsCell1 = skeletonView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 2:
+            let cell: GXChargingOrderDetailsCell2 = skeletonView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 3:
+            let cell: GXChargingOrderDetailsCell3 = skeletonView.dequeueReusableCell(for: indexPath)
+            return cell
+        case 4:
+            let cell: GXChargingOrderDetailsCell4 = skeletonView.dequeueReusableCell(for: indexPath)
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
     
     // MARK: - UITableViewDataSource
     

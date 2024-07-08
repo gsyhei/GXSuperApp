@@ -67,6 +67,9 @@
                             <state key="normal" title="Appeal">
                                 <color key="titleColor" red="0.019607843140000001" green="0.75686274509999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="appealButtonClicked:" destination="-1" eventType="touchUpInside" id="drO-3w-FLk"/>
                             </connections>
@@ -83,12 +86,22 @@
                         <constraint firstItem="gyf-YF-3hY" firstAttribute="centerY" secondItem="iwG-Z3-Cmi" secondAttribute="centerY" id="jlJ-ga-ry2"/>
                         <constraint firstItem="iwG-Z3-Cmi" firstAttribute="top" secondItem="j2d-2z-IPi" secondAttribute="top" constant="10" id="yL1-eI-HrL"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="10" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="h17-r1-2hL">
                     <rect key="frame" x="0.0" y="59" width="393" height="659"/>
                     <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="separatorColor" red="0.90980392156862744" green="0.92549019607843142" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <inset key="separatorInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="EW2-YL-X2q"/>
+                        <outlet property="delegate" destination="-1" id="qGO-nh-Tfi"/>
+                    </connections>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -102,6 +115,9 @@
                 <constraint firstItem="h17-r1-2hL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hTe-09-u5d"/>
                 <constraint firstItem="j2d-2z-IPi" firstAttribute="top" secondItem="h17-r1-2hL" secondAttribute="bottom" id="kqC-Gp-WTg"/>
             </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="35.877862595419849" y="-11.267605633802818"/>
         </view>
     </objects>

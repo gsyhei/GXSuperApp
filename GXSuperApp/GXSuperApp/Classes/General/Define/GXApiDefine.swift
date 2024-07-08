@@ -85,3 +85,24 @@ let Api_order_consumer_doing = "/charging-order-server/order/consumer/doing"
 /// 启动充电
 let Api_order_consumer_start = "/charging-order-server/order/consumer/start"
 
+/// 停止充电
+let Api_order_consumer_stop = "/charging-order-server/order/consumer/stop"
+
+/// 充电状态
+let Api_order_consumer_status = "/charging-order-server/order/consumer/status"
+
+/// 订单列表->订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：
+let Api_order_consumer_list = "/charging-order-server/order/consumer/list"
+
+/// 订单详情
+let Api_order_consumer_detail = "/charging-order-server/order/consumer/detail"
+
+/// 订单支付
+let Api_order_consumer_pay = "/charging-order-server/order/consumer/pay"
+
+/// 订单申诉
+let Api_order_consumer_complain_save = "/charging-order-server/order/consumer/complain/save"
+
+/// 订单申诉详情
+let Api_order_consumer_complain_detail = "/charging-order-server/order/consumer/complain/detail"
+

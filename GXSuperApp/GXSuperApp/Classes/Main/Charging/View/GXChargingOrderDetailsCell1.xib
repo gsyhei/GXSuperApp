@@ -40,6 +40,9 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="136" id="6bG-ZN-ZxU"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </tableView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -53,8 +56,14 @@
                     <constraint firstAttribute="bottom" secondItem="zPv-2u-8ER" secondAttribute="bottom" constant="10" id="fnR-dy-dHP"/>
                     <constraint firstItem="zPv-2u-8ER" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="gRj-v0-56r"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="nameLabel" destination="roX-Ls-f12" id="G10-6i-gJv"/>
                 <outlet property="stateLabel" destination="Tje-OM-692" id="07V-BL-L2m"/>
