@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.disabledDistanceHandlingClasses = [GXHomeDetailAddVehicleVC.self]
         
         // 配置过渡
-        SkeletonAppearance.default.gradient = SkeletonGradient(baseColor: .skeletonDefault)
+        SkeletonAppearance.default.gradient = SkeletonGradient(baseColor: .gx_lineGray)
         SkeletonAppearance.default.skeletonCornerRadius = 3.0
         
         // 谷歌地图

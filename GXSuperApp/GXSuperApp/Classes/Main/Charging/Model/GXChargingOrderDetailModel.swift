@@ -16,7 +16,7 @@ class GXChargingfeedetailsModel: NSObject, HandyJSON {
     var electricPrice: CGFloat = 0
     var servicePrice: CGFloat = 0
     var totalFee: CGFloat = 0
-
+    
     override required init() {}
 }
 
@@ -24,15 +24,15 @@ class GXOccupyfeedetailsModel: NSObject, HandyJSON {
     var periodStart: String = ""
     var periodEnd: String = ""
     var minutes: Int = 0
-    var price: CGFloat = 0
+    var price: String = ""
     var fee: CGFloat = 0
-
+    
     override required init() {}
 }
 
 class GXChargingOrderDetailData: NSObject, HandyJSON {
     var id: Int = 0
-    var orderNo: Int = 0
+    var orderNo: String = ""
     var stationId: Int = 0
     var stationName: String = ""
     var pointId: Int = 0
@@ -40,25 +40,26 @@ class GXChargingOrderDetailData: NSObject, HandyJSON {
     var connectorId: Int = 0
     var connectorIdStr: String = ""
     var qrcode: String = ""
+    var favoriteFlag: String = ""
     var startTime: String = ""
     var endTime: String = ""
     var occupyStartTime: String = ""
     var occupyEndTime: String = ""
     var carNumber: String = ""
-    var orderStatus: String = ""
-    var meterTotal: CGFloat = 0
+    var orderStatus: String = "" //订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成支付
+    var meterTotal: String = ""
     var powerFee: CGFloat = 0
     var serviceFee: CGFloat = 0
-    var occupyFee: CGFloat = 0
-    var totalFee: CGFloat = 0
-    var actualFee: CGFloat = 0
+    var occupyFee: String = ""
+    var totalFee: String = ""
+    var actualFee: String = ""
     var payTime: String = ""
     var payType: String = ""
     var chargingFeeDetails = [GXChargingfeedetailsModel]()
     var occupyFreePeriod: String = ""
     var occupyFeeDetails = [GXOccupyfeedetailsModel]()
     var exemptType: String = ""
-    var complainAvailable: Bool?
+    var complainAvailable: Bool = false
     var complainId: String = ""
     var freeParking: String = ""
     var chargingDuration: String = ""
@@ -68,8 +69,8 @@ class GXChargingOrderDetailData: NSObject, HandyJSON {
     var soc: Int = 0
     var countdown: Int = 0
     var occupyFlag: String = ""
-    var occupyPrice: CGFloat = 0
-
+    var occupyPrice: String = ""
+    
     override required init() {}
 }
 

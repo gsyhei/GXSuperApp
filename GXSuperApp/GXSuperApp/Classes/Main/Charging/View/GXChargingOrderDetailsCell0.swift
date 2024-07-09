@@ -19,19 +19,22 @@ class GXChargingOrderDetailsCell0: UITableViewCell, NibReusable {
         
         let colors: [UIColor] = [.gx_green, .gx_blue]
         self.vehicleBackIView.image = UIImage(gradientColors: colors, style: .horizontal, size: CGSize(width: 10, height: 24))
-        
-        // Cell 0
-        if let vehicle = GXUserManager.shared.selectedVehicle {
-            self.vehicleContainerView.isHidden = false
-            self.vehicleNumLabel.text = vehicle.state + "-" + vehicle.carNumber
-        }
-        else {
-            self.vehicleContainerView.isHidden = true
-        }
+        self.vehicleContainerView.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    func bindCell(model: GXChargingOrderDetailData?) {
+        guard let model = model else { return }
+        
+        if model.carNumber.isEmpty {
+            self.vehicleContainerView.isHidden = true
+        }
+        else {
+            self.vehicleContainerView.isHidden = false
+            self.vehicleNumLabel.text = model.carNumber.formatCarNumber
+        }
+    }
 }

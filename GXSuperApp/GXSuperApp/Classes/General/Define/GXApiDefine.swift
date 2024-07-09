@@ -22,6 +22,7 @@ let Api_param_consumer_detail = "/charging-system-server/param/consumer/detail"
 /// 常见问题
 let Api_questions_consumer_list = "/charging-system-server/param/consumer/detail"
 
+
 // MARK: - 登录/注册
 
 /// 获取验证码
@@ -42,6 +43,7 @@ let Api_auth_user_logout = "/charging-auth-server/auth/consumer/user/logout"
 /// 注销
 let Api_auth_user_cancel = "/charging-auth-server/auth/consumer/user/cancel"
 
+
 // MARK: - 站点和桩信息
 
 /// 站点查询
@@ -49,6 +51,9 @@ let Api_station_consumer_query = "/charging-order-server/station/consumer/query"
 
 /// 站点详情
 let Api_station_consumer_detail = "/charging-order-server/station/consumer/detail"
+
+/// 站点充电价格
+let Api_station_consumer_price = "/charging-order-server/station/consumer/price"
 
 /// 站点枪列表
 let Api_connector_consumer_list = "/charging-order-server/connector/consumer/list"
@@ -76,6 +81,7 @@ let Api_favorite_consumer_save = "/charging-order-server/favorite/consumer/save"
 
 /// 站点-收藏列表
 let Api_favorite_consumer_list = "/charging-order-server/favorite/consumer/list"
+
 
 // MARK: - 订单
 
@@ -106,3 +112,11 @@ let Api_order_consumer_complain_save = "/charging-order-server/order/consumer/co
 /// 订单申诉详情
 let Api_order_consumer_complain_detail = "/charging-order-server/order/consumer/complain/detail"
 
+
+// MARK: - 钱包
+
+/// 钱包余额
+let Api_wallet_consumer_balance = "/charging-wallet-server/wallet/consumer/balance"
+
+/// 钱包明细
+let Api_wallet_consumer_list = "/charging-wallet-server/wallet/consumer/list"

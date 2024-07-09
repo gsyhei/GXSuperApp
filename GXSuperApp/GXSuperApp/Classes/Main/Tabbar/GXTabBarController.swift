@@ -60,7 +60,7 @@ class GXTabBarController: UITabBarController {
                       title: self.titleNames[2],
                       imageName: self.normalImageNames[2],
                       selectedImageName: self.selectedImageNames[2])
-        self.addChild(UIViewController(),
+        self.addChild(GXOrderListVC.xibViewController(),
                       title: self.titleNames[3],
                       imageName: self.normalImageNames[3],
                       selectedImageName: self.selectedImageNames[3])
@@ -109,7 +109,9 @@ extension GXTabBarController {
 
 extension GXTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if viewController == tabBarController.viewControllers?[2] {
+        guard let index = tabBarController.viewControllers?.firstIndex(of: viewController) else { return false }
+        switch index {
+        case 2:
             // 扫码入口
             if GXUserManager.shared.isLogin {
                 let vc = GXQRCodeReaderVC.xibViewController()
@@ -120,13 +122,17 @@ extension GXTabBarController: UITabBarControllerDelegate {
                 GXAppDelegate?.gotoLogin(from: tabBarController)
             }
             return false
-        }
-        if viewController == tabBarController.viewControllers?[3] {
+        case 1, 3, 4:
             if !GXUserManager.shared.isLogin {
                 GXAppDelegate?.gotoLogin(from: tabBarController)
+                return false
             }
+            else {
+                return true
+            }
+        default:
+            return true
         }
-        return true
     }
 }
 

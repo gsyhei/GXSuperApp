@@ -30,6 +30,7 @@ extension GXRefreshBaseHeader {
 
 extension GXRefreshBaseFooter {
     func updateRefreshTitles() {
+        self.isHiddenByContent = true
         self.textLabel.textColor = .gx_drakGray
         self.textLabel.font = .gx_font(size: 14.0)
 //        self.isHiddenNoMoreByContent = false

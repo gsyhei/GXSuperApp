@@ -233,7 +233,7 @@ private extension GXHomeVC {
     
     func updateOrderConsumerDoing() {
         /// 临时修改相反判断
-        if (GXUserManager.shared.orderDoing == nil) {
+        if (GXUserManager.shared.orderDoing != nil) {
             self.ongoingView.addSubview(self.circleHUDView)
             self.ongoingView.isHidden = false
         }
@@ -363,16 +363,19 @@ private extension GXHomeVC {
     }
     
     @IBAction func ongoingButtonClicked(_ sender: Any?) {
-        
+        guard let orderDoing = GXUserManager.shared.orderDoing else { return }
 //        // 费用确认
 //        let vc = GXChargingFeeConfirmVC.instantiate()
 //        vc.hidesBottomBarWhenPushed = true
 //        self.navigationController?.pushViewController(vc, animated: true)
         
-        // 订单详情
-        let vc = GXChargingOrderDetailsVC.xibViewController()
-        vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        if orderDoing.orderStatus == "CHARGING" {
+            
+        }
+        else {
+            let vc = GXChargingOrderDetailsVC.createVC(orderId: orderDoing.id)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

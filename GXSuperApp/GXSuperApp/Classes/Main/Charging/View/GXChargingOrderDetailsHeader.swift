@@ -46,7 +46,7 @@ class GXChargingOrderDetailsHeader: UIView {
         self.iconImgView.isSkeletonable = true
         self.chargingStateLabel.isSkeletonable = true
         self.chargingInfoLabel.isSkeletonable = true
-
+        
         self.addSubview(self.iconImgView)
         self.addSubview(self.chargingStateLabel)
         self.addSubview(self.chargingInfoLabel)
@@ -64,6 +64,29 @@ class GXChargingOrderDetailsHeader: UIView {
             make.top.equalTo(self.chargingStateLabel.snp.bottom).offset(4)
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
+        }
+    }
+    
+    func bindView(model: GXChargingOrderDetailData?) {
+        guard let model = model else { return }
+        
+        switch model.orderStatus {
+        case "OCCUPY":
+            self.chargingInfoLabel.textColor = .gx_orange
+            if let occupyStartTime = GXUserManager.shared.paramsData?.occupyStartTime,
+                model.countdown > 0, model.countdown <= occupyStartTime * 60 {
+                self.chargingInfoLabel.text = "Occupied"
+            }
+            else {
+                self.chargingInfoLabel.text = "Occupied, Please leave the area promptly"
+            }
+        case "TO_PAY":
+            self.chargingInfoLabel.textColor = .gx_orange
+            self.chargingInfoLabel.text = "Pending Payment"
+        case "FINISHED":
+            self.chargingInfoLabel.textColor = .gx_drakGray
+            self.chargingInfoLabel.text = "Thank you for choosing the MarsEnergy app"
+        default: break
         }
     }
     

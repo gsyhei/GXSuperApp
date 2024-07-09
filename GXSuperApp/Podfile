@@ -38,6 +38,8 @@ target 'GXSuperApp' do
   pod 'SwiftTheme'
   # 基于Alamofire的网络框架
   pod 'Moya'
+  # 气泡弹窗扩展
+  pod "Popover"
   # JSON/模型转换
   pod 'HandyJSON'
   # HUD控件

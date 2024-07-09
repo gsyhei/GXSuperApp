@@ -50,7 +50,7 @@ class GXAlertView: UIView {
         return UILabel().then {
             $0.textAlignment = .center
             $0.textColor = .gx_textBlack
-            $0.font = .gx_boldFont(size: 19)
+            $0.font = .gx_boldFont(size: 20)
             $0.numberOfLines = 0
         }
     }()
@@ -68,7 +68,7 @@ class GXAlertView: UIView {
         return UILabel().then {
             $0.textAlignment = .left
             $0.textColor = .gx_red
-            $0.font = .gx_font(size: 14)
+            $0.font = .gx_font(size: 15)
             $0.numberOfLines = 1
         }
     }()
@@ -92,6 +92,7 @@ class GXAlertView: UIView {
 
     func createAlert(title: String? = nil,
                      message: String? = nil,
+                     messageAttributedText: NSAttributedString? = nil,
                      actions: [GXAlertAction] = [],
                      inputs: [GXAlertInput] = []) {
         self.actions = actions
@@ -106,7 +107,15 @@ class GXAlertView: UIView {
             self.contentView.addSubview(self.titleLabel)
             top = self.titleLabel.bottom
         }
-        if let letMessage = message {
+        if let attributedText = messageAttributedText {
+            top += GXALERT_YSPACE/2
+            self.messageLabel.attributedText = attributedText
+            let height = attributedText.height(width: width)
+            self.messageLabel.frame = CGRect(x: left, y: top, width: width, height: ceil(height))
+            self.contentView.addSubview(self.messageLabel)
+            top = self.messageLabel.bottom
+        }
+        else if let letMessage = message {
             top += GXALERT_YSPACE/2
             self.messageLabel.text = letMessage
             let height = letMessage.height(width: width, font: self.messageLabel.font)

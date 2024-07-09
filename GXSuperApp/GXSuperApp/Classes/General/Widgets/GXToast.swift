@@ -10,7 +10,7 @@ import UIKit
 private let GXTextFont: UIFont = .gx_font(size: 15)
 private let GXTextMaxSize: CGSize = .init(width: SCREEN_WIDTH - 200, height: SCREEN_HEIGHT - 230)
 private let GXIconSize: CGSize = .init(width: 24, height: 24)
-private let GXInsets: UIEdgeInsets = .init(top: 12, left: 16, bottom: 12, right: 16)
+private let GXInsets: UIEdgeInsets = .init(top: 14, left: 16, bottom: 14, right: 16)
 private let GXSpacing: CGFloat = 8
 
 class GXToast: UIControl {
@@ -133,11 +133,11 @@ extension GXToast {
     }
 
     class func showError(text: String?, to view: UIView? = nil) {
-        GXToast.show(text: text ?? "", icon: "toast_info", to: view)
+        GXToast.show(text: text ?? "", icon: "com_toast_ic_failed", to: view)
     }
 
     class func showSuccess(text: String?, to view: UIView? = nil) {
-        GXToast.show(text: text ?? "", icon: "toast_succ", to: view)
+        GXToast.show(text: text ?? "", icon: "com_toast_ic_success", to: view)
     }
 
 }

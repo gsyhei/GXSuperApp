@@ -67,7 +67,7 @@ class GXBaseTableView: UITableView {
     }
     
     private func initTableView() {
-        self.configuration()
+        self.configuration(estimated: true, separatorLeft: false)
         self.separatorColor = .gx_lineGray
         
         self.placeholderView.addSubview(self.placeholderImageView)

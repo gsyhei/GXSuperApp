@@ -7,16 +7,36 @@
 
 import UIKit
 import Reusable
+import RxSwift
 
 class GXChargingOrderDetailsCell8: UITableViewCell, NibReusable {
+    let disposeBag = DisposeBag()
+    @IBOutlet weak var freeMinLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         self.isSkeletonable = true
+        
+        NotificationCenter.default.rx
+            .notification(GX_NotifName_OccupyCountdown)
+            .take(until: self.rx.deallocated)
+            .subscribe(onNext: {[weak self] notifi in
+                self?.occupyCountdown(timeObject: notifi.object)
+            }).disposed(by: disposeBag)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    private func occupyCountdown(timeObject: Any?) {
+        guard let time = timeObject as? Int else { return }
+        self.timeLabel.text = GXUtil.gx_minuteSecond(time: time)
+    }
+    
+    func bindCell(model: GXChargingOrderDetailData?) {
+        guard let model = model else { return }
+        self.freeMinLabel.text = "$\(model.occupyPrice) / min"
+    }
 }

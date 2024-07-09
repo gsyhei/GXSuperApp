@@ -8,6 +8,10 @@
 import UIKit
 
 extension String {
+    
+    var formatCarNumber: String {
+        return String.gx_carNumber(carNumber: self)
+    }
 
     static func gx_money(number: Int) -> String {
         return "￥" + self.gx_showInSeperator(number: number)
@@ -42,6 +46,15 @@ extension String {
         }
         let result = (0..<length).map { _ in Statics.characters.randomElement()! }
         return String(result)
+    }
+    
+    static func gx_carNumber(carNumber: String) -> String {
+        let number = carNumber.replacingOccurrences(of: "", with: "-")
+        guard number.count > 2 else { return number }
+        let mutableStr = NSMutableString(string: number)
+        mutableStr.insert("-", at: 2)
+        
+        return (mutableStr as String)
     }
 
 }

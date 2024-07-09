@@ -11,7 +11,10 @@ import PromiseKit
 import SkeletonView
 
 class GXChargingOrderDetailsVC: GXBaseViewController {
+    @IBOutlet weak var appealButton: UIButton!
+    @IBOutlet weak var appealInfoLabel: UILabel!
     @IBOutlet weak var payNowButton: UIButton!
+    @IBOutlet weak var bottomHeightLC: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.configuration(estimated: true, separatorLeft: false)
@@ -36,8 +39,19 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
     }()
     
     private(set) lazy var viewModel: GXChargingOrderDetailsViewModel = {
-        return GXChargingOrderDetailsViewModel()
+        return GXChargingOrderDetailsViewModel().then {
+            $0.autouUpdateDetailAction = {[weak self] in
+                self?.updateDataSource()
+            }
+        }
     }()
+    
+    class func createVC(orderId: Int) -> GXChargingOrderDetailsVC {
+        return GXChargingOrderDetailsVC.xibViewController().then {
+            $0.hidesBottomBarWhenPushed = true
+            $0.viewModel.orderId = orderId
+        }
+    }
     
     override func viewDidLayoutSubviews() {
         self.view.layoutSkeletonIfNeeded()
@@ -55,8 +69,47 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
         self.payNowButton.setBackgroundColor(.gx_green, for: .normal)
         self.payNowButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
         self.tableView.tableHeaderView = self.tableHeader
-        self.view.isSkeletonable = true
-        self.tableView.isSkeletonable = true
+    }
+    
+}
+
+extension GXChargingOrderDetailsVC {
+    
+    func updateDataSource() {
+        self.tableView.reloadData()
+        guard let detail = self.viewModel.detailData else { return }
+        
+        self.tableHeader.bindView(model: detail)
+        if detail.complainAvailable && (detail.orderStatus == "TO_PAY" || detail.orderStatus == "FINISHED") {
+            self.appealButton.isHidden = false
+            self.appealInfoLabel.isHidden = false
+            self.bottomHeightLC.constant = 100
+        }
+        else {
+            self.appealButton.isHidden = true
+            self.appealInfoLabel.isHidden = true
+            self.bottomHeightLC.constant = 64
+        }
+        if detail.orderStatus == "TO_PAY" {
+            self.payNowButton.setTitle("Pay Now", for: .normal)
+        }
+        else {
+            self.payNowButton.setTitle("Back Home", for: .normal)
+        }
+        self.updateFavoriteBarButtonItem()
+    }
+    
+    func updateFavoriteBarButtonItem() {
+        if self.viewModel.detailData?.favoriteFlag == GX_YES {
+            let image = UIImage(named: "com_nav_ic_collect_selected")?.withRenderingMode(.alwaysOriginal)
+            self.navigationItem.rightBarButtonItem =
+            UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(requestFavoriteConsumerSave))
+        }
+        else {
+            let image = UIImage(named: "com_nav_ic_collect_normal")?.withRenderingMode(.alwaysOriginal)
+            self.navigationItem.rightBarButtonItem =
+            UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(requestFavoriteConsumerSave))
+        }
     }
     
 }
@@ -66,16 +119,47 @@ extension GXChargingOrderDetailsVC {
     func requestOrderConsumerStart() {
         self.view.showAnimatedGradientSkeleton()
         self.tableView.tableHeaderView?.showAnimatedGradientSkeleton()
+        let combinedPromise = when(fulfilled: [
+            self.viewModel.requestOrderConsumerDetail(),
+            self.viewModel.requestWalletConsumerBalance()
+        ])
         firstly {
-            self.viewModel.requestOrderConsumerDetail()
+            combinedPromise
         }.done { models in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
                 self.view.hideSkeleton()
                 self.tableView.tableHeaderView?.hideSkeleton()
-                self.tableView.reloadData()
+                self.updateDataSource()
             })
         }.catch { error in
             self.view.hideSkeleton()
+            self.tableView.tableHeaderView?.hideSkeleton()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
+    func requestStationConsumerPrice(completion: GXActionBlock?) {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestStationConsumerPrice()
+        }.done { model in
+            MBProgressHUD.dismiss()
+            completion?()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
+    @objc func requestFavoriteConsumerSave() {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestFavoriteConsumerSave()
+        }.done { model in
+            MBProgressHUD.dismiss()
+            self.updateFavoriteBarButtonItem()
+        }.catch { error in
+            MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
         }
     }
@@ -140,33 +224,49 @@ extension GXChargingOrderDetailsVC: SkeletonTableViewDataSource, SkeletonTableVi
         switch index {
         case 0:
             let cell: GXChargingOrderDetailsCell0 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(model: self.viewModel.detailData)
             return cell
         case 1:
             let cell: GXChargingOrderDetailsCell1 = tableView.dequeueReusableCell(for: indexPath)
-            cell.bindCell(count: 6)
+            cell.bindDetailCell(model: self.viewModel.detailData)
             return cell
         case 2:
             let cell: GXChargingOrderDetailsCell2 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(model: self.viewModel.detailData) {[weak self] _ in
+                guard let `self` = self else { return }
+                self.showChargingFeeInfo()
+            }
             return cell
         case 3:
             let cell: GXChargingOrderDetailsCell3 = tableView.dequeueReusableCell(for: indexPath)
-            cell.bindCell(count: 3)
+            cell.bindCell(model: self.viewModel.detailData)
             return cell
         case 4:
             let cell: GXChargingOrderDetailsCell4 = tableView.dequeueReusableCell(for: indexPath)
-            cell.bindCell(count: 4)
+            cell.bindCell(model: self.viewModel.detailData)
             return cell
         case 5:
             let cell: GXChargingOrderDetailsCell5 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell5(model: self.viewModel.detailData)
             return cell
         case 6:
             let cell: GXChargingOrderDetailsCell6 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(model: self.viewModel.balanceData)
             return cell
         case 7:
             let cell: GXChargingOrderDetailsCell7 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(model: self.viewModel.detailData)
             return cell
         case 8:
             let cell: GXChargingOrderDetailsCell8 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(model: self.viewModel.detailData)
+            return cell
+        case 9:
+            let cell: GXChargingOrderDetailsCell5 = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell9(model: self.viewModel.detailData) {[weak self] in
+                guard let `self` = self else { return }
+                self.showIdleFeeInfo()
+            }
             return cell
         default: return UITableViewCell()
         }
@@ -186,7 +286,7 @@ extension GXChargingOrderDetailsVC: SkeletonTableViewDataSource, SkeletonTableVi
         case 2: return 80
         case 3: return 156
         case 4: return 142
-        case 5: return 48
+        case 5, 9: return 48
         case 6: return 54
         case 7: return 110
         case 8: return 146
@@ -202,12 +302,44 @@ extension GXChargingOrderDetailsVC: SkeletonTableViewDataSource, SkeletonTableVi
 
 extension GXChargingOrderDetailsVC {
     
+    func showChargingFeeInfo() {
+        self.requestStationConsumerPrice(completion: {[weak self] in
+            guard let `self` = self else { return }
+            guard let prices = self.viewModel.priceData?.prices else { return }
+            let maxHeight = SCREEN_HEIGHT - 200
+            let menu = GXHomeDetailPriceDetailsMenu(height: maxHeight)
+            menu.bindView(prices: prices)
+            menu.show(style: .sheetBottom, usingSpring: true)
+        })
+    }
+    
+    func showIdleFeeInfo() {
+        let mins = "\(GXUserManager.shared.paramsData?.occupyStartTime ?? 0)"
+        let maxOccupancy = "$\(GXUserManager.shared.paramsData?.occupyMax ?? "")"
+        let text = "Idle fee will be charged \(mins) mins after the end of charging" + "\nOccupancy fee cap: " + maxOccupancy
+        let attributes: [NSAttributedString.Key : Any] = [.font: UIFont.gx_font(size: 16), .foregroundColor: UIColor.gx_drakGray]
+        let attributedText = NSMutableAttributedString(string: text, attributes: attributes)
+        let range = NSRange(location: text.count - maxOccupancy.count, length: maxOccupancy.count)
+        attributedText.addAttribute(.foregroundColor, value: UIColor.gx_orange, range: range)
+        GXUtil.showAlert(title: "Idle Fee", messageAttributedText: attributedText, cancelTitle: "OK", handler: { alert, index in })
+    }
+    
+}
+
+extension GXChargingOrderDetailsVC {
+    
     @IBAction func appealButtonClicked(_ sender: Any?) {
         
     }
     
     @IBAction func payNowButtonClicked(_ sender: Any?) {
-        
+        guard let detail = self.viewModel.detailData else { return }
+        if detail.orderStatus == "TO_PAY" {
+
+        }
+        else {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
 }

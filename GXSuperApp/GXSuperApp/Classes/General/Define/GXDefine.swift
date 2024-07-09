@@ -19,7 +19,7 @@ let SCREEN_MIN_WIDTH = min(SCREEN_WIDTH, SCREEN_HEIGHT)
 
 let STATUS_HEIGHT = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.statusBarManager?.statusBarFrame.height ?? 0
 
-let PAGE_SIZE: Int = 20 /// 每页数量
+let PAGE_SIZE: Int = 3 /// 每页数量
 
 typealias GXActionBlock = (() -> Void)
 typealias GXActionBlockItem<T: Any> = ((T) -> Void)

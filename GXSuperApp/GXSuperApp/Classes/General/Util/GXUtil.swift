@@ -39,6 +39,12 @@ class GXUtil: NSObject {
         let s = time%60
         return String(format: "%02d", s)
     }
+    
+    class func gx_minuteSecond(time: Int) -> String {
+        let m = time/60%60
+        let s = time%60
+        return String(format: "%02d:%02d", m, s)
+    }
 
     class func gx_sizeToMBString(bytes: UInt) -> String {
         if bytes < 1024 * 1024 {
@@ -129,6 +135,7 @@ class GXUtil: NSObject {
     class func showAlert(to view: UIView? = nil,
                          title: String? = nil,
                          message: String? = nil,
+                         messageAttributedText: NSAttributedString? = nil,
                          cancelTitle: String? = "Cancel",
                          actionTitle: String? = nil,
                          actionStyle: UIAlertAction.Style = .default,
@@ -217,7 +224,7 @@ class GXUtil: NSObject {
             }
             actions.append(cancelAction)
         }
-        alert.createAlert(title: title, message: message, actions: actions)
+        alert.createAlert(title: title, message: message, messageAttributedText: messageAttributedText, actions: actions)
         alert.show(to: view, style: .alert, backgoundTapDismissEnable: false, usingSpring: true)
     }
 

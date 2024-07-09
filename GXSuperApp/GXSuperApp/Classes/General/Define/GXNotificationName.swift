@@ -17,3 +17,6 @@ let GX_NotifName_NetworkStatus = NSNotification.Name("GX_NotifName_NetworkStatus
 
 /// 点击通知栏消息
 let GX_NotifName_ClickNotification = NSNotification.Name("GX_NotifName_ClickNotification")
+
+/// 停车占位倒计时
+let GX_NotifName_OccupyCountdown = NSNotification.Name("GX_NotifName_OccupyCountdown")

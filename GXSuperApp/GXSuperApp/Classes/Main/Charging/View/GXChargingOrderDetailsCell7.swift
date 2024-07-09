@@ -9,6 +9,7 @@ import UIKit
 import Reusable
 
 class GXChargingOrderDetailsCell7: UITableViewCell, NibReusable {
+    @IBOutlet weak var freeParkingLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,4 +20,9 @@ class GXChargingOrderDetailsCell7: UITableViewCell, NibReusable {
         super.setSelected(selected, animated: animated)
     }
     
+    func bindCell(model: GXChargingOrderDetailData?) {
+        guard let model = model else { return }
+        self.freeParkingLabel.text = model.freeParking
+    }
 }
+

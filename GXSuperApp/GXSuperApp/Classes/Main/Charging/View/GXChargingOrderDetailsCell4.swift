@@ -15,8 +15,14 @@ class GXChargingOrderDetailsCell4: UITableViewCell, NibReusable {
         didSet {
             tableView.configuration()
             tableView.dataSource = self
-            tableView.rowHeight = 34
+            tableView.estimatedRowHeight = 34
             tableView.register(cellType: GXChargingOrderLRTextCell.self)
+        }
+    }
+    private var tableList: [GXChargingOrderLRTextCell.Model] = [] {
+        didSet {
+            self.tableHeightLC.constant = tableView.estimatedRowHeight * CGFloat(tableList.count)
+            self.tableView.reloadData()
         }
     }
     
@@ -29,17 +35,21 @@ class GXChargingOrderDetailsCell4: UITableViewCell, NibReusable {
         super.setSelected(selected, animated: animated)
     }
     
-    var count: Int = 3
-    func bindCell(count: Int) {
-        self.count = count
-        self.tableHeightLC.constant = tableView.rowHeight * CGFloat(count)
+    func bindCell(model: GXChargingOrderDetailData?) {
+        guard let model = model else { return }
+        
+        let cellModel0 = GXChargingOrderLRTextCell.Model(leftText: "Due Amount", rightText: "$\(model.totalFee)")
+        let cellModel1 = GXChargingOrderLRTextCell.Model(leftText: "Paid Amount", rightText: "$\(model.actualFee)")
+        let cellModel2 = GXChargingOrderLRTextCell.Model(leftText: "Payment Time", rightText: model.payTime)
+        let cellModel3 = GXChargingOrderLRTextCell.Model(leftText: "Payment Channel", rightText: model.payType)
+        self.tableList = [cellModel0, cellModel1, cellModel2, cellModel3]
     }
 }
 
 extension GXChargingOrderDetailsCell4: SkeletonTableViewDataSource {
     // MARK: - SkeletonTableViewDataSource
     func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 4
     }
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
         return GXChargingOrderLRTextCell.reuseIdentifier
@@ -51,10 +61,11 @@ extension GXChargingOrderDetailsCell4: SkeletonTableViewDataSource {
     
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.count
+        return self.tableList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXChargingOrderLRTextCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.bindCell(model: self.tableList[indexPath.row])
         return cell
     }
 }

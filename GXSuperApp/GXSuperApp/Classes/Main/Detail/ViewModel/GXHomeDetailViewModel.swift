@@ -47,8 +47,10 @@ class GXHomeDetailViewModel: GXBaseViewModel {
     func requestConnectorConsumerList() -> Promise<(GXConnectorConsumerListModel, Bool)> {
         var params: Dictionary<String, Any> = [:]
         params["stationId"] = self.rowModel?.id
-        params["pageNum"] = 1 + (self.ccRowsList.count + PAGE_SIZE - 1)/PAGE_SIZE
-        params["pageSize"] = PAGE_SIZE
+        params["pageNum"] = 1
+        params["pageSize"] = 1000
+//        params["pageNum"] = 1 + (self.ccRowsList.count + PAGE_SIZE - 1)/PAGE_SIZE
+//        params["pageSize"] = PAGE_SIZE
         let api = GXApi.normalApi(Api_connector_consumer_list, params, .get)
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXConnectorConsumerListModel.self, success: { model in
@@ -105,11 +107,11 @@ extension GXHomeDetailViewModel {
     
     func updateCellIndexs() {
         guard let model = rowModel else { return }
-        if model.occupyFlag == GX_YES {
-            self.cellIndexs = [0, 1, 2, 3, 4, 5, 6, 7]
+        if model.freeParking.isEmpty {
+            self.cellIndexs = [0, 1, 2, 3, 5, 6, 7]
         }
         else {
-            self.cellIndexs = [0, 1, 2, 3, 5, 6, 7]
+            self.cellIndexs = [0, 1, 2, 3, 4, 5, 6, 7]
         }
     }
     

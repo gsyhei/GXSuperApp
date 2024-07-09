@@ -220,7 +220,14 @@ class GXChargingFeeConfirmTableVC: UITableViewController {
 extension GXChargingFeeConfirmTableVC {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 2 {
-            if  self.scanData?.stationInfo?.occupyFlag == GX_YES {
+            if self.scanData?.stationInfo?.occupyFlag == GX_YES {
+                return UITableView.automaticDimension
+            } else {
+                return 0
+            }
+        }
+        else if indexPath.row == 3 {
+            if self.scanData?.stationInfo?.freeParking.count ?? 0 > 0 {
                 return UITableView.automaticDimension
             } else {
                 return 0

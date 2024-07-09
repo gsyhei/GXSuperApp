@@ -67,6 +67,13 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="charge_card_ic_time" translatesAutoresizingMaskIntoConstraints="NO" id="3KR-UN-NxQ">
+                                <rect key="frame" x="234" y="51" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="W9Z-nT-n0c"/>
+                                    <constraint firstAttribute="width" constant="48" id="eiM-ak-2B8"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.60392156860000001" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -76,8 +83,10 @@
                             <constraint firstItem="zA3-y2-K8h" firstAttribute="leading" secondItem="V4X-iN-O9W" secondAttribute="leading" constant="24" id="F0j-Zo-yYk"/>
                             <constraint firstAttribute="trailing" secondItem="J8C-3m-iQx" secondAttribute="trailing" constant="24" id="Job-1M-xbY"/>
                             <constraint firstItem="eeH-jE-8yk" firstAttribute="bottom" secondItem="MOH-4u-2sm" secondAttribute="bottom" constant="4" id="Mmc-HB-sRv"/>
+                            <constraint firstAttribute="bottom" secondItem="3KR-UN-NxQ" secondAttribute="bottom" id="R3h-MX-qnP"/>
                             <constraint firstItem="MOH-4u-2sm" firstAttribute="leading" secondItem="ZR0-41-Of8" secondAttribute="trailing" constant="12" id="dXN-Rc-Bdc"/>
                             <constraint firstAttribute="bottom" secondItem="eeH-jE-8yk" secondAttribute="bottom" constant="9" id="iTa-KC-TeX"/>
+                            <constraint firstAttribute="trailing" secondItem="3KR-UN-NxQ" secondAttribute="trailing" constant="132" id="lLf-5T-vYO"/>
                             <constraint firstAttribute="trailing" secondItem="MOH-4u-2sm" secondAttribute="trailing" constant="108" id="oId-wv-7fD"/>
                             <constraint firstItem="ZR0-41-Of8" firstAttribute="top" secondItem="zA3-y2-K8h" secondAttribute="bottom" constant="2" id="p5o-oS-bIC"/>
                             <constraint firstItem="J8C-3m-iQx" firstAttribute="top" secondItem="MOH-4u-2sm" secondAttribute="top" constant="-10" id="qJA-df-EoN"/>
@@ -119,7 +128,14 @@ promptly after the countdown ends!</string>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="-148" y="38"/>
+            <connections>
+                <outlet property="freeMinLabel" destination="ZR0-41-Of8" id="CLJ-ZH-aln"/>
+                <outlet property="timeLabel" destination="J8C-3m-iQx" id="MT8-EK-lnz"/>
+            </connections>
+            <point key="canvasLocation" x="-148.09160305343511" y="36.971830985915496"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="charge_card_ic_time" width="48" height="30"/>
+    </resources>
 </document>

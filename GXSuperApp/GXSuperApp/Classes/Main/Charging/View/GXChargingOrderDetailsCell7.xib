@@ -56,6 +56,9 @@ magna aliqua. Ut enim ad minim veniam</string>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="freeParkingLabel" destination="Ogn-SY-bSA" id="JiQ-lH-5uc"/>
+            </connections>
             <point key="canvasLocation" x="71.755725190839698" y="21.126760563380284"/>
         </tableViewCell>
     </objects>
