@@ -71,6 +71,7 @@ PODS:
   - ObjcExceptionBridging (7.1.5):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 7.1.5)
   - ObjcExceptionBridging/ObjcExceptionBridging (7.1.5)
+  - Popover (1.3.0)
   - PromiseKit (8.1.1):
     - PromiseKit/CorePromise (= 8.1.1)
     - PromiseKit/Foundation (= 8.1.1)
@@ -136,6 +137,7 @@ DEPENDENCIES:
   - Kingfisher
   - MBProgressHUD
   - Moya
+  - Popover
   - PromiseKit
   - PromiseKit/CoreLocation
   - PromiseKit/StoreKit
@@ -175,6 +177,7 @@ SPEC REPOS:
     - MBProgressHUD
     - Moya
     - ObjcExceptionBridging
+    - Popover
     - PromiseKit
     - QRCodeReader.swift
     - Reusable
@@ -216,6 +219,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   ObjcExceptionBridging: d3d37d62981bb7f252ecb31b62d7e23a96bbfb8a
+  Popover: 10e1d9528f81d9504df984b7b3f491292bc1822d
   PromiseKit: d1be44b474e5acfa16adf007a1f49f104e10fead
   QRCodeReader.swift: 373a389fe9a22d513c879a32a6f647c58f4ef572
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
@@ -233,6 +237,6 @@ SPEC CHECKSUMS:
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
   XCGLogger: 399c5885210b4e2ad79d9f7a29b105d672ef724f
 
-PODFILE CHECKSUM: b5a195c86582aed8b3312195c3a9856af14ab5c3
+PODFILE CHECKSUM: 513e1d2faf2d746c404f278a97228740c9871cfa
 
 COCOAPODS: 1.15.2

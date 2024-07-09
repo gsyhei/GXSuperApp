@@ -10,6 +10,7 @@ import PromiseKit
 import GXRefresh
 import SkeletonView
 import MBProgressHUD
+import Popover
 
 class GXOrderListTypeVC: GXBaseViewController {
     private lazy var tableView: GXBaseTableView = {
@@ -32,13 +33,26 @@ class GXOrderListTypeVC: GXBaseViewController {
             $0.register(cellType: GXChargingOrderDetailsCell10.self)
         }
     }()
+    
     private lazy var popover: Popover = {
-        let color = UIColor(white: 0, alpha: 0.1)
+        let color = UIColor(white: 0, alpha: 0.05)
         let size = CGSize(width: 16.0, height: 8.0)
-        let options:[PopoverOption] = [.type(.up),.sideEdge(5.0),.blackOverlayColor(color),
-                                       .color(.gx_black), .arrowSize(size),.animationIn(0.3)]
-        return Popover(options: options)
+        let options:[PopoverOption] = [
+            .type(.up),
+            .sideEdge(24.0),
+            .blackOverlayColor(.clear),
+            .color(.white),
+            .arrowSize(size),
+            .animationIn(0.3)
+        ]
+        return Popover(options: options).then {
+            $0.layer.masksToBounds = false
+            $0.layer.shadowColor = UIColor.gx_gray.cgColor
+            $0.layer.shadowRadius = 16.0
+            $0.layer.shadowOpacity = 1.0
+        }
     }()
+    
     private(set) lazy var viewModel: GXOrderListTypeViewModel = {
         return GXOrderListTypeViewModel()
     }()
@@ -217,7 +231,10 @@ extension GXOrderListTypeVC: SkeletonTableViewDataSource, SkeletonTableViewDeleg
             return cell
         case 10:
             let cell: GXChargingOrderDetailsCell10 = tableView.dequeueReusableCell(for: indexPath)
-            cell.bindCell(model: model.item)
+            cell.bindCell(model: model.item, section: indexPath.section) {[weak self] (cell10, button, section) in
+                guard let `self` = self else { return }
+                self.clickedSectionCellAction(cell: cell10, button: button, section: section)
+            }
             return cell
         default: return UITableViewCell()
         }
@@ -270,6 +287,33 @@ extension GXOrderListTypeVC {
         let range = NSRange(location: text.count - maxOccupancy.count, length: maxOccupancy.count)
         attributedText.addAttribute(.foregroundColor, value: UIColor.gx_orange, range: range)
         GXUtil.showAlert(title: "Idle Fee", messageAttributedText: attributedText, cancelTitle: "OK", handler: { alert, index in })
+    }
+    
+    func clickedSectionCellAction(cell: GXChargingOrderDetailsCell10, button: UIButton, section: Int) {
+        guard let title = button.title(for: .normal) else { return }
+        let model = self.viewModel.cellList[section]
+        switch title {
+        case "View":
+            if model.item.orderStatus == "CHARGING" {
+                
+            }
+            else {
+                let vc = GXChargingOrderDetailsVC.createVC(orderId: model.item.id)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        case "Pay":
+            break
+        case "More":
+            let rect = button.convert(button.frame, from: cell.contentView)
+            let btnRect = button.convert(rect, to: self.view)
+            let point = CGPoint(x: btnRect.origin.x + button.width/2, y: btnRect.origin.y)
+            let listView = GXOrderPopoverListView(titles: ["Parking Discount", "Order Appeal"]) {[weak self] index in
+                guard let `self` = self else { return }
+                self.popover.dismiss()
+            }
+            self.popover.show(listView, point: point, inView: self.view)
+        default: break
+        }
     }
     
 }

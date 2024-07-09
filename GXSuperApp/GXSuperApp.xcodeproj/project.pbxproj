@@ -23,6 +23,7 @@
 		33272D712C3CFEEC00A95BD7 /* GXOrderConsumerListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33272D702C3CFEEC00A95BD7 /* GXOrderConsumerListModel.swift */; };
 		33272D742C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33272D722C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.swift */; };
 		33272D752C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33272D732C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.xib */; };
+		33272D772C3DE34800A95BD7 /* GXOrderPopoverListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33272D762C3DE34800A95BD7 /* GXOrderPopoverListView.swift */; };
 		33396A1A2C117326000A1944 /* GXTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33396A192C117326000A1944 /* GXTabBarController.swift */; };
 		33396A222C11E530000A1944 /* GXHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33396A202C11E530000A1944 /* GXHomeVC.swift */; };
 		33396A232C11E530000A1944 /* GXHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33396A212C11E530000A1944 /* GXHomeVC.xib */; };
@@ -206,6 +207,7 @@
 		33272D702C3CFEEC00A95BD7 /* GXOrderConsumerListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderConsumerListModel.swift; sourceTree = "<group>"; };
 		33272D722C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingOrderDetailsCell10.swift; sourceTree = "<group>"; };
 		33272D732C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXChargingOrderDetailsCell10.xib; sourceTree = "<group>"; };
+		33272D762C3DE34800A95BD7 /* GXOrderPopoverListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderPopoverListView.swift; sourceTree = "<group>"; };
 		33396A192C117326000A1944 /* GXTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXTabBarController.swift; sourceTree = "<group>"; };
 		33396A202C11E530000A1944 /* GXHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeVC.swift; sourceTree = "<group>"; };
 		33396A212C11E530000A1944 /* GXHomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeVC.xib; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 		33272D632C3CCD6600A95BD7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				33272D762C3DE34800A95BD7 /* GXOrderPopoverListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1153,6 +1156,7 @@
 				33A91E382C28A83B00F7E214 /* GXHomeDetailFacilitiesView.swift in Sources */,
 				33272D742C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.swift in Sources */,
 				339A07132C2F996200BDDD46 /* GXLoginInputCell.swift in Sources */,
+				33272D772C3DE34800A95BD7 /* GXOrderPopoverListView.swift in Sources */,
 				33EC578F2C101BA200D4CCD0 /* GXMoyaProvider.swift in Sources */,
 				334105CD2C3B1B9C007F2F0E /* GXChargingOrderDetailsCell7.swift in Sources */,
 				33EC55B92C101BA100D4CCD0 /* GXSlideTableView.swift in Sources */,

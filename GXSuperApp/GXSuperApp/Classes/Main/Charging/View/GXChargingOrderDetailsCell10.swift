@@ -11,7 +11,9 @@ import Reusable
 class GXChargingOrderDetailsCell10: UITableViewCell, NibReusable {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
-
+    private var section: Int = 0
+    private var buttonAction: GXActionBlockItem3<GXChargingOrderDetailsCell10, UIButton, Int>?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -20,15 +22,17 @@ class GXChargingOrderDetailsCell10: UITableViewCell, NibReusable {
         super.setSelected(selected, animated: animated)
     }
     
-    func bindCell(model: GXChargingOrderDetailData?) {
+    func bindCell(model: GXChargingOrderDetailData?, section: Int, action: GXActionBlockItem3<GXChargingOrderDetailsCell10, UIButton, Int>?) {
         guard let model = model else { return }
         
+        self.section = section
+        self.buttonAction = action
         self.leftButton.layer.borderColor = nil
         self.leftButton.layer.borderWidth = 0
         self.rightButton.layer.borderColor = nil
         self.rightButton.layer.borderWidth = 0
         
-        //订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成
+        // 订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成
         switch model.orderStatus {
         case "CHARGING":
             self.leftButton.isHidden = true
@@ -69,5 +73,13 @@ class GXChargingOrderDetailsCell10: UITableViewCell, NibReusable {
         default: break
         }
     }
-    
+}
+
+extension GXChargingOrderDetailsCell10 {
+    @IBAction func leftButtonClicked(_ sender: UIButton) {
+        self.buttonAction?(self, sender, self.section)
+    }
+    @IBAction func rightButtonClicked(_ sender: UIButton) {
+        self.buttonAction?(self, sender, self.section)
+    }
 }

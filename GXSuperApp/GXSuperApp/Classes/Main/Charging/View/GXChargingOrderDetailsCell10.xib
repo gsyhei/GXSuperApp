@@ -36,6 +36,9 @@
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="rightButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2MT-1o-xlN"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBQ-aL-pj2">
                         <rect key="frame" x="142" y="7" width="72" height="28"/>
@@ -56,6 +59,9 @@
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="leftButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="J3o-2U-xHA"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
