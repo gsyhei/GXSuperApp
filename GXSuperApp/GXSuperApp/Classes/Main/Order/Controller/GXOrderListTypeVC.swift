@@ -295,7 +295,8 @@ extension GXOrderListTypeVC {
         switch title {
         case "View":
             if model.item.orderStatus == "CHARGING" {
-                
+                let vc = GXChargingCarShowVC.createVC(orderId: model.item.id)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             else {
                 let vc = GXChargingOrderDetailsVC.createVC(orderId: model.item.id)

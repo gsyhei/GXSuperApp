@@ -30,7 +30,7 @@ class GXChargingCarShowViewModel: GXBaseViewModel {
     var priceData: GXStationConsumerPriceData?
     
     /// 自动更新详情数据
-    var autouUpdateDetailAction: GXActionBlock?
+    var autouUpdateDetailAction: GXActionBlockItem<Bool>?
     
     deinit {
         NSObject.cancelPreviousPerformRequests(withTarget: self)
@@ -104,18 +104,24 @@ class GXChargingCarShowViewModel: GXBaseViewModel {
 
 extension GXChargingCarShowViewModel {
     func updateCountdownRequests() {
-        guard let detail = detailData else { return }
-        /// 先清除倒计时调用
-        NSObject.cancelPreviousPerformRequests(withTarget: self)
-        /// 订单刷新倒计时
-        self.perform(#selector(self.updateOrderStateNext), with: nil, afterDelay: 5)
+        guard let detail = self.detailData else { return }
+        
+        if detail.orderStatus == "CHARGING" {
+            /// 先清除倒计时调用
+            NSObject.cancelPreviousPerformRequests(withTarget: self)
+            /// 订单刷新倒计时
+            self.perform(#selector(self.updateOrderStateNext), with: nil, afterDelay: 5)
+        }
+        else {
+            self.autouUpdateDetailAction?(false)
+        }
     }
     
     @objc func updateOrderStateNext() {
         firstly {
             self.requestOrderConsumerDetail()
         }.done { model in
-            self.autouUpdateDetailAction?()
+            self.autouUpdateDetailAction?(true)
         }.catch { error in
             XCGLogger.info(error.localizedDescription)
         }

@@ -9,7 +9,6 @@ import UIKit
 import MBProgressHUD
 import PromiseKit
 
-private let GX_NotifName_GXChargingCarShow_Data = NSNotification.Name("GX_NotifName_GXChargingCarShow_Data")
 class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
     @IBOutlet weak var carNumberLabel: UILabel!
     @IBOutlet weak var chargedTimeLabel: UILabel!
@@ -18,6 +17,7 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressBarIView: UIImageView!
     @IBOutlet weak var progressBarRightLC: NSLayoutConstraint!
+    weak var carShowTableVC: GXChargingCarShowTableViewVC?
     
     private var displayLink: CADisplayLink?
     private var progressConstant: CGFloat = 0
@@ -28,16 +28,37 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
         let progress = 1.0 - self.progressBarRightLC.constant / self.maxProgressConstant
         return Int(ceil(progress * 100.0))
     }
-    private var detailData: GXChargingOrderDetailData? {
-        didSet {
-            self.updateDataSource()
+    private lazy var viewModel: GXChargingCarShowViewModel = {
+        return GXChargingCarShowViewModel().then {
+            $0.autouUpdateDetailAction = {[weak self] isUpdate in
+                guard let `self` = self else { return }
+                if isUpdate {
+                    self.updateDataSource()
+                } else {
+                    let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId)
+                    self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
+                }
+            }
+        }
+    }()
+    
+    class func createVC(orderId: Int) -> GXChargingCarShowVC {
+        return GXChargingCarShowVC.instantiate().then {
+            $0.hidesBottomBarWhenPushed = true
+            $0.viewModel.orderId = orderId
         }
     }
     
     deinit {
         self.stopAnimation()
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as? GXChargingCarShowTableViewVC
+        vc?.viewModel = self.viewModel
+        self.carShowTableVC = vc
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -50,15 +71,7 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.rx
-            .notification(GX_NotifName_GXChargingCarShow_Data)
-            .take(until: self.rx.deallocated)
-            .subscribe(onNext: {[weak self] notifi in
-                if let data = notifi.object as? GXChargingOrderDetailData {
-                    self?.detailData = data
-                }
-            }).disposed(by: disposeBag)
+        self.requestOrderConsumerStart()
     }
     
     override func setupViewController() {
@@ -73,7 +86,7 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
     }
     
     private func updateDataSource() {
-        guard let detail = self.detailData else { return }
+        guard let detail = self.viewModel.detailData else { return }
         
         self.carNumberLabel.text = detail.carNumber.formatCarNumber
         self.chargedTimeLabel.text = "Charging will complete in " + GXUtil.gx_chargingTime(minute: detail.chargingDuration)
@@ -82,6 +95,29 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
         let progress = CGFloat(detail.soc) / 100.0
         self.updateBarProgress(to: progress)
     }
+}
+
+extension GXChargingCarShowVC {
+    
+    func requestOrderConsumerStart() {
+        MBProgressHUD.showLoading()
+        self.carShowTableVC?.tableView.isHidden = true
+        let combinedPromise = when(fulfilled: [
+            self.viewModel.requestOrderConsumerDetail(),
+            self.viewModel.requestWalletConsumerBalance()
+        ])
+        firstly {
+            combinedPromise
+        }.done { models in
+            MBProgressHUD.dismiss()
+            self.updateDataSource()
+            self.carShowTableVC?.updateDataSource()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
 }
 
 extension GXChargingCarShowVC {
@@ -124,9 +160,7 @@ class GXChargingCarShowTableViewVC: UITableViewController {
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var rechargeButton: UIButton!
 
-    private lazy var viewModel: GXChargingCarShowViewModel = {
-        return GXChargingCarShowViewModel()
-    }()
+    weak var viewModel: GXChargingCarShowViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,12 +182,9 @@ class GXChargingCarShowTableViewVC: UITableViewController {
         
         self.rechargeButton.setBackgroundColor(.gx_green, for: .normal)
         self.rechargeButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
-        
-        /// 网络请求
-        self.requestOrderConsumerStart()
     }
     
-    private func updateDataSource() {
+    func updateDataSource() {
         guard let detail = self.viewModel.detailData else { return }
         
         self.tableView.isHidden = false
@@ -172,25 +203,6 @@ class GXChargingCarShowTableViewVC: UITableViewController {
 
 extension GXChargingCarShowTableViewVC {
     
-    func requestOrderConsumerStart() {
-        MBProgressHUD.showLoading()
-        self.tableView.isHidden = true
-        let combinedPromise = when(fulfilled: [
-            self.viewModel.requestOrderConsumerDetail(),
-            self.viewModel.requestWalletConsumerBalance()
-        ])
-        firstly {
-            combinedPromise
-        }.done { models in
-            MBProgressHUD.dismiss()
-            self.updateDataSource()
-            self.notifiTableViewUpdateData()
-        }.catch { error in
-            MBProgressHUD.dismiss()
-            GXToast.showError(text:error.localizedDescription)
-        }
-    }
-    
     func requestStationConsumerPrice(completion: GXActionBlock?) {
         MBProgressHUD.showLoading()
         firstly {
@@ -202,10 +214,6 @@ extension GXChargingCarShowTableViewVC {
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
         }
-    }
-    
-    func notifiTableViewUpdateData() {
-        NotificationCenter.default.post(name: GX_NotifName_GXChargingCarShow_Data, object: self.viewModel.detailData)
     }
     
 }

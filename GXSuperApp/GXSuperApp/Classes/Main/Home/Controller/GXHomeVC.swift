@@ -335,16 +335,12 @@ private extension GXHomeVC {
 private extension GXHomeVC {
     
     @IBAction func searchButtonClicked(_ sender: Any?) {
-//        let vc = GXHomeSearchVC.xibViewController()
-//        let navc = GXBaseNavigationController(rootViewController: vc)
-//        self.searchButton.hero.id = vc.homeSearchVCHeroId
-//        navc.hero.isEnabled = true
-//        navc.modalPresentationStyle = .fullScreen
-//        self.present(navc, animated: true)
-        
-        let vc = GXChargingCarShowVC.instantiate()
-        vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = GXHomeSearchVC.xibViewController()
+        let navc = GXBaseNavigationController(rootViewController: vc)
+        self.searchButton.hero.id = vc.homeSearchVCHeroId
+        navc.hero.isEnabled = true
+        navc.modalPresentationStyle = .fullScreen
+        self.present(navc, animated: true)
     }
     
     @IBAction func filterButtonClicked(_ sender: Any?) {
@@ -374,7 +370,8 @@ private extension GXHomeVC {
 //        self.navigationController?.pushViewController(vc, animated: true)
         
 //        if orderDoing.orderStatus == "CHARGING" {
-//            
+//            let vc = GXChargingCarShowVC.createVC(orderId: model.item.id)
+//            self.navigationController?.pushViewController(vc, animated: true)
 //        }
 //        else {
 //            let vc = GXChargingOrderDetailsVC.createVC(orderId: orderDoing.id)
@@ -382,8 +379,7 @@ private extension GXHomeVC {
 //        }
         
         /// 充电效果
-        let vc = GXChargingCarShowVC.xibViewController()
-        vc.hidesBottomBarWhenPushed = true
+        let vc = GXChargingCarShowVC.createVC(orderId: orderDoing.id)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
