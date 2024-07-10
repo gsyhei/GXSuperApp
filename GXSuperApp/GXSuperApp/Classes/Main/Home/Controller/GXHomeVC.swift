@@ -335,12 +335,16 @@ private extension GXHomeVC {
 private extension GXHomeVC {
     
     @IBAction func searchButtonClicked(_ sender: Any?) {
-        let vc = GXHomeSearchVC.xibViewController()
-        let navc = GXBaseNavigationController(rootViewController: vc)
-        self.searchButton.hero.id = vc.homeSearchVCHeroId
-        navc.hero.isEnabled = true
-        navc.modalPresentationStyle = .fullScreen
-        self.present(navc, animated: true)
+//        let vc = GXHomeSearchVC.xibViewController()
+//        let navc = GXBaseNavigationController(rootViewController: vc)
+//        self.searchButton.hero.id = vc.homeSearchVCHeroId
+//        navc.hero.isEnabled = true
+//        navc.modalPresentationStyle = .fullScreen
+//        self.present(navc, animated: true)
+        
+        let vc = GXChargingCarShowVC.instantiate()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func filterButtonClicked(_ sender: Any?) {

@@ -45,6 +45,12 @@ class GXUtil: NSObject {
         let s = time%60
         return String(format: "%02d:%02d", m, s)
     }
+    
+    class func gx_chargingTime(minute: Int) -> String {
+        let h = minute/60
+        let m = minute%60
+        return "\(h)h\(m)m"
+    }
 
     class func gx_sizeToMBString(bytes: UInt) -> String {
         if bytes < 1024 * 1024 {

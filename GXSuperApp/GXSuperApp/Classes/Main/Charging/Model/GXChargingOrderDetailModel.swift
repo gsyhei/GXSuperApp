@@ -62,7 +62,7 @@ class GXChargingOrderDetailData: NSObject, HandyJSON {
     var complainAvailable: Bool = false
     var complainId: String = ""
     var freeParking: String = ""
-    var chargingDuration: String = ""
+    var chargingDuration: Int = 0
     var power: Int = 0
     var voltage: Int = 0
     var current: Int = 0

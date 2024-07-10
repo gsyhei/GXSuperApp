@@ -70,7 +70,6 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
         self.payNowButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
         self.tableView.tableHeaderView = self.tableHeader
     }
-    
 }
 
 extension GXChargingOrderDetailsVC {
@@ -126,11 +125,9 @@ extension GXChargingOrderDetailsVC {
         firstly {
             combinedPromise
         }.done { models in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                self.view.hideSkeleton()
-                self.tableView.tableHeaderView?.hideSkeleton()
-                self.updateDataSource()
-            })
+            self.view.hideSkeleton()
+            self.tableView.tableHeaderView?.hideSkeleton()
+            self.updateDataSource()
         }.catch { error in
             self.view.hideSkeleton()
             self.tableView.tableHeaderView?.hideSkeleton()

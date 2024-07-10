@@ -38,15 +38,7 @@ class GXChargingOrderDetailsViewModel: GXBaseViewModel {
     deinit {
         NSObject.cancelPreviousPerformRequests(withTarget: self)
     }
-    
-    //"orderStatus": "FINISHED", //订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成支付
-    static let orderStatus = "OCCUPY"
-    //豁免类型；VAL0：未豁免，VAL1：豁免+结算前，VAL2：豁免退款+结算前，VAL3：豁免+结算后，VAL4：豁免退款+结算后
-    static let exemptType = "VAL0"
-    //倒计时
-    static let test_countdown = 1100
-    let mockString = "{\"success\":true,\"code\":200,\"msg\":\"success\",\"data\":{\"id\":21,\"orderNo\":1802534546537844736,\"stationId\":2,\"stationName\":\"站点1\",\"pointId\":1,\"pointIdStr\":\"sin\",\"connectorId\":2,\"connectorIdStr\":\"2\",\"qrcode\":\"1800793239574417408\",\"startTime\":\"2024-06-16 22:51:41\",\"endTime\":\"2024-06-16 22:55:37\",\"occupyStartTime\":\"2024-06-16 22:56:37\",\"occupyEndTime\":\"2024-06-16 23:15:40\",\"carNumber\":\"AK123456\",\"orderStatus\":\"\(orderStatus)\",\"meterTotal\":0.16,\"powerFee\":0.1,\"serviceFee\":0.04,\"occupyFee\":3.06,\"totalFee\":3.2,\"actualFee\":3.2,\"payTime\":\"2024-06-27 06:49:36\",\"payType\":\"BALANCE\",\"chargingFeeDetails\":[{\"periodStart\":\"06:51:41\",\"periodEnd\":\"06:55:37\",\"periodType\":\"ORDINARY\",\"meter\":0.16,\"electricPrice\":0.62,\"servicePrice\":0.22,\"totalFee\":0.13}],\"occupyFreePeriod\":\"06:55:00~06:55:00\",\"occupyFeeDetails\":[{\"periodStart\":\"06:56:00\",\"periodEnd\":\"15:40:00\",\"minutes\":18,\"price\":0.17,\"fee\":3.06}],\"exemptType\":\"\(exemptType)\",\"complainAvailable\":false,\"complainId\":\"\",\"freeParking\":\"这里是免费停车介绍\",\"chargingDuration\":\"\",\"power\":0,\"voltage\":0,\"current\":0,\"soc\":0,\"countdown\":\(test_countdown),\"occupyFlag\":\"YES\",\"occupyPrice\":0.17}}"
-    
+
     /// 订单详情
     func requestOrderConsumerDetail() -> Promise<GXChargingOrderDetailModel?> {
         var params: Dictionary<String, Any> = [:]
@@ -60,12 +52,6 @@ class GXChargingOrderDetailsViewModel: GXBaseViewModel {
                 seal.reject(error)
             })
         }
-//        return Promise { seal in
-//            let model = GXChargingOrderDetailModel.deserialize(from: self.mockString)
-//            model?.data?.countdown = self.countdown
-//            self.detailData = model?.data
-//            seal.fulfill(model)
-//        }
     }
     
     /// 钱包余额
