@@ -929,6 +929,9 @@ magna aliqua. Ut enim ad minim veniam</string>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="endChargingButtonClicked:" destination="HCv-gn-wVN" eventType="touchUpInside" id="yMB-OM-yIe"/>
+                                </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYh-VT-WTq">
                                 <rect key="frame" x="0.0" y="437.66666666666674" width="393" height="313.33333333333326"/>
@@ -1323,7 +1326,7 @@ magna aliqua. Ut enim ad minim veniam</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ANB-Ev-VwM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1300" y="656.33802816901414"/>
+            <point key="canvasLocation" x="-1385" y="657"/>
         </scene>
     </scenes>
     <resources>

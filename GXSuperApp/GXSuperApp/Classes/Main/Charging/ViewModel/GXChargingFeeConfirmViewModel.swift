@@ -48,8 +48,8 @@ class GXChargingFeeConfirmViewModel: GXBaseViewModel {
         }
     }
     
-    /// 枪扫二维码
-    func requestOrderConsumerStart() -> Promise<GXConnectorConsumerScanModel> {
+    /// 开始充电
+    func requestOrderConsumerStart() -> Promise<GXOrderConsumerStartModel> {
         var params: Dictionary<String, Any> = [:]
         params["connectorId"] = self.scanData?.connectorId
         if let vehicle = GXUserManager.shared.selectedVehicle {
@@ -57,8 +57,7 @@ class GXChargingFeeConfirmViewModel: GXBaseViewModel {
         }
         let api = GXApi.normalApi(Api_order_consumer_start, params, .post)
         return Promise { seal in
-            GXNWProvider.login_request(api, type: GXConnectorConsumerScanModel.self, success: { model in
-                self.scanData = model.data
+            GXNWProvider.login_request(api, type: GXOrderConsumerStartModel.self, success: { model in
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)

@@ -105,7 +105,7 @@ class GXChargingOrderDetailsViewModel: GXBaseViewModel {
     
 }
 
-extension GXChargingOrderDetailsViewModel {
+private extension GXChargingOrderDetailsViewModel {
     func updateSectionIndexs() {
         guard let detail = detailData else { return }
         

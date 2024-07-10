@@ -68,15 +68,16 @@ private extension GXChargingFeeConfirmVC {
         MBProgressHUD.showLoading()
         firstly {
             self.viewModel.requestOrderConsumerStart()
-        }.done { models in
+        }.done { model in
             MBProgressHUD.dismiss()
-            
+            /// 启动成功-> 状态充电中
+            if let orderId = model.data?.id {
+                let vc = GXChargingCarShowVC.createVC(orderId: orderId)
+                self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
+            }
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
-            
-            let vc = GXChargingOrderDetailsVC.xibViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

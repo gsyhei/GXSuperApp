@@ -84,16 +84,14 @@ class GXChargingCarShowViewModel: GXBaseViewModel {
         }
     }
     
-    /// 收藏站点
-    func requestFavoriteConsumerSave() -> Promise<Bool> {
+    /// 停止充电
+    func requestOrderConsumerStop() -> Promise<GXBaseModel> {
         var params: Dictionary<String, Any> = [:]
-        params["stationId"] = self.detailData?.stationId
-        let api = GXApi.normalApi(Api_favorite_consumer_save, params, .post)
+        params["id"] = self.orderId
+        let api = GXApi.normalApi(Api_order_consumer_stop, params, .post)
         return Promise { seal in
-            GXNWProvider.login_request(api, type: GXFavoriteConsumerSaveModel.self, success: { model in
-                let isFavorite = model.data?.favoriteFlag ?? false
-                self.detailData?.favoriteFlag = isFavorite ? GX_YES : GX_NO
-                seal.fulfill(isFavorite)
+            GXNWProvider.login_request(api, type: GXBaseModel.self, success: { model in
+                seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)
             })
@@ -102,7 +100,7 @@ class GXChargingCarShowViewModel: GXBaseViewModel {
     
 }
 
-extension GXChargingCarShowViewModel {
+private extension GXChargingCarShowViewModel {
     func updateCountdownRequests() {
         guard let detail = self.detailData else { return }
         

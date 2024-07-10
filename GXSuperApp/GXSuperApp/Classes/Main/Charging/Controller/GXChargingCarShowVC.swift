@@ -71,7 +71,7 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.requestOrderConsumerStart()
+        self.requestOrderConsumerDetail()
     }
     
     override func setupViewController() {
@@ -95,11 +95,16 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
         let progress = CGFloat(detail.soc) / 100.0
         self.updateBarProgress(to: progress)
     }
+    
+    @IBAction func endChargingButtonClicked(_ sender: Any?) {
+        self.requestOrderConsumerStop()
+    }
+    
 }
 
 extension GXChargingCarShowVC {
     
-    func requestOrderConsumerStart() {
+    func requestOrderConsumerDetail() {
         MBProgressHUD.showLoading()
         self.carShowTableVC?.tableView.isHidden = true
         let combinedPromise = when(fulfilled: [
@@ -118,6 +123,20 @@ extension GXChargingCarShowVC {
         }
     }
     
+    func requestOrderConsumerStop() {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestOrderConsumerStop()
+        }.done { model in
+            MBProgressHUD.dismiss()
+            // 启动成功，去订单详情
+            let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId)
+            self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
 }
 
 extension GXChargingCarShowVC {
@@ -245,4 +264,5 @@ extension GXChargingCarShowTableViewVC {
     @IBAction func rechargeButtonClicked(_ sender: Any?) {
         
     }
+    
 }

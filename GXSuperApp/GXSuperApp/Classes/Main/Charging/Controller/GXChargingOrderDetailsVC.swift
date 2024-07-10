@@ -59,7 +59,7 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.requestOrderConsumerStart()
+        self.requestOrderConsumerDetail()
     }
     
     override func setupViewController() {
@@ -115,7 +115,7 @@ extension GXChargingOrderDetailsVC {
 
 extension GXChargingOrderDetailsVC {
     
-    func requestOrderConsumerStart() {
+    func requestOrderConsumerDetail() {
         self.view.showAnimatedGradientSkeleton()
         self.tableView.tableHeaderView?.showAnimatedGradientSkeleton()
         let combinedPromise = when(fulfilled: [
