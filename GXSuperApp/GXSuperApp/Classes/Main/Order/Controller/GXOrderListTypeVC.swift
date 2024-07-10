@@ -307,13 +307,29 @@ extension GXOrderListTypeVC {
             let rect = button.convert(button.frame, from: cell.contentView)
             let btnRect = button.convert(rect, to: self.view)
             let point = CGPoint(x: btnRect.origin.x + button.width/2, y: btnRect.origin.y)
-            let listView = GXOrderPopoverListView(titles: ["Parking Discount", "Order Appeal"]) {[weak self] index in
+            var list: [GXOrderPopoverListModel] = []
+            if !model.item.freeParking.isEmpty {
+                list.append(GXOrderPopoverListModel(title: "Parking Discount", type: 0))
+            }
+            list.append(GXOrderPopoverListModel(title: "Order Appeal", type: 1))
+            let listView = GXOrderPopoverListView(list: list) {[weak self] item in
                 guard let `self` = self else { return }
                 self.popover.dismiss()
+                switch item.type {
+                case 0:
+                    self.showParkingDiscount(model: model)
+                case 1:
+                    break
+                default: break
+                }
             }
             self.popover.show(listView, point: point, inView: self.view)
         default: break
         }
+    }
+    
+    func showParkingDiscount(model: GXChargingOrderDetailCellModel) {
+        GXUtil.showAlert(title: "Parking Fee Reduction", message: model.item.freeParking, cancelTitle: "OK", handler: { alert, index in })
     }
     
 }

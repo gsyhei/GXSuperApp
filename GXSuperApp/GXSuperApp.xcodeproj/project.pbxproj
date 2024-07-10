@@ -24,6 +24,8 @@
 		33272D742C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33272D722C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.swift */; };
 		33272D752C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33272D732C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.xib */; };
 		33272D772C3DE34800A95BD7 /* GXOrderPopoverListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33272D762C3DE34800A95BD7 /* GXOrderPopoverListView.swift */; };
+		33272D7A2C3E025900A95BD7 /* GXChargingCarShowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33272D782C3E025900A95BD7 /* GXChargingCarShowVC.swift */; };
+		33272D7B2C3E025900A95BD7 /* GXChargingCarShowVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33272D792C3E025900A95BD7 /* GXChargingCarShowVC.xib */; };
 		33396A1A2C117326000A1944 /* GXTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33396A192C117326000A1944 /* GXTabBarController.swift */; };
 		33396A222C11E530000A1944 /* GXHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33396A202C11E530000A1944 /* GXHomeVC.swift */; };
 		33396A232C11E530000A1944 /* GXHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33396A212C11E530000A1944 /* GXHomeVC.xib */; };
@@ -208,6 +210,8 @@
 		33272D722C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingOrderDetailsCell10.swift; sourceTree = "<group>"; };
 		33272D732C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXChargingOrderDetailsCell10.xib; sourceTree = "<group>"; };
 		33272D762C3DE34800A95BD7 /* GXOrderPopoverListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderPopoverListView.swift; sourceTree = "<group>"; };
+		33272D782C3E025900A95BD7 /* GXChargingCarShowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingCarShowVC.swift; sourceTree = "<group>"; };
+		33272D792C3E025900A95BD7 /* GXChargingCarShowVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXChargingCarShowVC.xib; sourceTree = "<group>"; };
 		33396A192C117326000A1944 /* GXTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXTabBarController.swift; sourceTree = "<group>"; };
 		33396A202C11E530000A1944 /* GXHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeVC.swift; sourceTree = "<group>"; };
 		33396A212C11E530000A1944 /* GXHomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeVC.xib; sourceTree = "<group>"; };
@@ -567,6 +571,8 @@
 				33A374382C36FD5D00229ED7 /* GXChargingFeeConfirmVC.swift */,
 				339A1C262C38CF03001FBA5E /* GXChargingOrderDetailsVC.swift */,
 				339A1C272C38CF03001FBA5E /* GXChargingOrderDetailsVC.xib */,
+				33272D782C3E025900A95BD7 /* GXChargingCarShowVC.swift */,
+				33272D792C3E025900A95BD7 /* GXChargingCarShowVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1025,6 +1031,7 @@
 				33EC57942C1021E300D4CCD0 /* GXApproveFailInfoView.xib in Resources */,
 				339A070F2C2F891900BDDD46 /* GXHomeDetailVehicleCell.xib in Resources */,
 				33272D692C3CCD9100A95BD7 /* GXOrderListVC.xib in Resources */,
+				33272D7B2C3E025900A95BD7 /* GXChargingCarShowVC.xib in Resources */,
 				336401E32C2788E900A312BC /* GXHomeDetailCell3.xib in Resources */,
 				336401DF2C277FC700A312BC /* GXHomeDetailCell2.xib in Resources */,
 				33167FBD2C3AAAC6009BBD88 /* GXChargingOrderDetailsCell2.xib in Resources */,
@@ -1256,6 +1263,7 @@
 				33EC55FB2C101BA100D4CCD0 /* GXSelectItemsMenu.swift in Sources */,
 				339A5EF12C2C24BF004F1B7F /* GXStationConsumerModel.swift in Sources */,
 				33EC55CF2C101BA100D4CCD0 /* GXAlertView.swift in Sources */,
+				33272D7A2C3E025900A95BD7 /* GXChargingCarShowVC.swift in Sources */,
 				33167FBC2C3AAAC6009BBD88 /* GXChargingOrderDetailsCell2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

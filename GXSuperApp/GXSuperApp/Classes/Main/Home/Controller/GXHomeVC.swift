@@ -369,13 +369,18 @@ private extension GXHomeVC {
 //        vc.hidesBottomBarWhenPushed = true
 //        self.navigationController?.pushViewController(vc, animated: true)
         
-        if orderDoing.orderStatus == "CHARGING" {
-            
-        }
-        else {
-            let vc = GXChargingOrderDetailsVC.createVC(orderId: orderDoing.id)
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+//        if orderDoing.orderStatus == "CHARGING" {
+//            
+//        }
+//        else {
+//            let vc = GXChargingOrderDetailsVC.createVC(orderId: orderDoing.id)
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+        
+        /// 充电效果
+        let vc = GXChargingCarShowVC.xibViewController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

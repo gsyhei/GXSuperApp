@@ -39,6 +39,15 @@ class GXOrderPopoverListCell: UITableViewCell, Reusable {
     }
 }
 
+struct GXOrderPopoverListModel {
+    var title: String
+    var type: Int
+    init(title: String, type: Int) {
+        self.title = title
+        self.type = type
+    }
+}
+
 class GXOrderPopoverListView: UIView {
     private lazy var tableView: UITableView = {
         return UITableView(frame: self.bounds, style: .plain).then {
@@ -50,19 +59,19 @@ class GXOrderPopoverListView: UIView {
             $0.register(cellType: GXOrderPopoverListCell.self)
         }
     }()
-    private var titles: [String] = []
-    private var action: GXActionBlockItem<Int>?
+    private var list: [GXOrderPopoverListModel] = []
+    private var action: GXActionBlockItem<GXOrderPopoverListModel>?
     
-    required init(titles: [String], action: GXActionBlockItem<Int>?) {
+    required init(list: [GXOrderPopoverListModel], action: GXActionBlockItem<GXOrderPopoverListModel>?) {
         var maxWidth: CGFloat = 0
-        titles.forEach { title in
-            let titleWidth = title.width(font: .gx_font(size: 15)) + 1
+        list.forEach { item in
+            let titleWidth = item.title.width(font: .gx_font(size: 15)) + 1
             maxWidth = max(maxWidth, titleWidth)
         }
-        let height = CELL_HEIGHT * CGFloat(titles.count) + 10.0
+        let height = CELL_HEIGHT * CGFloat(list.count) + 10.0
         let rect = CGRect(origin: .zero, size: CGSize(width: maxWidth + 24, height: height))
         super.init(frame: rect)
-        self.titles = titles
+        self.list = list
         self.action = action
         self.createSubviews()
     }
@@ -83,16 +92,17 @@ class GXOrderPopoverListView: UIView {
 
 extension GXOrderPopoverListView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.titles.count
+        return self.list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXOrderPopoverListCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.nameLabel.text = self.titles[indexPath.row]
+        cell.nameLabel.text = self.list[indexPath.row].title
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.action?(indexPath.row)
+        let item = self.list[indexPath.row]
+        self.action?(item)
     }
 }
