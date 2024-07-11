@@ -75,7 +75,7 @@ et dolore magna aliqua. Ut enim ad minim</string>
             <connections>
                 <outlet property="containerView" destination="m97-kg-Hnb" id="kwY-VU-a0p"/>
                 <outlet property="detailLabel" destination="35g-3N-lCh" id="azW-mM-eMZ"/>
-                <outlet property="tagsHeightLC" destination="9Co-pg-Blf" id="U6n-uA-MaD"/>
+                <outlet property="tagsHeightLC" destination="9Co-pg-Blf" id="jll-ca-noe"/>
                 <outlet property="typeNameLabel" destination="eQj-xX-gj1" id="eTw-qz-cdE"/>
             </connections>
             <point key="canvasLocation" x="200" y="19.718309859154932"/>

@@ -172,7 +172,7 @@ extension GXOrderAppealVC: UITableViewDataSource, UITableViewDelegate {
         else {
             if let complainData = self.viewModel.complainData {
                 let cell: GXOrderAppealShowCell = tableView.dequeueReusableCell(for: indexPath)
-                cell.bindCell(model: complainData)
+                cell.bindCell(model: complainData, superVC: self)
                 return cell
             }
             else {
