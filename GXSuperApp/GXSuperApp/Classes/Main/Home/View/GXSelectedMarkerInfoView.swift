@@ -73,7 +73,7 @@ class GXSelectedMarkerInfoView: UIView {
             $0.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: menuHeight())
             $0.bindView(model: model)
         }
-        UIWindow.gx_frontWindow?.addSubview(infoView)
+        vc.tabBarController?.view?.addSubview(infoView)
         infoView.showMenu()
         
         return infoView
