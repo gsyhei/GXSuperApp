@@ -11,6 +11,7 @@ import PromiseKit
 
 class GXOrderAppealVC: GXBaseViewController {
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var tableBottomLC: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.configuration(estimated: true, separatorLeft: false)
@@ -26,6 +27,7 @@ class GXOrderAppealVC: GXBaseViewController {
             tableView.register(cellType: GXChargingOrderDetailsCell3.self)
             tableView.register(cellType: GXChargingOrderDetailsCell4.self)
             tableView.register(cellType: GXChargingOrderDetailsCell5.self)
+            tableView.register(cellType: GXOrderAppealShowCell.self)
             tableView.register(cellType: GXOrderAppealCell.self)
         }
     }
@@ -43,7 +45,7 @@ class GXOrderAppealVC: GXBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.requestDictListAvailable()
+        self.requestorderConsumerComplainDetail()
     }
     
     override func setupViewController() {
@@ -60,13 +62,17 @@ class GXOrderAppealVC: GXBaseViewController {
 
 private extension GXOrderAppealVC {
     
-    func requestDictListAvailable() {
+    func requestorderConsumerComplainDetail() {
         MBProgressHUD.showLoading()
+        let combinedPromise = when(fulfilled: [
+            self.viewModel.requestDictListAvailable(),
+            self.viewModel.requestOrderConsumerComplainDetail()
+        ])
         firstly {
-            self.viewModel.requestDictListAvailable()
-        }.done { model in
+            combinedPromise
+        }.done { models in
             MBProgressHUD.dismiss()
-            self.tableView.reloadData()
+            self.updateDataSource()
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
@@ -99,6 +105,18 @@ private extension GXOrderAppealVC {
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
+    func updateDataSource() {
+        self.tableView.reloadData()
+        if self.viewModel.complainData != nil {
+            self.submitButton.isHidden = true
+            self.tableBottomLC.constant = 0
+        }
+        else {
+            self.submitButton.isHidden = false
+            self.tableBottomLC.constant = 67
         }
     }
     
@@ -152,12 +170,19 @@ extension GXOrderAppealVC: UITableViewDataSource, UITableViewDelegate {
             }
         }
         else {
-            let cell: GXOrderAppealCell = tableView.dequeueReusableCell(for: indexPath)
-            cell.bindCell(superVC: self) {[weak self] isSubmit in
-                guard let `self` = self else { return }
-                self.submitButton.isEnabled = isSubmit
+            if let complainData = self.viewModel.complainData {
+                let cell: GXOrderAppealShowCell = tableView.dequeueReusableCell(for: indexPath)
+                cell.bindCell(model: complainData)
+                return cell
             }
-            return cell
+            else {
+                let cell: GXOrderAppealCell = tableView.dequeueReusableCell(for: indexPath)
+                cell.bindCell(superVC: self) {[weak self] isSubmit in
+                    guard let `self` = self else { return }
+                    self.submitButton.isEnabled = isSubmit
+                }
+                return cell
+            }
         }
     }
     
@@ -180,7 +205,7 @@ extension GXOrderAppealVC: UITableViewDataSource, UITableViewDelegate {
             }
         }
         else {
-            return 444.0
+            return 300.0
         }
     }
     

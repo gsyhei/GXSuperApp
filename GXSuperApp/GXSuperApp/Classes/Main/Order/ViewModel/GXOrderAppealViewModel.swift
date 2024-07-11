@@ -13,6 +13,8 @@ import RxRelay
 class GXOrderAppealViewModel: GXBaseViewModel {
     /// 订单详情model
     var detailCellModel: GXChargingOrderDetailCellModel?
+    /// 申诉详情
+    var complainData: OrderConsumerComplainDetailData?
     /// 站点充电价格
     var priceData: GXStationConsumerPriceData?
     /// 申诉描述
@@ -21,6 +23,24 @@ class GXOrderAppealViewModel: GXBaseViewModel {
     var images: [PhotoAsset] = []
     /// 选择的申诉类型
     var selectedAppeal: GXDictListAvailableData?
+    
+    /// 申诉详情
+    func requestOrderConsumerComplainDetail() -> Promise<OrderConsumerComplainDetailModel?> {
+        return Promise { seal in
+            guard let complainId = self.detailCellModel?.item.complainId else {
+                seal.fulfill(nil); return
+            }
+            var params: Dictionary<String, Any> = [:]
+            params["complainId"] = complainId
+            let api = GXApi.normalApi(Api_order_consumer_complain_detail, params, .get)
+            GXNWProvider.login_request(api, type: OrderConsumerComplainDetailModel.self, success: { model in
+                self.complainData = model.data
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
     
     /// 场站服务- 3：申诉类型
     func requestDictListAvailable() -> Promise<GXDictListAvailableModel?> {

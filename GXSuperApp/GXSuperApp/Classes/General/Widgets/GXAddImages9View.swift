@@ -68,6 +68,11 @@ class GXAddImage9Cell: UICollectionViewCell, Reusable {
             $0.contentMode = .scaleAspectFill
         }
     }()
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.closeButton.setRoundedCorners([.bottomLeft], radius: 4.0)
+    }
 
     override func prepareForReuse() {
         super.prepareForReuse()

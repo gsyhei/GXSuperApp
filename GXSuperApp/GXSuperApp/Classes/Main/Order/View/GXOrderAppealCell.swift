@@ -111,8 +111,8 @@ class GXOrderAppealCell: UITableViewCell, NibReusable {
         (self.descTV.rx.textInput <-> superVC.viewModel.descInput).disposed(by: resDisposeBag)
         
         self.feedbackAddView.images = superVC.viewModel.images
-        self.feedbackAddViewHLC.constant = self.feedbackAddView.getShowHeight()
         self.layoutIfNeeded()
+        self.feedbackAddViewHLC.constant = self.feedbackAddView.getShowHeight()
     }
     
 }

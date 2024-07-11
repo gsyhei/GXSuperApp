@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXOrderAppealVC" customModule="GXSuperApp" customModuleProvider="target">
             <connections>
                 <outlet property="submitButton" destination="KHU-96-1Qt" id="zK5-FE-PQI"/>
+                <outlet property="tableBottomLC" destination="qo5-PF-bIR" id="p2s-WE-bJX"/>
                 <outlet property="tableView" destination="Z3m-p6-UpL" id="1NU-9w-qAh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -62,9 +63,9 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="KHU-96-1Qt" secondAttribute="bottom" constant="15" id="Evd-uW-B1D"/>
                 <constraint firstItem="Z3m-p6-UpL" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="IUX-RW-AwB"/>
                 <constraint firstItem="Z3m-p6-UpL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OUK-xx-zgI"/>
-                <constraint firstItem="KHU-96-1Qt" firstAttribute="top" secondItem="Z3m-p6-UpL" secondAttribute="bottom" constant="12" id="RW4-8C-Hhs"/>
                 <constraint firstItem="Z3m-p6-UpL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bBX-sQ-58E"/>
                 <constraint firstItem="KHU-96-1Qt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="lDS-Ih-uko"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Z3m-p6-UpL" secondAttribute="bottom" constant="67" id="qo5-PF-bIR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KHU-96-1Qt" secondAttribute="trailing" constant="15" id="u7R-Jj-bfN"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>

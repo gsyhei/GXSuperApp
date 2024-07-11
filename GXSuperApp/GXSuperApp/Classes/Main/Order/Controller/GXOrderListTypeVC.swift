@@ -314,7 +314,7 @@ extension GXOrderListTypeVC {
             if !model.item.freeParking.isEmpty {
                 list.append(GXOrderPopoverListModel(title: "Parking Discount", type: 1))
             }
-            if model.item.complainAvailable {
+            if model.item.complainAvailable || !model.item.complainId.isEmpty {
                 list.append(GXOrderPopoverListModel(title: "Order Appeal", type: 2))
             }
             let listView = GXOrderPopoverListView(list: list) {[weak self] item in

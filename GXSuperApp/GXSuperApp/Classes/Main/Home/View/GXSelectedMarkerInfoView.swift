@@ -179,7 +179,7 @@ class GXSelectedMarkerInfoView: UIView {
             return model.aroundServicesArr.count
         } assetForIndex: { index in
             let url = URL(string:model.aroundServicesArr[index])
-            let imageAsset = NetworkImageAsset(thumbnailURL: nil, originalURL: url, placeholder: "com_empty_ic_nodata")
+            let imageAsset = NetworkImageAsset(thumbnailURL: nil, originalURL: url, placeholder: UIImage.gx_defaultName)
             return PhotoAsset(networkImageAsset: imageAsset)
         } transitionAnimator: { index,arg  in
             let cell = self.collectionView.cell(at: index) as? UIImageView
@@ -201,7 +201,9 @@ extension GXSelectedMarkerInfoView {
     }
     
     @IBAction func scanButtonClicked(_ sender: UIButton) {
-        
+        let vc = GXQRCodeReaderVC.xibViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.superVC?.present(vc, animated: true)
     }
     
 }

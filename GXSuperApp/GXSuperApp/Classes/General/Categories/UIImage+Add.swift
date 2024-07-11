@@ -25,6 +25,10 @@ extension UIImage {
         return UIImage(named: "com_empty_ic_nodata")
     }
     
+    class var gx_defaultName: String {
+        return"com_empty_ic_nodata"
+    }
+    
     class var gx_defaultAvatar: UIImage? {
         return UIImage(named: "default_avatar")
     }
