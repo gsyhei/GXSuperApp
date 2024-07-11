@@ -112,16 +112,16 @@ extension GXOrderListTypeVC {
         firstly {
             self.viewModel.requestOrderConsumerList(isRefresh: isRefresh)
         }.done { (model, isLastPage) in
+            self.view.hideSkeleton()
             if isShowHud {
-                self.view.hideSkeleton()
                 self.tableView.gx_reloadData()
             } else {
                 self.tableView.gx_reloadData()
                 completion?(true, isLastPage)
             }
         }.catch { error in
+            self.view.hideSkeleton()
             if isShowHud {
-                self.view.hideSkeleton()
                 GXToast.showError(text:error.localizedDescription)
             } else {
                 completion?(false, false)
@@ -309,18 +309,25 @@ extension GXOrderListTypeVC {
             let btnRect = button.convert(rect, to: self.view)
             let point = CGPoint(x: btnRect.origin.x + button.width/2, y: btnRect.origin.y)
             var list: [GXOrderPopoverListModel] = []
+            
+            list.append(GXOrderPopoverListModel(title: "View", type: 0))
             if !model.item.freeParking.isEmpty {
-                list.append(GXOrderPopoverListModel(title: "Parking Discount", type: 0))
+                list.append(GXOrderPopoverListModel(title: "Parking Discount", type: 1))
             }
-            list.append(GXOrderPopoverListModel(title: "Order Appeal", type: 1))
+            if model.item.complainAvailable {
+                list.append(GXOrderPopoverListModel(title: "Order Appeal", type: 2))
+            }
             let listView = GXOrderPopoverListView(list: list) {[weak self] item in
                 guard let `self` = self else { return }
                 self.popover.dismiss()
                 switch item.type {
                 case 0:
-                    self.showParkingDiscount(model: model)
+                    let vc = GXChargingOrderDetailsVC.createVC(orderId: model.item.id)
+                    self.navigationController?.pushViewController(vc, animated: true)
                 case 1:
-                    let vc = GXOrderAppealVC.createVC(model: model)
+                    self.showParkingDiscount(model: model)
+                case 2:
+                    let vc = GXOrderAppealVC.createVC(data: model.item)
                     self.navigationController?.pushViewController(vc, animated: true)
                 default: break
                 }

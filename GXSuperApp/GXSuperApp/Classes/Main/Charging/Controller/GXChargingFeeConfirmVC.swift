@@ -59,6 +59,7 @@ private extension GXChargingFeeConfirmVC {
             self.updateBottomDataSource()
             self.notifiTableViewUpdateData()
         }.catch { error in
+            self.view.hideSkeleton()
             GXToast.showError(text:error.localizedDescription)
             self.navigationController?.popViewController(animated: true)
         }

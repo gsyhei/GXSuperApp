@@ -43,9 +43,8 @@ extension GXMoyaProvider {
         }
     }
     
-    
     /// 上传图片
-    func login_requestUpload(asset: PhotoAsset) -> Promise<GXBaseDataModel?> {
+    func login_requestUpload(asset: PhotoAsset) -> Promise<GXUploadFileModel?> {
         return Promise { seal in
             guard (asset.networkImageAsset == nil) else {
                 seal.fulfill(nil); return
@@ -57,15 +56,27 @@ extension GXMoyaProvider {
                 }
                 let formData = MultipartFormData(provider: .data(data), name: "file", fileName: "image.jpg", mimeType: "image/jpg")
                 let api = GXApi.uploadApi(Api_file_upload, [formData], [:])
-                self.login_request(api, type: GXBaseDataModel.self, success: { model in
-                    /// 资源设置
-                    asset.networkImageAsset = NetworkImageAsset(thumbnailURL: nil, originalURL: nil)
+                self.login_request(api, type: GXUploadFileModel.self, success: { model in
+                    if let data = model.data {
+                        let url = URL(string: data.path)
+                        asset.networkImageAsset = NetworkImageAsset(thumbnailURL: nil, originalURL: url)
+                    }
                     seal.fulfill(model)
                 }) { error in
                     seal.reject(error)
                 }
             }
         }
+    }
+    
+    /// 上传图片组，单传并行
+    func login_requestUploadFiles(assets: [PhotoAsset]) -> Promise<[GXUploadFileModel?]> {
+        var uploadList: [Promise<GXUploadFileModel?>] = []
+        for item in assets {
+            let uploadItem = self.login_requestUpload(asset: item)
+            uploadList.append(uploadItem)
+        }
+        return when(fulfilled: uploadList)
     }
     
 }

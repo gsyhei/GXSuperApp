@@ -34,13 +34,13 @@ class GXOrderAppealVC: GXBaseViewController {
         return GXOrderAppealViewModel()
     }()
     
-    class func createVC(model: GXChargingOrderDetailCellModel) -> GXOrderAppealVC {
+    class func createVC(data: GXChargingOrderDetailData) -> GXOrderAppealVC {
         return GXOrderAppealVC.xibViewController().then {
             $0.hidesBottomBarWhenPushed = true
-            $0.viewModel.detailCellModel = model
+            $0.viewModel.updateDataSource(item: data)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.requestDictListAvailable()
@@ -55,10 +55,11 @@ class GXOrderAppealVC: GXBaseViewController {
         self.submitButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
         self.submitButton.isEnabled = false
     }
-
+    
 }
 
 private extension GXOrderAppealVC {
+    
     func requestDictListAvailable() {
         MBProgressHUD.showLoading()
         firstly {
@@ -71,26 +72,93 @@ private extension GXOrderAppealVC {
             GXToast.showError(text:error.localizedDescription)
         }
     }
+    
+    func requestStationConsumerPrice(stationId: Int?, completion: GXActionBlock?) {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestStationConsumerPrice(stationId: stationId)
+        }.done { model in
+            MBProgressHUD.dismiss()
+            completion?()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
+    func requestOrderConsumerComplainSave() {
+        MBProgressHUD.showLoading()
+        let combinedPromise = GXNWProvider.login_requestUploadFiles(assets: self.viewModel.images)
+        firstly {
+            combinedPromise
+        }.then { models in
+            self.viewModel.requestOrderConsumerComplainSave()
+        }.done { model in
+            MBProgressHUD.dismiss()
+            GXToast.showSuccess(text: "Submission successful. The platform will process it within 3 working days")
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
 }
 
 extension GXOrderAppealVC: UITableViewDataSource, UITableViewDelegate {
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 {
+            return self.viewModel.detailCellModel?.rowsIndexs.count ?? 0
+        }
+        else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: GXOrderAppealCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.bindCell(superVC: self) {[weak self] isSubmit in
-            guard let `self` = self else { return }
-            self.submitButton.isEnabled = isSubmit
+        if indexPath.section == 0 {
+            let index = self.viewModel.detailCellModel?.rowsIndexs[indexPath.row] ?? 0
+            switch index {
+            case 1:
+                let cell: GXChargingOrderDetailsCell1 = tableView.dequeueReusableCell(for: indexPath)
+                cell.bindListCell(model: self.viewModel.detailCellModel?.item)
+                return cell
+            case 2:
+                let cell: GXChargingOrderDetailsCell2 = tableView.dequeueReusableCell(for: indexPath)
+                cell.bindCell(model: self.viewModel.detailCellModel?.item) {[weak self] model in
+                    guard let `self` = self else { return }
+                    self.showChargingFeeInfo(stationId: model?.stationId)
+                }
+                return cell
+            case 3:
+                let cell: GXChargingOrderDetailsCell3 = tableView.dequeueReusableCell(for: indexPath)
+                cell.bindCell(model: self.viewModel.detailCellModel?.item)
+                return cell
+            case 4:
+                let cell: GXChargingOrderDetailsCell4 = tableView.dequeueReusableCell(for: indexPath)
+                cell.bindCell(model: self.viewModel.detailCellModel?.item)
+                return cell
+            case 5:
+                let cell: GXChargingOrderDetailsCell5 = tableView.dequeueReusableCell(for: indexPath)
+                cell.bindCell5(model: self.viewModel.detailCellModel?.item)
+                return cell
+            default:
+                return UITableViewCell()
+            }
         }
-        return cell
+        else {
+            let cell: GXOrderAppealCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.bindCell(superVC: self) {[weak self] isSubmit in
+                guard let `self` = self else { return }
+                self.submitButton.isEnabled = isSubmit
+            }
+            return cell
+        }
     }
     
     // MARK: - UITableViewDelegate
@@ -100,7 +168,20 @@ extension GXOrderAppealVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 444.0
+        if indexPath.section == 0 {
+            let index = self.viewModel.detailCellModel?.rowsIndexs[indexPath.row] ?? 0
+            switch index {
+            case 1: return 200
+            case 2: return 80
+            case 3: return 156
+            case 4: return 142
+            case 5: return 48
+            default: return .zero
+            }
+        }
+        else {
+            return 444.0
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -108,3 +189,24 @@ extension GXOrderAppealVC: UITableViewDataSource, UITableViewDelegate {
     }
     
 }
+
+private extension GXOrderAppealVC {
+    
+    @IBAction func submitButtonClicked(_ sender: Any?) {
+        self.requestOrderConsumerComplainSave()
+    }
+    
+    func showChargingFeeInfo(stationId: Int?) {
+        self.requestStationConsumerPrice(stationId: stationId, completion: {[weak self] in
+            guard let `self` = self else { return }
+            guard let prices = self.viewModel.priceData?.prices else { return }
+            let maxHeight = SCREEN_HEIGHT - 200
+            let menu = GXHomeDetailPriceDetailsMenu(height: maxHeight)
+            menu.bindView(prices: prices)
+            menu.show(style: .sheetBottom, usingSpring: true)
+        })
+    }
+    
+}
+
+

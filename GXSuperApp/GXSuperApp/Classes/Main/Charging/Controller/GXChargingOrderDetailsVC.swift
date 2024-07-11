@@ -326,7 +326,9 @@ extension GXChargingOrderDetailsVC {
 extension GXChargingOrderDetailsVC {
     
     @IBAction func appealButtonClicked(_ sender: Any?) {
-        
+        guard let detail = self.viewModel.detailData else { return }
+        let vc = GXOrderAppealVC.createVC(data: detail)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func payNowButtonClicked(_ sender: Any?) {

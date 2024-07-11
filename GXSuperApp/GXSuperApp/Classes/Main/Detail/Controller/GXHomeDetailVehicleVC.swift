@@ -73,12 +73,13 @@ private extension GXHomeDetailVehicleVC {
             if isShowHud { 
                 self.view.hideSkeleton()
             } else {
+                self.view.hideSkeleton()
                 self.tableView.gx_header?.endRefreshing(isSucceed: true)
             }
             self.tableView.reloadData()
         }.catch { error in
+            self.view.hideSkeleton()
             if isShowHud {
-                self.view.hideSkeleton()
                 GXToast.showError(text:error.localizedDescription)
             } else {
                 self.tableView.gx_header?.endRefreshing(isSucceed: false, text: error.localizedDescription)
