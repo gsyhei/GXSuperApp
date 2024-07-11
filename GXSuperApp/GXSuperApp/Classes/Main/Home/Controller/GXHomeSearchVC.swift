@@ -13,6 +13,7 @@ import XCGLogger
 import RxSwift
 import PromiseKit
 import MBProgressHUD
+import GooglePlaces
 
 class GXHomeSearchVC: GXBaseViewController {
     let homeSearchVCHeroId = "GXHomeSearchBar"
@@ -30,6 +31,7 @@ class GXHomeSearchVC: GXBaseViewController {
             tableView.register(cellType: GXHomeMarkerCell.self)
         }
     }
+    var searchAction: GXActionBlockItem<GXPlace>?
     
     private lazy var viewModel: GXHomeSearchViewModel = {
         return GXHomeSearchViewModel()
@@ -116,11 +118,11 @@ class GXHomeSearchVC: GXBaseViewController {
     func requestSearchByText(_ text: String? = nil) {
         MBProgressHUD.showLoading()
         self.viewModel.isSearchResult = true
+        self.searchTF.resignFirstResponder()
         if let text = text {
             self.viewModel.searchWord.accept(text)
             self.searchTF.sendActions(for: .valueChanged)
         }
-        self.searchTF.resignFirstResponder()
         firstly {
             self.viewModel.requestSearchByText()
         }.done { results in
@@ -157,9 +159,11 @@ extension GXHomeSearchVC: UITableViewDataSource, UITableViewDelegate {
         switch self.viewModel.searchType {
         case .history:
             let cell: GXHomeSearchHistoryCell = tableView.dequeueReusableCell(for: indexPath)
-            cell.action = {[weak self] text in
+            cell.updateDataSource()
+            cell.action = {[weak self] place in
                 guard let `self` = self else { return }
-                self.requestSearchByText(text)
+                self.searchAction?(place)
+                self.gx_backBarButtonItemTapped()
             }
             return cell
         case .autocomplete:
@@ -218,14 +222,16 @@ extension GXHomeSearchVC: UITableViewDataSource, UITableViewDelegate {
         case .history: 
             let header = tableView.dequeueReusableHeaderFooterView(GXHomeSearchHeader.self)
             header?.updateHeader(name: "History", iconName: "search_list_ic_history", isShowButton: true)
-            header?.deleteAction = {
-                XCGLogger.info("History delete clicked.")
+            header?.deleteAction = {[weak self] in
+                guard let `self` = self else { return }
+                GXPlacesManager.shared.clearPlaces()
+                self.tableView.reloadData()
             }
             return header
         case .autocomplete: return nil
         case .result:
             let header = tableView.dequeueReusableHeaderFooterView(GXHomeSearchHeader.self)
-            header?.updateHeader(name: "Result", iconName: "search_list_ic_result", isShowButton: true)
+            header?.updateHeader(name: "Result", iconName: "search_list_ic_result", isShowButton: false)
             return header
         case .data: return nil
         }
@@ -237,7 +243,12 @@ extension GXHomeSearchVC: UITableViewDataSource, UITableViewDelegate {
         case .autocomplete:
             let model = self.viewModel.autocompleteList[indexPath.row]
             self.requestSearchByText(model.placeSuggestion?.attributedPrimaryText.string)
-        case .result: break
+        case .result:
+            let model = self.viewModel.placeResults[indexPath.row]
+            let place = GXPlace(placeID: model.placeID, address: model.name, coordinate: model.coordinate)
+            GXPlacesManager.shared.addPlaces(place: place)
+            self.searchAction?(place)
+            self.gx_backBarButtonItemTapped()
         case .data: break
         }
     }

@@ -73,7 +73,7 @@ extension GXHomeSearchViewModel {
             ].map {$0.rawValue}
             let request = GMSPlaceSearchByTextRequest(textQuery: searchText, placeProperties: properties)
             request.isOpenNow = false
-            request.maxResultCount = 20
+            request.maxResultCount = 50
             request.rankPreference = .distance
             GMSPlacesClient.shared().searchByText(with: request) { results, error in
                 if let error = error {

@@ -336,6 +336,11 @@ private extension GXHomeVC {
     
     @IBAction func searchButtonClicked(_ sender: Any?) {
         let vc = GXHomeSearchVC.xibViewController()
+        vc.searchAction = {[weak self] place in
+            guard let `self` = self else { return }
+            let coordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
+            self.mapView.animate(with: GMSCameraUpdate.setTarget(coordinate, zoom: self.zoomLarge))
+        }
         let navc = GXBaseNavigationController(rootViewController: vc)
         self.searchButton.hero.id = vc.homeSearchVCHeroId
         navc.hero.isEnabled = true
