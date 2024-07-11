@@ -320,7 +320,8 @@ extension GXOrderListTypeVC {
                 case 0:
                     self.showParkingDiscount(model: model)
                 case 1:
-                    break
+                    let vc = GXOrderAppealVC.createVC(model: model)
+                    self.navigationController?.pushViewController(vc, animated: true)
                 default: break
                 }
             }

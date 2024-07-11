@@ -100,6 +100,16 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
         self.requestOrderConsumerStop()
     }
     
+    /// 测试动画效果用
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if abs(self.progressBarRightLC.constant - self.maxProgressConstant) <= 2 {
+            self.updateBarProgress(to: 1.0)
+        }
+        else {
+            self.updateBarProgress(to: 0.0)
+        }
+    }
+    
 }
 
 extension GXChargingCarShowVC {

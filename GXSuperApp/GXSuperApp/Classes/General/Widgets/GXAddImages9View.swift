@@ -14,11 +14,9 @@ class GXAddButton9Cell: UICollectionViewCell, Reusable {
 
     lazy var addButton: UIButton = {
         return UIButton(type: .custom).then {
-            $0.backgroundColor = .clear
-            $0.frame = CGRect(origin: .zero, size: GXAddImagesViewCellSize)
-            $0.setTitle("+", for: .normal)
-            $0.setTitleColor(.hex(hexString: "#A6A6A6"), for: .normal)
-            $0.titleLabel?.font = .gx_font(size: 34)
+            $0.setBackgroundColor(.gx_lightGreen, for: .normal)
+            $0.frame = CGRect(origin: .zero, size: CGSize(width: 80.0, height: 80.0))
+            $0.setImage(UIImage(named: "order_image_ic_add"), for: .normal)
             $0.isUserInteractionEnabled = false
         }
     }()
@@ -57,7 +55,7 @@ class GXAddImage9Cell: UICollectionViewCell, Reusable {
     lazy var closeButton: UIButton = {
         return UIButton(type: .custom).then {
             $0.backgroundColor = .gx_drakGray
-            $0.frame = CGRect(x: 0, y: 0, width: 20.0, height: 20.0)
+            $0.frame = CGRect(x: 0, y: 0, width: 22, height: 22)
             $0.setImage(UIImage(systemName: "xmark"), for: .normal)
             $0.tintColor = .white
             $0.addTarget(self, action: #selector(self.closeButtonClicked(_:)), for: .touchUpInside)
@@ -65,7 +63,7 @@ class GXAddImage9Cell: UICollectionViewCell, Reusable {
     }()
 
     lazy var imageView: UIImageView = {
-        return UIImageView(frame: CGRect(origin: .zero, size: GXAddImagesViewCellSize)).then {
+        return UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: 80.0, height: 80.0))).then {
             $0.backgroundColor = .white
             $0.contentMode = .scaleAspectFill
         }
@@ -100,7 +98,7 @@ class GXAddImage9Cell: UICollectionViewCell, Reusable {
         self.contentView.addSubview(self.closeButton)
         self.closeButton.snp.makeConstraints { make in
             make.top.right.equalToSuperview()
-            make.size.equalTo(CGSize(width: 20, height: 20))
+            make.size.equalTo(CGSize(width: 22, height: 22))
         }
     }
 
@@ -161,11 +159,15 @@ class GXAddImages9View: UIView {
                 count = self.images.count
             }
         }
-        let maxColumn: Int = Int((self.collectionView.width + GXAddImagesViewCellSpace) / (GXAddImagesViewCellSize.width + GXAddImagesViewCellSpace))
-        let column: Int = (count + maxColumn - 1) / maxColumn
-        let height: CGFloat = GXAddImagesViewCellSize.height * CGFloat(column) + CGFloat(column - 1) * GXAddImagesViewCellSpace
+        let cellSize = self.getCellSize()
+        let column: Int = (count + GXAddImagesViewMaxColumn - 1) / GXAddImagesViewMaxColumn
+        let height: CGFloat = cellSize * CGFloat(column) + CGFloat(column - 1) * GXAddImagesViewCellSpace
 
         return height
+    }
+    
+    private func getCellSize() -> CGFloat {
+        return floor((self.collectionView.width + GXAddImagesViewCellSpace) / CGFloat(GXAddImagesViewMaxColumn)) - GXAddImagesViewCellSpace
     }
 
     override func awakeFromNib() {
@@ -209,8 +211,8 @@ class GXAddImages9View: UIView {
     }
 }
 
-private let GXAddImagesViewCellSize: CGSize = .init(width: 80.0, height: 80.0)
-private let GXAddImagesViewCellSpace: CGFloat = 8.0
+private let GXAddImagesViewCellSpace: CGFloat = 12.0
+private let GXAddImagesViewMaxColumn: Int = 3
 extension GXAddImages9View: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -259,7 +261,8 @@ extension GXAddImages9View: UICollectionViewDataSource, UICollectionViewDelegate
     // MARK: - UICollectionViewDelegateFlowLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return GXAddImagesViewCellSize
+        let cellSize = self.getCellSize()
+        return CGSize(width: cellSize, height: cellSize)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

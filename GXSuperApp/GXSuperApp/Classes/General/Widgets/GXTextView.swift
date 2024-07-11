@@ -10,7 +10,7 @@ import UIKit
 class GXTextView: UITextView {
 
     lazy var placeHolderLabel: UILabel = {
-        $0.font = UIFont.gx_font(size: 15)
+        $0.font = UIFont.gx_font(size: 16)
         $0.text = "请输入"
         $0.textColor = UIColor.hex(hexString: "#C1C1C1")
         $0.numberOfLines = 0
@@ -86,7 +86,7 @@ class GXTextView: UITextView {
         let right = self.textContainer.lineFragmentPadding + self.textContainerInset.right
         let width = self.frame.width - left - right
         let height = self.placeholder?.height(width: self.frame.width,
-                                              font: self.placeHolderLabel.font ?? .gx_font(size: 15))
+                                              font: self.placeHolderLabel.font ?? .gx_font(size: 16))
         self.placeHolderLabel.frame = CGRect(x: left, y: top, width: width, height: height ?? 0)
     }
 }

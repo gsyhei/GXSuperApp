@@ -5,10 +5,17 @@
 //  Created by Gin on 2021/5/31.
 //
 
-// MARK: - 基础数据
-
 /// 基础Url
 let Api_baseUrl = "http://39.108.126.187"
+
+
+// MARK: - 公用第三方接口
+
+/// 上传文件
+let Api_file_upload = "/charging-auth-server/file/upload"
+
+
+// MARK: - 基础数据
 
 /// App最新版本
 let Api_app_update_latest = "/charging-system-server/app/update/latest"

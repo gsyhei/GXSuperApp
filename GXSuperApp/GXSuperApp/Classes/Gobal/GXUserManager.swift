@@ -62,7 +62,9 @@ class GXUserManager: NSObject {
     var availableList: [GXDictListAvailableData] = []
     /// 主页显示的周边设施
     var showAvailableList: [GXDictListAvailableData] = []
-
+    /// 申诉类型
+    var appealTypeList: [GXDictListAvailableData] = []
+    
     /// 登出
     class func logout() {
 //        guard GXUserManager.shared.isLogin else { return }

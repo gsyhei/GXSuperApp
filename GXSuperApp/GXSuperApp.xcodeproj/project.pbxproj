@@ -97,6 +97,11 @@
 		33A588E42C241CF900451FE1 /* GXHomeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */; };
 		33A588E52C241CF900451FE1 /* GXHomeDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A588E32C241CF900451FE1 /* GXHomeDetailVC.xib */; };
 		33A772AC2C3F3EBF00693483 /* GXOrderConsumerStartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A772AB2C3F3EBF00693483 /* GXOrderConsumerStartModel.swift */; };
+		33A772AF2C3F44B400693483 /* GXOrderAppealVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A772AD2C3F44B400693483 /* GXOrderAppealVC.swift */; };
+		33A772B02C3F44B400693483 /* GXOrderAppealVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A772AE2C3F44B400693483 /* GXOrderAppealVC.xib */; };
+		33A772B32C3F468F00693483 /* GXOrderAppealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A772B12C3F468F00693483 /* GXOrderAppealCell.swift */; };
+		33A772B42C3F468F00693483 /* GXOrderAppealCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A772B22C3F468F00693483 /* GXOrderAppealCell.xib */; };
+		33A772B62C3F726100693483 /* GXOrderAppealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A772B52C3F726100693483 /* GXOrderAppealViewModel.swift */; };
 		33A91E2D2C289ADE00F7E214 /* GXHomeDetailCell5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A91E2C2C289ADE00F7E214 /* GXHomeDetailCell5.xib */; };
 		33A91E2E2C289ADE00F7E214 /* GXHomeDetailCell5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A91E2B2C289ADE00F7E214 /* GXHomeDetailCell5.swift */; };
 		33A91E312C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A91E302C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.xib */; };
@@ -285,6 +290,11 @@
 		33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVC.swift; sourceTree = "<group>"; };
 		33A588E32C241CF900451FE1 /* GXHomeDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailVC.xib; sourceTree = "<group>"; };
 		33A772AB2C3F3EBF00693483 /* GXOrderConsumerStartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderConsumerStartModel.swift; sourceTree = "<group>"; };
+		33A772AD2C3F44B400693483 /* GXOrderAppealVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderAppealVC.swift; sourceTree = "<group>"; };
+		33A772AE2C3F44B400693483 /* GXOrderAppealVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXOrderAppealVC.xib; sourceTree = "<group>"; };
+		33A772B12C3F468F00693483 /* GXOrderAppealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderAppealCell.swift; sourceTree = "<group>"; };
+		33A772B22C3F468F00693483 /* GXOrderAppealCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXOrderAppealCell.xib; sourceTree = "<group>"; };
+		33A772B52C3F726100693483 /* GXOrderAppealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderAppealViewModel.swift; sourceTree = "<group>"; };
 		33A91E2B2C289ADE00F7E214 /* GXHomeDetailCell5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell5.swift; sourceTree = "<group>"; };
 		33A91E2C2C289ADE00F7E214 /* GXHomeDetailCell5.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell5.xib; sourceTree = "<group>"; };
 		33A91E2F2C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailChargerStatusCell.swift; sourceTree = "<group>"; };
@@ -405,6 +415,8 @@
 				33272D662C3CCD9100A95BD7 /* GXOrderListVC.swift */,
 				33272D672C3CCD9100A95BD7 /* GXOrderListVC.xib */,
 				33272D6C2C3CE74800A95BD7 /* GXOrderListTypeVC.swift */,
+				33A772AD2C3F44B400693483 /* GXOrderAppealVC.swift */,
+				33A772AE2C3F44B400693483 /* GXOrderAppealVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -421,6 +433,8 @@
 			isa = PBXGroup;
 			children = (
 				33272D762C3DE34800A95BD7 /* GXOrderPopoverListView.swift */,
+				33A772B12C3F468F00693483 /* GXOrderAppealCell.swift */,
+				33A772B22C3F468F00693483 /* GXOrderAppealCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -429,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				33272D6E2C3CE89E00A95BD7 /* GXOrderListTypeViewModel.swift */,
+				33A772B52C3F726100693483 /* GXOrderAppealViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1018,6 +1033,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				334105C82C3B130A007F2F0E /* GXChargingOrderDetailsCell6.xib in Resources */,
+				33A772B02C3F44B400693483 /* GXOrderAppealVC.xib in Resources */,
 				334105C02C3B097D007F2F0E /* GXChargingOrderDetailsCell4.xib in Resources */,
 				33A374402C37176F00229ED7 /* GXCharging.storyboard in Resources */,
 				33A91E2D2C289ADE00F7E214 /* GXHomeDetailCell5.xib in Resources */,
@@ -1036,6 +1052,7 @@
 				33272D692C3CCD9100A95BD7 /* GXOrderListVC.xib in Resources */,
 				336401E32C2788E900A312BC /* GXHomeDetailCell3.xib in Resources */,
 				336401DF2C277FC700A312BC /* GXHomeDetailCell2.xib in Resources */,
+				33A772B42C3F468F00693483 /* GXOrderAppealCell.xib in Resources */,
 				33167FBD2C3AAAC6009BBD88 /* GXChargingOrderDetailsCell2.xib in Resources */,
 				33EC55BC2C101BA100D4CCD0 /* MBProgressHUD.bundle in Resources */,
 				33396A232C11E530000A1944 /* GXHomeVC.xib in Resources */,
@@ -1161,6 +1178,7 @@
 				339A5EED2C2C0D4F004F1B7F /* GXParamConsumerModel.swift in Sources */,
 				33BF81BE2C14AB720089431E /* GXHomeMarkerCell.swift in Sources */,
 				33EC55C92C101BA100D4CCD0 /* GXDefine.swift in Sources */,
+				33A772B62C3F726100693483 /* GXOrderAppealViewModel.swift in Sources */,
 				33A374422C37179400229ED7 /* GXChargingStoryboard.swift in Sources */,
 				33A91E382C28A83B00F7E214 /* GXHomeDetailFacilitiesView.swift in Sources */,
 				33272D742C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.swift in Sources */,
@@ -1209,6 +1227,7 @@
 				33A91E3E2C28B1E200F7E214 /* GXHomeDetailPriceDetailsMenu.swift in Sources */,
 				33272D6D2C3CE74800A95BD7 /* GXOrderListTypeVC.swift in Sources */,
 				33EC55DB2C101BA100D4CCD0 /* GXMessagesLoadHeader.swift in Sources */,
+				33A772B32C3F468F00693483 /* GXOrderAppealCell.swift in Sources */,
 				33272D682C3CCD9100A95BD7 /* GXOrderListVC.swift in Sources */,
 				33D1109F2C1D8DFA006331EC /* GXHomeSearchVC.swift in Sources */,
 				33EC55C62C101BA100D4CCD0 /* UITextField+Add.swift in Sources */,
@@ -1261,6 +1280,7 @@
 				33EC55F82C101BA100D4CCD0 /* GXQRCodeReaderVC.swift in Sources */,
 				339A1C2E2C38E43A001FBA5E /* GXChargingOrderDetailsCell0.swift in Sources */,
 				33EC57932C1021E300D4CCD0 /* GXApproveFailInfoView.swift in Sources */,
+				33A772AF2C3F44B400693483 /* GXOrderAppealVC.swift in Sources */,
 				33EC55B72C101BA100D4CCD0 /* GXLinkTextView.swift in Sources */,
 				33EC56012C101BA100D4CCD0 /* GXAppleManager.swift in Sources */,
 				33EC55B22C101BA100D4CCD0 /* GXBaseTextField.swift in Sources */,
