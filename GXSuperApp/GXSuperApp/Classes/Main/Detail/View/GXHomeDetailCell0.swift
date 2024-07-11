@@ -10,10 +10,10 @@ import CollectionKit
 import Reusable
 
 class GXHomeDetailCell0: UITableViewCell, Reusable {
-    
     private var dataSource = ArrayDataSource<String>()
     private lazy var collectionView: CollectionView = {
         let viewSource = ClosureViewSource(viewUpdater: { (view: UIImageView, data: String, index: Int) in
+            view.contentMode = .scaleAspectFill
             view.kf.setImage(with: URL(string: data), placeholder: UIImage.gx_default)
             view.layer.masksToBounds = true
             view.layer.cornerRadius = 8.0
@@ -27,12 +27,13 @@ class GXHomeDetailCell0: UITableViewCell, Reusable {
             sizeSource: sizeSource,
             tapHandler: {[weak self] tapContext in
                 guard let `self` = self else { return }
-
+                self.didClickAction?()
             }
         )
         provider.layout = RowLayout(spacing: 6.0)
         return CollectionView(provider: provider)
     }()
+    private var didClickAction: GXActionBlock?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -60,8 +61,10 @@ class GXHomeDetailCell0: UITableViewCell, Reusable {
         self.collectionView.layoutIfNeeded()
     }
     
-    func bindCell(model: GXStationConsumerDetailData?) {
+    func bindCell(model: GXStationConsumerDetailData?, action: GXActionBlock?) {
         guard let model = model else { return }
+        
+        self.didClickAction = action
         self.dataSource.data = model.aroundServicesArr
     }
 

@@ -55,7 +55,7 @@ class GXOrderAppealVC: GXBaseViewController {
         self.submitButton.setBackgroundColor(.gx_gray, for: .disabled)
         self.submitButton.setBackgroundColor(.gx_green, for: .normal)
         self.submitButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
-        self.submitButton.isEnabled = false
+        self.updateDataSource()
     }
     
 }

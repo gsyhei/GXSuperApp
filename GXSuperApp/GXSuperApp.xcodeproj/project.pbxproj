@@ -12,6 +12,7 @@
 		330B40C22C3FB1A000D1136B /* GXOrderAppealShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330B40C12C3FB1A000D1136B /* GXOrderAppealShowCell.xib */; };
 		330B40C32C3FB1A000D1136B /* GXOrderAppealShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B40C02C3FB1A000D1136B /* GXOrderAppealShowCell.swift */; };
 		330B40C52C3FB92600D1136B /* OrderConsumerComplainDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B40C42C3FB92600D1136B /* OrderConsumerComplainDetailModel.swift */; };
+		330B40C72C3FDB5000D1136B /* GXHomeDetailEnvironmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B40C62C3FDB5000D1136B /* GXHomeDetailEnvironmentVC.swift */; };
 		33167FBC2C3AAAC6009BBD88 /* GXChargingOrderDetailsCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33167FBA2C3AAAC6009BBD88 /* GXChargingOrderDetailsCell2.swift */; };
 		33167FBD2C3AAAC6009BBD88 /* GXChargingOrderDetailsCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33167FBB2C3AAAC6009BBD88 /* GXChargingOrderDetailsCell2.xib */; };
 		33167FC02C3AE51C009BBD88 /* GXChargingOrderLRTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33167FBE2C3AE51C009BBD88 /* GXChargingOrderLRTextCell.swift */; };
@@ -208,6 +209,7 @@
 		330B40C02C3FB1A000D1136B /* GXOrderAppealShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderAppealShowCell.swift; sourceTree = "<group>"; };
 		330B40C12C3FB1A000D1136B /* GXOrderAppealShowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXOrderAppealShowCell.xib; sourceTree = "<group>"; };
 		330B40C42C3FB92600D1136B /* OrderConsumerComplainDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConsumerComplainDetailModel.swift; sourceTree = "<group>"; };
+		330B40C62C3FDB5000D1136B /* GXHomeDetailEnvironmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailEnvironmentVC.swift; sourceTree = "<group>"; };
 		33167FBA2C3AAAC6009BBD88 /* GXChargingOrderDetailsCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingOrderDetailsCell2.swift; sourceTree = "<group>"; };
 		33167FBB2C3AAAC6009BBD88 /* GXChargingOrderDetailsCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXChargingOrderDetailsCell2.xib; sourceTree = "<group>"; };
 		33167FBE2C3AE51C009BBD88 /* GXChargingOrderLRTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingOrderLRTextCell.swift; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 			children = (
 				33A588E22C241CF900451FE1 /* GXHomeDetailVC.swift */,
 				33A588E32C241CF900451FE1 /* GXHomeDetailVC.xib */,
+				330B40C62C3FDB5000D1136B /* GXHomeDetailEnvironmentVC.swift */,
 				339A07092C2F85A500BDDD46 /* GXHomeDetailVehicleVC.swift */,
 				339A070A2C2F85A500BDDD46 /* GXHomeDetailVehicleVC.xib */,
 				33AB9ACF2C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.swift */,
@@ -1236,6 +1239,7 @@
 				339A5EDA2C29C8DA004F1B7F /* GXHomeDetailChargerStatusMenu.swift in Sources */,
 				33EC55F22C101BA100D4CCD0 /* GXAddImages9View.swift in Sources */,
 				339A1C282C38CF03001FBA5E /* GXChargingOrderDetailsVC.swift in Sources */,
+				330B40C72C3FDB5000D1136B /* GXHomeDetailEnvironmentVC.swift in Sources */,
 				33B412542C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift in Sources */,
 				33A91E322C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.swift in Sources */,
 				33A91E3E2C28B1E200F7E214 /* GXHomeDetailPriceDetailsMenu.swift in Sources */,

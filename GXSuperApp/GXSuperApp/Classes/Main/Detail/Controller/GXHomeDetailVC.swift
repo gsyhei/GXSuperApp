@@ -128,7 +128,12 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
         switch index {
         case 0:
             let cell: GXHomeDetailCell0 = tableView.dequeueReusableCell(for: indexPath)
-            cell.bindCell(model: self.viewModel.detailData)
+            cell.bindCell(model: self.viewModel.detailData) {[weak self] in
+                guard let `self` = self else { return }
+                guard let images = self.viewModel.detailData?.aroundServicesArr else { return }
+                let vc = GXHomeDetailEnvironmentVC(images: images)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             return cell
         case 1:
             let cell: GXHomeDetailCell1 = tableView.dequeueReusableCell(for: indexPath)
