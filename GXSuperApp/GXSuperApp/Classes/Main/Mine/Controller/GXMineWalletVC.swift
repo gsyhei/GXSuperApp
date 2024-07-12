@@ -87,6 +87,9 @@ private extension GXMineWalletVC {
     }
     
     @IBAction func rechargeButtonClicked(_ sender: UIButton) {
-
+        let vc = GXMineRechargeVC.xibViewController().then {
+            $0.hidesBottomBarWhenPushed = true
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
