@@ -229,7 +229,7 @@ private extension GXMineVC {
         cameraConfig.cameraType = .metal
         cameraConfig.tintColor = .systemBlue
         cameraConfig.prefersStatusBarHidden = false
-        cameraConfig.modalPresentationStyle = .fullScreen
+        cameraConfig.modalPresentationStyle = .automatic
         config.photoList.cameraType = .custom(cameraConfig)
         config.selectMode = .single
         config.selectOptions = .photo

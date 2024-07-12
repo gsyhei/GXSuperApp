@@ -56,6 +56,13 @@ class GXBaseNavigationController: UINavigationController, UINavigationController
         }
     }
     
+    override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
+        if viewControllers.count > 1 {
+            viewControllers.last?.hidesBottomBarWhenPushed = true
+        }
+        super.setViewControllers(viewControllers, animated: animated)
+    }
+    
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if self.viewControllers.count > 0 {
             viewController.hidesBottomBarWhenPushed = true
