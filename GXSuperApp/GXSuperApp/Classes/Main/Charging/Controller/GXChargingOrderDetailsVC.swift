@@ -48,7 +48,6 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
     
     class func createVC(orderId: Int) -> GXChargingOrderDetailsVC {
         return GXChargingOrderDetailsVC.xibViewController().then {
-            $0.hidesBottomBarWhenPushed = true
             $0.viewModel.orderId = orderId
         }
     }

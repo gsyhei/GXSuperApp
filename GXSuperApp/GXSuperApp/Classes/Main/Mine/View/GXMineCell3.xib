@@ -137,6 +137,7 @@
             <connections>
                 <outlet property="advertInfoLabel" destination="B3p-ic-agr" id="Kh3-tc-t7h"/>
                 <outlet property="advertTitleLabel" destination="fNf-33-eUd" id="YbZ-0l-Rpa"/>
+                <outlet property="renewButton" destination="yQV-bk-R7I" id="Pr5-LJ-2JN"/>
                 <outlet property="renewLabel" destination="ao8-sA-Q2S" id="5Pt-Bx-4AQ"/>
             </connections>
             <point key="canvasLocation" x="147" y="-4"/>

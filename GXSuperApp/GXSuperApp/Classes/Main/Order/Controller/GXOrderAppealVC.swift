@@ -38,7 +38,6 @@ class GXOrderAppealVC: GXBaseViewController {
     
     class func createVC(data: GXChargingOrderDetailData) -> GXOrderAppealVC {
         return GXOrderAppealVC.xibViewController().then {
-            $0.hidesBottomBarWhenPushed = true
             $0.viewModel.updateDataSource(item: data)
         }
     }

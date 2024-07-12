@@ -22,7 +22,6 @@ class GXMineWalletVC: GXBaseViewController {
     
     class func createVC(balanceData: GXWalletConsumerBalanceData?) -> GXMineWalletVC {
         return GXMineWalletVC.xibViewController().then {
-            $0.hidesBottomBarWhenPushed = true
             $0.viewModel.balanceData = balanceData
         }
     }
@@ -83,13 +82,12 @@ private extension GXMineWalletVC {
     }
     
     @IBAction func withdrawButtonClicked(_ sender: UIButton) {
-        
+        let vc = GXMineWithdrawVC.xibViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func rechargeButtonClicked(_ sender: UIButton) {
-        let vc = GXMineRechargeVC.xibViewController().then {
-            $0.hidesBottomBarWhenPushed = true
-        }
+        let vc = GXMineRechargeVC.xibViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

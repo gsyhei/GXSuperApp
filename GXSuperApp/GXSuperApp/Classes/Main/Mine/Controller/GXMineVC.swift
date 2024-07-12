@@ -224,6 +224,13 @@ private extension GXMineVC {
     func selectAvatarUpload() {
         var config: PickerConfiguration = PickerConfiguration()
         config.modalPresentationStyle = .fullScreen
+        var cameraConfig = CameraConfiguration()
+        cameraConfig.position = .front
+        cameraConfig.cameraType = .metal
+        cameraConfig.tintColor = .systemBlue
+        cameraConfig.prefersStatusBarHidden = false
+        cameraConfig.modalPresentationStyle = .fullScreen
+        config.photoList.cameraType = .custom(cameraConfig)
         config.selectMode = .single
         config.selectOptions = .photo
         config.photoSelectionTapAction = .openEditor

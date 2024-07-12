@@ -10,23 +10,23 @@ import XCGLogger
 
 class GXBaseNavigationController: UINavigationController, UINavigationControllerDelegate {
     var popDelegate: UIGestureRecognizerDelegate?
-
+    
     override var childForStatusBarStyle: UIViewController? {
         return self.topViewController
     }
-
+    
     override var childForStatusBarHidden: UIViewController? {
         return self.topViewController
     }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.topViewController?.preferredStatusBarStyle ?? .default
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return self.topViewController?.prefersStatusBarHidden ?? false
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.modalPresentationCapturesStatusBarAppearance = true
@@ -45,15 +45,23 @@ class GXBaseNavigationController: UINavigationController, UINavigationController
             }
         }
     }
-
-   // MARK: - UINavigationControllerDelegate方法
-   func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-    if viewController == self.viewControllers.first {
-           self.interactivePopGestureRecognizer?.delegate = self.popDelegate
-       }
-       else {
-           self.interactivePopGestureRecognizer?.delegate = nil
-       }
-   }
+    
+    // MARK: - UINavigationControllerDelegate方法
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        if viewController == self.viewControllers.first {
+            self.interactivePopGestureRecognizer?.delegate = self.popDelegate
+        }
+        else {
+            self.interactivePopGestureRecognizer?.delegate = nil
+        }
+    }
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        if self.viewControllers.count > 0 {
+            viewController.hidesBottomBarWhenPushed = true
+        }
+        super.pushViewController(viewController, animated: animated)
+    }
+    
 }
 

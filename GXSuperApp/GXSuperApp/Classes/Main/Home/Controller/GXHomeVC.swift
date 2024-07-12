@@ -140,7 +140,6 @@ class GXHomeVC: GXBaseViewController {
             
             let vc = GXHomeDetailVC.xibViewController().then {
                 $0.viewModel.rowModel = model
-                $0.hidesBottomBarWhenPushed = true
             }
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -371,7 +370,6 @@ private extension GXHomeVC {
         guard let orderDoing = GXUserManager.shared.orderDoing else { return }
 //        // 费用确认
 //        let vc = GXChargingFeeConfirmVC.instantiate()
-//        vc.hidesBottomBarWhenPushed = true
 //        self.navigationController?.pushViewController(vc, animated: true)
         
 //        if orderDoing.orderStatus == "CHARGING" {

@@ -11,12 +11,15 @@ import Reusable
 class GXMineCell3: UITableViewCell, NibReusable {
     @IBOutlet weak var advertTitleLabel: UILabel!
     @IBOutlet weak var advertInfoLabel: UILabel!
+    @IBOutlet weak var renewButton: UIButton!
     @IBOutlet weak var renewLabel: UILabel!
     var action: GXActionBlock?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.renewButton.setBackgroundColor(.gx_black, for: .normal)
+        self.renewButton.setBackgroundColor(.gx_drakGray, for: .highlighted)
         let colors: [UIColor] = [UIColor(hexString: "#FFF8B5"), UIColor(hexString: "#E8AA63")]
         if let gradientImage = UIImage(gradientColors: colors, style: .horizontal, size: CGSize(width: 64, height: 32)) {
             self.renewLabel.textColor = UIColor(patternImage: gradientImage)

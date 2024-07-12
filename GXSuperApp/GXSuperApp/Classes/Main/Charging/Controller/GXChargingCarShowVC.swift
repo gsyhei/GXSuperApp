@@ -44,7 +44,6 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
     
     class func createVC(orderId: Int) -> GXChargingCarShowVC {
         return GXChargingCarShowVC.instantiate().then {
-            $0.hidesBottomBarWhenPushed = true
             $0.viewModel.orderId = orderId
         }
     }

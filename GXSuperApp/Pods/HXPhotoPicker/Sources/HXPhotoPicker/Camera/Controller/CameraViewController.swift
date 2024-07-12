@@ -77,7 +77,7 @@ open class CameraViewController: HXBaseViewController {
         extendedLayoutIncludesOpaqueBars = true
         edgesForExtendedLayout = .all
         view.backgroundColor = .black
-        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.tintColor = config.tintColor
         initViews()
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
             bottomView.isGestureEnable = false

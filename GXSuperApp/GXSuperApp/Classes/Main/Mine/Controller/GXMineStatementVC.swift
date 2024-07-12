@@ -29,7 +29,6 @@ class GXMineStatementVC: GXBaseViewController {
     
     class func createVC(viewModel: GXMineWalletViewModel?) -> GXMineStatementVC {
         return GXMineStatementVC.xibViewController().then {
-            $0.hidesBottomBarWhenPushed = true
             if let viewModel = viewModel {
                 $0.viewModel = viewModel
             } else {

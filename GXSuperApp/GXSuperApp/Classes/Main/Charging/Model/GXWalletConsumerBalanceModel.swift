@@ -9,7 +9,7 @@ import UIKit
 import HandyJSON
 
 class GXWalletConsumerBalanceData: HandyJSON {
-    var available: CGFloat = 0
+    var available: Float = 0
     
     required init() {}
 }
