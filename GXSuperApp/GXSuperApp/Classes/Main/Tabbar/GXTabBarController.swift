@@ -64,7 +64,7 @@ class GXTabBarController: UITabBarController {
                       title: self.titleNames[3],
                       imageName: self.normalImageNames[3],
                       selectedImageName: self.selectedImageNames[3])
-        self.addChild(UIViewController(),
+        self.addChild(GXMineVC.xibViewController(),
                       title: self.titleNames[4],
                       imageName: self.normalImageNames[4],
                       selectedImageName: self.selectedImageNames[4])

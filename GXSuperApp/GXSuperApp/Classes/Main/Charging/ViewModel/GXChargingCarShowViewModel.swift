@@ -53,9 +53,7 @@ class GXChargingCarShowViewModel: GXBaseViewModel {
     
     /// 钱包余额
     func requestWalletConsumerBalance() -> Promise<GXWalletConsumerBalanceModel?> {
-        var params: Dictionary<String, Any> = [:]
-        params["id"] = self.orderId
-        let api = GXApi.normalApi(Api_wallet_consumer_balance, params, .get)
+        let api = GXApi.normalApi(Api_wallet_consumer_balance, [:], .get)
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXWalletConsumerBalanceModel.self, success: { model in
                 self.balanceData = model.data

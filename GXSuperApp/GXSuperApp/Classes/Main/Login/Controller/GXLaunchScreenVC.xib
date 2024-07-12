@@ -17,9 +17,33 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ZRr-Lw-jhi">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start_ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="QPU-Dr-hfV">
+                    <rect key="frame" x="133.66666666666666" y="278" width="125.99999999999997" height="96"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="126" id="8Jp-ZN-eut"/>
+                        <constraint firstAttribute="height" constant="96" id="Apr-zN-DJL"/>
+                    </constraints>
+                </imageView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ZRr-Lw-jhi" secondAttribute="trailing" id="7E0-JN-Nu5"/>
+                <constraint firstItem="QPU-Dr-hfV" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-100" id="7t9-ZX-bZp"/>
+                <constraint firstAttribute="bottom" secondItem="ZRr-Lw-jhi" secondAttribute="bottom" id="NtV-lN-XQ8"/>
+                <constraint firstItem="QPU-Dr-hfV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fxU-Q9-TC5"/>
+                <constraint firstItem="ZRr-Lw-jhi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hPe-KM-i2P"/>
+                <constraint firstItem="ZRr-Lw-jhi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jih-XA-rpW"/>
+            </constraints>
             <point key="canvasLocation" x="-37" y="-11"/>
         </view>
     </objects>
+    <resources>
+        <image name="start_bg" width="375" height="812"/>
+        <image name="start_ic_logo" width="126" height="96"/>
+    </resources>
 </document>

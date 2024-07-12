@@ -46,10 +46,7 @@ class GXOrderListTypeViewModel: GXBaseViewModel {
                 guard let data = model.data else {
                     seal.fulfill((model, false)); return
                 }
-                if isRefresh {
-                    self.cellList = []
-                    XCGLogger.info("isRefresh: \(isRefresh)")
-                }
+                if isRefresh { self.cellList.removeAll() }
                 self.updateDataSource(rows: data.rows)
                 seal.fulfill((model, self.cellList.count >= data.total))
             }, failure: { error in

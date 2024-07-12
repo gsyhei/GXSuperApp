@@ -50,8 +50,16 @@ extension GXMoyaProvider {
                 seal.fulfill(nil); return
             }
             asset.getImage() { image in
-                guard let data = image?.dataForCompression(to: SCREEN_SIZE, resizeByte: 1024 * 1024 * 2, isDichotomy: true) else {
+                guard let image = image else {
                     let error = GXError(code: -1000, info: "image error!")
+                    seal.reject(error); return
+                }
+                let widthScale = image.size.width / SCREEN_SIZE.width
+                let heightScale = image.size.height / SCREEN_SIZE.height
+                let scale = min(widthScale, heightScale)
+                let changeSize = CGSize(width: image.size.width/scale, height: image.size.height/scale)
+                guard let data = image.dataForCompression(to: changeSize, resizeByte: 1024 * 1024 * 2, isDichotomy: true) else {
+                    let error = GXError(code: -1000, info: "image data error!")
                     seal.reject(error); return
                 }
                 let formData = MultipartFormData(provider: .data(data), name: "file", fileName: "image.jpg", mimeType: "image/jpg")

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="GXMineStatementCell" customModule="GXSuperApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwE-LC-o32">
+                        <rect key="frame" x="15" y="0.0" width="290" height="44"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.92549019610000005" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="2024-06-24 06:48:36" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqy-FA-4ca">
+                        <rect key="frame" x="27" y="4.3333333333333321" width="100" height="35.666666666666671"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="Euk-Vo-mrP"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                        <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFS-nv-Bzf">
+                        <rect key="frame" x="127" y="9.6666666666666643" width="86" height="25"/>
+                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
+                        <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdJ-il-WJP">
+                        <rect key="frame" x="213" y="13" width="80" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="8WQ-CL-HTT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                        <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="hwE-LC-o32" secondAttribute="trailing" constant="15" id="1R2-h4-LDg"/>
+                    <constraint firstItem="fqy-FA-4ca" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="27" id="8mR-bK-bcz"/>
+                    <constraint firstItem="PdJ-il-WJP" firstAttribute="leading" secondItem="sFS-nv-Bzf" secondAttribute="trailing" id="9Hf-Yi-2Yv"/>
+                    <constraint firstItem="sFS-nv-Bzf" firstAttribute="leading" secondItem="fqy-FA-4ca" secondAttribute="trailing" id="COQ-hn-Yg1"/>
+                    <constraint firstAttribute="trailing" secondItem="PdJ-il-WJP" secondAttribute="trailing" constant="27" id="Lnz-jJ-UjA"/>
+                    <constraint firstItem="fqy-FA-4ca" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Szl-l0-XeS"/>
+                    <constraint firstItem="sFS-nv-Bzf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="T0J-NL-M0L"/>
+                    <constraint firstItem="hwE-LC-o32" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="eCj-Yg-VhG"/>
+                    <constraint firstItem="PdJ-il-WJP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tPv-Li-6wl"/>
+                    <constraint firstItem="hwE-LC-o32" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="xQg-KL-0yV"/>
+                    <constraint firstAttribute="bottom" secondItem="hwE-LC-o32" secondAttribute="bottom" id="yUw-8n-Zvw"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                        <real key="value" value="6"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="amountLabel" destination="PdJ-il-WJP" id="1mZ-h9-NKa"/>
+                <outlet property="contentLabel" destination="sFS-nv-Bzf" id="vsL-f8-Qk7"/>
+                <outlet property="dateLabel" destination="fqy-FA-4ca" id="vzW-1j-Zh1"/>
+            </connections>
+            <point key="canvasLocation" x="144" y="-8"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -12,17 +12,13 @@ import CoreTelephony
 
 class GXLaunchScreenVC: GXBaseViewController {
     private let networkManager = NetworkReachabilityManager(host: "www.google.com")
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func setupViewController() {
-        MBProgressHUD.showLoading(style: .waveBall, ballColor: .white, to: self.view)
+        MBProgressHUD.showLoading(style: .waveBall, ballColor: .black, to: self.view)
         self.networkManager?.startListening {[weak self] status in
             guard let `self` = self else { return }
             guard status != .notReachable else { return }

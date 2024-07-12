@@ -104,6 +104,9 @@ let Api_order_consumer_stop = "/charging-order-server/order/consumer/stop"
 /// 充电状态
 let Api_order_consumer_status = "/charging-order-server/order/consumer/status"
 
+/// 订单总数
+let Api_order_consumer_total = "/charging-order-server/order/consumer/total"
+
 /// 订单列表->订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：
 let Api_order_consumer_list = "/charging-order-server/order/consumer/list"
 
