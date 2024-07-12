@@ -173,7 +173,7 @@ extension GXMineVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
             let cell: GXMineCell2 = tableView.dequeueReusableCell(for: indexPath)
             cell.bindCell(models: self.viewModel.cell2Models) {[weak self] index in
                 guard let `self` = self else { return }
-                
+                self.selectToItemsAtIndex(index: index)
             }
             return cell
         case 3:
@@ -216,16 +216,6 @@ extension GXMineVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
         if offset.y < 0 {
             self.topBgHeightLC.constant = 260 + abs(offset.y)
         }
-        
-        var cameraConfig = CameraConfiguration()
-        cameraConfig.modalPresentationStyle = .fullScreen
-        cameraConfig.allowsEditing = true
-        cameraConfig.editor.isFixedCropSizeState = true
-        cameraConfig.editor.cropSize.isRoundCrop = false
-        cameraConfig.editor.cropSize.aspectRatios = []
-        cameraConfig.editor.cropSize.aspectRatio = CGSize(width: 1, height: 1)
-        cameraConfig.editor.cropSize.isFixedRatio = true
-        cameraConfig.editor.cropSize.isResetToOriginal = false
     }
     
 }
@@ -266,6 +256,18 @@ private extension GXMineVC {
             self.requestUploadAvatar(asset: asset)
         }
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    func selectToItemsAtIndex(index: Int) {
+        switch index {
+        case 2:
+            let vc = GXMineAgreementVC.xibViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            let vc = GXMineFAQVC.xibViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        default: break
+        }
     }
     
 }

@@ -154,6 +154,10 @@
 		33C9C2192C416D5500F969B4 /* GXMineWithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9C2172C416D5500F969B4 /* GXMineWithdrawVC.swift */; };
 		33C9C21A2C416D5500F969B4 /* GXMineWithdrawVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33C9C2182C416D5500F969B4 /* GXMineWithdrawVC.xib */; };
 		33C9C21C2C4176DA00F969B4 /* GXMineWithdrawViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9C21B2C4176DA00F969B4 /* GXMineWithdrawViewModel.swift */; };
+		33C9C21F2C41DE5700F969B4 /* GXMineFAQVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33C9C21E2C41DE5700F969B4 /* GXMineFAQVC.xib */; };
+		33C9C2202C41DE5700F969B4 /* GXMineFAQVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9C21D2C41DE5700F969B4 /* GXMineFAQVC.swift */; };
+		33C9C2232C41E03500F969B4 /* GXMineDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33C9C2222C41E03500F969B4 /* GXMineDefaultCell.xib */; };
+		33C9C2242C41E03500F969B4 /* GXMineDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9C2212C41E03500F969B4 /* GXMineDefaultCell.swift */; };
 		33CB38212C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB381F2C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift */; };
 		33CB38222C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CB38202C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib */; };
 		33CB38242C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB38232C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift */; };
@@ -161,6 +165,9 @@
 		33CD2D962C350B4900D4B55B /* GXHomeDetailAddVehicleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CD2D952C350B4900D4B55B /* GXHomeDetailAddVehicleViewModel.swift */; };
 		33D1109E2C1D8DFA006331EC /* GXHomeSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D1109D2C1D8DFA006331EC /* GXHomeSearchVC.xib */; };
 		33D1109F2C1D8DFA006331EC /* GXHomeSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1109C2C1D8DFA006331EC /* GXHomeSearchVC.swift */; };
+		33D199FB2C41E6350094AB3E /* GXQuestionsConsumerListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D199FA2C41E6350094AB3E /* GXQuestionsConsumerListModel.swift */; };
+		33D199FE2C41EF1E0094AB3E /* GXMineAgreementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D199FC2C41EF1E0094AB3E /* GXMineAgreementVC.swift */; };
+		33D199FF2C41EF1E0094AB3E /* GXMineAgreementVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D199FD2C41EF1E0094AB3E /* GXMineAgreementVC.xib */; };
 		33D7BFE82C26C9CE006B97C6 /* GXHomeDetailCell0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D7BFE72C26C9CE006B97C6 /* GXHomeDetailCell0.swift */; };
 		33D7BFEC2C26E4CC006B97C6 /* GXHomeDetailCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D7BFEB2C26E4CC006B97C6 /* GXHomeDetailCell1.xib */; };
 		33D7BFED2C26E4CC006B97C6 /* GXHomeDetailCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D7BFEA2C26E4CC006B97C6 /* GXHomeDetailCell1.swift */; };
@@ -377,6 +384,10 @@
 		33C9C2172C416D5500F969B4 /* GXMineWithdrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMineWithdrawVC.swift; sourceTree = "<group>"; };
 		33C9C2182C416D5500F969B4 /* GXMineWithdrawVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXMineWithdrawVC.xib; sourceTree = "<group>"; };
 		33C9C21B2C4176DA00F969B4 /* GXMineWithdrawViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMineWithdrawViewModel.swift; sourceTree = "<group>"; };
+		33C9C21D2C41DE5700F969B4 /* GXMineFAQVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMineFAQVC.swift; sourceTree = "<group>"; };
+		33C9C21E2C41DE5700F969B4 /* GXMineFAQVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXMineFAQVC.xib; sourceTree = "<group>"; };
+		33C9C2212C41E03500F969B4 /* GXMineDefaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMineDefaultCell.swift; sourceTree = "<group>"; };
+		33C9C2222C41E03500F969B4 /* GXMineDefaultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXMineDefaultCell.xib; sourceTree = "<group>"; };
 		33CB381F2C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchAutocompleteCell.swift; sourceTree = "<group>"; };
 		33CB38202C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchAutocompleteCell.xib; sourceTree = "<group>"; };
 		33CB38232C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchHistoryCell.swift; sourceTree = "<group>"; };
@@ -384,6 +395,9 @@
 		33CD2D952C350B4900D4B55B /* GXHomeDetailAddVehicleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailAddVehicleViewModel.swift; sourceTree = "<group>"; };
 		33D1109C2C1D8DFA006331EC /* GXHomeSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchVC.swift; sourceTree = "<group>"; };
 		33D1109D2C1D8DFA006331EC /* GXHomeSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchVC.xib; sourceTree = "<group>"; };
+		33D199FA2C41E6350094AB3E /* GXQuestionsConsumerListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXQuestionsConsumerListModel.swift; sourceTree = "<group>"; };
+		33D199FC2C41EF1E0094AB3E /* GXMineAgreementVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMineAgreementVC.swift; sourceTree = "<group>"; };
+		33D199FD2C41EF1E0094AB3E /* GXMineAgreementVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXMineAgreementVC.xib; sourceTree = "<group>"; };
 		33D7BFE72C26C9CE006B97C6 /* GXHomeDetailCell0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell0.swift; sourceTree = "<group>"; };
 		33D7BFEA2C26E4CC006B97C6 /* GXHomeDetailCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell1.swift; sourceTree = "<group>"; };
 		33D7BFEB2C26E4CC006B97C6 /* GXHomeDetailCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell1.xib; sourceTree = "<group>"; };
@@ -853,6 +867,10 @@
 				33C5689E2C4145E800E19873 /* GXMineRechargeVC.xib */,
 				33C9C2172C416D5500F969B4 /* GXMineWithdrawVC.swift */,
 				33C9C2182C416D5500F969B4 /* GXMineWithdrawVC.xib */,
+				33C9C21D2C41DE5700F969B4 /* GXMineFAQVC.swift */,
+				33C9C21E2C41DE5700F969B4 /* GXMineFAQVC.xib */,
+				33D199FC2C41EF1E0094AB3E /* GXMineAgreementVC.swift */,
+				33D199FD2C41EF1E0094AB3E /* GXMineAgreementVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -861,6 +879,7 @@
 			isa = PBXGroup;
 			children = (
 				339D01612C41258C00B6EE31 /* GXWalletConsumerListModel.swift */,
+				33D199FA2C41E6350094AB3E /* GXQuestionsConsumerListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -878,6 +897,8 @@
 				339069572C40DDB20096CEBF /* GXMineCell3.xib */,
 				339D015B2C41147000B6EE31 /* GXMineStatementCell.swift */,
 				339D015C2C41147000B6EE31 /* GXMineStatementCell.xib */,
+				33C9C2212C41E03500F969B4 /* GXMineDefaultCell.swift */,
+				33C9C2222C41E03500F969B4 /* GXMineDefaultCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1183,6 +1204,7 @@
 				33D1109E2C1D8DFA006331EC /* GXHomeSearchVC.xib in Resources */,
 				33A91E3B2C28AEF400F7E214 /* GXHomeDetailCell7.xib in Resources */,
 				33EC57942C1021E300D4CCD0 /* GXApproveFailInfoView.xib in Resources */,
+				33D199FF2C41EF1E0094AB3E /* GXMineAgreementVC.xib in Resources */,
 				339D01562C41032300B6EE31 /* GXMineWalletVC.xib in Resources */,
 				339A070F2C2F891900BDDD46 /* GXHomeDetailVehicleCell.xib in Resources */,
 				339D015D2C41147000B6EE31 /* GXMineStatementCell.xib in Resources */,
@@ -1202,6 +1224,7 @@
 				339D01592C410E1400B6EE31 /* GXMineStatementVC.xib in Resources */,
 				33EC55F92C101BA100D4CCD0 /* GXQRCodeReaderVC.xib in Resources */,
 				339A1C2F2C38E43A001FBA5E /* GXChargingOrderDetailsCell0.xib in Resources */,
+				33C9C2232C41E03500F969B4 /* GXMineDefaultCell.xib in Resources */,
 				334105C42C3B0ECC007F2F0E /* GXChargingOrderDetailsCell5.xib in Resources */,
 				339A071A2C2F99AA00BDDD46 /* GXLoginAllVC.xib in Resources */,
 				33C9C21A2C416D5500F969B4 /* GXMineWithdrawVC.xib in Resources */,
@@ -1211,6 +1234,7 @@
 				339A5EE72C2B9DE3004F1B7F /* GXLaunchScreenVC.xib in Resources */,
 				339A070B2C2F85A500BDDD46 /* GXHomeDetailVehicleVC.xib in Resources */,
 				33C568A02C4145E800E19873 /* GXMineRechargeVC.xib in Resources */,
+				33C9C21F2C41DE5700F969B4 /* GXMineFAQVC.xib in Resources */,
 				33272D752C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.xib in Resources */,
 				33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */,
 				334105D02C3B1F74007F2F0E /* GXChargingOrderDetailsCell8.xib in Resources */,
@@ -1311,6 +1335,7 @@
 				33BF81B82C14964F0089431E /* GXMarkerIconView.swift in Sources */,
 				33396A252C121A60000A1944 /* GXHomePanView.swift in Sources */,
 				33EC55F32C101BA100D4CCD0 /* GXAddImagesView.swift in Sources */,
+				33D199FE2C41EF1E0094AB3E /* GXMineAgreementVC.swift in Sources */,
 				33EC55F72C101BA100D4CCD0 /* GXMarqueeTextView.swift in Sources */,
 				33CD2D962C350B4900D4B55B /* GXHomeDetailAddVehicleViewModel.swift in Sources */,
 				339D01622C41258C00B6EE31 /* GXWalletConsumerListModel.swift in Sources */,
@@ -1365,10 +1390,12 @@
 				33EC55BB2C101BA100D4CCD0 /* GXRefreshNormalHeader+Add.swift in Sources */,
 				33EC578E2C101BA200D4CCD0 /* GXApi.swift in Sources */,
 				33CB38242C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift in Sources */,
+				33C9C2242C41E03500F969B4 /* GXMineDefaultCell.swift in Sources */,
 				339A5EDA2C29C8DA004F1B7F /* GXHomeDetailChargerStatusMenu.swift in Sources */,
 				33EC55F22C101BA100D4CCD0 /* GXAddImages9View.swift in Sources */,
 				339D015A2C410E1400B6EE31 /* GXMineStatementVC.swift in Sources */,
 				339A1C282C38CF03001FBA5E /* GXChargingOrderDetailsVC.swift in Sources */,
+				33D199FB2C41E6350094AB3E /* GXQuestionsConsumerListModel.swift in Sources */,
 				330B40C72C3FDB5000D1136B /* GXHomeDetailEnvironmentVC.swift in Sources */,
 				33B412542C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift in Sources */,
 				33A91E322C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.swift in Sources */,
@@ -1379,6 +1406,7 @@
 				33A772B32C3F468F00693483 /* GXOrderAppealCell.swift in Sources */,
 				33272D682C3CCD9100A95BD7 /* GXOrderListVC.swift in Sources */,
 				33D1109F2C1D8DFA006331EC /* GXHomeSearchVC.swift in Sources */,
+				33C9C2202C41DE5700F969B4 /* GXMineFAQVC.swift in Sources */,
 				33EC55C62C101BA100D4CCD0 /* UITextField+Add.swift in Sources */,
 				33EC55CE2C101BA100D4CCD0 /* ObjectUnicode.swift in Sources */,
 				33AB9AD12C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.swift in Sources */,

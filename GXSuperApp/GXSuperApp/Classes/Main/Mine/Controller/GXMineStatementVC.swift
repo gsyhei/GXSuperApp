@@ -20,7 +20,6 @@ class GXMineStatementVC: GXBaseViewController {
             tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: .leastNormalMagnitude))
             tableView.sectionHeaderHeight = .leastNormalMagnitude
             tableView.sectionFooterHeight = 10
-            tableView.sectionFooterHeight = 10
             tableView.rowHeight = 40
             tableView.register(cellType: GXMineStatementCell.self)
         }

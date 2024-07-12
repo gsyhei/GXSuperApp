@@ -17,6 +17,9 @@ let Api_file_upload = "/charging-auth-server/file/upload"
 
 // MARK: - 基础数据
 
+/// 规则协议
+let Api_agreement_list = "/charging-system-server/agreement/list"
+
 /// App最新版本
 let Api_app_update_latest = "/charging-system-server/app/update/latest"
 
@@ -27,7 +30,7 @@ let Api_dict_list_available = "/charging-system-server/dict/list/available"
 let Api_param_consumer_detail = "/charging-system-server/param/consumer/detail"
 
 /// 常见问题
-let Api_questions_consumer_list = "/charging-system-server/param/consumer/detail"
+let Api_questions_consumer_list = "/charging-system-server/questions/consumer/list"
 
 
 // MARK: - 登录/注册
