@@ -216,20 +216,36 @@ extension GXMineVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
         if offset.y < 0 {
             self.topBgHeightLC.constant = 260 + abs(offset.y)
         }
+        
+        var cameraConfig = CameraConfiguration()
+        cameraConfig.modalPresentationStyle = .fullScreen
+        cameraConfig.allowsEditing = true
+        cameraConfig.editor.isFixedCropSizeState = true
+        cameraConfig.editor.cropSize.isRoundCrop = false
+        cameraConfig.editor.cropSize.aspectRatios = []
+        cameraConfig.editor.cropSize.aspectRatio = CGSize(width: 1, height: 1)
+        cameraConfig.editor.cropSize.isFixedRatio = true
+        cameraConfig.editor.cropSize.isResetToOriginal = false
     }
     
 }
 
 private extension GXMineVC {
     func selectAvatarUpload() {
-        var config: PickerConfiguration = PickerConfiguration()
-        config.modalPresentationStyle = .fullScreen
         var cameraConfig = CameraConfiguration()
-        cameraConfig.position = .front
+        cameraConfig.modalPresentationStyle = .fullScreen
+        cameraConfig.allowsEditing = true
+        cameraConfig.prefersStatusBarHidden = false
         cameraConfig.cameraType = .metal
         cameraConfig.tintColor = .systemBlue
-        cameraConfig.prefersStatusBarHidden = false
-        cameraConfig.modalPresentationStyle = .automatic
+        cameraConfig.editor.isFixedCropSizeState = true
+        cameraConfig.editor.cropSize.isRoundCrop = false
+        cameraConfig.editor.cropSize.aspectRatios = []
+        cameraConfig.editor.cropSize.aspectRatio = CGSize(width: 1, height: 1)
+        cameraConfig.editor.cropSize.isFixedRatio = true
+        cameraConfig.editor.cropSize.isResetToOriginal = false
+        var config: PickerConfiguration = PickerConfiguration()
+        config.modalPresentationStyle = .fullScreen
         config.photoList.cameraType = .custom(cameraConfig)
         config.selectMode = .single
         config.selectOptions = .photo
