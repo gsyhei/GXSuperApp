@@ -12,7 +12,6 @@ class GXMineCell3: UITableViewCell, NibReusable {
     @IBOutlet weak var advertTitleLabel: UILabel!
     @IBOutlet weak var advertInfoLabel: UILabel!
     @IBOutlet weak var renewButton: UIButton!
-    @IBOutlet weak var renewLabel: UILabel!
     var action: GXActionBlock?
 
     override func awakeFromNib() {
@@ -20,10 +19,6 @@ class GXMineCell3: UITableViewCell, NibReusable {
         
         self.renewButton.setBackgroundColor(.gx_black, for: .normal)
         self.renewButton.setBackgroundColor(.gx_drakGray, for: .highlighted)
-        let colors: [UIColor] = [UIColor(hexString: "#FFF8B5"), UIColor(hexString: "#E8AA63")]
-        if let gradientImage = UIImage(gradientColors: colors, style: .horizontal, size: CGSize(width: 64, height: 32)) {
-            self.renewLabel.textColor = UIColor(patternImage: gradientImage)
-        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,12 +27,23 @@ class GXMineCell3: UITableViewCell, NibReusable {
     
     func updateVipCell(action: GXActionBlock?) {
         self.action = action
+        
+        var labelTitle: String
         if GXUserManager.shared.isVip {
             self.advertTitleLabel.text = "VIP for Discounts"
-            self.renewLabel.text = "Renew"
-        } else {
+            labelTitle = "Renew"
+        }
+        else {
             self.advertTitleLabel.text = "Become a VIP"
-            self.renewLabel.text = "Join"
+            labelTitle = "Join"
+        }
+        self.renewButton.setTitle(labelTitle, for: .normal)
+        let labelFont = self.renewButton.titleLabel?.font ?? .gx_boldFont(size: 16)
+        let labelSize = CGSize(width: labelTitle.width(font: labelFont), height: labelFont.lineHeight)
+        let colors: [UIColor] = [UIColor(hexString: "#FFF8B5"), UIColor(hexString: "#CD661D")]
+        if let gradientImage = UIImage(gradientColors: colors, style: .horizontal, size: labelSize) {
+            let textColor = UIColor(patternImage: gradientImage)
+            self.renewButton.setTitleColor(textColor, for: .normal)
         }
         self.advertInfoLabel.text = "Save up to $\(GXUserManager.shared.paramsData?.occupyMax ?? "")/year"
     }

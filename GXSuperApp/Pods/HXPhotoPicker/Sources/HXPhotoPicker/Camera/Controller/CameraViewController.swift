@@ -195,10 +195,6 @@ open class CameraViewController: HXBaseViewController {
         layoutSubviews()
     }
     
-    open override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        UINavigationBar.appearance().scrollEdgeAppearance?.backgroundColor = .white
-    }
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let nav = navigationController else {
@@ -213,7 +209,6 @@ open class CameraViewController: HXBaseViewController {
             for: .default
         )
         nav.navigationBar.shadowImage = UIImage()
-        UINavigationBar.appearance().scrollEdgeAppearance?.backgroundColor = nil
     }
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

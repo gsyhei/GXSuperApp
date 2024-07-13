@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 15.0, *) {
             let nbAppearance = UINavigationBarAppearance()
             nbAppearance.configureWithTransparentBackground()
-            nbAppearance.backgroundColor = UIColor.white
+            //nbAppearance.backgroundColor = UIColor.white //这个属性不设置为导航透明
             nbAppearance.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 19)]
             let bbiAppearance = UIBarButtonItemAppearance(style: .plain)
             bbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_black, .font: UIFont.gx_boldFont(size: 15)]

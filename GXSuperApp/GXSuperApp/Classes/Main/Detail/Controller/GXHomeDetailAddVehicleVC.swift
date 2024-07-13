@@ -56,6 +56,7 @@ class GXHomeDetailAddVehicleVC: GXBaseViewController {
     override func setupViewController() {
         self.navigationItem.title = "Add Vehicle"
         self.gx_addBackBarButtonItem()
+        self.gx_addNavTopView(color: .white)
         
         self.infoTextView.gx_setMarginZero()
         self.infoTextView.gx_appendLink(string: "Personal Information Processing Authorization", 

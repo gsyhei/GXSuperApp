@@ -40,6 +40,7 @@ class GXMineInfoCell: UITableViewCell, NibReusable {
             let colors: [UIColor] = [.white, UIColor(hexString: "#DCDCDC")]
             let image = UIImage(gradientColors: colors, style: .horizontal)
             self.avatarButton.setBackgroundImage(image, for: .normal)
+            self.dateLabel.text = nil
         }
         if model.phoneNumber.count > 6 {
             let count = (model.phoneNumber.count - 4)/2
@@ -50,6 +51,14 @@ class GXMineInfoCell: UITableViewCell, NibReusable {
         }
         else {
             self.phoneLabel.text = "****"
+        }
+        /// 测试用
+        let dateStr = "2025-08-16"
+        if let date = Date.date(dateString: dateStr, format: "yyyy-MM-dd") {
+            self.dateLabel.text = "Expiry date: " + date.string(format: "MMMM d, yyyy")
+        }
+        else if let date = Date.date(dateString: dateStr, format: "yyyy-MM-dd HH:mm:ss") {
+            self.dateLabel.text = "Expiry date: " + date.string(format: "MMMM d, yyyy")
         }
     }
     

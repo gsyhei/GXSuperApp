@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MGe-AM-Zfk">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                     <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="dfz-Tu-X0o"/>
@@ -32,12 +32,12 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="MGe-AM-Zfk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BNp-Xj-31N"/>
+                <constraint firstItem="MGe-AM-Zfk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="BNp-Xj-31N"/>
                 <constraint firstItem="MGe-AM-Zfk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SuM-gL-uXL"/>
                 <constraint firstItem="MGe-AM-Zfk" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ihG-zL-cin"/>
                 <constraint firstAttribute="bottom" secondItem="MGe-AM-Zfk" secondAttribute="bottom" id="sNb-gZ-Dh9"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="-11"/>
+            <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>

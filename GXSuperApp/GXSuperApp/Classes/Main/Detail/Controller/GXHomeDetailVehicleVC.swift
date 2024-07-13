@@ -45,6 +45,7 @@ class GXHomeDetailVehicleVC: GXBaseViewController {
     override func setupViewController() {
         self.navigationItem.title = "Vehicle Management"
         self.gx_addBackBarButtonItem()
+        self.gx_addNavTopView(color: .white)
         
         self.addButton.setBackgroundColor(.gx_green, for: .normal)
         self.addButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)

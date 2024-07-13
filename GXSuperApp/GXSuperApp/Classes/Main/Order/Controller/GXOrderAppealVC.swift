@@ -50,6 +50,7 @@ class GXOrderAppealVC: GXBaseViewController {
     override func setupViewController() {
         self.navigationItem.title = "Order Appeal"
         self.gx_addBackBarButtonItem()
+        self.gx_addNavTopView(color: .white)
         
         self.submitButton.setBackgroundColor(.gx_gray, for: .disabled)
         self.submitButton.setBackgroundColor(.gx_green, for: .normal)

@@ -22,7 +22,10 @@ extension  UITextView  {
         let attrString: NSMutableAttributedString = NSMutableAttributedString()
         attrString.append(self.attributedText)
         // 新增的文本内容（使用默认设置的字体样式）
-        let attrs:  [NSAttributedString.Key: Any] = [.font: self.font!]
+        let attrs: [NSAttributedString.Key: Any] = [
+            .font: self.font ?? UIFont.gx_font(size: 15),
+            .foregroundColor: self.textColor ?? UIColor.gx_drakGray,
+        ]
         let appendString = NSMutableAttributedString(string: string, attributes:attrs)
         // 判断是否是链接文字
         if let url = urlString {
@@ -37,6 +40,6 @@ extension  UITextView  {
         // 合并新的文本
         attrString.append(appendString)
         // 设置合并后的文本
-        self .attributedText = attrString
+        self.attributedText = attrString
     }
 }

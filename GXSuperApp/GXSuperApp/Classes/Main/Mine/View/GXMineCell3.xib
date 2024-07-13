@@ -67,7 +67,11 @@
                                     <constraint firstAttribute="height" constant="32" id="Rq3-oy-n5N"/>
                                     <constraint firstAttribute="width" constant="64" id="qqD-jr-hTr"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Join">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -79,15 +83,6 @@
                                     <action selector="renewButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YB6-Ym-C0O"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Renew" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ao8-sA-Q2S">
-                                <rect key="frame" x="220" y="20" width="64" height="32"/>
-                                <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -99,14 +94,10 @@
                             <constraint firstItem="yQV-bk-R7I" firstAttribute="centerY" secondItem="RUE-Q5-a1G" secondAttribute="centerY" id="JEJ-EK-h1a"/>
                             <constraint firstItem="EZa-7J-GXT" firstAttribute="leading" secondItem="RUE-Q5-a1G" secondAttribute="leading" id="NwD-1H-621"/>
                             <constraint firstItem="B3p-ic-agr" firstAttribute="leading" secondItem="fNf-33-eUd" secondAttribute="leading" id="VhG-Oj-Pun"/>
-                            <constraint firstItem="ao8-sA-Q2S" firstAttribute="bottom" secondItem="yQV-bk-R7I" secondAttribute="bottom" id="W02-VW-QJy"/>
                             <constraint firstItem="fNf-33-eUd" firstAttribute="leading" secondItem="sqo-ng-c8t" secondAttribute="trailing" constant="15" id="dMh-1M-DTO"/>
-                            <constraint firstItem="ao8-sA-Q2S" firstAttribute="leading" secondItem="yQV-bk-R7I" secondAttribute="leading" id="fg1-QZ-dEe"/>
-                            <constraint firstItem="ao8-sA-Q2S" firstAttribute="trailing" secondItem="yQV-bk-R7I" secondAttribute="trailing" id="i9z-Ys-jCK"/>
                             <constraint firstItem="fNf-33-eUd" firstAttribute="top" secondItem="RUE-Q5-a1G" secondAttribute="top" constant="16" id="j9F-fD-hiB"/>
                             <constraint firstAttribute="height" constant="72" id="nG8-jj-IgJ"/>
                             <constraint firstItem="sqo-ng-c8t" firstAttribute="centerY" secondItem="RUE-Q5-a1G" secondAttribute="centerY" id="rZ7-t4-Hk4"/>
-                            <constraint firstItem="ao8-sA-Q2S" firstAttribute="top" secondItem="yQV-bk-R7I" secondAttribute="top" id="sV1-bY-TIn"/>
                             <constraint firstItem="EZa-7J-GXT" firstAttribute="top" secondItem="RUE-Q5-a1G" secondAttribute="top" id="xyr-dZ-cPU"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -138,7 +129,6 @@
                 <outlet property="advertInfoLabel" destination="B3p-ic-agr" id="Kh3-tc-t7h"/>
                 <outlet property="advertTitleLabel" destination="fNf-33-eUd" id="YbZ-0l-Rpa"/>
                 <outlet property="renewButton" destination="yQV-bk-R7I" id="Pr5-LJ-2JN"/>
-                <outlet property="renewLabel" destination="ao8-sA-Q2S" id="5Pt-Bx-4AQ"/>
             </connections>
             <point key="canvasLocation" x="147" y="-4"/>
         </tableViewCell>

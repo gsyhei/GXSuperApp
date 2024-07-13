@@ -64,6 +64,7 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
     override func setupViewController() {
         self.navigationItem.title = "Order Details"
         self.gx_addBackBarButtonItem()
+        self.gx_addNavTopView(color: .white)
         
         self.payNowButton.setBackgroundColor(.gx_green, for: .normal)
         self.payNowButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
