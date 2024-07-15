@@ -35,7 +35,7 @@ class GXOrderAppealCell: UITableViewCell, NibReusable {
             view.setTitleColor(.white, for: .selected)
             view.setBackgroundColor(.gx_background, for: .normal)
             view.setBackgroundColor(.gx_green, for: .selected)
-            view.isSelected = (data.id == self.superVC?.viewModel.selectedAppeal?.id)
+            view.isSelected = self.superVC?.viewModel.selectedAppealTypeIds.contains(where: { $0 == data.id }) ?? false
             view.layer.masksToBounds = true
             view.layer.cornerRadius = 16.0
             view.isUserInteractionEnabled = false
@@ -50,7 +50,13 @@ class GXOrderAppealCell: UITableViewCell, NibReusable {
             sizeSource: sizeSource,
             tapHandler: {[weak self] tapContext in
                 guard let `self` = self else { return }
-                self.superVC?.viewModel.selectedAppeal = tapContext.data
+                guard let viewModel = self.superVC?.viewModel else { return }
+                if viewModel.selectedAppealTypeIds.contains(where: { $0 == tapContext.data.id }) {
+                    viewModel.selectedAppealTypeIds.removeAll(where: { $0 == tapContext.data.id })
+                } else {
+                    viewModel.selectedAppealTypeIds.append(tapContext.data.id)
+                }
+                self.updateSubmitState()
                 self.collectionView.reloadData()
             }
         )
@@ -163,7 +169,7 @@ extension GXOrderAppealCell {
     func updateSubmitState() {
         var isSubmit = false
         isSubmit = self.descTV.text?.count ?? 0 > 0
-        isSubmit = isSubmit && (self.superVC?.viewModel.selectedAppeal != nil)
+        isSubmit = isSubmit && (self.superVC?.viewModel.selectedAppealTypeIds.count ?? 0 > 0)
         self.updateSubmitAction?(isSubmit)
     }
     

@@ -8,8 +8,14 @@
 import UIKit
 import HandyJSON
 
+class OrderConsumerComplainDetailType: NSObject, HandyJSON {
+    var id: Int = 0
+    var name: String = ""
+    override required init() {}
+}
+
 class OrderConsumerComplainDetailData: NSObject, HandyJSON {
-    var typeId: Int = 0
+    var types: [OrderConsumerComplainDetailType] = []
     var orderId: Int = 0
     var reason: String = ""
     var id: Int = 0

@@ -38,10 +38,15 @@ class GXHomePanView: UIView {
     }()
     
     lazy var tableView: GXBaseTableView = {
-        return GXBaseTableView(_frame: self.bounds, _style: .plain).then {
+        return GXBaseTableView(_frame: self.bounds, _style: .grouped).then {
+            $0.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: .leastNormalMagnitude))
+            $0.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: .leastNormalMagnitude))
+            $0.separatorInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
             $0.backgroundColor = .gx_background
+            $0.sectionHeaderHeight = 12
+            $0.sectionFooterHeight = .leastNormalMagnitude
             $0.separatorStyle = .none
-            $0.rowHeight = 133.0
+            $0.rowHeight = 121.0
             $0.dataSource = self
             $0.delegate = self
             $0.register(cellType: GXHomeMarkerCell.self)
@@ -145,14 +150,17 @@ class GXHomePanView: UIView {
 }
 
 extension GXHomePanView: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.viewModel?.stationConsumerList.count ?? 0
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel?.stationConsumerList.count ?? 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXHomeMarkerCell = tableView.dequeueReusableCell(for: indexPath)
-        let model = self.viewModel?.stationConsumerList[indexPath.row]
+        let model = self.viewModel?.stationConsumerList[indexPath.section]
         cell.bindCell(model: model)
         
         return cell
@@ -170,7 +178,7 @@ extension GXHomePanView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         XCGLogger.info("indexPath = \(indexPath)")
-        if let model = self.viewModel?.stationConsumerList[indexPath.row] {
+        if let model = self.viewModel?.stationConsumerList[indexPath.section] {
             self.didSelectRowAtAction?(model)
         }
     }

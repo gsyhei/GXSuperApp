@@ -118,6 +118,7 @@ class GXHomeDetailAddVehicleVC: GXBaseViewController {
     }
     
     @IBAction func arrowButtonClicked(_ sender: UIButton) {
+        self.view.endEditing(true)
         let height = 300 + UIWindow.gx_safeAreaInsets.bottom
         let menu = GXHomeDetailVehicleCodeMenu(height: height)
         menu.action = {[weak self] code in

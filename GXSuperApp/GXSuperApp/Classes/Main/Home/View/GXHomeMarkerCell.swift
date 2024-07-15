@@ -22,8 +22,7 @@ class GXHomeMarkerCell: UITableViewCell, NibReusable {
     @IBOutlet weak var tslNumberImgView: UIImageView!
     @IBOutlet weak var usNumberLabel: UILabel!
     @IBOutlet weak var tslNumberLabel: UILabel!
-    
-    private var highlightedEnable: Bool = false
+    var highlightedEnable: Bool = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,6 +54,48 @@ class GXHomeMarkerCell: UITableViewCell, NibReusable {
         self.topTagsView.updateTitles(titles: titles, width: SCREEN_WIDTH - 48, isShowFristLine: false)
         // 电费
         self.priceLabel.text = GXUserManager.shared.isLogin ? "$\(model.electricFee)" : "$*****"
+        
+        // 充电枪信息
+        if model.teslaIdleCount == model.teslaCount {
+            self.tslNumberBgView.backgroundColor = .gx_background
+            self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_disable")
+        }
+        else {
+            self.tslNumberBgView.backgroundColor = .gx_lightRed
+            self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_normal")
+        }
+        if model.usIdleCount == model.usCount {
+            self.usNumberBgView.backgroundColor = .gx_background
+            self.usNumberImgView.image = UIImage(named: "home_map_ic_us_disable")
+        }
+        else {
+            self.usNumberBgView.backgroundColor = .gx_lightBlue
+            self.usNumberImgView.image = UIImage(named: "home_map_ic_us_normal")
+        }
+        let tslAttrText: NSAttributedString = .gx_stationAttrText(type: .tsl, isSelected: false, count: model.teslaIdleCount, maxCount: model.teslaCount)
+        self.tslNumberLabel.attributedText = tslAttrText
+        let usAttrText: NSAttributedString = .gx_stationAttrText(type: .us, isSelected: false, count: model.usIdleCount, maxCount: model.usCount)
+        self.usNumberLabel.attributedText = usAttrText
+        
+        // 停车减免、服务费
+        let occupyFeeInfo = "Idle fee $\(model.occupyFee) / min"
+        let btmTitles = model.freeParking.count > 0  ? [model.freeParking, occupyFeeInfo] : [occupyFeeInfo]
+        self.bottomTagsView.updateTitles(titles: btmTitles, width: SCREEN_WIDTH - 60, isShowFristLine: true)
+        // 距离
+        let distance: Float = Float(model.distance)/1000.0
+        self.distanceLabel.text = String(format: "%.1fkm", distance)
+    }
+    
+    func bindCell(model: GXFavoriteConsumerListItem?) {
+        guard let model = model else { return }
+        
+        // 名称
+        self.nameLabel.text = model.name
+        // 站点服务
+        let titles = model.aroundFacilitiesList.compactMap { $0.name }
+        self.topTagsView.updateTitles(titles: titles, width: SCREEN_WIDTH - 48, isShowFristLine: false)
+        // 电费
+        self.priceLabel.text = GXUserManager.shared.isLogin ? "$\(model.price)" : "$*****"
         
         // 充电枪信息
         if model.teslaIdleCount == model.teslaCount {

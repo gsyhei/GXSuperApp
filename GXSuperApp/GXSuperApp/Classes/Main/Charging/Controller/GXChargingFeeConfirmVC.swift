@@ -91,7 +91,7 @@ private extension GXChargingFeeConfirmVC {
         } else {
             self.advertTitleLabel.text = "Become a VIP for Discounts"
         }
-        self.advertInfoLabel.text = "Save up to $\(GXUserManager.shared.paramsData?.occupyMax ?? "")/year"
+        self.advertInfoLabel.text = GXUserManager.shared.paramsData?.memberReduction ?? ""
         self.advertKWhLabel.text = "$\(GXUserManager.shared.paramsData?.memberFee ?? "")"
         
         guard let info = self.viewModel.scanData?.stationInfo else { return }

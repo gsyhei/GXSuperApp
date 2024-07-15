@@ -95,14 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
         
-        
         let vc = GXLaunchScreenVC.xibViewController()
         self.setWindowRootViewController(to: vc)
-
-//        let vc = GXTabBarController()
-//        self.setWindowRootViewController(to: vc)
-        // 开始监测网络状态
-        // GXServiceManager.startListening()
         
         return true
     }
@@ -157,8 +151,8 @@ extension AppDelegate {
         }, completion: nil)
     }
     func gotoLogin(from: UIViewController, completion: GXActionBlock? = nil) {
-        let vc = GXLoginAllVC.xibViewController()
-        vc.completion = completion
+        let vc = GXLoginPhoneVC.xibViewController()
+//        vc.completion = completion
         let navc = GXBaseNavigationController(rootViewController: vc)
         navc.modalPresentationStyle = .fullScreen
         from.present(navc, animated: true)

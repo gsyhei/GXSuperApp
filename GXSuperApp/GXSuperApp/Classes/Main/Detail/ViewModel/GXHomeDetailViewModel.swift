@@ -9,14 +9,10 @@ import UIKit
 import PromiseKit
 
 class GXHomeDetailViewModel: GXBaseViewModel {
+    /// 场站Id
+    var stationId: Int = 0
     /// 动态cell配置
     var cellIndexs: [Int] = []
-    /// 站点信息
-    var rowModel: GXStationConsumerRowsModel? {
-        didSet {
-            self.updateCellIndexs()
-        }
-    }
     /// 枪列表
     var ccRowsList: [GXConnectorConsumerRowsItem] = []
     /// 需要显示的时段
@@ -24,6 +20,7 @@ class GXHomeDetailViewModel: GXBaseViewModel {
     /// 站点详情数据
     var detailData: GXStationConsumerDetailData? {
         didSet {
+            self.updateCellIndexs()
             self.updateShowPrices()
         }
     }
@@ -31,7 +28,7 @@ class GXHomeDetailViewModel: GXBaseViewModel {
     /// 站点详情
     func requestStationConsumerDetail() -> Promise<GXStationConsumerDetailModel> {
         var params: Dictionary<String, Any> = [:]
-        params["id"] = self.rowModel?.id
+        params["id"] = self.stationId
         let api = GXApi.normalApi(Api_station_consumer_detail, params, .get)
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXStationConsumerDetailModel.self, success: { model in
@@ -46,11 +43,11 @@ class GXHomeDetailViewModel: GXBaseViewModel {
     /// 站点枪列表
     func requestConnectorConsumerList() -> Promise<(GXConnectorConsumerListModel, Bool)> {
         var params: Dictionary<String, Any> = [:]
-        params["stationId"] = self.rowModel?.id
+        params["stationId"] = self.stationId
         params["pageNum"] = 1
         params["pageSize"] = 1000
-//        params["pageNum"] = 1 + (self.ccRowsList.count + PAGE_SIZE - 1)/PAGE_SIZE
-//        params["pageSize"] = PAGE_SIZE
+        //        params["pageNum"] = 1 + (self.ccRowsList.count + PAGE_SIZE - 1)/PAGE_SIZE
+        //        params["pageSize"] = PAGE_SIZE
         let api = GXApi.normalApi(Api_connector_consumer_list, params, .get)
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXConnectorConsumerListModel.self, success: { model in
@@ -88,7 +85,7 @@ class GXHomeDetailViewModel: GXBaseViewModel {
     /// 收藏
     func requestFavoriteConsumerSave() -> Promise<Bool> {
         var params: Dictionary<String, Any> = [:]
-        params["stationId"] = self.rowModel?.id
+        params["stationId"] = self.stationId
         let api = GXApi.normalApi(Api_favorite_consumer_save, params, .post)
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXFavoriteConsumerSaveModel.self, success: { model in
@@ -106,8 +103,8 @@ class GXHomeDetailViewModel: GXBaseViewModel {
 extension GXHomeDetailViewModel {
     
     func updateCellIndexs() {
-        guard let model = rowModel else { return }
-        if model.freeParking.isEmpty {
+        guard let detail = self.detailData else { return }
+        if detail.freeParking.isEmpty {
             self.cellIndexs = [0, 1, 2, 3, 5, 6, 7]
         }
         else {
@@ -117,7 +114,7 @@ extension GXHomeDetailViewModel {
     
     func updateShowPrices() {
         guard let detail = self.detailData else { return }
-
+        
         self.showPrices.removeAll()
         let currTimeIndex = detail.prices.firstIndex { item in
             return item.priceType == 1 || item.priceType == 3

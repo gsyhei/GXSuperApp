@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yiz-kU-x97" userLabel="ContainerView">
-                        <rect key="frame" x="12" y="0.0" width="351" height="121"/>
+                        <rect key="frame" x="12" y="0.0" width="351" height="133"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jtd-AF-D7d" userLabel="LineImgView">
                                 <rect key="frame" x="0.0" y="16" width="4" height="14"/>
@@ -155,7 +155,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_list_ic_defend" translatesAutoresizingMaskIntoConstraints="NO" id="XYp-al-gPh">
-                                <rect key="frame" x="12" y="95" width="12" height="14"/>
+                                <rect key="frame" x="12" y="107" width="12" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="TqW-Al-UlB"/>
                                     <constraint firstAttribute="width" constant="12" id="bEH-wJ-ezl"/>
@@ -163,14 +163,12 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1H-v5-ep8" customClass="GXTagsView" customModule="GXSuperApp" customModuleProvider="target">
                                 <rect key="frame" x="12" y="40" width="327" height="13"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13" id="umg-5H-S96"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhg-R7-Xhq" customClass="GXTagsView" customModule="GXSuperApp" customModuleProvider="target">
-                                <rect key="frame" x="24" y="95.666666666666671" width="315" height="13"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="24" y="107.66666666666667" width="315" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13" id="EHn-bq-JEG"/>
                                 </constraints>
@@ -210,7 +208,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Yiz-kU-x97" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="6nf-bi-zbS"/>
-                    <constraint firstAttribute="bottom" secondItem="Yiz-kU-x97" secondAttribute="bottom" constant="12" id="8NI-iG-qct"/>
+                    <constraint firstAttribute="bottom" secondItem="Yiz-kU-x97" secondAttribute="bottom" id="8NI-iG-qct"/>
                     <constraint firstItem="Yiz-kU-x97" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KvG-8j-NEh"/>
                     <constraint firstAttribute="trailing" secondItem="Yiz-kU-x97" secondAttribute="trailing" constant="12" id="qco-hn-a6E"/>
                 </constraints>

@@ -22,7 +22,7 @@ class GXOrderAppealViewModel: GXBaseViewModel {
     /// 申诉图片-最大9张
     var images: [PhotoAsset] = []
     /// 选择的申诉类型
-    var selectedAppeal: GXDictListAvailableData?
+    var selectedAppealTypeIds: [Int] = []
     
     /// 申诉详情
     func requestOrderConsumerComplainDetail() -> Promise<OrderConsumerComplainDetailModel?> {
@@ -82,7 +82,7 @@ class GXOrderAppealViewModel: GXBaseViewModel {
     func requestOrderConsumerComplainSave() -> Promise<GXBaseModel> {
         var params: Dictionary<String, Any> = [:]
         params["orderId"] = self.detailCellModel?.item.id
-        params["typeId"] = self.selectedAppeal?.id
+        params["typeIds"] = self.selectedAppealTypeIds
         params["reason"] = self.descInput.value ?? ""
         if self.images.count > 0 {
             params["photos"] = PhotoAsset.gx_imageUrlStrings(assets: self.images)

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Kingfisher
+import MBProgressHUD
+import PromiseKit
 
 class GXVipVC: GXBaseViewController {
     @IBOutlet weak var backgroudImageView: UIImageView!
@@ -15,9 +18,17 @@ class GXVipVC: GXBaseViewController {
     @IBOutlet weak var infoTextView: GXLinkTextView!
     @IBOutlet weak var infoTVHeightLC: NSLayoutConstraint!
     @IBOutlet weak var contentBottomLC: NSLayoutConstraint!
+    @IBOutlet weak var vipImageView: UIImageView!
+    @IBOutlet weak var vipImageHeightLC: NSLayoutConstraint!
+    @IBOutlet weak var vipYearLabel: UILabel!
 
+    private lazy var viewModel: GXVipViewModel = {
+        return GXVipViewModel()
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.requestParamConsumer()
     }
     
     override func setupViewController() {
@@ -34,6 +45,9 @@ class GXVipVC: GXBaseViewController {
         let backImage = UIImage(gradientColors: bgColors, style: .vertical)
         self.backgroudImageView.image = backImage
         
+        self.confirmButton.isEnabled = false
+        self.confirmButton.setTitleColor(.white, for: .disabled)
+        self.confirmButton.setBackgroundColor(.gx_gray, for: .disabled)
         self.confirmButton.setBackgroundColor(.gx_black, for: .normal)
         self.confirmButton.setBackgroundColor(.gx_drakGray, for: .highlighted)
         let joinTitle = self.confirmButton.title(for: .normal) ?? "Join"
@@ -44,7 +58,9 @@ class GXVipVC: GXBaseViewController {
             let textColor = UIColor(patternImage: gradientImage)
             self.confirmButton.setTitleColor(textColor, for: .normal)
         }
-        
+        self.renewButton.isEnabled = false
+        self.renewButton.setTitleColor(.white, for: .disabled)
+        self.renewButton.setBackgroundColor(.gx_gray, for: .disabled)
         self.renewButton.setBackgroundColor(.gx_black, for: .normal)
         self.renewButton.setBackgroundColor(.gx_drakGray, for: .highlighted)
         let renewTitle = self.renewButton.title(for: .normal) ?? "Renew"
@@ -71,6 +87,40 @@ class GXVipVC: GXBaseViewController {
             self.confirmButton.isHidden = false
             self.contentBottomLC.constant = 90
         }
+        if let params = GXUserManager.shared.paramsData {
+            // params.memberDescription
+            self.vipImageView.kf.setImage(with: URL(string: "https://img.zcool.cn/community/01944d5cd14772a801208f8be3cb63.jpg@1280w_1l_2o_100sh.jpg")) { result in
+                switch result {
+                case .success(let image):
+                    self.vipImageHeightLC.constant = self.getImageViewHeight(image: image.image)
+                    self.view.layoutIfNeeded()
+                case .failure(_): break
+                }
+            }
+            self.vipYearLabel.text = "$ \(params.memberFee)"
+        }
+    }
+    
+}
+
+private extension GXVipVC {
+    
+    func requestParamConsumer() {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestParamConsumer()
+        }.done { models in
+            MBProgressHUD.dismiss()
+            self.updateDataSource()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
+    func getImageViewHeight(image: UIImage) -> CGFloat {
+        let scale = image.size.height / image.size.width
+        return (SCREEN_WIDTH - 24) * scale
     }
 }
 
@@ -89,5 +139,8 @@ extension GXVipVC: UITextViewDelegate {
 private extension GXVipVC {
     @IBAction func checkButtonClicked(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        
+        self.confirmButton.isEnabled = sender.isSelected
+        self.renewButton.isEnabled = sender.isSelected
     }
 }

@@ -20,6 +20,15 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvU-pb-3Fp">
                         <rect key="frame" x="24.000000000000004" y="12.666666666666666" width="53.333333333333343" height="26.666666666666671"/>
                         <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="16"/>
+                        <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="Content" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCW-ID-Mz7">
+                        <rect key="frame" x="231" y="13.666666666666664" width="50" height="25"/>
+                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
                         <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -35,6 +44,8 @@
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ZCW-ID-Mz7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9i0-X9-dMh"/>
+                    <constraint firstItem="sGF-Oj-BSG" firstAttribute="leading" secondItem="ZCW-ID-Mz7" secondAttribute="trailing" constant="8" id="BR2-2g-DWK"/>
                     <constraint firstAttribute="trailing" secondItem="sGF-Oj-BSG" secondAttribute="trailing" constant="24" id="IRy-gZ-3nv"/>
                     <constraint firstItem="sGF-Oj-BSG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="O7h-RQ-y8K"/>
                     <constraint firstItem="CvU-pb-3Fp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="QyN-Yy-wz8"/>
@@ -43,6 +54,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="detailLabel" destination="ZCW-ID-Mz7" id="Iu9-Kc-Kyl"/>
                 <outlet property="titleLabel" destination="CvU-pb-3Fp" id="BLB-hG-NX7"/>
             </connections>
             <point key="canvasLocation" x="129.7709923664122" y="-8.4507042253521139"/>

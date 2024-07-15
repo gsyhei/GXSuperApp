@@ -165,7 +165,9 @@ extension GXMineVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
                 else {
-                    
+                    let vc = GXOrderListVC.xibViewController()
+                    vc.gx_addBackBarButtonItem()
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
             return cell
@@ -180,7 +182,9 @@ extension GXMineVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
             let cell: GXMineCell3 = tableView.dequeueReusableCell(for: indexPath)
             cell.updateVipCell(action: {[weak self] in
                 guard let `self` = self else { return }
-                
+                let vc = GXVipVC.xibViewController()
+                vc.gx_addBackBarButtonItem()
+                self.navigationController?.pushViewController(vc, animated: true)
             })
             return cell
         default: return UITableViewCell()
@@ -260,11 +264,20 @@ private extension GXMineVC {
     
     func selectToItemsAtIndex(index: Int) {
         switch index {
+        case 0:
+            let vc = GXMineFavoriteVC.xibViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = GXHomeDetailVehicleVC.xibViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         case 2:
             let vc = GXMineAgreementVC.xibViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         case 3:
             let vc = GXMineFAQVC.xibViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 5:
+            let vc = GXMineSettingVC.xibViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         default: break
         }

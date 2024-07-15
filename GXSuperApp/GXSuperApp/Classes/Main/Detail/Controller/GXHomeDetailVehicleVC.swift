@@ -169,9 +169,11 @@ extension GXHomeDetailVehicleVC: SkeletonTableViewDataSource, SkeletonTableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let selectedAction = selectedAction else { return }
         let model = GXUserManager.shared.vehicleList[indexPath.section]
         GXUserManager.shared.selectedVehicle = model
-        self.selectedAction?()
+        selectedAction()
         self.navigationController?.popViewController(animated: true)
     }
     

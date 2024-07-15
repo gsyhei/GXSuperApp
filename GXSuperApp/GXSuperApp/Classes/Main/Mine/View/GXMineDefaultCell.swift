@@ -10,9 +10,18 @@ import Reusable
 
 class GXMineDefaultCell: UITableViewCell, NibReusable {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.titleLabel.text = nil
+        self.detailLabel.text = nil
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.titleLabel.text = nil
+        self.detailLabel.text = nil
     }
     
 }

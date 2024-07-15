@@ -47,6 +47,12 @@ class GXHomeDetailVC: GXBaseViewController {
         return GXHomeDetailViewModel()
     }()
     
+    class func createVC(stationId: Int) -> GXHomeDetailVC {
+        return GXHomeDetailVC.xibViewController().then {
+            $0.viewModel.stationId = stationId
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         self.view.layoutSkeletonIfNeeded()
     }
@@ -321,7 +327,7 @@ private extension GXHomeDetailVC {
             else {
                 self.advertTitleLabel.text = "Become a VIP for Discounts"
             }
-            self.advertInfoLabel.text = "Save up to $\(GXUserManager.shared.paramsData?.occupyMax ?? "")/year"
+            self.advertInfoLabel.text = (GXUserManager.shared.paramsData?.memberReduction ?? "")
             self.advertKWhLabel.text = "$\(GXUserManager.shared.paramsData?.memberFee ?? "")"
         }
         else {

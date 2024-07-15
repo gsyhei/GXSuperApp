@@ -11,6 +11,7 @@ import HandyJSON
 class GXStationConsumerTagslistModel: NSObject, HandyJSON {
     var id: Int = 0
     var name: String = ""
+    var icon: String = ""
 
     override required init() {}
 }

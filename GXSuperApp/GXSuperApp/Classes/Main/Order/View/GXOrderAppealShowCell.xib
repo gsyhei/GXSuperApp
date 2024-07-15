@@ -24,14 +24,8 @@
                         <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Occupancy Bill" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQj-xX-gj1">
-                        <rect key="frame" x="208.33333333333334" y="14.666666666666664" width="87.666666666666657" height="25"/>
-                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                        <color key="textColor" red="1" green="0.60392156860000001" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35g-3N-lCh">
-                        <rect key="frame" x="24" y="50.000000000000007" width="272" height="125.66666666666669"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35g-3N-lCh">
+                        <rect key="frame" x="24" y="82.333333333333343" width="272" height="93.333333333333343"/>
                         <string key="text">Lorem ipsum dolor sit amet, consectetur adipisici
 ngelit, sed do eiusmod tempor incididunt ut labor
 et dolore magna aliqua. Ut enim ad minim</string>
@@ -53,21 +47,28 @@ et dolore magna aliqua. Ut enim ad minim</string>
                             <constraint firstAttribute="height" constant="82" id="9Co-pg-Blf"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Occupancy Bill" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQj-xX-gj1">
+                        <rect key="frame" x="24" y="49.333333333333336" width="272" height="25.000000000000007"/>
+                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
+                        <color key="textColor" red="1" green="0.60392156860000001" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="eQj-xX-gj1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="0EZ-Bf-hEi"/>
                     <constraint firstAttribute="trailing" secondItem="35g-3N-lCh" secondAttribute="trailing" constant="24" id="18L-JN-9EB"/>
                     <constraint firstItem="gQt-xp-Zpp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="3SB-HL-EYi"/>
                     <constraint firstItem="m97-kg-Hnb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="5Dw-CB-YHm"/>
+                    <constraint firstAttribute="trailing" secondItem="eQj-xX-gj1" secondAttribute="trailing" constant="24" id="6Fg-bY-uPb"/>
                     <constraint firstItem="35g-3N-lCh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="6x5-Dh-vSY"/>
                     <constraint firstAttribute="trailing" secondItem="gQt-xp-Zpp" secondAttribute="trailing" constant="24" id="7w3-xd-Kbw"/>
-                    <constraint firstAttribute="trailing" secondItem="eQj-xX-gj1" secondAttribute="trailing" constant="24" id="CAd-gK-Ydx"/>
                     <constraint firstItem="gQt-xp-Zpp" firstAttribute="top" secondItem="35g-3N-lCh" secondAttribute="bottom" constant="12" id="QCf-B2-Irh"/>
-                    <constraint firstItem="35g-3N-lCh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="50" id="cV0-BW-VCW"/>
+                    <constraint firstItem="35g-3N-lCh" firstAttribute="top" secondItem="eQj-xX-gj1" secondAttribute="bottom" constant="8" id="V4R-1T-fiO"/>
+                    <constraint firstItem="eQj-xX-gj1" firstAttribute="top" secondItem="ThS-29-xOX" secondAttribute="bottom" constant="8" id="a9w-vO-i08"/>
                     <constraint firstItem="ThS-29-xOX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="cYV-Q9-APB"/>
                     <constraint firstItem="ThS-29-xOX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="fdw-1n-SUo"/>
                     <constraint firstAttribute="trailing" secondItem="m97-kg-Hnb" secondAttribute="trailing" constant="24" id="qaq-Ma-A5m"/>
                     <constraint firstAttribute="bottom" secondItem="m97-kg-Hnb" secondAttribute="bottom" constant="15" id="uot-C4-Vqv"/>
-                    <constraint firstItem="eQj-xX-gj1" firstAttribute="centerY" secondItem="ThS-29-xOX" secondAttribute="centerY" id="wM7-0t-9l6"/>
                     <constraint firstItem="m97-kg-Hnb" firstAttribute="top" secondItem="gQt-xp-Zpp" secondAttribute="bottom" constant="15" id="zey-Nb-G8d"/>
                 </constraints>
             </tableViewCellContentView>

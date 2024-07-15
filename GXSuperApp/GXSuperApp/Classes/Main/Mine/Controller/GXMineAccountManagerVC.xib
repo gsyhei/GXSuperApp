@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXMineAccountManagerVC" customModule="GXSuperApp" customModuleProvider="target">
+            <connections>
+                <outlet property="logoutButton" destination="cEF-gd-rjR" id="h2C-I3-huI"/>
+                <outlet property="phoneLabel" destination="ef2-D8-dcJ" id="dGH-tB-5dn"/>
+                <outlet property="tableView" destination="x99-0X-dig" id="rCf-3A-u4g"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="+86 150*******84" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ef2-D8-dcJ">
+                    <rect key="frame" x="113.66666666666669" y="117.66666666666669" width="166" height="40"/>
+                    <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="24"/>
+                    <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbG-tS-wwP">
+                    <rect key="frame" x="147.33333333333334" y="91" width="98.666666666666657" height="26.666666666666671"/>
+                    <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="16"/>
+                    <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="x99-0X-dig">
+                    <rect key="frame" x="0.0" y="177.66666666666669" width="393" height="573.33333333333326"/>
+                    <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="separatorColor" red="0.90196078430000004" green="0.91372549020000005" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <inset key="separatorInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="hR4-5p-ERe"/>
+                        <outlet property="delegate" destination="-1" id="Thi-33-tKJ"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEF-gd-rjR">
+                    <rect key="frame" x="15" y="763" width="363" height="40"/>
+                    <color key="backgroundColor" red="0.019607843140000001" green="0.75686274509999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="IMl-0S-sOp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="17"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Log Out">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="logoutButtonClicked:" destination="-1" eventType="touchUpInside" id="GOJ-nY-phQ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ef2-D8-dcJ" firstAttribute="top" secondItem="VbG-tS-wwP" secondAttribute="bottom" id="1vb-fv-iqN"/>
+                <constraint firstItem="ef2-D8-dcJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5aP-5V-lMp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cEF-gd-rjR" secondAttribute="trailing" constant="15" id="7rS-AH-KIO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="x99-0X-dig" secondAttribute="trailing" id="NdF-56-HmB"/>
+                <constraint firstItem="x99-0X-dig" firstAttribute="top" secondItem="ef2-D8-dcJ" secondAttribute="bottom" constant="20" id="OTy-i0-8fA"/>
+                <constraint firstItem="VbG-tS-wwP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="S7D-GU-UwP"/>
+                <constraint firstItem="cEF-gd-rjR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="apl-8U-XVw"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cEF-gd-rjR" secondAttribute="bottom" constant="15" id="hVM-hg-cjE"/>
+                <constraint firstItem="cEF-gd-rjR" firstAttribute="top" secondItem="x99-0X-dig" secondAttribute="bottom" constant="12" id="idd-Us-hAC"/>
+                <constraint firstItem="VbG-tS-wwP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="mbe-ou-SnG"/>
+                <constraint firstItem="x99-0X-dig" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qBo-Ja-7fq"/>
+            </constraints>
+            <point key="canvasLocation" x="-11.450381679389313" y="-11.267605633802818"/>
+        </view>
+    </objects>
+</document>

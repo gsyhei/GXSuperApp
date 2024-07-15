@@ -138,9 +138,7 @@ class GXHomeVC: GXBaseViewController {
         self.panView.didSelectRowAtAction = {[weak self] model in
             guard let `self` = self else { return }
             
-            let vc = GXHomeDetailVC.xibViewController().then {
-                $0.viewModel.rowModel = model
-            }
+            let vc = GXHomeDetailVC.createVC(stationId: model.id)
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

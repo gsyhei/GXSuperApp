@@ -45,7 +45,7 @@ class GXMineCell3: UITableViewCell, NibReusable {
             let textColor = UIColor(patternImage: gradientImage)
             self.renewButton.setTitleColor(textColor, for: .normal)
         }
-        self.advertInfoLabel.text = "Save up to $\(GXUserManager.shared.paramsData?.occupyMax ?? "")/year"
+        self.advertInfoLabel.text = (GXUserManager.shared.paramsData?.memberReduction ?? "")
     }
     
     @IBAction func renewButtonClicked(_ sender: UIButton) {

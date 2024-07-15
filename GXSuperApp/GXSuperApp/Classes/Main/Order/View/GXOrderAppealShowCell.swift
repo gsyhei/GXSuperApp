@@ -57,10 +57,10 @@ class GXOrderAppealShowCell: UITableViewCell, NibReusable {
     
     func bindCell(model: OrderConsumerComplainDetailData, superVC: GXOrderAppealVC?) {
         self.superVC = superVC
-        let appealData = GXUserManager.shared.appealTypeList.first(where: { $0.id == model.typeId })
-        self.typeNameLabel.text = appealData?.name
+        let typeNames = model.types.map { $0.name }
+        self.typeNameLabel.text = typeNames.joined(separator: " | ")
         self.detailLabel.text = model.reason
-        self.dataSource.data = model.photos + model.photos + model.photos + model.photos
+        self.dataSource.data = model.photos
         self.layoutIfNeeded()
         let constant = self.getShowHeight(count: self.dataSource.data.count, rowCount: 3, spacing: 12)
         self.tagsHeightLC.constant = constant
