@@ -22,9 +22,11 @@ class GXLoginPhoneVC: GXBaseViewController {
     @IBOutlet weak var infoTextView: GXLinkTextView!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var otherLoginView: UIView!
+    
+    private var isCountdown: Bool = false
     private var countdown: Int = 60 {
         didSet {
-            self.sendCodeButton.setTitle(String(format: "%ds", self.countdown), for: .disabled)
+            self.sendCodeButton.setTitle(String(format: "%ds", countdown), for: .disabled)
         }
     }
     private lazy var viewModel: GXLoginAllViewModel = {
@@ -48,46 +50,40 @@ class GXLoginPhoneVC: GXBaseViewController {
         self.infoTextView.gx_appendLink(string: " \"ATT Service Terms\"", color: UIColor.gx_green, urlString: "ast")
         self.infoTextView.delegate = self
         
-        self.phoneTextField.rx.text.orEmpty.subscribe (onNext: {[weak self] string in
-            guard let `self` = self else { return }
-            let maxCount: Int = 11
-            if string.count > maxCount {
-                self.phoneTextField.text = string.substring(to: maxCount)
-            }
-        }).disposed(by: disposeBag)
-        (self.phoneTextField.rx.textInput <-> self.viewModel.account).disposed(by: disposeBag)
-        
-        self.codeTextField.rx.text.orEmpty.subscribe (onNext: {[weak self] string in
-            guard let `self` = self else { return }
-            let maxCount: Int = 6
-            if string.count > maxCount {
-                self.codeTextField.text = string.substring(to: maxCount)
-            }
-        }).disposed(by: disposeBag)
-        (self.codeTextField.rx.textInput <-> self.viewModel.captcha).disposed(by: disposeBag)
-        
         self.confirmButton.isEnabled = false
         self.confirmButton.setBackgroundColor(.gx_gray, for: .disabled)
         self.confirmButton.setBackgroundColor(.gx_green, for: .normal)
         self.confirmButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
         
+        self.sendCodeButton.isEnabled = false
         self.sendCodeButton.setTitleColor(.gx_drakGray, for: .disabled)
         self.sendCodeButton.setTitleColor(.gx_green, for: .normal)
+
+        let usernameValid = self.phoneTextField.rx.text.orEmpty.map {[weak self] text in
+            let maxCount: Int = 11
+            var string: String = text
+            if text.count > maxCount {
+                string = text.substring(to: maxCount)
+                self?.phoneTextField.text = string
+            }
+            return string.count >= 10
+        }
+        usernameValid.bind(to: self.sendCodeButton.rx.isEnabled).disposed(by: disposeBag)
+        let codeValid = self.codeTextField.rx.text.orEmpty.map {[weak self] text in
+            let maxCount: Int = 6
+            var string: String = text
+            if text.count > maxCount {
+                string = text.substring(to: maxCount)
+                self?.codeTextField.text = string
+            }
+            return string.count == 4 || string.count == 6
+        }
+        let checkedValid: Observable<Bool> = self.checkButton.rx.rx_isSelected
+        let everythingValid = Observable.combineLatest(usernameValid, codeValid, checkedValid) { $0 && $1 && $2 }
+        everythingValid.bind(to: self.confirmButton.rx.isEnabled).disposed(by: disposeBag)
         
-        Observable.combineLatest(
-            self.viewModel.account,
-            self.viewModel.captcha,
-            self.checkButton.rx.tap
-        ) { phone,code,check in
-        }.subscribe(onNext: {[weak self] in
-            guard let `self` = self else { return }
-            var isEnabled = true
-            isEnabled = isEnabled && self.viewModel.account.value?.count ?? 0 >= 10
-            self.sendCodeButton.isEnabled = isEnabled
-            isEnabled = isEnabled && self.viewModel.captcha.value?.count ?? 0 >= 4
-            isEnabled = isEnabled && self.checkButton.isSelected
-            self.confirmButton.isEnabled = isEnabled
-        }).disposed(by: disposeBag)
+        (self.phoneTextField.rx.textInput <-> self.viewModel.account).disposed(by: disposeBag)
+        (self.codeTextField.rx.textInput <-> self.viewModel.captcha).disposed(by: disposeBag)
     }
     
 }
@@ -126,12 +122,14 @@ private extension GXLoginPhoneVC {
     }
     func startKeepTime() {
         self.sendCodeButton.isEnabled = false
+        self.isCountdown = true
         GXUtil.gx_countdownTimer(second: 60) {[weak self] (index) in
             guard let `self` = self else { return }
             self.countdown = index
         }.subscribe {[weak self] () in
             guard let `self` = self else { return }
             self.sendCodeButton.isEnabled = true
+            self.isCountdown = false
             XCGLogger.debug("计时结束")
         } onFailure: { (error) in
             XCGLogger.debug("计时失败：\(error)")
