@@ -79,6 +79,7 @@ class GXHomePanView: UIView {
         /// 只为显示noMore
         self.tableView.gx_footer = GXRefreshNormalFooter(completion: {}).then { footer in
             footer.updateRefreshTitles()
+            footer.contentIgnoredHeight = 40.0
             footer.isHiddenNoMoreByContent = false
         }
     }
