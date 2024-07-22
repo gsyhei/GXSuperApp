@@ -15,8 +15,8 @@ open class GXRefreshBaseFooter: GXRefreshComponent {
     open var isTextHidden: Bool = false
     /// 没有更多数据的情况下内容未超出屏幕是否隐藏footer
     open var isHiddenNoMoreByContent: Bool = true
-    /// 内容未超出屏幕是否隐藏footer
-    open var isHiddenByContent: Bool = false
+    /// 内容忽略多少为无内容->无内容时不显示Footer
+    open var contentIgnoredHeight: CGFloat = 10.0
     /// 是否开启自动刷新
     open var automaticallyRefresh: Bool = true
     /// 上拉需要的百分比（下拉到多少刷新）
@@ -153,14 +153,16 @@ public extension GXRefreshBaseFooter {
     }
     override func scrollViewContentSizeDidChange(change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentSizeDidChange(change: change)
-        self.isHidden = (self.svContentSize.height == 0)
+        self.isHidden = (self.svContentSize.height == self.contentIgnoredHeight)
         // 有内容才进行设置
-        guard (self.svContentSize.height > 0) else { return }
+        guard (self.svContentSize.height > self.contentIgnoredHeight) else { return }
+        // 设置Footer位置
         self.gx_top = self.svContentHeight() + self.scrollViewOriginalInset.bottom
         // 内容没有超出屏幕
         guard !self.isContentBeyondScreen() else { return }
-        self.alpha = 1.0
-        self.isHidden = self.isHiddenByContent || (self.isHiddenNoMoreByContent && (self.state == .noMore))
+        // 判断设置是否隐藏Footer
+        self.isHidden = (self.isHiddenNoMoreByContent && (self.state == .noMore))
+        self.alpha = self.isHidden ? 0.0 : 1.0
     }
     override func scrollViewPanStateDidChange(change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewPanStateDidChange(change: change)
@@ -231,13 +233,15 @@ fileprivate extension GXRefreshBaseFooter {
         if !isNoMore {
             self.state = .idle
         }
-        if self.automaticallyChangeAlpha && isContentBeyondScreen() {
+        let isContentBeyondScreen = isContentBeyondScreen()
+        if self.automaticallyChangeAlpha && isContentBeyondScreen {
             self.alpha = 1.0
         }
         if self.endRefreshingAction != nil {
             self.endRefreshingAction!()
         }
-        self.isHidden = self.isHiddenByContent || (self.isHiddenNoMoreByContent && !isContentBeyondScreen() && (self.state == .noMore))
+        guard !isContentBeyondScreen else { return }
+        self.isHidden = self.isHiddenNoMoreByContent && (self.state == .noMore)
     }
     @objc func contentClicked(_ sender: UIControl) {
         guard self.state == .idle else { return }

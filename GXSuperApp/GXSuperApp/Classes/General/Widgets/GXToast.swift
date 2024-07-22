@@ -112,7 +112,7 @@ extension GXToast {
 
         let textSize = text.size(size: GXTextMaxSize, font: GXTextFont)
         let contentHeight = max(ceil(textSize.height), GXIconSize.height)
-        let toastWidth = GXIconSize.width + textSize.width + GXInsets.left + GXInsets.right + GXSpacing
+        let toastWidth = GXIconSize.width + ceil(textSize.width) + GXInsets.left + GXInsets.right + GXSpacing
         let toastHeight = contentHeight + GXInsets.top + GXInsets.bottom
         let toastSize = CGSize(width: toastWidth, height: toastHeight)
         
