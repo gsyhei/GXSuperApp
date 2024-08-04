@@ -50,16 +50,12 @@ class GXMineStatementVC: GXBaseViewController {
         self.topImageView.image = gradientImage
         
         self.tableView.gx_header = GXRefreshNormalHeader(completion: { [weak self] in
-            self?.requestWalletConsumerList(isRefresh: true, completion: { isSucceed, isLastPage in
-                self?.tableView.gx_header?.endRefreshing(isNoMore: isLastPage, isSucceed: isSucceed)
-            })
+            self?.requestWalletConsumerList(isRefresh: true)
         }).then({ header in
             header.updateRefreshTitles()
         })
         self.tableView.gx_footer = GXRefreshNormalFooter(completion: { [weak self] in
-            self?.requestWalletConsumerList(isRefresh: false, completion: { isSucceed, isLastPage in
-                self?.tableView.gx_footer?.endRefreshing(isNoMore: isLastPage)
-            })
+            self?.requestWalletConsumerList(isRefresh: false)
         }).then { footer in
             footer.updateRefreshTitles()
         }
@@ -70,30 +66,30 @@ class GXMineStatementVC: GXBaseViewController {
 private extension GXMineStatementVC {
     func requestWalletConsumerDetail() {
         MBProgressHUD.showLoading()
-        let combinedPromise = when(fulfilled: [
-            self.viewModel.requestWalletConsumerBalance(),
-            self.viewModel.requestWalletConsumerList(isRefresh: true)
-        ])
         firstly {
-            combinedPromise
-        }.done { models in
+            self.viewModel.requestWalletConsumerBalance()
+        }.then { model in
+            self.viewModel.requestWalletConsumerList(isRefresh: true)
+        }.done { (model, isLastPage) in
             MBProgressHUD.dismiss()
-            self.updateDataSource()
+            self.tableView.reloadData()
+            self.tableView.gx_endRefreshing(isNoMore: isLastPage, isSucceed: true)
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
+            self.tableView.gx_endRefreshing(isNoMore: false, isSucceed: false)
         }
     }
     
-    func requestWalletConsumerList(isRefresh: Bool = true, completion: ((Bool, Bool) -> (Void))? = nil) {
+    func requestWalletConsumerList(isRefresh: Bool = true) {
         firstly {
             self.viewModel.requestWalletConsumerList(isRefresh: isRefresh)
         }.done { (model, isLastPage) in
             self.tableView.reloadData()
-            completion?(true, isLastPage)
+            self.tableView.gx_endRefreshing(isNoMore: isLastPage, isSucceed: true)
         }.catch { error in
             GXToast.showError(text:error.localizedDescription)
-            completion?(false, false)
+            self.tableView.gx_endRefreshing(isNoMore: false, isSucceed: false)
         }
     }
     

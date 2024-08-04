@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 开启键盘管理
         IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
         IQKeyboardManager.shared.disabledToolbarClasses.append(GXHomeDetailAddVehicleVC.self)
         IQKeyboardManager.shared.disabledDistanceHandlingClasses.append(GXHomeDetailAddVehicleVC.self)

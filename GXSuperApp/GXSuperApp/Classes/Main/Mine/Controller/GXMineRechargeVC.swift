@@ -71,6 +71,7 @@ class GXMineRechargeVC: GXBaseViewController {
     override func viewDidDisappearPopOrDismissed() {
         super.viewDidDisappearPopOrDismissed()
         IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
     }
     
@@ -82,6 +83,7 @@ class GXMineRechargeVC: GXBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.resignOnTouchOutside = false
     }
     
@@ -116,10 +118,9 @@ private extension GXMineRechargeVC {
             GXStripePaymentManager.paymentSheetToPayment(data: model, fromVC: self)
         }.done { result in
             switch result {
+            case .canceled: break
             case .completed:
                 GXToast.showSuccess(text: "Payment success")
-            case .canceled:
-                GXToast.showSuccess(text: "Payment canceled")
             case .failed(let error):
                 GXToast.showError(text:error.localizedDescription)
             }

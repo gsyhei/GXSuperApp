@@ -59,8 +59,9 @@ class GXMineWithdrawVC: GXBaseViewController {
             guard self.textField.markedTextRange == nil else { return }
             guard let balance = self.viewModel.balanceData?.available else { return }
             if string.count == 1 {
-                if string == "." {
+                if string == "." || balance == 0 {
                     self.textField.text = nil
+                    return
                 }
             }
             var text = string
@@ -72,14 +73,9 @@ class GXMineWithdrawVC: GXBaseViewController {
                     self.textField.text = text
                 }
             }
-            guard var unitPrice = Float(text) else { return }
-            if unitPrice > balance {
-                unitPrice = balance
-                let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                numberFormatter.maximumFractionDigits = 2
-                let stringValue = numberFormatter.string(from: NSNumber(value: unitPrice))
-                self.textField.text = stringValue
+            guard let price = Float(text) else { return }
+            if price > balance {
+                self.textField.text = String(format: "%.2f", balance)
             }
         }).disposed(by: disposeBag)
     }
@@ -102,6 +98,19 @@ private extension GXMineWithdrawVC {
     func updateDataSource() {
         self.balanceLabel.text = String(format: "$ %.2f", self.viewModel.balanceData?.available ?? 0)
     }
+    func requestWithdrawConsumerSubmit(amount: Float) {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestWithdrawConsumerSubmit(amount: amount)
+        }.done { models in
+            MBProgressHUD.dismiss()
+            MBProgressHUD.showSuccess(text: "Successful withdrawal")
+            self.navigationController?.popViewController(animated: true)
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
 }
 
 private extension GXMineWithdrawVC {
@@ -109,7 +118,8 @@ private extension GXMineWithdrawVC {
         self.backBarButtonItemTapped()
     }
     @IBAction func confirmButtonClicked(_ sender: UIButton) {
-
+        guard let amount = Float(self.textField.text ?? "") else { return }
+        self.requestWithdrawConsumerSubmit(amount: amount)
     }
     @IBAction func withdrawAllButtonClicked(_ sender: UIButton) {
         self.view.endEditing(true)

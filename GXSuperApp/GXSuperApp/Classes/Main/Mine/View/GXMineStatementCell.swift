@@ -36,12 +36,12 @@ class GXMineStatementCell: UITableViewCell, NibReusable {
         case "OCCUPY_REFUND":
             self.contentLabel.text = "Idle Fee Refund"
         case "WITHDRAW":
-            self.contentLabel.text = "Withdrawal"
+            self.contentLabel.text = "Withdraw"
         case "WITHDRAW_FAILED":
             self.contentLabel.text = "Withdrawal Failed"
         default: break
         }
-        if model.amount < 0 {
+        if model.direction == "OUT" {
             self.amountLabel.textColor = .gx_drakGray
             self.amountLabel.text = String(format: "-$%.2f", abs(model.amount))
         } else {
