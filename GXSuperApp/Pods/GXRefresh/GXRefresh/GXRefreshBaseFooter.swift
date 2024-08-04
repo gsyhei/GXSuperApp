@@ -153,7 +153,7 @@ public extension GXRefreshBaseFooter {
     }
     override func scrollViewContentSizeDidChange(change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentSizeDidChange(change: change)
-        self.isHidden = (self.svContentSize.height == self.contentIgnoredHeight)
+        self.isHidden = (self.svContentSize.height < self.contentIgnoredHeight)
         // 有内容才进行设置
         guard (self.svContentSize.height > self.contentIgnoredHeight) else { return }
         // 设置Footer位置

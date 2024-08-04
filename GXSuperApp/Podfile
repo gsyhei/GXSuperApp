@@ -73,6 +73,8 @@ target 'GXSuperApp' do
   # 谷歌地图
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  # Stripe支付
+  pod 'StripePaymentSheet'
   
 end
 

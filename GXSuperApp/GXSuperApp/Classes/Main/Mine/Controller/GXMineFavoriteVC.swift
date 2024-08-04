@@ -41,16 +41,12 @@ class GXMineFavoriteVC: GXBaseViewController {
         self.gx_addNavTopView(color: .white)
         
         self.tableView.gx_header = GXRefreshNormalHeader(completion: { [weak self] in
-            self?.requesFavoriteConsumerList(isRefresh: true, completion: { isSucceed, isLastPage in
-                self?.tableView.gx_header?.endRefreshing(isNoMore: isLastPage, isSucceed: isSucceed)
-            })
+            self?.requesFavoriteConsumerList(isRefresh: true)
         }).then({ header in
             header.updateRefreshTitles()
         })
         self.tableView.gx_footer = GXRefreshNormalFooter(completion: { [weak self] in
-            self?.requesFavoriteConsumerList(isRefresh: false, completion: { isSucceed, isLastPage in
-                self?.tableView.gx_footer?.endRefreshing(isNoMore: isLastPage)
-            })
+            self?.requesFavoriteConsumerList(isRefresh: false)
         }).then { footer in
             footer.updateRefreshTitles()
         }
@@ -58,7 +54,7 @@ class GXMineFavoriteVC: GXBaseViewController {
 }
 
 private extension GXMineFavoriteVC {
-    func requesFavoriteConsumerList(isRefresh: Bool = true, isShowHUD: Bool = false, completion: ((Bool, Bool) -> (Void))? = nil) {
+    func requesFavoriteConsumerList(isRefresh: Bool = true, isShowHUD: Bool = false) {
         if isShowHUD {
             MBProgressHUD.showLoading()
         }
@@ -67,11 +63,11 @@ private extension GXMineFavoriteVC {
         }.done { (model, isLastPage) in
             if isShowHUD { MBProgressHUD.dismiss() }
             self.tableView.gx_reloadData()
-            completion?(true, isLastPage)
+            self.tableView.gx_header?.endRefreshing(isNoMore: isLastPage, isSucceed: true)
         }.catch { error in
             if isShowHUD { MBProgressHUD.dismiss() }
             GXToast.showError(text:error.localizedDescription)
-            completion?(false, false)
+            self.tableView.gx_header?.endRefreshing(isNoMore: false, isSucceed: false)
         }
     }
     

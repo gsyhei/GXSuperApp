@@ -107,6 +107,25 @@ PODS:
   - SnapKit (5.7.1)
   - SnapKitExtend (1.1.0):
     - SnapKit
+  - StripeApplePay (23.28.1):
+    - StripeCore (= 23.28.1)
+  - StripeCore (23.28.1)
+  - StripePayments (23.28.1):
+    - StripeCore (= 23.28.1)
+    - StripePayments/Stripe3DS2 (= 23.28.1)
+  - StripePayments/Stripe3DS2 (23.28.1):
+    - StripeCore (= 23.28.1)
+  - StripePaymentSheet (23.28.1):
+    - StripeApplePay (= 23.28.1)
+    - StripeCore (= 23.28.1)
+    - StripePayments (= 23.28.1)
+    - StripePaymentsUI (= 23.28.1)
+  - StripePaymentsUI (23.28.1):
+    - StripeCore (= 23.28.1)
+    - StripePayments (= 23.28.1)
+    - StripeUICore (= 23.28.1)
+  - StripeUICore (23.28.1):
+    - StripeCore (= 23.28.1)
   - SwiftTheme (0.6.4)
   - SwiftyUserDefaults (5.3.0)
   - Then (3.0.0)
@@ -146,6 +165,7 @@ DEPENDENCIES:
   - RxDataSources
   - SkeletonView
   - SnapKitExtend
+  - StripePaymentSheet
   - SwiftTheme
   - SwiftyUserDefaults
   - Then
@@ -189,6 +209,12 @@ SPEC REPOS:
     - SkeletonView
     - SnapKit
     - SnapKitExtend
+    - StripeApplePay
+    - StripeCore
+    - StripePayments
+    - StripePaymentSheet
+    - StripePaymentsUI
+    - StripeUICore
     - SwiftTheme
     - SwiftyUserDefaults
     - Then
@@ -231,12 +257,18 @@ SPEC CHECKSUMS:
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   SnapKitExtend: aa30cf37196195fae9c4354686cc7710184ebfcc
+  StripeApplePay: 5b098a0ba6136f4b587e03f5a3776461b4f20dd4
+  StripeCore: 880a68482cf78d4745c5213c2fd3446efc73574b
+  StripePayments: 3af5b03fa1831c301a4d1621eb0e790280dccb46
+  StripePaymentSheet: 8321efebb6d104add8fce929286d414545913114
+  StripePaymentsUI: 4c35e12ebcd4bd9bd21e379f03f730bee097250d
+  StripeUICore: 22b314dc9f7ea8814d0f9eeba0ddb5e4b77f34f3
   SwiftTheme: 007cbaf1f9e171caf6448a4657533e54c682b285
   SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
   XCGLogger: 399c5885210b4e2ad79d9f7a29b105d672ef724f
 
-PODFILE CHECKSUM: 513e1d2faf2d746c404f278a97228740c9871cfa
+PODFILE CHECKSUM: 40e5f9eef2fe5e5f47001c39d16afef5106c99fc
 
 COCOAPODS: 1.15.2
