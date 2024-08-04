@@ -69,7 +69,6 @@ class GXHomeDetailVC: GXBaseViewController {
         self.tableView.gx_header = GXRefreshNormalHeader(completion: { [weak self] in
             guard let `self` = self else { return }
             self.requestStationConsumerDetail(isShowHud: false)
-            self.tableView.gx_header?.endRefreshing(isSucceed: true)
         }).then { footer in
             footer.updateRefreshTitles()
         }
@@ -274,7 +273,7 @@ private extension GXHomeDetailVC {
                 self.view.hideSkeleton()
             } else {
                 self.view.hideSkeleton()
-                self.tableView.gx_header?.endRefreshing(isSucceed: true)
+                self.tableView.gx_endRefreshing(isSucceed: true)
             }
             self.updateDetailDataSource()
         }.catch { error in
@@ -282,7 +281,7 @@ private extension GXHomeDetailVC {
             if isShowHud {
                 GXToast.showError(text:error.localizedDescription)
             } else {
-                self.tableView.gx_header?.endRefreshing(isSucceed: false, text: error.localizedDescription)
+                self.tableView.gx_endRefreshing(isSucceed: false, text: error.localizedDescription)
             }
         }
     }

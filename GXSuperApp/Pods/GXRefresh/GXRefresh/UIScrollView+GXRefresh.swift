@@ -42,7 +42,7 @@ public extension UIScrollView {
             header.endRefreshing(isNoMore: isNoMore, isSucceed: isSucceed, text: text)
         }
         else if let footer = self.gx_footer {
-            footer.endRefreshing()
+            footer.endRefreshing(isNoMore: isNoMore)
         }
     }
     
