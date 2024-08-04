@@ -172,6 +172,9 @@
 		33CB38242C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB38232C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift */; };
 		33CD2D942C3501C200D4B55B /* GXHomeDetailVehicleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CD2D932C3501C200D4B55B /* GXHomeDetailVehicleViewModel.swift */; };
 		33CD2D962C350B4900D4B55B /* GXHomeDetailAddVehicleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CD2D952C350B4900D4B55B /* GXHomeDetailAddVehicleViewModel.swift */; };
+		33D014C42C5F661300E0F014 /* GXMineRechargeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D014C32C5F661300E0F014 /* GXMineRechargeViewModel.swift */; };
+		33D014C62C5F690A00E0F014 /* GXStripePaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D014C52C5F690A00E0F014 /* GXStripePaymentModel.swift */; };
+		33D014C82C5F6A0C00E0F014 /* GXStripePaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D014C72C5F6A0C00E0F014 /* GXStripePaymentManager.swift */; };
 		33D1109E2C1D8DFA006331EC /* GXHomeSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D1109D2C1D8DFA006331EC /* GXHomeSearchVC.xib */; };
 		33D1109F2C1D8DFA006331EC /* GXHomeSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D1109C2C1D8DFA006331EC /* GXHomeSearchVC.swift */; };
 		33D199FB2C41E6350094AB3E /* GXQuestionsConsumerListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D199FA2C41E6350094AB3E /* GXQuestionsConsumerListModel.swift */; };
@@ -422,6 +425,9 @@
 		33CB38232C20A2A2005A0227 /* GXHomeSearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchHistoryCell.swift; sourceTree = "<group>"; };
 		33CD2D932C3501C200D4B55B /* GXHomeDetailVehicleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVehicleViewModel.swift; sourceTree = "<group>"; };
 		33CD2D952C350B4900D4B55B /* GXHomeDetailAddVehicleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailAddVehicleViewModel.swift; sourceTree = "<group>"; };
+		33D014C32C5F661300E0F014 /* GXMineRechargeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMineRechargeViewModel.swift; sourceTree = "<group>"; };
+		33D014C52C5F690A00E0F014 /* GXStripePaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXStripePaymentModel.swift; sourceTree = "<group>"; };
+		33D014C72C5F6A0C00E0F014 /* GXStripePaymentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXStripePaymentManager.swift; sourceTree = "<group>"; };
 		33D1109C2C1D8DFA006331EC /* GXHomeSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchVC.swift; sourceTree = "<group>"; };
 		33D1109D2C1D8DFA006331EC /* GXHomeSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchVC.xib; sourceTree = "<group>"; };
 		33D199FA2C41E6350094AB3E /* GXQuestionsConsumerListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXQuestionsConsumerListModel.swift; sourceTree = "<group>"; };
@@ -974,6 +980,7 @@
 				339D01612C41258C00B6EE31 /* GXWalletConsumerListModel.swift */,
 				33D199FA2C41E6350094AB3E /* GXQuestionsConsumerListModel.swift */,
 				33DB78DE2C436C1900F2763C /* GXFavoriteConsumerListModel.swift */,
+				33D014C52C5F690A00E0F014 /* GXStripePaymentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1007,6 +1014,7 @@
 				33C9C21B2C4176DA00F969B4 /* GXMineWithdrawViewModel.swift */,
 				33DB78DC2C436AEC00F2763C /* GXMineFavoriteViewModel.swift */,
 				333DE1FC2C43DC4B009B83CD /* GXMineAccountManagerViewModel.swift */,
+				33D014C32C5F661300E0F014 /* GXMineRechargeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1156,6 +1164,7 @@
 				33BF81B52C1414CE0089431E /* GXLocationManager.swift */,
 				339A5EDB2C2AD5A7004F1B7F /* GXUserManager.swift */,
 				330B40CA2C3FE9CB00D1136B /* GXPlacesManager.swift */,
+				33D014C72C5F6A0C00E0F014 /* GXStripePaymentManager.swift */,
 			);
 			path = Gobal;
 			sourceTree = "<group>";
@@ -1519,6 +1528,7 @@
 				337D68082C44F0B6002EA627 /* GXLoginDashedLineView.swift in Sources */,
 				33EC55DB2C101BA100D4CCD0 /* GXMessagesLoadHeader.swift in Sources */,
 				33A772B32C3F468F00693483 /* GXOrderAppealCell.swift in Sources */,
+				33D014C42C5F661300E0F014 /* GXMineRechargeViewModel.swift in Sources */,
 				33272D682C3CCD9100A95BD7 /* GXOrderListVC.swift in Sources */,
 				33D1109F2C1D8DFA006331EC /* GXHomeSearchVC.swift in Sources */,
 				33C9C2202C41DE5700F969B4 /* GXMineFAQVC.swift in Sources */,
@@ -1532,6 +1542,7 @@
 				33BE2BE52C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift in Sources */,
 				33DB78E22C43BFA600F2763C /* GXMineSettingVC.swift in Sources */,
 				33272D5A2C3C898600A95BD7 /* GXWalletConsumerBalanceModel.swift in Sources */,
+				33D014C82C5F6A0C00E0F014 /* GXStripePaymentManager.swift in Sources */,
 				33EC55F12C101BA100D4CCD0 /* XYNavigationManager.m in Sources */,
 				33953F672C208B240049C76C /* GXHomeSearchResultCell.swift in Sources */,
 				33FB14DD2C2D4BF600059CB0 /* GXConnectorConsumerListModel.swift in Sources */,
@@ -1542,6 +1553,7 @@
 				33CB38212C20A21F005A0227 /* GXHomeSearchAutocompleteCell.swift in Sources */,
 				339D01602C41202900B6EE31 /* GXMineWalletViewModel.swift in Sources */,
 				3398F7342C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.swift in Sources */,
+				33D014C62C5F690A00E0F014 /* GXStripePaymentModel.swift in Sources */,
 				33A91E362C28A53100F7E214 /* GXHomeDetailCell6.swift in Sources */,
 				339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */,
 				33EC55B82C101BA100D4CCD0 /* GXSearchController.swift in Sources */,

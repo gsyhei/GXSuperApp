@@ -44,17 +44,31 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </tableView>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcF-Zf-Fpg">
+                        <rect key="frame" x="224" y="16" width="72" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="FOL-MR-YZ4"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="com_list_ic_fold"/>
+                        <state key="selected" image="com_list_ic_unfold"/>
+                        <connections>
+                            <action selector="openButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Dyf-eM-1wb"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="roX-Ls-f12" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="0nK-cN-vm6"/>
                     <constraint firstAttribute="trailing" secondItem="zPv-2u-8ER" secondAttribute="trailing" constant="24" id="8ME-Mu-eJ9"/>
                     <constraint firstItem="roX-Ls-f12" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="VOE-Df-asq"/>
+                    <constraint firstAttribute="trailing" secondItem="gcF-Zf-Fpg" secondAttribute="trailing" constant="24" id="XYr-0j-yWg"/>
                     <constraint firstItem="zPv-2u-8ER" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="45" id="aaQ-vL-o1a"/>
                     <constraint firstItem="Tje-OM-692" firstAttribute="centerY" secondItem="roX-Ls-f12" secondAttribute="centerY" id="buf-jk-G5T"/>
                     <constraint firstAttribute="trailing" secondItem="Tje-OM-692" secondAttribute="trailing" constant="24" id="fc8-eO-S6y"/>
                     <constraint firstAttribute="bottom" secondItem="zPv-2u-8ER" secondAttribute="bottom" constant="10" id="fnR-dy-dHP"/>
                     <constraint firstItem="zPv-2u-8ER" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="gRj-v0-56r"/>
+                    <constraint firstItem="gcF-Zf-Fpg" firstAttribute="centerY" secondItem="roX-Ls-f12" secondAttribute="centerY" id="wb3-lg-XVU"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -66,11 +80,17 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="nameLabel" destination="roX-Ls-f12" id="G10-6i-gJv"/>
+                <outlet property="openButton" destination="gcF-Zf-Fpg" id="PAH-f2-n0r"/>
                 <outlet property="stateLabel" destination="Tje-OM-692" id="07V-BL-L2m"/>
+                <outlet property="stateRightLC" destination="fc8-eO-S6y" id="0UA-NT-Emc"/>
                 <outlet property="tableHeightLC" destination="6bG-ZN-ZxU" id="2zM-md-WFa"/>
                 <outlet property="tableView" destination="zPv-2u-8ER" id="29a-Sg-oW5"/>
             </connections>
-            <point key="canvasLocation" x="204.58015267175571" y="9.8591549295774659"/>
+            <point key="canvasLocation" x="135.87786259541986" y="5.6338028169014089"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="com_list_ic_fold" width="13" height="7"/>
+        <image name="com_list_ic_unfold" width="13" height="7"/>
+    </resources>
 </document>

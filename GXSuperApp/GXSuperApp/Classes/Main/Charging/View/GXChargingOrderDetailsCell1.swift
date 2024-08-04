@@ -13,6 +13,8 @@ import SkeletonView
 class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
+    @IBOutlet weak var openButton: UIButton!
+    @IBOutlet weak var stateRightLC: NSLayoutConstraint!
     @IBOutlet weak var tableHeightLC: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -29,10 +31,23 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
             self.tableView.reloadData()
         }
     }
+    var isShowOpen: Bool = false {
+        didSet {
+            self.openButton.isHidden = !isShowOpen
+            self.stateRightLC.constant = isShowOpen ? 40 : 24
+        }
+    }
+    var isOpen: Bool = false {
+        didSet {
+            self.openButton.isSelected = isOpen
+        }
+    }
+    var openAction: GXActionBlockItem<Bool>?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.isSkeletonable = true
+        self.isShowOpen = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -95,6 +110,13 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
         self.tableList = cellList
     }
     
+}
+
+private extension GXChargingOrderDetailsCell1 {
+    @IBAction func openButtonClicked(_ sender: UIButton) {
+        self.isOpen = !sender.isSelected
+        self.openAction?(self.isOpen)
+    }
 }
 
 extension GXChargingOrderDetailsCell1: SkeletonTableViewDataSource {

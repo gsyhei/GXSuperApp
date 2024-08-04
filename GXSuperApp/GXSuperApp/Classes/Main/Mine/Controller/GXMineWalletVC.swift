@@ -31,6 +31,14 @@ class GXMineWalletVC: GXBaseViewController {
         self.detailButton.imageLocationAdjust(model: .right, spacing: 5.0)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.didGetNetworktLoad {
+            self.requestWalletConsumerBalance(isShowHud: false)
+        }
+        self.didGetNetworktLoad = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.requestWalletConsumerBalance()
@@ -57,8 +65,10 @@ class GXMineWalletVC: GXBaseViewController {
 }
 
 private extension GXMineWalletVC {
-    func requestWalletConsumerBalance() {
-        MBProgressHUD.showLoading()
+    func requestWalletConsumerBalance(isShowHud: Bool = true) {
+        if isShowHud {
+            MBProgressHUD.showLoading()
+        }
         firstly {
             self.viewModel.requestWalletConsumerBalance()
         }.done { models in

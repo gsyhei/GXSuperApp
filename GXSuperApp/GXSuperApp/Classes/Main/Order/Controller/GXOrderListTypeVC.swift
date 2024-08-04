@@ -87,16 +87,12 @@ class GXOrderListTypeVC: GXBaseViewController {
         self.tableView.isSkeletonable = true
         
         self.tableView.gx_header = GXRefreshNormalHeader(completion: { [weak self] in
-            self?.requestOrderConsumerList(isRefresh: true, isShowHud: false, completion: { isSucceed, isLastPage in
-                self?.tableView.gx_header?.endRefreshing(isNoMore: isLastPage, isSucceed: isSucceed)
-            })
+            self?.requestOrderConsumerList(isRefresh: true, isShowHud: false)
         }).then({ header in
             header.updateRefreshTitles()
         })
         self.tableView.gx_footer = GXRefreshNormalFooter(completion: { [weak self] in
-            self?.requestOrderConsumerList(isRefresh: false, isShowHud: false, completion: { isSucceed, isLastPage in
-                self?.tableView.gx_footer?.endRefreshing(isNoMore: isLastPage)
-            })
+            self?.requestOrderConsumerList(isRefresh: false, isShowHud: false)
         }).then { footer in
             footer.updateRefreshTitles()
         }
@@ -105,7 +101,7 @@ class GXOrderListTypeVC: GXBaseViewController {
 
 extension GXOrderListTypeVC {
     
-    func requestOrderConsumerList(isRefresh: Bool = true, isShowHud: Bool = true, completion: ((Bool, Bool) -> (Void))? = nil) {
+    func requestOrderConsumerList(isRefresh: Bool = true, isShowHud: Bool = true) {
         if isShowHud {
             self.view.showAnimatedGradientSkeleton()
         }
@@ -117,15 +113,14 @@ extension GXOrderListTypeVC {
                 self.tableView.gx_reloadData()
             } else {
                 self.tableView.gx_reloadData()
-                completion?(true, isLastPage)
             }
+            self.tableView.gx_endRefreshing(isNoMore: isLastPage, isSucceed: true)
         }.catch { error in
             self.view.hideSkeleton()
             if isShowHud {
                 GXToast.showError(text:error.localizedDescription)
-            } else {
-                completion?(false, false)
             }
+            self.tableView.gx_endRefreshing(isNoMore: false, isSucceed: false)
         }
     }
     

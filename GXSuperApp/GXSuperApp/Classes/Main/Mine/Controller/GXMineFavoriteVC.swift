@@ -63,11 +63,11 @@ private extension GXMineFavoriteVC {
         }.done { (model, isLastPage) in
             if isShowHUD { MBProgressHUD.dismiss() }
             self.tableView.gx_reloadData()
-            self.tableView.gx_header?.endRefreshing(isNoMore: isLastPage, isSucceed: true)
+            self.tableView.gx_endRefreshing(isNoMore: isLastPage, isSucceed: true)
         }.catch { error in
             if isShowHUD { MBProgressHUD.dismiss() }
             GXToast.showError(text:error.localizedDescription)
-            self.tableView.gx_header?.endRefreshing(isNoMore: false, isSucceed: false)
+            self.tableView.gx_endRefreshing(isNoMore: false, isSucceed: false)
         }
     }
     

@@ -133,3 +133,9 @@ let Api_wallet_consumer_balance = "/charging-wallet-server/wallet/consumer/balan
 
 /// 钱包明细
 let Api_wallet_consumer_list = "/charging-wallet-server/wallet/consumer/list"
+
+/// Stripe支付
+let Api_stripe_consumer_payment = "/charging-wallet-server/stripe/consumer/payment"
+
+/// 提现
+let Api_withdraw_consumer_submit = "/charging-wallet-server/withdraw/consumer/submit"

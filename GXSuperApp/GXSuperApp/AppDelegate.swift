@@ -12,6 +12,7 @@ import IQKeyboardManagerSwift
 import GoogleMaps
 import GooglePlaces
 import SkeletonView
+import StripeCore
 
 let GXAppDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
 @main
@@ -30,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 开启键盘管理
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
-        IQKeyboardManager.shared.disabledToolbarClasses = [GXHomeDetailAddVehicleVC.self]
-        IQKeyboardManager.shared.disabledDistanceHandlingClasses = [GXHomeDetailAddVehicleVC.self]
+        IQKeyboardManager.shared.disabledToolbarClasses.append(GXHomeDetailAddVehicleVC.self)
+        IQKeyboardManager.shared.disabledDistanceHandlingClasses.append(GXHomeDetailAddVehicleVC.self)
         
         // 配置过渡
         SkeletonAppearance.default.gradient = SkeletonGradient(baseColor: .gx_lineGray)
@@ -112,7 +113,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return true
+        if StripeAPI.handleURLCallback(with: url) {
+            return true
+        }
+        return false
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([any UIUserActivityRestoring]?) -> Void) -> Bool {

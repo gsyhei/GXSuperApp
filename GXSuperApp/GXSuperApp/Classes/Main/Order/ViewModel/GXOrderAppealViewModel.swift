@@ -23,6 +23,8 @@ class GXOrderAppealViewModel: GXBaseViewModel {
     var images: [PhotoAsset] = []
     /// 选择的申诉类型
     var selectedAppealTypeIds: [Int] = []
+    /// isOpen
+    var isOpenDetail: Bool = false
     
     /// 申诉详情
     func requestOrderConsumerComplainDetail() -> Promise<OrderConsumerComplainDetailModel?> {

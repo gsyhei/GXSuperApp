@@ -131,7 +131,12 @@ extension GXOrderAppealVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return self.viewModel.detailCellModel?.rowsIndexs.count ?? 0
+            if let count = self.viewModel.detailCellModel?.rowsIndexs.count, count > 0 {
+                return self.viewModel.isOpenDetail ? 1 : count
+            }
+            else {
+                return 0
+            }
         }
         else {
             return 1
@@ -145,6 +150,13 @@ extension GXOrderAppealVC: UITableViewDataSource, UITableViewDelegate {
             case 1:
                 let cell: GXChargingOrderDetailsCell1 = tableView.dequeueReusableCell(for: indexPath)
                 cell.bindListCell(model: self.viewModel.detailCellModel?.item)
+                cell.isShowOpen = true
+                cell.isOpen = self.viewModel.isOpenDetail
+                cell.openAction = {[weak self] isOpen in
+                    guard let `self` = self else { return }
+                    self.viewModel.isOpenDetail = isOpen
+                    self.tableView.reloadSection(0, with: .automatic)
+                }
                 return cell
             case 2:
                 let cell: GXChargingOrderDetailsCell2 = tableView.dequeueReusableCell(for: indexPath)
