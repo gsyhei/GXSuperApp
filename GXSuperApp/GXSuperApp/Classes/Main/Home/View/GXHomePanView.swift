@@ -11,7 +11,7 @@ import GXRefresh
 
 class GXHomePanView: UIView {
     enum PanPosition {
-        case none //底部
+        case none   //底部
         case top    //头部
         case center //中心
         case bottom //底部

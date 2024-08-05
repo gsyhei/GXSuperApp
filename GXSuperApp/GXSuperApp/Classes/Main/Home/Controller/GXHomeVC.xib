@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXHomeVC" customModule="GXSuperApp" customModuleProvider="target">
             <connections>
+                <outlet property="centerIconTopLC" destination="1my-Qq-OiO" id="XtN-cL-6yx"/>
                 <outlet property="myLocationButton" destination="t2R-fG-5FA" id="rN1-5k-1WO"/>
                 <outlet property="ongoingButton" destination="out-Pk-Y4P" id="fVq-zD-val"/>
                 <outlet property="ongoingView" destination="45r-Su-e17" id="nno-59-Ngh"/>
@@ -43,6 +44,13 @@
                         <action selector="myLocationButtonClicked:" destination="-1" eventType="touchUpInside" id="5dB-zU-oq2"/>
                     </connections>
                 </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_map_ic_centre" translatesAutoresizingMaskIntoConstraints="NO" id="O6z-dy-6nJ">
+                    <rect key="frame" x="188.66666666666666" y="221" width="16" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="c6h-I8-oB7"/>
+                        <constraint firstAttribute="height" constant="24" id="hpY-Pt-bRb"/>
+                    </constraints>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LP5-oT-u49" userLabel="topContainerView">
                     <rect key="frame" x="0.0" y="59" width="393" height="82"/>
                     <subviews>
@@ -171,10 +179,12 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="t2R-fG-5FA" secondAttribute="trailing" constant="12" id="1lE-9q-grd"/>
+                <constraint firstItem="O6z-dy-6nJ" firstAttribute="top" secondItem="LP5-oT-u49" secondAttribute="bottom" constant="80" id="1my-Qq-OiO"/>
                 <constraint firstItem="LP5-oT-u49" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="5gV-cD-YIZ"/>
                 <constraint firstItem="t2R-fG-5FA" firstAttribute="top" secondItem="LP5-oT-u49" secondAttribute="bottom" constant="12" id="AwW-ow-nTr"/>
                 <constraint firstItem="LP5-oT-u49" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FMM-ZV-zzf"/>
                 <constraint firstItem="45r-Su-e17" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="GQa-yE-3fp"/>
+                <constraint firstItem="O6z-dy-6nJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UAX-IQ-2MW"/>
                 <constraint firstItem="LP5-oT-u49" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YBb-D2-pQA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="45r-Su-e17" secondAttribute="trailing" constant="12" id="bni-cZ-tpp"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="45r-Su-e17" secondAttribute="bottom" constant="18" id="cCH-Cp-7Kv"/>
@@ -183,6 +193,7 @@
         </view>
     </objects>
     <resources>
+        <image name="home_map_ic_centre" width="16" height="24"/>
         <image name="home_map_ic_location" width="20" height="20"/>
         <image name="home_nav_ic_filter" width="18" height="18"/>
         <image name="home_nav_ic_logo" width="85" height="16"/>

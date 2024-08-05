@@ -18,7 +18,8 @@ class GXHomeVC: GXBaseViewController {
     @IBOutlet weak var selectTagsView: GXSelectTagsView!
     @IBOutlet weak var ongoingView: UIView!
     @IBOutlet weak var ongoingButton: UIButton!
-    
+    @IBOutlet weak var centerIconTopLC: NSLayoutConstraint!
+
     private weak var locationMarker: GMSMarker?
     private weak var selectedMarker: GXCustomMarker?
     private weak var selectedMarkerMenu: GXSelectedMarkerInfoView?
@@ -96,7 +97,7 @@ class GXHomeVC: GXBaseViewController {
         self.ongoingButton.setBackgroundColor(.gx_green, for: .normal)
         self.ongoingButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
 
-        self.view.insertSubview(self.panView, aboveSubview: self.myLocationButton)
+        self.view.insertSubview(self.panView, aboveSubview: self.topContainerView)
         self.view.insertSubview(self.mapView, belowSubview: self.myLocationButton)
     }
     
@@ -116,22 +117,28 @@ class GXHomeVC: GXBaseViewController {
                 self.myLocationButton.isHidden = false
                 self.mapView.isUserInteractionEnabled = true
                 let bottom = self.mapView.bottom - self.panView.panCenterY - 22.0
+                self.centerIconTopLC.constant = (self.mapView.height - bottom - 24)/2
                 UIView.animate(.promise, duration: 0.2) {
                     self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
+                    self.view.layoutIfNeeded()
                 }
             case .bottom:
                 self.myLocationButton.isHidden = false
                 self.mapView.isUserInteractionEnabled = true
                 let bottom = self.mapView.bottom - self.panView.panBottomY - 22.0
+                self.centerIconTopLC.constant = (self.mapView.height - bottom - 24)/2
                 UIView.animate(.promise, duration: 0.2) {
                     self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
+                    self.view.layoutIfNeeded()
                 }
             default:
                 self.myLocationButton.isHidden = false
                 self.mapView.isUserInteractionEnabled = true
                 let bottom = self.mapView.bottom - (SCREEN_HEIGHT - GXSelectedMarkerInfoView.menuHeight())
+                self.centerIconTopLC.constant = (self.mapView.height - bottom - 24)/2
                 UIView.animate(.promise, duration: 0.2) {
                     self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
+                    self.view.layoutIfNeeded()
                 }
             }
         }
