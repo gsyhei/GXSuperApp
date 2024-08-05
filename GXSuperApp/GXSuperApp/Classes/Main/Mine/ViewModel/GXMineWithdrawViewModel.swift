@@ -26,12 +26,12 @@ class GXMineWithdrawViewModel: GXBaseViewModel {
     }
     
     /// 提现
-    func requestWithdrawConsumerSubmit(amount: Float) -> Promise<GXBaseDataModel> {
+    func requestWithdrawConsumerSubmit(amount: Float) -> Promise<GXWithdrawSubmitModel> {
         return Promise { seal in
             var params: Dictionary<String, Any> = [:]
             params["amount"] = amount
             let api = GXApi.normalApi(Api_withdraw_consumer_submit, params, .post)
-            GXNWProvider.login_request(api, type: GXBaseDataModel.self, success: { model in
+            GXNWProvider.login_request(api, type: GXWithdrawSubmitModel.self, success: { model in
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)

@@ -102,14 +102,29 @@ private extension GXMineWithdrawVC {
         MBProgressHUD.showLoading()
         firstly {
             self.viewModel.requestWithdrawConsumerSubmit(amount: amount)
-        }.done { models in
+        }.done { model in
             MBProgressHUD.dismiss()
-            MBProgressHUD.showSuccess(text: "Successful withdrawal")
-            self.navigationController?.popViewController(animated: true)
+            self.showAlertSubmitted(mutable: model.data.count > 1)
         }.catch { error in
             MBProgressHUD.dismiss()
-            GXToast.showError(text:error.localizedDescription)
+            self.showAlertError(errText: error.localizedDescription)
         }
+    }
+    func showAlertError(errText: String) {
+        let message = "Unable to withdraw"
+        GXUtil.showAlert(title: errText, message: message, cancelTitle: "I see", handler: { alert, index in
+            self.navigationController?.popViewController(animated: true)
+        })
+    }
+    func showAlertSubmitted(mutable: Bool) {
+        let title = "The withdrawal application has been submitted"
+        var message = "The money will be transferred according to the original channel at the time of recharge."
+        if mutable {
+            message += "\nWhen you recharge, you will pay through multiple channels. When you withdraw, you will call different channels. Please note that check."
+        }
+        GXUtil.showAlert(title: title, message: message, cancelTitle: "I see", handler: { alert, index in
+            self.navigationController?.popViewController(animated: true)
+        })
     }
 }
 

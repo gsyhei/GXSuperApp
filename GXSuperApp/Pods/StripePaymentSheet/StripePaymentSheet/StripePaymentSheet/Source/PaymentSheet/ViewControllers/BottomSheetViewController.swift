@@ -30,6 +30,10 @@ class BottomSheetViewController: UIViewController, BottomSheetPresentable {
         static let keyboardAvoidanceEdgePadding: CGFloat = 16
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - Views
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()

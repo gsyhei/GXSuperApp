@@ -9,6 +9,7 @@ import UIKit
 import HandyJSON
 
 class GXBaseModel: NSObject, HandyJSON {
+    var success: Bool = false
     var code: Int = -1
     var msg: String = ""
 

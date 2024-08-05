@@ -30,10 +30,10 @@ class GXBaseViewController: UIViewController {
         super.viewDidDisappear(animated)
         /// 退出当前VC
         if self.isBeingDismissed {
-            self.viewDidDisappearPopOrDismissed()
+            self.viewDidDisappearPopOrDismissed(animated)
         }
         else if self.isMovingFromParent {
-            self.viewDidDisappearPopOrDismissed()
+            self.viewDidDisappearPopOrDismissed(animated)
         }
     }
 
@@ -53,7 +53,7 @@ class GXBaseViewController: UIViewController {
         fatalError("Must Override.")
     }
     
-    public func viewDidDisappearPopOrDismissed() {
+    public func viewDidDisappearPopOrDismissed(_ animated: Bool) {
         
     }
     

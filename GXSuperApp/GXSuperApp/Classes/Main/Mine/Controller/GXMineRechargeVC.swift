@@ -10,12 +10,14 @@ import CollectionKit
 import MBProgressHUD
 import PromiseKit
 import IQKeyboardManagerSwift
+import XCGLogger
 
 class GXMineRechargeVC: GXBaseViewController {
     @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var confirmButton: UIButton!
-    
+    private var isShowPayment: Bool = false
+
     private var selectedIndex: Int?
     private var dataSource = ArrayDataSource<Int>()
     private lazy var collectionView: CollectionView = {
@@ -60,19 +62,26 @@ class GXMineRechargeVC: GXBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        guard !self.isShowPayment else { return }
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.resignOnTouchOutside = false
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
-    override func viewDidDisappearPopOrDismissed() {
-        super.viewDidDisappearPopOrDismissed()
+        
+        guard !self.isShowPayment else { return }
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidDisappearPopOrDismissed(_ animated: Bool) {
+        super.viewDidDisappearPopOrDismissed(animated)
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,9 +91,6 @@ class GXMineRechargeVC: GXBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
-        IQKeyboardManager.shared.resignOnTouchOutside = false
     }
     
     override func setupViewController() {
@@ -109,6 +115,7 @@ class GXMineRechargeVC: GXBaseViewController {
 
 private extension GXMineRechargeVC {
     func requestWalletConsumerBalance(amount: Int) {
+        self.isShowPayment = true
         MBProgressHUD.showLoading()
         firstly {
             self.viewModel.requestStripeConsumerPayment(amount: amount)
@@ -119,13 +126,14 @@ private extension GXMineRechargeVC {
         }.done { result in
             switch result {
             case .canceled: break
-            case .completed:
-                GXToast.showSuccess(text: "Payment success")
+            case .completed: break
             case .failed(let error):
-                GXToast.showError(text:error.localizedDescription)
+                XCGLogger.info("Stripe payment error: \(error.localizedDescription)")
             }
+            self.isShowPayment = false
         }.catch { error in
             GXToast.showError(text:error.localizedDescription)
+            self.isShowPayment = false
         }
     }
 }

@@ -117,6 +117,7 @@
 		339D01622C41258C00B6EE31 /* GXWalletConsumerListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339D01612C41258C00B6EE31 /* GXWalletConsumerListModel.swift */; };
 		339F45522C424079008CE2E9 /* GXVipVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339F45502C424079008CE2E9 /* GXVipVC.swift */; };
 		339F45532C424079008CE2E9 /* GXVipVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339F45512C424079008CE2E9 /* GXVipVC.xib */; };
+		339F8CF72C608CDD00BC1774 /* GXWithdrawSubmitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339F8CF62C608CDD00BC1774 /* GXWithdrawSubmitModel.swift */; };
 		33A3742C2C362BDE00229ED7 /* GXFavoriteConsumerSaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A3742B2C362BDE00229ED7 /* GXFavoriteConsumerSaveModel.swift */; };
 		33A3742E2C36F33200229ED7 /* GXOrderConsumerDoingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A3742D2C36F33200229ED7 /* GXOrderConsumerDoingModel.swift */; };
 		33A374392C36FD5D00229ED7 /* GXChargingFeeConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A374382C36FD5D00229ED7 /* GXChargingFeeConfirmVC.swift */; };
@@ -370,6 +371,7 @@
 		339D01612C41258C00B6EE31 /* GXWalletConsumerListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXWalletConsumerListModel.swift; sourceTree = "<group>"; };
 		339F45502C424079008CE2E9 /* GXVipVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXVipVC.swift; sourceTree = "<group>"; };
 		339F45512C424079008CE2E9 /* GXVipVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXVipVC.xib; sourceTree = "<group>"; };
+		339F8CF62C608CDD00BC1774 /* GXWithdrawSubmitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXWithdrawSubmitModel.swift; sourceTree = "<group>"; };
 		33A3742B2C362BDE00229ED7 /* GXFavoriteConsumerSaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXFavoriteConsumerSaveModel.swift; sourceTree = "<group>"; };
 		33A3742D2C36F33200229ED7 /* GXOrderConsumerDoingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderConsumerDoingModel.swift; sourceTree = "<group>"; };
 		33A374382C36FD5D00229ED7 /* GXChargingFeeConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingFeeConfirmVC.swift; sourceTree = "<group>"; };
@@ -981,6 +983,7 @@
 				33D199FA2C41E6350094AB3E /* GXQuestionsConsumerListModel.swift */,
 				33DB78DE2C436C1900F2763C /* GXFavoriteConsumerListModel.swift */,
 				33D014C52C5F690A00E0F014 /* GXStripePaymentModel.swift */,
+				339F8CF62C608CDD00BC1774 /* GXWithdrawSubmitModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1470,6 +1473,7 @@
 				33A374422C37179400229ED7 /* GXChargingStoryboard.swift in Sources */,
 				33A91E382C28A83B00F7E214 /* GXHomeDetailFacilitiesView.swift in Sources */,
 				33272D742C3D4B1400A95BD7 /* GXChargingOrderDetailsCell10.swift in Sources */,
+				339F8CF72C608CDD00BC1774 /* GXWithdrawSubmitModel.swift in Sources */,
 				339A07132C2F996200BDDD46 /* GXLoginInputCell.swift in Sources */,
 				33272D772C3DE34800A95BD7 /* GXOrderPopoverListView.swift in Sources */,
 				33EC578F2C101BA200D4CCD0 /* GXMoyaProvider.swift in Sources */,

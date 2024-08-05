@@ -40,7 +40,7 @@ class GXBaseNavigationController: UINavigationController, UINavigationController
         if self.isBeingDismissed {
             self.viewControllers.forEach { vc in
                 if let baseVc = vc as? GXBaseViewController {
-                    baseVc.viewDidDisappearPopOrDismissed()
+                    baseVc.viewDidDisappearPopOrDismissed(animated)
                 }
             }
         }
