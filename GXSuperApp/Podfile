@@ -73,6 +73,9 @@ target 'GXSuperApp' do
   # 谷歌地图
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  # 谷歌聚合Firebase
+  pod 'FirebaseAuth'
+  pod 'FirebaseMessaging'
   # Stripe支付
   pod 'StripePaymentSheet'
   

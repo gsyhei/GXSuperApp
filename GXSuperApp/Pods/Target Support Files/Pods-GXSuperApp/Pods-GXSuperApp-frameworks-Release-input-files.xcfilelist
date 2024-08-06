@@ -3,6 +3,13 @@ ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/CollectionKit/CollectionKit.framework
 ${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
 ${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework
+${BUILT_PRODUCTS_DIR}/FirebaseAppCheckInterop/FirebaseAppCheckInterop.framework
+${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework
+${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework
+${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework
+${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework
+${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework
+${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework
 ${BUILT_PRODUCTS_DIR}/GXAlert-Swift/GXAlert_Swift.framework
 ${BUILT_PRODUCTS_DIR}/GXBanner/GXBanner.framework
 ${BUILT_PRODUCTS_DIR}/GXCategories/GXCategories.framework
@@ -11,6 +18,8 @@ ${BUILT_PRODUCTS_DIR}/GXRefresh/GXRefresh.framework
 ${BUILT_PRODUCTS_DIR}/GXSegmentPageView/GXSegmentPageView.framework
 ${BUILT_PRODUCTS_DIR}/GXTransition-Swift/GXTransition_Swift.framework
 ${BUILT_PRODUCTS_DIR}/GXWaterfallViewLayout/GXWaterfallViewLayout.framework
+${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework
+${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
 ${BUILT_PRODUCTS_DIR}/HXPhotoPicker/HXPhotoPicker.framework
 ${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework
 ${BUILT_PRODUCTS_DIR}/Hero/Hero.framework
@@ -21,7 +30,9 @@ ${BUILT_PRODUCTS_DIR}/Moya/Moya.framework
 ${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework
 ${BUILT_PRODUCTS_DIR}/Popover/Popover.framework
 ${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework
+${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
 ${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework
+${BUILT_PRODUCTS_DIR}/RecaptchaInterop/RecaptchaInterop.framework
 ${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework
 ${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
 ${BUILT_PRODUCTS_DIR}/RxCocoaPlus/RxCocoaPlus.framework
@@ -42,3 +53,4 @@ ${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework
 ${BUILT_PRODUCTS_DIR}/Then/Then.framework
 ${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework
 ${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework
+${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework

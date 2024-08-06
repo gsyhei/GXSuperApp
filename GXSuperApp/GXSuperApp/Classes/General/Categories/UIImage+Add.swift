@@ -30,13 +30,9 @@ extension UIImage {
     }
     
     class var gx_defaultAvatar: UIImage? {
-        return UIImage(named: "default_avatar")
+        return UIImage(named: "my_default_avatar")
     }
 
-    class var gx_defaultActivityIcon: UIImage? {
-        return UIImage(named: "a_act_default")
-    }
-    
     class func gx_blurImage(_ image: UIImage, radius: CGFloat = 30.0) -> UIImage {
         let context = CIContext (options:  nil )
         let  inputImage = CIImage (image: image)

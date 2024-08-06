@@ -13,6 +13,8 @@ import GoogleMaps
 import GooglePlaces
 import SkeletonView
 import StripeCore
+import FirebaseCore
+import FirebaseMessaging
 
 let GXAppDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
 @main
@@ -42,6 +44,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 谷歌地图
         GMSServices.provideAPIKey(GX_GOOGLE_APIKEY)
         GMSPlacesClient.provideAPIKey(GX_GOOGLE_APIKEY)
+        
+        // 谷歌Firebase
+        FirebaseApp.configure()
+        // 注册通知
+        UNUserNotificationCenter.current().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { _, _ in }
+        )
+        application.registerForRemoteNotifications()
+        // Firebase推送管理
+        Messaging.messaging().delegate = self
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                XCGLogger.info("Error fetching FCM registration token: \(error)")
+            } else if let token = token {
+                XCGLogger.info("FCM registration token: \(token)")
+            }
+        }
         
         // 主题预设
         UIApplication.shared.applicationIconBadgeNumber = 0
@@ -157,7 +179,7 @@ extension AppDelegate {
     }
     func gotoLogin(from: UIViewController, completion: GXActionBlock? = nil) {
         let vc = GXLoginPhoneVC.xibViewController()
-//        vc.completion = completion
+        //        vc.completion = completion
         let navc = GXBaseNavigationController(rootViewController: vc)
         navc.modalPresentationStyle = .fullScreen
         from.present(navc, animated: true)
@@ -169,5 +191,15 @@ extension AppDelegate {
     }
     func logout(index: Int = 0) {
         self.gotoMainTabbarController(index: index)
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    // 通知代理（点击通知跳转等）
+}
+
+extension AppDelegate: MessagingDelegate {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        XCGLogger.info("Firebase registration token: \(String(describing: fcmToken))")
     }
 }

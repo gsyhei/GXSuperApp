@@ -96,7 +96,11 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
     }
     
     @IBAction func endChargingButtonClicked(_ sender: Any?) {
-        self.requestOrderConsumerStop()
+        let title = "Sure you want to stop charging?"
+        GXUtil.showAlert(title: title, actionTitle: "Stop charging", handler: { alert, index in
+            guard index == 1 else { return }
+            self.requestOrderConsumerStop()
+        })
     }
     
     /// 测试动画效果用
@@ -271,7 +275,8 @@ extension GXChargingCarShowTableViewVC {
     }
     
     @IBAction func rechargeButtonClicked(_ sender: Any?) {
-        
+        let vc = GXMineRechargeVC.xibViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
