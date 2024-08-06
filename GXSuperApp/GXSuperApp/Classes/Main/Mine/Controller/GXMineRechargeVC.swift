@@ -122,7 +122,7 @@ private extension GXMineRechargeVC {
         }.ensure {
             MBProgressHUD.dismiss()
         }.then { model in
-            GXStripePaymentManager.paymentSheetToPayment(data: model, fromVC: self)
+            GXStripePaymentManager.paymentSheetToSetUp(data: model, fromVC: self)
         }.done { result in
             switch result {
             case .canceled: break
