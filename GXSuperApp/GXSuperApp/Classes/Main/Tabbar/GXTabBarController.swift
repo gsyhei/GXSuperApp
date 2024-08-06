@@ -116,6 +116,13 @@ extension GXTabBarController: UITabBarControllerDelegate {
             if GXUserManager.shared.isLogin {
                 let vc = GXQRCodeReaderVC.xibViewController()
                 vc.modalPresentationStyle = .fullScreen
+                vc.didFindCodeAction = {[weak self] (model, scanVC) in
+                    guard let `self` = self else { return }
+                    guard let navigationController = self.selectedViewController as? UINavigationController else { return }
+                    let vc = GXChargingFeeConfirmVC.instantiate()
+                    vc.viewModel.scanData = model.data
+                    navigationController.pushViewController(vc, animated: true)
+                }
                 tabBarController.present(vc, animated: true)
             }
             else {

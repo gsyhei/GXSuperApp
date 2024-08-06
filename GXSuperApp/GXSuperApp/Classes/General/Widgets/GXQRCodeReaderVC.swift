@@ -8,6 +8,8 @@
 import UIKit
 import QRCodeReader
 import HXPhotoPicker
+import MBProgressHUD
+import PromiseKit
 
 class GXQRCodeReaderVC: GXBaseViewController {
     @IBOutlet weak var torchButton: UIButton!
@@ -30,7 +32,7 @@ class GXQRCodeReaderVC: GXBaseViewController {
                 guard let `self` = self else { return }
                 print("Completion with result: \(result.value) of type \(result.metadataType)")
                 
-                self.didFindCodeAction?(result.value, self)
+                self.requestConnectorConsumerScan(qrcode: "1800793239574417408")
             }
         }
     }()
@@ -42,7 +44,7 @@ class GXQRCodeReaderVC: GXBaseViewController {
         }
     }()
 
-    var didFindCodeAction: GXActionBlockItem2<String, GXQRCodeReaderVC>?
+    var didFindCodeAction: GXActionBlockItem2<GXConnectorConsumerScanModel, GXQRCodeReaderVC>?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -135,6 +137,22 @@ class GXQRCodeReaderVC: GXBaseViewController {
         guard let features = features as? [CIQRCodeFeature] else { return nil }
         
         return features.first?.messageString
+    }
+}
+
+extension GXQRCodeReaderVC {
+    func requestConnectorConsumerScan(qrcode: String) {
+        MBProgressHUD.showLoading()
+        firstly {
+            GXNWProvider.login_requestConnectorConsumerScan(qrcode: qrcode)
+        }.done { model in
+            MBProgressHUD.dismiss()
+            self.dismiss(animated: true)
+            self.didFindCodeAction?(model, self)
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
     }
 }
 

@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey(GX_GOOGLE_APIKEY)
         
         // 谷歌Firebase
-        FirebaseApp.configure()
+        //FirebaseApp.configure()
         // 注册通知
         UNUserNotificationCenter.current().delegate = self
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]

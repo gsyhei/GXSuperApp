@@ -116,7 +116,7 @@ class GXAddImage9Cell: UICollectionViewCell, Reusable {
     }
 
     func setPhotoAsset(asset: PhotoAsset) {
-        self.imageView.image = .gx_defaultActivityIcon
+        self.imageView.image = .gx_default
         if (asset.phAsset != nil) {
             asset.requestImage(compressionScale: 0.3) {[weak self] image, _ in
                 self?.imageView.image = image

@@ -27,7 +27,7 @@ class GXChargingFeeConfirmVC: GXBaseViewController, GXChargingStoryboard {
     @IBOutlet weak var bottomScanButton: UIButton!
     @IBOutlet weak var tvBottomHeightLC: NSLayoutConstraint!
     
-    private lazy var viewModel: GXChargingFeeConfirmViewModel = {
+    lazy var viewModel: GXChargingFeeConfirmViewModel = {
         return GXChargingFeeConfirmViewModel()
     }()
     
@@ -49,7 +49,7 @@ private extension GXChargingFeeConfirmVC {
         self.view.layoutSkeletonIfNeeded()
         self.view.showAnimatedGradientSkeleton()
         let combinedPromise = when(fulfilled: [
-            self.viewModel.requestConnectorConsumerScan(),
+            //self.viewModel.requestConnectorConsumerScan(),
             self.viewModel.requestVehicleConsumerList()
         ])
         firstly {

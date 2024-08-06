@@ -14,19 +14,19 @@ class GXChargingFeeConfirmViewModel: GXBaseViewModel {
     var scanData: GXConnectorConsumerScanData?
     
     /// 枪扫二维码
-    func requestConnectorConsumerScan() -> Promise<GXConnectorConsumerScanModel> {
-        var params: Dictionary<String, Any> = [:]
-        params["qrcode"] = self.qrcode
-        let api = GXApi.normalApi(Api_connector_consumer_scan, params, .get)
-        return Promise { seal in
-            GXNWProvider.login_request(api, type: GXConnectorConsumerScanModel.self, success: { model in
-                self.scanData = model.data
-                seal.fulfill(model)
-            }, failure: { error in
-                seal.reject(error)
-            })
-        }
-    }
+//    func requestConnectorConsumerScan() -> Promise<GXConnectorConsumerScanModel> {
+//        var params: Dictionary<String, Any> = [:]
+//        params["qrcode"] = self.qrcode
+//        let api = GXApi.normalApi(Api_connector_consumer_scan, params, .get)
+//        return Promise { seal in
+//            GXNWProvider.login_request(api, type: GXConnectorConsumerScanModel.self, success: { model in
+//                self.scanData = model.data
+//                seal.fulfill(model)
+//            }, failure: { error in
+//                seal.reject(error)
+//            })
+//        }
+//    }
     
     /// 车辆列表
     func requestVehicleConsumerList() -> Promise<GXVehicleConsumerListModel?> {

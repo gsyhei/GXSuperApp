@@ -68,6 +68,8 @@
 		339069582C40DDB20096CEBF /* GXMineCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339069572C40DDB20096CEBF /* GXMineCell3.xib */; };
 		339069592C40DDB20096CEBF /* GXMineCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339069562C40DDB20096CEBF /* GXMineCell3.swift */; };
 		3391F35E2C4622FF0070C9F0 /* UIButton+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3391F35D2C4622FF0070C9F0 /* UIButton+Add.swift */; };
+		339337002C6213DE00DED06F /* GXChargingLaunchStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339336FE2C6213DE00DED06F /* GXChargingLaunchStatusVC.swift */; };
+		339337012C6213DE00DED06F /* GXChargingLaunchStatusVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339336FF2C6213DE00DED06F /* GXChargingLaunchStatusVC.xib */; };
 		33953F642C20846E0049C76C /* GXHomeSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33953F632C20846E0049C76C /* GXHomeSearchViewModel.swift */; };
 		33953F672C208B240049C76C /* GXHomeSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33953F652C208B240049C76C /* GXHomeSearchResultCell.swift */; };
 		33953F682C208B240049C76C /* GXHomeSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33953F662C208B240049C76C /* GXHomeSearchResultCell.xib */; };
@@ -322,6 +324,8 @@
 		339069562C40DDB20096CEBF /* GXMineCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMineCell3.swift; sourceTree = "<group>"; };
 		339069572C40DDB20096CEBF /* GXMineCell3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXMineCell3.xib; sourceTree = "<group>"; };
 		3391F35D2C4622FF0070C9F0 /* UIButton+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Add.swift"; sourceTree = "<group>"; };
+		339336FE2C6213DE00DED06F /* GXChargingLaunchStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingLaunchStatusVC.swift; sourceTree = "<group>"; };
+		339336FF2C6213DE00DED06F /* GXChargingLaunchStatusVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXChargingLaunchStatusVC.xib; sourceTree = "<group>"; };
 		33953F632C20846E0049C76C /* GXHomeSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchViewModel.swift; sourceTree = "<group>"; };
 		33953F652C208B240049C76C /* GXHomeSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchResultCell.swift; sourceTree = "<group>"; };
 		33953F662C208B240049C76C /* GXHomeSearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeSearchResultCell.xib; sourceTree = "<group>"; };
@@ -760,6 +764,8 @@
 				339A1C262C38CF03001FBA5E /* GXChargingOrderDetailsVC.swift */,
 				339A1C272C38CF03001FBA5E /* GXChargingOrderDetailsVC.xib */,
 				33272D782C3E025900A95BD7 /* GXChargingCarShowVC.swift */,
+				339336FE2C6213DE00DED06F /* GXChargingLaunchStatusVC.swift */,
+				339336FF2C6213DE00DED06F /* GXChargingLaunchStatusVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1312,6 +1318,7 @@
 				339C85E32C393FDC0098D527 /* GXChargingOrderDetailsCell1.xib in Resources */,
 				33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */,
 				33E710242C40A88100233D11 /* GXMineVC.xib in Resources */,
+				339337012C6213DE00DED06F /* GXChargingLaunchStatusVC.xib in Resources */,
 				339A1C292C38CF03001FBA5E /* GXChargingOrderDetailsVC.xib in Resources */,
 				33DB78E32C43BFA600F2763C /* GXMineSettingVC.xib in Resources */,
 				3398F7332C27D72D00A02CEF /* GXHomeDetailChargingFeeCell.xib in Resources */,
@@ -1451,6 +1458,7 @@
 				33EC55B32C101BA100D4CCD0 /* GXBaseViewController.swift in Sources */,
 				339A07102C2F891900BDDD46 /* GXHomeDetailVehicleCell.swift in Sources */,
 				33EC55FF2C101BA100D4CCD0 /* GXWebViewController.swift in Sources */,
+				339337002C6213DE00DED06F /* GXChargingLaunchStatusVC.swift in Sources */,
 				33EC55AE2C101BA100D4CCD0 /* GXBaseModel.swift in Sources */,
 				339D01552C41032300B6EE31 /* GXMineWalletVC.swift in Sources */,
 				33BF81B82C14964F0089431E /* GXMarkerIconView.swift in Sources */,

@@ -142,7 +142,7 @@ extension GXChargingCarShowVC {
             self.viewModel.requestOrderConsumerStop()
         }.done { model in
             MBProgressHUD.dismiss()
-            // 启动成功，去订单详情
+            // 停止成功，去订单详情
             let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId)
             self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
         }.catch { error in

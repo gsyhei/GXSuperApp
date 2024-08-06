@@ -43,6 +43,20 @@ extension GXMoyaProvider {
         }
     }
     
+    /// 枪扫二维码
+    func login_requestConnectorConsumerScan(qrcode: String) -> Promise<GXConnectorConsumerScanModel> {
+        var params: Dictionary<String, Any> = [:]
+        params["qrcode"] = qrcode
+        let api = GXApi.normalApi(Api_connector_consumer_scan, params, .get)
+        return Promise { seal in
+            GXNWProvider.login_request(api, type: GXConnectorConsumerScanModel.self, success: { model in
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+    
     /// 上传图片
     func login_requestUpload(asset: PhotoAsset) -> Promise<GXUploadFileModel?> {
         return Promise { seal in

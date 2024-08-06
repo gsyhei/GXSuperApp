@@ -246,6 +246,12 @@ private extension GXHomeDetailVC {
         if GXUserManager.shared.isLogin {
             let vc = GXQRCodeReaderVC.xibViewController()
             vc.modalPresentationStyle = .fullScreen
+            vc.didFindCodeAction = {[weak self] (model, scanVC) in
+                guard let `self` = self else { return }
+                let vc = GXChargingFeeConfirmVC.instantiate()
+                vc.viewModel.scanData = model.data
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             self.present(vc, animated: true)
         }
         else {
