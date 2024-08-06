@@ -65,23 +65,6 @@ private extension GXChargingFeeConfirmVC {
         }
     }
     
-    func requestOrderConsumerStart() {
-        MBProgressHUD.showLoading()
-        firstly {
-            self.viewModel.requestOrderConsumerStart()
-        }.done { model in
-            MBProgressHUD.dismiss()
-            /// 启动成功-> 状态充电中
-            if let orderId = model.data?.id {
-                let vc = GXChargingCarShowVC.createVC(orderId: orderId)
-                self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
-            }
-        }.catch { error in
-            MBProgressHUD.dismiss()
-            GXToast.showError(text:error.localizedDescription)
-        }
-    }
-    
     func updateBottomDataSource() {
         /// advertView
         self.tvBottomHeightLC.constant = 96.0
@@ -129,10 +112,14 @@ private extension GXChargingFeeConfirmVC {
     
     @IBAction func advertButtonClicked(_ sender: Any?) {
         // 开通会员
+        let vc = GXVipVC.xibViewController()
+        vc.gx_addBackBarButtonItem()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func startChargingButtonClicked(_ sender: Any?) {
-        self.requestOrderConsumerStart()
+        let vc =  GXChargingLaunchStatusVC.createVC(viewModel: self.viewModel)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

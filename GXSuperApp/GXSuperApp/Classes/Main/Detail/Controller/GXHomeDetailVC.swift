@@ -240,6 +240,9 @@ private extension GXHomeDetailVC {
     
     @IBAction func advertButtonClicked(_ sender: Any?) {
         // 开通会员
+        let vc = GXVipVC.xibViewController()
+        vc.gx_addBackBarButtonItem()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func scanButtonClicked(_ sender: Any?) {

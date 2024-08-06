@@ -58,7 +58,8 @@ class GXLoginPhoneVC: GXBaseViewController {
         self.sendCodeButton.isEnabled = false
         self.sendCodeButton.setTitleColor(.gx_drakGray, for: .disabled)
         self.sendCodeButton.setTitleColor(.gx_green, for: .normal)
-
+        self.checkButton.isSelected = true
+        
         let usernameValid = self.phoneTextField.rx.text.orEmpty.map {[weak self] text in
             let maxCount: Int = 11
             var string: String = text
@@ -78,7 +79,7 @@ class GXLoginPhoneVC: GXBaseViewController {
             }
             return string.count == 4 || string.count == 6
         }
-        let checkedValid: Observable<Bool> = self.checkButton.rx.rx_isSelected
+        let checkedValid: Observable<Bool> = self.checkButton.rx.gx_isSelected.map { $0 }
         let everythingValid = Observable.combineLatest(usernameValid, codeValid, checkedValid) { $0 && $1 && $2 }
         everythingValid.bind(to: self.confirmButton.rx.isEnabled).disposed(by: disposeBag)
         
