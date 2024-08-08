@@ -92,6 +92,7 @@ class GXLoginPhoneVC: GXBaseViewController {
 private extension GXLoginPhoneVC {
     
     func requestLogin() {
+        self.view.endEditing(true)
         MBProgressHUD.showLoading()
         firstly {
             self.viewModel.requestLogin()
@@ -122,6 +123,7 @@ private extension GXLoginPhoneVC {
         }
     }
     func startKeepTime() {
+        self.codeTextField.becomeFirstResponder()
         self.sendCodeButton.isEnabled = false
         self.isCountdown = true
         GXUtil.gx_countdownTimer(second: 60) {[weak self] (index) in

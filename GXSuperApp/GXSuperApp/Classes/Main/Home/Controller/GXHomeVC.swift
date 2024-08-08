@@ -177,6 +177,9 @@ class GXHomeVC: GXBaseViewController {
                 self.lastIsZoomLarge = true
                 self.mapView.delegate = self
             }
+            if let alert: GXAlertView = UIWindow.gx_frontWindow?.viewForSuperview() {
+                alert.hide(animated: true)
+            }
         }
     }
     
@@ -250,7 +253,7 @@ private extension GXHomeVC {
     func showAlertNotLocation() {
         let title = "Location permission"
         let message = "Can better recommend the station around you"
-        GXUtil.showAlert(title: title, message: message, cancelTitle: "Go to Settings", actionHandler: { alert, index in
+        GXUtil.showAlert(to: UIWindow.gx_frontWindow, title: title, message: message, cancelTitle: "Go to Settings", actionHandler: { alert, index in
             if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(appSettings, completionHandler: nil)
             }

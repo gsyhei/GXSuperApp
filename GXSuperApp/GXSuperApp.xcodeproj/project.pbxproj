@@ -152,6 +152,7 @@
 		33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */; };
 		33B412542C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B412532C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift */; };
 		33B834B92C233C16003BEC24 /* GXHomeSearchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */; };
+		33B8CCC12C64FEB800373776 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33B8CCC02C64FEB800373776 /* StoreKit.framework */; };
 		33BE2BE32C379FFC0084F7CB /* GXChargingFeeConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE2BE22C379FFC0084F7CB /* GXChargingFeeConfirmViewModel.swift */; };
 		33BE2BE52C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BE2BE42C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift */; };
 		33BF81B62C1414CE0089431E /* GXLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BF81B52C1414CE0089431E /* GXLocationManager.swift */; };
@@ -408,6 +409,7 @@
 		33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXMarkerIconView.xib; sourceTree = "<group>"; };
 		33B412532C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingOrderDetailModel.swift; sourceTree = "<group>"; };
 		33B834B82C233C16003BEC24 /* GXHomeSearchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeSearchHeader.swift; sourceTree = "<group>"; };
+		33B8CCC02C64FEB800373776 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		33BE2BE22C379FFC0084F7CB /* GXChargingFeeConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingFeeConfirmViewModel.swift; sourceTree = "<group>"; };
 		33BE2BE42C37A48A0084F7CB /* GXConnectorConsumerScanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXConnectorConsumerScanModel.swift; sourceTree = "<group>"; };
 		33BF81B52C1414CE0089431E /* GXLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXLocationManager.swift; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6818C78D9B51E2909BC88500 /* Pods_GXSuperApp.framework in Frameworks */,
+				33B8CCC12C64FEB800373776 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1235,6 +1238,7 @@
 		8071062EA7CEFD904356BD65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				33B8CCC02C64FEB800373776 /* StoreKit.framework */,
 				5D6F37FD32A5D4D283B3BF19 /* Pods_GXSuperApp.framework */,
 			);
 			name = Frameworks;
@@ -1768,7 +1772,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L54KZN9KMH;
+				DEVELOPMENT_TEAM = V9JU6X647H;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1790,7 +1794,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gin.GXSuperApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mec.GXSuperApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1814,7 +1818,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L54KZN9KMH;
+				DEVELOPMENT_TEAM = V9JU6X647H;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1836,7 +1840,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gin.GXSuperApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mec.GXSuperApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

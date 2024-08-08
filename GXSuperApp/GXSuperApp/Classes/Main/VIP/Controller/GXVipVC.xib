@@ -171,6 +171,9 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="confirmButtonClicked:" destination="-1" eventType="touchUpInside" id="dpa-XH-Qg1"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -191,7 +194,7 @@
                 <constraint firstItem="ZUo-fC-Z64" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="nMr-9B-QRg"/>
                 <constraint firstItem="ZUo-fC-Z64" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yQR-Ys-FRh"/>
             </constraints>
-            <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
+            <point key="canvasLocation" x="-680" y="-32"/>
         </view>
     </objects>
     <resources>

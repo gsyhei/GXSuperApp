@@ -36,3 +36,6 @@ let GX_BUGLY_APPID = "36156d5fa8"
 
 /// Google api key
 let GX_GOOGLE_APIKEY = "AIzaSyD5LO03bldAHcKkTqpzRW9DTiFV5dRhtbA"
+
+/// productIdentifier
+let GX_PRODUCT_ID = "MarsEnergy01"

@@ -9,6 +9,7 @@ import UIKit
 import MBProgressHUD
 import Alamofire
 import CoreTelephony
+import PromiseKit
 
 class GXLaunchScreenVC: GXBaseViewController {
     private let networkManager = NetworkReachabilityManager(host: "www.google.com")
@@ -23,6 +24,15 @@ class GXLaunchScreenVC: GXBaseViewController {
             guard let `self` = self else { return }
             guard status != .notReachable else { return }
             self.requestCheckVersion()
+            self.restoreCompletedTransactions()
+        }
+    }
+    
+    func restoreCompletedTransactions() {
+        SKPaymentQueue.default().restoreCompletedTransactions(.promise).done { transactions in
+            
+        }.catch { error in
+            
         }
     }
     
@@ -60,8 +70,9 @@ class GXLaunchScreenVC: GXBaseViewController {
         if data.forceFlag == GX_YES {
             let title = "The app has an updated version."
             GXUtil.showAlert(title: title, cancelTitle: "Update now", actionHandler: { alert, index in
-                if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(appSettings, completionHandler: nil)
+                let urlString = "itms-apps://itunes.apple.com/app/apple-store/id6618148723?mt=8"
+                if let appleStoreUrl = URL(string: urlString) {
+                    UIApplication.shared.open(appleStoreUrl, completionHandler: nil)
                 }
             })
         }
@@ -72,8 +83,9 @@ class GXLaunchScreenVC: GXBaseViewController {
                     GXAppDelegate?.gotoMainTabbarController()
                 }
                 else {
-                    if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(appSettings, completionHandler: nil)
+                    let urlString = "itms-apps://itunes.apple.com/app/apple-store/id6618148723?mt=8"
+                    if let appleStoreUrl = URL(string: urlString) {
+                        UIApplication.shared.open(appleStoreUrl, completionHandler: nil)
                     }
                 }
             })

@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 import MBProgressHUD
 import PromiseKit
+import XCGLogger
 
 class GXVipVC: GXBaseViewController {
     @IBOutlet weak var backgroudImageView: UIImageView!
@@ -142,5 +143,27 @@ private extension GXVipVC {
         
         self.confirmButton.isEnabled = sender.isSelected
         self.renewButton.isEnabled = sender.isSelected
+    }
+    @IBAction func confirmButtonClicked(_ sender: UIButton) {
+        guard SKPaymentQueue.canMakePayments() else {
+            GXToast.showError(text: "不支持内购")
+            return
+        }
+        
+        let request = SKProductsRequest(productIdentifiers: [])
+        firstly {
+            request.start(.promise)
+        }.map { productsResponse in
+            XCGLogger.info("productsResponse \(productsResponse.products)")
+            return productsResponse.products.first(where: {$0.productIdentifier == GX_PRODUCT_ID}) ?? SKProduct()
+        }.then { product in
+            SKPayment(product: product).promise()
+        }.done { transaction in
+            
+            
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
     }
 }
