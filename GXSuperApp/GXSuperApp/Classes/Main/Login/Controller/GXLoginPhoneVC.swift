@@ -165,6 +165,20 @@ extension GXLoginPhoneVC: UITextViewDelegate {
         return false
     }
     func didLinkScheme(_ scheme: String) {
-        
+        switch scheme {
+        case "pp":
+            let vc = GXWebViewController(urlString: GXUtil.gx_h5Url(id: 2),
+                                         title: "Privacy Policy")
+            self.navigationController?.pushViewController(vc, animated: true)
+        case "ua":
+            let vc = GXWebViewController(urlString: GXUtil.gx_h5Url(id: 3),
+                                         title: "User Agreement")
+            self.navigationController?.pushViewController(vc, animated: true)
+        case "ast":
+            let vc = GXWebViewController(urlString: GXUtil.gx_h5Url(id: 1), 
+                                         title: "ATT Service Terms")
+            self.navigationController?.pushViewController(vc, animated: true)
+        default: break
+        }
     }
 }

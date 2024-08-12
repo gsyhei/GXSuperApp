@@ -10,6 +10,7 @@ import MBProgressHUD
 import Alamofire
 import CoreTelephony
 import PromiseKit
+import XCGLogger
 
 class GXLaunchScreenVC: GXBaseViewController {
     private let networkManager = NetworkReachabilityManager(host: "www.google.com")
@@ -29,10 +30,16 @@ class GXLaunchScreenVC: GXBaseViewController {
     }
     
     func restoreCompletedTransactions() {
-        SKPaymentQueue.default().restoreCompletedTransactions(.promise).done { transactions in
-            
+        guard GXUserManager.shared.isLogin else { return }
+        
+        firstly {
+            GXNWProvider.login_requestUserInfo()
+        }.then { model in
+            SKPaymentQueue.default().restoreCompletedTransactions(.promise, withApplicationUsername: model.data?.uuid)
+        }.done { transactions in
+            XCGLogger.info("SKPaymentQueue transactions: \(transactions)")
         }.catch { error in
-            
+            XCGLogger.info("SKPaymentQueue error: \(error)")
         }
     }
     

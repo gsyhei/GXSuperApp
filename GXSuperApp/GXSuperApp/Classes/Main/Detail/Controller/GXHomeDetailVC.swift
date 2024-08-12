@@ -392,12 +392,14 @@ private extension GXHomeDetailVC {
     }
     
     func gotoSafetyWebVC() {
-        let vc = GXWebViewController(urlString: "https://www.baidu.com", title: "Safety Instructions")
+        let vc = GXWebViewController(urlString: GXUtil.gx_h5Url(id: 6),
+                                     title: "Safety Instructions")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func gotoCostWebVC() {
-        let vc = GXWebViewController(urlString: "https://www.baidu.com", title: "Fee Description")
+        let vc = GXWebViewController(urlString: GXUtil.gx_h5Url(id: 5), 
+                                     title: "Fee Description")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

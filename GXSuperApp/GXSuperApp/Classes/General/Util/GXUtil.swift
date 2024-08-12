@@ -60,6 +60,10 @@ class GXUtil: NSObject {
             return String(format: "%.2fMB", bytes/(1024 * 1024))
         }
     }
+    
+    class func gx_h5Url(id: Int) -> String {
+        return "https://h5.marsenergyev.com/#/agreement/\(id)"
+    }
 
     class func showAlert(to vc: UIViewController,
                          style: UIAlertController.Style = .alert,

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		330607B32C3932BA00F59C08 /* GXChargingOrderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330607B22C3932BA00F59C08 /* GXChargingOrderDetailsViewModel.swift */; };
+		3307ECC52C65CF1200E38F78 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3307ECC42C65CF1200E38F78 /* GoogleService-Info.plist */; };
 		330B40BF2C3F90C800D1136B /* GXUploadFileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B40BE2C3F90C800D1136B /* GXUploadFileModel.swift */; };
 		330B40C22C3FB1A000D1136B /* GXOrderAppealShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330B40C12C3FB1A000D1136B /* GXOrderAppealShowCell.xib */; };
 		330B40C32C3FB1A000D1136B /* GXOrderAppealShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B40C02C3FB1A000D1136B /* GXOrderAppealShowCell.swift */; };
@@ -264,6 +265,7 @@
 
 /* Begin PBXFileReference section */
 		330607B22C3932BA00F59C08 /* GXChargingOrderDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingOrderDetailsViewModel.swift; sourceTree = "<group>"; };
+		3307ECC42C65CF1200E38F78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		330B40BE2C3F90C800D1136B /* GXUploadFileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXUploadFileModel.swift; sourceTree = "<group>"; };
 		330B40C02C3FB1A000D1136B /* GXOrderAppealShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderAppealShowCell.swift; sourceTree = "<group>"; };
 		330B40C12C3FB1A000D1136B /* GXOrderAppealShowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXOrderAppealShowCell.xib; sourceTree = "<group>"; };
@@ -952,6 +954,7 @@
 				33D9DFEA2C0EFA0900A282D5 /* Assets.xcassets */,
 				33D9DFEC2C0EFA0900A282D5 /* LaunchScreen.storyboard */,
 				33D9DFEF2C0EFA0900A282D5 /* Info.plist */,
+				3307ECC42C65CF1200E38F78 /* GoogleService-Info.plist */,
 			);
 			path = GXSuperApp;
 			sourceTree = "<group>";
@@ -1333,6 +1336,7 @@
 				33A91E3B2C28AEF400F7E214 /* GXHomeDetailCell7.xib in Resources */,
 				33EC57942C1021E300D4CCD0 /* GXApproveFailInfoView.xib in Resources */,
 				33D199FF2C41EF1E0094AB3E /* GXMineAgreementVC.xib in Resources */,
+				3307ECC52C65CF1200E38F78 /* GoogleService-Info.plist in Resources */,
 				33DB78EB2C43C7B900F2763C /* GXMinePayManagerCell.xib in Resources */,
 				339D01562C41032300B6EE31 /* GXMineWalletVC.xib in Resources */,
 				339A070F2C2F891900BDDD46 /* GXHomeDetailVehicleCell.xib in Resources */,

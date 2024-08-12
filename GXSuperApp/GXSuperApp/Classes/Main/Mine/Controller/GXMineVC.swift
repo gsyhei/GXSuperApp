@@ -276,6 +276,9 @@ private extension GXMineVC {
         case 3:
             let vc = GXMineFAQVC.xibViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+        case 4:
+            let vc = GXWebViewController(urlString: GXUtil.gx_h5Url(id: 11), title: "Contact Us")
+            self.navigationController?.pushViewController(vc, animated: true)
         case 5:
             let vc = GXMineSettingVC.xibViewController()
             self.navigationController?.pushViewController(vc, animated: true)

@@ -38,4 +38,4 @@ let GX_BUGLY_APPID = "36156d5fa8"
 let GX_GOOGLE_APIKEY = "AIzaSyD5LO03bldAHcKkTqpzRW9DTiFV5dRhtbA"
 
 /// productIdentifier
-let GX_PRODUCT_ID = "MarsEnergy01"
+let GX_PRODUCT_ID = "superappproduct01"

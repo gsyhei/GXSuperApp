@@ -133,7 +133,17 @@ extension GXVipVC: UITextViewDelegate {
     }
 
     func didLinkScheme(_ scheme: String) {
-        
+        switch scheme {
+        case "yhxy":
+            let vc = GXWebViewController(urlString: GXUtil.gx_h5Url(id: 8),
+                                         title: "Membership Service Agreement")
+            self.navigationController?.pushViewController(vc, animated: true)
+        case "yszc":
+            let vc = GXWebViewController(urlString: GXUtil.gx_h5Url(id: 12),
+                                         title: "Automatic Renewal Terms")
+            self.navigationController?.pushViewController(vc, animated: true)
+        default: break
+        }
     }
 }
 
@@ -149,17 +159,19 @@ private extension GXVipVC {
             GXToast.showError(text: "不支持内购")
             return
         }
-        
-        let request = SKProductsRequest(productIdentifiers: [])
+        MBProgressHUD.showLoading()
         firstly {
-            request.start(.promise)
-        }.map { productsResponse in
-            XCGLogger.info("productsResponse \(productsResponse.products)")
-            return productsResponse.products.first(where: {$0.productIdentifier == GX_PRODUCT_ID}) ?? SKProduct()
+            SKProductsRequest(productIdentifiers: [GX_PRODUCT_ID]).start(.promise)
+        }.map { response in
+            XCGLogger.info("productsResponse \(response.products)")
+            return response.products.first(where: {$0.productIdentifier == GX_PRODUCT_ID}) ?? SKProduct()
         }.then { product in
-            SKPayment(product: product).promise()
+            let payment = SKMutablePayment(product: product)
+            payment.applicationUsername = GXUserManager.shared.user?.uuid
+            return payment.promise()
         }.done { transaction in
-            
+            MBProgressHUD.dismiss()
+            // case .purchased, .restored:
             
         }.catch { error in
             MBProgressHUD.dismiss()

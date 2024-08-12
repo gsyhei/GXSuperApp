@@ -45,8 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(GX_GOOGLE_APIKEY)
         GMSPlacesClient.provideAPIKey(GX_GOOGLE_APIKEY)
         
-        // 谷歌Firebase
-        //FirebaseApp.configure()
+        
         // 注册通知
         UNUserNotificationCenter.current().delegate = self
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -55,15 +54,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             completionHandler: { _, _ in }
         )
         application.registerForRemoteNotifications()
+        // 谷歌Firebase
+        FirebaseApp.configure()
         // Firebase推送管理
         Messaging.messaging().delegate = self
-        Messaging.messaging().token { token, error in
-            if let error = error {
-                XCGLogger.info("Error fetching FCM registration token: \(error)")
-            } else if let token = token {
-                XCGLogger.info("FCM registration token: \(token)")
-            }
-        }
         
         // 主题预设
         UIApplication.shared.applicationIconBadgeNumber = 0
@@ -201,5 +195,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         XCGLogger.info("Firebase registration token: \(String(describing: fcmToken))")
+        /// 这里需要上传令牌fcmToken
     }
 }

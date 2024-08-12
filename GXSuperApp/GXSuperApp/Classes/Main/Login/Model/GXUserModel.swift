@@ -12,6 +12,7 @@ class GXUserData: NSObject, HandyJSON {
     var createTime: String = ""
     var memberFlag: String = ""
     var id: String = ""
+    var uuid: String = ""
     var updateTime: String = ""
     var memberEndDate: String = ""
     var photo: String = ""

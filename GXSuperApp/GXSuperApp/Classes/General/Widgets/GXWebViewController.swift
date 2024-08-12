@@ -24,7 +24,6 @@ class GXWebViewController: GXBaseViewController {
     
     private lazy var progressView: UIProgressView = {
         return UIProgressView(progressViewStyle: .bar).then {
-            $0.isHidden = true
             $0.trackTintColor = .clear
             $0.progressTintColor = .gx_blue
         }
@@ -96,7 +95,7 @@ class GXWebViewController: GXBaseViewController {
     private func webRequestStart() {
         if let url = URL(string: self.urlString) {
             self.webView.load(URLRequest(url: url))
-            self.progressView.isHidden = false
+            self.progressView.alpha = 1.0
             self.progressView.progress = 0.0
         }
     }
@@ -113,10 +112,10 @@ class GXWebViewController: GXBaseViewController {
 
 extension GXWebViewController: WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: any Error) {
-        self.progressView.isHidden = true
+        self.progressView.alpha = 0
     }
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: any Error) {
-        self.progressView.isHidden = true
+        self.progressView.alpha = 0
     }
 }
 
@@ -125,7 +124,12 @@ extension GXWebViewController {
         if keyPath == "estimatedProgress" {
             guard let estimatedProgress = change?[NSKeyValueChangeKey.newKey] as? Double else { return }
             if estimatedProgress >= 1.0 {
-                self.progressView.isHidden = true
+                self.progressView.setProgress(1.0, animated: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    UIView.animate(.promise, duration: 0.2) {
+                        self.progressView.alpha = 0
+                    }
+                }
             }
             else {
                 self.progressView.setProgress(Float(estimatedProgress), animated: true)

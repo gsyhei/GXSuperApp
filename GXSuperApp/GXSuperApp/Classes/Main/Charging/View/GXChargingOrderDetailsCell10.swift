@@ -62,14 +62,18 @@ class GXChargingOrderDetailsCell10: UITableViewCell, NibReusable {
             self.rightButton.setBackgroundColor(.gx_green, for: .normal)
             self.rightButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
         case "FINISHED":
-            self.leftButton.isHidden = true
+            self.leftButton.isHidden = false
+            self.leftButton.setTitle("More", for: .normal)
+            self.leftButton.setTitleColor(.gx_green, for: .normal)
+            self.leftButton.setBackgroundColor(.white, for: .normal)
+            self.leftButton.setBackgroundColor(.gx_background, for: .highlighted)
+            self.leftButton.layer.borderColor = UIColor.gx_green.cgColor
+            self.leftButton.layer.borderWidth = 1.0
             self.rightButton.isHidden = false
-            self.rightButton.setTitle("More", for: .normal)
-            self.rightButton.setTitleColor(.gx_green, for: .normal)
-            self.rightButton.setBackgroundColor(.white, for: .normal)
-            self.rightButton.setBackgroundColor(.gx_background, for: .highlighted)
-            self.rightButton.layer.borderColor = UIColor.gx_green.cgColor
-            self.rightButton.layer.borderWidth = 1.0
+            self.rightButton.setTitle("View", for: .normal)
+            self.rightButton.setTitleColor(.white, for: .normal)
+            self.rightButton.setBackgroundColor(.gx_green, for: .normal)
+            self.rightButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
         default: break
         }
     }

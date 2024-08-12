@@ -154,7 +154,8 @@ extension GXHomeDetailAddVehicleVC: UITextViewDelegate {
     }
 
     func didLinkScheme(_ scheme: String) {
-        let vc = GXWebViewController(urlString: "https://www.baidu.com", title: "Authorization")
+        let vc = GXWebViewController(urlString: GXUtil.gx_h5Url(id: 4),
+                                     title: "Personal Information Processing Authorization")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

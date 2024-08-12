@@ -298,6 +298,7 @@ extension GXOrderListTypeVC {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         case "Pay":
+            /// 去支付
             break
         case "More":
             let rect = button.convert(button.frame, from: cell.contentView)
@@ -305,23 +306,19 @@ extension GXOrderListTypeVC {
             let point = CGPoint(x: btnRect.origin.x + button.width/2, y: btnRect.origin.y)
             var list: [GXOrderPopoverListModel] = []
             
-            list.append(GXOrderPopoverListModel(title: "View", type: 0))
             if !model.item.freeParking.isEmpty {
-                list.append(GXOrderPopoverListModel(title: "Parking Discount", type: 1))
+                list.append(GXOrderPopoverListModel(title: "Parking Discount", type: 0))
             }
             if model.item.complainAvailable || !model.item.complainId.isEmpty {
-                list.append(GXOrderPopoverListModel(title: "Order Appeal", type: 2))
+                list.append(GXOrderPopoverListModel(title: "Order Appeal", type: 1))
             }
             let listView = GXOrderPopoverListView(list: list) {[weak self] item in
                 guard let `self` = self else { return }
                 self.popover.dismiss()
                 switch item.type {
                 case 0:
-                    let vc = GXChargingOrderDetailsVC.createVC(orderId: model.item.id)
-                    self.navigationController?.pushViewController(vc, animated: true)
-                case 1:
                     self.showParkingDiscount(model: model)
-                case 2:
+                case 1:
                     let vc = GXOrderAppealVC.createVC(data: model.item)
                     self.navigationController?.pushViewController(vc, animated: true)
                 default: break
