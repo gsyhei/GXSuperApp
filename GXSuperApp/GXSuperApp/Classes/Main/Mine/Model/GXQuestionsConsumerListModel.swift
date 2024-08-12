@@ -12,6 +12,7 @@ class GXQuestionsConsumerListData: NSObject, HandyJSON {
     var id: Int = 0
     var title: String = ""
     var content: String = ""
+    var url: String = ""
     var orderNum: Int = 0
 
     override required init() {}

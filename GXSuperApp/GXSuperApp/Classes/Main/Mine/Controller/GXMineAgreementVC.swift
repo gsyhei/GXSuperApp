@@ -76,6 +76,8 @@ extension GXMineAgreementVC: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let model = self.list[indexPath.section]
 
+        let vc = GXWebViewController(urlString: model.url, title: model.title)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
