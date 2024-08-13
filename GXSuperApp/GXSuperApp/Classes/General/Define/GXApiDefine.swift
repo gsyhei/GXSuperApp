@@ -7,7 +7,7 @@
 
 /// 基础Url
 let Api_baseUrl = "http://39.108.126.187"
-
+let Api_base1Url = "http://47.238.124.126:8081"
 
 // MARK: - 公用第三方接口
 
@@ -40,6 +40,13 @@ let Api_auth_phone_code = "/charging-auth-server/auth/phone/code"
 
 /// 手机验证码登录
 let Api_auth_phone_login = "/charging-auth-server/auth/consumer/user/phone/login"
+
+/// Apple登录
+let Api_auth_apple_login = "/charging-auth-server/auth/consumer/user/apple/login"
+
+/// Google登录
+let Api_auth_google_login = "/charging-auth-server/auth/consumer/user/google/login"
+let Api_auth_google_login1 = "/auth/consumer/user/google/login"
 
 /// 用户信息
 let Api_auth_user_profile = "/charging-auth-server/auth/consumer/user/profile"

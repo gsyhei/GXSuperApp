@@ -8,6 +8,7 @@
 import UIKit
 import AuthenticationServices
 import XCGLogger
+import PromiseKit
 
 class GXAppleManager: NSObject {
 
@@ -26,7 +27,7 @@ class GXAppleManager: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(handleSignInWithAppleStateChanged(noti:)), name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
     }
 
-    func appleLoginin(completion: @escaping GXActionBlockItem2<String?, GXError?>) {
+    func appleLogin(completion: @escaping GXActionBlockItem2<String?, GXError?>) {
         self.completion = completion
 
         let requests = [ASAuthorizationAppleIDProvider().createRequest()]
@@ -42,6 +43,21 @@ class GXAppleManager: NSObject {
 
 }
 
+extension GXAppleManager {
+    func appleLogin(_: PMKNamespacer) -> Promise<String> {
+        return Promise { seal in
+            self.appleLogin { token, error in
+                if let error = error {
+                    seal.reject(error)
+                }
+                else {
+                    seal.fulfill(token ?? "")
+                }
+            }
+        }
+    }
+}
+
 extension GXAppleManager: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
 
     func authorizationController(controller:ASAuthorizationController, didCompleteWithAuthorization authorization:ASAuthorization) {
@@ -53,14 +69,13 @@ extension GXAppleManager: ASAuthorizationControllerDelegate, ASAuthorizationCont
             // let email = appleIDCredential.email
             // 服务器验证需要运用的参数
             // let authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: String.Encoding.utf8)!
-            // let identityToken = String(data: appleIDCredential.identityToken!, encoding: String.Encoding.utf8)!
+             let identityToken = String(data: appleIDCredential.identityToken!, encoding: String.Encoding.utf8)!
             // 对接登录接口，处理用户登录操作
-            self.completion?(user, nil)
+            self.completion?(identityToken, nil)
         }
         else if let passwordCredential = authorization.credential as? ASPasswordCredential {
             let user = passwordCredential.user
             // let password = passwordCredential.password
-            self.completion?(user, nil)
         }
     }
 

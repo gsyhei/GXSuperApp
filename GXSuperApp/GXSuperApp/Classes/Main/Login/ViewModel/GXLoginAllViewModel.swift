@@ -44,6 +44,20 @@ class GXLoginAllViewModel: GXBaseViewModel {
             })
         }
     }
+    
+    // Google登录验证
+    func requestGoogleLogin(token: String)-> Promise<GXLoginModel> {
+        return Promise { seal in
+            var params: Dictionary<String, Any> = [:]
+            params["idToken"] = token
+            let api = GXApi.normal1Api(Api_auth_google_login1, params, .post)
+            GXNWProvider.gx_request(api, type: GXLoginModel.self, success: { model in
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
 
     /// 绑定手机
     func requestBindPhone(success:@escaping(() -> Void), failure:@escaping GXFailure) {

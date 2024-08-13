@@ -1,5 +1,11 @@
 PODS:
   - Alamofire (5.9.1)
+  - AppAuth (1.7.5):
+    - AppAuth/Core (= 1.7.5)
+    - AppAuth/ExternalUserAgent (= 1.7.5)
+  - AppAuth/Core (1.7.5)
+  - AppAuth/ExternalUserAgent (1.7.5):
+    - AppAuth/Core
   - Bugly (2.6.1)
   - CollectionKit (2.4.0):
     - CollectionKit/Core (= 2.4.0)
@@ -44,6 +50,10 @@ PODS:
   - GoogleMaps/Maps (9.0.0):
     - GoogleMaps/Base
   - GooglePlaces (9.0.0)
+  - GoogleSignIn (7.1.0):
+    - AppAuth (< 2.0, >= 1.7.3)
+    - GTMAppAuth (< 5.0, >= 4.1.1)
+    - GTMSessionFetcher/Core (~> 3.3)
   - GoogleUtilities/AppDelegateSwizzler (7.13.3):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -69,6 +79,9 @@ PODS:
   - GoogleUtilities/UserDefaults (7.13.3):
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
+  - GTMAppAuth (4.1.1):
+    - AppAuth/Core (~> 1.7)
+    - GTMSessionFetcher/Core (< 4.0, >= 3.3)
   - GTMSessionFetcher/Core (3.5.0)
   - GXAlert-Swift (1.0.1)
   - GXBanner (1.1.0)
@@ -208,6 +221,7 @@ DEPENDENCIES:
   - FirebaseMessaging
   - GoogleMaps
   - GooglePlaces
+  - GoogleSignIn
   - GXAlert-Swift
   - GXBanner
   - GXCategories
@@ -242,6 +256,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AppAuth
     - Bugly
     - CollectionKit
     - CryptoSwift
@@ -255,7 +270,9 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleMaps
     - GooglePlaces
+    - GoogleSignIn
     - GoogleUtilities
+    - GTMAppAuth
     - GTMSessionFetcher
     - GXAlert-Swift
     - GXBanner
@@ -302,6 +319,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
+  AppAuth: 501c04eda8a8d11f179dbe8637b7a91bb7e5d2fa
   Bugly: 217ac2ce5f0f2626d43dbaa4f70764c953a26a31
   CollectionKit: 8f01e7629185bb81072c4aa734d105df5c2d1c8b
   CryptoSwift: c63a805d8bb5e5538e88af4e44bb537776af11ea
@@ -315,7 +333,9 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
   GoogleMaps: 4907d0d42bf8cd58f56743e31f91d23c10682745
   GooglePlaces: cf1f5b61297da7ac64bcb147cfa7b435d74ed6d9
+  GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
+  GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   GXAlert-Swift: c60dc53cb2ce0516c994ce1f370b826ac9b1ac16
   GXBanner: 9589d3281ce0b182ec5ca85bb1ce18e94a021013
@@ -360,6 +380,6 @@ SPEC CHECKSUMS:
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
   XCGLogger: 399c5885210b4e2ad79d9f7a29b105d672ef724f
 
-PODFILE CHECKSUM: a2589a7ea746f06cd1944cee12d164f78b9337a7
+PODFILE CHECKSUM: dbde15815761349ece84292ac546957107bebcee
 
 COCOAPODS: 1.15.2

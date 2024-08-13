@@ -138,6 +138,20 @@ private extension GXLoginPhoneVC {
             XCGLogger.debug("计时失败：\(error)")
         }.disposed(by: self.disposeBag)
     }
+    func googleLogin() {
+        MBProgressHUD.showLoading(to: self.view)
+        firstly {
+            GXGoogleSignInManager.shared.signIn(.promise, presenting: self)
+        }.then { token in
+            self.viewModel.requestGoogleLogin(token: token)
+        }.done { model in
+            MBProgressHUD.dismiss(for: self.view)
+            
+        }.catch { error in
+            MBProgressHUD.dismiss(for: self.view)
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
 }
 
 extension GXLoginPhoneVC {
@@ -151,7 +165,7 @@ extension GXLoginPhoneVC {
         self.requestLogin()
     }
     @IBAction func googleLoginButtonClicked(_ sender: UIButton) {
-
+        self.googleLogin()
     }
     @IBAction func appleLoginButtonClicked(_ sender: UIButton) {
 

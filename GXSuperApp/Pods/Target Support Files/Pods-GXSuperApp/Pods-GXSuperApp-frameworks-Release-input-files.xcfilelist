@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-GXSuperApp/Pods-GXSuperApp-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework
 ${BUILT_PRODUCTS_DIR}/CollectionKit/CollectionKit.framework
 ${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
 ${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework
@@ -9,6 +10,7 @@ ${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework
+${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework
 ${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework
 ${BUILT_PRODUCTS_DIR}/GXAlert-Swift/GXAlert_Swift.framework
 ${BUILT_PRODUCTS_DIR}/GXBanner/GXBanner.framework
@@ -19,6 +21,7 @@ ${BUILT_PRODUCTS_DIR}/GXSegmentPageView/GXSegmentPageView.framework
 ${BUILT_PRODUCTS_DIR}/GXTransition-Swift/GXTransition_Swift.framework
 ${BUILT_PRODUCTS_DIR}/GXWaterfallViewLayout/GXWaterfallViewLayout.framework
 ${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework
+${BUILT_PRODUCTS_DIR}/GoogleSignIn/GoogleSignIn.framework
 ${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
 ${BUILT_PRODUCTS_DIR}/HXPhotoPicker/HXPhotoPicker.framework
 ${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework

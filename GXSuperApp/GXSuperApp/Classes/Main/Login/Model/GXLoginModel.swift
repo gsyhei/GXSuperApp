@@ -10,7 +10,8 @@ import HandyJSON
 
 class GXLoginData: NSObject, HandyJSON {
     var token: String = ""
-    
+    var tempToken: String = ""
+
     required override init() {}
 }
 

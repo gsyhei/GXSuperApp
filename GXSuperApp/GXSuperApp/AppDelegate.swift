@@ -15,6 +15,7 @@ import SkeletonView
 import StripeCore
 import FirebaseCore
 import FirebaseMessaging
+import GoogleSignIn
 
 let GXAppDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
 @main
@@ -58,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         // Firebase推送管理
         Messaging.messaging().delegate = self
-        
+
         // 主题预设
         UIApplication.shared.applicationIconBadgeNumber = 0
         UINavigationBar.appearance().barTintColor = UIColor.white
@@ -131,6 +132,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if StripeAPI.handleURLCallback(with: url) {
+            return true
+        }
+        if GIDSignIn.sharedInstance.handle(url) {
             return true
         }
         return false

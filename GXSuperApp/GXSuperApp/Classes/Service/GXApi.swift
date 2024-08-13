@@ -11,6 +11,8 @@ enum GXApi {
     
     case normalApi(String, [String: Any], Moya.Method)
     
+    case normal1Api(String, [String: Any], Moya.Method)
+    
     case bodyApi(String, [String: Any])
 
     case uploadApi(String, [MultipartFormData], [String: Any])
@@ -23,6 +25,8 @@ extension GXApi: TargetType {
         switch self {
         case .normalApi:
             return URL(string: Api_baseUrl)!
+        case .normal1Api:
+            return URL(string: Api_base1Url)!
         case .bodyApi:
             return URL(string: Api_baseUrl)!
         case .uploadApi:
@@ -33,6 +37,8 @@ extension GXApi: TargetType {
     var path: String {
         switch self {
         case .normalApi(let api, _, _):
+            return api
+        case .normal1Api(let api, _, _):
             return api
         case .bodyApi(let api, _):
             return api
@@ -45,6 +51,8 @@ extension GXApi: TargetType {
         switch self {
         case .normalApi(_, _, let method):
             return method
+        case .normal1Api(_, _, let method):
+            return method
         case .bodyApi(_, _):
             return .post
         case .uploadApi(_, _, _):
@@ -55,6 +63,13 @@ extension GXApi: TargetType {
     var task: Task {
         switch self {
         case .normalApi(_, let params, let method):
+            if method == .get {
+                return .requestParameters(parameters: self.publicParameters(params: params), encoding: URLEncoding.default)
+            }
+            else {
+                return .requestParameters(parameters: self.publicParameters(params: params), encoding: JSONEncoding.default)
+            }
+        case .normal1Api(_, let params, let method):
             if method == .get {
                 return .requestParameters(parameters: self.publicParameters(params: params), encoding: URLEncoding.default)
             }
@@ -84,6 +99,8 @@ extension GXApi: TargetType {
     var parameters: Dictionary<String, Any> {
         switch self {
         case .normalApi(_, let params, _):
+            return self.publicParameters(params: params)
+        case .normal1Api(_, let params, _):
             return self.publicParameters(params: params)
         case .bodyApi(_, let params):
             return self.publicParameters(params: params)
