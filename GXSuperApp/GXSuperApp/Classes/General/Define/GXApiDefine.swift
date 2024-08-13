@@ -42,11 +42,10 @@ let Api_auth_phone_code = "/charging-auth-server/auth/phone/code"
 let Api_auth_phone_login = "/charging-auth-server/auth/consumer/user/phone/login"
 
 /// Apple登录
-let Api_auth_apple_login = "/charging-auth-server/auth/consumer/user/apple/login"
+let Api_auth_apple_login = "/auth/consumer/user/apple/login"
 
 /// Google登录
-let Api_auth_google_login = "/charging-auth-server/auth/consumer/user/google/login"
-let Api_auth_google_login1 = "/auth/consumer/user/google/login"
+let Api_auth_google_login = "/auth/consumer/user/google/login"
 
 /// 用户信息
 let Api_auth_user_profile = "/charging-auth-server/auth/consumer/user/profile"

@@ -251,7 +251,7 @@
 		33EC55FD2C101BA100D4CCD0 /* GXTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D82C101BA100D4CCD0 /* GXTextView.swift */; };
 		33EC55FE2C101BA100D4CCD0 /* GXToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53D92C101BA100D4CCD0 /* GXToast.swift */; };
 		33EC55FF2C101BA100D4CCD0 /* GXWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53DA2C101BA100D4CCD0 /* GXWebViewController.swift */; };
-		33EC56012C101BA100D4CCD0 /* GXAppleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53DE2C101BA100D4CCD0 /* GXAppleManager.swift */; };
+		33EC56012C101BA100D4CCD0 /* GXAppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53DE2C101BA100D4CCD0 /* GXAppleLoginManager.swift */; };
 		33EC56042C101BA100D4CCD0 /* GXServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC53E12C101BA100D4CCD0 /* GXServiceManager.swift */; };
 		33EC578E2C101BA200D4CCD0 /* GXApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC55A62C101BA100D4CCD0 /* GXApi.swift */; };
 		33EC578F2C101BA200D4CCD0 /* GXMoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC55A72C101BA100D4CCD0 /* GXMoyaProvider.swift */; };
@@ -513,7 +513,7 @@
 		33EC53D82C101BA100D4CCD0 /* GXTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXTextView.swift; sourceTree = "<group>"; };
 		33EC53D92C101BA100D4CCD0 /* GXToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXToast.swift; sourceTree = "<group>"; };
 		33EC53DA2C101BA100D4CCD0 /* GXWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXWebViewController.swift; sourceTree = "<group>"; };
-		33EC53DE2C101BA100D4CCD0 /* GXAppleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXAppleManager.swift; sourceTree = "<group>"; };
+		33EC53DE2C101BA100D4CCD0 /* GXAppleLoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXAppleLoginManager.swift; sourceTree = "<group>"; };
 		33EC53E12C101BA100D4CCD0 /* GXServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXServiceManager.swift; sourceTree = "<group>"; };
 		33EC55A62C101BA100D4CCD0 /* GXApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXApi.swift; sourceTree = "<group>"; };
 		33EC55A72C101BA100D4CCD0 /* GXMoyaProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMoyaProvider.swift; sourceTree = "<group>"; };
@@ -1176,7 +1176,7 @@
 		33EC53E42C101BA100D4CCD0 /* Gobal */ = {
 			isa = PBXGroup;
 			children = (
-				33EC53DE2C101BA100D4CCD0 /* GXAppleManager.swift */,
+				33EC53DE2C101BA100D4CCD0 /* GXAppleLoginManager.swift */,
 				33AD44D62C6B127300C371C6 /* GXGoogleSignInManager.swift */,
 				33EC53E12C101BA100D4CCD0 /* GXServiceManager.swift */,
 				33BF81B52C1414CE0089431E /* GXLocationManager.swift */,
@@ -1623,7 +1623,7 @@
 				33E710272C40AA8400233D11 /* GXMineInfoCell.swift in Sources */,
 				330B40C32C3FB1A000D1136B /* GXOrderAppealShowCell.swift in Sources */,
 				33EC55B72C101BA100D4CCD0 /* GXLinkTextView.swift in Sources */,
-				33EC56012C101BA100D4CCD0 /* GXAppleManager.swift in Sources */,
+				33EC56012C101BA100D4CCD0 /* GXAppleLoginManager.swift in Sources */,
 				33EC55B22C101BA100D4CCD0 /* GXBaseTextField.swift in Sources */,
 				33C9C2192C416D5500F969B4 /* GXMineWithdrawVC.swift in Sources */,
 				33EC55FB2C101BA100D4CCD0 /* GXSelectItemsMenu.swift in Sources */,

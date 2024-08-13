@@ -14,6 +14,10 @@ import MBProgressHUD
 import PromiseKit
 
 class GXLoginPhoneVC: GXBaseViewController {
+    enum GXLoginType {
+        case login
+        case bindPhone
+    }
     @IBOutlet weak var countryCodeLabel: UILabel!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var codeTextField: UITextField!
@@ -32,6 +36,8 @@ class GXLoginPhoneVC: GXBaseViewController {
     private lazy var viewModel: GXLoginAllViewModel = {
         return GXLoginAllViewModel()
     }()
+    var loginType: GXLoginType = .login
+    var tempToken: String = ""
     var completion: GXActionBlock?
     
     override func viewDidLoad() {
@@ -85,6 +91,15 @@ class GXLoginPhoneVC: GXBaseViewController {
         
         (self.phoneTextField.rx.textInput <-> self.viewModel.account).disposed(by: disposeBag)
         (self.codeTextField.rx.textInput <-> self.viewModel.captcha).disposed(by: disposeBag)
+        
+        if self.loginType == .bindPhone {
+            self.otherLoginView.isHidden = true
+            self.confirmButton.setTitle("Bind mobile phone number", for: .normal)
+        }
+        else {
+            self.otherLoginView.isHidden = false
+            self.confirmButton.setTitle("Login / Registration", for: .normal)
+        }
     }
     
 }
@@ -138,18 +153,65 @@ private extension GXLoginPhoneVC {
             XCGLogger.debug("计时失败：\(error)")
         }.disposed(by: self.disposeBag)
     }
-    func googleLogin() {
-        MBProgressHUD.showLoading(to: self.view)
+    func requestGoogleLogin() {
+        MBProgressHUD.showLoading()
         firstly {
             GXGoogleSignInManager.shared.signIn(.promise, presenting: self)
         }.then { token in
             self.viewModel.requestGoogleLogin(token: token)
         }.done { model in
-            MBProgressHUD.dismiss(for: self.view)
-            
+            MBProgressHUD.dismiss()
+            self.gotoBinPhone(model: model)
         }.catch { error in
-            MBProgressHUD.dismiss(for: self.view)
+            MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    func requestAppleLogin() {
+        firstly {
+            GXAppleLoginManager.shared.appleLogin(.promise)
+        }.ensure {
+            MBProgressHUD.showLoading()
+        }.then { token in
+            self.viewModel.requestAppleLogin(token: token)
+        }.done { model in
+            MBProgressHUD.dismiss()
+            self.gotoBinPhone(model: model)
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    func requestBindPhone() {
+        self.view.endEditing(true)
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestBindPhone(tempToken: self.tempToken)
+        }.then { model in
+            GXNWProvider.login_requestUserInfo()
+        }.done { model in
+            MBProgressHUD.dismiss()
+            NotificationCenter.default.post(name: GX_NotifName_Login, object: nil)
+            self.dismissRootViewController(animated: false, completion: nil)
+            self.completion?()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    func gotoBinPhone(model: GXLoginModel) {
+        if let token = model.data?.token, !token.isEmpty {
+            GXUserManager.shared.token = model.data?.token
+            NotificationCenter.default.post(name: GX_NotifName_Login, object: nil)
+            self.dismissRootViewController(animated: false, completion: nil)
+            self.completion?()
+        }
+        else if let tempToken = model.data?.tempToken, !tempToken.isEmpty {
+            let vc = GXLoginPhoneVC.xibViewController().then {
+                $0.loginType = .bindPhone
+                $0.tempToken = tempToken
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
@@ -162,13 +224,17 @@ extension GXLoginPhoneVC {
         sender.isSelected = !sender.isSelected
     }
     @IBAction func loginButtonClicked(_ sender: UIButton) {
-        self.requestLogin()
+        if self.loginType == .bindPhone {
+            self.requestBindPhone()
+        } else {
+            self.requestLogin()
+        }
     }
     @IBAction func googleLoginButtonClicked(_ sender: UIButton) {
-        self.googleLogin()
+        self.requestGoogleLogin()
     }
     @IBAction func appleLoginButtonClicked(_ sender: UIButton) {
-
+        self.requestAppleLogin()
     }
 }
 

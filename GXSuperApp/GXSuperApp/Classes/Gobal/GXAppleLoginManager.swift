@@ -10,40 +10,40 @@ import AuthenticationServices
 import XCGLogger
 import PromiseKit
 
-class GXAppleManager: NSObject {
-
-    static let shared: GXAppleManager = {
-        let instance = GXAppleManager()
+class GXAppleLoginManager: NSObject {
+    
+    static let shared: GXAppleLoginManager = {
+        let instance = GXAppleLoginManager()
         return instance
     }()
     private var completion: GXActionBlockItem2<String?, GXError?>?
-
+    
     deinit {
         NotificationCenter.default.removeObserver(self, name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
     }
-
+    
     override init() {
         super.init()
         NotificationCenter.default.addObserver(self, selector: #selector(handleSignInWithAppleStateChanged(noti:)), name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
     }
-
+    
     func appleLogin(completion: @escaping GXActionBlockItem2<String?, GXError?>) {
         self.completion = completion
-
+        
         let requests = [ASAuthorizationAppleIDProvider().createRequest()]
         let authorizationController = ASAuthorizationController(authorizationRequests: requests)
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
     }
-
+    
     @objc func handleSignInWithAppleStateChanged(noti: Notification) {
         XCGLogger.info("用户更换当前appleID...")
     }
-
+    
 }
 
-extension GXAppleManager {
+extension GXAppleLoginManager {
     func appleLogin(_: PMKNamespacer) -> Promise<String> {
         return Promise { seal in
             self.appleLogin { token, error in
@@ -58,45 +58,45 @@ extension GXAppleManager {
     }
 }
 
-extension GXAppleManager: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-
+extension GXAppleLoginManager: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    
     func authorizationController(controller:ASAuthorizationController, didCompleteWithAuthorization authorization:ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             // 苹果用户仅有标识符，该值在同一个开发者账号下的一切 App 下是一样的，开发者能够用该仅有标识符与自己后台体系的账号体系绑定起来。
-            let user = appleIDCredential.user
+            // let user = appleIDCredential.user
             // 苹果用户信息 假如授权过，可能无法再次获取该信息
             // let fullName = appleIDCredential.fullName
             // let email = appleIDCredential.email
             // 服务器验证需要运用的参数
             // let authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: String.Encoding.utf8)!
-             let identityToken = String(data: appleIDCredential.identityToken!, encoding: String.Encoding.utf8)!
+            let identityToken = String(data: appleIDCredential.identityToken!, encoding: String.Encoding.utf8)!
             // 对接登录接口，处理用户登录操作
             self.completion?(identityToken, nil)
         }
         else if let passwordCredential = authorization.credential as? ASPasswordCredential {
-            let user = passwordCredential.user
+            // let user = passwordCredential.user
             // let password = passwordCredential.password
         }
     }
-
+    
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         if let letErr = error as? ASAuthorizationError {
             var errorMsg = ""
             switch letErr.code {
             case .unknown:
-                errorMsg = "授权恳求失利未知原因"
+                errorMsg = "Authorization request failed for unknown reason"
             case .canceled:
-                errorMsg = "用户取消了授权恳求"
+                errorMsg = "User canceled authorization request"
             case .invalidResponse:
-                errorMsg = "授权恳求响应无效"
+                errorMsg = "Invalid authorization request response"
             case .notHandled:
-                errorMsg = "未能处理授权恳求"
+                errorMsg = "Failed to process authorization request"
             case .failed:
-                errorMsg = "授权恳求失利"
+                errorMsg = "Request for authorization failed"
             case .notInteractive:
-                errorMsg = "授权恳求未处理"
+                errorMsg = "Authorization request not processed"
             @unknown default:
-                errorMsg = "授权恳求失利其他原因"
+                errorMsg = "Authorization request failed for other reasons"
             }
             XCGLogger.info("ASAuthorizationError: \(errorMsg)")
             let newError = GXError(code: letErr.code.rawValue, info: errorMsg)
@@ -107,9 +107,9 @@ extension GXAppleManager: ASAuthorizationControllerDelegate, ASAuthorizationCont
             self.completion?(nil, newError)
         }
     }
-
+    
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return (GXAppDelegate?.window)!
     }
-
+    
 }

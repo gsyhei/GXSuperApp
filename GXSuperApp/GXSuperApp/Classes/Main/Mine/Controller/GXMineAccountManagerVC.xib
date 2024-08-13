@@ -45,7 +45,7 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEF-gd-rjR">
                     <rect key="frame" x="15" y="763" width="363" height="40"/>
-                    <color key="backgroundColor" red="0.019607843140000001" green="0.75686274509999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.81568627449999997" green="0.25490196079999999" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="IMl-0S-sOp"/>
                     </constraints>
