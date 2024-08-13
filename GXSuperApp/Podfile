@@ -73,6 +73,7 @@ target 'GXSuperApp' do
   # 谷歌地图
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'GoogleSignIn'
   # 谷歌聚合Firebase
   pod 'FirebaseAuth'
   pod 'FirebaseMessaging'

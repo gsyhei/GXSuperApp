@@ -35,11 +35,22 @@ class GXLaunchScreenVC: GXBaseViewController {
         firstly {
             GXNWProvider.login_requestUserInfo()
         }.then { model in
-            SKPaymentQueue.default().restoreCompletedTransactions(.promise, withApplicationUsername: model.data?.uuid)
+            SKPaymentQueue.default().gx_restoreCompletedTransactions(.promise, withApplicationUsername: model.data?.uuid)
         }.done { transactions in
-            XCGLogger.info("SKPaymentQueue transactions: \(transactions)")
+            if let transaction = transactions.first(where: { $0.payment.productIdentifier == GX_PRODUCT_ID }) {
+                self.requestAppleVerifyReceipt(transaction: transaction)
+            }
         }.catch { error in
             XCGLogger.info("SKPaymentQueue error: \(error)")
+        }
+    }
+    
+    func requestAppleVerifyReceipt(transaction: SKPaymentTransaction) {
+        GXNWProvider.login_requestAppleVerifyReceipt(transaction: transaction).done { model in
+            GXUserManager.shared.user?.memberFlag = .YES
+            XCGLogger.info("AppleVerifyReceipt transaction: \(transaction)")
+        }.catch { error in
+            XCGLogger.info("AppleVerifyReceipt error: \(error)")
         }
     }
     

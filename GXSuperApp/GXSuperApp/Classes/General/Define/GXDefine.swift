@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import HandyJSON
 
 let SCREEN_SIZE = UIScreen.main.bounds.size
 
@@ -30,6 +31,14 @@ typealias GXActionBlockItemBack<T1: Any, T2: Any> = ((T1) -> T2)
 
 let GX_YES = "YES"
 let GX_NO  = "NO"
+
+/// 活动分类
+enum GXBOOL: String, HandyJSONEnum {
+    /// 普通活动
+    case YES = "YES"
+    /// 多场次活动
+    case NO = "NO"
+}
 
 /// Bugly appID
 let GX_BUGLY_APPID = "36156d5fa8"

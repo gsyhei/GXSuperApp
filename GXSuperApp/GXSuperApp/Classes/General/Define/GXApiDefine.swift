@@ -139,3 +139,6 @@ let Api_stripe_consumer_payment = "/charging-wallet-server/stripe/consumer/payme
 
 /// 提现
 let Api_withdraw_consumer_submit = "/charging-wallet-server/withdraw/consumer/submit"
+
+/// Apple订阅-单据验证
+let Api_subscribe_apple_verify_receipt = "/charging-wallet-server/subscribe/apple/verify/receipt"

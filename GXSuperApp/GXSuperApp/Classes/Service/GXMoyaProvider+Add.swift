@@ -57,6 +57,27 @@ extension GXMoyaProvider {
         }
     }
     
+    /// Apple订阅-单据验证
+    func login_requestAppleVerifyReceipt(transaction: SKPaymentTransaction) -> Promise<GXBaseDataModel> {
+        return Promise { seal in
+            guard let appStoreReceiptURL = Bundle.main.appStoreReceiptURL,
+                  let transactionReceipt = try? Data(contentsOf: appStoreReceiptURL) else
+            {
+                let error = GXError(code: -102, info: "Receipt error")
+                seal.reject(error); return
+            }
+            var params: Dictionary<String, Any> = [:]
+            params["signedAppTransaction"] = transactionReceipt.base64EncodedString()
+            let api = GXApi.normalApi(Api_subscribe_apple_verify_receipt, params, .post)
+            GXNWProvider.login_request(api, type: GXBaseDataModel.self, success: { model in
+                SKPaymentQueue.default().finishTransaction(transaction)
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+    
     /// 上传图片
     func login_requestUpload(asset: PhotoAsset) -> Promise<GXUploadFileModel?> {
         return Promise { seal in

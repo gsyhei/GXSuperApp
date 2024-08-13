@@ -22,7 +22,7 @@ class GXVipVC: GXBaseViewController {
     @IBOutlet weak var vipImageView: UIImageView!
     @IBOutlet weak var vipImageHeightLC: NSLayoutConstraint!
     @IBOutlet weak var vipYearLabel: UILabel!
-
+    
     private lazy var viewModel: GXVipViewModel = {
         return GXVipViewModel()
     }()
@@ -131,7 +131,7 @@ extension GXVipVC: UITextViewDelegate {
         self.didLinkScheme(URL.absoluteString)
         return false
     }
-
+    
     func didLinkScheme(_ scheme: String) {
         switch scheme {
         case "yhxy":
@@ -156,23 +156,20 @@ private extension GXVipVC {
     }
     @IBAction func confirmButtonClicked(_ sender: UIButton) {
         guard SKPaymentQueue.canMakePayments() else {
-            GXToast.showError(text: "不支持内购")
+            GXToast.showError(text: "The device cannot or does not allow payment.")
             return
         }
         MBProgressHUD.showLoading()
         firstly {
             SKProductsRequest(productIdentifiers: [GX_PRODUCT_ID]).start(.promise)
-        }.map { response in
-            XCGLogger.info("productsResponse \(response.products)")
-            return response.products.first(where: {$0.productIdentifier == GX_PRODUCT_ID}) ?? SKProduct()
-        }.then { product in
-            let payment = SKMutablePayment(product: product)
-            payment.applicationUsername = GXUserManager.shared.user?.uuid
-            return payment.promise()
-        }.done { transaction in
+        }.then { response in
+            SKPayment.gx_paymentPromise(response: response)
+        }.then { transaction in
+            GXNWProvider.login_requestAppleVerifyReceipt(transaction: transaction)
+        }.done { model in
             MBProgressHUD.dismiss()
-            // case .purchased, .restored:
-            
+            GXUserManager.shared.user?.memberFlag = .YES
+            self.updateDataSource()
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)

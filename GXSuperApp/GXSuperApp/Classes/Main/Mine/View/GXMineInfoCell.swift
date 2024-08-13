@@ -29,7 +29,7 @@ class GXMineInfoCell: UITableViewCell, NibReusable {
         self.action = action
         guard let model = model else { return }
         self.avatarIView.kf.setImage(with: URL(string: model.photo), placeholder: UIImage.gx_defaultAvatar)
-        if model.memberFlag == GX_YES {
+        if model.memberFlag == .YES {
             self.vipIView.image = UIImage(named: "my_top_ic_vip_normal")
             let colors: [UIColor] = [UIColor(hexString: "#FFF8B5"), UIColor(hexString: "#E8AA63")]
             let image = UIImage(gradientColors: colors, style: .horizontal)

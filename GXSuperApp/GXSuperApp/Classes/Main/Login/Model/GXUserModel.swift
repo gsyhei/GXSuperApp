@@ -10,7 +10,8 @@ import HandyJSON
 
 class GXUserData: NSObject, HandyJSON {
     var createTime: String = ""
-    var memberFlag: String = ""
+    /// 是否会员
+    var memberFlag: GXBOOL = .NO
     var id: String = ""
     var uuid: String = ""
     var updateTime: String = ""

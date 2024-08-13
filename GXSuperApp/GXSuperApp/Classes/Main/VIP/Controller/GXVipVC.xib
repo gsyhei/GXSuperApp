@@ -98,7 +98,7 @@
                             <dataDetectorType key="dataDetectorTypes" link="YES"/>
                         </textView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f26-aF-1U6">
-                            <rect key="frame" x="72" y="15" width="36" height="20"/>
+                            <rect key="frame" x="110" y="15" width="36" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="QPj-Bj-HVZ"/>
                             </constraints>
@@ -106,8 +106,8 @@
                             <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7b-32-fiU">
-                            <rect key="frame" x="15" y="10" width="54" height="25"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 99.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7b-32-fiU">
+                            <rect key="frame" x="15" y="10" width="92" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="3DG-Vl-S0w"/>
                             </constraints>

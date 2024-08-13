@@ -39,7 +39,7 @@ class GXUserManager: NSObject {
     }
     /// 是否vip
     var isVip: Bool {
-        return self.user?.memberFlag == GX_YES
+        return self.user?.memberFlag == .YES
     }
     /// 车辆列表
     var vehicleList: [GXVehicleConsumerListItem] = []
