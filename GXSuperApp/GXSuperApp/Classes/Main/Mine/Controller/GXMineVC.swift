@@ -47,6 +47,10 @@ class GXMineVC: GXBaseViewController {
         self.requestOrderConsumerDetail()
     }
     
+    override func viewDidAppearForAfterLoading() {
+        self.requestOrderConsumerDetail(isShowHud: false)
+    }
+    
     override func setupViewController() {
         self.view.backgroundColor = .gx_background
     }
@@ -58,8 +62,10 @@ class GXMineVC: GXBaseViewController {
 }
 
 private extension GXMineVC {
-    func requestOrderConsumerDetail() {
-        self.view.showAnimatedGradientSkeleton()
+    func requestOrderConsumerDetail(isShowHud: Bool = true) {
+        if isShowHud {
+            self.view.showAnimatedGradientSkeleton()
+        }
         let combinedPromise = when(fulfilled: [
             self.viewModel.requestParamConsumer(),
             self.viewModel.requestWalletConsumerBalance(),

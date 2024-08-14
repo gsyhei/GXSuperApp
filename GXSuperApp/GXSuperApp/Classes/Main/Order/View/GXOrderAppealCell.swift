@@ -74,7 +74,7 @@ class GXOrderAppealCell: UITableViewCell, NibReusable {
         self.collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        self.descTV.placeholder = "Please enter the reason for your appeal"
+        self.descTV.placeholder = "How can we help with this prder?"
         self.descTV.placeholderColor = .gx_gray
         self.descTV.font = .gx_font(size: 17)
         self.descTV.gx_setMarginZero()

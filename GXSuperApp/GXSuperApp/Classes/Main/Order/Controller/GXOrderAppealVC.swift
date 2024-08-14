@@ -48,7 +48,7 @@ class GXOrderAppealVC: GXBaseViewController {
     }
     
     override func setupViewController() {
-        self.navigationItem.title = "Order Appeal"
+        self.navigationItem.title = "Order Help"
         self.gx_addBackBarButtonItem()
         self.gx_addNavTopView(color: .white)
         
@@ -101,7 +101,7 @@ private extension GXOrderAppealVC {
             self.viewModel.requestOrderConsumerComplainSave()
         }.done { model in
             MBProgressHUD.dismiss()
-            GXToast.showSuccess(text: "Submission successful. The platform will process it within 3 working days")
+            GXToast.showSuccess(text: "Submission success. We will process it within 3 working days")
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)

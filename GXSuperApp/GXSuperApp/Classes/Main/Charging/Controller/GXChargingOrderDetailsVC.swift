@@ -249,6 +249,11 @@ extension GXChargingOrderDetailsVC: SkeletonTableViewDataSource, SkeletonTableVi
         case 6:
             let cell: GXChargingOrderDetailsCell6 = tableView.dequeueReusableCell(for: indexPath)
             cell.bindCell(model: self.viewModel.balanceData)
+            cell.rechargeAction = {[weak self] in
+                guard let `self` = self else { return }
+                let vc = GXMineRechargeVC.xibViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             return cell
         case 7:
             let cell: GXChargingOrderDetailsCell7 = tableView.dequeueReusableCell(for: indexPath)
@@ -312,8 +317,8 @@ extension GXChargingOrderDetailsVC {
     
     func showIdleFeeInfo() {
         let mins = "\(GXUserManager.shared.paramsData?.occupyStartTime ?? 0)"
-        let maxOccupancy = "$\(GXUserManager.shared.paramsData?.occupyMax ?? "")"
-        let text = "Idle fee will be charged \(mins) mins after the end of charging" + "\nOccupancy fee cap: " + maxOccupancy
+        let maxOccupancy = "$\(GXUserManager.shared.paramsData?.occupyMax ?? "")"        
+        let text = "Idle fee will be incurred \(mins) min after the charging is completed" + "\nOccupancy fee cap: " + maxOccupancy
         let attributes: [NSAttributedString.Key : Any] = [.font: UIFont.gx_font(size: 16), .foregroundColor: UIColor.gx_drakGray]
         let attributedText = NSMutableAttributedString(string: text, attributes: attributes)
         let range = NSRange(location: text.count - maxOccupancy.count, length: maxOccupancy.count)

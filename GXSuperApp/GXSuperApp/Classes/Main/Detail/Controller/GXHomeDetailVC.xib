@@ -212,7 +212,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdk-X5-2E6">
-                            <rect key="frame" x="281.66666666666669" y="47" width="50.666666666666686" height="25"/>
+                            <rect key="frame" x="282.33333333333331" y="47" width="50.666666666666686" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="Vpr-S5-GlL"/>
                             </constraints>
@@ -223,8 +223,8 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ kWh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3v-UI-VHj">
-                            <rect key="frame" x="335.33333333333331" y="52" width="33.666666666666686" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3v-UI-VHj">
+                            <rect key="frame" x="336" y="52" width="33" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Dxy-YS-7Eb"/>
                             </constraints>

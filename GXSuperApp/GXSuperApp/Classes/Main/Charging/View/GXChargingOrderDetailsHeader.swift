@@ -18,7 +18,7 @@ class GXChargingOrderDetailsHeader: UIView {
             $0.font = .gx_boldFont(size: 20)
             $0.textColor = .gx_black
             $0.textAlignment = .center
-            $0.text = "Charging is Complete"
+            $0.text = "Charging Completed"
         }
     }()
     
@@ -78,7 +78,7 @@ class GXChargingOrderDetailsHeader: UIView {
                 self.chargingInfoLabel.text = "Occupied"
             }
             else {
-                self.chargingInfoLabel.text = "Occupied, Please leave the area promptly"
+                self.chargingInfoLabel.text = "Occupied - Please remove the vehicle from the charging area to avoid incurring the idle fee"
             }
         case "TO_PAY":
             self.chargingInfoLabel.textColor = .gx_orange

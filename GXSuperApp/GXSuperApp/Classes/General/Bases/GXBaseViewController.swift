@@ -49,6 +49,18 @@ class GXBaseViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.didGetNetworktLoad {
+            self.viewDidAppearForAfterLoading()
+        }
+        self.didGetNetworktLoad = true
+    }
+    
+    public func viewDidAppearForAfterLoading() {
+        
+    }
+    
     public func setupViewController() {
         fatalError("Must Override.")
     }

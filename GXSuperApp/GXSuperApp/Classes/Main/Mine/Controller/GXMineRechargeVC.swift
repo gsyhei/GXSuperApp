@@ -126,7 +126,8 @@ private extension GXMineRechargeVC {
         }.done { result in
             switch result {
             case .canceled: break
-            case .completed: break
+            case .completed: 
+                self.backBarButtonItemTapped()
             case .failed(let error):
                 XCGLogger.info("Stripe payment error: \(error.localizedDescription)")
             }

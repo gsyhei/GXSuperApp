@@ -34,6 +34,7 @@ class GXMineInfoCell: UITableViewCell, NibReusable {
             let colors: [UIColor] = [UIColor(hexString: "#FFF8B5"), UIColor(hexString: "#E8AA63")]
             let image = UIImage(gradientColors: colors, style: .horizontal)
             self.avatarButton.setBackgroundImage(image, for: .normal)
+            self.dateLabel.text = "Expiry date: " + model.memberEndDate
         }
         else {
             self.vipIView.image = UIImage(named: "my_top_ic_vip_disable")
@@ -51,14 +52,6 @@ class GXMineInfoCell: UITableViewCell, NibReusable {
         }
         else {
             self.phoneLabel.text = "****"
-        }
-        /// 测试用
-        let dateStr = "2025-08-16"
-        if let date = Date.date(dateString: dateStr, format: "yyyy-MM-dd") {
-            self.dateLabel.text = "Expiry date: " + date.string(format: "MMMM d, yyyy")
-        }
-        else if let date = Date.date(dateString: dateStr, format: "yyyy-MM-dd HH:mm:ss") {
-            self.dateLabel.text = "Expiry date: " + date.string(format: "MMMM d, yyyy")
         }
     }
     

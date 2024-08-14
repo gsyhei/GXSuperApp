@@ -310,7 +310,7 @@ extension GXOrderListTypeVC {
                 list.append(GXOrderPopoverListModel(title: "Parking Discount", type: 0))
             }
             if model.item.complainAvailable || !model.item.complainId.isEmpty {
-                list.append(GXOrderPopoverListModel(title: "Order Appeal", type: 1))
+                list.append(GXOrderPopoverListModel(title: "Order Help", type: 1))
             }
             let listView = GXOrderPopoverListView(list: list) {[weak self] item in
                 guard let `self` = self else { return }

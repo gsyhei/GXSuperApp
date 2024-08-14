@@ -50,7 +50,7 @@ class GXLoginAllViewModel: GXBaseViewModel {
         return Promise { seal in
             var params: Dictionary<String, Any> = [:]
             params["idToken"] = token
-            let api = GXApi.normal1Api(Api_auth_google_login, params, .post)
+            let api = GXApi.normalOtherApi(Api_auth_google_login, params, .post)
             GXNWProvider.gx_request(api, type: GXLoginModel.self, success: { model in
                 seal.fulfill(model)
             }, failure: { error in
@@ -64,7 +64,7 @@ class GXLoginAllViewModel: GXBaseViewModel {
         return Promise { seal in
             var params: Dictionary<String, Any> = [:]
             params["identifyToken"] = token
-            let api = GXApi.normal1Api(Api_auth_apple_login, params, .post)
+            let api = GXApi.normalOtherApi(Api_auth_apple_login, params, .post)
             GXNWProvider.gx_request(api, type: GXLoginModel.self, success: { model in
                 seal.fulfill(model)
             }, failure: { error in
