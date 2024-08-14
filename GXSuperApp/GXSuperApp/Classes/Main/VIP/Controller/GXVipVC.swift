@@ -90,7 +90,7 @@ class GXVipVC: GXBaseViewController {
         }
         if let params = GXUserManager.shared.paramsData {
             // params.memberDescription
-            self.vipImageView.kf.setImage(with: URL(string: "https://img.zcool.cn/community/01944d5cd14772a801208f8be3cb63.jpg@1280w_1l_2o_100sh.jpg")) { result in
+            self.vipImageView.kf.setImage(with: URL(string: params.memberDescription)) { result in
                 switch result {
                 case .success(let image):
                     self.vipImageHeightLC.constant = self.getImageViewHeight(image: image.image)
@@ -164,9 +164,7 @@ private extension GXVipVC {
             SKProductsRequest(productIdentifiers: [GX_PRODUCT_ID]).start(.promise)
         }.then { response in
             SKPayment.gx_paymentPromise(response: response)
-        }.then { transaction in
-            GXNWProvider.login_requestAppleVerifyReceipt(transaction: transaction)
-        }.done { model in
+        }.done { transaction in
             MBProgressHUD.dismiss()
             GXUserManager.shared.user?.memberFlag = .YES
             self.updateDataSource()

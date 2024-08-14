@@ -35,7 +35,7 @@ class GXLaunchScreenVC: GXBaseViewController {
         firstly {
             GXNWProvider.login_requestUserInfo()
         }.then { model in
-            SKPaymentQueue.default().gx_restoreCompletedTransactions(.promise, withApplicationUsername: model.data?.uuid)
+            SKPaymentQueue.default().restoreCompletedTransactions(.promise, withApplicationUsername: model.data?.uuid)
         }.done { transactions in
             if let transaction = transactions.first(where: { $0.payment.productIdentifier == GX_PRODUCT_ID }) {
                 self.requestAppleVerifyReceipt(transaction: transaction)
@@ -46,12 +46,12 @@ class GXLaunchScreenVC: GXBaseViewController {
     }
     
     func requestAppleVerifyReceipt(transaction: SKPaymentTransaction) {
-        GXNWProvider.login_requestAppleVerifyReceipt(transaction: transaction).done { model in
-            GXUserManager.shared.user?.memberFlag = .YES
-            XCGLogger.info("AppleVerifyReceipt transaction: \(transaction)")
-        }.catch { error in
-            XCGLogger.info("AppleVerifyReceipt error: \(error)")
-        }
+//        GXNWProvider.login_requestAppleVerifyReceipt(transaction: transaction).done { model in
+//            GXUserManager.shared.user?.memberFlag = .YES
+//            XCGLogger.info("AppleVerifyReceipt transaction: \(transaction)")
+//        }.catch { error in
+//            XCGLogger.info("AppleVerifyReceipt error: \(error)")
+//        }
     }
     
     /// 检查版本更新

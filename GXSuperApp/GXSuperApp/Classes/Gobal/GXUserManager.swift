@@ -57,7 +57,11 @@ class GXUserManager: NSObject {
     /// App版本更新model
     var appUpdateData: GXAppUpdateLatestData?
     /// 系统参数
-    var paramsData: GXParamConsumerData?
+    var paramsData: GXParamConsumerData? {
+        didSet {
+            paramsData?.memberFee = "99.99"
+        }
+    }
     /// 周边设施
     var availableList: [GXDictListAvailableData] = []
     /// 主页显示的周边设施

@@ -149,7 +149,6 @@
 		33AB9AD22C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AB9AD02C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib */; };
 		33AB9AD42C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AB9AD32C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift */; };
 		33AD44D32C6AF43200C371C6 /* SKPayment+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD44D22C6AF43200C371C6 /* SKPayment+Add.swift */; };
-		33AD44D52C6B090F00C371C6 /* SKPaymentQueue+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD44D42C6B090F00C371C6 /* SKPaymentQueue+Add.swift */; };
 		33AD44D72C6B127300C371C6 /* GXGoogleSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD44D62C6B127300C371C6 /* GXGoogleSignInManager.swift */; };
 		33AE42C22C19EAA8006CC968 /* GXMarkerIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */; };
 		33B412542C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B412532C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift */; };
@@ -408,7 +407,6 @@
 		33AB9AD02C321EDA0063BC39 /* GXHomeDetailAddVehicleVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailAddVehicleVC.xib; sourceTree = "<group>"; };
 		33AB9AD32C3234CC0063BC39 /* GXHomeDetailVehicleCodeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailVehicleCodeMenu.swift; sourceTree = "<group>"; };
 		33AD44D22C6AF43200C371C6 /* SKPayment+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKPayment+Add.swift"; sourceTree = "<group>"; };
-		33AD44D42C6B090F00C371C6 /* SKPaymentQueue+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKPaymentQueue+Add.swift"; sourceTree = "<group>"; };
 		33AD44D62C6B127300C371C6 /* GXGoogleSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXGoogleSignInManager.swift; sourceTree = "<group>"; };
 		33AE42C12C19EAA8006CC968 /* GXMarkerIconView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXMarkerIconView.xib; sourceTree = "<group>"; };
 		33B412532C3B79DC0015FBCE /* GXChargingOrderDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingOrderDetailModel.swift; sourceTree = "<group>"; };
@@ -1085,7 +1083,6 @@
 				33EC53902C101BA100D4CCD0 /* UIAlertController+Add.swift */,
 				33EC538A2C101BA100D4CCD0 /* GXRefreshNormalHeader+Add.swift */,
 				33AD44D22C6AF43200C371C6 /* SKPayment+Add.swift */,
-				33AD44D42C6B090F00C371C6 /* SKPaymentQueue+Add.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1501,7 +1498,6 @@
 				336477AB2C2379690013AAF1 /* GXHomeFilterMenu.swift in Sources */,
 				339A5EDE2C2AD788004F1B7F /* GXHomeFilterModel.swift in Sources */,
 				33DB78D72C43387E00F2763C /* GXVipViewModel.swift in Sources */,
-				33AD44D52C6B090F00C371C6 /* SKPaymentQueue+Add.swift in Sources */,
 				33EC55C42C101BA100D4CCD0 /* UIFont+Add.swift in Sources */,
 				33272D5C2C3CAB6300A95BD7 /* GXStationConsumerPriceModel.swift in Sources */,
 				339C85E22C393FDC0098D527 /* GXChargingOrderDetailsCell1.swift in Sources */,

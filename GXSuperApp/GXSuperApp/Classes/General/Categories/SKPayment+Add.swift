@@ -20,49 +20,34 @@ extension SKPayment {
             }
             let payment = SKMutablePayment(product: product)
             payment.applicationUsername = GXUserManager.shared.user?.uuid
-            payment.gx_promise().done { transaction in
+            payment.promise().done { transaction in
                 seal.fulfill(transaction)
             }.catch { error in
                 seal.reject(error)
             }
         }
     }
-
-    public func gx_promise() -> Promise<SKPaymentTransaction> {
-        return GXPaymentObserver(payment: self).promise
-    }
-}
-
-private class GXPaymentObserver: NSObject, SKPaymentTransactionObserver {
-    let (promise, seal) = Promise<SKPaymentTransaction>.pending()
-    let payment: SKPayment
-    var retainCycle: GXPaymentObserver?
     
-    init(payment: SKPayment) {
-        self.payment = payment
-        super.init()
-        SKPaymentQueue.default().add(self)
-        SKPaymentQueue.default().add(payment)
-        retainCycle = self
+    @available(iOS 16.0, *)
+    class func gx_verificationResult() async {
+        do {
+            let verificationResult = try await AppTransaction.shared
+            switch verificationResult {
+            case .verified(let appTransaction):
+                // StoreKit verified that the user purchased this app and
+                // the properties in the AppTransaction instance.
+                // Add your code here.
+                
+                break
+            case .unverified(let appTransaction, let verificationError):
+                // The app transaction didn't pass StoreKit's verification.
+                // Handle unverified app transaction information according
+                // to your business model.
+                // Add your code here.
+                
+                break
+            }
+        } catch {}
     }
     
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        guard let transaction = transactions.first(where: { $0.payment.productIdentifier == payment.productIdentifier }) else {
-            return
-        }
-        switch transaction.transactionState {
-        case .purchased, .restored:
-            seal.fulfill(transaction)
-            queue.remove(self)
-            retainCycle = nil
-        case .failed:
-            let error = transaction.error ?? PMKError.cancelled
-            queue.finishTransaction(transaction)
-            seal.reject(error)
-            queue.remove(self)
-            retainCycle = nil
-        default:
-            break
-        }
-    }
 }

@@ -67,10 +67,9 @@ extension GXMoyaProvider {
                 seal.reject(error); return
             }
             var params: Dictionary<String, Any> = [:]
-            params["signedAppTransaction"] = transactionReceipt.base64EncodedString()
+            params["signedAppTransaction"] = String(data: transactionReceipt, encoding: .utf8)
             let api = GXApi.normalApi(Api_subscribe_apple_verify_receipt, params, .post)
             GXNWProvider.login_request(api, type: GXBaseDataModel.self, success: { model in
-                SKPaymentQueue.default().finishTransaction(transaction)
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)
