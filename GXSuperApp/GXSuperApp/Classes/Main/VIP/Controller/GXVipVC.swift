@@ -165,9 +165,9 @@ private extension GXVipVC {
             GXToast.showError(text: "The device cannot or does not allow payment.")
             return
         }
-        self.viewModel.autouUpdateVipAction = {[weak self] isVip in
+        self.viewModel.autouUpdateVipAction = { isVip in
             MBProgressHUD.dismiss()
-            self?.updateDataSource()
+            GXAppDelegate?.gotoMainTabbarController(index: 1)
         }
         MBProgressHUD.showLoading()
         firstly {
