@@ -48,7 +48,7 @@ class GXMinePayManagerVC: GXBaseViewController {
     }
     
     @IBAction func confirmButtonClicked(_ sender: Any?) {
-        
+        self.requestStripePaymentMethodSet()
     }
 }
 
@@ -98,6 +98,24 @@ private extension GXMinePayManagerVC {
                 XCGLogger.info("Stripe payment error: \(error.localizedDescription)")
             }
         }.catch { error in
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    func requestStripePaymentMethodSet() {
+        guard let paymentMethod = self.viewModel.paymentMethod,
+              paymentMethod != self.viewModel.balanceData?.paymentMethod
+        else {
+            self.backBarButtonItemTapped()
+            return
+        }
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestStripePaymentMethodSet()
+        }.done { model in
+            MBProgressHUD.dismiss()
+            self.backBarButtonItemTapped()
+        }.catch { error in
+            MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
         }
     }

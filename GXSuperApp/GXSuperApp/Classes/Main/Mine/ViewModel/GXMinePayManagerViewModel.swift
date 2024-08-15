@@ -69,4 +69,18 @@ class GXMinePayManagerViewModel: GXBaseViewModel {
         }
     }
     
+    /// 设置付款方式
+    func requestStripePaymentMethodSet() -> Promise<GXBaseDataModel> {
+        return Promise { seal in
+            var params: Dictionary<String, Any> = [:]
+            params["paymentMethod"] = self.paymentMethod
+            let api = GXApi.normalApi(Api_wallet_consumer_payment_method_set, params, .post)
+            GXNWProvider.login_request(api, type: GXBaseDataModel.self, success: { model in
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+    
 }
