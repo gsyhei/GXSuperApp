@@ -339,7 +339,8 @@ extension GXChargingOrderDetailsVC {
     @IBAction func payNowButtonClicked(_ sender: Any?) {
         guard let detail = self.viewModel.detailData else { return }
         if detail.orderStatus == "TO_PAY" {
-
+            /// 去支付
+            
         }
         else {
             self.navigationController?.popToRootViewController(animated: true)

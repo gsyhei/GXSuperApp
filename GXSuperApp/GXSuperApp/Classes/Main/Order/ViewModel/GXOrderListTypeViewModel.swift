@@ -73,6 +73,20 @@ class GXOrderListTypeViewModel: GXBaseViewModel {
         }
     }
     
+    /// 订单支付
+    func requestOrderConsumerPay(orderId: String) -> Promise<GXBaseDataModel> {
+        var params: Dictionary<String, Any> = [:]
+        params["id"] = orderId
+        let api = GXApi.normalApi(Api_order_consumer_pay, params, .post)
+        return Promise { seal in
+            GXNWProvider.login_request(api, type: GXBaseDataModel.self, success: { model in
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+    
 }
 
 extension GXOrderListTypeViewModel {
