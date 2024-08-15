@@ -58,7 +58,6 @@ class GXFontSegmentSlider: UIView {
             label.textAlignment = .center
             label.text = title
             button.addSubview(label)
-            
             label.snp.makeConstraints { make in
                 make.centerX.equalTo(button)
                 make.top.equalTo(button)
@@ -67,7 +66,6 @@ class GXFontSegmentSlider: UIView {
             let lineView = UIView()
             lineView.backgroundColor = UIColor.systemGray
             self.addSubview(lineView)
-            
             lineView.snp.makeConstraints { make in
                 make.centerX.equalTo(button.snp.centerX)
                 make.centerY.equalTo(hLineView.snp.centerY)
