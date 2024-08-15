@@ -21,6 +21,10 @@ extension SKPayment {
             let payment = SKMutablePayment(product: product)
             payment.applicationUsername = GXUserManager.shared.user?.uuid
             payment.promise().done { transaction in
+//                if let appStoreReceiptURL = Bundle.main.appStoreReceiptURL,
+//                    let receiptData = try? Data(contentsOf: appStoreReceiptURL) {
+//                    let receiptString = receiptData.base64EncodedString()
+//                }
                 seal.fulfill(transaction)
             }.catch { error in
                 seal.reject(error)

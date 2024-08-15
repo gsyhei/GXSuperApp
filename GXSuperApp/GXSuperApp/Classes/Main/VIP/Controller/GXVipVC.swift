@@ -24,7 +24,12 @@ class GXVipVC: GXBaseViewController {
     @IBOutlet weak var vipYearLabel: UILabel!
     
     private lazy var viewModel: GXVipViewModel = {
-        return GXVipViewModel()
+        return GXVipViewModel().then {
+            $0.autouUpdateVipAction = {[weak self] isVip in
+                MBProgressHUD.dismiss()
+                self?.updateDataSource()
+            }
+        }
     }()
     
     override func viewDidLoad() {
@@ -123,6 +128,7 @@ private extension GXVipVC {
         let scale = image.size.height / image.size.width
         return (SCREEN_WIDTH - 24) * scale
     }
+    
 }
 
 extension GXVipVC: UITextViewDelegate {
@@ -159,15 +165,17 @@ private extension GXVipVC {
             GXToast.showError(text: "The device cannot or does not allow payment.")
             return
         }
+        self.viewModel.autouUpdateVipAction = {[weak self] isVip in
+            MBProgressHUD.dismiss()
+            self?.updateDataSource()
+        }
         MBProgressHUD.showLoading()
         firstly {
             SKProductsRequest(productIdentifiers: [GX_PRODUCT_ID]).start(.promise)
         }.then { response in
             SKPayment.gx_paymentPromise(response: response)
         }.done { transaction in
-            MBProgressHUD.dismiss()
-            GXUserManager.shared.user?.memberFlag = .YES
-            self.updateDataSource()
+            self.viewModel.autoUpdateVipRequest()
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
