@@ -74,7 +74,7 @@ class GXOrderListTypeViewModel: GXBaseViewModel {
     }
     
     /// 订单支付
-    func requestOrderConsumerPay(orderId: String) -> Promise<GXBaseDataModel> {
+    func requestOrderConsumerPay(orderId: Int) -> Promise<GXBaseDataModel> {
         var params: Dictionary<String, Any> = [:]
         params["id"] = orderId
         let api = GXApi.normalApi(Api_order_consumer_pay, params, .post)

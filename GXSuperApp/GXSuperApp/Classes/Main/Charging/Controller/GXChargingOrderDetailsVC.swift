@@ -161,6 +161,20 @@ extension GXChargingOrderDetailsVC {
         }
     }
     
+    func requestOrderConsumerPay() {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestOrderConsumerPay()
+        }.done { model in
+            MBProgressHUD.dismiss()
+            self.viewModel.detailData?.orderStatus = "FINISHED"
+            self.updateDataSource()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
 }
 
 extension GXChargingOrderDetailsVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {

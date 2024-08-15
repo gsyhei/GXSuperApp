@@ -136,6 +136,19 @@ extension GXOrderListTypeVC {
             GXToast.showError(text:error.localizedDescription)
         }
     }
+    func requestOrderConsumerPay(cellModel: GXChargingOrderDetailCellModel) {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestOrderConsumerPay(orderId: cellModel.item.id)
+        }.done { model in
+            MBProgressHUD.dismiss()
+            cellModel.item.orderStatus = "FINISHED"
+            self.tableView.gx_reloadData()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
     
 }
 
@@ -298,8 +311,7 @@ extension GXOrderListTypeVC {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         case "Pay":
-            /// 去支付
-            break
+            self.requestOrderConsumerPay(cellModel: model)
         case "More":
             let rect = button.convert(button.frame, from: cell.contentView)
             let btnRect = button.convert(rect, to: self.view)
