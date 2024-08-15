@@ -64,9 +64,6 @@ class GXMineRechargeVC: GXBaseViewController {
         super.viewWillAppear(animated)
         
         guard !self.isShowPayment else { return }
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
-        IQKeyboardManager.shared.resignOnTouchOutside = false
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -74,9 +71,6 @@ class GXMineRechargeVC: GXBaseViewController {
         super.viewWillDisappear(animated)
         
         guard !self.isShowPayment else { return }
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
-        IQKeyboardManager.shared.resignOnTouchOutside = true
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     

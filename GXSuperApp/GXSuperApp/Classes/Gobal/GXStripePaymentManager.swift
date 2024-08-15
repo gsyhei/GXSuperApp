@@ -34,7 +34,7 @@ class GXStripePaymentManager: NSObject {
             configuration.merchantDisplayName = "MarsEnergy"
             configuration.customer = .init(id: data.customer, ephemeralKeySecret: data.ephemeralKey)
             configuration.allowsDelayedPaymentMethods = true
-            let paymentShee = PaymentSheet(setupIntentClientSecret: data.clientSecret, configuration: configuration)
+            let paymentShee = PaymentSheet(setupIntentClientSecret: data.setupIntent, configuration: configuration)
             paymentShee.present(from: fromVC, completion: $0)
         }
     }

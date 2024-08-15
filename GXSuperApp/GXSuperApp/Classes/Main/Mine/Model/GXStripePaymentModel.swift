@@ -12,6 +12,7 @@ class GXStripePaymentData: NSObject, HandyJSON {
     var id: String = ""
     var publishableKey: String = ""
     var clientSecret: String = ""
+    var setupIntent: String = ""
     var ephemeralKey: String = ""
     var customer: String = ""
     

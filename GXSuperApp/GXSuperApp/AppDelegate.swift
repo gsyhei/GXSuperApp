@@ -32,12 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Bugly.start(withAppId: GX_BUGLY_APPID)
         
         // 开启键盘管理
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.resignOnTouchOutside = true
-        IQKeyboardManager.shared.disabledToolbarClasses.append(GXHomeDetailAddVehicleVC.self)
-        IQKeyboardManager.shared.disabledDistanceHandlingClasses.append(GXHomeDetailAddVehicleVC.self)
-        
+        IQKeyboardManager.shared.enabledToolbarClasses.append(GXLoginPhoneVC.self)
+        IQKeyboardManager.shared.enabledToolbarClasses.append(GXHomeSearchVC.self)
+        IQKeyboardManager.shared.enabledToolbarClasses.append(GXMineWithdrawVC.self)
+        IQKeyboardManager.shared.enabledDistanceHandlingClasses.append(GXLoginPhoneVC.self)
+        IQKeyboardManager.shared.enabledDistanceHandlingClasses.append(GXHomeSearchVC.self)
+        IQKeyboardManager.shared.enabledDistanceHandlingClasses.append(GXMineWithdrawVC.self)
+
         // 配置过渡
         SkeletonAppearance.default.gradient = SkeletonGradient(baseColor: .gx_lineGray)
         SkeletonAppearance.default.skeletonCornerRadius = 3.0

@@ -37,8 +37,8 @@ class GXMineAccountManagerVC: GXBaseViewController {
         self.gx_addBackBarButtonItem()
         self.gx_addNavTopView(color: .white)
         
-        self.logoutButton.setBackgroundColor(.gx_drakRed, for: .normal)
-        self.logoutButton.setBackgroundColor(.gx_red, for: .highlighted)
+        self.logoutButton.setBackgroundColor(.gx_red, for: .normal)
+        self.logoutButton.setBackgroundColor(.gx_drakRed, for: .highlighted)
         
         if let model = GXUserManager.shared.user {
             if model.phoneNumber.count > 6 {

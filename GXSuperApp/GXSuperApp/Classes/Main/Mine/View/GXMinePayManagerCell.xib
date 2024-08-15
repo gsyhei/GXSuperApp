@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Credit Card Authorization" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ple-xF-TfR">
-                        <rect key="frame" x="24" y="15.000000000000002" width="171.33333333333334" height="26.666666666666671"/>
+                        <rect key="frame" x="48.000000000000014" y="15.000000000000002" width="171.33333333333337" height="26.666666666666671"/>
                         <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="16"/>
                         <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -52,18 +52,27 @@
                             <action selector="rightButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Rcu-2H-WAe"/>
                         </connections>
                     </button>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ca-jJ-gru">
+                        <rect key="frame" x="24" y="17.333333333333332" width="16" height="21.999999999999996"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="com_list_ic_checkbox_normal"/>
+                        <state key="selected" image="com_list_ic_checkbox_selected"/>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ple-xF-TfR" firstAttribute="centerY" secondItem="5Ca-jJ-gru" secondAttribute="centerY" id="07W-pH-imt"/>
+                    <constraint firstItem="ple-xF-TfR" firstAttribute="leading" secondItem="5Ca-jJ-gru" secondAttribute="trailing" constant="8" id="2Qx-RM-Dg5"/>
                     <constraint firstAttribute="trailing" secondItem="MQr-PA-DCD" secondAttribute="trailing" constant="24" id="2Ry-PQ-5Ta"/>
                     <constraint firstItem="ple-xF-TfR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="DtC-bv-NVL"/>
                     <constraint firstItem="NCe-5t-Evz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="Gpi-lb-n7F"/>
                     <constraint firstItem="MQr-PA-DCD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HRB-fM-7kO"/>
                     <constraint firstItem="NCe-5t-Evz" firstAttribute="top" secondItem="ple-xF-TfR" secondAttribute="bottom" id="Ni7-4Z-yUB"/>
-                    <constraint firstItem="ple-xF-TfR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="xsJ-nc-HpX"/>
+                    <constraint firstItem="5Ca-jJ-gru" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="Ypa-VY-In2"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="checkButton" destination="5Ca-jJ-gru" id="5xb-NB-GdG"/>
                 <outlet property="detailLabel" destination="NCe-5t-Evz" id="0Y6-qw-83b"/>
                 <outlet property="rightButton" destination="MQr-PA-DCD" id="k0I-Q8-IEY"/>
                 <outlet property="titleLabel" destination="ple-xF-TfR" id="1c3-DC-Qgz"/>
@@ -71,4 +80,8 @@
             <point key="canvasLocation" x="29.770992366412212" y="1.4084507042253522"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="com_list_ic_checkbox_normal" width="16" height="16"/>
+        <image name="com_list_ic_checkbox_selected" width="16" height="16"/>
+    </resources>
 </document>

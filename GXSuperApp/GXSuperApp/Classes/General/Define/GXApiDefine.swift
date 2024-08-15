@@ -148,3 +148,15 @@ let Api_withdraw_consumer_submit = "/charging-wallet-server/withdraw/consumer/su
 
 /// Apple订阅-单据验证
 let Api_subscribe_apple_verify_receipt = "/charging-wallet-server/subscribe/apple/verify/receipt"
+
+/// 设置付款方式
+let Api_wallet_consumer_payment_method_set = "/charging-wallet-server/wallet/consumer/payment/method/set"
+
+/// 设置未来支付
+let Api_stripe_consumer_setup_intent = "/charging-wallet-server/stripe/consumer/setup/intent"
+
+/// 支付账号列表
+let Api_stripe_consumer_payment_method_list = "/charging-wallet-server/stripe/consumer/payment/method/list"
+
+/// 移除支付账号
+let Api_stripe_consumer_payment_method_detach = "/charging-wallet-server/stripe/consumer/payment/method/detach"

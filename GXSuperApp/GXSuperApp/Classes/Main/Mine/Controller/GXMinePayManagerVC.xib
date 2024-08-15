@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXMinePayManagerVC" customModule="GXSuperApp" customModuleProvider="target">
             <connections>
+                <outlet property="confirmButton" destination="9LN-4Y-cYH" id="nDX-8O-Ob5"/>
                 <outlet property="tableView" destination="0aS-Vp-FRy" id="Itm-Ds-Qos"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0aS-Vp-FRy">
-                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="692"/>
                     <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="separatorColor" red="0.90196078430000004" green="0.91372549020000005" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <inset key="separatorInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
@@ -30,16 +31,41 @@
                         <outlet property="delegate" destination="-1" id="A28-pz-diX"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9LN-4Y-cYH">
+                    <rect key="frame" x="15" y="763" width="363" height="40"/>
+                    <color key="backgroundColor" red="0.019607843140000001" green="0.75686274509999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="k7f-zm-RBG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="17"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Confirm">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="confirmButtonClicked:" destination="-1" eventType="touchUpInside" id="qjU-0j-xmg"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="0aS-Vp-FRy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="F6c-Kg-7h4"/>
-                <constraint firstAttribute="bottom" secondItem="0aS-Vp-FRy" secondAttribute="bottom" id="HGt-iv-fYF"/>
+                <constraint firstItem="9LN-4Y-cYH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="MgU-rK-ph6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9LN-4Y-cYH" secondAttribute="bottom" constant="15" id="Pu2-e9-M5O"/>
                 <constraint firstItem="0aS-Vp-FRy" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="XYt-F3-DZo"/>
+                <constraint firstItem="9LN-4Y-cYH" firstAttribute="top" secondItem="0aS-Vp-FRy" secondAttribute="bottom" constant="12" id="beK-I2-XzM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9LN-4Y-cYH" secondAttribute="trailing" constant="15" id="h3r-dp-1oC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0aS-Vp-FRy" secondAttribute="trailing" id="n1I-wI-eQm"/>
             </constraints>
-            <point key="canvasLocation" x="-10" y="-11"/>
+            <point key="canvasLocation" x="-11.450381679389313" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>

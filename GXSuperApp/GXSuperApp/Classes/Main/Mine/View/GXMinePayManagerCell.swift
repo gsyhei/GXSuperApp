@@ -12,33 +12,25 @@ class GXMinePayManagerCell: UITableViewCell, NibReusable {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var rightButton: UIButton!
-    var action: GXActionBlock?
+    @IBOutlet weak var checkButton: UIButton!
+
+    var removeAction: GXActionBlockItem<Bool>?
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func bindCell(isActivate: Bool) {
-        if isActivate {
+    func bindCell(model: GXStripePaymentListDataItem?) {
+        if let model = model {
             self.rightButton.layer.borderWidth = 1.0
-            self.rightButton.layer.borderColor = UIColor.gx_green.cgColor
+            self.rightButton.layer.borderColor = UIColor.gx_red.cgColor
             self.rightButton.setBackgroundColor(.white, for: .normal)
             self.rightButton.setBackgroundColor(.gx_background, for: .highlighted)
             
             self.titleLabel.text = "Credit Card"
-            let cardNumber = "2542123125421"
-            let count = cardNumber.count
-            if count > 8 {
-                let beginText = cardNumber.substring(to: 4)
-                let endText = cardNumber.substring(from: count - 4)
-                var starText: String = ""
-                for _ in 0..<(count - 8) { starText.append("*") }
-                self.detailLabel.text = beginText + starText + endText
-            } else {
-                self.detailLabel.text = "********"
-            }
-            self.rightButton.setTitle("Cancel", for: .normal)
-            self.rightButton.setTitleColor(.gx_green, for: .normal)
+            self.detailLabel.text = "********" + model.last4
+            self.rightButton.setTitle("Remove", for: .normal)
+            self.rightButton.setTitleColor(.gx_red, for: .normal)
         }
         else {
             self.rightButton.layer.borderWidth = 0
@@ -54,6 +46,12 @@ class GXMinePayManagerCell: UITableViewCell, NibReusable {
     }
         
     @IBAction func rightButtonClicked(_ sender: UIButton) {
-        self.action?()
+        let title = sender.title(for: .normal)
+        if title == "Remove" {
+            self.removeAction?(true)
+        }
+        else {
+            self.removeAction?(false)
+        }
     }
 }
