@@ -17,6 +17,9 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressBarIView: UIImageView!
     @IBOutlet weak var progressBarRightLC: NSLayoutConstraint!
+    @IBOutlet weak var smallCircleView: UIView!
+    @IBOutlet weak var bigCircleView: UIView!
+    
     weak var carShowTableVC: GXChargingCarShowTableViewVC?
     
     private var displayLink: CADisplayLink?
@@ -35,8 +38,8 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
                 if isUpdate {
                     self.updateDataSource()
                 } else {
-                    let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId)
-                    self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
+//                    let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId)
+//                    self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
                 }
             }
         }
@@ -82,6 +85,8 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
         self.progressLabel.text = "0%"
         self.view.layoutSubviews()
         self.progressBarRightLC.constant = self.maxProgressConstant
+        
+        self.startLoopCircleAnimation()
     }
     
     private func updateDataSource() {
@@ -177,6 +182,44 @@ extension GXChargingCarShowVC {
             self.stopAnimation()
         }
     }
+    func startLoopCircleAnimation() {
+        self.smallCircleView.layer.opacity = 0
+        self.bigCircleView.layer.opacity = 0
+        self.smallCircleView.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1)
+        self.bigCircleView.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1)
+
+        // 创建缩放动画
+        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnimation.fromValue = 0.8
+        scaleAnimation.toValue = 1.3
+        scaleAnimation.duration = 1.5
+        scaleAnimation.autoreverses = false
+        scaleAnimation.isRemovedOnCompletion = true
+        scaleAnimation.repeatCount = 0
+
+        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
+        opacityAnimation.fromValue = 0
+        opacityAnimation.toValue = 1
+        opacityAnimation.duration = 0.75
+        opacityAnimation.autoreverses = true
+        opacityAnimation.isRemovedOnCompletion = false
+        opacityAnimation.repeatCount = 1
+
+        let animationGroup = CAAnimationGroup()
+        animationGroup.beginTime = 0
+        animationGroup.duration = 3
+        animationGroup.repeatCount = Float.infinity
+        animationGroup.animations = [scaleAnimation, opacityAnimation]
+        
+        let animationGroup1 = CAAnimationGroup()
+        animationGroup1.timeOffset = 1.5
+        animationGroup1.duration = 3
+        animationGroup1.repeatCount = Float.infinity
+        animationGroup1.animations = [scaleAnimation, opacityAnimation]
+        
+        self.smallCircleView.layer.add(animationGroup, forKey: "scaleAnimation1")
+        self.bigCircleView.layer.add(animationGroup1, forKey: "scaleAnimation2")
+    }
 }
 
 class GXChargingCarShowTableViewVC: UITableViewController {
@@ -191,7 +234,7 @@ class GXChargingCarShowTableViewVC: UITableViewController {
     @IBOutlet weak var idleFeeLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var rechargeButton: UIButton!
-
+    
     weak var viewModel: GXChargingCarShowViewModel!
     
     override func viewDidLoad() {

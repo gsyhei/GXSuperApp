@@ -768,33 +768,9 @@ magna aliqua. Ut enim ad minim veniam</string>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkb-hP-vZu">
                                 <rect key="frame" x="31.666666666666657" y="100" width="330" height="330"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jhf-Mb-205">
-                                        <rect key="frame" x="45" y="45" width="240" height="240"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="DXS-NG-r97"/>
-                                            <constraint firstAttribute="height" constant="240" id="Mn4-6i-Ipl"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="120"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.019607843140000001" green="0.75686274509999996" blue="0.37647058820000001" alpha="0.29810671770000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="330" id="9bW-wC-EcK"/>
-                                    <constraint firstItem="Jhf-Mb-205" firstAttribute="centerY" secondItem="bkb-hP-vZu" secondAttribute="centerY" id="GHJ-gs-79H"/>
-                                    <constraint firstItem="Jhf-Mb-205" firstAttribute="centerX" secondItem="bkb-hP-vZu" secondAttribute="centerX" id="HzV-Gm-ljO"/>
                                     <constraint firstAttribute="height" constant="330" id="Jtz-Vs-Wdc"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -803,10 +779,30 @@ magna aliqua. Ut enim ad minim veniam</string>
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.019607843140000001" green="0.75686274509999996" blue="0.37647058820000001" alpha="0.1001967879" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.019607843140000001" green="0.75686274509999996" blue="0.37647058820000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="165"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jhf-Mb-205">
+                                <rect key="frame" x="76.666666666666686" y="145" width="240" height="240"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="DXS-NG-r97"/>
+                                    <constraint firstAttribute="height" constant="240" id="Mn4-6i-Ipl"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="120"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.019607843140000001" green="0.75686274509999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -949,6 +945,8 @@ magna aliqua. Ut enim ad minim veniam</string>
                             <constraint firstItem="u9U-nh-fFe" firstAttribute="trailing" secondItem="OdY-wj-O4O" secondAttribute="trailing" constant="15" id="7A7-do-bde"/>
                             <constraint firstItem="tSI-XE-sUm" firstAttribute="centerX" secondItem="mln-qu-baW" secondAttribute="centerX" id="Bcq-nR-4JI"/>
                             <constraint firstItem="OdY-wj-O4O" firstAttribute="top" secondItem="mln-qu-baW" secondAttribute="top" constant="347" id="CPa-tZ-21p"/>
+                            <constraint firstItem="Jhf-Mb-205" firstAttribute="centerX" secondItem="bkb-hP-vZu" secondAttribute="centerX" id="Fqk-0L-AE4"/>
+                            <constraint firstItem="Jhf-Mb-205" firstAttribute="centerY" secondItem="bkb-hP-vZu" secondAttribute="centerY" id="L0D-E8-u6L"/>
                             <constraint firstItem="u9U-nh-fFe" firstAttribute="trailing" secondItem="Vgy-Vf-Bxi" secondAttribute="trailing" constant="15" id="Odn-eU-5ed"/>
                             <constraint firstItem="HFE-N6-thm" firstAttribute="leading" secondItem="u9U-nh-fFe" secondAttribute="leading" constant="12" id="Q5e-XJ-zVg"/>
                             <constraint firstItem="1b3-2O-lyu" firstAttribute="top" secondItem="mln-qu-baW" secondAttribute="top" constant="302" id="Qt8-VQ-1hM"/>
@@ -971,6 +969,7 @@ magna aliqua. Ut enim ad minim veniam</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bigCircleView" destination="bkb-hP-vZu" id="Yk9-bz-22b"/>
                         <outlet property="carNumberLabel" destination="HFE-N6-thm" id="lQp-kA-ScH"/>
                         <outlet property="chargedKwhLabel" destination="Vgy-Vf-Bxi" id="ktQ-bn-eLM"/>
                         <outlet property="chargedTimeLabel" destination="1b3-2O-lyu" id="deY-x2-3a4"/>
@@ -978,6 +977,7 @@ magna aliqua. Ut enim ad minim veniam</string>
                         <outlet property="progressBarIView" destination="glI-AW-2Eo" id="jOQ-rd-k4F"/>
                         <outlet property="progressBarRightLC" destination="bpO-EE-4ZH" id="Fk8-82-Ga8"/>
                         <outlet property="progressLabel" destination="mXG-PE-luZ" id="dfs-iK-JA8"/>
+                        <outlet property="smallCircleView" destination="Jhf-Mb-205" id="0zX-Ji-3Hb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2W-Lv-juq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
