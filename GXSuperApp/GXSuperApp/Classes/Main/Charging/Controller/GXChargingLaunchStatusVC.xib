@@ -5,12 +5,18 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXChargingLaunchStatusVC" customModule="GXSuperApp" customModuleProvider="target">
             <connections>
-                <outlet property="failedView" destination="37f-CY-ie3" id="xkN-cI-bG4"/>
+                <outlet property="carImageView" destination="INk-bi-6uL" id="NKE-fS-OQS"/>
+                <outlet property="chargingGunView" destination="6h7-A8-0pw" id="PS2-zy-t9v"/>
+                <outlet property="circleImageView" destination="d3E-XZ-Y0e" id="91V-dL-I5t"/>
+                <outlet property="failedView" destination="37f-CY-ie3" id="ENU-xQ-2Cc"/>
+                <outlet property="loadingView" destination="lmu-Nc-dtU" id="aZy-EG-Paz"/>
+                <outlet property="progressLabel" destination="Gge-iQ-KpL" id="dtr-ze-T9b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37f-CY-ie3">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37f-CY-ie3" userLabel="failedView">
                     <rect key="frame" x="0.0" y="159" width="393" height="250"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="charge_top_ic_failed" translatesAutoresizingMaskIntoConstraints="NO" id="wqI-lc-I5z">
@@ -83,18 +89,106 @@
                         <constraint firstItem="tYX-Y7-Wbp" firstAttribute="leading" secondItem="37f-CY-ie3" secondAttribute="leading" constant="68" id="fjm-3i-6XN"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmu-Nc-dtU" userLabel="loadingView">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="charge_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ajv-nU-G4x">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="charge_top_pic_car_disable" translatesAutoresizingMaskIntoConstraints="NO" id="INk-bi-6uL">
+                            <rect key="frame" x="44" y="0.0" width="305" height="280"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="280" id="XPV-Xz-3MX"/>
+                                <constraint firstAttribute="width" constant="305" id="vhe-pA-jQS"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="00%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gge-iQ-KpL">
+                            <rect key="frame" x="169" y="316" width="55" height="31"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
+                            <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="charge_ic_loading" translatesAutoresizingMaskIntoConstraints="NO" id="d3E-XZ-Y0e">
+                            <rect key="frame" x="106.66666666666669" y="383" width="180" height="180"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="180" id="0l9-MI-Qjh"/>
+                                <constraint firstAttribute="width" constant="180" id="Il0-2S-USO"/>
+                            </constraints>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="charge_ic_gun" translatesAutoresizingMaskIntoConstraints="NO" id="6h7-A8-0pw">
+                            <rect key="frame" x="151" y="427.66666666666669" width="91" height="91.000000000000057"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="91" id="ZMB-P2-rnS"/>
+                                <constraint firstAttribute="width" constant="91" id="yok-Bt-1wN"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Connecting..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N12-oP-3bO">
+                            <rect key="frame" x="12" y="599" width="369" height="33.333333333333371"/>
+                            <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="20"/>
+                            <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Charging preparation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ey5-Wn-dwI">
+                            <rect key="frame" x="12" y="632.33333333333337" width="369" height="26.666666666666629"/>
+                            <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="16"/>
+                            <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Gge-iQ-KpL" firstAttribute="top" secondItem="INk-bi-6uL" secondAttribute="bottom" constant="36" id="9Sp-Hx-bVz"/>
+                        <constraint firstItem="N12-oP-3bO" firstAttribute="top" secondItem="d3E-XZ-Y0e" secondAttribute="bottom" constant="36" id="9qp-PB-Hjh"/>
+                        <constraint firstItem="INk-bi-6uL" firstAttribute="centerX" secondItem="lmu-Nc-dtU" secondAttribute="centerX" id="Hwj-Sk-C7q"/>
+                        <constraint firstItem="d3E-XZ-Y0e" firstAttribute="top" secondItem="Gge-iQ-KpL" secondAttribute="bottom" constant="36" id="LrC-3N-Slf"/>
+                        <constraint firstItem="N12-oP-3bO" firstAttribute="leading" secondItem="lmu-Nc-dtU" secondAttribute="leading" constant="12" id="O61-15-C0B"/>
+                        <constraint firstItem="ajv-nU-G4x" firstAttribute="leading" secondItem="lmu-Nc-dtU" secondAttribute="leading" id="SP5-cW-VQE"/>
+                        <constraint firstItem="INk-bi-6uL" firstAttribute="top" secondItem="lmu-Nc-dtU" secondAttribute="top" id="TMS-F4-WOe"/>
+                        <constraint firstItem="ey5-Wn-dwI" firstAttribute="top" secondItem="N12-oP-3bO" secondAttribute="bottom" id="UIw-fQ-UaY"/>
+                        <constraint firstAttribute="trailing" secondItem="ey5-Wn-dwI" secondAttribute="trailing" constant="12" id="Vui-b5-oy4"/>
+                        <constraint firstItem="ajv-nU-G4x" firstAttribute="top" secondItem="lmu-Nc-dtU" secondAttribute="top" id="Wxc-i4-2uG"/>
+                        <constraint firstAttribute="trailing" secondItem="N12-oP-3bO" secondAttribute="trailing" constant="12" id="aHX-t9-OWG"/>
+                        <constraint firstItem="d3E-XZ-Y0e" firstAttribute="centerX" secondItem="lmu-Nc-dtU" secondAttribute="centerX" id="h1R-BF-Ibv"/>
+                        <constraint firstAttribute="bottom" secondItem="ajv-nU-G4x" secondAttribute="bottom" id="hWN-sG-CNF"/>
+                        <constraint firstItem="ey5-Wn-dwI" firstAttribute="leading" secondItem="lmu-Nc-dtU" secondAttribute="leading" constant="12" id="lfd-Gr-n4M"/>
+                        <constraint firstItem="6h7-A8-0pw" firstAttribute="centerY" secondItem="d3E-XZ-Y0e" secondAttribute="centerY" id="m2J-p9-Ig4"/>
+                        <constraint firstItem="Gge-iQ-KpL" firstAttribute="centerX" secondItem="lmu-Nc-dtU" secondAttribute="centerX" id="pFr-JD-a1B"/>
+                        <constraint firstAttribute="trailing" secondItem="ajv-nU-G4x" secondAttribute="trailing" id="uKq-zb-SXD"/>
+                        <constraint firstItem="6h7-A8-0pw" firstAttribute="centerX" secondItem="d3E-XZ-Y0e" secondAttribute="centerX" id="yDL-5w-LHZ"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="lmu-Nc-dtU" secondAttribute="trailing" id="2Ss-9i-FVZ"/>
+                <constraint firstItem="lmu-Nc-dtU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6LO-ZN-oLY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="37f-CY-ie3" secondAttribute="trailing" id="8wZ-wb-z1j"/>
                 <constraint firstItem="37f-CY-ie3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AE0-DE-It0"/>
                 <constraint firstItem="37f-CY-ie3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="EQk-Tz-Jbl"/>
+                <constraint firstItem="lmu-Nc-dtU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="OHk-km-vDY"/>
+                <constraint firstAttribute="bottom" secondItem="lmu-Nc-dtU" secondAttribute="bottom" id="hOO-D7-gWX"/>
             </constraints>
             <point key="canvasLocation" x="26.717557251908396" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>
+        <image name="charge_bg" width="375" height="812"/>
+        <image name="charge_ic_gun" width="91" height="91"/>
+        <image name="charge_ic_loading" width="180" height="180"/>
         <image name="charge_top_ic_failed" width="54" height="54"/>
+        <image name="charge_top_pic_car_disable" width="305" height="280"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

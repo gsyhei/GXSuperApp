@@ -61,22 +61,14 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
         self.carShowTableVC = vc
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.requestOrderConsumerDetail()
     }
     
     override func setupViewController() {
+        self.gx_addBackBarButtonItem()
+        
         self.endChargingButton.setBackgroundColor(.gx_green, for: .normal)
         self.endChargingButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
         let colors: [UIColor] = [.gx_green, .init(hexString: "#278CFF")]
@@ -188,7 +180,6 @@ extension GXChargingCarShowVC {
         self.smallCircleView.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1)
         self.bigCircleView.layer.transform = CATransform3DMakeScale(0.8, 0.8, 1)
 
-        // 创建缩放动画
         let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
         scaleAnimation.fromValue = 0.8
         scaleAnimation.toValue = 1.3

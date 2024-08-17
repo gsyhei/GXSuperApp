@@ -20,7 +20,7 @@ class GXBaseViewController: UIViewController {
         return false
     }
 
-    private lazy var navTopView: UIView = {
+    lazy var navTopView: UIView = {
         return UIView(frame: CGRect(origin: .zero, size: CGSize(width: SCREEN_HEIGHT, height: 44))).then {
             $0.backgroundColor = .white
         }

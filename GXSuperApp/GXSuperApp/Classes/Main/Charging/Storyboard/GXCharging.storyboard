@@ -813,15 +813,6 @@ magna aliqua. Ut enim ad minim veniam</string>
                                     <constraint firstAttribute="width" constant="305" id="L1E-XU-TWN"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6D-c7-97N">
-                                <rect key="frame" x="0.0" y="59" width="75" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="P5B-xl-UXP"/>
-                                    <constraint firstAttribute="width" constant="75" id="k2F-bP-WHp"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="com_nav_ic_back"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="CA-TW39253" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFE-N6-thm">
                                 <rect key="frame" x="12" y="264" width="369" height="40"/>
                                 <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="24"/>
@@ -950,7 +941,6 @@ magna aliqua. Ut enim ad minim veniam</string>
                             <constraint firstItem="u9U-nh-fFe" firstAttribute="trailing" secondItem="Vgy-Vf-Bxi" secondAttribute="trailing" constant="15" id="Odn-eU-5ed"/>
                             <constraint firstItem="HFE-N6-thm" firstAttribute="leading" secondItem="u9U-nh-fFe" secondAttribute="leading" constant="12" id="Q5e-XJ-zVg"/>
                             <constraint firstItem="1b3-2O-lyu" firstAttribute="top" secondItem="mln-qu-baW" secondAttribute="top" constant="302" id="Qt8-VQ-1hM"/>
-                            <constraint firstItem="U6D-c7-97N" firstAttribute="top" secondItem="u9U-nh-fFe" secondAttribute="top" id="SUc-Am-HIb"/>
                             <constraint firstItem="aYh-VT-WTq" firstAttribute="trailing" secondItem="u9U-nh-fFe" secondAttribute="trailing" id="TBb-da-g2y"/>
                             <constraint firstItem="tSI-XE-sUm" firstAttribute="top" secondItem="mln-qu-baW" secondAttribute="top" id="XYo-cp-uFw"/>
                             <constraint firstItem="HFE-N6-thm" firstAttribute="top" secondItem="mln-qu-baW" secondAttribute="top" constant="264" id="Xcr-p5-7Jn"/>
@@ -963,7 +953,6 @@ magna aliqua. Ut enim ad minim veniam</string>
                             <constraint firstItem="Vgy-Vf-Bxi" firstAttribute="top" secondItem="OdY-wj-O4O" secondAttribute="bottom" constant="10" id="mw4-fr-Uw9"/>
                             <constraint firstItem="aYh-VT-WTq" firstAttribute="top" secondItem="Vgy-Vf-Bxi" secondAttribute="bottom" constant="14" id="p09-jj-eqp"/>
                             <constraint firstItem="u9U-nh-fFe" firstAttribute="trailing" secondItem="qp5-X1-XtW" secondAttribute="trailing" constant="15" id="sEg-al-mUm"/>
-                            <constraint firstItem="U6D-c7-97N" firstAttribute="leading" secondItem="u9U-nh-fFe" secondAttribute="leading" id="t7Z-19-4Nf"/>
                             <constraint firstItem="bkb-hP-vZu" firstAttribute="top" secondItem="mln-qu-baW" secondAttribute="top" constant="100" id="urT-6A-HX1"/>
                             <constraint firstItem="qp5-X1-XtW" firstAttribute="leading" secondItem="u9U-nh-fFe" secondAttribute="leading" constant="15" id="x7r-rK-u3i"/>
                         </constraints>
@@ -1331,7 +1320,6 @@ magna aliqua. Ut enim ad minim veniam</string>
         <image name="charge_schedule_ic_recharge" width="13" height="16"/>
         <image name="charge_top_pic_car" width="305" height="280"/>
         <image name="com_list_ic_arrow" width="7" height="13"/>
-        <image name="com_nav_ic_back" width="30" height="44"/>
         <image name="details_list_bg_vip" width="351" height="72"/>
         <image name="details_list_ic_explain" width="14" height="14"/>
         <image name="details_list_ic_vip" width="28" height="14"/>

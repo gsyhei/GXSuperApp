@@ -11,6 +11,13 @@ import PromiseKit
 
 class GXChargingLaunchStatusVC: GXBaseViewController {
     @IBOutlet weak var failedView: UIView!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var carImageView: UIImageView!
+    @IBOutlet weak var circleImageView: UIImageView!
+    @IBOutlet weak var chargingGunView: UIImageView!
+    @IBOutlet weak var progressLabel: UILabel!
+    private var displayLink: CADisplayLink?
+    private var progressCount: Int = 0
     weak var viewModel: GXChargingFeeConfirmViewModel!
     
     class func createVC(viewModel: GXChargingFeeConfirmViewModel) -> GXChargingLaunchStatusVC {
@@ -18,36 +25,115 @@ class GXChargingLaunchStatusVC: GXBaseViewController {
             $0.viewModel = viewModel
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.requestOrderConsumerStart()
     }
     
     override func setupViewController() {
-        self.navigationItem.title = "Launch Failed"
         self.gx_addBackBarButtonItem()
         self.gx_addNavTopView(color: .white)
-        
-        self.failedView.isHidden = true
     }
     
-    func requestOrderConsumerStart() {
-        MBProgressHUD.showLoading()
-        firstly {
-            self.viewModel.requestOrderConsumerStart()
-        }.done { model in
-            MBProgressHUD.dismiss()
-            /// 启动成功-> 状态充电中
-            if let orderId = model.data?.id {
-                let vc = GXChargingCarShowVC.createVC(orderId: orderId)
-                self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
+    func setChargingStatus(isLoading: Bool, isStop: Bool) {
+        if isLoading {
+            self.navigationItem.title = nil
+            self.loadingView.isHidden = false
+            self.navTopView.isHidden = true
+            self.failedView.isHidden = true
+            if isStop {
+                self.stopLoopCircleAnimation()
+                self.stopAnimation()
+                self.progressLabel.text = "100%"
             }
-        }.catch { error in
-            self.failedView.isHidden = false
-            MBProgressHUD.dismiss()
-            GXToast.showError(text:error.localizedDescription)
+            else {
+                self.startLoopCircleAnimation()
+                self.startAnimation()
+            }
         }
+        else {
+            self.navigationItem.title = "Launch Failed"
+            self.loadingView.isHidden = true
+            self.navTopView.isHidden = false
+            self.failedView.isHidden = false
+            if isStop {
+                self.stopLoopCircleAnimation()
+                self.stopAnimation()
+            }
+        }
+    }
+}
+
+extension GXChargingLaunchStatusVC {
+    func requestOrderConsumerStart() {
+        self.setChargingStatus(isLoading: true, isStop: false)
+        
+        
+        self.pushChargingCarShowVC()
+//        firstly {
+//            self.viewModel.requestOrderConsumerStart()
+//        }.done { model in
+//            self.setChargingStatus(isLoading: true, isStop: true)
+//            let orderId = model.data?.id ?? 0
+//            let vc = GXChargingCarShowVC.createVC(orderId: orderId)
+//            self.view.hero.id = vc.chargingCarShowVCHeroId
+//            self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
+//        }.catch { error in
+//            self.setChargingStatus(isLoading: false, isStop: true)
+//            GXToast.showError(text:error.localizedDescription)
+//        }
+    }
+    func pushChargingCarShowVC() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.setChargingStatus(isLoading: true, isStop: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                let vc = GXChargingCarShowVC.createVC(orderId: 1)
+                self.navigationController?.pushByReturnToViewController(vc: vc, animated: false)
+                UIView.transition(.promise, from: self.view, to: vc.view, duration: 1.0, options: .transitionCrossDissolve)
+            }
+        }
+    }
+}
+
+extension GXChargingLaunchStatusVC {
+    func stopAnimation() {
+        self.displayLink?.invalidate()
+        self.displayLink = nil
+        self.progressCount = 0
+    }
+    func startAnimation() {
+        self.displayLink = CADisplayLink(target: self, selector: #selector(handleDisplayLink(displayLink:)))
+        self.displayLink?.add(to: .current, forMode: .common)
+        self.displayLink?.preferredFramesPerSecond = 60
+    }
+    @objc func handleDisplayLink(displayLink: CADisplayLink) {
+        self.progressCount += 1
+        var progress = self.progressCount / 20
+        if progress > 99 { progress = 99 }
+        self.progressLabel.text = "\(Int(progress))%"
+    }
+    func startLoopCircleAnimation() {
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotationAnimation.fromValue = 0
+        rotationAnimation.toValue = (Double.pi * 2)
+        rotationAnimation.duration = 2.0
+        rotationAnimation.isRemovedOnCompletion = false
+        rotationAnimation.repeatCount = Float.infinity
+        self.circleImageView.layer.add(rotationAnimation, forKey: "rotationAnimation")
+
+        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
+        opacityAnimation.fromValue = 0.5
+        opacityAnimation.toValue = 1.0
+        opacityAnimation.duration = 1.0
+        opacityAnimation.autoreverses = true
+        opacityAnimation.isRemovedOnCompletion = false
+        opacityAnimation.repeatCount = Float.infinity
+        self.chargingGunView.layer.add(opacityAnimation, forKey: "opacityAnimation")
+    }
+    func stopLoopCircleAnimation() {
+        self.circleImageView.layer.removeAllAnimations()
+        self.chargingGunView.layer.removeAllAnimations()
     }
 }
 
