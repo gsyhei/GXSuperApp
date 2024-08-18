@@ -33,7 +33,7 @@ extension SKPayment {
         }
     }
     
-    class func validateReceipt(completion: GXActionBlockItem<String?>? = nil) {
+    class func validateReceipt(completion: GXActionBlockItem<GXReceiptInfoItemModel?>? = nil) {
         guard let appStoreReceiptURL = Bundle.main.appStoreReceiptURL,
               let receiptData = try? Data(contentsOf: appStoreReceiptURL) else {
             DispatchQueue.main.async { completion?(nil) }
@@ -56,10 +56,10 @@ extension SKPayment {
             }
             else if let data = data, let json = data.jsonValueDecoded() as? [String: Any] {
                 let latest_receipt_info = json["latest_receipt_info"] as? [[String: Any]]
-                let latest_info = latest_receipt_info?.first
+                let latest_info = latest_receipt_info?.first as? [String: Any]
                 XCGLogger.info("validateReceipt latest_receipt_info = \(latest_info?.jsonStringEncoded(options: .prettyPrinted) ?? "")")
-                let latestUUID = latest_info?["app_account_token"] as? String
-                DispatchQueue.main.async { completion?(latestUUID) }
+                let model = GXReceiptInfoItemModel.deserialize(from: latest_info)
+                DispatchQueue.main.async { completion?(model) }
             }
             else {
                 DispatchQueue.main.async { completion?(nil) }

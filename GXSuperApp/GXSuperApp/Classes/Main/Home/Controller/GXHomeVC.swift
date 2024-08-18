@@ -177,8 +177,12 @@ class GXHomeVC: GXBaseViewController {
                 self.lastIsZoomLarge = true
                 self.mapView.delegate = self
             }
-            if let alert: GXAlertView = UIWindow.gx_frontWindow?.viewForSuperview() {
-                alert.hide(animated: true)
+            if let alerts: [GXAlertView] = UIWindow.gx_frontWindow?.viewsForSuperview() {
+                for alert in alerts {
+                    if alert.titleLabel.text == "Location permission" {
+                        alert.hide(animated: true)
+                    }
+                }
             }
         }
     }
