@@ -198,7 +198,7 @@ class GXChargingFeeConfirmTableVC: UITableViewController {
             self.chargingFeeLabel.text = String(format: "$%.2f", omzFee)
         }
         // Cell 2
-        self.maxOccupyFeeLabel.text = "Idle Fee Cap at $\(GXUserManager.shared.paramsData?.occupyMax ?? "")"
+        self.maxOccupyFeeLabel.text = "Max Occupancy Fee $\(GXUserManager.shared.paramsData?.occupyMax ?? "")"
         self.occupyFeeLabel.text = String(format: "$%.2f", info.occupyFee)
         // Cell 3
         self.freeParkingLabel.text = info.freeParking

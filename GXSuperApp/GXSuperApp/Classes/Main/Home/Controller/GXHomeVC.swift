@@ -179,7 +179,7 @@ class GXHomeVC: GXBaseViewController {
             }
             if let alerts: [GXAlertView] = UIWindow.gx_frontWindow?.viewsForSuperview() {
                 for alert in alerts {
-                    if alert.titleLabel.text == "Location permission" {
+                    if alert.titleLabel.text == "Enable Location" {
                         alert.hide(animated: true)
                     }
                 }
@@ -255,7 +255,7 @@ private extension GXHomeVC {
     }
     
     func showAlertNotLocation() {
-        let title = "Location permission"
+        let title = "Enable Location"
         let message = "Can better recommend the station around you"
         GXUtil.showAlert(to: UIWindow.gx_frontWindow, title: title, message: message, cancelTitle: "Go to Settings", actionHandler: { alert, index in
             if let appSettings = URL(string: UIApplication.openSettingsURLString) {

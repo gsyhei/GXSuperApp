@@ -11,7 +11,7 @@ class GXHomeDetailPriceDetailsMenu: GXBaseMenuView {
     private var prices: [GXStationConsumerDetailPricesItem] = []
     
     private lazy var infoText: String = {
-        return "Due to the fluctuation of service operating costs and electri-city prices, there are pricing differences between charging and different gun power"
+        return "Due to the fluctuation of service operation costs and electri-city prices, pricing is different between charging and different gun powers"
     }()
     private lazy var tableView: UITableView = {
         return UITableView(frame: self.bounds, style: .plain).then {
@@ -40,7 +40,7 @@ class GXHomeDetailPriceDetailsMenu: GXBaseMenuView {
     override func createSubviews() {
         super.createSubviews()
         
-        self.titleLabel.text = "Price Details"
+        self.titleLabel.text = "Session Fee"
         self.addSubview(self.infoLabel)
         self.infoLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(15)
