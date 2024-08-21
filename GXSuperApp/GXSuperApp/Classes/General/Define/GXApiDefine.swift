@@ -59,6 +59,9 @@ let Api_auth_user_logout = "/charging-auth-server/auth/consumer/user/logout"
 /// 注销
 let Api_auth_user_cancel = "/charging-auth-server/auth/consumer/user/cancel"
 
+/// 用户信息-FCM令牌修改
+let Api_auth_user_fcm_token = "/charging-auth-server/auth/consumer/user/fcm/token/edit"
+
 
 // MARK: - 站点和桩信息
 

@@ -203,6 +203,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         XCGLogger.info("Firebase registration token: \(String(describing: fcmToken))")
-        /// 这里需要上传令牌fcmToken
+        guard let fcmToken = fcmToken, GXUserManager.shared.isLogin else { return }
+        GXNWProvider.login_requestUserEdit(fcmToken: fcmToken).done { model in
+            XCGLogger.info("Firebase registration token Done")
+        }.catch { error in
+            XCGLogger.info("Firebase registration token Error: \(error.localizedDescription)")
+        }
     }
 }

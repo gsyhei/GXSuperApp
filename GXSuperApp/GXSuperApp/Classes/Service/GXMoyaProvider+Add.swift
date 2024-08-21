@@ -77,6 +77,20 @@ extension GXMoyaProvider {
         }
     }
     
+    /// 用户信息-FCM令牌修改
+    func login_requestUserEdit(fcmToken: String) -> Promise<GXBaseDataModel> {
+        var params: Dictionary<String, Any> = [:]
+        params["fcmToken"] = fcmToken
+        let api = GXApi.normalApi(Api_auth_user_fcm_token, params, .post)
+        return Promise { seal in
+            GXNWProvider.login_request(api, type: GXBaseDataModel.self, success: { model in
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+    
     /// 上传图片
     func login_requestUpload(asset: PhotoAsset) -> Promise<GXUploadFileModel?> {
         return Promise { seal in

@@ -21,6 +21,7 @@ class GXHomeDetailChargerStatusCell: UITableViewCell, NibReusable {
         super.awakeFromNib()
         self.isSkeletonable = true
         
+        self.chargerButton.titleLabel?.numberOfLines = 0
         self.chargerButton.addSubview(self.progressBar)
     }
 
@@ -35,12 +36,19 @@ class GXHomeDetailChargerStatusCell: UITableViewCell, NibReusable {
         self.maximumPowerLabel.text = "\(model.maxPower)KW"
         if model.idleFlag == GX_YES {
             switch model.status {
-            case "Available", "Preparing":
+            case "Available":
                 self.chargerButton.backgroundColor = .gx_lightGreen
                 self.chargerButton.setTitleColor(.gx_green, for: .normal)
-                self.chargerButton.setTitle("Idle", for: .normal)
+                self.chargerButton.setTitle(model.status, for: .normal)
                 self.chargerButton.setImage(nil, for: .normal)
                 self.progressBar.isHidden = true
+                break
+            case "Preparing":
+                self.chargerButton.backgroundColor = .gx_lightGreen
+                self.chargerButton.setTitleColor(.gx_blue, for: .normal)
+                self.chargerButton.setTitle(model.status, for: .normal)
+                self.chargerButton.setImage(nil, for: .normal)
+                self.progressBar.isHidden = false
                 break
             case "Charging", "Finishing":
                 self.chargerButton.backgroundColor = .gx_lightBlue
