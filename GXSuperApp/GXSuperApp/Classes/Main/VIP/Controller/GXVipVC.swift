@@ -40,7 +40,7 @@ class GXVipVC: GXBaseViewController {
     override func setupViewController() {
         self.infoTextView.gx_setMarginZero()
         self.infoTextView.attributedText = nil
-        self.infoTextView.gx_appendLink(string: "Activating implies agreement to the ")
+        self.infoTextView.gx_appendLink(string: "Activation implies agreement to the ")
         self.infoTextView.gx_appendLink(string: "\"Membership Service Agreement\"", color: UIColor.gx_green, urlString: "yhxy")
         self.infoTextView.gx_appendLink(string: " and ")
         self.infoTextView.gx_appendLink(string: "\"Automatic Renewal Terms\"", color: UIColor.gx_green, urlString: "yszc")

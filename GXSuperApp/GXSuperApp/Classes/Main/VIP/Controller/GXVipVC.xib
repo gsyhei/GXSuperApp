@@ -86,7 +86,7 @@
                                 <action selector="checkButtonClicked:" destination="-1" eventType="touchUpInside" id="ePq-hg-Fgi"/>
                             </connections>
                         </button>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Activating implies agreement to the " translatesAutoresizingMaskIntoConstraints="NO" id="Hrx-tG-ovn" customClass="GXLinkTextView" customModule="GXSuperApp" customModuleProvider="target">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Activation implies agreement to the " translatesAutoresizingMaskIntoConstraints="NO" id="Hrx-tG-ovn" customClass="GXLinkTextView" customModule="GXSuperApp" customModuleProvider="target">
                             <rect key="frame" x="39" y="45" width="339" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>

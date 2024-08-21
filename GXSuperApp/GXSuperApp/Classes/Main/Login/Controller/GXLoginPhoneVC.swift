@@ -94,11 +94,11 @@ class GXLoginPhoneVC: GXBaseViewController {
         
         if self.loginType == .bindPhone {
             self.otherLoginView.isHidden = true
-            self.confirmButton.setTitle("Bind mobile phone number", for: .normal)
+            self.confirmButton.setTitle("Bind", for: .normal)
         }
         else {
             self.otherLoginView.isHidden = false
-            self.confirmButton.setTitle("Login / Registration", for: .normal)
+            self.confirmButton.setTitle("Register", for: .normal)
         }
     }
     

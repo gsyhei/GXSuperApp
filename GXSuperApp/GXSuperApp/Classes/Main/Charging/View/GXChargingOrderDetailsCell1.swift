@@ -61,8 +61,8 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
         
         let cellModel0 = GXChargingOrderLRTextCell.Model(leftText: "Pile ID", rightText: model.qrcode)
         let cellModel1 = GXChargingOrderLRTextCell.Model(leftText: "Order ID", rightText: model.orderNo, isShowCopy: true)
-        let cellModel2 = GXChargingOrderLRTextCell.Model(leftText: "Start Charging", rightText: model.startTime)
-        let cellModel3 = GXChargingOrderLRTextCell.Model(leftText: "End Charging", rightText: model.endTime)
+        let cellModel2 = GXChargingOrderLRTextCell.Model(leftText: "Start Time", rightText: model.startTime)
+        let cellModel3 = GXChargingOrderLRTextCell.Model(leftText: "End Time", rightText: model.endTime)
         self.tableList = [cellModel0, cellModel1, cellModel2, cellModel3]
     }
     
@@ -73,7 +73,7 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
         
         let cellModel0 = GXChargingOrderLRTextCell.Model(leftText: "Pile ID", rightText: model.qrcode)
         let cellModel1 = GXChargingOrderLRTextCell.Model(leftText: "Order ID", rightText: model.orderNo, isShowCopy: true)
-        let cellModel2 = GXChargingOrderLRTextCell.Model(leftText: "Start Charging", rightText: model.startTime)
+        let cellModel2 = GXChargingOrderLRTextCell.Model(leftText: "Start Time", rightText: model.startTime)
         var cellList = [cellModel0, cellModel1, cellModel2]
         //订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成
         switch model.orderStatus {
@@ -92,7 +92,7 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
         default: break
         }
         if model.orderStatus != "CHARGING" {
-            let cellModel3 = GXChargingOrderLRTextCell.Model(leftText: "End Charging", rightText: model.endTime)
+            let cellModel3 = GXChargingOrderLRTextCell.Model(leftText: "End Time", rightText: model.endTime)
             cellList.append(cellModel3)
             if !model.occupyStartTime.isEmpty {
                 let cellModel4 = GXChargingOrderLRTextCell.Model(leftText: "Start Occupying", rightText: model.occupyStartTime)

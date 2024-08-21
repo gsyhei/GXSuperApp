@@ -28,7 +28,7 @@ class GXMineStatementCell: UITableViewCell, NibReusable {
         //类别；RECHARGE：充值，CHARGING：充电消费；REFUND：订单退款，OCCUPY_REFUND：占位费退款，WITHDRAW：提现，WITHDRAW_FAILED：提现失败
         switch model.type {
         case "RECHARGE":
-            self.contentLabel.text = "Recharge"
+            self.contentLabel.text = "Reload"
         case "CHARGING":
             self.contentLabel.text = "Charging Consumption"
         case "REFUND":

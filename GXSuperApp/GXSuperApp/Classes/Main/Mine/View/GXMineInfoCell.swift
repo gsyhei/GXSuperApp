@@ -16,11 +16,11 @@ class GXMineInfoCell: UITableViewCell, NibReusable {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     private var action: GXActionBlock?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -34,7 +34,9 @@ class GXMineInfoCell: UITableViewCell, NibReusable {
             let colors: [UIColor] = [UIColor(hexString: "#FFF8B5"), UIColor(hexString: "#E8AA63")]
             let image = UIImage(gradientColors: colors, style: .horizontal)
             self.avatarButton.setBackgroundImage(image, for: .normal)
-            self.dateLabel.text = "Expiry date: " + model.memberEndDate
+            if let date = Date.date(dateString: model.memberEndDate, format: "yyyy-MM-dd") {
+                self.dateLabel.text = "Expires on: " + date.string(format: "MMMM d, yyyy")
+            }
         }
         else {
             self.vipIView.image = UIImage(named: "my_top_ic_vip_disable")
