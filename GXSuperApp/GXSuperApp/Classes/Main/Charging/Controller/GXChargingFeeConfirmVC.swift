@@ -13,10 +13,6 @@ import MBProgressHUD
 private let GX_NotifName_ChargingFeeConfirm_Scan = NSNotification.Name("GX_NotifName_ChargingFeeConfirm_Scan")
 
 class GXChargingFeeConfirmVC: GXBaseViewController, GXChargingStoryboard {
-    @IBOutlet weak var advertView: UIView!
-    @IBOutlet weak var advertTitleLabel: UILabel!
-    @IBOutlet weak var advertInfoLabel: UILabel!
-    @IBOutlet weak var advertKWhLabel: UILabel!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomLeftFee: UILabel!
     @IBOutlet weak var bottomLeftDw: UILabel!
@@ -25,7 +21,6 @@ class GXChargingFeeConfirmVC: GXBaseViewController, GXChargingStoryboard {
     @IBOutlet weak var bottomRightFeeLeftLC: NSLayoutConstraint!
     @IBOutlet weak var bottomTimeD: UILabel!
     @IBOutlet weak var bottomScanButton: UIButton!
-    @IBOutlet weak var tvBottomHeightLC: NSLayoutConstraint!
     
     lazy var viewModel: GXChargingFeeConfirmViewModel = {
         return GXChargingFeeConfirmViewModel()
@@ -66,17 +61,6 @@ private extension GXChargingFeeConfirmVC {
     }
     
     func updateBottomDataSource() {
-        /// advertView
-        self.tvBottomHeightLC.constant = 96.0
-        self.advertView.isHidden = false
-        if GXUserManager.shared.isVip {
-            self.advertTitleLabel.text = "VIP for Discounts"
-        } else {
-            self.advertTitleLabel.text = "Become a VIP for Discounts"
-        }
-        self.advertInfoLabel.text = GXUserManager.shared.paramsData?.memberReduction ?? ""
-        self.advertKWhLabel.text = "$\(GXUserManager.shared.paramsData?.memberFee ?? "")"
-        
         guard let info = self.viewModel.scanData?.stationInfo else { return }
         /// bottomView
         self.bottomScanButton.setBackgroundColor(.gx_green, for: .normal)
@@ -110,13 +94,6 @@ private extension GXChargingFeeConfirmVC {
         NotificationCenter.default.post(name: GX_NotifName_ChargingFeeConfirm_Scan, object: self.viewModel.scanData)
     }
     
-    @IBAction func advertButtonClicked(_ sender: Any?) {
-        // 开通会员
-        let vc = GXVipVC.xibViewController()
-        vc.gx_addBackBarButtonItem()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     @IBAction func startChargingButtonClicked(_ sender: Any?) {
         let vc =  GXChargingLaunchStatusVC.createVC(viewModel: self.viewModel)
         self.navigationController?.pushViewController(vc, animated: true)
@@ -142,6 +119,11 @@ class GXChargingFeeConfirmTableVC: UITableViewController {
     @IBOutlet weak var occupyFeeLabel: UILabel!
     // Cell 3
     @IBOutlet weak var freeParkingLabel: UILabel!
+    // Cell 4
+    @IBOutlet weak var advertView: UIView!
+    @IBOutlet weak var advertTitleLabel: UILabel!
+    @IBOutlet weak var advertInfoLabel: UILabel!
+    @IBOutlet weak var advertKWhLabel: UILabel!
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -202,6 +184,14 @@ class GXChargingFeeConfirmTableVC: UITableViewController {
         self.occupyFeeLabel.text = String(format: "$%.2f", info.occupyFee)
         // Cell 3
         self.freeParkingLabel.text = info.freeParking
+        // Cell 4
+        if GXUserManager.shared.isVip {
+            self.advertTitleLabel.text = "VIP for Discounts"
+        } else {
+            self.advertTitleLabel.text = "Become a VIP for Discounts"
+        }
+        self.advertInfoLabel.text = GXUserManager.shared.paramsData?.memberReduction ?? ""
+        self.advertKWhLabel.text = "$\(GXUserManager.shared.paramsData?.memberFee ?? "")"
     }
     
 }
@@ -245,4 +235,12 @@ extension GXChargingFeeConfirmTableVC {
         menu.bindView(prices: prices)
         menu.show(style: .sheetBottom, usingSpring: true)
     }
+    
+    @IBAction func advertButtonClicked(_ sender: Any?) {
+        // 开通会员
+        let vc = GXVipVC.xibViewController()
+        vc.gx_addBackBarButtonItem()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

@@ -19,7 +19,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="GXChargingFeeConfirmTableVC" useStoryboardIdentifierAsRestorationIdentifier="YES" clearsSelectionOnViewWillAppear="NO" id="257-w1-moU" customClass="GXChargingFeeConfirmTableVC" customModule="GXSuperApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="static" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" id="j80-t2-4oR">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="599"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="695"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <edgeInsets key="layoutMargins" top="0.0" left="12" bottom="0.0" right="12"/>
@@ -467,6 +467,114 @@ magna aliqua. Ut enim ad minim veniam</string>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="98" id="BhD-pI-TBW" userLabel="Cell4" customClass="GXHomeDetailCell8" customModule="GXSuperApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="612.66667175292969" width="393" height="98"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BhD-pI-TBW" id="O1H-AF-cBQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="98"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snZ-Rm-fMs" userLabel="ContainerView">
+                                                    <rect key="frame" x="12" y="12" width="381" height="74"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGO-ql-gU3">
+                                                            <rect key="frame" x="0.0" y="0.0" width="369" height="74"/>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <state key="normal" backgroundImage="details_list_bg_vip"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="advertButtonClicked:" destination="257-w1-moU" eventType="touchUpInside" id="jIq-EJ-ast"/>
+                                                                <action selector="advertButtonClicked:" destination="BhD-pI-TBW" eventType="touchUpInside" id="xo9-OZ-R4F"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save up to $270.00/year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVr-CC-bCg">
+                                                            <rect key="frame" x="12" y="40" width="146" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="DFF-pY-a9X"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
+                                                            <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a VIP for Discounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ac7-iP-oxM">
+                                                            <rect key="frame" x="12" y="14" width="202.66666666666666" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="84U-m6-Fhg"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="17"/>
+                                                            <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWf-Tz-vwf">
+                                                            <rect key="frame" x="270.33333333333331" y="37" width="50.666666666666686" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="3yu-y9-Wlz"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="24"/>
+                                                            <color key="textColor" red="1" green="0.60392156860000001" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eQ-b6-Wde">
+                                                            <rect key="frame" x="324" y="42" width="33" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="72I-JT-YjU"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="14"/>
+                                                            <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="SGO-ql-gU3" secondAttribute="bottom" id="5st-U8-p9t"/>
+                                                        <constraint firstItem="AVr-CC-bCg" firstAttribute="top" secondItem="ac7-iP-oxM" secondAttribute="bottom" constant="6" id="6iK-fX-LRj"/>
+                                                        <constraint firstAttribute="height" constant="72" id="8Sg-Fc-AW1"/>
+                                                        <constraint firstItem="AVr-CC-bCg" firstAttribute="leading" secondItem="ac7-iP-oxM" secondAttribute="leading" id="IcB-hF-MXP"/>
+                                                        <constraint firstItem="9eQ-b6-Wde" firstAttribute="trailing" secondItem="SGO-ql-gU3" secondAttribute="trailing" constant="-12" id="VPe-nq-bvi"/>
+                                                        <constraint firstItem="ac7-iP-oxM" firstAttribute="top" secondItem="SGO-ql-gU3" secondAttribute="top" constant="14" id="WjB-80-iDn"/>
+                                                        <constraint firstItem="ac7-iP-oxM" firstAttribute="leading" secondItem="SGO-ql-gU3" secondAttribute="leading" constant="12" id="X1n-SQ-C4w"/>
+                                                        <constraint firstItem="SGO-ql-gU3" firstAttribute="top" secondItem="snZ-Rm-fMs" secondAttribute="top" id="YVf-Ia-nAc"/>
+                                                        <constraint firstItem="9eQ-b6-Wde" firstAttribute="leading" secondItem="oWf-Tz-vwf" secondAttribute="trailing" constant="3" id="aUU-RT-Qz4"/>
+                                                        <constraint firstItem="9eQ-b6-Wde" firstAttribute="bottom" secondItem="oWf-Tz-vwf" secondAttribute="bottom" id="sTa-RQ-p77"/>
+                                                        <constraint firstItem="oWf-Tz-vwf" firstAttribute="bottom" secondItem="SGO-ql-gU3" secondAttribute="bottom" constant="-12" id="scM-gF-Qvl"/>
+                                                        <constraint firstAttribute="trailing" secondItem="SGO-ql-gU3" secondAttribute="trailing" constant="12" id="uur-8D-UTq"/>
+                                                        <constraint firstItem="SGO-ql-gU3" firstAttribute="leading" secondItem="snZ-Rm-fMs" secondAttribute="leading" id="vxA-ag-hjX"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="snZ-Rm-fMs" firstAttribute="top" secondItem="O1H-AF-cBQ" secondAttribute="top" constant="12" id="7Fo-eE-Bis"/>
+                                                <constraint firstAttribute="bottom" secondItem="snZ-Rm-fMs" secondAttribute="bottom" constant="12" id="TFQ-tU-92a"/>
+                                                <constraint firstItem="snZ-Rm-fMs" firstAttribute="leading" secondItem="O1H-AF-cBQ" secondAttribute="leading" constant="12" id="uhy-Xt-Ijt"/>
+                                                <constraint firstAttribute="trailing" secondItem="snZ-Rm-fMs" secondAttribute="trailing" id="vtu-yw-AjF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <viewLayoutGuide key="safeArea" id="ATu-Bj-szh"/>
+                                        <connections>
+                                            <outlet property="advertInfoLabel" destination="AVr-CC-bCg" id="H6O-Aj-ggD"/>
+                                            <outlet property="advertKWhLabel" destination="oWf-Tz-vwf" id="0vO-rP-F6S"/>
+                                            <outlet property="advertTitleLabel" destination="ac7-iP-oxM" id="ehh-lb-vdB"/>
+                                            <outlet property="containerView" destination="snZ-Rm-fMs" id="SGc-QX-7cl"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -476,6 +584,10 @@ magna aliqua. Ut enim ad minim veniam</string>
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="advertInfoLabel" destination="AVr-CC-bCg" id="AUa-WR-RK9"/>
+                        <outlet property="advertKWhLabel" destination="oWf-Tz-vwf" id="4St-Ov-pea"/>
+                        <outlet property="advertTitleLabel" destination="ac7-iP-oxM" id="ccC-M3-roq"/>
+                        <outlet property="advertView" destination="snZ-Rm-fMs" id="f8M-le-6hj"/>
                         <outlet property="chargingFeeLabel" destination="rHN-PX-taZ" id="Lde-CA-dCH"/>
                         <outlet property="currentTimeLabel" destination="M0I-gT-NWr" id="Cxg-f4-gXf"/>
                         <outlet property="freeParkingLabel" destination="yCO-GN-fZ6" id="i3J-qF-ka0"/>
@@ -618,98 +730,8 @@ magna aliqua. Ut enim ad minim veniam</string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPN-Qj-Ncf" userLabel="CenterView">
-                                <rect key="frame" x="0.0" y="658" width="393" height="96"/>
-                                <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="96" id="mgL-VK-cZy"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibb-hY-SEZ" userLabel="AdvertView">
-                                <rect key="frame" x="0.0" y="658" width="393" height="96"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBa-Yz-ClF">
-                                        <rect key="frame" x="12" y="12" width="369" height="72"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="details_list_bg_vip"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="advertButtonClicked:" destination="uaL-cc-Pd4" eventType="touchUpInside" id="cYJ-4K-Wbg"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save up to $270.00/year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pE0-zg-IcI">
-                                        <rect key="frame" x="24" y="52" width="146" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="eUl-iw-EFA"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                                        <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a VIP for Discounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46v-ul-GZP">
-                                        <rect key="frame" x="24" y="26" width="202.66666666666666" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="T9Y-Mo-05J"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="17"/>
-                                        <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfG-Zl-Nqo">
-                                        <rect key="frame" x="282.33333333333331" y="47" width="50.666666666666686" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="zhg-Ml-xRP"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="24"/>
-                                        <color key="textColor" red="1" green="0.60392156860000001" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAV-a7-YPl">
-                                        <rect key="frame" x="336" y="52" width="33" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="kpd-gC-Yfp"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="14"/>
-                                        <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="YAV-a7-YPl" firstAttribute="trailing" secondItem="hBa-Yz-ClF" secondAttribute="trailing" constant="-12" id="03I-n1-0z6"/>
-                                    <constraint firstAttribute="trailing" secondItem="hBa-Yz-ClF" secondAttribute="trailing" constant="12" id="7Pk-zW-P7U"/>
-                                    <constraint firstItem="tfG-Zl-Nqo" firstAttribute="bottom" secondItem="hBa-Yz-ClF" secondAttribute="bottom" constant="-12" id="D4D-vi-uGb"/>
-                                    <constraint firstItem="hBa-Yz-ClF" firstAttribute="leading" secondItem="ibb-hY-SEZ" secondAttribute="leading" constant="12" id="H2L-Js-Prv"/>
-                                    <constraint firstItem="YAV-a7-YPl" firstAttribute="bottom" secondItem="tfG-Zl-Nqo" secondAttribute="bottom" id="MKK-y9-CeL"/>
-                                    <constraint firstAttribute="bottom" secondItem="hBa-Yz-ClF" secondAttribute="bottom" constant="12" id="O7n-py-vcF"/>
-                                    <constraint firstItem="46v-ul-GZP" firstAttribute="leading" secondItem="hBa-Yz-ClF" secondAttribute="leading" constant="12" id="R0i-8F-4pD"/>
-                                    <constraint firstItem="pE0-zg-IcI" firstAttribute="top" secondItem="46v-ul-GZP" secondAttribute="bottom" constant="6" id="RCk-e7-xTN"/>
-                                    <constraint firstItem="46v-ul-GZP" firstAttribute="top" secondItem="hBa-Yz-ClF" secondAttribute="top" constant="14" id="VzJ-EV-JAj"/>
-                                    <constraint firstItem="YAV-a7-YPl" firstAttribute="leading" secondItem="tfG-Zl-Nqo" secondAttribute="trailing" constant="3" id="ae7-HF-LHz"/>
-                                    <constraint firstAttribute="height" constant="96" id="dlQ-D3-PSs"/>
-                                    <constraint firstItem="hBa-Yz-ClF" firstAttribute="top" secondItem="ibb-hY-SEZ" secondAttribute="top" constant="12" id="p7g-A5-AUR"/>
-                                    <constraint firstItem="pE0-zg-IcI" firstAttribute="leading" secondItem="46v-ul-GZP" secondAttribute="leading" id="uZs-mm-thb"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BKq-gp-Zck">
-                                <rect key="frame" x="0.0" y="59" width="393" height="599"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="695"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -722,17 +744,11 @@ magna aliqua. Ut enim ad minim veniam</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="GfP-t6-3fX" firstAttribute="leading" secondItem="ANu-h5-G1w" secondAttribute="leading" id="3hp-oC-VVh"/>
-                            <constraint firstItem="GfP-t6-3fX" firstAttribute="top" secondItem="KPN-Qj-Ncf" secondAttribute="bottom" id="7mL-Jw-nDM"/>
-                            <constraint firstItem="KPN-Qj-Ncf" firstAttribute="leading" secondItem="ANu-h5-G1w" secondAttribute="leading" id="BNc-Gi-M7c"/>
                             <constraint firstItem="BKq-gp-Zck" firstAttribute="top" secondItem="ANu-h5-G1w" secondAttribute="top" id="EKD-ix-Yhk"/>
                             <constraint firstItem="GfP-t6-3fX" firstAttribute="bottom" secondItem="ANu-h5-G1w" secondAttribute="bottom" id="Fa1-6u-t3k"/>
-                            <constraint firstItem="ibb-hY-SEZ" firstAttribute="leading" secondItem="ANu-h5-G1w" secondAttribute="leading" id="MVn-XP-Cne"/>
                             <constraint firstItem="GfP-t6-3fX" firstAttribute="trailing" secondItem="ANu-h5-G1w" secondAttribute="trailing" id="Udz-5L-8hg"/>
-                            <constraint firstItem="GfP-t6-3fX" firstAttribute="top" secondItem="ibb-hY-SEZ" secondAttribute="bottom" id="ege-dB-ZAs"/>
-                            <constraint firstItem="ibb-hY-SEZ" firstAttribute="trailing" secondItem="ANu-h5-G1w" secondAttribute="trailing" id="hsU-rB-lYI"/>
-                            <constraint firstItem="KPN-Qj-Ncf" firstAttribute="trailing" secondItem="ANu-h5-G1w" secondAttribute="trailing" id="sIj-T0-pWK"/>
+                            <constraint firstItem="GfP-t6-3fX" firstAttribute="top" secondItem="BKq-gp-Zck" secondAttribute="bottom" id="red-sl-n8G"/>
                             <constraint firstItem="ANu-h5-G1w" firstAttribute="trailing" secondItem="BKq-gp-Zck" secondAttribute="trailing" id="uNv-Y0-9AG"/>
-                            <constraint firstItem="KPN-Qj-Ncf" firstAttribute="top" secondItem="BKq-gp-Zck" secondAttribute="bottom" id="xr1-QX-goq"/>
                             <constraint firstItem="BKq-gp-Zck" firstAttribute="leading" secondItem="ANu-h5-G1w" secondAttribute="leading" id="yFi-Vx-dCS"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
@@ -741,10 +757,6 @@ magna aliqua. Ut enim ad minim veniam</string>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
-                        <outlet property="advertInfoLabel" destination="pE0-zg-IcI" id="hGL-Wh-peG"/>
-                        <outlet property="advertKWhLabel" destination="tfG-Zl-Nqo" id="Igg-Jv-BEt"/>
-                        <outlet property="advertTitleLabel" destination="46v-ul-GZP" id="cXq-F9-IuI"/>
-                        <outlet property="advertView" destination="ibb-hY-SEZ" id="9BC-7k-CBv"/>
                         <outlet property="bottomLeftDw" destination="yug-R2-zQ8" id="yvu-9S-VeG"/>
                         <outlet property="bottomLeftFee" destination="zSV-8K-EkW" id="M4K-GO-vs5"/>
                         <outlet property="bottomRightFee" destination="uVp-8x-uW0" id="nxz-8a-iQU"/>
@@ -753,7 +765,6 @@ magna aliqua. Ut enim ad minim veniam</string>
                         <outlet property="bottomTimeD" destination="2OB-IZ-2Gt" id="Eaa-nZ-VcR"/>
                         <outlet property="bottomView" destination="GfP-t6-3fX" id="yks-3L-itY"/>
                         <outlet property="bottomVipIV" destination="qwh-gW-eND" id="63m-eK-xQJ"/>
-                        <outlet property="tvBottomHeightLC" destination="mgL-VK-cZy" id="YCa-Gq-IJM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="64n-qf-NGi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -25,6 +25,7 @@ class GXHomeDetailVC: GXBaseViewController {
             tableView.configuration(estimated: true)
             tableView.sectionHeaderHeight = 0
             tableView.sectionFooterHeight = 0
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
             tableView.register(cellType: GXHomeDetailCell0.self)
             tableView.register(cellType: GXHomeDetailCell1.self)
             tableView.register(cellType: GXHomeDetailCell2.self)

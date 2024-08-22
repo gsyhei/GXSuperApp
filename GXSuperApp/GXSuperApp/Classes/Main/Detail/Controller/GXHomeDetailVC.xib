@@ -34,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2We-ga-MCK">
-                    <rect key="frame" x="0.0" y="59" width="393" height="683"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="695"/>
                     <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -44,13 +44,6 @@
                         <outlet property="delegate" destination="-1" id="FL2-1I-f7j"/>
                     </connections>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pq-w8-YSM">
-                    <rect key="frame" x="0.0" y="742" width="393" height="12"/>
-                    <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="12" id="AWD-x9-cYj"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YaA-Su-x7S" userLabel="BottomView">
                     <rect key="frame" x="0.0" y="754" width="393" height="64"/>
                     <subviews>
@@ -172,16 +165,13 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="9pq-w8-YSM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EfV-ZA-UrI"/>
+                <constraint firstItem="YaA-Su-x7S" firstAttribute="top" secondItem="2We-ga-MCK" secondAttribute="bottom" id="Wfx-cc-1SJ"/>
                 <constraint firstItem="2We-ga-MCK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aaz-W3-Z3q"/>
                 <constraint firstItem="YaA-Su-x7S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bkn-na-myl"/>
                 <constraint firstItem="2We-ga-MCK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="cFf-2A-qgg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2We-ga-MCK" secondAttribute="trailing" id="dVS-E8-YaP"/>
-                <constraint firstItem="YaA-Su-x7S" firstAttribute="top" secondItem="9pq-w8-YSM" secondAttribute="bottom" id="da7-bX-1Ld"/>
-                <constraint firstItem="9pq-w8-YSM" firstAttribute="top" secondItem="2We-ga-MCK" secondAttribute="bottom" id="fHd-WE-cgf"/>
                 <constraint firstItem="YaA-Su-x7S" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="fwK-gE-FDB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YaA-Su-x7S" secondAttribute="bottom" id="hex-3Q-ehE"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9pq-w8-YSM" secondAttribute="trailing" id="ng2-pd-yX8"/>
             </constraints>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
