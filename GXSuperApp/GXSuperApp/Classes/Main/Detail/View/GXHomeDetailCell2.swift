@@ -52,6 +52,6 @@ class GXHomeDetailCell2: UITableViewCell, NibReusable {
         let usAttrText: NSAttributedString = .gx_stationAttrText(type: .us, isSelected: false, count: model.usIdleCount, maxCount: model.usCount, fontSize: 16)
         self.usNumberLabel.attributedText = usAttrText
         
-        self.maxPowerLabel.text = "\(model.maxPower)KW"
+        self.maxPowerLabel.text = String(format: "%gKW", Float(model.maxPower)/1000.0)
     }
 }

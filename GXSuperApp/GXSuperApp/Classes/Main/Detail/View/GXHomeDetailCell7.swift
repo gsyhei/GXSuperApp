@@ -41,7 +41,7 @@ class GXHomeDetailCell7: UITableViewCell, NibReusable {
         self.arrowIView.isHidden = true
     }
     
-    func setCell8Type() {
+    func setCell7FeedbackType() {
         self.nameLabel.text = "Feedback"
         self.infoLabel.text = nil
         self.arrowIView.isHidden = false

@@ -105,10 +105,10 @@ extension GXHomeDetailViewModel {
     func updateCellIndexs() {
         guard let detail = self.detailData else { return }
         if detail.freeParking.isEmpty {
-            self.cellIndexs = [0, 1, 2, 3, 5, 6, 7]
+            self.cellIndexs = [0, 1, 2, 3, 8, 5, 6, 7]
         }
         else {
-            self.cellIndexs = [0, 1, 2, 3, 4, 5, 6, 7]
+            self.cellIndexs = [0, 1, 2, 3, 8, 4, 5, 6, 7]
         }
     }
     

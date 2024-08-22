@@ -16,10 +16,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXHomeDetailVC" customModule="GXSuperApp" customModuleProvider="target">
             <connections>
-                <outlet property="advertInfoLabel" destination="MDa-sI-vMV" id="bUu-XY-ZNc"/>
-                <outlet property="advertKWhLabel" destination="cdk-X5-2E6" id="Gks-Ug-6Yh"/>
-                <outlet property="advertTitleLabel" destination="Q7Q-I7-rh3" id="G62-AG-Uin"/>
-                <outlet property="advertView" destination="1f9-B3-70E" id="Lp6-m3-3fO"/>
                 <outlet property="bottomLeftDw" destination="IvF-xA-0Ec" id="YJ5-R1-aBR"/>
                 <outlet property="bottomLeftFee" destination="gth-1R-AsN" id="Fj1-Yg-eKQ"/>
                 <outlet property="bottomRightFee" destination="Eax-Qf-lZz" id="jP3-Hx-eeO"/>
@@ -29,7 +25,6 @@
                 <outlet property="bottomView" destination="YaA-Su-x7S" id="f3i-Pc-pLY"/>
                 <outlet property="bottomVipIV" destination="hja-xq-uyF" id="Q7w-a7-DnI"/>
                 <outlet property="tableView" destination="2We-ga-MCK" id="3OF-ia-4go"/>
-                <outlet property="tvBottomHeightLC" destination="AWD-x9-cYj" id="Z3N-Gf-wkF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -39,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2We-ga-MCK">
-                    <rect key="frame" x="0.0" y="59" width="393" height="599"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="683"/>
                     <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -50,10 +45,10 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pq-w8-YSM">
-                    <rect key="frame" x="0.0" y="658" width="393" height="96"/>
+                    <rect key="frame" x="0.0" y="742" width="393" height="12"/>
                     <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="96" id="AWD-x9-cYj"/>
+                        <constraint firstAttribute="height" constant="12" id="AWD-x9-cYj"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YaA-Su-x7S" userLabel="BottomView">
@@ -173,97 +168,11 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1f9-B3-70E" userLabel="AdvertView">
-                    <rect key="frame" x="0.0" y="658" width="393" height="96"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ih-79-ixZ">
-                            <rect key="frame" x="12" y="12" width="369" height="72"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" backgroundImage="details_list_bg_vip"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="advertButtonClicked:" destination="-1" eventType="touchUpInside" id="ne2-O2-6tV"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save up to $270.00/year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDa-sI-vMV">
-                            <rect key="frame" x="24" y="52" width="146" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="DSx-bg-6hM"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                            <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a VIP for Discounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7Q-I7-rh3">
-                            <rect key="frame" x="24" y="26" width="202.66666666666666" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="nJG-qJ-jIV"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="17"/>
-                            <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdk-X5-2E6">
-                            <rect key="frame" x="282.33333333333331" y="47" width="50.666666666666686" height="25"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="25" id="Vpr-S5-GlL"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="24"/>
-                            <color key="textColor" red="1" green="0.60392156862745094" blue="0.031372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3v-UI-VHj">
-                            <rect key="frame" x="336" y="52" width="33" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="Dxy-YS-7Eb"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="14"/>
-                            <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="2ih-79-ixZ" firstAttribute="leading" secondItem="1f9-B3-70E" secondAttribute="leading" constant="12" id="0FI-pr-G9X"/>
-                        <constraint firstItem="m3v-UI-VHj" firstAttribute="leading" secondItem="cdk-X5-2E6" secondAttribute="trailing" constant="3" id="0dd-JI-9OP"/>
-                        <constraint firstItem="2ih-79-ixZ" firstAttribute="top" secondItem="1f9-B3-70E" secondAttribute="top" constant="12" id="2GX-ns-wky"/>
-                        <constraint firstAttribute="trailing" secondItem="2ih-79-ixZ" secondAttribute="trailing" constant="12" id="BHD-Gl-Hkq"/>
-                        <constraint firstItem="Q7Q-I7-rh3" firstAttribute="leading" secondItem="2ih-79-ixZ" secondAttribute="leading" constant="12" id="DSk-W0-owK"/>
-                        <constraint firstAttribute="height" constant="96" id="Guk-uL-1Ru"/>
-                        <constraint firstItem="MDa-sI-vMV" firstAttribute="leading" secondItem="Q7Q-I7-rh3" secondAttribute="leading" id="Kns-bA-gPl"/>
-                        <constraint firstItem="m3v-UI-VHj" firstAttribute="bottom" secondItem="cdk-X5-2E6" secondAttribute="bottom" id="URv-AO-MYw"/>
-                        <constraint firstAttribute="bottom" secondItem="2ih-79-ixZ" secondAttribute="bottom" constant="12" id="e9O-yc-JJk"/>
-                        <constraint firstItem="Q7Q-I7-rh3" firstAttribute="top" secondItem="2ih-79-ixZ" secondAttribute="top" constant="14" id="f20-ZQ-gfZ"/>
-                        <constraint firstItem="MDa-sI-vMV" firstAttribute="top" secondItem="Q7Q-I7-rh3" secondAttribute="bottom" constant="6" id="nD7-mw-hN1"/>
-                        <constraint firstItem="m3v-UI-VHj" firstAttribute="trailing" secondItem="2ih-79-ixZ" secondAttribute="trailing" constant="-12" id="s1g-H6-6AG"/>
-                        <constraint firstItem="cdk-X5-2E6" firstAttribute="bottom" secondItem="2ih-79-ixZ" secondAttribute="bottom" constant="-12" id="xFu-Qe-OOU"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="YaA-Su-x7S" firstAttribute="top" secondItem="1f9-B3-70E" secondAttribute="bottom" id="0wT-p3-0e4"/>
                 <constraint firstItem="9pq-w8-YSM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EfV-ZA-UrI"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1f9-B3-70E" secondAttribute="trailing" id="GeS-yQ-Gre"/>
-                <constraint firstItem="1f9-B3-70E" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PoM-U6-gI5"/>
                 <constraint firstItem="2We-ga-MCK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aaz-W3-Z3q"/>
                 <constraint firstItem="YaA-Su-x7S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bkn-na-myl"/>
                 <constraint firstItem="2We-ga-MCK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="cFf-2A-qgg"/>
@@ -281,7 +190,6 @@
         </view>
     </objects>
     <resources>
-        <image name="details_list_bg_vip" width="351" height="72"/>
         <image name="details_list_ic_vip" width="28" height="14"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

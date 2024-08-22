@@ -12,11 +12,6 @@ import MBProgressHUD
 import GXRefresh
 
 class GXHomeDetailVC: GXBaseViewController {
-    @IBOutlet weak var advertView: UIView!
-    @IBOutlet weak var advertTitleLabel: UILabel!
-    @IBOutlet weak var advertInfoLabel: UILabel!
-    @IBOutlet weak var advertKWhLabel: UILabel!
-    
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var bottomLeftFee: UILabel!
     @IBOutlet weak var bottomLeftDw: UILabel!
@@ -25,8 +20,6 @@ class GXHomeDetailVC: GXBaseViewController {
     @IBOutlet weak var bottomRightFeeLeftLC: NSLayoutConstraint!
     @IBOutlet weak var bottomTimeD: UILabel!
     @IBOutlet weak var bottomScanButton: UIButton!
-    
-    @IBOutlet weak var tvBottomHeightLC: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.configuration(estimated: true)
@@ -40,6 +33,7 @@ class GXHomeDetailVC: GXBaseViewController {
             tableView.register(cellType: GXHomeDetailCell5.self)
             tableView.register(cellType: GXHomeDetailCell6.self)
             tableView.register(cellType: GXHomeDetailCell7.self)
+            tableView.register(cellType: GXHomeDetailCell8.self)
         }
     }
     
@@ -201,8 +195,11 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             cell.setCell7Type(model: self.viewModel.detailData)
             return cell
         case 8:
-            let cell: GXHomeDetailCell7 = tableView.dequeueReusableCell(for: indexPath)
-            cell.setCell8Type()
+            let cell: GXHomeDetailCell8 = tableView.dequeueReusableCell(for: indexPath)
+            cell.vipAction = {[weak self] in
+                guard let `self` = self else { return }
+                self.gotoVipVC()
+            }
             return cell
         default: return UITableViewCell()
         }
@@ -221,7 +218,7 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
         case 5: return 252
         case 6: return 126
         case 7: return 66
-        case 8: return 66
+        case 8: return 84
         default: return .zero
         }
     }
@@ -237,14 +234,6 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
 }
 
 private extension GXHomeDetailVC {
-    
-    @IBAction func advertButtonClicked(_ sender: Any?) {
-        // 开通会员
-        let vc = GXVipVC.xibViewController()
-        vc.gx_addBackBarButtonItem()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     @IBAction func scanButtonClicked(_ sender: Any?) {
         if GXUserManager.shared.isLogin {
             let vc = GXQRCodeReaderVC.xibViewController()
@@ -325,23 +314,6 @@ private extension GXHomeDetailVC {
         guard let detail = self.viewModel.detailData else { return }
         
         self.tableView.reloadData()
-        /// advertView
-        if GXUserManager.shared.isLogin {
-            self.tvBottomHeightLC.constant = 96.0
-            self.advertView.isHidden = false
-            if GXUserManager.shared.isVip {
-                self.advertTitleLabel.text = "VIP for Discounts"
-            }
-            else {
-                self.advertTitleLabel.text = "Become a VIP for Discounts"
-            }
-            self.advertInfoLabel.text = (GXUserManager.shared.paramsData?.memberReduction ?? "")
-            self.advertKWhLabel.text = "$\(GXUserManager.shared.paramsData?.memberFee ?? "")"
-        }
-        else {
-            self.tvBottomHeightLC.constant = 12.0
-            self.advertView.isHidden = true
-        }
         /// bottomView
         self.bottomScanButton.setBackgroundColor(.gx_green, for: .normal)
         self.bottomScanButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
@@ -449,4 +421,15 @@ private extension GXHomeDetailVC {
         }
     }
     
+    func gotoVipVC() {
+        if GXUserManager.shared.isLogin {
+            let vc = GXVipVC.xibViewController()
+            vc.gx_addBackBarButtonItem()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else {
+            GXAppDelegate?.gotoLogin(from: self)
+        }
+    }
+
 }

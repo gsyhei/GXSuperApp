@@ -33,7 +33,7 @@ class GXHomeDetailChargerStatusCell: UITableViewCell, NibReusable {
         guard let model = model else { return }
         
         self.chargerNumLabel.text = model.qrcode
-        self.maximumPowerLabel.text = "\(model.maxPower)KW"
+        self.maximumPowerLabel.text = String(format: "%gKW", Float(model.maxPower)/1000.0)
         if model.idleFlag == GX_YES {
             switch model.status {
             case "Available":
