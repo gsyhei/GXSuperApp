@@ -22,16 +22,16 @@
                         <rect key="frame" x="12" y="12" width="351" height="44"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXt-KQ-Nju" userLabel="TagView_L">
-                                <rect key="frame" x="12" y="11" width="70.666666666666671" height="22"/>
+                                <rect key="frame" x="12" y="11" width="88.666666666666671" height="22"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_map_ic_tesla_normal" translatesAutoresizingMaskIntoConstraints="NO" id="KtY-E4-tb6">
-                                        <rect key="frame" x="0.0" y="0.0" width="28" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="22"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="28" id="KJN-c5-Wza"/>
+                                            <constraint firstAttribute="width" constant="46" id="KJN-c5-Wza"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASn-tf-7wD">
-                                        <rect key="frame" x="31.999999999999996" y="0.0" width="34.666666666666643" height="22"/>
+                                        <rect key="frame" x="50" y="0.0" width="34.666666666666657" height="22"/>
                                         <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="16"/>
                                         <color key="textColor" red="0.81568627449999997" green="0.25490196079999999" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="klp-bs-L6e" userLabel="TagView_R">
-                                <rect key="frame" x="90.666666666666686" y="11" width="70.333333333333314" height="22"/>
+                                <rect key="frame" x="108.66666666666669" y="11" width="70.333333333333314" height="22"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_map_ic_us_normal" translatesAutoresizingMaskIntoConstraints="NO" id="4eY-fv-thM">
                                         <rect key="frame" x="0.0" y="0.0" width="28" height="22"/>
@@ -160,7 +160,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="home_map_ic_tesla_normal" width="19" height="15"/>
+        <image name="home_map_ic_tesla_normal" width="32" height="15"/>
         <image name="home_map_ic_us_normal" width="19" height="15"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

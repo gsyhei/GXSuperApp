@@ -212,7 +212,7 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
         let index = self.viewModel.cellIndexs[indexPath.row]
         switch index {
         case 0: return 112
-        case 1: return 198
+        case 1: return 178
         case 2: return 56
         case 3: return 264
         case 4: return 216

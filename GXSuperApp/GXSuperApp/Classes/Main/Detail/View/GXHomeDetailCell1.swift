@@ -11,6 +11,7 @@ import Reusable
 class GXHomeDetailCell1: UITableViewCell, NibReusable {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var leftLineImgView: UIImageView!
     @IBOutlet weak var tagsView: GXTagsView!
     @IBOutlet weak var tagsHeightLC: NSLayoutConstraint!
@@ -18,8 +19,7 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var addressDetailLabel: UILabel!
-    @IBOutlet weak var bottomImgView: UIImageView!
-    @IBOutlet weak var favoritedButton: UIButton!
+
     var sharedAction: GXActionBlock?
     var favoritedAction: GXActionBlockItem<UIButton>?
     var navigationAction: GXActionBlock?
@@ -30,16 +30,14 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
         
         let lineColors: [UIColor] = [.gx_green, UIColor(hexString: "#278CFF")]
         self.leftLineImgView.image = UIImage(gradientColors: lineColors, style: .vertical, size: CGSize(width: 4, height: 14))
-        let bottomColors: [UIColor] = [.gx_lightGreen, .white]
-        self.bottomImgView.image = UIImage(gradientColors: bottomColors, style: .vertical, size: CGSize(width: 10, height: 40))
         self.tagsView.updateTitles(titles: [], width: SCREEN_WIDTH - 48, isShowFristLine: false)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.timeView.cornerRadius = self.timeView.frame.height/2
-        self.timeView.layer.borderWidth = 0.5
-        self.timeView.layer.borderColor = UIColor.gx_lightGray.cgColor
+//        self.timeView.cornerRadius = self.timeView.frame.height/2
+//        self.timeView.layer.borderWidth = 0.5
+//        self.timeView.layer.borderColor = UIColor.gx_lightGray.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,10 +48,11 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
         guard let model = model else { return }
         
         self.nameLabel.text = model.name
+        let distance: Float = Float(model.distance)/1609.344
+        self.distanceLabel.text = String(format: "%.1fmiles", distance)
         let titles = model.aroundFacilitiesList.compactMap { $0.name }
         let height = self.tagsView.updateTitles(titles: titles, width: SCREEN_WIDTH - 48, isShowFristLine: false)
         self.tagsHeightLC.constant = height
-        self.favoritedButton.isSelected = (model.favoriteFlag == GX_YES)
         self.addressLabel.text = model.address
         self.addressDetailLabel.text = model.siteGuidance
     }

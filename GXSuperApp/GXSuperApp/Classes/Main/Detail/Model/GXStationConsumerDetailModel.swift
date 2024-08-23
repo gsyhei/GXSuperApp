@@ -30,6 +30,7 @@ class GXStationConsumerDetailPricesItem: NSObject, HandyJSON {
 }
 
 class GXStationConsumerDetailData: NSObject, HandyJSON {
+    var distance: Int = 0
     var address: String = ""
     var serviceFee: CGFloat = 0
     var floor: String = ""

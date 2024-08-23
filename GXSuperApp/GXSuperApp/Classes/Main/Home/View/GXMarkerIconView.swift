@@ -17,7 +17,7 @@ class GXMarkerIconView: UIView {
 
     class func createIconView() -> GXMarkerIconView {
         return GXMarkerIconView.xibView().then {
-            $0.frame = CGRect(x: 0, y: 0, width: 69, height: 50)
+            $0.frame = CGRect(x: 0, y: 0, width: 80, height: 50)
         }
     }
     
@@ -75,7 +75,7 @@ extension GXMarkerIconView {
         let usWidth = usAttrText.width()
         
         let width = max(usWidth, tslWidth)
-        self.frame.size.width = width + 40
+        self.frame.size.width = width + 53
         self.layoutIfNeeded()
     }
 

@@ -168,8 +168,8 @@ class GXSelectedMarkerInfoView: UIView {
         // 站点图片
         self.dataSource.data = model.aroundServicesArr
         // 距离
-        let distance: Float = Float(model.distance)/1000.0
-        self.distanceLabel.text = String(format: "%.1fkm", distance)
+        let distance: Float = Float(model.distance)/1609.344
+        self.distanceLabel.text = String(format: "%.1fmiles", distance)
     }
     
     func showPhotoPicker(index: Int, image: UIImage?) {
