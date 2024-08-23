@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33048EF32C7882150013AE4A /* GXHomeDetailChargerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33048EF12C7882150013AE4A /* GXHomeDetailChargerCell.swift */; };
+		33048EF42C7882150013AE4A /* GXHomeDetailChargerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33048EF22C7882150013AE4A /* GXHomeDetailChargerCell.xib */; };
 		330607B32C3932BA00F59C08 /* GXChargingOrderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330607B22C3932BA00F59C08 /* GXChargingOrderDetailsViewModel.swift */; };
 		3307ECC52C65CF1200E38F78 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3307ECC42C65CF1200E38F78 /* GoogleService-Info.plist */; };
 		330B40BF2C3F90C800D1136B /* GXUploadFileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B40BE2C3F90C800D1136B /* GXUploadFileModel.swift */; };
@@ -272,6 +274,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33048EF12C7882150013AE4A /* GXHomeDetailChargerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailChargerCell.swift; sourceTree = "<group>"; };
+		33048EF22C7882150013AE4A /* GXHomeDetailChargerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailChargerCell.xib; sourceTree = "<group>"; };
 		330607B22C3932BA00F59C08 /* GXChargingOrderDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingOrderDetailsViewModel.swift; sourceTree = "<group>"; };
 		3307ECC42C65CF1200E38F78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		330B40BE2C3F90C800D1136B /* GXUploadFileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXUploadFileModel.swift; sourceTree = "<group>"; };
@@ -896,6 +900,8 @@
 				3398F7352C27D76200A02CEF /* GXHomeDetailChargingFeeHeader.swift */,
 				33A91E2F2C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.swift */,
 				33A91E302C289FAC00F7E214 /* GXHomeDetailChargerStatusCell.xib */,
+				33048EF12C7882150013AE4A /* GXHomeDetailChargerCell.swift */,
+				33048EF22C7882150013AE4A /* GXHomeDetailChargerCell.xib */,
 				33A91E372C28A83B00F7E214 /* GXHomeDetailFacilitiesView.swift */,
 				33A91E3D2C28B1E200F7E214 /* GXHomeDetailPriceDetailsMenu.swift */,
 				339A5ED92C29C8D9004F1B7F /* GXHomeDetailChargerStatusMenu.swift */,
@@ -1350,6 +1356,7 @@
 				339C85E32C393FDC0098D527 /* GXChargingOrderDetailsCell1.xib in Resources */,
 				33D9DFEB2C0EFA0900A282D5 /* Assets.xcassets in Resources */,
 				33E710242C40A88100233D11 /* GXMineVC.xib in Resources */,
+				33048EF42C7882150013AE4A /* GXHomeDetailChargerCell.xib in Resources */,
 				339337012C6213DE00DED06F /* GXChargingLaunchStatusVC.xib in Resources */,
 				339A1C292C38CF03001FBA5E /* GXChargingOrderDetailsVC.xib in Resources */,
 				33DB78E32C43BFA600F2763C /* GXMineSettingVC.xib in Resources */,
@@ -1607,6 +1614,7 @@
 				33A91E362C28A53100F7E214 /* GXHomeDetailCell6.swift in Sources */,
 				339889902C182CD800EA489A /* GXSelectTagsView.swift in Sources */,
 				33AD44D32C6AF43200C371C6 /* SKPayment+Add.swift in Sources */,
+				33048EF32C7882150013AE4A /* GXHomeDetailChargerCell.swift in Sources */,
 				33EC55B82C101BA100D4CCD0 /* GXSearchController.swift in Sources */,
 				33BE2BE32C379FFC0084F7CB /* GXChargingFeeConfirmViewModel.swift in Sources */,
 				339A07162C2F99A000BDDD46 /* GXLoginAllViewModel.swift in Sources */,

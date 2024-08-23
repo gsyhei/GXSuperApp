@@ -9,16 +9,15 @@ import UIKit
 
 class GXHomeDetailChargerStatusMenu: GXBaseMenuView {
     private weak var viewModel: GXHomeDetailViewModel?
-
-    private lazy var tableView: UITableView = {
-        return UITableView(frame: self.bounds, style: .plain).then {
-            $0.configuration(estimated: true)
-            $0.rowHeight = 64
-            $0.allowsSelection = false
-            $0.separatorColor = .gx_lightGray
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = .zero
+        layout.minimumInteritemSpacing = 12
+        layout.minimumLineSpacing = 12
+        return UICollectionView(frame: self.bounds, collectionViewLayout: layout).then {
             $0.dataSource = self
             $0.delegate = self
-            $0.register(cellType: GXHomeDetailChargerStatusCell.self)
+            $0.register(cellType: GXHomeDetailChargerCell.self)
         }
     }()
 
@@ -26,43 +25,39 @@ class GXHomeDetailChargerStatusMenu: GXBaseMenuView {
         super.createSubviews()
         
         self.titleLabel.text = "Charger Status"
-        self.addSubview(self.tableView)
-        self.tableView.snp.makeConstraints { make in
-            make.top.equalTo(self.topLineView.snp.bottom).offset(2)
-            make.left.equalToSuperview().offset(3)
-            make.right.equalToSuperview().offset(-3)
-            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-10)
+        self.addSubview(self.collectionView)
+        self.collectionView.snp.makeConstraints { make in
+            make.top.equalTo(self.topLineView.snp.bottom).offset(15)
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().offset(-15)
+            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-15)
         }
     }
     
     func bindView(viewModel: GXHomeDetailViewModel?) {
         guard let viewModel = viewModel else { return }
         self.viewModel = viewModel
-        self.tableView.reloadData()
+        self.collectionView.reloadData()
         
-        var height = tableView.rowHeight * CGFloat(viewModel.ccRowsList.count)
-        height += self.safeAreaHeight + 12
+        let cloumn = (viewModel.ccRowsList.count + 1) / 2
+        var height = CGFloat(94 * cloumn) + CGFloat((cloumn - 1) * 12)
+        height += self.safeAreaHeight + 30
         self.updateHeight(height: height)
     }
 }
 
-extension GXHomeDetailChargerStatusMenu: UITableViewDataSource, UITableViewDelegate {
-    // MARK: - UITableViewDataSource
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension GXHomeDetailChargerStatusMenu: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    // MARK: - UICollectionViewDataSource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel?.ccRowsList.count ?? 0
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: GXHomeDetailChargerStatusCell = tableView.dequeueReusableCell(for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: GXHomeDetailChargerCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.bindCell(model: self.viewModel?.ccRowsList[indexPath.row])
         return cell
     }
-    
-    // MARK: - UITableViewDelegate
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    // MARK: - UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (collectionView.width - 12)/2, height: 94)
     }
-    
 }

@@ -13,19 +13,14 @@ class GXHomeDetailCell5: UITableViewCell, NibReusable {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
-    @IBOutlet weak var tvHeightLC: NSLayoutConstraint!
-    @IBOutlet weak var tableView: UITableView! {
+    @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
-            tableView.configuration(estimated: true)
-            tableView.sectionHeaderHeight = 0
-            tableView.sectionFooterHeight = 0
-            tableView.rowHeight = 64
-            tableView.separatorColor = .gx_lightGray
-            tableView.dataSource = self
-            tableView.delegate = self
-            tableView.register(cellType: GXHomeDetailChargerStatusCell.self)
+            collectionView.dataSource = self
+            collectionView.delegate = self
+            collectionView.register(cellType: GXHomeDetailChargerCell.self)
         }
     }
+    
     var showItems: [GXConnectorConsumerRowsItem] = []
     var moreAction: GXActionBlock?
 
@@ -44,53 +39,35 @@ class GXHomeDetailCell5: UITableViewCell, NibReusable {
     }
     
     func bindCell(items: [GXConnectorConsumerRowsItem]?) {
-        guard let items = items else { return }
+        guard let items = items, items.count > 0 else { return }
         self.showItems = items
-        let count = min(self.showItems.count, 3)
-        let height = tableView.rowHeight * CGFloat(count)
-        self.tvHeightLC.constant = height
-        self.tableView.reloadData()
+        self.collectionView.reloadData()
     }
 }
 
-extension GXHomeDetailCell5: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
-    // MARK: - SkeletonTableViewDataSource
-    
-    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+extension GXHomeDetailCell5: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    // MARK: - UICollectionViewDataSource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.showItems.count > 2 ? 2 : self.showItems.count
     }
-    
-    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return GXHomeDetailChargerStatusCell.reuseIdentifier
-    }
-    
-    func collectionSkeletonView(_ skeletonView: UITableView, skeletonCellForRowAt indexPath: IndexPath) -> UITableViewCell? {
-        let cell: GXHomeDetailChargerStatusCell = skeletonView.dequeueReusableCell(for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: GXHomeDetailChargerCell = collectionView.dequeueReusableCell(for: indexPath)
+        cell.bindCell(model: self.showItems[indexPath.item])
         return cell
     }
-    
-    func collectionSkeletonView(_ skeletonView: UITableView, prepareCellForSkeleton cell: UITableViewCell, at indexPath: IndexPath) {
-        
+    // MARK: - UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (collectionView.width - 8)/2, height: 94)
     }
-    
-    // MARK: - UITableViewDataSource
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return min(self.showItems.count, 3)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .zero
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: GXHomeDetailChargerStatusCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.bindCell(model: self.showItems[indexPath.row])
-        return cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
     }
-    
-    // MARK: - UITableViewDelegate
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
     }
-    
 }
 
 private extension GXHomeDetailCell5 {

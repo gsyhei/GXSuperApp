@@ -216,7 +216,7 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
         case 2: return 56
         case 3: return 264
         case 4: return 216
-        case 5: return 252
+        case 5: return 173
         case 6: return 126
         case 7: return 66
         case 8: return 84
