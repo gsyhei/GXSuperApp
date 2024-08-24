@@ -23,6 +23,8 @@ class GXHomeMarkerCell: UITableViewCell, NibReusable {
     @IBOutlet weak var usNumberLabel: UILabel!
     @IBOutlet weak var tslNumberLabel: UILabel!
     var highlightedEnable: Bool = false
+    var model: GXStationConsumerRowsModel?
+    var navigationAction: GXActionBlockItem<GXStationConsumerRowsModel?>?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,7 +48,7 @@ class GXHomeMarkerCell: UITableViewCell, NibReusable {
     
     func bindCell(model: GXStationConsumerRowsModel?) {
         guard let model = model else { return }
-        
+        self.model = model
         // 名称
         self.nameLabel.text = model.name
         // 站点服务
@@ -127,5 +129,10 @@ class GXHomeMarkerCell: UITableViewCell, NibReusable {
         let distance: Float = Float(model.distance)/1000.0
         self.distanceLabel.text = String(format: "%.1fkm", distance)
     }
-    
+}
+
+extension GXHomeMarkerCell {
+    @IBAction func navigationButtonClicked(_ sender: UIButton) {
+        self.navigationAction?(self.model)
+    }
 }

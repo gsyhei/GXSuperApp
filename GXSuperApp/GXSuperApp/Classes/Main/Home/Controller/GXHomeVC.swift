@@ -31,6 +31,12 @@ class GXHomeVC: GXBaseViewController {
     private lazy var panView: GXHomePanView = {
         return GXHomePanView(frame: self.view.bounds, viewModel: self.viewModel).then {
             $0.backgroundColor = .clear
+            $0.navigationAction = {[weak self] model in
+                guard let `self` = self else { return }
+                guard let model = model else { return }
+                let coordinate = CLLocationCoordinate2D(latitude: model.lat, longitude: model.lng)
+                XYNavigationManager.show(with: self, coordinate: coordinate, endAddress: model.address)
+            }
         }
     }()
     
@@ -340,7 +346,6 @@ private extension GXHomeVC {
             self.selectedMarkerMenu?.bindView(model: marker.model)
         }
     }
-    
 }
 
 private extension GXHomeVC {

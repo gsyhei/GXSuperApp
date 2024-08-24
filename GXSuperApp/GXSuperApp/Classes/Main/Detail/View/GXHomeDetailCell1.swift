@@ -19,9 +19,6 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var addressDetailLabel: UILabel!
-
-    var sharedAction: GXActionBlock?
-    var favoritedAction: GXActionBlockItem<UIButton>?
     var navigationAction: GXActionBlock?
 
     override func awakeFromNib() {
@@ -31,13 +28,6 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
         let lineColors: [UIColor] = [.gx_green, UIColor(hexString: "#278CFF")]
         self.leftLineImgView.image = UIImage(gradientColors: lineColors, style: .vertical, size: CGSize(width: 4, height: 14))
         self.tagsView.updateTitles(titles: [], width: SCREEN_WIDTH - 48, isShowFristLine: false)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-//        self.timeView.cornerRadius = self.timeView.frame.height/2
-//        self.timeView.layer.borderWidth = 0.5
-//        self.timeView.layer.borderColor = UIColor.gx_lightGray.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -60,13 +50,6 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
 }
 
 extension GXHomeDetailCell1 {
-    @IBAction func shareButtonClicked(_ sender: UIButton) {
-        self.sharedAction?()
-    }
-    @IBAction func favoritedButtonClicked(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        self.favoritedAction?(sender)
-    }
     @IBAction func navigationButtonClicked(_ sender: UIButton) {
         self.navigationAction?()
     }

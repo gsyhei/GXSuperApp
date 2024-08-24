@@ -51,7 +51,7 @@ class GXHomeDetailChargerCell: UICollectionViewCell, NibReusable {
         else {
             self.backgroundColor = .gx_background
             self.chargerStatusLabel.textColor = .gx_drakGray
-            self.chargerStatusLabel.text = model.status
+            self.chargerStatusLabel.text = model.status.isEmpty ? "Faulted" : model.status
             self.progressView.isHidden = true
         }
     }

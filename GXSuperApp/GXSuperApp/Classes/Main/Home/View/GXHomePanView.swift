@@ -27,6 +27,7 @@ class GXHomePanView: UIView {
     weak var viewModel: GXHomeViewModel?
     var changePositionAction: GXActionBlockItem<PanPosition>?
     var didSelectRowAtAction: GXActionBlockItem<GXStationConsumerRowsModel>?
+    var navigationAction: GXActionBlockItem<GXStationConsumerRowsModel?>?
 
     lazy var arrowButton: UIButton = {
         return UIButton(type: .custom).then {
@@ -161,7 +162,10 @@ extension GXHomePanView: UITableViewDataSource, UITableViewDelegate {
         let cell: GXHomeMarkerCell = tableView.dequeueReusableCell(for: indexPath)
         let model = self.viewModel?.stationConsumerList[indexPath.section]
         cell.bindCell(model: model)
-        
+        cell.navigationAction = {[weak self] model in
+            guard let `self` = self else { return }
+            self.navigationAction?(model)
+        }
         return cell
     }
     

@@ -37,13 +37,25 @@
                                         <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zf-Yd-fIc">
+                                        <rect key="frame" x="0.0" y="0.0" width="75.333333333333329" height="22"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="navigationButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lna-Fu-QGi"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="3zf-Yd-fIc" firstAttribute="top" secondItem="EnZ-nh-ee5" secondAttribute="top" id="0ep-yo-cLb"/>
                                     <constraint firstAttribute="bottom" secondItem="jpD-3f-xkf" secondAttribute="bottom" id="3ru-Ex-zlQ"/>
+                                    <constraint firstItem="3zf-Yd-fIc" firstAttribute="leading" secondItem="EnZ-nh-ee5" secondAttribute="leading" id="9Mi-4K-qhN"/>
                                     <constraint firstItem="jpD-3f-xkf" firstAttribute="leading" secondItem="EnZ-nh-ee5" secondAttribute="leading" constant="20" id="Fyg-qi-rOB"/>
                                     <constraint firstItem="8Iz-9b-vnn" firstAttribute="centerY" secondItem="EnZ-nh-ee5" secondAttribute="centerY" id="P0e-zy-Eg1"/>
                                     <constraint firstItem="jpD-3f-xkf" firstAttribute="top" secondItem="EnZ-nh-ee5" secondAttribute="top" id="PaE-IP-6YL"/>
+                                    <constraint firstAttribute="trailing" secondItem="3zf-Yd-fIc" secondAttribute="trailing" id="TD3-xG-3Sh"/>
+                                    <constraint firstAttribute="bottom" secondItem="3zf-Yd-fIc" secondAttribute="bottom" id="ZAc-R6-DkE"/>
                                     <constraint firstAttribute="height" constant="22" id="gj3-Rp-0Rh"/>
                                     <constraint firstAttribute="trailing" secondItem="jpD-3f-xkf" secondAttribute="trailing" constant="8" id="hJQ-pi-96t"/>
                                     <constraint firstItem="8Iz-9b-vnn" firstAttribute="leading" secondItem="EnZ-nh-ee5" secondAttribute="leading" constant="8" id="piC-yE-1Yo"/>
