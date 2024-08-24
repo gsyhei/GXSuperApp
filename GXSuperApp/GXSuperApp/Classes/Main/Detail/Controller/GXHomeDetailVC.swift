@@ -72,6 +72,23 @@ class GXHomeDetailVC: GXBaseViewController {
     override func loginReloadViewData() {
         self.requestStationConsumerDetail()
     }
+    
+    func updateFavoriteBarButtonItem() {
+        if self.viewModel.detailData?.favoriteFlag == GX_YES {
+            let favorImage = UIImage(named: "com_nav_ic_collect_selected")?.withRenderingMode(.alwaysOriginal)
+            let favorItem = UIBarButtonItem(image: favorImage, style: .plain, target: self, action: #selector(requestFavoritedAction))
+            let shareImage = UIImage(named: "details_nav_ic_share")?.withRenderingMode(.alwaysOriginal)
+            let shareItem = UIBarButtonItem(image: shareImage, style: .plain, target: self, action: #selector(showSharedMenu))
+            self.navigationItem.rightBarButtonItems = [favorItem, shareItem]
+        }
+        else {
+            let favorImage = UIImage(named: "com_nav_ic_collect_normal")?.withRenderingMode(.alwaysOriginal)
+            let favorItem = UIBarButtonItem(image: favorImage, style: .plain, target: self, action: #selector(requestFavoritedAction))
+            let shareImage = UIImage(named: "details_nav_ic_share")?.withRenderingMode(.alwaysOriginal)
+            let shareItem = UIBarButtonItem(image: shareImage, style: .plain, target: self, action: #selector(showSharedMenu))
+            self.navigationItem.rightBarButtonItems = [favorItem, shareItem]
+        }
+    }
 }
 
 extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
@@ -138,17 +155,9 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
         case 1:
             let cell: GXHomeDetailCell1 = tableView.dequeueReusableCell(for: indexPath)
             cell.bindCell(model: self.viewModel.detailData)
-            cell.sharedAction = {[weak self] in
-                guard let `self` = self else { return }
-                self.showSharedMenu()
-            }
             cell.navigationAction = {[weak self] in
                 guard let `self` = self else { return }
                 self.showNavigationMenu()
-            }
-            cell.favoritedAction = {[weak self] button in
-                guard let `self` = self else { return }
-                self.requestFavoritedAction(button: button)
             }
             return cell
         case 2:
@@ -304,7 +313,7 @@ private extension GXHomeDetailVC {
             self.viewModel.requestFavoriteConsumerSave()
         }.done { isFavorite in
             MBProgressHUD.dismiss()
-            self.tableView.reloadData()
+            self.updateFavoriteBarButtonItem()
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
@@ -315,6 +324,7 @@ private extension GXHomeDetailVC {
         guard let detail = self.viewModel.detailData else { return }
         
         self.tableView.reloadData()
+        self.updateFavoriteBarButtonItem()
         /// bottomView
         self.bottomScanButton.setBackgroundColor(.gx_green, for: .normal)
         self.bottomScanButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
@@ -400,7 +410,7 @@ private extension GXHomeDetailVC {
         }
     }
     
-    func showSharedMenu() {
+    @objc func showSharedMenu() {
         let itemsToShare = ["Shared", URL(string: "https://www.apple.com")!] as [Any]
         let activityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view 
@@ -413,7 +423,7 @@ private extension GXHomeDetailVC {
         XYNavigationManager.show(with: self, coordinate: coordinate, endAddress: detail.address)
     }
     
-    func requestFavoritedAction(button: UIButton) {
+    @objc func requestFavoritedAction() {
         if GXUserManager.shared.isLogin {
             self.requestFavoriteConsumerSave()
         }
