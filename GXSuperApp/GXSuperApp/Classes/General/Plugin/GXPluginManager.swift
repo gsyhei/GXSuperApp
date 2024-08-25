@@ -15,12 +15,12 @@ public class GXPluginManager: NSObject {
     
     public override init() {}
     
-    public func register(plugin: GXPluginProtocol, forKey key: String) {
-        self.plugins[key] = plugin
+    public class func register(plugin: GXPluginProtocol, forKey key: String) {
+        GXPluginManager.shared.plugins[key] = plugin
     }
     
-    public func plugin(key: String) -> GXPluginProtocol? {
-        return self.plugins[key]
+    public class func plugin(key: String) -> GXPluginProtocol? {
+        return GXPluginManager.shared.plugins[key]
     }
     
 }

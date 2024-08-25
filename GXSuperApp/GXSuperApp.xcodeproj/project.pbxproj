@@ -38,6 +38,7 @@
 		33396A222C11E530000A1944 /* GXHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33396A202C11E530000A1944 /* GXHomeVC.swift */; };
 		33396A232C11E530000A1944 /* GXHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33396A212C11E530000A1944 /* GXHomeVC.xib */; };
 		33396A252C121A60000A1944 /* GXHomePanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33396A242C121A60000A1944 /* GXHomePanView.swift */; };
+		333B35BB2C7B51A100C2A1EF /* GXPluginDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B35BA2C7B51A100C2A1EF /* GXPluginDefine.swift */; };
 		333DE1FA2C43D8A4009B83CD /* GXMineAccountManagerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 333DE1F92C43D8A4009B83CD /* GXMineAccountManagerVC.xib */; };
 		333DE1FB2C43D8A4009B83CD /* GXMineAccountManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333DE1F82C43D8A4009B83CD /* GXMineAccountManagerVC.swift */; };
 		333DE1FD2C43DC4B009B83CD /* GXMineAccountManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333DE1FC2C43DC4B009B83CD /* GXMineAccountManagerViewModel.swift */; };
@@ -308,6 +309,7 @@
 		33396A212C11E530000A1944 /* GXHomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeVC.xib; sourceTree = "<group>"; };
 		33396A242C121A60000A1944 /* GXHomePanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomePanView.swift; sourceTree = "<group>"; };
 		33396A262C123170000A1944 /* GXSuperApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GXSuperApp.entitlements; sourceTree = "<group>"; };
+		333B35BA2C7B51A100C2A1EF /* GXPluginDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXPluginDefine.swift; sourceTree = "<group>"; };
 		333DE1F82C43D8A4009B83CD /* GXMineAccountManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMineAccountManagerVC.swift; sourceTree = "<group>"; };
 		333DE1F92C43D8A4009B83CD /* GXMineAccountManagerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXMineAccountManagerVC.xib; sourceTree = "<group>"; };
 		333DE1FC2C43DC4B009B83CD /* GXMineAccountManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMineAccountManagerViewModel.swift; sourceTree = "<group>"; };
@@ -745,6 +747,7 @@
 		339A9A6C2C79D1D000769A2A /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				333B35BA2C7B51A100C2A1EF /* GXPluginDefine.swift */,
 				339A9A6D2C79D22000769A2A /* GXPluginProtocol.swift */,
 				339A9A6F2C7A6DE100769A2A /* GXPluginManager.swift */,
 			);
@@ -1494,6 +1497,7 @@
 				3398F73A2C288EF400A02CEF /* GXHomeDetailCell4.swift in Sources */,
 				3398F7362C27D76200A02CEF /* GXHomeDetailChargingFeeHeader.swift in Sources */,
 				33A6A70D2C6DFD5200E8C770 /* GXMinePayBalanceCell.swift in Sources */,
+				333B35BB2C7B51A100C2A1EF /* GXPluginDefine.swift in Sources */,
 				33D7BFED2C26E4CC006B97C6 /* GXHomeDetailCell1.swift in Sources */,
 				339A5ED82C29BFA8004F1B7F /* GXCircleProgressBar.swift in Sources */,
 				334105C52C3B0ECC007F2F0E /* GXChargingOrderDetailsCell5.swift in Sources */,

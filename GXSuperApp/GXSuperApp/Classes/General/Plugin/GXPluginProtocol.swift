@@ -7,15 +7,20 @@
 
 import UIKit
 
+public typealias GXPluginAction = (() -> Void)
+
 public protocol GXPluginProtocol {
     
-    var parameters: [String: [String: Any]] { get }
+    func param(key: String) -> [String: Any]
+        
+    func createView(key: String, param: [String: Any]) -> UIView?
     
-    func createView(key: String, param: [String: Any]) -> UIView
+    func createViewController(key: String, param: [String: Any]) -> UIViewController?
     
-    func createViewController(key: String, param: [String: Any]) -> UIViewController
+    func push(from: UIViewController, key: String, param: [String: Any], animated flag: Bool)
     
-    func pushViewController(from: UIViewController, key: String, param: [String: Any]) -> UIViewController
+    func present(from: UIViewController, toNavc: UINavigationController?, key: String, param: [String: Any], animated flag: Bool)
+    
+    func event(key: String) -> GXPluginAction?
     
 }
-
