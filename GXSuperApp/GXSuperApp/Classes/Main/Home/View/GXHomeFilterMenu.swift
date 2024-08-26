@@ -49,12 +49,12 @@ class GXHomeFilterMenu: GXBaseMenuView {
         }
     }()
     
-    private var titleList: [String] = ["Sort", "Station Service", "Station Location", "Parking Discount", "My Preferences"]
+    private var titleList: [String] = ["Sort", "Plugs", "Station Service", "Station Location", "My Preferences"]
     private var titleCellList: [Int: [String]] = [
         0 : ["Nearest", "Lowest Price"],
-        1 : ["Restroom", "Store", "Restauraut", "Lounge", "Gym"],
-        2 : ["Ground", "Parking Lot"],
-        3 : ["Yes"],
+        1 : ["Tesla", "US"],
+        2 : ["Restroom", "Store", "Restauraut", "Lounge", "Gym"],
+        3 : ["Ground", "Parking Lot"],
         4 : ["Favorite Stations"],
     ]
     
@@ -95,7 +95,7 @@ class GXHomeFilterMenu: GXBaseMenuView {
         self.selectedModel.orderType = nil
         self.stationServiceList.removeAll()
         self.selectedModel.setSelectedPosition(index: nil)
-        self.selectedModel.freeParking = nil
+        self.selectedModel.teslaFlag = nil
         self.selectedModel.favorite = nil
         self.collectionView.reloadData()
     }
@@ -104,7 +104,7 @@ class GXHomeFilterMenu: GXBaseMenuView {
         GXUserManager.shared.filter.orderType = self.selectedModel.orderType
         GXUserManager.shared.filter.setSelectedAroundFacilities(list: self.stationServiceList)
         GXUserManager.shared.filter.position = self.selectedModel.position
-        GXUserManager.shared.filter.freeParking = self.selectedModel.freeParking
+        GXUserManager.shared.filter.teslaFlag = self.selectedModel.teslaFlag
         GXUserManager.shared.filter.favorite = self.selectedModel.favorite
         
         self.hide(animated: true)
@@ -119,7 +119,7 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 1 {
+        if section == 2 {
             return GXUserManager.shared.availableList.count
         }
         if let nameList = self.titleCellList[section] {
@@ -141,7 +141,7 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: GXHomeFilterCell = collectionView.dequeueReusableCell(for: indexPath)
-        if indexPath.section == 1 {
+        if indexPath.section == 2 {
             let item = GXUserManager.shared.availableList[indexPath.item]
             cell.nameLabel.text = item.name
             cell.isChecked = self.stationServiceList.contains(item.id)
@@ -152,10 +152,10 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
         switch indexPath.section {
         case 0:
             cell.isChecked = ((self.selectedModel.orderType ?? 1) == (indexPath.item + 1))
-        case 2:
-            cell.isChecked = (self.selectedModel.getSelectedPositionIndex() == indexPath.item)
+        case 1:
+            cell.isChecked = (self.selectedModel.getSelectedTeslaFlagIndex() == indexPath.item)
         case 3:
-            cell.isChecked = (self.selectedModel.freeParking == true)
+            cell.isChecked = (self.selectedModel.getSelectedPositionIndex() == indexPath.item)
         case 4:
             cell.isChecked = (self.selectedModel.favorite == true)
         default: break
@@ -201,21 +201,26 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
         case 0:
             self.selectedModel.orderType = indexPath.row + 1
         case 1:
+            if self.selectedModel.getSelectedTeslaFlagIndex() == indexPath.item {
+                self.selectedModel.setSelectedTeslaFlag(index: nil)
+            }
+            else {
+                self.selectedModel.setSelectedTeslaFlag(index: indexPath.item)
+            }
+        case 2:
             let item = GXUserManager.shared.availableList[indexPath.item]
             if self.stationServiceList.contains(item.id) {
                 self.stationServiceList.removeAll(where: { return $0 == item.id })
             } else {
                 self.stationServiceList.append(item.id)
             }
-        case 2:
+        case 3:
             if self.selectedModel.getSelectedPositionIndex() == indexPath.item {
                 self.selectedModel.setSelectedPosition(index: nil)
             }
             else {
                 self.selectedModel.setSelectedPosition(index: indexPath.item)
             }
-        case 3:
-            self.selectedModel.freeParking = (self.selectedModel.freeParking == nil) ? true : nil
         case 4:
             self.selectedModel.favorite = (self.selectedModel.favorite == nil) ? true : nil
         default: break

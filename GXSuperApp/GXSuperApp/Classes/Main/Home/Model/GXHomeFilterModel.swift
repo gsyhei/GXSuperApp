@@ -28,6 +28,8 @@ class GXHomeFilterModel: NSObject, GXCopyable, HandyJSON {
     var favorite: Bool?
     /// 排序方式；1：距离最近，2：低价优先
     var orderType: Int?
+    /// 类别；YES：特斯拉，NO：US
+    var teslaFlag: String?
     /// 分页参数，起始页，从1开始
     var pageNum: Int = 1
     /// 分页参数，每页显示条数
@@ -48,6 +50,10 @@ class GXHomeFilterModel: NSObject, GXCopyable, HandyJSON {
             self.aroundFacilities = nil
         }
     }
+    func getSelectedAroundFacilities() -> [Int] {
+        let stringArr = self.aroundFacilities?.components(separatedBy: ",")
+        return stringArr?.compactMap { Int($0) } ?? []
+    }
     /// 设置场站位置；LAND：地上，UNDERGROUND：地下
     func setSelectedPosition(index: Int?) {
         if let index = index {
@@ -57,7 +63,6 @@ class GXHomeFilterModel: NSObject, GXCopyable, HandyJSON {
             self.position = nil
         }
     }
-    /// 场站位置索引
     func getSelectedPositionIndex() -> Int? {
         if self.position == "LAND" {
             return 0
@@ -69,11 +74,26 @@ class GXHomeFilterModel: NSObject, GXCopyable, HandyJSON {
             return nil
         }
     }
-    /// 获得场站服务id数组
-    func getSelectedAroundFacilities() -> [Int] {
-        let stringArr = self.aroundFacilities?.components(separatedBy: ",")
-        return stringArr?.compactMap { Int($0) } ?? []
+    /// 类别；YES：特斯拉，NO：US
+    func setSelectedTeslaFlag(index: Int?) {
+        if let index = index {
+            self.teslaFlag = index == 0 ? GXBOOL.YES.rawValue : GXBOOL.NO.rawValue
+        }
+        else {
+            self.teslaFlag = nil
+        }
     }
-
+    func getSelectedTeslaFlagIndex() -> Int? {
+        if self.teslaFlag == GXBOOL.YES.rawValue {
+            return 0
+        }
+        else if self.teslaFlag == GXBOOL.NO.rawValue {
+            return 1
+        }
+        else {
+            return nil
+        }
+    }
+    
     required override init() {}
 }

@@ -29,13 +29,25 @@ class GXHomePanView: UIView {
     var didSelectRowAtAction: GXActionBlockItem<GXStationConsumerRowsModel>?
     var navigationAction: GXActionBlockItem<GXStationConsumerRowsModel?>?
 
+    lazy var topContentView: UIView = {
+        return UIView().then {
+            $0.backgroundColor = .gx_background
+        }
+    }()
     lazy var arrowButton: UIButton = {
         return UIButton(type: .custom).then {
             $0.isUserInteractionEnabled = false
-            $0.backgroundColor = .gx_background
             $0.setImage(UIImage(named: "home_list_ic_unfold"), for: .normal)
             $0.setImage(UIImage(named: "home_list_ic_fold"), for: .selected)
         }
+    }()
+    lazy var filterButton: UIButton = {
+        return UIButton(type: .custom).then {
+            $0.setImage(UIImage(named: "home_nav_ic_filter"), for: .normal)
+        }
+    }()
+    lazy var selectTagsView: GXSelectTagsView = {
+        return GXSelectTagsView()
     }()
     
     lazy var tableView: GXBaseTableView = {
@@ -57,16 +69,35 @@ class GXHomePanView: UIView {
     required init(frame: CGRect, viewModel: GXHomeViewModel) {
         super.init(frame: frame)
         
-        self.addSubview(self.arrowButton)
+        self.addSubview(self.topContentView)
+        self.topContentView.addSubview(self.arrowButton)
+        self.topContentView.addSubview(self.selectTagsView)
+        self.topContentView.addSubview(self.filterButton)
         self.addSubview(self.tableView)
         
-        self.arrowButton.snp.makeConstraints { make in
+        self.topContentView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(22)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(58)
+        }
+        self.arrowButton.snp.makeConstraints { make in
+            make.top.equalToSuperview()
             make.left.right.equalToSuperview()
             make.height.equalTo(22)
         }
-        self.tableView.snp.makeConstraints { make in
+        self.filterButton.snp.makeConstraints { make in
             make.top.equalTo(self.arrowButton.snp.bottom)
+            make.right.equalToSuperview().offset(-4)
+            make.size.equalTo(CGSize(width: 36, height: 24))
+        }
+        self.selectTagsView.snp.makeConstraints { make in
+            make.top.equalTo(self.arrowButton.snp.bottom)
+            make.left.equalToSuperview().offset(12)
+            make.right.equalTo(self.filterButton.snp.left).offset(-12)
+            make.height.equalTo(24)
+        }
+        self.tableView.snp.makeConstraints { make in
+            make.top.equalTo(self.selectTagsView.snp.bottom).offset(12)
             make.left.right.bottom.equalToSuperview()
         }
         
@@ -91,7 +122,7 @@ class GXHomePanView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.arrowButton.setRoundedCorners([.topLeft, .topRight], radius: 12)
+        self.topContentView.setRoundedCorners([.topLeft, .topRight], radius: 12)
     }
     
     func setupPanMovedY(top: CGFloat, center: CGFloat, bottom: CGFloat, position: PanPosition = .center) {

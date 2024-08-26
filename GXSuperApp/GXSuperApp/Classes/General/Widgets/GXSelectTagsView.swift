@@ -27,8 +27,6 @@ class GXSelectTagsView: UIView {
             view.isSelected = self.stationServiceList.contains(data.id)
             view.layer.masksToBounds = true
             view.layer.cornerRadius = 12.0
-            view.layer.borderWidth = view.isSelected ? 0.0 : 1.0
-            view.layer.borderColor = UIColor.gx_gray.cgColor
             view.isUserInteractionEnabled = false
         })
         let sizeSource = { (index: Int, data: GXDictListAvailableData, collectionSize: CGSize) -> CGSize in
@@ -45,10 +43,8 @@ class GXSelectTagsView: UIView {
                 
                 var selectedList = GXUserManager.shared.filter.getSelectedAroundFacilities()
                 if tapContext.view.isSelected {
-                    tapContext.view.layer.borderWidth = 0.0
                     selectedList.append(tapContext.data.id)
                 } else {
-                    tapContext.view.layer.borderWidth = 1.0
                     selectedList.removeAll(where: { return $0 == tapContext.data.id })
                 }
                 GXUserManager.shared.filter.setSelectedAroundFacilities(list: selectedList)
@@ -59,9 +55,16 @@ class GXSelectTagsView: UIView {
         return CollectionView(provider: provider)
     }()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.createSubviews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func createSubviews() {
         self.collectionView.showsHorizontalScrollIndicator = false
         self.addSubview(self.collectionView)
         self.collectionView.snp.makeConstraints { make in

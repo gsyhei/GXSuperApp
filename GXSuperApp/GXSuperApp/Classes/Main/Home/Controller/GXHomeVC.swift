@@ -15,7 +15,6 @@ class GXHomeVC: GXBaseViewController {
     @IBOutlet weak var topContainerView: UIView!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var myLocationButton: UIButton!
-    @IBOutlet weak var selectTagsView: GXSelectTagsView!
     @IBOutlet weak var ongoingView: UIView!
     @IBOutlet weak var ongoingButton: UIButton!
     @IBOutlet weak var centerIconTopLC: NSLayoutConstraint!
@@ -31,12 +30,7 @@ class GXHomeVC: GXBaseViewController {
     private lazy var panView: GXHomePanView = {
         return GXHomePanView(frame: self.view.bounds, viewModel: self.viewModel).then {
             $0.backgroundColor = .clear
-            $0.navigationAction = {[weak self] model in
-                guard let `self` = self else { return }
-                guard let model = model else { return }
-                let coordinate = CLLocationCoordinate2D(latitude: model.lat, longitude: model.lng)
-                XYNavigationManager.show(with: self, coordinate: coordinate, endAddress: model.address)
-            }
+            $0.filterButton.addTarget(self, action: #selector(self.filterButtonClicked), for: .touchUpInside)
         }
     }()
     
@@ -84,7 +78,7 @@ class GXHomeVC: GXBaseViewController {
         let height = self.view.bounds.height - top - self.view.safeAreaInsets.bottom
         let panTopY = top
         let panCenterY = top + height/2 - 44.0
-        let panBottomY = top + height - 176.0
+        let panBottomY = top + height - 212.0
         self.mapView.frame = CGRect(x: 0, y: top, width: width, height: height)
         self.panView.frame = CGRect(x: 0, y: top, width: width, height: height)
         self.panView.setupPanMovedY(top: panTopY, center: panCenterY, bottom: panBottomY)
@@ -154,12 +148,17 @@ class GXHomeVC: GXBaseViewController {
             let vc = GXHomeDetailVC.createVC(stationId: model.id)
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
-        self.selectTagsView.itemAction = {[weak self] in
+        self.panView.selectTagsView.itemAction = {[weak self] in
             guard let `self` = self else { return }
             guard let _ = self.locationMarker else { return }
             /// 判断已获取到位置
             self.requestStationConsumerQuery()
+        }
+        self.panView.navigationAction = {[weak self] model in
+            guard let `self` = self else { return }
+            guard let model = model else { return }
+            let coordinate = CLLocationCoordinate2D(latitude: model.lat, longitude: model.lng)
+            XYNavigationManager.show(with: self, coordinate: coordinate, endAddress: model.address)
         }
         
         GXLocationManager.shared.requestGeocodeCompletion {[weak self] (isAuth, cityName, location) in
@@ -227,7 +226,7 @@ private extension GXHomeVC {
             combinedPromise
         }.done { models in
             MBProgressHUD.dismiss()
-            self.selectTagsView.updateDataSource()
+            self.panView.selectTagsView.updateDataSource()
             self.updateOrderConsumerDoing()
         }.catch { error in
             MBProgressHUD.dismiss()
@@ -364,16 +363,6 @@ private extension GXHomeVC {
         self.present(navc, animated: true)
     }
     
-    @IBAction func filterButtonClicked(_ sender: Any?) {
-        let height: CGFloat = 580 + UIWindow.gx_safeAreaInsets.bottom
-        let menu = GXHomeFilterMenu(height: height)
-        menu.confirmAction = {[weak self] in
-            self?.selectTagsView.updateSelectedTags()
-            self?.requestStationConsumerQuery()
-        }
-        menu.show(style: .sheetBottom, usingSpring: true)
-    }
-    
     @IBAction func myLocationButtonClicked(_ sender: Any?) {
         guard let coordinate = self.locationMarker?.position, CLLocationCoordinate2DIsValid(coordinate) else {
             return
@@ -403,6 +392,15 @@ private extension GXHomeVC {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func filterButtonClicked(_ sender: Any?) {
+        let height: CGFloat = 580 + UIWindow.gx_safeAreaInsets.bottom
+        let menu = GXHomeFilterMenu(height: height)
+        menu.confirmAction = {[weak self] in
+            self?.panView.selectTagsView.updateSelectedTags()
+            self?.requestStationConsumerQuery()
+        }
+        menu.show(style: .sheetBottom, usingSpring: true)
+    }
 }
 
 extension GXHomeVC: GMSMapViewDelegate {
