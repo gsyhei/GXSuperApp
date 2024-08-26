@@ -7,11 +7,11 @@
 
 import UIKit
 
-public typealias GXPluginAction = (() -> Void)
+public typealias GXPluginAction<T: Any> = ((T) -> Void)
 
 public protocol GXPluginProtocol {
     
-    func param(key: String) -> [String: Any]
+    func param(key: String) -> [String: Any]?
         
     func createView(key: String, param: [String: Any]) -> UIView?
     
@@ -21,6 +21,6 @@ public protocol GXPluginProtocol {
     
     func present(from: UIViewController, toNavc: UINavigationController?, key: String, param: [String: Any], animated flag: Bool)
     
-    func event(key: String) -> GXPluginAction?
+    func event(key: String) -> GXPluginAction<Any>?
     
 }
