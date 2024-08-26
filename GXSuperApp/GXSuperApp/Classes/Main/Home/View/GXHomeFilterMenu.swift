@@ -151,7 +151,7 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
         }
         switch indexPath.section {
         case 0:
-            cell.isChecked = ((self.selectedModel.orderType ?? 1) == (indexPath.item + 1))
+            cell.isChecked = (self.selectedModel.orderType == indexPath.item + 1)
         case 1:
             cell.isChecked = (self.selectedModel.getSelectedTeslaFlagIndex() == indexPath.item)
         case 3:
@@ -160,7 +160,6 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
             cell.isChecked = (self.selectedModel.favorite == true)
         default: break
         }
-        
         return cell
     }
 
@@ -171,15 +170,15 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 1 {
+        if indexPath.section == 2 {
             let item = GXUserManager.shared.availableList[indexPath.item]
-            let width = item.name.width(font: .gx_font(size: 14)) + 20
-            return CGSize(width: width, height: 32)
+            let width = item.name.width(font: .gx_font(size: 15)) + 20
+            return CGSize(width: max(width, 60), height: 32)
         }
         if let nameList = self.titleCellList[indexPath.section] {
             let title = nameList[indexPath.item]
-            let width = title.width(font: .gx_font(size: 14)) + 20
-            return CGSize(width: width, height: 32)
+            let width = title.width(font: .gx_font(size: 15)) + 20
+            return CGSize(width: max(width, 60), height: 32)
         }
         return .zero
     }
@@ -199,7 +198,12 @@ extension GXHomeFilterMenu: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            self.selectedModel.orderType = indexPath.row + 1
+            if self.selectedModel.orderType == indexPath.row + 1 {
+                self.selectedModel.orderType = nil
+            }
+            else {
+                self.selectedModel.orderType = indexPath.row + 1
+            }
         case 1:
             if self.selectedModel.getSelectedTeslaFlagIndex() == indexPath.item {
                 self.selectedModel.setSelectedTeslaFlag(index: nil)

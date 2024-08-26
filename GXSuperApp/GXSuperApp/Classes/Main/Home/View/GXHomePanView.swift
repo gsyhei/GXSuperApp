@@ -34,6 +34,11 @@ class GXHomePanView: UIView {
             $0.backgroundColor = .gx_background
         }
     }()
+    lazy var maskImageView: UIImageView = {
+        let colors: [UIColor] = [UIColor(hexString: "#EDEFF300"), .gx_background]
+        let image = UIImage(gradientColors: colors, style: .horizontal)
+        return UIImageView(image: image)
+    }()
     lazy var arrowButton: UIButton = {
         return UIButton(type: .custom).then {
             $0.isUserInteractionEnabled = false
@@ -72,6 +77,7 @@ class GXHomePanView: UIView {
         self.addSubview(self.topContentView)
         self.topContentView.addSubview(self.arrowButton)
         self.topContentView.addSubview(self.selectTagsView)
+        self.selectTagsView.addSubview(self.maskImageView)
         self.topContentView.addSubview(self.filterButton)
         self.addSubview(self.tableView)
         
@@ -95,6 +101,10 @@ class GXHomePanView: UIView {
             make.left.equalToSuperview().offset(12)
             make.right.equalTo(self.filterButton.snp.left).offset(-2)
             make.height.equalTo(24)
+        }
+        self.maskImageView.snp.makeConstraints { make in
+            make.top.right.bottom.equalToSuperview()
+            make.width.equalTo(50)
         }
         self.tableView.snp.makeConstraints { make in
             make.top.equalTo(self.selectTagsView.snp.bottom).offset(12)

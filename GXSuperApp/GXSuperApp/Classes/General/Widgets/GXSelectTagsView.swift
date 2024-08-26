@@ -42,7 +42,7 @@ class GXSelectTagsView: UIView {
         })
         let sizeSource = { (index: Int, data: GXSelectTagModel, collectionSize: CGSize) -> CGSize in
             let width = data.title.width(font: self.font) + 20
-            return CGSize(width: width, height: 24)
+            return CGSize(width: max(width, 60), height: 24)
         }
         let provider = BasicProvider (
             dataSource: self.dataSource,

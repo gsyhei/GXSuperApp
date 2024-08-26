@@ -15,7 +15,7 @@ public extension UIImage {
     ///   - color: 颜色
     ///   - size: 大小
     convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
-        UIGraphicsBeginImageContextWithOptions(size, true, 0)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
         let context = UIGraphicsGetCurrentContext()
         context?.setFillColor(color.cgColor)
         context?.fill(CGRect(origin: .zero, size: size))
@@ -34,7 +34,7 @@ public extension UIImage {
     ///   - size: 大小
     convenience init?(gradientColors: [UIColor], locations: [CGFloat]? = nil, start startPoint: CGPoint, end endPoint: CGPoint, size:CGSize = CGSize(width: 10, height: 10))
     {
-        UIGraphicsBeginImageContextWithOptions(size, true, 0)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
         let context = UIGraphicsGetCurrentContext()
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let colors = gradientColors.map {(color: UIColor) -> AnyObject? in return color.cgColor as AnyObject?} as CFArray
