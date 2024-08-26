@@ -34,7 +34,7 @@
         googleMapDic[XY_NAV_TITLE_KEY] = @"Google Maps";
         NSString *urlString = [[NSString stringWithFormat:@"comgooglemaps://?x-source=%@&x-success=%@&saddr=&daddr=%f,%f&directionsmode=driving",
                                 APP_NAME,@"comgooglemapsnavi",endLocation.latitude, endLocation.longitude]
-                               stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                               stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         googleMapDic[XY_NAV_URL_KEY] = urlString;
         [maps addObject:googleMapDic];
     }
