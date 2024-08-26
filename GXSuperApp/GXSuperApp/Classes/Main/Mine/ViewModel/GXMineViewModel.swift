@@ -21,6 +21,7 @@ class GXMineViewModel: GXBaseViewModel {
             GXMineCell2ItemModel(imageName: "my_card_ic_favorites", title: "Favorites"),
             GXMineCell2ItemModel(imageName: "my_card_ic_vehicles", title: "My Vehicles"),
             GXMineCell2ItemModel(imageName: "my_card_ic_agreements", title: "Agreements"),
+            GXMineCell2ItemModel(imageName: "my_card_ic_card", title: "Cards"),
             GXMineCell2ItemModel(imageName: "my_card_ic_faq", title: "FAQ"),
             GXMineCell2ItemModel(imageName: "my_card_ic_contact", title: "Contact Us"),
             GXMineCell2ItemModel(imageName: "my_card_ic_settings", title: "Settings")

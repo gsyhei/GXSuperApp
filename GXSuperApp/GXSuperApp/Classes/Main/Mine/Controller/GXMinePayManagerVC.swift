@@ -37,6 +37,7 @@ class GXMinePayManagerVC: GXBaseViewController {
 
     override func setupViewController() {
         self.navigationItem.title = "Payment Management"
+        self.gx_addNavTopView(color: .white)
         self.gx_addBackBarButtonItem()
         self.confirmButton.setBackgroundColor(.gx_green, for: .normal)
         self.confirmButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)

@@ -43,19 +43,17 @@ extension GXMineSettingVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GXMineDefaultCell = tableView.dequeueReusableCell(for: indexPath)
         switch indexPath.row {
         case 0:
-            cell.titleLabel.text = "Payment Management"
-        case 1:
             cell.titleLabel.text = "Account Management"
-        case 2:
+        case 1:
             cell.titleLabel.text = "Clear Cache"
-        case 3:
+        case 2:
             cell.titleLabel.text = "Version Number"
             cell.detailLabel.text = "v" + (UIApplication.appVersion() ?? "")
         default: break
@@ -71,12 +69,9 @@ extension GXMineSettingVC: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0:
-            let vc = GXMinePayManagerVC.xibViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
-        case 1:
             let vc = GXMineAccountManagerVC.xibViewController()
             self.navigationController?.pushViewController(vc, animated: true)
-        case 2:
+        case 1:
             MBProgressHUD.showLoading()
             KingfisherManager.shared.cache.clearDiskCache {
                 MBProgressHUD.dismiss()
@@ -84,8 +79,6 @@ extension GXMineSettingVC: UITableViewDataSource, UITableViewDelegate {
                 cell?.detailLabel.text = "Cleared"
                 GXToast.showSuccess(text: "Cleared")
             }
-        case 3:
-            break
         default: break
         }
     }
