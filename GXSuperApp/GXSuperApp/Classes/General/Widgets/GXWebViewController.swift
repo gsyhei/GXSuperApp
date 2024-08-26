@@ -65,7 +65,9 @@ class GXWebViewController: GXBaseViewController {
     override func setupViewController() {
         self.view.backgroundColor = .white
         self.gx_addBackBarButtonItem()
-
+        self.navigationItem.rightBarButtonItem =
+        UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshBarButtonItemTapped))
+        
         self.view.addSubview(self.webView)
         self.webView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
@@ -99,6 +101,15 @@ class GXWebViewController: GXBaseViewController {
             self.progressView.progress = 0.0
         }
     }
+    
+    @objc func refreshBarButtonItemTapped() {
+        if self.progressView.progress > 0 {
+            self.webView.reload()
+        }
+        else if let url = URL(string: self.urlString) {
+            self.webView.load(URLRequest(url: url))
+        }
+    }
 
     override func gx_backBarButtonItemTapped() {
         if (self.webView.canGoBack) {
@@ -113,9 +124,11 @@ class GXWebViewController: GXBaseViewController {
 extension GXWebViewController: WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: any Error) {
         self.progressView.alpha = 0
+        XCGLogger.info("didFail:withError: \(error)")
     }
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: any Error) {
         self.progressView.alpha = 0
+        XCGLogger.info("didFailProvisionalNavigation:withError: \(error)")
     }
 }
 
