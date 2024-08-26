@@ -93,7 +93,7 @@ class GXHomePanView: UIView {
         self.selectTagsView.snp.makeConstraints { make in
             make.top.equalTo(self.arrowButton.snp.bottom)
             make.left.equalToSuperview().offset(12)
-            make.right.equalTo(self.filterButton.snp.left).offset(-12)
+            make.right.equalTo(self.filterButton.snp.left).offset(-2)
             make.height.equalTo(24)
         }
         self.tableView.snp.makeConstraints { make in
