@@ -34,11 +34,11 @@ class GXHomeDetailCell1: UITableViewCell, NibReusable {
         super.setSelected(selected, animated: animated)
     }
     
-    func bindCell(model: GXStationConsumerDetailData?) {
+    func bindCell(model: GXStationConsumerDetailData?, distance: Int) {
         guard let model = model else { return }
         
         self.nameLabel.text = model.name
-        let distance: Float = Float(model.distance)/1609.344
+        let distance: Float = Float(distance)/1609.344
         self.distanceLabel.text = String(format: "%.1fmiles", distance)
         let titles = model.aroundFacilitiesList.compactMap { $0.name }
         let height = self.tagsView.updateTitles(titles: titles, width: SCREEN_WIDTH - 48, isShowFristLine: false)

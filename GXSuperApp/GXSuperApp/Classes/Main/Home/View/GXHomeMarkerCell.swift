@@ -126,8 +126,8 @@ class GXHomeMarkerCell: UITableViewCell, NibReusable {
         let btmTitles = model.freeParking.count > 0  ? [model.freeParking, occupyFeeInfo] : [occupyFeeInfo]
         self.bottomTagsView.updateTitles(titles: btmTitles, width: SCREEN_WIDTH - 60, isShowFristLine: true)
         // 距离
-        let distance: Float = Float(model.distance)/1000.0
-        self.distanceLabel.text = String(format: "%.1fkm", distance)
+        let distance: Float = Float(model.distance)/1609.344
+        self.distanceLabel.text = String(format: "%.1fmiles", distance)
     }
 }
 

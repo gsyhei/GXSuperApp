@@ -42,9 +42,10 @@ class GXHomeDetailVC: GXBaseViewController {
         return GXHomeDetailViewModel()
     }()
     
-    class func createVC(stationId: Int) -> GXHomeDetailVC {
+    class func createVC(stationId: Int, distance: Int) -> GXHomeDetailVC {
         return GXHomeDetailVC.xibViewController().then {
             $0.viewModel.stationId = stationId
+            $0.viewModel.distance = distance
         }
     }
     
@@ -154,7 +155,7 @@ extension GXHomeDetailVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate
             return cell
         case 1:
             let cell: GXHomeDetailCell1 = tableView.dequeueReusableCell(for: indexPath)
-            cell.bindCell(model: self.viewModel.detailData)
+            cell.bindCell(model: self.viewModel.detailData, distance: self.viewModel.distance)
             cell.navigationAction = {[weak self] in
                 guard let `self` = self else { return }
                 self.showNavigationMenu()

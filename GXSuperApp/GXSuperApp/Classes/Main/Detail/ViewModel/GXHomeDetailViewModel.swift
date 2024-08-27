@@ -11,6 +11,8 @@ import PromiseKit
 class GXHomeDetailViewModel: GXBaseViewModel {
     /// 场站Id
     var stationId: Int = 0
+    /// 场站距离
+    var distance: Int = 0
     /// 动态cell配置
     var cellIndexs: [Int] = []
     /// 枪列表

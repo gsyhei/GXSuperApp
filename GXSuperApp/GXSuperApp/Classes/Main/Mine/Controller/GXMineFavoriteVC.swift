@@ -119,7 +119,7 @@ extension GXMineFavoriteVC: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let model = self.viewModel.list[indexPath.section]
-        let vc = GXHomeDetailVC.createVC(stationId: model.stationId)
+        let vc = GXHomeDetailVC.createVC(stationId: model.stationId, distance: model.distance)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

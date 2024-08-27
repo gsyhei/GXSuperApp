@@ -145,7 +145,7 @@ class GXHomeVC: GXBaseViewController {
         self.panView.didSelectRowAtAction = {[weak self] model in
             guard let `self` = self else { return }
             
-            let vc = GXHomeDetailVC.createVC(stationId: model.id)
+            let vc = GXHomeDetailVC.createVC(stationId: model.id, distance: model.distance)
             self.navigationController?.pushViewController(vc, animated: true)
         }
         self.panView.selectTagsView.itemAction = {[weak self] in
