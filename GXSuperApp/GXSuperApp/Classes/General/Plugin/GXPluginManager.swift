@@ -7,9 +7,11 @@
 
 import UIKit
 
-public class GXPluginManager: NSObject {
+open class GXPluginManager: NSObject {
     
     private var plugins: [String: GXPluginProtocol] = [:]
+
+    private var pluginActions: [String: GXPluginAction] = [:]
 
     public static let shared: GXPluginManager = GXPluginManager()
     
@@ -21,6 +23,14 @@ public class GXPluginManager: NSObject {
     
     public class func plugin(key: String) -> GXPluginProtocol? {
         return GXPluginManager.shared.plugins[key]
+    }
+    
+    public class func register(pluginAction: @escaping GXPluginAction, forKey key: String) {
+        GXPluginManager.shared.pluginActions[key] = pluginAction
+    }
+    
+    public class func pluginAction(key: String) -> GXPluginAction? {
+        return GXPluginManager.shared.pluginActions[key]
     }
     
 }
