@@ -92,7 +92,7 @@ PODS:
   - GXSegmentPageView (1.1.0)
   - GXTransition-Swift (1.0.1)
   - GXWaterfallViewLayout (1.0.1)
-  - HandyJSON (5.0.2)
+  - HandyJSON (5.0.4-beta)
   - Hero (1.6.3)
   - HXPhotoPicker (4.2.1):
     - HXPhotoPicker/Full (= 4.2.1)
@@ -230,7 +230,7 @@ DEPENDENCIES:
   - GXSegmentPageView
   - GXTransition-Swift
   - GXWaterfallViewLayout
-  - HandyJSON
+  - HandyJSON (from `https://github.com/Miles-Matheson/HandyJSON.git`)
   - Hero
   - HXPhotoPicker
   - IQKeyboardManagerSwift
@@ -282,7 +282,6 @@ SPEC REPOS:
     - GXSegmentPageView
     - GXTransition-Swift
     - GXWaterfallViewLayout
-    - HandyJSON
     - Hero
     - HXPhotoPicker
     - IQKeyboardManagerSwift
@@ -317,6 +316,15 @@ SPEC REPOS:
     - ViewAnimator
     - XCGLogger
 
+EXTERNAL SOURCES:
+  HandyJSON:
+    :git: https://github.com/Miles-Matheson/HandyJSON.git
+
+CHECKOUT OPTIONS:
+  HandyJSON:
+    :commit: 58fc08ae53f0eb4d83e2f85b2d6118d000b1a726
+    :git: https://github.com/Miles-Matheson/HandyJSON.git
+
 SPEC CHECKSUMS:
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
   AppAuth: 501c04eda8a8d11f179dbe8637b7a91bb7e5d2fa
@@ -345,7 +353,7 @@ SPEC CHECKSUMS:
   GXSegmentPageView: c6d5e7c17be81d44565ee6206a642b8c63f25463
   GXTransition-Swift: 12b7462f641ffd0ce36c9646315b6e8c9aea6182
   GXWaterfallViewLayout: 1030bd57d37eedd3146e638d262f0869380a59c8
-  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  HandyJSON: a9c67202df97805a0ba4a00e30b50e9a30ac28f3
   Hero: 419d43384355b3168512bd8ac6a33aadd3dc575b
   HXPhotoPicker: e1835b71c58b48058955ea15eb557f1e26e8b784
   IQKeyboardManagerSwift: f9c5dc36cba16ddd2e51fa7d51c34a2e083029b5
@@ -380,6 +388,6 @@ SPEC CHECKSUMS:
   ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
   XCGLogger: 399c5885210b4e2ad79d9f7a29b105d672ef724f
 
-PODFILE CHECKSUM: dbde15815761349ece84292ac546957107bebcee
+PODFILE CHECKSUM: da4d63e304558459088f74e059938c08d59c876a
 
 COCOAPODS: 1.15.2

@@ -41,7 +41,7 @@ target 'GXSuperApp' do
   # 气泡弹窗扩展
   pod "Popover"
   # JSON/模型转换
-  pod 'HandyJSON'
+  pod 'HandyJSON', :git => 'https://github.com/Miles-Matheson/HandyJSON.git'
   # HUD控件
   pod 'MBProgressHUD'
   # 简单快速使用的Collection布局控件
