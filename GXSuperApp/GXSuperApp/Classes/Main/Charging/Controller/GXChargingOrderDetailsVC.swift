@@ -93,7 +93,7 @@ extension GXChargingOrderDetailsVC {
             self.payNowButton.setTitle("Pay Now", for: .normal)
         }
         else {
-            self.payNowButton.setTitle("Back Home", for: .normal)
+            self.payNowButton.setTitle("Back", for: .normal)
         }
         self.updateFavoriteBarButtonItem()
     }
@@ -167,8 +167,7 @@ extension GXChargingOrderDetailsVC {
             self.viewModel.requestOrderConsumerPay()
         }.done { model in
             MBProgressHUD.dismiss()
-            self.viewModel.detailData?.orderStatus = "FINISHED"
-            self.updateDataSource()
+            self.requestOrderConsumerDetail()
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
@@ -353,8 +352,7 @@ extension GXChargingOrderDetailsVC {
     @IBAction func payNowButtonClicked(_ sender: Any?) {
         guard let detail = self.viewModel.detailData else { return }
         if detail.orderStatus == "TO_PAY" {
-            /// 去支付
-            
+            self.requestOrderConsumerPay()
         }
         else {
             self.navigationController?.popToRootViewController(animated: true)

@@ -374,22 +374,22 @@ private extension GXHomeVC {
     
     @IBAction func ongoingButtonClicked(_ sender: Any?) {
         guard let orderDoing = GXUserManager.shared.orderDoing else { return }
-//        // 费用确认
+//        /// 费用确认
 //        let vc = GXChargingFeeConfirmVC.instantiate()
 //        self.navigationController?.pushViewController(vc, animated: true)
+//        /// 充电效果
+//        let vc = GXChargingCarShowVC.createVC(orderId: orderDoing.id)
+//        self.navigationController?.pushViewController(vc, animated: true)
         
-//        if orderDoing.orderStatus == "CHARGING" {
-//            let vc = GXChargingCarShowVC.createVC(orderId: model.item.id)
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-//        else {
-//            let vc = GXChargingOrderDetailsVC.createVC(orderId: orderDoing.id)
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-        
-        /// 充电效果
-        let vc = GXChargingCarShowVC.createVC(orderId: orderDoing.id)
-        self.navigationController?.pushViewController(vc, animated: true)
+        if orderDoing.orderStatus == "CHARGING" {
+            let vc = GXChargingCarShowVC.createVC(orderId: orderDoing.id)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else {
+            let vc = GXChargingOrderDetailsVC.createVC(orderId: orderDoing.id)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+
     }
     
     @objc func filterButtonClicked(_ sender: Any?) {

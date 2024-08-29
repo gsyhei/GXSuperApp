@@ -38,8 +38,8 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
                 if isUpdate {
                     self.updateDataSource()
                 } else {
-//                    let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId)
-//                    self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
+                    let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId)
+                    self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
                 }
             }
         }

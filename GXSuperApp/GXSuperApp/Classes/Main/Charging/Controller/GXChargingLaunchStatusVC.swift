@@ -68,31 +68,26 @@ class GXChargingLaunchStatusVC: GXBaseViewController {
 extension GXChargingLaunchStatusVC {
     func requestOrderConsumerStart() {
         self.setChargingStatus(isLoading: true, isStop: false)
-        
-        
-        self.pushChargingCarShowVC()
-//        firstly {
-//            self.viewModel.requestOrderConsumerStart()
-//        }.done { model in
-//            self.setChargingStatus(isLoading: true, isStop: true)
-//            let orderId = model.data?.id ?? 0
-//            let vc = GXChargingCarShowVC.createVC(orderId: orderId)
-//            self.view.hero.id = vc.chargingCarShowVCHeroId
-//            self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
-//        }.catch { error in
-//            self.setChargingStatus(isLoading: false, isStop: true)
-//            GXToast.showError(text:error.localizedDescription)
-//        }
+        firstly {
+            self.viewModel.requestOrderConsumerStart()
+        }.done { model in
+            self.setChargingStatus(isLoading: true, isStop: true)
+            let orderId = model.data?.id ?? 0
+            self.pushChargingCarShowVC(orderId: orderId)
+        }.catch { error in
+            self.setChargingStatus(isLoading: false, isStop: true)
+            GXToast.showError(text:error.localizedDescription)
+        }
     }
-    func pushChargingCarShowVC() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+    func pushChargingCarShowVC(orderId: Int) {
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.setChargingStatus(isLoading: true, isStop: true)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                let vc = GXChargingCarShowVC.createVC(orderId: 1)
+                let vc = GXChargingCarShowVC.createVC(orderId: orderId)
                 self.navigationController?.pushByReturnToViewController(vc: vc, animated: false)
                 UIView.transition(.promise, from: self.view, to: vc.view, duration: 1.0, options: .transitionCrossDissolve)
             }
-        }
+//        }
     }
 }
 
