@@ -70,6 +70,10 @@ class GXHomeVC: GXBaseViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    override func viewDidAppearForAfterLoading() {
+        self.requestOrderConsumerDoing()
+    }
+    
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         

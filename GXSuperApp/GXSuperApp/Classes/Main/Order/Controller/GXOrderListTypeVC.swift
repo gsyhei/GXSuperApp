@@ -144,6 +144,7 @@ extension GXOrderListTypeVC {
             MBProgressHUD.dismiss()
             cellModel.item.orderStatus = "FINISHED"
             self.tableView.gx_reloadData()
+            NotificationCenter.default.post(name: GX_NotifName_UpdateOrderDoing, object: nil)
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)

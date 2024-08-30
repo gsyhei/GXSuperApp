@@ -80,7 +80,6 @@ extension GXChargingLaunchStatusVC {
         }
     }
     func pushChargingCarShowVC(orderId: Int) {
-        NotificationCenter.default.post(name: GX_NotifName_UpdateOrderDoing, object: nil)
         self.setChargingStatus(isLoading: true, isStop: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             let vc = GXChargingCarShowVC.createVC(orderId: orderId)

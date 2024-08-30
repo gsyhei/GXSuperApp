@@ -168,6 +168,7 @@ extension GXChargingOrderDetailsVC {
         }.done { model in
             MBProgressHUD.dismiss()
             self.requestOrderConsumerDetail()
+            NotificationCenter.default.post(name: GX_NotifName_UpdateOrderDoing, object: nil)
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
