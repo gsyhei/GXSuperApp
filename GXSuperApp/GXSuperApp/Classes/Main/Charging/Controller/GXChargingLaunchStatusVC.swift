@@ -139,11 +139,10 @@ extension GXChargingLaunchStatusVC {
         vc.modalPresentationStyle = .fullScreen
         vc.didFindCodeAction = {[weak self] (model, scanVC) in
             guard let `self` = self else { return }
-            let vc = GXChargingFeeConfirmVC.instantiate()
-            vc.viewModel.scanData = model.data
-            self.navigationController?.pushViewController(vc, animated: true)
+            let tovc = GXChargingFeeConfirmVC.instantiate()
+            tovc.viewModel.scanData = model.data
+            self.navigationController?.pushByRootToViewController(vc: tovc, animated: true)
         }
-        self.navigationController?.present(vc, animated: true)
-        self.navigationController?.popToRootViewController(animated: false)
+        self.present(vc, animated: true)
     }
 }

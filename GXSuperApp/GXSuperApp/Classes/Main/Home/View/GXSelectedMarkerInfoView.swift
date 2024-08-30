@@ -125,6 +125,7 @@ class GXSelectedMarkerInfoView: UIView {
         }.done { finished in
             self.removeFromSuperview()
         }
+        self.closeAction?()
     }
     
     func bindView(model: GXStationConsumerRowsModel?) {
@@ -191,7 +192,6 @@ class GXSelectedMarkerInfoView: UIView {
 extension GXSelectedMarkerInfoView {
     @IBAction func closeButtonClicked(_ sender: UIButton) {
         self.hideMenu()
-        self.closeAction?()
     }
     
     @IBAction func navigateButtonClicked(_ sender: UIButton) {
@@ -205,6 +205,8 @@ extension GXSelectedMarkerInfoView {
         vc.modalPresentationStyle = .fullScreen
         vc.didFindCodeAction = {[weak self] (model, scanVC) in
             guard let `self` = self else { return }
+            
+            self.hideMenu()
             let vc = GXChargingFeeConfirmVC.instantiate()
             vc.viewModel.scanData = model.data
             self.superVC?.navigationController?.pushViewController(vc, animated: true)
