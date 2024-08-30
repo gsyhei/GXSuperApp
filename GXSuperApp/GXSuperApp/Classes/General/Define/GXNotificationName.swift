@@ -20,3 +20,6 @@ let GX_NotifName_ClickNotification = NSNotification.Name("GX_NotifName_ClickNoti
 
 /// 停车占位倒计时
 let GX_NotifName_OccupyCountdown = NSNotification.Name("GX_NotifName_OccupyCountdown")
+
+/// 更新进行中的订单
+let GX_NotifName_UpdateOrderDoing = NSNotification.Name("GX_NotifName_UpdateOrderDoing")

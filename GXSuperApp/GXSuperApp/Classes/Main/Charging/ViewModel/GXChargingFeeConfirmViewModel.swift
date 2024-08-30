@@ -9,7 +9,6 @@ import UIKit
 import PromiseKit
 
 class GXChargingFeeConfirmViewModel: GXBaseViewModel {
-    var qrcode: String = "1800793237326270464"
     /// 扫码数据
     var scanData: GXConnectorConsumerScanData?
     

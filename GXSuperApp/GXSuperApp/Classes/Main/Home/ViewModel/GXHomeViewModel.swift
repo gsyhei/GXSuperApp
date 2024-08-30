@@ -35,6 +35,7 @@ class GXHomeViewModel: GXBaseViewModel {
         let api = GXApi.normalApi(Api_order_consumer_doing, params, .get)
         return Promise { seal in
             guard GXUserManager.shared.isLogin else {
+                GXUserManager.shared.orderDoing = nil
                 seal.fulfill(nil); return
             }
             GXNWProvider.login_request(api, type: GXOrderConsumerDoingModel.self, success: { model in

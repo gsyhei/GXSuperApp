@@ -104,6 +104,13 @@ class GXHomeVC: GXBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.requestDictListAvailable()
+        
+        NotificationCenter.default.rx
+            .notification(GX_NotifName_UpdateOrderDoing)
+            .take(until: self.rx.deallocated)
+            .subscribe(onNext: {[weak self] notifi in
+                self?.requestOrderConsumerDoing()
+            }).disposed(by: disposeBag)
     }
     
     override func setupViewController() {
@@ -248,7 +255,6 @@ private extension GXHomeVC {
     }
     
     func updateOrderConsumerDoing() {
-        /// 临时修改相反判断
         if (GXUserManager.shared.orderDoing != nil) {
             self.ongoingView.addSubview(self.circleHUDView)
             self.ongoingView.isHidden = false

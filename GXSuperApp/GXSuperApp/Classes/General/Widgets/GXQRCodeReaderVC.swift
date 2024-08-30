@@ -31,8 +31,7 @@ class GXQRCodeReaderVC: GXBaseViewController {
             $0.didFindCode = {[weak self] result in
                 guard let `self` = self else { return }
                 print("Completion with result: \(result.value) of type \(result.metadataType)")
-                
-                self.requestConnectorConsumerScan(qrcode: "1800793239574417408")
+                self.requestConnectorConsumerScan(qrcode: result.value)
             }
         }
     }()
@@ -152,6 +151,7 @@ extension GXQRCodeReaderVC {
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
+            self.reader.startScanning()
         }
     }
 }
@@ -189,8 +189,8 @@ extension GXQRCodeReaderVC {
                 guard let `self` = self else { return }
                 guard let letImage = image else { return }
                 let value = self.codeReaderToImage(letImage)
-                
                 print("Completion with result code: \(String(describing: value))")
+                self.requestConnectorConsumerScan(qrcode: value ?? "")
             })
         }
         self.present(vc, animated: true, completion: nil)
