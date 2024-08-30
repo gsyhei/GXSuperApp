@@ -21,8 +21,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WnU-eb-GPE">
                         <rect key="frame" x="12" y="12" width="351" height="161"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charging Fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6O-vu-Grv">
-                                <rect key="frame" x="12" y="13" width="103.66666666666667" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charger Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6O-vu-Grv">
+                                <rect key="frame" x="12" y="13" width="118" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="ynn-0Q-0pR"/>
                                 </constraints>

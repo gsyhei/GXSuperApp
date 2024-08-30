@@ -76,7 +76,8 @@ class GXLaunchScreenVC: GXBaseViewController {
             return
         }
         GXUserManager.shared.appUpdateData = data
-        if data.version == UIApplication.appVersion() {
+        let version = data.version.replacingOccurrences(of: "", with: "V")
+        if version == UIApplication.appVersion() {
             GXAppDelegate?.gotoMainTabbarController()
         }
         else {

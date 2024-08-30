@@ -106,12 +106,32 @@ extension GXHomeDetailViewModel {
     
     func updateCellIndexs() {
         guard let detail = self.detailData else { return }
-        if detail.freeParking.isEmpty {
-            self.cellIndexs = [0, 1, 2, 3, 8, 5, 6, 7]
+        
+        self.cellIndexs.removeAll()
+        // 场站图片
+        if detail.aroundServicesArr.count > 0 {
+            self.cellIndexs.append(0)
         }
-        else {
-            self.cellIndexs = [0, 1, 2, 3, 8, 4, 5, 6, 7]
+        // 场站介绍-名称/位置/导航
+        self.cellIndexs.append(1)
+        // 场站充电枪数量与使用情况
+        self.cellIndexs.append(2)
+        // 场站服务图标
+        if detail.aroundFacilitiesList.count > 0 {
+            self.cellIndexs.append(6)
         }
+        // Charging Fee
+        self.cellIndexs.append(3)
+        // VIP介绍
+        self.cellIndexs.append(8)
+        // Charger Status
+        self.cellIndexs.append(5)
+        // Parking Fee Reduction
+        if !detail.freeParking.isEmpty {
+            self.cellIndexs.append(4)
+        }
+        // Partner
+        self.cellIndexs.append(7)
     }
     
     func updateShowPrices() {

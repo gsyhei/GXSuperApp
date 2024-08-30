@@ -33,6 +33,10 @@ extension UIColor {
     class var gx_lightRed: UIColor {
         return UIColor(hexString: "#FAECEA")
     }
+    
+    class var gx_markerLightRed: UIColor {
+        return UIColor(hexString: "#F26658")
+    }
 
     class var gx_black: UIColor {
         return UIColor(hexString: "#28292B")

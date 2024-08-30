@@ -48,7 +48,7 @@ extension NSAttributedString {
             else {
                 if type == .tsl {
                     countTextColor = .gx_drakRed
-                    maxCountTextColor = .gx_lightRed
+                    maxCountTextColor = .gx_markerLightRed
                 }
                 else {
                     countTextColor = .gx_blue
