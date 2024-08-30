@@ -11,6 +11,7 @@ import PromiseKit
 
 class GXChargingLaunchStatusVC: GXBaseViewController {
     @IBOutlet weak var failedView: UIView!
+    @IBOutlet weak var failedLabel: UILabel!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var carImageView: UIImageView!
     @IBOutlet weak var circleImageView: UIImageView!
@@ -36,7 +37,7 @@ class GXChargingLaunchStatusVC: GXBaseViewController {
         self.gx_addNavTopView(color: .white)
     }
     
-    func setChargingStatus(isLoading: Bool, isStop: Bool) {
+    func setChargingStatus(isLoading: Bool, isStop: Bool, errorInfo: String? = nil) {
         if isLoading {
             self.navigationItem.title = nil
             self.loadingView.isHidden = false
@@ -57,6 +58,9 @@ class GXChargingLaunchStatusVC: GXBaseViewController {
             self.loadingView.isHidden = true
             self.navTopView.isHidden = false
             self.failedView.isHidden = false
+            if let errorInfo = errorInfo {
+                self.failedLabel.text = errorInfo
+            }
             if isStop {
                 self.stopLoopCircleAnimation()
                 self.stopAnimation()
@@ -75,8 +79,7 @@ extension GXChargingLaunchStatusVC {
             let orderId = model.data?.id ?? 0
             self.pushChargingCarShowVC(orderId: orderId)
         }.catch { error in
-            self.setChargingStatus(isLoading: false, isStop: true)
-            GXToast.showError(text:error.localizedDescription)
+            self.setChargingStatus(isLoading: false, isStop: true, errorInfo: error.localizedDescription)
         }
     }
     func pushChargingCarShowVC(orderId: Int) {

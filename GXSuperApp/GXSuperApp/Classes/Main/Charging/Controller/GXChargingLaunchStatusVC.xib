@@ -14,6 +14,7 @@
                 <outlet property="carImageView" destination="INk-bi-6uL" id="NKE-fS-OQS"/>
                 <outlet property="chargingGunView" destination="6h7-A8-0pw" id="PS2-zy-t9v"/>
                 <outlet property="circleImageView" destination="d3E-XZ-Y0e" id="91V-dL-I5t"/>
+                <outlet property="failedLabel" destination="tYX-Y7-Wbp" id="8LJ-YY-OuR"/>
                 <outlet property="failedView" destination="37f-CY-ie3" id="ENU-xQ-2Cc"/>
                 <outlet property="loadingView" destination="lmu-Nc-dtU" id="aZy-EG-Paz"/>
                 <outlet property="progressLabel" destination="Gge-iQ-KpL" id="dtr-ze-T9b"/>
