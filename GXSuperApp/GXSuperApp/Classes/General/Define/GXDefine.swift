@@ -44,7 +44,7 @@ enum GXBOOL: String, HandyJSONEnum {
 let GX_BUGLY_APPID = "36156d5fa8"
 
 /// Google api key
-let GX_GOOGLE_APIKEY = "AIzaSyD5LO03bldAHcKkTqpzRW9DTiFV5dRhtbA"
+let GX_GOOGLE_APIKEY = "AIzaSyA5qCFvm4xtPdv2vQOt3RA12cF-8Kbcdho"
 
 /// productIdentifier
 let GX_PRODUCT_ID = "superappproduct01"
