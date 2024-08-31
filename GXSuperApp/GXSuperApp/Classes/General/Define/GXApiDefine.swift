@@ -113,7 +113,7 @@ let Api_order_consumer_start = "/charging-order-server/order/consumer/start"
 /// 停止充电
 let Api_order_consumer_stop = "/charging-order-server/order/consumer/stop"
 
-/// 充电状态
+/// 充电桩的充电状态
 let Api_order_consumer_status = "/charging-order-server/order/consumer/status"
 
 /// 订单总数

@@ -8,6 +8,7 @@
 import UIKit
 import MBProgressHUD
 import PromiseKit
+import XCGLogger
 
 class GXChargingLaunchStatusVC: GXBaseViewController {
     @IBOutlet weak var failedView: UIView!
@@ -75,17 +76,27 @@ extension GXChargingLaunchStatusVC {
         firstly {
             self.viewModel.requestOrderConsumerStart()
         }.done { model in
-            let orderId = model.data?.id ?? 0
-            self.pushChargingCarShowVC(orderId: orderId)
+            self.pushChargingCarShowVC()
         }.catch { error in
             self.setChargingStatus(isLoading: false, isStop: true, errorInfo: error.localizedDescription)
         }
     }
-    func pushChargingCarShowVC(orderId: Int) {
+    @objc func updateChargingStatusNext() {
+        firstly {
+            self.viewModel.requestChargingConsumerStatus()
+        }.done { model in
+            if model.data?.status == "CHARGING" {
+                self.pushChargingCarShowVC()
+            }
+        }.catch { error in
+            XCGLogger.info(error.localizedDescription)
+        }
+    }
+    func pushChargingCarShowVC() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.setChargingStatus(isLoading: true, isStop: true)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                let vc = GXChargingCarShowVC.createVC(orderId: orderId)
+                let vc = GXChargingCarShowVC.createVC(orderId: self.viewModel.orderId)
                 self.navigationController?.pushByReturnToViewController(vc: vc, animated: false)
                 UIView.transition(.promise, from: self.view, to: vc.view, duration: 1.0, options: .transitionCrossDissolve)
             }

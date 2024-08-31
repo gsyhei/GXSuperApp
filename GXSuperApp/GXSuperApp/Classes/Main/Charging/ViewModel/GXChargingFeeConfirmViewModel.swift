@@ -11,21 +11,8 @@ import PromiseKit
 class GXChargingFeeConfirmViewModel: GXBaseViewModel {
     /// 扫码数据
     var scanData: GXConnectorConsumerScanData?
-    
-    /// 枪扫二维码
-//    func requestConnectorConsumerScan() -> Promise<GXConnectorConsumerScanModel> {
-//        var params: Dictionary<String, Any> = [:]
-//        params["qrcode"] = self.qrcode
-//        let api = GXApi.normalApi(Api_connector_consumer_scan, params, .get)
-//        return Promise { seal in
-//            GXNWProvider.login_request(api, type: GXConnectorConsumerScanModel.self, success: { model in
-//                self.scanData = model.data
-//                seal.fulfill(model)
-//            }, failure: { error in
-//                seal.reject(error)
-//            })
-//        }
-//    }
+    /// 订单ID
+    var orderId: Int = 0
     
     /// 车辆列表
     func requestVehicleConsumerList() -> Promise<GXVehicleConsumerListModel?> {
@@ -57,6 +44,21 @@ class GXChargingFeeConfirmViewModel: GXBaseViewModel {
         let api = GXApi.normalApi(Api_order_consumer_start, params, .post)
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXOrderConsumerStartModel.self, success: { model in
+                self.orderId = model.data?.id ?? 0
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+    
+    /// 充电桩的充电状态
+    func requestChargingConsumerStatus() -> Promise<GXOrderConsumerStatusModel> {
+        var params: Dictionary<String, Any> = [:]
+        params["id"] = self.orderId
+        let api = GXApi.normalApi(Api_order_consumer_status, params, .get)
+        return Promise { seal in
+            GXNWProvider.login_request(api, type: GXOrderConsumerStatusModel.self, success: { model in
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)

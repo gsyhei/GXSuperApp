@@ -38,7 +38,7 @@ class GXVipViewModel: GXBaseViewModel {
         else {
             if self.autouUpdateVipIndex < 5 {
                 self.autouUpdateVipIndex += 1
-                self.perform(#selector(self.updateVipStateNext), with: nil, afterDelay: 5)
+                self.perform(#selector(self.updateVipStateNext), with: nil, afterDelay: 3)
             }
             else {
                 self.autouUpdateVipIndex = 0

@@ -24,7 +24,7 @@ class GXHomeDetailChargerCell: UICollectionViewCell, NibReusable {
         guard let model = model else { return }
         
         self.chargerNumLabel.text = model.qrcode
-        self.maximumPowerLabel.text = String(format: "%gKW", Float(model.maxPower)/1000.0)
+        self.maximumPowerLabel.text = "\(model.maxPower)KW"
         if model.idleFlag == GX_YES {
             switch model.status {
             case "Available":

@@ -25,7 +25,7 @@ class GXLaunchScreenVC: GXBaseViewController {
             guard let `self` = self else { return }
             guard status != .notReachable else { return }
             self.requestCheckVersion()
-            self.restoreCompletedTransactions()
+            //self.restoreCompletedTransactions()
         }
     }
     

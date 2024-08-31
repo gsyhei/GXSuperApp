@@ -11,11 +11,16 @@ import PromiseKit
 import StoreKit
 import Alamofire
 import XCGLogger
+import MBProgressHUD
 
 private let Box_verifyReceiptUrl = "https://sandbox.itunes.apple.com/verifyReceipt"
 private let Buy_verifyReceiptUrl = "https://buy.itunes.apple.com/verifyReceipt"
 
 extension SKPayment {
+    
+    public func gx_promise() -> Promise<SKPaymentTransaction> {
+        return GXPaymentObserver(payment: self).promise
+    }
     
     class func gx_paymentPromise(response: SKProductsResponse) -> Promise<SKPaymentTransaction> {
         return Promise { seal in
@@ -25,7 +30,7 @@ extension SKPayment {
             }
             let payment = SKMutablePayment(product: product)
             payment.applicationUsername = GXUserManager.shared.user?.uuid
-            payment.promise().done { transaction in
+            payment.gx_promise().done { transaction in
                 seal.fulfill(transaction)
             }.catch { error in
                 seal.reject(error)
@@ -68,4 +73,40 @@ extension SKPayment {
         task.resume()
     }
     
+}
+
+private class GXPaymentObserver: NSObject, SKPaymentTransactionObserver {
+    let (promise, seal) = Promise<SKPaymentTransaction>.pending()
+    let payment: SKPayment
+    var retainCycle: GXPaymentObserver?
+    
+    init(payment: SKPayment) {
+        self.payment = payment
+        super.init()
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().add(payment)
+        retainCycle = self
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        guard let transaction = transactions.first(where: { $0.payment.productIdentifier == payment.productIdentifier }) else {
+            return
+        }
+        switch transaction.transactionState {
+        case .purchased, .restored:
+            queue.finishTransaction(transaction)
+            seal.fulfill(transaction)
+            queue.remove(self)
+            retainCycle = nil
+        case .failed:
+            let error = transaction.error ?? PMKError.cancelled
+            queue.finishTransaction(transaction)
+            seal.reject(error)
+            queue.remove(self)
+            retainCycle = nil
+            MBProgressHUD.dismiss()
+        default:
+            break
+        }
+    }
 }

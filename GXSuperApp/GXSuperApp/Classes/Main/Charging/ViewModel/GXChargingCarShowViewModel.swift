@@ -96,6 +96,20 @@ class GXChargingCarShowViewModel: GXBaseViewModel {
         }
     }
     
+    /// 充电桩的充电状态
+    func requestChargingConsumerStatus() -> Promise<GXOrderConsumerStatusModel> {
+        var params: Dictionary<String, Any> = [:]
+        params["id"] = self.orderId
+        let api = GXApi.normalApi(Api_order_consumer_status, params, .get)
+        return Promise { seal in
+            GXNWProvider.login_request(api, type: GXOrderConsumerStatusModel.self, success: { model in
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+    
 }
 
 private extension GXChargingCarShowViewModel {
