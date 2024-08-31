@@ -82,11 +82,13 @@ extension GXChargingLaunchStatusVC {
         }
     }
     func pushChargingCarShowVC(orderId: Int) {
-        self.setChargingStatus(isLoading: true, isStop: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            let vc = GXChargingCarShowVC.createVC(orderId: orderId)
-            self.navigationController?.pushByReturnToViewController(vc: vc, animated: false)
-            UIView.transition(.promise, from: self.view, to: vc.view, duration: 1.0, options: .transitionCrossDissolve)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.setChargingStatus(isLoading: true, isStop: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                let vc = GXChargingCarShowVC.createVC(orderId: orderId)
+                self.navigationController?.pushByReturnToViewController(vc: vc, animated: false)
+                UIView.transition(.promise, from: self.view, to: vc.view, duration: 1.0, options: .transitionCrossDissolve)
+            }
         }
     }
 }
