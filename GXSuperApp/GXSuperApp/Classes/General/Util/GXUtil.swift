@@ -47,8 +47,8 @@ class GXUtil: NSObject {
     }
     
     class func gx_chargingTime(minute: Int) -> String {
-        let h = minute/60
-        let m = minute%60
+        let m = minute/60%60
+        let h = minute/3600
         return "\(h)h\(m)m"
     }
 

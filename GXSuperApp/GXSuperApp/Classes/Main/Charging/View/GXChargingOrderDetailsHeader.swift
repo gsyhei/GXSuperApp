@@ -28,7 +28,6 @@ class GXChargingOrderDetailsHeader: UIView {
             $0.font = .gx_font(size: 16)
             $0.textColor = .gx_orange
             $0.textAlignment = .center
-            $0.text = "Pending Payment"
         }
     }()
     
@@ -86,7 +85,10 @@ class GXChargingOrderDetailsHeader: UIView {
         case "FINISHED":
             self.chargingInfoLabel.textColor = .gx_drakGray
             self.chargingInfoLabel.text = "Thank you for choosing the MarsEnergy app"
-        default: break
+        case "CHARGING":
+            self.chargingInfoLabel.textColor = .gx_drakGray
+            self.chargingInfoLabel.text = "Charging..."
+        default:break
         }
     }
     

@@ -84,6 +84,8 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
     private func updateDataSource() {
         guard let detail = self.viewModel.detailData else { return }
         
+        self.carShowTableVC?.updateDataSource()
+        
         self.carNumberLabel.text = detail.carNumber.formatCarNumber
         self.chargedTimeLabel.text = "Charging will complete in " + GXUtil.gx_chargingTime(minute: detail.chargingDuration)
         self.chargedKwhLabel.text = "\(detail.meterTotal) kWh Charged"
