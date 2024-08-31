@@ -86,7 +86,7 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
         
         self.carNumberLabel.text = detail.carNumber.formatCarNumber
         self.chargedTimeLabel.text = "Charging will complete in " + GXUtil.gx_chargingTime(minute: detail.chargingDuration)
-        self.chargedKwhLabel.text = "\(detail.power) kWh Charged"
+        self.chargedKwhLabel.text = "\(detail.meterTotal) kWh Charged"
         
         let progress = CGFloat(detail.soc) / 100.0
         self.updateBarProgress(to: progress)
@@ -101,14 +101,14 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
     }
     
     /// 测试动画效果用
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if abs(self.progressBarRightLC.constant - self.maxProgressConstant) <= 2 {
-            self.updateBarProgress(to: 1.0)
-        }
-        else {
-            self.updateBarProgress(to: 0.0)
-        }
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if abs(self.progressBarRightLC.constant - self.maxProgressConstant) <= 2 {
+//            self.updateBarProgress(to: 1.0)
+//        }
+//        else {
+//            self.updateBarProgress(to: 0.0)
+//        }
+//    }
     
 }
 
