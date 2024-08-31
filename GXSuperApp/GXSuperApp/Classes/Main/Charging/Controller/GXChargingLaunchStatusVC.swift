@@ -75,7 +75,6 @@ extension GXChargingLaunchStatusVC {
         firstly {
             self.viewModel.requestOrderConsumerStart()
         }.done { model in
-            self.setChargingStatus(isLoading: true, isStop: true)
             let orderId = model.data?.id ?? 0
             self.pushChargingCarShowVC(orderId: orderId)
         }.catch { error in
@@ -105,7 +104,7 @@ extension GXChargingLaunchStatusVC {
     }
     @objc func handleDisplayLink(displayLink: CADisplayLink) {
         self.progressCount += 1
-        var progress = self.progressCount / 20
+        var progress = self.progressCount / 10
         if progress > 99 { progress = 99 }
         self.progressLabel.text = "\(Int(progress))%"
     }
