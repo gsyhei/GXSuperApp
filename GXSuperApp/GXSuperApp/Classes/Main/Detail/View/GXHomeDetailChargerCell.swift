@@ -23,7 +23,7 @@ class GXHomeDetailChargerCell: UICollectionViewCell, NibReusable {
     func bindCell(model: GXConnectorConsumerRowsItem?) {
         guard let model = model else { return }
         
-        self.chargerNumLabel.text = model.qrcode
+        self.chargerNumLabel.text = model.pointIdStr + "-" + model.connectorIdStr
         self.maximumPowerLabel.text = "\(model.maxPower)KW"
         if model.idleFlag == GX_YES {
             switch model.status {

@@ -59,7 +59,7 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
         self.nameLabel.text = model.stationName
         self.stateLabel.isHidden = true
         
-        let cellModel0 = GXChargingOrderLRTextCell.Model(leftText: "Pile ID", rightText: model.qrcode)
+        let cellModel0 = GXChargingOrderLRTextCell.Model(leftText: "Pile ID", rightText: model.pointIdStr)
         let cellModel1 = GXChargingOrderLRTextCell.Model(leftText: "Order ID", rightText: model.orderNo, isShowCopy: true)
         let cellModel2 = GXChargingOrderLRTextCell.Model(leftText: "Start Time", rightText: model.startTime)
         let cellModel3 = GXChargingOrderLRTextCell.Model(leftText: "End Time", rightText: model.endTime)
@@ -71,7 +71,7 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
         self.nameLabel.text = model.stationName
         self.stateLabel.isHidden = false
         
-        let cellModel0 = GXChargingOrderLRTextCell.Model(leftText: "Pile ID", rightText: model.qrcode)
+        let cellModel0 = GXChargingOrderLRTextCell.Model(leftText: "Pile ID", rightText: model.pointIdStr)
         let cellModel1 = GXChargingOrderLRTextCell.Model(leftText: "Order ID", rightText: model.orderNo, isShowCopy: true)
         let cellModel2 = GXChargingOrderLRTextCell.Model(leftText: "Start Time", rightText: model.startTime)
         var cellList = [cellModel0, cellModel1, cellModel2]
