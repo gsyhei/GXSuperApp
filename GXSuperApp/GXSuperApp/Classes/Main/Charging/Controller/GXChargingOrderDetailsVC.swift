@@ -79,7 +79,7 @@ extension GXChargingOrderDetailsVC {
         guard let detail = self.viewModel.detailData else { return }
         
         self.tableHeader.bindView(model: detail)
-        if detail.complainAvailable && (detail.orderStatus == "TO_PAY" || detail.orderStatus == "FINISHED") {
+        if detail.complainAvailable && (detail.orderStatus == .TO_PAY || detail.orderStatus == .FINISHED) {
             self.appealButton.isHidden = false
             self.appealInfoLabel.isHidden = false
             self.bottomHeightLC.constant = 100
@@ -89,7 +89,7 @@ extension GXChargingOrderDetailsVC {
             self.appealInfoLabel.isHidden = true
             self.bottomHeightLC.constant = 64
         }
-        if detail.orderStatus == "TO_PAY" {
+        if detail.orderStatus == .TO_PAY {
             self.payNowButton.setTitle("Pay Now", for: .normal)
         }
         else {
@@ -352,7 +352,7 @@ extension GXChargingOrderDetailsVC {
     
     @IBAction func payNowButtonClicked(_ sender: Any?) {
         guard let detail = self.viewModel.detailData else { return }
-        if detail.orderStatus == "TO_PAY" {
+        if detail.orderStatus == .TO_PAY {
             self.requestOrderConsumerPay()
         }
         else {

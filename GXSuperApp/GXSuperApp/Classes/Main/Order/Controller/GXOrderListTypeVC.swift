@@ -57,7 +57,7 @@ class GXOrderListTypeVC: GXBaseViewController {
         return GXOrderListTypeViewModel()
     }()
     
-    required init(orderStatus: String?) {
+    required init(orderStatus: GXOrderStatus) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel.orderStatus = orderStatus
     }
@@ -142,7 +142,7 @@ extension GXOrderListTypeVC {
             self.viewModel.requestOrderConsumerPay(orderId: cellModel.item.id)
         }.done { model in
             MBProgressHUD.dismiss()
-            cellModel.item.orderStatus = "FINISHED"
+            cellModel.item.orderStatus = .FINISHED
             self.tableView.gx_reloadData()
             NotificationCenter.default.post(name: GX_NotifName_UpdateOrderDoing, object: nil)
         }.catch { error in
@@ -303,7 +303,7 @@ extension GXOrderListTypeVC {
         let model = self.viewModel.cellList[section]
         switch title {
         case "View":
-            if model.item.orderStatus == "CHARGING" {
+            if model.item.orderStatus == .CHARGING {
                 let vc = GXChargingCarShowVC.createVC(orderId: model.item.id)
                 self.navigationController?.pushViewController(vc, animated: true)
             }

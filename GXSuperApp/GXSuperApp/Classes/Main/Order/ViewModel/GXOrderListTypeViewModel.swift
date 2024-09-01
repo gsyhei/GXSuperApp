@@ -21,7 +21,7 @@ struct GXChargingOrderDetailCellModel {
 
 class GXOrderListTypeViewModel: GXBaseViewModel {
     /// 订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成
-    var orderStatus: String? = nil
+    var orderStatus: GXOrderStatus = .UNKNOWN
     /// 订单列表
     var cellList: [GXChargingOrderDetailCellModel] = []
     /// 站点充电价格
@@ -30,8 +30,8 @@ class GXOrderListTypeViewModel: GXBaseViewModel {
     /// 订单列表
     func requestOrderConsumerList(isRefresh: Bool) -> Promise<(GXOrderConsumerListModel, Bool)> {
         var params: Dictionary<String, Any> = [:]
-        if let status = self.orderStatus {
-            params["orderStatus"] = status
+        if self.orderStatus != .UNKNOWN {
+            params["orderStatus"] = self.orderStatus
         }
         if isRefresh {
             params["pageNum"] = 1
@@ -98,13 +98,13 @@ extension GXOrderListTypeViewModel {
             rowsIndexs.append(1)
             //"orderStatus" //订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成支付
             switch item.orderStatus {
-            case "CHARGING":
+            case .CHARGING:
                 /// 添加View
                 break
-            case "OCCUPY":
+            case .OCCUPY:
                 /// 添加View
                 break
-            case "TO_PAY":
+            case .TO_PAY:
                 /// 添加rows: Charging Bill
                 rowsIndexs.append(2)
                 /// 添加rows: 占位费单Idle Fee Bill
@@ -114,7 +114,7 @@ extension GXOrderListTypeViewModel {
                 /// 添加rows: 充电总费用
                 rowsIndexs.append(5)
                 /// 添加More、Pay
-            case "FINISHED":
+            case .FINISHED:
                 /// 添加rows: Charging Bill
                 rowsIndexs.append(2)
                 /// 添加rows: 占位费单Idle Fee Bill

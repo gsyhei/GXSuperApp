@@ -11,7 +11,7 @@ import HandyJSON
 class GXDictListAvailableData: NSObject, HandyJSON {
     var typeId: Int = 0
     var createTime: String = ""
-    var status: String = ""
+    var status: String = "" //状态；ENABLE：正常，DISABLE：禁用
     var id: Int = 0
     var code: String = ""
     var updateTime: String = ""

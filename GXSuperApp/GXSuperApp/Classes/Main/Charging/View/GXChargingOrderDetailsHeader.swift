@@ -70,7 +70,7 @@ class GXChargingOrderDetailsHeader: UIView {
         guard let model = model else { return }
         
         switch model.orderStatus {
-        case "OCCUPY":
+        case .OCCUPY:
             self.chargingInfoLabel.textColor = .gx_orange
             if let occupyStartTime = GXUserManager.shared.paramsData?.occupyStartTime,
                 model.countdown > 0, model.countdown <= occupyStartTime * 60 {
@@ -79,13 +79,13 @@ class GXChargingOrderDetailsHeader: UIView {
             else {
                 self.chargingInfoLabel.text = "Occupied - Please remove the vehicle from the charging area to avoid incurring the idle fee"
             }
-        case "TO_PAY":
+        case .TO_PAY:
             self.chargingInfoLabel.textColor = .gx_orange
             self.chargingInfoLabel.text = "Pending Payment"
-        case "FINISHED":
+        case .FINISHED:
             self.chargingInfoLabel.textColor = .gx_drakGray
             self.chargingInfoLabel.text = "Thank you for choosing the MarsEnergy app"
-        case "CHARGING":
+        case .CHARGING:
             self.chargingInfoLabel.textColor = .gx_drakGray
             self.chargingInfoLabel.text = "Charging..."
         default:break

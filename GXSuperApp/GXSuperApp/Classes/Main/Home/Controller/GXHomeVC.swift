@@ -390,7 +390,7 @@ private extension GXHomeVC {
 //        let vc = GXChargingCarShowVC.createVC(orderId: orderDoing.id)
 //        self.navigationController?.pushViewController(vc, animated: true)
         
-        if orderDoing.orderStatus == "CHARGING" {
+        if orderDoing.orderStatus == .CHARGING {
             let vc = GXChargingCarShowVC.createVC(orderId: orderDoing.id)
             self.navigationController?.pushViewController(vc, animated: true)
         }

@@ -89,10 +89,10 @@ extension GXChargingLaunchStatusVC {
         firstly {
             self.viewModel.requestChargingConsumerStatus()
         }.done { model in
-            if model.data?.status == "CHARGING" {
+            if model.data?.status == .CHARGING {
                 self.pushChargingCarShowVC()
             } 
-            else if model.data?.status == "START_FAILED" {
+            else if model.data?.status == .START_FAILED {
                 let errInfo = "Please reinsert the charging gun and scan the code again"
                 self.setChargingStatus(isLoading: false, isStop: true, errorInfo: errInfo)
             }

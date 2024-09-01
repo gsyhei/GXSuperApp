@@ -116,7 +116,7 @@ private extension GXChargingCarShowViewModel {
     func updateCountdownRequests() {
         guard let detail = self.detailData else { return }
         
-        if detail.orderStatus == "CHARGING" {
+        if detail.orderStatus == .CHARGING {
             /// 先清除倒计时调用
             NSObject.cancelPreviousPerformRequests(withTarget: self)
             /// 订单刷新倒计时

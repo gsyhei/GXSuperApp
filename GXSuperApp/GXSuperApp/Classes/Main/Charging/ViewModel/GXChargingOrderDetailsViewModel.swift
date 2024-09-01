@@ -139,7 +139,7 @@ private extension GXChargingOrderDetailsViewModel {
         
         var isOccupyCountdownNext = false
         switch detail.orderStatus {
-        case "OCCUPY":
+        case .OCCUPY:
             if let occupyStartTime = GXUserManager.shared.paramsData?.occupyStartTime, detail.countdown > 0 {
                 if detail.countdown <= occupyStartTime * 60 { /// 收取占位费倒计时
                     sectionCellIndexs.append(row1Indexs)
@@ -168,7 +168,7 @@ private extension GXChargingOrderDetailsViewModel {
                 row1Indexs.append(9) //占位费总计
                 sectionCellIndexs.append(row1Indexs)
             }
-        case "TO_PAY":
+        case .TO_PAY:
             if detail.occupyFeeDetails.count > 0 {
                 /// 添加rows: 占位费单Idle Fee Bill
                 row1Indexs.append(3)
@@ -182,7 +182,7 @@ private extension GXChargingOrderDetailsViewModel {
             /// 添加rows: 余额
             sectionCellIndexs.append(row2Indexs)
 
-        case "FINISHED":
+        case .FINISHED:
             if detail.occupyFeeDetails.count > 0 {
                 /// 添加rows: 占位费单Idle Fee Bill
                 row1Indexs.append(3)
@@ -207,7 +207,7 @@ private extension GXChargingOrderDetailsViewModel {
             self.perform(#selector(self.occupyCountdownNext), with: nil, afterDelay: 1)
         }
         /// 订单刷新倒计时
-        if detail.orderStatus == "OCCUPY" {
+        if detail.orderStatus == .OCCUPY {
             self.perform(#selector(self.updateOrderStateNext), with: nil, afterDelay: 5)
         }
     }

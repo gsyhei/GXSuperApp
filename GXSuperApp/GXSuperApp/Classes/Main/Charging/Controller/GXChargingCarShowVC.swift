@@ -151,7 +151,7 @@ extension GXChargingCarShowVC {
         firstly {
             self.viewModel.requestChargingConsumerStatus()
         }.done { model in
-            if model.data?.status == "FINISHED" {
+            if model.data?.status == .FINISHED {
                 MBProgressHUD.dismiss()
                 let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId)
                 self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)

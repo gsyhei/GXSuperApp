@@ -46,7 +46,7 @@ class GXChargingOrderDetailData: NSObject, HandyJSON {
     var occupyStartTime: String = ""
     var occupyEndTime: String = ""
     var carNumber: String = ""
-    var orderStatus: String = "" //订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成支付
+    var orderStatus: GXOrderStatus = .UNKNOWN
     var meterTotal: String = ""
     var powerFee: CGFloat = 0
     var serviceFee: CGFloat = 0

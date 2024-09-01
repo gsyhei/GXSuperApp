@@ -34,21 +34,21 @@ class GXChargingOrderDetailsCell10: UITableViewCell, NibReusable {
         
         // 订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成
         switch model.orderStatus {
-        case "CHARGING":
+        case .CHARGING:
             self.leftButton.isHidden = true
             self.rightButton.isHidden = false
             self.rightButton.setTitle("View", for: .normal)
             self.rightButton.setTitleColor(.white, for: .normal)
             self.rightButton.setBackgroundColor(.gx_green, for: .normal)
             self.rightButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
-        case "OCCUPY":
+        case .OCCUPY:
             self.leftButton.isHidden = true
             self.rightButton.isHidden = false
             self.rightButton.setTitle("View", for: .normal)
             self.rightButton.setTitleColor(.white, for: .normal)
             self.rightButton.setBackgroundColor(.gx_green, for: .normal)
             self.rightButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
-        case "TO_PAY":
+        case .TO_PAY:
             self.leftButton.isHidden = false
             self.leftButton.setTitle("More", for: .normal)
             self.leftButton.setTitleColor(.gx_green, for: .normal)
@@ -61,7 +61,7 @@ class GXChargingOrderDetailsCell10: UITableViewCell, NibReusable {
             self.rightButton.setTitleColor(.white, for: .normal)
             self.rightButton.setBackgroundColor(.gx_green, for: .normal)
             self.rightButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
-        case "FINISHED":
+        case .FINISHED:
             self.leftButton.isHidden = false
             self.leftButton.setTitle("More", for: .normal)
             self.leftButton.setTitleColor(.gx_green, for: .normal)

@@ -20,7 +20,7 @@ class OrderConsumerComplainDetailData: NSObject, HandyJSON {
     var reason: String = ""
     var id: Int = 0
     var photos = [String]()
-    var status: String = ""
+    var status: String = "" //处理状态；TODO：未处理，FINISHED：已处理
     var exemptType: String = ""
     var createTime: String = ""
 

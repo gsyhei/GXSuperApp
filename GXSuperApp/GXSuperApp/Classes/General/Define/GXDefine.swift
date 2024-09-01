@@ -42,6 +42,37 @@ enum GXBOOL: String, HandyJSONEnum {
     case NO = "NO"
 }
 
+///充电状态
+enum GXChargingStatus: String, HandyJSONEnum {
+    /// 未知
+    case UNKNOWN = ""
+    /// 启动中
+    case STARTING = "STARTING"
+    /// 充电中
+    case CHARGING = "CHARGING"
+    /// 停止中
+    case STOPPING = "STOPPING"
+    /// 充电完成
+    case FINISHED = "FINISHED"
+    /// 启动失败
+    case START_FAILED = "START_FAILED"
+}
+
+///订单状态
+enum GXOrderStatus: String, HandyJSONEnum {
+    /// 未知
+    case UNKNOWN = ""
+    /// 充电中
+    case CHARGING = "CHARGING"
+    /// 占位中
+    case OCCUPY = "OCCUPY"
+    /// 充电完成
+    case TO_PAY = "TO_PAY"
+    /// 已完成
+    case FINISHED = "FINISHED"
+}
+
+
 /// Bugly appID
 let GX_BUGLY_APPID = "36156d5fa8"
 

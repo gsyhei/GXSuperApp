@@ -77,21 +77,21 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
         var cellList = [cellModel0, cellModel1, cellModel2]
         //订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成
         switch model.orderStatus {
-        case "CHARGING":
+        case .CHARGING:
             self.stateLabel.textColor = .gx_green
             self.stateLabel.text = "Charging"
-        case "OCCUPY":
+        case .OCCUPY:
             self.stateLabel.textColor = .gx_orange
             self.stateLabel.text = "Occupied"
-        case "TO_PAY":
+        case .TO_PAY:
             self.stateLabel.textColor = .gx_red
             self.stateLabel.text = "Unpaid"
-        case "FINISHED":
+        case .FINISHED:
             self.stateLabel.textColor = .gx_drakGray
             self.stateLabel.text = "Completed"
         default: break
         }
-        if model.orderStatus != "CHARGING" {
+        if model.orderStatus != .CHARGING {
             let cellModel3 = GXChargingOrderLRTextCell.Model(leftText: "End Time", rightText: model.endTime)
             cellList.append(cellModel3)
             if !model.occupyStartTime.isEmpty {

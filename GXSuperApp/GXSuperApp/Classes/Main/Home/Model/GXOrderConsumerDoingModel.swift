@@ -13,7 +13,7 @@ class GXOrderConsumerDoingData: NSObject, HandyJSON {
     var stationId: Int = 0
     var stationName: String = ""
     var city: String = ""
-    var orderStatus: String = ""
+    var orderStatus: GXOrderStatus = .UNKNOWN
 
     override required init() {}
 }

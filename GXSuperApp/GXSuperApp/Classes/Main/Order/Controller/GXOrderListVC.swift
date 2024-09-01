@@ -39,11 +39,11 @@ class GXOrderListVC: GXBaseViewController {
     private lazy var childVCs: [UIViewController] = {
         var children: [UIViewController] = []
         // 订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成
-        children.append(GXOrderListTypeVC(orderStatus: nil))
-        children.append(GXOrderListTypeVC(orderStatus: "CHARGING"))
-        children.append(GXOrderListTypeVC(orderStatus: "OCCUPY"))
-        children.append(GXOrderListTypeVC(orderStatus: "TO_PAY"))
-        children.append(GXOrderListTypeVC(orderStatus: "FINISHED"))
+        children.append(GXOrderListTypeVC(orderStatus: .UNKNOWN))
+        children.append(GXOrderListTypeVC(orderStatus: .CHARGING))
+        children.append(GXOrderListTypeVC(orderStatus: .OCCUPY))
+        children.append(GXOrderListTypeVC(orderStatus: .TO_PAY))
+        children.append(GXOrderListTypeVC(orderStatus: .FINISHED))
         return children
     }()
 
