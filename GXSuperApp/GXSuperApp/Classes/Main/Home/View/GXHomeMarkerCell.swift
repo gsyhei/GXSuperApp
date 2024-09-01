@@ -104,7 +104,7 @@ class GXHomeMarkerCell: UITableViewCell, NibReusable {
         self.priceLabel.text = GXUserManager.shared.isLogin ? "$\(model.price)" : "$*****"
         
         // 充电枪信息
-        let isOpened = true //model.stationStatus == "OPENED"
+        let isOpened = model.stationStatus == "OPENED"
         if isOpened {
             self.tslNumberBgView.backgroundColor = .gx_lightRed
             self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_normal")

@@ -22,6 +22,9 @@ class GXFavoriteConsumerListItem: NSObject, HandyJSON {
     var aroundFacilities = ""
     var name: String = ""
     var aroundFacilitiesList: [GXStationConsumerTagslistModel] = []
+    //站点状态；PREPARING：准备中，OPENED：已开通，DEACTIVATED：已停用
+    var stationStatus: String = "OPENED"
+    var cooperationStatus: String = ""
     
     required override init() {}
 }
