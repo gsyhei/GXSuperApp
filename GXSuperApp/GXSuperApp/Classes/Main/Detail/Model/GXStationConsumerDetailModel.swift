@@ -59,7 +59,10 @@ class GXStationConsumerDetailData: NSObject, HandyJSON {
     var usCount: Int = 0
     var serviceFeeVip: CGFloat = 0
     var prices = [GXStationConsumerDetailPricesItem]()
-
+    //站点状态；PREPARING：准备中，OPENED：已开通，DEACTIVATED：已停用
+    var stationStatus: String = ""
+    var cooperationStatus: String = ""
+    
     override required init() {}
 }
 

@@ -11,8 +11,10 @@ import GXAlert_Swift
 import Kingfisher
 import CoreLocation
 import HXPhotoPicker
+import GXTransition_Swift
 
 class GXSelectedMarkerInfoView: UIView {
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var navigateButton: UIButton!
     @IBOutlet weak var scanButton: UIButton!
     @IBOutlet weak var leftLineImgView: UIImageView!
@@ -97,6 +99,9 @@ class GXSelectedMarkerInfoView: UIView {
         
         let gradientColors: [UIColor] = [.gx_green, UIColor(hexString: "#278CFF")]
         self.leftLineImgView.image = UIImage(gradientColors: gradientColors, style: .vertical, size: CGSize(width: 4, height: 14))
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizer(_:)))
+        self.containerView.addGestureRecognizer(tap)
     }
     
     override func layoutSubviews() {
@@ -138,28 +143,32 @@ class GXSelectedMarkerInfoView: UIView {
         let titles = model.aroundFacilitiesList.compactMap { $0.name }
         self.topTagsView.updateTitles(titles: titles, width: SCREEN_WIDTH - 48, isShowFristLine: false)
         // 电费
-        self.priceLabel.text = GXUserManager.shared.isLogin ? "$\(model.electricFee)" : "$*****"
+        if GXUserManager.shared.isLogin {
+            let kWhFee = model.electricFee + model.serviceFee
+            let vipkWhFee = model.electricFee + model.serviceFeeVip
+            self.priceLabel.text = String(format: "$%.2f", GXUserManager.shared.isVip ? vipkWhFee : kWhFee)
+        }
+        else {
+            self.priceLabel.text = "$*****"
+        }
         
         // 充电枪信息
-        if model.teslaIdleCount == model.teslaCount {
-            self.tslNumberBgView.backgroundColor = .gx_background
-            self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_disable")
-        }
-        else {
+        let isOpened = model.stationStatus == "OPENED"
+        if isOpened {
             self.tslNumberBgView.backgroundColor = .gx_lightRed
             self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_normal")
-        }
-        if model.usIdleCount == model.usCount {
-            self.usNumberBgView.backgroundColor = .gx_background
-            self.usNumberImgView.image = UIImage(named: "home_map_ic_us_disable")
-        }
-        else {
             self.usNumberBgView.backgroundColor = .gx_lightBlue
             self.usNumberImgView.image = UIImage(named: "home_map_ic_us_normal")
         }
-        let tslAttrText: NSAttributedString = .gx_stationAttrText(type: .tsl, isSelected: false, count: model.teslaIdleCount, maxCount: model.teslaCount)
+        else {
+            self.tslNumberBgView.backgroundColor = .gx_background
+            self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_disable")
+            self.usNumberBgView.backgroundColor = .gx_background
+            self.usNumberImgView.image = UIImage(named: "home_map_ic_us_disable")
+        }
+        let tslAttrText: NSAttributedString = .gx_stationAttrText(type: .tsl, isOpened: isOpened, isSelected: false, count: model.teslaIdleCount, maxCount: model.teslaCount)
         self.tslNumberLabel.attributedText = tslAttrText
-        let usAttrText: NSAttributedString = .gx_stationAttrText(type: .us, isSelected: false, count: model.usIdleCount, maxCount: model.usCount)
+        let usAttrText: NSAttributedString = .gx_stationAttrText(type: .us, isOpened: isOpened, isSelected: false, count: model.usIdleCount, maxCount: model.usCount)
         self.usNumberLabel.attributedText = usAttrText
         
         // 停车减免、服务费
@@ -214,4 +223,11 @@ extension GXSelectedMarkerInfoView {
         self.superVC?.present(vc, animated: true)
     }
     
+    @objc func tapGestureRecognizer(_ tap: UITapGestureRecognizer) {
+        guard let model = self.model else { return }
+        
+        let vc = GXHomeDetailVC.createVC(stationId: model.id, distance: model.distance)
+        let navc = GXBaseNavigationController(rootViewController: vc)
+        self.superVC?.gx_present(navc, style: .push)
+    }
 }

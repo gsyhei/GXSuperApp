@@ -28,6 +28,10 @@ class GXChargingLaunchStatusVC: GXBaseViewController {
         }
     }
     
+    deinit {
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.requestOrderConsumerStart()
@@ -76,7 +80,7 @@ extension GXChargingLaunchStatusVC {
         firstly {
             self.viewModel.requestOrderConsumerStart()
         }.done { model in
-            self.pushChargingCarShowVC()
+            self.updateChargingStatusNext()
         }.catch { error in
             self.setChargingStatus(isLoading: false, isStop: true, errorInfo: error.localizedDescription)
         }
@@ -87,9 +91,16 @@ extension GXChargingLaunchStatusVC {
         }.done { model in
             if model.data?.status == "CHARGING" {
                 self.pushChargingCarShowVC()
+            } 
+            else if model.data?.status == "START_FAILED" {
+                let errInfo = "Please reinsert the charging gun and scan the code again"
+                self.setChargingStatus(isLoading: false, isStop: true, errorInfo: errInfo)
+            }
+            else {
+                self.perform(#selector(self.updateChargingStatusNext), with: nil, afterDelay: 2)
             }
         }.catch { error in
-            XCGLogger.info(error.localizedDescription)
+            self.perform(#selector(self.updateChargingStatusNext), with: nil, afterDelay: 2)
         }
     }
     func pushChargingCarShowVC() {

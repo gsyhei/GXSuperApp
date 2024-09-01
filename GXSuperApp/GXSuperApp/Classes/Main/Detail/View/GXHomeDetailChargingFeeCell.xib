@@ -21,7 +21,7 @@
                         <rect key="frame" x="12" y="8" width="351" height="36"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frk-vg-ZnY">
-                                <rect key="frame" x="0.0" y="0.0" width="108" height="36"/>
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:00-18:00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9h-Q6-RMN">
                                         <rect key="frame" x="12" y="5.6666666666666643" width="65.333333333333329" height="25"/>
@@ -34,14 +34,14 @@
                                 <constraints>
                                     <constraint firstItem="R9h-Q6-RMN" firstAttribute="leading" secondItem="frk-vg-ZnY" secondAttribute="leading" constant="12" id="HgW-wc-HCJ"/>
                                     <constraint firstItem="R9h-Q6-RMN" firstAttribute="centerY" secondItem="frk-vg-ZnY" secondAttribute="centerY" id="IyQ-SS-8Ed"/>
-                                    <constraint firstAttribute="width" constant="108" id="n7C-Rs-X7b"/>
+                                    <constraint firstAttribute="width" constant="100" id="n7C-Rs-X7b"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7j-Ta-Oou">
-                                <rect key="frame" x="297" y="0.0" width="54" height="36"/>
+                                <rect key="frame" x="260.66666666666669" y="0.0" width="90.333333333333314" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.15" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="te9-sm-YsA">
-                                        <rect key="frame" x="0.0" y="5.6666666666666643" width="20.333333333333332" height="25"/>
+                                        <rect key="frame" x="0.0" y="5.6666666666666643" width="82.333333333333329" height="25"/>
                                         <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="15"/>
                                         <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -52,35 +52,16 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="54" id="Dqr-ww-gvc"/>
                                     <constraint firstItem="te9-sm-YsA" firstAttribute="centerY" secondItem="y7j-Ta-Oou" secondAttribute="centerY" id="kfh-Qt-xjD"/>
+                                    <constraint firstAttribute="trailing" secondItem="te9-sm-YsA" secondAttribute="trailing" constant="8" id="pdd-DI-BOf"/>
                                     <constraint firstItem="te9-sm-YsA" firstAttribute="leading" secondItem="y7j-Ta-Oou" secondAttribute="leading" id="w9p-tA-qLp"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efI-Jm-LWX">
-                                <rect key="frame" x="108" y="0.0" width="94.666666666666686" height="36"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.15" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4le-1Z-rCP">
-                                        <rect key="frame" x="0.0" y="5.6666666666666643" width="20.333333333333332" height="25"/>
-                                        <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="15"/>
-                                        <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="4le-1Z-rCP" firstAttribute="leading" secondItem="efI-Jm-LWX" secondAttribute="leading" id="2UM-iE-FPb"/>
-                                    <constraint firstItem="4le-1Z-rCP" firstAttribute="centerY" secondItem="efI-Jm-LWX" secondAttribute="centerY" id="oEV-8j-IdE"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQZ-8c-5ed">
-                                <rect key="frame" x="202.66666666666666" y="0.0" width="94.333333333333343" height="36"/>
+                                <rect key="frame" x="170" y="0.0" width="90.666666666666686" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.15" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fa6-4e-OVw">
-                                        <rect key="frame" x="0.0" y="5.6666666666666643" width="20.333333333333332" height="25"/>
+                                        <rect key="frame" x="0.0" y="5.6666666666666643" width="82.666666666666671" height="25"/>
                                         <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="15"/>
                                         <color key="textColor" red="1" green="0.60392156860000001" blue="0.031372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -91,15 +72,36 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fa6-4e-OVw" secondAttribute="trailing" constant="8" id="cRd-HT-ys6"/>
                                     <constraint firstItem="fa6-4e-OVw" firstAttribute="leading" secondItem="xQZ-8c-5ed" secondAttribute="leading" id="fnA-u3-7Oa"/>
                                     <constraint firstItem="fa6-4e-OVw" firstAttribute="centerY" secondItem="xQZ-8c-5ed" secondAttribute="centerY" id="yhF-0g-u82"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efI-Jm-LWX">
+                                <rect key="frame" x="100" y="0.0" width="70" height="36"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.15" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4le-1Z-rCP">
+                                        <rect key="frame" x="0.0" y="5.6666666666666643" width="62" height="25"/>
+                                        <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="15"/>
+                                        <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4le-1Z-rCP" secondAttribute="trailing" constant="8" id="0Jk-TV-swU"/>
+                                    <constraint firstItem="4le-1Z-rCP" firstAttribute="leading" secondItem="efI-Jm-LWX" secondAttribute="leading" id="2UM-iE-FPb"/>
+                                    <constraint firstAttribute="width" constant="70" id="WT0-Kc-GdX"/>
+                                    <constraint firstItem="4le-1Z-rCP" firstAttribute="centerY" secondItem="efI-Jm-LWX" secondAttribute="centerY" id="oEV-8j-IdE"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xQZ-8c-5ed" firstAttribute="top" secondItem="e1X-oy-kWO" secondAttribute="top" id="0Vc-8z-PKG"/>
-                            <constraint firstItem="xQZ-8c-5ed" firstAttribute="width" secondItem="efI-Jm-LWX" secondAttribute="width" id="0pS-am-IIn"/>
                             <constraint firstAttribute="bottom" secondItem="y7j-Ta-Oou" secondAttribute="bottom" id="23R-8d-tAQ"/>
                             <constraint firstItem="efI-Jm-LWX" firstAttribute="leading" secondItem="frk-vg-ZnY" secondAttribute="trailing" id="2K3-W4-K84"/>
                             <constraint firstAttribute="trailing" secondItem="y7j-Ta-Oou" secondAttribute="trailing" id="GTh-rs-NfU"/>
@@ -109,6 +111,7 @@
                             <constraint firstItem="frk-vg-ZnY" firstAttribute="leading" secondItem="e1X-oy-kWO" secondAttribute="leading" id="PIv-Lk-QHX"/>
                             <constraint firstAttribute="bottom" secondItem="efI-Jm-LWX" secondAttribute="bottom" id="Pp9-be-LTM"/>
                             <constraint firstItem="y7j-Ta-Oou" firstAttribute="top" secondItem="e1X-oy-kWO" secondAttribute="top" id="QiW-t8-HZJ"/>
+                            <constraint firstItem="y7j-Ta-Oou" firstAttribute="width" secondItem="xQZ-8c-5ed" secondAttribute="width" id="UwU-Zz-pCC"/>
                             <constraint firstAttribute="height" constant="36" id="dyF-Br-h4P"/>
                             <constraint firstItem="y7j-Ta-Oou" firstAttribute="leading" secondItem="xQZ-8c-5ed" secondAttribute="trailing" id="lvS-Qp-UFf"/>
                             <constraint firstAttribute="bottom" secondItem="xQZ-8c-5ed" secondAttribute="bottom" id="pa7-S5-H50"/>

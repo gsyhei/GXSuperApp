@@ -32,7 +32,7 @@ extension NSAttributedString {
     case us
     }
     
-    class func gx_stationAttrText(type: StationType, isSelected: Bool, count: Int, maxCount: Int, fontSize: CGFloat = 13) -> NSAttributedString {
+    class func gx_stationAttrText(type: StationType, isOpened: Bool = true, isSelected: Bool, count: Int, maxCount: Int, fontSize: CGFloat = 13) -> NSAttributedString {
         let countFont: UIFont = .gx_boldFont(size: fontSize)
         let maxCountFont: UIFont = .gx_font(size: fontSize)
         var countTextColor: UIColor, maxCountTextColor: UIColor
@@ -41,11 +41,7 @@ extension NSAttributedString {
             maxCountTextColor = .white
         }
         else {
-            if count == maxCount {
-                countTextColor = .gx_drakGray
-                maxCountTextColor = .gx_drakGray
-            }
-            else {
+            if isOpened {
                 if type == .tsl {
                     countTextColor = .gx_drakRed
                     maxCountTextColor = .gx_markerLightRed
@@ -54,6 +50,10 @@ extension NSAttributedString {
                     countTextColor = .gx_blue
                     maxCountTextColor = .gx_markerLightBlue
                 }
+            }
+            else {
+                countTextColor = .gx_drakGray
+                maxCountTextColor = .gx_drakGray
             }
         }
         

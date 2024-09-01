@@ -34,6 +34,8 @@ extension GXMarkerIconView {
     
     func bindView(model: GXStationConsumerRowsModel?, isSelected: Bool) {
         guard let model = model else { return }
+        
+        let isOpened = model.stationStatus == "OPENED"
         if isSelected {
             self.backgroundColor = .gx_green
             self.layer.borderWidth = 0.0
@@ -47,30 +49,26 @@ extension GXMarkerIconView {
             self.backgroundColor = .white
             self.layer.borderWidth = 0.5
             self.layer.borderColor = UIColor.gx_lightGray.cgColor
-            if model.teslaIdleCount == model.teslaCount {
-                self.tslNumberBgView.backgroundColor = .gx_background
-                self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_disable")
-            }
-            else {
+            if isOpened {
                 self.tslNumberBgView.backgroundColor = .gx_lightRed
                 self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_normal")
-            }
-            if model.usIdleCount == model.usCount {
-                self.usNumberBgView.backgroundColor = .gx_background
-                self.usNumberImgView.image = UIImage(named: "home_map_ic_us_disable")
-            }
-            else {
                 self.usNumberBgView.backgroundColor = .gx_lightBlue
                 self.usNumberImgView.image = UIImage(named: "home_map_ic_us_normal")
             }
+            else {
+                self.tslNumberBgView.backgroundColor = .gx_background
+                self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_disable")
+                self.usNumberBgView.backgroundColor = .gx_background
+                self.usNumberImgView.image = UIImage(named: "home_map_ic_us_disable")
+            }
         }
         /// TSL
-        let tslAttrText: NSAttributedString = .gx_stationAttrText(type: .tsl, isSelected: isSelected, count: model.teslaIdleCount, maxCount: model.teslaCount)
+        let tslAttrText: NSAttributedString = .gx_stationAttrText(type: .tsl, isOpened: isOpened, isSelected: isSelected, count: model.teslaIdleCount, maxCount: model.teslaCount)
         self.tslNumberLabel.attributedText = tslAttrText
         let tslWidth = tslAttrText.width()
         
         /// US
-        let usAttrText: NSAttributedString = .gx_stationAttrText(type: .us, isSelected: isSelected, count: model.usIdleCount, maxCount: model.usCount)
+        let usAttrText: NSAttributedString = .gx_stationAttrText(type: .us, isOpened: isOpened, isSelected: isSelected, count: model.usIdleCount, maxCount: model.usCount)
         self.usNumberLabel.attributedText = usAttrText
         let usWidth = usAttrText.width()
         

@@ -98,6 +98,7 @@ private class GXPaymentObserver: NSObject, SKPaymentTransactionObserver {
             seal.fulfill(transaction)
             queue.remove(self)
             retainCycle = nil
+            MBProgressHUD.dismiss()
         case .failed:
             let error = transaction.error ?? PMKError.cancelled
             queue.finishTransaction(transaction)

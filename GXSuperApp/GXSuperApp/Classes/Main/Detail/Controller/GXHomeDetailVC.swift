@@ -78,16 +78,18 @@ class GXHomeDetailVC: GXBaseViewController {
         if self.viewModel.detailData?.favoriteFlag == GX_YES {
             let favorImage = UIImage(named: "com_nav_ic_collect_selected")?.withRenderingMode(.alwaysOriginal)
             let favorItem = UIBarButtonItem(image: favorImage, style: .plain, target: self, action: #selector(requestFavoritedAction))
-            let shareImage = UIImage(named: "details_nav_ic_share")?.withRenderingMode(.alwaysOriginal)
-            let shareItem = UIBarButtonItem(image: shareImage, style: .plain, target: self, action: #selector(showSharedMenu))
-            self.navigationItem.rightBarButtonItems = [favorItem, shareItem]
+            self.navigationItem.rightBarButtonItem = favorItem
+//            let shareImage = UIImage(named: "details_nav_ic_share")?.withRenderingMode(.alwaysOriginal)
+//            let shareItem = UIBarButtonItem(image: shareImage, style: .plain, target: self, action: #selector(showSharedMenu))
+//            self.navigationItem.rightBarButtonItems = [favorItem, shareItem]
         }
         else {
             let favorImage = UIImage(named: "com_nav_ic_collect_normal")?.withRenderingMode(.alwaysOriginal)
             let favorItem = UIBarButtonItem(image: favorImage, style: .plain, target: self, action: #selector(requestFavoritedAction))
-            let shareImage = UIImage(named: "details_nav_ic_share")?.withRenderingMode(.alwaysOriginal)
-            let shareItem = UIBarButtonItem(image: shareImage, style: .plain, target: self, action: #selector(showSharedMenu))
-            self.navigationItem.rightBarButtonItems = [favorItem, shareItem]
+            self.navigationItem.rightBarButtonItem = favorItem
+//            let shareImage = UIImage(named: "details_nav_ic_share")?.withRenderingMode(.alwaysOriginal)
+//            let shareItem = UIBarButtonItem(image: shareImage, style: .plain, target: self, action: #selector(showSharedMenu))
+//            self.navigationItem.rightBarButtonItems = [favorItem, shareItem]
         }
     }
 }

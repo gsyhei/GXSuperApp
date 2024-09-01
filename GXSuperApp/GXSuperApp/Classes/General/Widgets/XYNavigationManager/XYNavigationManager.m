@@ -46,7 +46,7 @@
                     coordinate:(CLLocationCoordinate2D)coordinate
                     endAddress:(NSString*)endAddress
 {
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Select the map to navigate" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Select the map to navigate" message:nil preferredStyle:UIAlertControllerStyleAlert];
     NSArray *maps = [XYNavigationManager getInstalledMapEndLocation:coordinate endAddress:endAddress];
     NSInteger index = maps.count;
     for (int i = 0; i < index; i++) {

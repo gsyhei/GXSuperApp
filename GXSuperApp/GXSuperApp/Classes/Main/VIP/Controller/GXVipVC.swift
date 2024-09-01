@@ -175,22 +175,31 @@ private extension GXVipVC {
         }.then { response in
             SKPayment.gx_paymentPromise(response: response)
         }.done { transaction in
-            self.validateReceipt()
+            self.validateReceipt(transaction: transaction)
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
         }
     }
-    func validateReceipt() {
-        SKPayment.validateReceipt(completion: { model in
-            if let model = model, model.app_account_token != GXUserManager.shared.user?.uuid
-            {
-                MBProgressHUD.dismiss()
-                GXUtil.showAlert(title: "Alert", message: "You have subscribed to VIP on another MarsEnergy account!", cancelTitle: "I see")
-            }
-            else {
-                self.viewModel.autoUpdateVipRequest()
-            }
-        })
+    func validateReceipt(transaction: SKPaymentTransaction) {
+        MBProgressHUD.dismiss()
+        
+        if transaction.transactionState == .restored {
+            SKPayment.validateReceipt(completion: { model in
+                guard let model = model else { return }
+                guard model.expires_date_ms > GXServiceManager.shared.systemDate.timeIntervalSince1970 else { return }
+                if model.app_account_token == GXUserManager.shared.user?.uuid {
+                    GXUtil.showAlert(title: "Alert", message: "You have subscribed to VIP on another MarsEnergy account!", cancelTitle: "I see")
+                }
+                else {
+                    MBProgressHUD.showLoading()
+                    self.viewModel.autoUpdateVipRequest()
+                }
+            })
+        }
+        else {
+            MBProgressHUD.showLoading()
+            self.viewModel.autoUpdateVipRequest()
+        }
     }
 }

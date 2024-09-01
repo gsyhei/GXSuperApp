@@ -271,7 +271,7 @@ private extension GXHomeVC {
     
     func showAlertNotLocation() {
         let title = "Enable Location"
-        let message = "Can better recommend the station around you"
+        let message = "Allow MarsEnergy to access your location to find nearby stations"
         GXUtil.showAlert(to: UIWindow.gx_frontWindow, title: title, message: message, cancelTitle: "Go to Settings", actionHandler: { alert, index in
             if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(appSettings, completionHandler: nil)

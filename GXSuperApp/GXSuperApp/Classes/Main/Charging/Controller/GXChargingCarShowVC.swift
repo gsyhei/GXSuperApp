@@ -8,6 +8,7 @@
 import UIKit
 import MBProgressHUD
 import PromiseKit
+import XCGLogger
 
 class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
     @IBOutlet weak var carNumberLabel: UILabel!
@@ -140,13 +141,25 @@ extension GXChargingCarShowVC {
         firstly {
             self.viewModel.requestOrderConsumerStop()
         }.done { model in
-            MBProgressHUD.dismiss()
-            // 停止成功，去订单详情
-            let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId)
-            self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
+            self.updateChargingStatusNext()
         }.catch { error in
             MBProgressHUD.dismiss()
             GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    @objc func updateChargingStatusNext() {
+        firstly {
+            self.viewModel.requestChargingConsumerStatus()
+        }.done { model in
+            if model.data?.status == "FINISHED" {
+                MBProgressHUD.dismiss()
+                let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId)
+                self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
+            } else {
+                self.perform(#selector(self.updateChargingStatusNext), with: nil, afterDelay: 2)
+            }
+        }.catch { error in
+            self.perform(#selector(self.updateChargingStatusNext), with: nil, afterDelay: 2)
         }
     }
 }

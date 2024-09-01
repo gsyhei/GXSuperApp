@@ -31,25 +31,22 @@ class GXHomeDetailCell2: UITableViewCell, NibReusable {
         guard let model = model else { return }
         
         // 充电枪信息
-        if model.teslaIdleCount == model.teslaCount {
-            self.tslNumberBgView.backgroundColor = .gx_background
-            self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_disable")
-        }
-        else {
+        let isOpened = model.stationStatus == "OPENED"
+        if isOpened {
             self.tslNumberBgView.backgroundColor = .gx_lightRed
             self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_normal")
-        }
-        if model.usIdleCount == model.usCount {
-            self.usNumberBgView.backgroundColor = .gx_background
-            self.usNumberImgView.image = UIImage(named: "home_map_ic_us_disable")
-        }
-        else {
             self.usNumberBgView.backgroundColor = .gx_lightBlue
             self.usNumberImgView.image = UIImage(named: "home_map_ic_us_normal")
         }
-        let tslAttrText: NSAttributedString = .gx_stationAttrText(type: .tsl, isSelected: false, count: model.teslaIdleCount, maxCount: model.teslaCount, fontSize: 16)
+        else {
+            self.tslNumberBgView.backgroundColor = .gx_background
+            self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_disable")
+            self.usNumberBgView.backgroundColor = .gx_background
+            self.usNumberImgView.image = UIImage(named: "home_map_ic_us_disable")
+        }
+        let tslAttrText: NSAttributedString = .gx_stationAttrText(type: .tsl, isOpened: isOpened, isSelected: false, count: model.teslaIdleCount, maxCount: model.teslaCount)
         self.tslNumberLabel.attributedText = tslAttrText
-        let usAttrText: NSAttributedString = .gx_stationAttrText(type: .us, isSelected: false, count: model.usIdleCount, maxCount: model.usCount, fontSize: 16)
+        let usAttrText: NSAttributedString = .gx_stationAttrText(type: .us, isOpened: isOpened, isSelected: false, count: model.usIdleCount, maxCount: model.usCount)
         self.usNumberLabel.attributedText = usAttrText
         
         self.maxPowerLabel.text = "\(model.maxPower)KW"

@@ -89,23 +89,23 @@ class GXHomeDetailChargingFeeHeader: UITableViewHeaderFooterView, Reusable {
         self.timeView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.left.equalToSuperview().offset(12)
-            make.width.equalTo(108)
+            make.width.equalTo(100)
         }
         self.kWhView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.left.equalTo(self.timeView.snp.right)
-            make.width.equalTo(self.vipKWhView)
+            make.width.equalTo(70)
         }
         self.vipKWhView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.left.equalTo(self.kWhView.snp.right)
-            make.width.equalTo(self.kWhView)
+            make.width.equalTo(self.feeView)
         }
         self.feeView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.left.equalTo(self.vipKWhView.snp.right)
             make.right.equalToSuperview().offset(-12)
-            make.width.equalTo(90)
+            make.width.equalTo(self.vipKWhView)
         }
         
         self.timeView.addSubview(self.timeLabel)

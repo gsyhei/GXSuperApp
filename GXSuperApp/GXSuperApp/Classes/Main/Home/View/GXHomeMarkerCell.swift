@@ -55,28 +55,32 @@ class GXHomeMarkerCell: UITableViewCell, NibReusable {
         let titles = model.aroundFacilitiesList.compactMap { $0.name }
         self.topTagsView.updateTitles(titles: titles, width: SCREEN_WIDTH - 48, isShowFristLine: false)
         // 电费
-        self.priceLabel.text = GXUserManager.shared.isLogin ? "$\(model.electricFee)" : "$*****"
+        if GXUserManager.shared.isLogin {
+            let kWhFee = model.electricFee + model.serviceFee
+            let vipkWhFee = model.electricFee + model.serviceFeeVip
+            self.priceLabel.text = String(format: "$%.2f", GXUserManager.shared.isVip ? vipkWhFee : kWhFee)
+        }
+        else {
+            self.priceLabel.text = "$*****"
+        }
         
         // 充电枪信息
-        if model.teslaIdleCount == model.teslaCount {
-            self.tslNumberBgView.backgroundColor = .gx_background
-            self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_disable")
-        }
-        else {
+        let isOpened = model.stationStatus == "OPENED"
+        if isOpened {
             self.tslNumberBgView.backgroundColor = .gx_lightRed
             self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_normal")
-        }
-        if model.usIdleCount == model.usCount {
-            self.usNumberBgView.backgroundColor = .gx_background
-            self.usNumberImgView.image = UIImage(named: "home_map_ic_us_disable")
-        }
-        else {
             self.usNumberBgView.backgroundColor = .gx_lightBlue
             self.usNumberImgView.image = UIImage(named: "home_map_ic_us_normal")
         }
-        let tslAttrText: NSAttributedString = .gx_stationAttrText(type: .tsl, isSelected: false, count: model.teslaIdleCount, maxCount: model.teslaCount)
+        else {
+            self.tslNumberBgView.backgroundColor = .gx_background
+            self.tslNumberImgView.image = UIImage(named: "home_map_ic_tesla_disable")
+            self.usNumberBgView.backgroundColor = .gx_background
+            self.usNumberImgView.image = UIImage(named: "home_map_ic_us_disable")
+        }
+        let tslAttrText: NSAttributedString = .gx_stationAttrText(type: .tsl, isOpened: isOpened, isSelected: false, count: model.teslaIdleCount, maxCount: model.teslaCount)
         self.tslNumberLabel.attributedText = tslAttrText
-        let usAttrText: NSAttributedString = .gx_stationAttrText(type: .us, isSelected: false, count: model.usIdleCount, maxCount: model.usCount)
+        let usAttrText: NSAttributedString = .gx_stationAttrText(type: .us, isOpened: isOpened, isSelected: false, count: model.usIdleCount, maxCount: model.usCount)
         self.usNumberLabel.attributedText = usAttrText
         
         // 停车减免、服务费

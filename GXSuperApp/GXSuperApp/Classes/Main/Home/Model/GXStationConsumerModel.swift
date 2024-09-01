@@ -29,7 +29,7 @@ class GXStationConsumerRowsModel: NSObject, HandyJSON {
     var freeParking: String = ""
     var city: String = ""
     var name: String = ""
-    var electricFee: String = ""
+    var electricFee: CGFloat = 0
     var aroundFacilitiesList = [GXStationConsumerTagslistModel]()
     var id: Int = 0
     var occupyFlag: String = ""
@@ -45,6 +45,9 @@ class GXStationConsumerRowsModel: NSObject, HandyJSON {
     var usCount: Int = 0
     var serviceFeeVip: CGFloat = 0
     var address: String = ""
+    //站点状态；PREPARING：准备中，OPENED：已开通，DEACTIVATED：已停用
+    var stationStatus: String = ""
+    var cooperationStatus: String = ""
 
     override required init() {}
 }
