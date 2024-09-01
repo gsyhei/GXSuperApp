@@ -51,8 +51,8 @@ class GXHomeDetailChargingFeeCell: UITableViewCell, NibReusable {
             else {
                 self.topView.backgroundColor = .gx_blue
                 self.topLabel.text = "Current"
-                self.kWhLabel.font = .gx_boldFont(size: 20)
-                self.vipKWhLabel.font = .gx_boldFont(size: 20)
+                self.kWhLabel.font = .gx_boldFont(size: 18)
+                self.vipKWhLabel.font = .gx_boldFont(size: 18)
             }
         }
         if GXUserManager.shared.isLogin {
