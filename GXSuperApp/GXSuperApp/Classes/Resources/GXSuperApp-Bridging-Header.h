@@ -8,6 +8,4 @@
 #ifndef GXSuperApp_Bridging_Header_h
 #define GXSuperApp_Bridging_Header_h
 
-#import "XYNavigationManager.h"
-
 #endif /* GXSuperApp_Bridging_Header_h */

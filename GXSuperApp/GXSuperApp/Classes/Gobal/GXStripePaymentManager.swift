@@ -17,7 +17,7 @@ class GXStripePaymentManager: NSObject {
             STPAPIClient.shared.publishableKey = data.publishableKey
             // MARK: Create a PaymentSheet instance
             var configuration = PaymentSheet.Configuration()
-            configuration.merchantDisplayName = "MarsEnergy"
+            configuration.merchantDisplayName = APP_NAME
             configuration.customer = .init(id: data.customer, ephemeralKeySecret: data.ephemeralKey)
             configuration.allowsDelayedPaymentMethods = true
             let paymentShee = PaymentSheet(paymentIntentClientSecret: data.clientSecret, configuration: configuration)
@@ -31,7 +31,7 @@ class GXStripePaymentManager: NSObject {
             STPAPIClient.shared.publishableKey = data.publishableKey
             // MARK: Create a PaymentSheet instance
             var configuration = PaymentSheet.Configuration()
-            configuration.merchantDisplayName = "MarsEnergy"
+            configuration.merchantDisplayName = APP_NAME
             configuration.customer = .init(id: data.customer, ephemeralKeySecret: data.ephemeralKey)
             configuration.allowsDelayedPaymentMethods = true
             let paymentShee = PaymentSheet(setupIntentClientSecret: data.setupIntent, configuration: configuration)

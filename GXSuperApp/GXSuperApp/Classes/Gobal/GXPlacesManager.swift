@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import CoreLocation
 
 struct GXPlace: Codable {
     var placeID: String?

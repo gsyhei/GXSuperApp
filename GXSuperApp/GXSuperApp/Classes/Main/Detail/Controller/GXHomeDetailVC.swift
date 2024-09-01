@@ -423,7 +423,7 @@ private extension GXHomeDetailVC {
     func showNavigationMenu() {
         guard let detail = self.viewModel.detailData else { return }
         let coordinate = CLLocationCoordinate2D(latitude: detail.lat, longitude: detail.lng)
-        XYNavigationManager.show(with: self, coordinate: coordinate, endAddress: detail.address)
+        GXNavigationManager.showNavigation(coordinate: coordinate, endAddress: detail.address)
     }
     
     @objc func requestFavoritedAction() {

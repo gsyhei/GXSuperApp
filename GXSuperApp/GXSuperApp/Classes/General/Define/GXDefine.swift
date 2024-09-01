@@ -22,6 +22,8 @@ let STATUS_HEIGHT = (UIApplication.shared.connectedScenes.first as? UIWindowScen
 
 let PAGE_SIZE: Int = 20 /// 每页数量
 
+let APP_NAME = "MarsEnergy"
+
 typealias GXActionBlock = (() -> Void)
 typealias GXActionBlockItem<T: Any> = ((T) -> Void)
 typealias GXActionBlockItem2<T: Any, T1: Any> = ((T, T1) -> Void)

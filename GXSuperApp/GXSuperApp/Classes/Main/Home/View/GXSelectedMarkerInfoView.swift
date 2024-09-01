@@ -206,7 +206,7 @@ extension GXSelectedMarkerInfoView {
     @IBAction func navigateButtonClicked(_ sender: UIButton) {
         guard let model = self.model else { return }
         let coordinate = CLLocationCoordinate2D(latitude: model.lat, longitude: model.lng)
-        XYNavigationManager.show(with: self.superVC, coordinate: coordinate, endAddress: model.address)
+        GXNavigationManager.showNavigation(coordinate: coordinate, endAddress: model.address)
     }
     
     @IBAction func scanButtonClicked(_ sender: UIButton) {

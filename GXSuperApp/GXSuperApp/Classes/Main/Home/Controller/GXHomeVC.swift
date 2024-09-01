@@ -166,10 +166,9 @@ class GXHomeVC: GXBaseViewController {
             self.requestStationConsumerQuery()
         }
         self.panView.navigationAction = {[weak self] model in
-            guard let `self` = self else { return }
             guard let model = model else { return }
             let coordinate = CLLocationCoordinate2D(latitude: model.lat, longitude: model.lng)
-            XYNavigationManager.show(with: self, coordinate: coordinate, endAddress: model.address)
+            GXNavigationManager.showNavigation(coordinate: coordinate, endAddress: model.address)
         }
         
         GXLocationManager.shared.requestGeocodeCompletion {[weak self] (isAuth, cityName, location) in
