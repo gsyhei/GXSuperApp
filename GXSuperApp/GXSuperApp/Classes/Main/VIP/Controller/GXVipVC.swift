@@ -166,10 +166,10 @@ private extension GXVipVC {
             return
         }
         self.viewModel.autouUpdateVipAction = { isVip in
-            MBProgressHUD.dismiss()
+            MBProgressHUD.dismiss(for: self.view)
             GXAppDelegate?.gotoMainTabbarController(index: 1)
         }
-        MBProgressHUD.showLoading()
+        MBProgressHUD.showLoading(to: self.view)
         firstly {
             SKProductsRequest(productIdentifiers: [GX_PRODUCT_ID]).start(.promise)
         }.then { response in
@@ -177,29 +177,25 @@ private extension GXVipVC {
         }.done { transaction in
             self.validateReceipt(transaction: transaction)
         }.catch { error in
-            MBProgressHUD.dismiss()
+            MBProgressHUD.dismiss(for: self.view)
             GXToast.showError(text:error.localizedDescription)
         }
     }
     func validateReceipt(transaction: SKPaymentTransaction) {
-        MBProgressHUD.dismiss()
+        MBProgressHUD.dismiss(for: self.view)
         
-        if transaction.transactionState == .restored {
-            SKPayment.validateReceipt(completion: { model in
-                guard let model = model else { return }
-                guard model.expires_date_ms > GXServiceManager.shared.systemDate.timeIntervalSince1970 else { return }
-                if model.app_account_token == GXUserManager.shared.user?.uuid {
-                    GXUtil.showAlert(title: "Alert", message: "You have subscribed to VIP on another MarsEnergy account!", cancelTitle: "I see")
-                }
-                else {
-                    MBProgressHUD.showLoading()
-                    self.viewModel.autoUpdateVipRequest()
-                }
-            })
-        }
-        else {
-            MBProgressHUD.showLoading()
-            self.viewModel.autoUpdateVipRequest()
-        }
+        SKPayment.validateReceipt(completion: { model in
+            guard let model = model else { return }
+//            let systemTimeInterval = GXServiceManager.shared.systemDate.timeIntervalSince1970 * 1000
+//            guard model.expires_date_ms > systemTimeInterval else { return }
+            
+            if model.app_account_token != GXUserManager.shared.user?.uuid {
+                GXUtil.showAlert(title: "Alert", message: "You have subscribed to VIP on another MarsEnergy account!", cancelTitle: "I see")
+            }
+            else {
+                MBProgressHUD.showLoading(to: self.view)
+                self.viewModel.autoUpdateVipRequest()
+            }
+        })
     }
 }
