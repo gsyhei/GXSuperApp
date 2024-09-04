@@ -28,7 +28,7 @@ class GXChargingFeeConfirmVC: GXBaseViewController, GXChargingStoryboard {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.requestConnectorConsumerScan()
+        self.requestConnectorConsumerLoad()
     }
     
     override func setupViewController() {
@@ -40,7 +40,7 @@ class GXChargingFeeConfirmVC: GXBaseViewController, GXChargingStoryboard {
 
 private extension GXChargingFeeConfirmVC {
     
-    func requestConnectorConsumerScan() {
+    func requestConnectorConsumerLoad() {
         self.view.layoutSkeletonIfNeeded()
         self.view.showAnimatedGradientSkeleton()
         let combinedPromise = when(fulfilled: [
@@ -57,6 +57,22 @@ private extension GXChargingFeeConfirmVC {
             self.view.hideSkeleton()
             GXToast.showError(text:error.localizedDescription)
             self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func requestConnectorConsumerScan() {
+        guard let qrcode = self.viewModel.scanData?.qrcode else { return }
+        MBProgressHUD.showLoading()
+        firstly {
+            GXNWProvider.login_requestConnectorConsumerScan(qrcode: qrcode)
+        }.done { model in
+            MBProgressHUD.dismiss()
+            self.viewModel.scanData = model.data
+            self.updateBottomDataSource()
+            self.notifiTableViewUpdateData()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
         }
     }
     
@@ -98,7 +114,7 @@ private extension GXChargingFeeConfirmVC {
         if self.viewModel.scanData?.status == "Available" {
             let message = "Please connect the charging gun to start charging"
             GXUtil.showAlert(title: "Alert", message: message, cancelTitle: "OK", handler: { alert, index in
-                self.navigationController?.popViewController(animated: true)
+                self.requestConnectorConsumerScan()
             })
         }
         else {

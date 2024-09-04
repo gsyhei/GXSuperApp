@@ -49,6 +49,7 @@ class GXChargingOrderDetailsViewModel: GXBaseViewModel {
                 self.detailData = model.data
                 seal.fulfill(model)
             }, failure: { error in
+                self.detailData = self.detailData
                 seal.reject(error)
             })
         }

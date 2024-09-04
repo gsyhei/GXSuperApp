@@ -29,7 +29,7 @@ class GXOrderAppealViewModel: GXBaseViewModel {
     /// 申诉详情
     func requestOrderConsumerComplainDetail() -> Promise<OrderConsumerComplainDetailModel?> {
         return Promise { seal in
-            guard let complainId = self.detailCellModel?.item.complainId else {
+            guard let complainId = self.detailCellModel?.item.complainId, complainId.count > 0 else {
                 seal.fulfill(nil); return
             }
             var params: Dictionary<String, Any> = [:]
