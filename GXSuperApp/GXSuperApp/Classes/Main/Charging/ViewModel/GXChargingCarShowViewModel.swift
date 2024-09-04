@@ -14,11 +14,7 @@ class GXChargingCarShowViewModel: GXBaseViewModel {
     var orderId: Int = 0
     
     /// 订单详情data
-    var detailData: GXChargingOrderDetailData? {
-        didSet {
-            self.updateCountdownRequests()
-        }
-    }
+    var detailData: GXChargingOrderDetailData?
     
     /// 倒计时计数器
     private var countdown: Int = 0
@@ -44,8 +40,10 @@ class GXChargingCarShowViewModel: GXBaseViewModel {
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXChargingOrderDetailModel.self, success: { model in
                 self.detailData = model.data
+                self.updateCountdownRequests()
                 seal.fulfill(model)
             }, failure: { error in
+                self.updateCountdownRequests()
                 seal.reject(error)
             })
         }
