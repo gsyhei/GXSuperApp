@@ -38,9 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enabledToolbarClasses.append(GXLoginPhoneVC.self)
         IQKeyboardManager.shared.enabledToolbarClasses.append(GXHomeSearchVC.self)
         IQKeyboardManager.shared.enabledToolbarClasses.append(GXMineWithdrawVC.self)
+        IQKeyboardManager.shared.enabledToolbarClasses.append(GXOrderAppealVC.self)
         IQKeyboardManager.shared.enabledDistanceHandlingClasses.append(GXLoginPhoneVC.self)
         IQKeyboardManager.shared.enabledDistanceHandlingClasses.append(GXHomeSearchVC.self)
         IQKeyboardManager.shared.enabledDistanceHandlingClasses.append(GXMineWithdrawVC.self)
+        IQKeyboardManager.shared.enabledDistanceHandlingClasses.append(GXOrderAppealVC.self)
 
         // 配置过渡
         SkeletonAppearance.default.gradient = SkeletonGradient(baseColor: .gx_lineGray)
