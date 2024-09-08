@@ -10,6 +10,7 @@ import HandyJSON
 
 class GXParamConsumerData: NSObject, HandyJSON {
     var states = [String]()
+    var nationCodes = [String]()
     var occupyStartTime: Int = 0
     var occupyMax: String = ""
     var memberReduction: String = ""

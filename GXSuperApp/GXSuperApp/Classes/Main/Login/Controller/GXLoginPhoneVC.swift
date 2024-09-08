@@ -12,12 +12,15 @@ import RxCocoaPlus
 import XCGLogger
 import MBProgressHUD
 import PromiseKit
+import Popover
 
 class GXLoginPhoneVC: GXBaseViewController {
     enum GXLoginType {
         case login
         case bindPhone
     }
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var phoneInputView: UIView!
     @IBOutlet weak var countryCodeLabel: UILabel!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var codeTextField: UITextField!
@@ -36,12 +39,32 @@ class GXLoginPhoneVC: GXBaseViewController {
     private lazy var viewModel: GXLoginAllViewModel = {
         return GXLoginAllViewModel()
     }()
+    private lazy var popover: Popover = {
+        let color = UIColor(white: 0, alpha: 0.05)
+        let size = CGSize(width: 16.0, height: 8.0)
+        let options:[PopoverOption] = [
+            .type(.down),
+            .sideEdge(0.0),
+            .blackOverlayColor(.clear),
+            .color(.white),
+            .arrowSize(size),
+            .animationIn(0.3)
+        ]
+        return Popover(options: options).then {
+            $0.layer.masksToBounds = false
+            $0.layer.shadowColor = UIColor.gx_gray.cgColor
+            $0.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+            $0.layer.shadowRadius = 4.0
+            $0.layer.shadowOpacity = 1.0
+        }
+    }()
     var loginType: GXLoginType = .login
     var tempToken: String = ""
     var completion: GXActionBlock?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.requestParamConsumer()
     }
     
     override func setupViewController() {
@@ -105,6 +128,20 @@ class GXLoginPhoneVC: GXBaseViewController {
 }
 
 private extension GXLoginPhoneVC {
+    
+    func requestParamConsumer() {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestParamConsumer()
+        }.done {[weak self] model in
+            guard let `self` = self else { return }
+            self.countryCodeLabel.text = self.viewModel.codeModel?.title
+            MBProgressHUD.dismiss()
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
     
     func requestLogin() {
         self.view.endEditing(true)
@@ -217,6 +254,18 @@ private extension GXLoginPhoneVC {
 }
 
 extension GXLoginPhoneVC {
+    @IBAction func nationCodeButtonClicked(_ sender: UIButton) {
+        let listView = GXCodesPopoverListView(list: self.viewModel.list) {[weak self] item in
+            guard let `self` = self else { return }
+            self.popover.dismiss()
+            self.viewModel.codeModel = item
+            self.countryCodeLabel.text = item.title
+        }
+        let rect = sender.convert(sender.frame, from: self.phoneInputView)
+        let btnRect = sender.convert(rect, to: self.view)
+        let point = CGPoint(x: btnRect.origin.x + sender.frame.width/2, y: btnRect.maxY-8)
+        self.popover.show(listView, point: point, inView: self.view)
+    }
     @IBAction func sendCodeButtonClicked(_ sender: UIButton) {
         self.requestSendCode()
     }
@@ -255,7 +304,7 @@ extension GXLoginPhoneVC: UITextViewDelegate {
                                          title: "User Agreement")
             self.navigationController?.pushViewController(vc, animated: true)
         case "ast":
-            let vc = GXWebViewController(urlString: GXUtil.gx_h5Url(id: 1), 
+            let vc = GXWebViewController(urlString: GXUtil.gx_h5Url(id: 1),
                                          title: "ATT Service Terms")
             self.navigationController?.pushViewController(vc, animated: true)
         default: break

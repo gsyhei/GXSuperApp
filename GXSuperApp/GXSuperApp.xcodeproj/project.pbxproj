@@ -11,6 +11,7 @@
 		33048EF42C7882150013AE4A /* GXHomeDetailChargerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33048EF22C7882150013AE4A /* GXHomeDetailChargerCell.xib */; };
 		330607B32C3932BA00F59C08 /* GXChargingOrderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330607B22C3932BA00F59C08 /* GXChargingOrderDetailsViewModel.swift */; };
 		3307ECC52C65CF1200E38F78 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3307ECC42C65CF1200E38F78 /* GoogleService-Info.plist */; };
+		3308863C2C8DCC2F0078D57E /* GXCodesPopoverListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3308863B2C8DCC2F0078D57E /* GXCodesPopoverListView.swift */; };
 		330B40BF2C3F90C800D1136B /* GXUploadFileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B40BE2C3F90C800D1136B /* GXUploadFileModel.swift */; };
 		330B40C22C3FB1A000D1136B /* GXOrderAppealShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330B40C12C3FB1A000D1136B /* GXOrderAppealShowCell.xib */; };
 		330B40C32C3FB1A000D1136B /* GXOrderAppealShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330B40C02C3FB1A000D1136B /* GXOrderAppealShowCell.swift */; };
@@ -280,6 +281,7 @@
 		33048EF22C7882150013AE4A /* GXHomeDetailChargerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailChargerCell.xib; sourceTree = "<group>"; };
 		330607B22C3932BA00F59C08 /* GXChargingOrderDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingOrderDetailsViewModel.swift; sourceTree = "<group>"; };
 		3307ECC42C65CF1200E38F78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3308863B2C8DCC2F0078D57E /* GXCodesPopoverListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXCodesPopoverListView.swift; sourceTree = "<group>"; };
 		330B40BE2C3F90C800D1136B /* GXUploadFileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXUploadFileModel.swift; sourceTree = "<group>"; };
 		330B40C02C3FB1A000D1136B /* GXOrderAppealShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderAppealShowCell.swift; sourceTree = "<group>"; };
 		330B40C12C3FB1A000D1136B /* GXOrderAppealShowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXOrderAppealShowCell.xib; sourceTree = "<group>"; };
@@ -715,6 +717,7 @@
 		339A5EE12C2B9DB8004F1B7F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3308863B2C8DCC2F0078D57E /* GXCodesPopoverListView.swift */,
 				339A07112C2F996200BDDD46 /* GXLoginInputCell.swift */,
 				339A07122C2F996200BDDD46 /* GXLoginInputCell.xib */,
 				337D68072C44F0B6002EA627 /* GXLoginDashedLineView.swift */,
@@ -1474,6 +1477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33953F642C20846E0049C76C /* GXHomeSearchViewModel.swift in Sources */,
+				3308863C2C8DCC2F0078D57E /* GXCodesPopoverListView.swift in Sources */,
 				3398F73A2C288EF400A02CEF /* GXHomeDetailCell4.swift in Sources */,
 				3398F7362C27D76200A02CEF /* GXHomeDetailChargingFeeHeader.swift in Sources */,
 				33A6A70D2C6DFD5200E8C770 /* GXMinePayBalanceCell.swift in Sources */,
@@ -1813,7 +1817,7 @@
 				CODE_SIGN_ENTITLEMENTS = GXSuperApp/GXSuperApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V9JU6X647H;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1859,7 +1863,7 @@
 				CODE_SIGN_ENTITLEMENTS = GXSuperApp/GXSuperApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = V9JU6X647H;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
