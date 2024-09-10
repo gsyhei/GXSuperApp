@@ -67,7 +67,7 @@ class GXHomeVC: GXBaseViewController {
     }
     
     override func viewDidAppearForAfterLoading() {
-        self.requestOrderConsumerDoing()
+        self.loginReloadViewData()
     }
     
     override func viewSafeAreaInsetsDidChange() {
@@ -199,8 +199,8 @@ class GXHomeVC: GXBaseViewController {
     }
     
     override func loginReloadViewData() {
-        self.panView.tableViewReloadData()
         self.requestOrderConsumerDoing()
+        self.requestStationConsumerQuery()
     }
 }
 
