@@ -128,7 +128,8 @@ extension GXChargingLaunchStatusVC {
     }
     @objc func handleDisplayLink(displayLink: CADisplayLink) {
         self.progressCount += 1
-        var progress = self.progressCount / 10
+        // 每秒进度 (60 / 6) = 10%
+        var progress = self.progressCount / (60 / 6)
         if progress > 99 { progress = 99 }
         self.progressLabel.text = "\(Int(progress))%"
     }
