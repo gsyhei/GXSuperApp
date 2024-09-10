@@ -33,7 +33,7 @@ class GXHomeDetailChargerCell: UICollectionViewCell, NibReusable {
                 self.chargerStatusLabel.text = model.status
                 self.progressView.isHidden = true
                 break
-            case "Charging", "Finishing":
+            case "Charging":
                 self.backgroundColor = .gx_lightBlue
                 self.chargerStatusLabel.textColor = .gx_blue
                 self.chargerStatusLabel.text = "\(model.soc)%"
