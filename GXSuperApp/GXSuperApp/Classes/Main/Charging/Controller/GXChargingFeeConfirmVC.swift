@@ -111,15 +111,15 @@ private extension GXChargingFeeConfirmVC {
     }
     
     @IBAction func startChargingButtonClicked(_ sender: Any?) {
-        if self.viewModel.scanData?.status == "Available" {
+        if self.viewModel.scanData?.status == "Preparing" {
+            let vc =  GXChargingLaunchStatusVC.createVC(viewModel: self.viewModel)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else {
             let message = "Please connect the charging gun to start charging"
             GXUtil.showAlert(title: "Alert", message: message, cancelTitle: "OK", handler: { alert, index in
                 self.requestConnectorConsumerScan()
             })
-        }
-        else {
-            let vc =  GXChargingLaunchStatusVC.createVC(viewModel: self.viewModel)
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
