@@ -79,5 +79,4 @@ public extension UIApplication {
     class func appBuildVersion() -> String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
     }
-    
 }

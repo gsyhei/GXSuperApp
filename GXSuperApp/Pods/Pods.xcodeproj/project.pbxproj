@@ -22886,6 +22886,45 @@
 			};
 			name = Release;
 		};
+		10E8F7ADBFF9B60E4360A3D225118E64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E7FEB71C64FFE431DEC6E0216597517 /* GXCategories.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				EXPANDED_CODE_SIGN_IDENTITY = "";
+				GCC_PREFIX_HEADER = "Target Support Files/GXCategories/GXCategories-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GXCategories/GXCategories-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/GXCategories/GXCategories.modulemap";
+				PRODUCT_MODULE_NAME = GXCategories;
+				PRODUCT_NAME = GXCategories;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		12631EA82EF2FD3BD09519567B1890F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46FAF4C835EDEE9AE96755A401820936 /* IQKeyboardManagerSwift.release.xcconfig */;
@@ -24430,45 +24469,6 @@
 			};
 			name = Debug;
 		};
-		4A429E6A492860854214E87BC6146EA9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF9D8631D4DB3728EF643F019424909D /* GXRefresh.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				EXPANDED_CODE_SIGN_IDENTITY = "";
-				GCC_PREFIX_HEADER = "Target Support Files/GXRefresh/GXRefresh-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GXRefresh/GXRefresh-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/GXRefresh/GXRefresh.modulemap";
-				PRODUCT_MODULE_NAME = GXRefresh;
-				PRODUCT_NAME = GXRefresh;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		4B2DA7C138C723D035F0D305C7B6B817 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BA96E03989F5CB70B530E0FFF4577201 /* HXPhotoPicker.release.xcconfig */;
@@ -24781,46 +24781,6 @@
 			};
 			name = Debug;
 		};
-		549EEFE163CE1740D25AA164ED54269C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81264441872F6695E48700C08F5D2FEC /* GXCategories.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				EXPANDED_CODE_SIGN_IDENTITY = "";
-				GCC_PREFIX_HEADER = "Target Support Files/GXCategories/GXCategories-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GXCategories/GXCategories-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/GXCategories/GXCategories.modulemap";
-				PRODUCT_MODULE_NAME = GXCategories;
-				PRODUCT_NAME = GXCategories;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		554E2230045B501FA4B5F65E8CE20EF2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C857EDAEB9C9410D928794B58CC43392 /* FirebaseAuth.release.xcconfig */;
@@ -24937,6 +24897,46 @@
 			};
 			name = Debug;
 		};
+		59A3BD16235753DD8A2D9F4C72EDA4DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81264441872F6695E48700C08F5D2FEC /* GXCategories.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				EXPANDED_CODE_SIGN_IDENTITY = "";
+				GCC_PREFIX_HEADER = "Target Support Files/GXCategories/GXCategories-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GXCategories/GXCategories-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/GXCategories/GXCategories.modulemap";
+				PRODUCT_MODULE_NAME = GXCategories;
+				PRODUCT_NAME = GXCategories;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		5AE852E12076C3F7683F6C3926468F7B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71E997A7BC5FD30EB95CAE0B9B9FDC4E /* FirebaseAuth.debug.xcconfig */;
@@ -24956,6 +24956,46 @@
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
+		};
+		5C0FB529DA5D00DE7AB9795984AEE04F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C2069D838E88A1C4EF3C7CDCCCF02D1 /* GXSegmentPageView.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				EXPANDED_CODE_SIGN_IDENTITY = "";
+				GCC_PREFIX_HEADER = "Target Support Files/GXSegmentPageView/GXSegmentPageView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GXSegmentPageView/GXSegmentPageView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/GXSegmentPageView/GXSegmentPageView.modulemap";
+				PRODUCT_MODULE_NAME = GXSegmentPageView;
+				PRODUCT_NAME = GXSegmentPageView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		5C7B434F8AAB2242CE11246D76A17537 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -25235,7 +25275,7 @@
 			};
 			name = Debug;
 		};
-		69DC0CBC25E839E67C4533567541C38B /* Debug */ = {
+		6FF74B5179C8DB2EBB7EDA45FAC1CF9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9EFBA909F0B74974CF04D2962F70C9D9 /* GXSegmentPageView.debug.xcconfig */;
 			buildSettings = {
@@ -26284,6 +26324,46 @@
 			};
 			name = Debug;
 		};
+		9AA64AF4DA653D05B4CE4389A9075466 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A19F96BEAAF1949D91D62A0354FD7E23 /* GXRefresh.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				EXPANDED_CODE_SIGN_IDENTITY = "";
+				GCC_PREFIX_HEADER = "Target Support Files/GXRefresh/GXRefresh-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GXRefresh/GXRefresh-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/GXRefresh/GXRefresh.modulemap";
+				PRODUCT_MODULE_NAME = GXRefresh;
+				PRODUCT_NAME = GXRefresh;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		9BD3FA8F8B1FCA29622484BBF4DDFAAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 39AD923A6002475CB2DDAD3A0529FAA1 /* RxDataSources.debug.xcconfig */;
@@ -26632,46 +26712,6 @@
 			};
 			name = Release;
 		};
-		A973CD25A795F5EFD64074F5F594B97C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C2069D838E88A1C4EF3C7CDCCCF02D1 /* GXSegmentPageView.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				EXPANDED_CODE_SIGN_IDENTITY = "";
-				GCC_PREFIX_HEADER = "Target Support Files/GXSegmentPageView/GXSegmentPageView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GXSegmentPageView/GXSegmentPageView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/GXSegmentPageView/GXSegmentPageView.modulemap";
-				PRODUCT_MODULE_NAME = GXSegmentPageView;
-				PRODUCT_NAME = GXSegmentPageView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		A9FBD1C484C92B802D8A8AE68DCBFCCB /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C939C5016AA9B83D4F40E9D3ED770B5B /* XCGLogger.release.xcconfig */;
@@ -26881,46 +26921,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		B2AFC290F64E1B19E391C09500302C44 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A19F96BEAAF1949D91D62A0354FD7E23 /* GXRefresh.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				EXPANDED_CODE_SIGN_IDENTITY = "";
-				GCC_PREFIX_HEADER = "Target Support Files/GXRefresh/GXRefresh-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GXRefresh/GXRefresh-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/GXRefresh/GXRefresh.modulemap";
-				PRODUCT_MODULE_NAME = GXRefresh;
-				PRODUCT_NAME = GXRefresh;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -28121,45 +28121,6 @@
 			};
 			name = Release;
 		};
-		E248E2892DB68D8525CD6D695604590F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E7FEB71C64FFE431DEC6E0216597517 /* GXCategories.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
-				EXPANDED_CODE_SIGN_IDENTITY = "";
-				GCC_PREFIX_HEADER = "Target Support Files/GXCategories/GXCategories-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GXCategories/GXCategories-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/GXCategories/GXCategories.modulemap";
-				PRODUCT_MODULE_NAME = GXCategories;
-				PRODUCT_NAME = GXCategories;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		E2AF50EA004E655E8900D825F705EEED /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 117548D65D46040560EADE506F68F05E /* StripePaymentSheet.release.xcconfig */;
@@ -28512,6 +28473,45 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		F8476077611B52AD9985C8E4CD308063 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF9D8631D4DB3728EF643F019424909D /* GXRefresh.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				EXPANDED_CODE_SIGN_IDENTITY = "";
+				GCC_PREFIX_HEADER = "Target Support Files/GXRefresh/GXRefresh-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GXRefresh/GXRefresh-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/GXRefresh/GXRefresh.modulemap";
+				PRODUCT_MODULE_NAME = GXRefresh;
+				PRODUCT_NAME = GXRefresh;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		FA8A3A80F26337CABC8F2D46E5924112 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -28903,8 +28903,8 @@
 		4F944647966F467EC1F092BE64E9EA1F /* Build configuration list for PBXNativeTarget "GXSegmentPageView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				69DC0CBC25E839E67C4533567541C38B /* Debug */,
-				A973CD25A795F5EFD64074F5F594B97C /* Release */,
+				6FF74B5179C8DB2EBB7EDA45FAC1CF9D /* Debug */,
+				5C0FB529DA5D00DE7AB9795984AEE04F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -29317,8 +29317,8 @@
 		D561AFFA879931AD4F3956AD59620375 /* Build configuration list for PBXNativeTarget "GXCategories" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E248E2892DB68D8525CD6D695604590F /* Debug */,
-				549EEFE163CE1740D25AA164ED54269C /* Release */,
+				10E8F7ADBFF9B60E4360A3D225118E64 /* Debug */,
+				59A3BD16235753DD8A2D9F4C72EDA4DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -29398,8 +29398,8 @@
 		F8470CA54F647FDCF58AC54775057DDC /* Build configuration list for PBXNativeTarget "GXRefresh" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4A429E6A492860854214E87BC6146EA9 /* Debug */,
-				B2AFC290F64E1B19E391C09500302C44 /* Release */,
+				F8476077611B52AD9985C8E4CD308063 /* Debug */,
+				9AA64AF4DA653D05B4CE4389A9075466 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -44,10 +44,10 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30911.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleMaps (9.0.0):
-    - GoogleMaps/Maps (= 9.0.0)
-  - GoogleMaps/Base (9.0.0)
-  - GoogleMaps/Maps (9.0.0):
+  - GoogleMaps (9.1.1):
+    - GoogleMaps/Maps (= 9.1.1)
+  - GoogleMaps/Base (9.1.1)
+  - GoogleMaps/Maps (9.1.1):
     - GoogleMaps/Base
   - GooglePlaces (9.0.0)
   - GoogleSignIn (7.1.0):
@@ -85,11 +85,11 @@ PODS:
   - GTMSessionFetcher/Core (3.5.0)
   - GXAlert-Swift (1.0.1)
   - GXBanner (1.1.0)
-  - GXCategories (1.0.9)
+  - GXCategories (1.1.1)
   - GXConfigTableViewVC (1.0.1):
     - RxCocoaPlus
-  - GXRefresh (1.1.2)
-  - GXSegmentPageView (1.1.0)
+  - GXRefresh (1.1.3)
+  - GXSegmentPageView (1.1.1)
   - GXTransition-Swift (1.0.1)
   - GXWaterfallViewLayout (1.0.1)
   - HandyJSON (5.0.4-beta)
@@ -339,7 +339,7 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 913cf60d0400ebd5d6b63a28b290372ab44590dd
   FirebaseMessaging: 7b5d8033e183ab59eb5b852a53201559e976d366
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
-  GoogleMaps: 4907d0d42bf8cd58f56743e31f91d23c10682745
+  GoogleMaps: 80ea184ed6bf44139f383a8b0e248ba3ec1cc8c9
   GooglePlaces: cf1f5b61297da7ac64bcb147cfa7b435d74ed6d9
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
@@ -347,10 +347,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   GXAlert-Swift: c60dc53cb2ce0516c994ce1f370b826ac9b1ac16
   GXBanner: 9589d3281ce0b182ec5ca85bb1ce18e94a021013
-  GXCategories: 7f1b5ab3bfdd781d7482b39d0942928c355c6d4d
+  GXCategories: bcf6d343a0069feff8b69c629ed6634dab61a9f6
   GXConfigTableViewVC: aee824fb558d3a4df6562c6af87e33bbcb54a291
-  GXRefresh: d8c64ca667f1daad0f332cd6066023714fc0da6d
-  GXSegmentPageView: c6d5e7c17be81d44565ee6206a642b8c63f25463
+  GXRefresh: d0157c3ebd93e1995fa8033868a851dd3f024a4f
+  GXSegmentPageView: befef79686bdc30d965de9ddf5746582b564d1a5
   GXTransition-Swift: 12b7462f641ffd0ce36c9646315b6e8c9aea6182
   GXWaterfallViewLayout: 1030bd57d37eedd3146e638d262f0869380a59c8
   HandyJSON: a9c67202df97805a0ba4a00e30b50e9a30ac28f3

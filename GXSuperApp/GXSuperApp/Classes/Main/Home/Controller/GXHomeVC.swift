@@ -165,7 +165,7 @@ class GXHomeVC: GXBaseViewController {
             /// 判断已获取到位置
             self.requestStationConsumerQuery()
         }
-        self.panView.navigationAction = {[weak self] model in
+        self.panView.navigationAction = { model in
             guard let model = model else { return }
             let coordinate = CLLocationCoordinate2D(latitude: model.lat, longitude: model.lng)
             GXNavigationManager.showNavigation(coordinate: coordinate, endAddress: model.address)

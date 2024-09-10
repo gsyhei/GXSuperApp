@@ -41,7 +41,7 @@ public extension UIScrollView {
         if let header = self.gx_header {
             header.endRefreshing(isNoMore: isNoMore, isSucceed: isSucceed, text: text)
         }
-        else if let footer = self.gx_footer {
+        if let footer = self.gx_footer {
             footer.endRefreshing(isNoMore: isNoMore)
         }
     }
