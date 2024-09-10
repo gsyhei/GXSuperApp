@@ -37,17 +37,13 @@ class GXHomeSearchVC: GXBaseViewController {
         return GXHomeSearchViewModel()
     }()
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if !self.didGetNetworktLoad {
-            self.didGetNetworktLoad = true
-            self.searchTF.becomeFirstResponder()
-        }
-    }
-    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.searchTF.resignFirstResponder()
+    }
+    
+    override func viewDidAppearForOnlyLoading() {
+        self.searchTF.becomeFirstResponder()
     }
     
     override func loadView() {

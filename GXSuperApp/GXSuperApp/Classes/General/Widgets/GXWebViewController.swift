@@ -20,8 +20,9 @@ class GXWebViewController: GXBaseViewController {
             $0.isMultipleTouchEnabled = true
         }
     }()
-    private var urlString: String = ""
-    
+    private var urlString: String?
+    private var htmlString: String?
+
     private lazy var progressView: UIProgressView = {
         return UIProgressView(progressViewStyle: .bar).then {
             $0.trackTintColor = .clear
@@ -33,11 +34,11 @@ class GXWebViewController: GXBaseViewController {
         self.removeObservers()
     }
     
-    required init(urlString: String, title: String? = nil) {
+    required init(urlString: String?, htmlString: String? = nil, title: String? = nil) {
         super.init(nibName: nil, bundle: nil)
         self.title = title
         self.urlString = urlString
-        XCGLogger.info("web url: \(urlString)")
+        self.htmlString = htmlString
     }
     
     required init?(coder: NSCoder) {
@@ -49,12 +50,8 @@ class GXWebViewController: GXBaseViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if !self.didGetNetworktLoad {
-            self.didGetNetworktLoad = true
-            self.webRequestStart()
-        }
+    override func viewDidAppearForOnlyLoading() {
+        self.webRequestStart()
     }
 
     override func viewDidLoad() {
@@ -89,16 +86,21 @@ class GXWebViewController: GXBaseViewController {
     }
 
     func removeObservers() {
-        if self.isViewLoaded {
-            self.webView.removeObserver(self, forKeyPath: "estimatedProgress")
-        }
+        self.webView.removeObserver(self, forKeyPath: "estimatedProgress")
     }
     
     private func webRequestStart() {
-        if let url = URL(string: self.urlString) {
+        if let urlStr = self.urlString, let url = URL(string: urlStr) {
             self.webView.load(URLRequest(url: url))
             self.progressView.alpha = 1.0
             self.progressView.progress = 0.0
+            XCGLogger.info("web url: \(urlStr)")
+        }
+        else if let htmlStr = self.htmlString {
+            self.webView.loadHTMLString(htmlStr, baseURL: nil)
+            self.progressView.alpha = 1.0
+            self.progressView.progress = 1.0
+            XCGLogger.info("web html: \(htmlStr)")
         }
     }
     
@@ -106,8 +108,11 @@ class GXWebViewController: GXBaseViewController {
         if self.progressView.progress > 0 {
             self.webView.reload()
         }
-        else if let url = URL(string: self.urlString) {
+        else if let urlStr = self.urlString, let url = URL(string: urlStr) {
             self.webView.load(URLRequest(url: url))
+        }
+        else if let htmlStr = self.htmlString {
+            self.webView.loadHTMLString(htmlStr, baseURL: nil)
         }
     }
 

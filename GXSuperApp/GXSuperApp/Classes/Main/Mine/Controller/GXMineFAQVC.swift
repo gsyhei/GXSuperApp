@@ -31,7 +31,6 @@ class GXMineFAQVC: GXBaseViewController {
     override func setupViewController() {
         self.navigationItem.title = "FAQ"
         self.gx_addBackBarButtonItem()
-        
     }
     
 }
@@ -76,7 +75,9 @@ extension GXMineFAQVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let model = self.list[indexPath.section]
-
+        let urlStr = "https://h5.marsenergyev.com/#/faq/:\(model.id)"
+        let vc = GXWebViewController(urlString: urlStr, title: model.title)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

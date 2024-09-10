@@ -36,6 +36,10 @@ class GXBaseViewController: UIViewController {
             self.viewDidDisappearPopOrDismissed(animated)
         }
     }
+    
+    deinit {
+        NSLog("\(self.className()) deinit.")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +58,14 @@ class GXBaseViewController: UIViewController {
         if self.didGetNetworktLoad {
             self.viewDidAppearForAfterLoading()
         }
+        else{
+            self.viewDidAppearForOnlyLoading()
+        }
         self.didGetNetworktLoad = true
+    }
+    
+    public func viewDidAppearForOnlyLoading() {
+        
     }
     
     public func viewDidAppearForAfterLoading() {
