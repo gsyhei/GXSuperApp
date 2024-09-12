@@ -88,7 +88,7 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
         self.carShowTableVC?.updateDataSource()
         
         self.carNumberLabel.text = detail.carNumber.formatCarNumber
-        self.chargedTimeLabel.text = "Charging will complete in " + GXUtil.gx_chargingTime(minute: detail.chargingDuration)
+        self.chargedTimeLabel.text = "Charging session: " + GXUtil.gx_chargingTime(minute: detail.chargingDuration)
         self.chargedKwhLabel.text = "\(detail.meterTotal) kWh Charged"
         
         let progress = CGFloat(detail.soc) / 100.0
