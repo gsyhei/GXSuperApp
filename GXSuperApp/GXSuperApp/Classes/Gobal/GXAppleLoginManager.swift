@@ -74,8 +74,9 @@ extension GXAppleLoginManager: ASAuthorizationControllerDelegate, ASAuthorizatio
             self.completion?(identityToken, nil)
         }
         else if let passwordCredential = authorization.credential as? ASPasswordCredential {
-            // let user = passwordCredential.user
-            // let password = passwordCredential.password
+             let user = passwordCredential.user
+             let password = passwordCredential.password
+            XCGLogger.info("user = \(user)\npassword = \(password)")
         }
     }
     
