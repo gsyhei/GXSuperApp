@@ -269,7 +269,8 @@ class GXChargingCarShowTableViewVC: UITableViewController {
         guard let detail = self.viewModel.detailData else { return }
         
         self.tableView.isHidden = false
-        self.chargedKWLabel.text = "\(detail.power) KW"
+        let powerKW: Float = Float(detail.power) / 1000.0
+        self.chargedKWLabel.text = String(format:"%g KW", powerKW)
         self.chargedVLabel.text = "\(detail.voltage) V"
         self.chargedALabel.text = "\(detail.current) A"
         let meterFree = detail.powerFee + detail.serviceFee

@@ -68,6 +68,7 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
         
         self.payNowButton.setBackgroundColor(.gx_green, for: .normal)
         self.payNowButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
+        self.payNowButton.setBackgroundColor(.gx_lightGray, for: .disabled)
         self.tableView.tableHeaderView = self.tableHeader
     }
 }
@@ -89,10 +90,18 @@ extension GXChargingOrderDetailsVC {
             self.appealInfoLabel.isHidden = true
             self.bottomHeightLC.constant = 64
         }
-        if detail.orderStatus == .TO_PAY {
+        switch detail.orderStatus {
+        case .OCCUPY:
+            self.payNowButton.isEnabled = false
+            self.payNowButton.setTitle("Occupied", for: .normal)
+        case .PAYMENT:
+            self.payNowButton.isEnabled = false
+            self.payNowButton.setTitle("Loading", for: .normal)
+        case .TO_PAY:
+            self.payNowButton.isEnabled = true
             self.payNowButton.setTitle("Pay Now", for: .normal)
-        }
-        else {
+        default:
+            self.payNowButton.isEnabled = true
             self.payNowButton.setTitle("Back", for: .normal)
         }
         self.updateFavoriteBarButtonItem()

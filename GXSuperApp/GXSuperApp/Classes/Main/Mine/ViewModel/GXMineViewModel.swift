@@ -41,9 +41,6 @@ class GXMineViewModel: GXBaseViewModel {
     /// 系统配置
     func requestParamConsumer() -> Promise<GXParamConsumerData?> {
         return Promise { seal in
-            if let paramsData = GXUserManager.shared.paramsData {
-                seal.fulfill(paramsData); return
-            }
             let api = GXApi.normalApi(Api_param_consumer_detail, [:], .get)
             GXNWProvider.login_request(api, type: GXParamConsumerModel.self, success: { model in
                 GXUserManager.shared.paramsData = model.data

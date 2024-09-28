@@ -79,6 +79,9 @@ class GXChargingOrderDetailsHeader: UIView {
             else {
                 self.chargingInfoLabel.text = "Occupied - Please remove the vehicle from the charging area to avoid incurring the idle fee"
             }
+        case .PAYMENT:
+            self.chargingInfoLabel.textColor = .gx_drakGray
+            self.chargingInfoLabel.text = nil
         case .TO_PAY:
             self.chargingInfoLabel.textColor = .gx_orange
             self.chargingInfoLabel.text = "Pending Payment"

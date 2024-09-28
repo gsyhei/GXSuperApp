@@ -66,6 +66,8 @@ enum GXOrderStatus: String, HandyJSONEnum {
     case CHARGING = "CHARGING"
     /// 占位中
     case OCCUPY = "OCCUPY"
+    /// 结算扣款中
+    case PAYMENT = "PAYMENT"
     /// 充电完成
     case TO_PAY = "TO_PAY"
     /// 已完成
