@@ -41,7 +41,8 @@ class GXChargingOrderDetailsCell4: UITableViewCell, NibReusable {
         let cellModel0 = GXChargingOrderLRTextCell.Model(leftText: "Due Amount", rightText: "$\(model.totalFee)")
         let cellModel1 = GXChargingOrderLRTextCell.Model(leftText: "Paid Amount", rightText: "$\(model.actualFee)")
         let cellModel2 = GXChargingOrderLRTextCell.Model(leftText: "Payment Time", rightText: model.payTime)
-        let cellModel3 = GXChargingOrderLRTextCell.Model(leftText: "Payment Channel", rightText: model.payType)
+        let payType: String = (model.payType == .HOLD) ? "Credit Card":"Balance"
+        let cellModel3 = GXChargingOrderLRTextCell.Model(leftText: "Payment Channel", rightText: payType)
         self.tableList = [cellModel0, cellModel1, cellModel2, cellModel3]
     }
 }

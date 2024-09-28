@@ -39,7 +39,7 @@ class GXChargingCarShowVC: GXBaseViewController, GXChargingStoryboard {
                 if isUpdate {
                     self.updateDataSource()
                 } else {
-                    let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId)
+                    let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId, isShowAlertPay: true)
                     self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
                 }
             }
@@ -153,7 +153,7 @@ extension GXChargingCarShowVC {
         }.done { model in
             if model.data?.status == .FINISHED {
                 MBProgressHUD.dismiss()
-                let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId)
+                let vc = GXChargingOrderDetailsVC.createVC(orderId: self.viewModel.orderId, isShowAlertPay: true)
                 self.navigationController?.pushByReturnToViewController(vc: vc, animated: true)
             } else {
                 self.perform(#selector(self.updateChargingStatusNext), with: nil, afterDelay: 2)

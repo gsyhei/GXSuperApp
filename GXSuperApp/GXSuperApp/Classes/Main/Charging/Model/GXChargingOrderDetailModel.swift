@@ -51,10 +51,10 @@ class GXChargingOrderDetailData: NSObject, HandyJSON {
     var powerFee: CGFloat = 0
     var serviceFee: CGFloat = 0
     var occupyFee: String = ""
-    var totalFee: String = ""
+    var totalFee: Float = 0
     var actualFee: String = ""
     var payTime: String = ""
-    var payType: String = ""
+    var payType: GXOrderPayType = .BALANCE
     var chargingFeeDetails = [GXChargingfeedetailsModel]()
     var occupyFreePeriod: String = ""
     var occupyFeeDetails = [GXOccupyfeedetailsModel]()

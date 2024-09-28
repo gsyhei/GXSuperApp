@@ -74,6 +74,10 @@ class GXOrderListTypeVC: GXBaseViewController {
         super.viewDidLoad()
         self.requestOrderConsumerList()
     }
+    
+    override func viewDidAppearForAfterLoading() {
+        self.requestOrderConsumerList(isRefresh: true, isShowHud: false)
+    }
 
     override func setupViewController() {
         self.view.addSubview(self.tableView)

@@ -205,7 +205,7 @@ private extension GXChargingOrderDetailsViewModel {
             self.perform(#selector(self.occupyCountdownNext), with: nil, afterDelay: 1)
         }
         /// 订单刷新倒计时
-        if detail.orderStatus == .OCCUPY {
+        if detail.orderStatus == .OCCUPY || detail.orderStatus == .PAYMENT {
             self.perform(#selector(self.updateOrderStateNext), with: nil, afterDelay: 5)
         }
     }

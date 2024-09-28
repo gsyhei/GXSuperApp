@@ -46,10 +46,10 @@ class GXMineAccountManagerVC: GXBaseViewController {
                 let beginCount = model.phoneNumber.count - count - 4
                 let beginText = model.phoneNumber.substring(to: beginCount)
                 let endText = model.phoneNumber.substring(from: beginCount + 4)
-                self.phoneLabel.text = beginText + "****" + endText
+                self.phoneLabel.text = "+" + model.nationCode + beginText + "****" + endText
             }
             else {
-                self.phoneLabel.text = "****"
+                self.phoneLabel.text = "+" + model.nationCode + "****"
             }
         }
         else {

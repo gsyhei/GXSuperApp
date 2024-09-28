@@ -32,6 +32,7 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
             tableView.register(cellType: GXChargingOrderDetailsCell8.self)
         }
     }
+    private var isShowAlertPay: Bool = false
     
     private lazy var tableHeader: GXChargingOrderDetailsHeader = {
         let rect = CGRect(origin: .zero, size: CGSize(width: self.view.width, height: 176))
@@ -46,9 +47,10 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
         }
     }()
     
-    class func createVC(orderId: Int) -> GXChargingOrderDetailsVC {
+    class func createVC(orderId: Int, isShowAlertPay: Bool = false) -> GXChargingOrderDetailsVC {
         return GXChargingOrderDetailsVC.xibViewController().then {
             $0.viewModel.orderId = orderId
+            $0.isShowAlertPay = isShowAlertPay
         }
     }
     
@@ -61,6 +63,10 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
         self.requestOrderConsumerDetail()
     }
     
+    override func viewDidAppearForAfterLoading() {
+        self.requestOrderConsumerDetail()
+    }
+    
     override func setupViewController() {
         self.navigationItem.title = "Order Details"
         self.gx_addBackBarButtonItem()
@@ -69,6 +75,7 @@ class GXChargingOrderDetailsVC: GXBaseViewController {
         self.payNowButton.setBackgroundColor(.gx_green, for: .normal)
         self.payNowButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
         self.payNowButton.setBackgroundColor(.gx_lightGray, for: .disabled)
+        self.payNowButton.setTitleColor(.gx_textBlack, for: .disabled)
         self.tableView.tableHeaderView = self.tableHeader
     }
 }
@@ -100,10 +107,20 @@ extension GXChargingOrderDetailsVC {
         case .TO_PAY:
             self.payNowButton.isEnabled = true
             self.payNowButton.setTitle("Pay Now", for: .normal)
+            if detail.payType == .BALANCE && self.isShowAlertPay {
+                let title = "The balance is insufficient, please recharge first"
+                GXUtil.showAlert(title: title, actionTitle: "Reload", handler: { alert, index in
+                    guard index == 1 else { return }
+                    let vc = GXMineRechargeVC.xibViewController()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                })
+            }
         default:
             self.payNowButton.isEnabled = true
             self.payNowButton.setTitle("Back", for: .normal)
         }
+        self.payNowButton.isEnabled = false
+        self.payNowButton.setTitle("Loading", for: .normal)
         self.updateFavoriteBarButtonItem()
     }
     
@@ -362,6 +379,11 @@ extension GXChargingOrderDetailsVC {
     @IBAction func payNowButtonClicked(_ sender: Any?) {
         guard let detail = self.viewModel.detailData else { return }
         if detail.orderStatus == .TO_PAY {
+            //Gin待确认 - 需要后端支持增加信用卡支付方式？
+//            let available = self.viewModel.balanceData?.available ?? 0
+//            if detail.payType == .BALANCE && available < detail.totalFee {
+//                // 余额不足
+//            }
             self.requestOrderConsumerPay()
         }
         else {

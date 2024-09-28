@@ -74,6 +74,13 @@ enum GXOrderStatus: String, HandyJSONEnum {
     case FINISHED = "FINISHED"
 }
 
+/// 支付类型
+enum GXOrderPayType: String, HandyJSONEnum {
+    /// 余额
+    case BALANCE = "BALANCE"
+    /// 预授权
+    case HOLD = "HOLD"
+}
 
 /// Bugly appID
 let GX_BUGLY_APPID = "36156d5fa8"
