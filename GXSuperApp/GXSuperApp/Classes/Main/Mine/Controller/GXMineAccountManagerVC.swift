@@ -42,14 +42,18 @@ class GXMineAccountManagerVC: GXBaseViewController {
         
         if let model = GXUserManager.shared.user {
             if model.phoneNumber.count > 6 {
-                let count = (model.phoneNumber.count - 4)/2
-                let beginCount = model.phoneNumber.count - count - 4
-                let beginText = model.phoneNumber.substring(to: beginCount)
-                let endText = model.phoneNumber.substring(from: beginCount + 4)
-                self.phoneLabel.text = "+" + model.nationCode + beginText + "****" + endText
+                let starCount = model.phoneNumber.count - 5
+                let beginText = model.phoneNumber.substring(to: 3)
+                let endText = model.phoneNumber.substring(from: starCount + 3)
+                var phoneText = "+" + model.nationCode + " " + beginText
+                for _ in 0..<starCount {
+                    phoneText += "*"
+                }
+                phoneText += endText
+                self.phoneLabel.text = phoneText
             }
             else {
-                self.phoneLabel.text = "+" + model.nationCode + "****"
+                self.phoneLabel.text = "+" + model.nationCode + " " + "****"
             }
         }
         else {

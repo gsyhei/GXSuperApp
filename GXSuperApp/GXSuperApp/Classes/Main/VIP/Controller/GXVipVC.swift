@@ -103,7 +103,7 @@ class GXVipVC: GXBaseViewController {
                 case .failure(_): break
                 }
             }
-            self.vipYearLabel.text = "$ \(params.memberFee)"
+            self.vipYearLabel.text = "$ 99.99"
         }
     }
     
