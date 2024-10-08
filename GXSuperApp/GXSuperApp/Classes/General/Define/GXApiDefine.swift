@@ -128,6 +128,9 @@ let Api_order_consumer_detail = "/charging-order-server/order/consumer/detail"
 /// 订单支付
 let Api_order_consumer_pay = "/charging-order-server/order/consumer/pay"
 
+/// 订单支付-绑定的银行卡
+let Api_order_consumer_pay_card = "/charging-order-server/order/consumer/pay/card"
+
 /// 订单申诉
 let Api_order_consumer_complain_save = "/charging-order-server/order/consumer/complain/save"
 

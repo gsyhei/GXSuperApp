@@ -201,6 +201,20 @@ extension GXChargingOrderDetailsVC {
         }
     }
     
+    func requestOrderConsumerPayCard() {
+        MBProgressHUD.showLoading()
+        firstly {
+            self.viewModel.requestOrderConsumerPayCard()
+        }.done { model in
+            MBProgressHUD.dismiss()
+            self.requestOrderConsumerDetail()
+            NotificationCenter.default.post(name: GX_NotifName_UpdateOrderDoing, object: nil)
+        }.catch { error in
+            MBProgressHUD.dismiss()
+            GXToast.showError(text:error.localizedDescription)
+        }
+    }
+    
 }
 
 extension GXChargingOrderDetailsVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
@@ -380,11 +394,25 @@ extension GXChargingOrderDetailsVC {
         guard let detail = self.viewModel.detailData else { return }
         if detail.orderStatus == .TO_PAY {
             //Gin待确认 - 需要后端支持增加信用卡支付方式？
-//            let available = self.viewModel.balanceData?.available ?? 0
-//            if detail.payType == .BALANCE && available < detail.totalFee {
-//                // 余额不足
-//            }
-            self.requestOrderConsumerPay()
+            let available = self.viewModel.balanceData?.available ?? 0
+            if detail.payType == .BALANCE {
+                if available >= detail.totalFee {
+                    self.requestOrderConsumerPay()
+                }
+                else {
+                    // 余额不足
+                    GXUtil.showAlert(title: "Alert",
+                                     message: "The balance is insufficient",
+                                     cancelTitle: "Credit card payment",
+                                     actionHandler: { alert, index in
+                        guard index == 1 else { return }
+                        self.requestOrderConsumerPayCard()
+                    })
+                }
+            }
+            else {
+                self.requestOrderConsumerPayCard()
+            }
         }
         else {
             self.navigationController?.popToRootViewController(animated: true)

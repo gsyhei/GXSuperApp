@@ -99,11 +99,25 @@ class GXChargingOrderDetailsViewModel: GXBaseViewModel {
         }
     }
     
-    /// 订单支付
+    /// 订单支付-y余额支付
     func requestOrderConsumerPay() -> Promise<GXBaseDataModel> {
         var params: Dictionary<String, Any> = [:]
         params["id"] = self.orderId
         let api = GXApi.normalApi(Api_order_consumer_pay, params, .post)
+        return Promise { seal in
+            GXNWProvider.login_request(api, type: GXBaseDataModel.self, success: { model in
+                seal.fulfill(model)
+            }, failure: { error in
+                seal.reject(error)
+            })
+        }
+    }
+    
+    /// 订单支付-绑定的银行卡
+    func requestOrderConsumerPayCard() -> Promise<GXBaseDataModel> {
+        var params: Dictionary<String, Any> = [:]
+        params["id"] = self.orderId
+        let api = GXApi.normalApi(Api_order_consumer_pay_card, params, .post)
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXBaseDataModel.self, success: { model in
                 seal.fulfill(model)
