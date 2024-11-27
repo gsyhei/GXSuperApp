@@ -225,8 +225,6 @@ private extension GXChargingOrderDetailsViewModel {
     }
     
     @objc func occupyCountdownNext() {
-        guard self.countdown > 0 else { return }
-        
         self.countdown -= 1
         NotificationCenter.default.post(name: GX_NotifName_OccupyCountdown, object: self.countdown)
         self.perform(#selector(self.occupyCountdownNext), with: nil, afterDelay: 1)

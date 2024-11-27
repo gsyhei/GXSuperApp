@@ -98,6 +98,9 @@ extension GXChargingOrderDetailsVC {
             self.bottomHeightLC.constant = 64
         }
         switch detail.orderStatus {
+        case .CHARGING:
+            self.payNowButton.isEnabled = false
+            self.payNowButton.setTitle("Charging", for: .normal)
         case .OCCUPY:
             self.payNowButton.isEnabled = false
             self.payNowButton.setTitle("Occupied", for: .normal)
@@ -115,12 +118,10 @@ extension GXChargingOrderDetailsVC {
                     self.navigationController?.pushViewController(vc, animated: true)
                 })
             }
-        default:
+        default: // FINISHED、UNKNOWN
             self.payNowButton.isEnabled = true
-            self.payNowButton.setTitle("Back", for: .normal)
+            self.payNowButton.setTitle("Done", for: .normal)
         }
-        self.payNowButton.isEnabled = false
-        self.payNowButton.setTitle("Loading", for: .normal)
         self.updateFavoriteBarButtonItem()
     }
     

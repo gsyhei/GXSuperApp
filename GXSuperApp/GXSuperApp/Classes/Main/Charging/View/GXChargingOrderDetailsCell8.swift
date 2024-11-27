@@ -13,6 +13,8 @@ class GXChargingOrderDetailsCell8: UITableViewCell, NibReusable {
     let disposeBag = DisposeBag()
     @IBOutlet weak var freeMinLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var chargingTitleLabel: UILabel!
+    @IBOutlet weak var chargingDetailLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +35,13 @@ class GXChargingOrderDetailsCell8: UITableViewCell, NibReusable {
     private func occupyCountdown(timeObject: Any?) {
         guard let time = timeObject as? Int else { return }
         self.timeLabel.text = GXUtil.gx_minuteSecond(time: time)
+        // 判断倒计时还是超时读秒
+        if time > 0 {
+            
+        }
+        else {
+            
+        }
     }
     
     func bindCell(model: GXChargingOrderDetailData?) {
