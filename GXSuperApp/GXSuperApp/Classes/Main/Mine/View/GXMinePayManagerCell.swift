@@ -14,44 +14,27 @@ class GXMinePayManagerCell: UITableViewCell, NibReusable {
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
 
-    var removeAction: GXActionBlockItem<Bool>?
+    var removeAction: GXActionBlock?
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     func bindCell(model: GXStripePaymentListDataItem?) {
-        if let model = model {
-            self.rightButton.layer.borderWidth = 1.0
-            self.rightButton.layer.borderColor = UIColor.gx_red.cgColor
-            self.rightButton.setBackgroundColor(.white, for: .normal)
-            self.rightButton.setBackgroundColor(.gx_background, for: .highlighted)
-            
-            self.titleLabel.text = "Credit Card"
-            self.detailLabel.text = "********" + model.last4
-            self.rightButton.setTitle("Remove", for: .normal)
-            self.rightButton.setTitleColor(.gx_red, for: .normal)
-        }
-        else {
-            self.rightButton.layer.borderWidth = 0
-            self.rightButton.layer.borderColor = nil
-            self.rightButton.setBackgroundColor(.gx_green, for: .normal)
-            self.rightButton.setBackgroundColor(.gx_drakGreen, for: .highlighted)
-            
-            self.titleLabel.text = "Credit Card Authorization"
-            self.detailLabel.text = "Automatic deduction after order completion"
-            self.rightButton.setTitle("Activate", for: .normal)
-            self.rightButton.setTitleColor(.white, for: .normal)
-        }
+        guard let model = model else { return }
+        
+        self.rightButton.layer.borderWidth = 1.0
+        self.rightButton.layer.borderColor = UIColor.gx_red.cgColor
+        self.rightButton.setBackgroundColor(.white, for: .normal)
+        self.rightButton.setBackgroundColor(.gx_background, for: .highlighted)
+        
+        self.titleLabel.text = "Credit Card"
+        self.detailLabel.text = "********" + model.last4
+        self.rightButton.setTitle("Remove", for: .normal)
+        self.rightButton.setTitleColor(.gx_red, for: .normal)
     }
         
     @IBAction func rightButtonClicked(_ sender: UIButton) {
-        let title = sender.title(for: .normal)
-        if title == "Remove" {
-            self.removeAction?(true)
-        }
-        else {
-            self.removeAction?(false)
-        }
+        self.removeAction?()
     }
 }

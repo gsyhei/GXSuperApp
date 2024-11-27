@@ -57,6 +57,8 @@
 		334105D02C3B1F74007F2F0E /* GXChargingOrderDetailsCell8.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334105CF2C3B1F74007F2F0E /* GXChargingOrderDetailsCell8.xib */; };
 		334105D12C3B1F74007F2F0E /* GXChargingOrderDetailsCell8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334105CE2C3B1F74007F2F0E /* GXChargingOrderDetailsCell8.swift */; };
 		334524C02C8318F200C2C826 /* GXOrderConsumerStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334524BF2C8318F200C2C826 /* GXOrderConsumerStatusModel.swift */; };
+		334985E02CF6CC8300A1E929 /* GXMinePayAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334985DE2CF6CC8300A1E929 /* GXMinePayAddCell.swift */; };
+		334985E12CF6CC8300A1E929 /* GXMinePayAddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334985DF2CF6CC8300A1E929 /* GXMinePayAddCell.xib */; };
 		336401DE2C277FC700A312BC /* GXHomeDetailCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336401DC2C277FC700A312BC /* GXHomeDetailCell2.swift */; };
 		336401DF2C277FC700A312BC /* GXHomeDetailCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 336401DD2C277FC700A312BC /* GXHomeDetailCell2.xib */; };
 		336401E22C2788E900A312BC /* GXHomeDetailCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336401E02C2788E900A312BC /* GXHomeDetailCell3.swift */; };
@@ -326,6 +328,8 @@
 		334105CE2C3B1F74007F2F0E /* GXChargingOrderDetailsCell8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXChargingOrderDetailsCell8.swift; sourceTree = "<group>"; };
 		334105CF2C3B1F74007F2F0E /* GXChargingOrderDetailsCell8.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXChargingOrderDetailsCell8.xib; sourceTree = "<group>"; };
 		334524BF2C8318F200C2C826 /* GXOrderConsumerStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXOrderConsumerStatusModel.swift; sourceTree = "<group>"; };
+		334985DE2CF6CC8300A1E929 /* GXMinePayAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMinePayAddCell.swift; sourceTree = "<group>"; };
+		334985DF2CF6CC8300A1E929 /* GXMinePayAddCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXMinePayAddCell.xib; sourceTree = "<group>"; };
 		336401DC2C277FC700A312BC /* GXHomeDetailCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell2.swift; sourceTree = "<group>"; };
 		336401DD2C277FC700A312BC /* GXHomeDetailCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXHomeDetailCell2.xib; sourceTree = "<group>"; };
 		336401E02C2788E900A312BC /* GXHomeDetailCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXHomeDetailCell3.swift; sourceTree = "<group>"; };
@@ -1045,6 +1049,8 @@
 				33DB78E92C43C7B900F2763C /* GXMinePayManagerCell.xib */,
 				33A6A70A2C6DFD5200E8C770 /* GXMinePayBalanceCell.swift */,
 				33A6A70B2C6DFD5200E8C770 /* GXMinePayBalanceCell.xib */,
+				334985DE2CF6CC8300A1E929 /* GXMinePayAddCell.swift */,
+				334985DF2CF6CC8300A1E929 /* GXMinePayAddCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1387,6 +1393,7 @@
 				334105C42C3B0ECC007F2F0E /* GXChargingOrderDetailsCell5.xib in Resources */,
 				33C9C21A2C416D5500F969B4 /* GXMineWithdrawVC.xib in Resources */,
 				33BF81C02C14AB7F0089431E /* GXSelectedMarkerInfoView.xib in Resources */,
+				334985E12CF6CC8300A1E929 /* GXMinePayAddCell.xib in Resources */,
 				33CB38222C20A21F005A0227 /* GXHomeSearchAutocompleteCell.xib in Resources */,
 				33167FC42C3AFC82009BBD88 /* GXChargingOrderDetailsCell3.xib in Resources */,
 				339A5EE72C2B9DE3004F1B7F /* GXLaunchScreenVC.xib in Resources */,
@@ -1490,6 +1497,7 @@
 				33EC55C72C101BA100D4CCD0 /* UITextView+Add.swift in Sources */,
 				33A3742C2C362BDE00229ED7 /* GXFavoriteConsumerSaveModel.swift in Sources */,
 				33B834B92C233C16003BEC24 /* GXHomeSearchHeader.swift in Sources */,
+				334985E02CF6CC8300A1E929 /* GXMinePayAddCell.swift in Sources */,
 				33EC55B32C101BA100D4CCD0 /* GXBaseViewController.swift in Sources */,
 				339A07102C2F891900BDDD46 /* GXHomeDetailVehicleCell.swift in Sources */,
 				33EC55FF2C101BA100D4CCD0 /* GXWebViewController.swift in Sources */,

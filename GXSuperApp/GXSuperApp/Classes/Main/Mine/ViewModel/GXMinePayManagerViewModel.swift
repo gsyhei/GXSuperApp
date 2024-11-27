@@ -14,8 +14,10 @@ class GXMinePayManagerViewModel: GXBaseViewModel {
     /// 支付列表
     var model: GXStripePaymentListModel?
     /// 当前选择支付方式
-    var paymentMethod: String?
-
+    var paymentMethod: String? //"SETUP_INTENT/BALANCE"
+    /// 当前选择支付卡
+    var selectedItem: GXStripePaymentListDataItem?
+    
     /// 钱包明细
     func requestStripePaymentList() -> Promise<GXStripePaymentListModel> {
         return Promise { seal in
@@ -44,10 +46,10 @@ class GXMinePayManagerViewModel: GXBaseViewModel {
     }
     
     /// 移除支付账号
-    func requestStripePaymentDetach() -> Promise<GXBaseDataModel> {
+    func requestStripePaymentDetach(index: Int) -> Promise<GXBaseDataModel> {
         return Promise { seal in
             var params: Dictionary<String, Any> = [:]
-            params["paymentMethodId"] = self.model?.data.first?.paymentMethodId
+            params["paymentMethodId"] = self.model?.data[index].paymentMethodId
             let api = GXApi.normalApi(Api_stripe_consumer_payment_method_detach, params, .post)
             GXNWProvider.login_request(api, type: GXBaseDataModel.self, success: { model in
                 seal.fulfill(model)

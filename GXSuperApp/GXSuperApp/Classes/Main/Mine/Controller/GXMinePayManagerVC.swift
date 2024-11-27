@@ -23,6 +23,7 @@ class GXMinePayManagerVC: GXBaseViewController {
             tableView.sectionFooterHeight = .leastNormalMagnitude
             tableView.register(cellType: GXMinePayManagerCell.self)
             tableView.register(cellType: GXMinePayBalanceCell.self)
+            tableView.register(cellType: GXMinePayAddCell.self)
         }
     }
     
@@ -70,10 +71,10 @@ private extension GXMinePayManagerVC {
             GXToast.showError(text:error.localizedDescription)
         }
     }
-    func requestStripePaymentDetach() {
+    func requestStripePaymentDetach(index: Int) {
         MBProgressHUD.showLoading()
         firstly {
-            self.viewModel.requestStripePaymentDetach()
+            self.viewModel.requestStripePaymentDetach(index: index)
         }.done { model in
             MBProgressHUD.dismiss()
             self.requestStripePaymentList()
@@ -125,10 +126,7 @@ private extension GXMinePayManagerVC {
 extension GXMinePayManagerVC: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if (self.viewModel.model != nil) {
-            return 2
-        }
-        return 0
+        return (self.viewModel.model?.data.count ?? 0) + 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -136,34 +134,36 @@ extension GXMinePayManagerVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        let count = self.viewModel.model?.data.count ?? 0
+        if indexPath.section < count {
             let cell: GXMinePayManagerCell = tableView.dequeueReusableCell(for: indexPath)
-            cell.bindCell(model: self.viewModel.model?.data.first)
-            cell.checkButton.isSelected = (self.viewModel.paymentMethod == "SETUP_INTENT")
-            cell.removeAction = {[weak self] isRemove in
+            let model = self.viewModel.model?.data[indexPath.section]
+            cell.bindCell(model: model)
+            cell.checkButton.isSelected = self.viewModel.selectedItem == model
+            cell.removeAction = {[weak self] in
                 guard let `self` = self else { return }
-                if isRemove {
-                    self.requestStripePaymentDetach()
-                } else {
-                    self.requestStripeConsumerSetupIntent()
-                }
+                self.requestStripePaymentDetach(index: indexPath.section)
             }
             return cell
-        case 1:
+        }
+        else if indexPath.section == count {
             let cell: GXMinePayBalanceCell = tableView.dequeueReusableCell(for: indexPath)
-            cell.checkButton.isSelected = (self.viewModel.paymentMethod == "BALANCE")
+            cell.checkButton.isSelected = self.viewModel.selectedItem == nil
             return cell
-        default:
-            return UITableViewCell()
+        }
+        else {
+            let cell: GXMinePayAddCell = tableView.dequeueReusableCell(for: indexPath)
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0: return 80
-        case 1: return 54
-        default: return .zero
+        let count = self.viewModel.model?.data.count ?? 0
+        if indexPath.section < count {
+            return 80
+        }
+        else {
+            return 54
         }
     }
     
@@ -173,14 +173,19 @@ extension GXMinePayManagerVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        switch indexPath.section {
-        case 0: 
-            self.viewModel.paymentMethod = "SETUP_INTENT"
-        case 1:
-            self.viewModel.paymentMethod = "BALANCE"
-        default: break
+        
+        let count = self.viewModel.model?.data.count ?? 0
+        if indexPath.section < count {
+            self.viewModel.selectedItem = self.viewModel.model?.data[indexPath.section]
+            self.tableView.reloadData()
         }
-        self.tableView.reloadData()
+        else if indexPath.section == count {
+            self.viewModel.selectedItem = nil
+            self.tableView.reloadData()
+        }
+        else {
+            self.requestStripeConsumerSetupIntent()
+        }
     }
     
 }
