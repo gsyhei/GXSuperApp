@@ -109,7 +109,7 @@ extension GXChargingOrderDetailsVC {
             self.payNowButton.setTitle("Loading", for: .normal)
         case .TO_PAY:
             self.payNowButton.isEnabled = true
-            self.payNowButton.setTitle("Pay Now", for: .normal)
+            self.payNowButton.setTitle("Pay", for: .normal)
             if detail.payType == .BALANCE && self.isShowAlertPay {
                 let title = "The balance is insufficient, please recharge first"
                 GXUtil.showAlert(title: title, actionTitle: "Reload", handler: { alert, index in

@@ -33,7 +33,7 @@ class GXChargingOrderDetailsCell5: UITableViewCell, NibReusable {
         self.feeQueryAction = feeQueryAction
         self.feeQueryButton.isHidden = false
         self.rightLabel.textColor = .gx_orange
-        self.leftLabel.text = "Idle Fee"
+        self.leftLabel.text = "Total"
         self.rightLabel.text = "$\(model.occupyFee)"
     }
 }
