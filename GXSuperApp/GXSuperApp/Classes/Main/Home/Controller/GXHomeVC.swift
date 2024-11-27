@@ -18,6 +18,7 @@ class GXHomeVC: GXBaseViewController {
     @IBOutlet weak var ongoingView: UIView!
     @IBOutlet weak var ongoingButton: UIButton!
     @IBOutlet weak var centerIconTopLC: NSLayoutConstraint!
+    @IBOutlet weak var locationBtnTopLC: NSLayoutConstraint!
 
     private weak var locationMarker: GMSMarker?
     private weak var selectedMarker: GXCustomMarker?
@@ -125,6 +126,7 @@ class GXHomeVC: GXBaseViewController {
                 self.mapView.isUserInteractionEnabled = true
                 let bottom = self.mapView.bottom - self.panView.panCenterY - 22.0
                 self.centerIconTopLC.constant = (self.mapView.height - bottom - 24)/2
+                self.locationBtnTopLC.constant = self.mapView.height - bottom - 48
                 UIView.animate(.promise, duration: 0.2) {
                     self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
                     self.view.layoutIfNeeded()
@@ -134,6 +136,7 @@ class GXHomeVC: GXBaseViewController {
                 self.mapView.isUserInteractionEnabled = true
                 let bottom = self.mapView.bottom - self.panView.panBottomY - 22.0
                 self.centerIconTopLC.constant = (self.mapView.height - bottom - 24)/2
+                self.locationBtnTopLC.constant = self.mapView.height - bottom - 48
                 UIView.animate(.promise, duration: 0.2) {
                     self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
                     self.view.layoutIfNeeded()
@@ -143,6 +146,7 @@ class GXHomeVC: GXBaseViewController {
                 self.mapView.isUserInteractionEnabled = true
                 let bottom = self.mapView.bottom - (SCREEN_HEIGHT - GXSelectedMarkerInfoView.menuHeight())
                 self.centerIconTopLC.constant = (self.mapView.height - bottom - 24)/2
+                self.locationBtnTopLC.constant = self.mapView.height - bottom - 48
                 UIView.animate(.promise, duration: 0.2) {
                     self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
                     self.view.layoutIfNeeded()

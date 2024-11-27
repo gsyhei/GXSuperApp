@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXHomeVC" customModule="GXSuperApp" customModuleProvider="target">
             <connections>
                 <outlet property="centerIconTopLC" destination="1my-Qq-OiO" id="XtN-cL-6yx"/>
+                <outlet property="locationBtnTopLC" destination="AwW-ow-nTr" id="fJc-8C-Atj"/>
                 <outlet property="myLocationButton" destination="t2R-fG-5FA" id="rN1-5k-1WO"/>
                 <outlet property="ongoingButton" destination="out-Pk-Y4P" id="fVq-zD-val"/>
                 <outlet property="ongoingView" destination="45r-Su-e17" id="nno-59-Ngh"/>

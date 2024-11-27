@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,7 +43,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 1.55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="She-Wy-bjg">
-                            <rect key="frame" x="12.000000000000004" y="63" width="57.333333333333343" height="25"/>
+                            <rect key="frame" x="12" y="63" width="57" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="iM5-Ar-W8v"/>
                             </constraints>
@@ -52,7 +52,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ kWh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOH-uJ-CEz">
-                            <rect key="frame" x="72.333333333333329" y="68" width="32" height="20"/>
+                            <rect key="frame" x="72" y="68" width="31" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="fmR-Kb-koq"/>
                             </constraints>
@@ -292,7 +292,7 @@
                 <outlet property="usNumberImgView" destination="6Pr-s7-o3u" id="7Gu-Ae-xKO"/>
                 <outlet property="usNumberLabel" destination="cby-lL-BDz" id="YcR-px-T6F"/>
             </connections>
-            <point key="canvasLocation" x="-307.63358778625951" y="-94.718309859154928"/>
+            <point key="canvasLocation" x="-204" y="-90"/>
         </view>
     </objects>
     <resources>
