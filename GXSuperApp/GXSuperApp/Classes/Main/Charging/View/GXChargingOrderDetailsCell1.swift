@@ -66,15 +66,23 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
         self.tableList = [cellModel0, cellModel1, cellModel2, cellModel3]
     }
     
-    func bindListCell(model: GXChargingOrderDetailData?) {
+    func bindListCell(model: GXChargingOrderDetailData?, isOpen: Bool) {
         guard let model = model else { return }
         self.nameLabel.text = model.stationName
         self.stateLabel.isHidden = false
+        self.isOpen = isOpen
         
         let cellModel0 = GXChargingOrderLRTextCell.Model(leftText: "Pile ID", rightText: model.pointIdStr)
         let cellModel1 = GXChargingOrderLRTextCell.Model(leftText: "Order ID", rightText: model.orderNo, isShowCopy: true)
         let cellModel2 = GXChargingOrderLRTextCell.Model(leftText: "Start Time", rightText: model.startTime)
-        var cellList = [cellModel0, cellModel1, cellModel2]
+        var cellList: [GXChargingOrderLRTextCell.Model] = []
+        if isOpen {
+            cellList = [cellModel0, cellModel1, cellModel2]
+        }
+        else {
+            cellList = [cellModel2]
+        }
+        
         //订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成
         switch model.orderStatus {
         case .CHARGING:
@@ -115,6 +123,7 @@ class GXChargingOrderDetailsCell1: UITableViewCell, NibReusable {
 private extension GXChargingOrderDetailsCell1 {
     @IBAction func openButtonClicked(_ sender: UIButton) {
         self.isOpen = !sender.isSelected
+        sender.isSelected = self.isOpen
         self.openAction?(self.isOpen)
     }
 }

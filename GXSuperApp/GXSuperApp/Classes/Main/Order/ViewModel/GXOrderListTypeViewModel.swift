@@ -9,13 +9,16 @@ import UIKit
 import PromiseKit
 import XCGLogger
 
-struct GXChargingOrderDetailCellModel {
+class GXChargingOrderDetailCellModel {
     var item: GXChargingOrderDetailData
     var rowsIndexs: [Int]
-    
-    init(item: GXChargingOrderDetailData, rowsIndexs: [Int]) {
+    var closeRowsIndexs: [Int]
+    var isOpen: Bool = true
+
+    init(item: GXChargingOrderDetailData, rowsIndexs: [Int], closeRowsIndexs: [Int]) {
         self.item = item
         self.rowsIndexs = rowsIndexs
+        self.closeRowsIndexs = closeRowsIndexs
     }
 }
 
@@ -90,12 +93,13 @@ class GXOrderListTypeViewModel: GXBaseViewModel {
 }
 
 extension GXOrderListTypeViewModel {
-    
     private func updateDataSource(rows: [GXChargingOrderDetailData]) {
         for item in rows {
             var rowsIndexs: [Int] = []
+            var closeRowsIndexs: [Int] = []
             /// 添加rows: 场站使用信息
             rowsIndexs.append(1)
+            closeRowsIndexs.append(1)
             //"orderStatus" //订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成支付
             switch item.orderStatus {
             case .CHARGING:
@@ -113,6 +117,7 @@ extension GXOrderListTypeViewModel {
                 }
                 /// 添加rows: 充电总费用
                 rowsIndexs.append(5)
+                closeRowsIndexs.append(5)
                 /// 添加More、Pay
             case .FINISHED:
                 /// 添加rows: Charging Bill
@@ -123,14 +128,15 @@ extension GXOrderListTypeViewModel {
                 }
                 /// 添加rows: 支付费用
                 rowsIndexs.append(4)
+                closeRowsIndexs.append(4)
                 /// 添加More
             default: break
             }
             /// 添加rows: 底部操作按钮
             rowsIndexs.append(10)
-            let cellModel = GXChargingOrderDetailCellModel(item: item, rowsIndexs: rowsIndexs)
+            closeRowsIndexs.append(10)
+            let cellModel = GXChargingOrderDetailCellModel(item: item, rowsIndexs: rowsIndexs, closeRowsIndexs: closeRowsIndexs)
             self.cellList.append(cellModel)
         }
     }
-    
 }

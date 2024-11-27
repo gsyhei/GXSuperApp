@@ -212,16 +212,28 @@ extension GXOrderListTypeVC: SkeletonTableViewDataSource, SkeletonTableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.cellList[section].rowsIndexs.count
+        let model = self.viewModel.cellList[section]
+        if model.isOpen {
+            return self.viewModel.cellList[section].rowsIndexs.count
+        }
+        else {
+            return self.viewModel.cellList[section].closeRowsIndexs.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = self.viewModel.cellList[indexPath.section]
-        let index = model.rowsIndexs[indexPath.row]
+        let index = model.isOpen ? model.rowsIndexs[indexPath.row] : model.closeRowsIndexs[indexPath.row]
         switch index {
         case 1:
             let cell: GXChargingOrderDetailsCell1 = tableView.dequeueReusableCell(for: indexPath)
-            cell.bindListCell(model: model.item)
+            cell.isShowOpen = true
+            cell.bindListCell(model: model.item, isOpen: model.isOpen)
+            cell.openAction = {[weak self] isOpen in
+                guard let `self` = self else { return }
+                model.isOpen = isOpen
+                self.tableView.reloadSection(indexPath.section, with: .automatic)
+            }
             return cell
         case 2:
             let cell: GXChargingOrderDetailsCell2 = tableView.dequeueReusableCell(for: indexPath)

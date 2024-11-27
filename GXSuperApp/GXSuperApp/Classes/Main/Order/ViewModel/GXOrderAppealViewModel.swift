@@ -104,8 +104,10 @@ class GXOrderAppealViewModel: GXBaseViewModel {
 extension GXOrderAppealViewModel {
     func updateDataSource(item: GXChargingOrderDetailData) {
         var rowsIndexs: [Int] = []
+        var closeRowsIndexs: [Int] = []
         /// 添加rows: 场站使用信息
         rowsIndexs.append(1)
+        closeRowsIndexs.append(1)
         //"orderStatus" //订单状态；CHARGING：充电中，OCCUPY：占位中，TO_PAY：待支付，FINISHED：已完成支付
         switch item.orderStatus {
         case .CHARGING:
@@ -123,6 +125,7 @@ extension GXOrderAppealViewModel {
             }
             /// 添加rows: 充电总费用
             rowsIndexs.append(5)
+            closeRowsIndexs.append(5)
             /// 添加More、Pay
         case .FINISHED:
             /// 添加rows: Charging Bill
@@ -133,9 +136,13 @@ extension GXOrderAppealViewModel {
             }
             /// 添加rows: 支付费用
             rowsIndexs.append(4)
+            closeRowsIndexs.append(4)
             /// 添加More
         default: break
         }
-        self.detailCellModel = GXChargingOrderDetailCellModel(item: item, rowsIndexs: rowsIndexs)
+        /// 添加rows: 底部操作按钮
+        rowsIndexs.append(10)
+        closeRowsIndexs.append(10)
+        self.detailCellModel = GXChargingOrderDetailCellModel(item: item, rowsIndexs: rowsIndexs, closeRowsIndexs: closeRowsIndexs)
     }
 }
