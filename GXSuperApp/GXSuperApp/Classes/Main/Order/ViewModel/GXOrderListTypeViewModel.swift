@@ -13,7 +13,7 @@ class GXChargingOrderDetailCellModel {
     var item: GXChargingOrderDetailData
     var rowsIndexs: [Int]
     var closeRowsIndexs: [Int]
-    var isOpen: Bool = true
+    var isOpen: Bool = false
 
     init(item: GXChargingOrderDetailData, rowsIndexs: [Int], closeRowsIndexs: [Int]) {
         self.item = item
