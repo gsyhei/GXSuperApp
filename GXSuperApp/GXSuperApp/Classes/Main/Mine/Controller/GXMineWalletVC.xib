@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,8 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXMineWalletVC" customModule="GXSuperApp" customModuleProvider="target">
             <connections>
                 <outlet property="balanceLabel" destination="Ik1-gq-j40" id="Gnj-d3-urc"/>
-                <outlet property="detailButton" destination="hYJ-BD-cpy" id="I8D-7L-ktd"/>
                 <outlet property="rechargeButton" destination="cDh-Dr-IpO" id="Bv5-LP-k09"/>
+                <outlet property="tableView" destination="be3-8j-5nk" id="ANG-Gd-yjU"/>
                 <outlet property="topImageView" destination="Z74-Yi-feh" id="t7B-kY-edc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="withdrawButton" destination="pQb-Y3-3vp" id="c5e-im-Pes"/>
@@ -57,28 +57,6 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYJ-BD-cpy">
-                    <rect key="frame" x="284" y="141" width="76" height="32"/>
-                    <color key="backgroundColor" white="1" alpha="0.20441573187215439" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="76" id="RBH-PF-ana"/>
-                        <constraint firstAttribute="height" constant="32" id="trb-yi-VhN"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="Details" image="wallet_card_ic_arrow">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="detailButtonClicked:" destination="-1" eventType="touchUpInside" id="3dx-H5-iny"/>
-                    </connections>
-                </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallet_card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="A0O-gL-mTp">
                     <rect key="frame" x="301" y="187" width="77" height="50"/>
                     <constraints>
@@ -130,34 +108,83 @@
                         <action selector="rechargeButtonClicked:" destination="-1" eventType="touchUpInside" id="cCP-bS-pfV"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6c-it-Lkn">
+                    <rect key="frame" x="27" y="333" width="100" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="S2c-QF-iVE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
+                    <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVC-kO-Atl">
+                    <rect key="frame" x="127" y="333" width="159" height="25"/>
+                    <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
+                    <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5N-Z0-K5o">
+                    <rect key="frame" x="286" y="333" width="80" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="QXA-Mg-6NG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
+                    <color key="textColor" red="0.15686274510000001" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="be3-8j-5nk">
+                    <rect key="frame" x="0.0" y="363" width="393" height="455"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="J8d-s6-oEL"/>
+                        <outlet property="delegate" destination="-1" id="JVi-fv-YO1"/>
+                    </connections>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="hYJ-BD-cpy" firstAttribute="trailing" secondItem="Z74-Yi-feh" secondAttribute="trailing" constant="-18" id="40V-CY-iey"/>
                 <constraint firstItem="cDh-Dr-IpO" firstAttribute="top" secondItem="Z74-Yi-feh" secondAttribute="bottom" constant="30" id="7Jw-JO-EDJ"/>
                 <constraint firstItem="Z74-Yi-feh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="C1P-52-m0h"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Z74-Yi-feh" secondAttribute="trailing" constant="15" id="FCC-6H-Iei"/>
                 <constraint firstItem="cDh-Dr-IpO" firstAttribute="width" secondItem="pQb-Y3-3vp" secondAttribute="width" id="FnV-j9-zZ6"/>
                 <constraint firstItem="SN1-UA-gIS" firstAttribute="leading" secondItem="Z74-Yi-feh" secondAttribute="leading" constant="18" id="JMA-Cf-LE0"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="be3-8j-5nk" secondAttribute="bottom" id="Mm3-75-F9h"/>
                 <constraint firstItem="pQb-Y3-3vp" firstAttribute="top" secondItem="Z74-Yi-feh" secondAttribute="bottom" constant="30" id="NkN-un-y5J"/>
+                <constraint firstItem="AVC-kO-Atl" firstAttribute="top" secondItem="O6c-it-Lkn" secondAttribute="top" id="RH6-ep-GMI"/>
+                <constraint firstItem="be3-8j-5nk" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="RR5-Z6-dtG"/>
+                <constraint firstItem="be3-8j-5nk" firstAttribute="top" secondItem="pQb-Y3-3vp" secondAttribute="bottom" constant="56" id="TdJ-xS-UnT"/>
                 <constraint firstItem="Ik1-gq-j40" firstAttribute="leading" secondItem="SN1-UA-gIS" secondAttribute="leading" id="VcH-7t-f0V"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cDh-Dr-IpO" secondAttribute="trailing" constant="15" id="XMH-53-mJH"/>
-                <constraint firstItem="hYJ-BD-cpy" firstAttribute="centerY" secondItem="Z74-Yi-feh" secondAttribute="centerY" id="Y0C-Cz-x65"/>
+                <constraint firstItem="be3-8j-5nk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Xz8-1c-VHV"/>
+                <constraint firstItem="O6c-it-Lkn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="27" id="ZAD-Lc-YNd"/>
                 <constraint firstItem="A0O-gL-mTp" firstAttribute="bottom" secondItem="Z74-Yi-feh" secondAttribute="bottom" id="c3f-o5-269"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="u5N-Z0-K5o" secondAttribute="trailing" constant="27" id="cgE-Zb-PVc"/>
                 <constraint firstItem="Ik1-gq-j40" firstAttribute="top" secondItem="SN1-UA-gIS" secondAttribute="bottom" constant="10" id="fGi-eM-2sq"/>
+                <constraint firstItem="u5N-Z0-K5o" firstAttribute="top" secondItem="O6c-it-Lkn" secondAttribute="top" id="fbe-0H-pFQ"/>
                 <constraint firstItem="A0O-gL-mTp" firstAttribute="trailing" secondItem="Z74-Yi-feh" secondAttribute="trailing" id="gNE-RS-VN9"/>
                 <constraint firstItem="pQb-Y3-3vp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="hP3-B3-bAw"/>
+                <constraint firstItem="u5N-Z0-K5o" firstAttribute="leading" secondItem="AVC-kO-Atl" secondAttribute="trailing" id="krE-P2-YbG"/>
                 <constraint firstItem="cDh-Dr-IpO" firstAttribute="leading" secondItem="pQb-Y3-3vp" secondAttribute="trailing" constant="15" id="lZM-dr-X1l"/>
                 <constraint firstItem="Z74-Yi-feh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="18" id="mRq-wh-5IX"/>
+                <constraint firstItem="AVC-kO-Atl" firstAttribute="leading" secondItem="O6c-it-Lkn" secondAttribute="trailing" id="q1N-7b-NsL"/>
                 <constraint firstItem="SN1-UA-gIS" firstAttribute="top" secondItem="Z74-Yi-feh" secondAttribute="top" constant="45" id="wRi-hz-6kO"/>
+                <constraint firstItem="O6c-it-Lkn" firstAttribute="top" secondItem="pQb-Y3-3vp" secondAttribute="bottom" constant="26" id="zYi-i8-eZc"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>
         <image name="wallet_card_bg" width="77" height="50"/>
-        <image name="wallet_card_ic_arrow" width="6" height="11"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

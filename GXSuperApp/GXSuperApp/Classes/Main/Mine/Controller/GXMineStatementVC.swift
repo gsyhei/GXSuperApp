@@ -10,6 +10,7 @@ import PromiseKit
 import MBProgressHUD
 import GXRefresh
 
+/// 新版已废弃
 class GXMineStatementVC: GXBaseViewController {
     @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var balanceLabel: UILabel!
