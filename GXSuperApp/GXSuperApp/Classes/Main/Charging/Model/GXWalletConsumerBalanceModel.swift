@@ -10,8 +10,9 @@ import HandyJSON
 
 class GXWalletConsumerBalanceData: HandyJSON {
     var available: Float = 0
+    /// 付款方式；SETUP_INTENT：预授权，BALANCE：余额
     var paymentMethod: String = ""
-    //"paymentMethod": "BALANCE" //付款方式；SETUP_INTENT：预授权，BALANCE：余额
+    var paymentMethodId: String = ""
     
     required init() {}
 }

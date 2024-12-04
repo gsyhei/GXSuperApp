@@ -11,6 +11,7 @@ class GXStripePaymentListDataItem: GXBaseModel {
     var paymentMethodId: String = ""
     var last4: String = ""
     var type: String = ""
+    var `default`: Bool = false
 }
 
 class GXStripePaymentListModel: GXBaseModel {

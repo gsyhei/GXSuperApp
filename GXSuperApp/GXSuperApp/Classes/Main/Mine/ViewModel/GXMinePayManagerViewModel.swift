@@ -13,17 +13,20 @@ class GXMinePayManagerViewModel: GXBaseViewModel {
     var balanceData: GXWalletConsumerBalanceData?
     /// 支付列表
     var model: GXStripePaymentListModel?
-    /// 当前选择支付方式
-    var paymentMethod: String? //"SETUP_INTENT/BALANCE"
     /// 当前选择支付卡
     var selectedItem: GXStripePaymentListDataItem?
     
-    /// 钱包明细
+    /// 支付账号列表
     func requestStripePaymentList() -> Promise<GXStripePaymentListModel> {
         return Promise { seal in
             let api = GXApi.normalApi(Api_stripe_consumer_payment_method_list, [:], .get)
             GXNWProvider.login_request(api, type: GXStripePaymentListModel.self, success: { model in
                 self.model = model
+                for item in model.data {
+                    if item.default {
+                        self.selectedItem = item; break
+                    }
+                }
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)
@@ -37,7 +40,6 @@ class GXMinePayManagerViewModel: GXBaseViewModel {
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXWalletConsumerBalanceModel.self, success: { model in
                 self.balanceData = model.data
-                self.paymentMethod = model.data?.paymentMethod
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)
@@ -75,7 +77,13 @@ class GXMinePayManagerViewModel: GXBaseViewModel {
     func requestStripePaymentMethodSet() -> Promise<GXBaseDataModel> {
         return Promise { seal in
             var params: Dictionary<String, Any> = [:]
-            params["paymentMethod"] = self.paymentMethod
+            if let item = self.selectedItem {
+                params["paymentMethod"] = "SETUP_INTENT"
+                params["paymentMethodId"] = item.paymentMethodId
+            }
+            else {
+                params["paymentMethod"] = "BALANCE"
+            }
             let api = GXApi.normalApi(Api_wallet_consumer_payment_method_set, params, .post)
             GXNWProvider.login_request(api, type: GXBaseDataModel.self, success: { model in
                 seal.fulfill(model)

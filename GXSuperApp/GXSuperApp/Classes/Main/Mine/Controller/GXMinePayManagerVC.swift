@@ -104,12 +104,6 @@ private extension GXMinePayManagerVC {
         }
     }
     func requestStripePaymentMethodSet() {
-        guard let paymentMethod = self.viewModel.paymentMethod,
-              paymentMethod != self.viewModel.balanceData?.paymentMethod
-        else {
-            self.backBarButtonItemTapped()
-            return
-        }
         MBProgressHUD.showLoading()
         firstly {
             self.viewModel.requestStripePaymentMethodSet()
@@ -126,7 +120,8 @@ private extension GXMinePayManagerVC {
 extension GXMinePayManagerVC: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return (self.viewModel.model?.data.count ?? 0) + 2
+        guard let data = self.viewModel.model?.data else { return 0 }
+        return data.count + 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
