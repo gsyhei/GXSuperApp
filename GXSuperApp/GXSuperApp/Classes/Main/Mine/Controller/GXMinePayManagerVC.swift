@@ -45,7 +45,14 @@ class GXMinePayManagerVC: GXBaseViewController {
     }
     
     func updateDataSource() {
-        guard (self.viewModel.model != nil) else { return }
+        guard let model = self.viewModel.model else { return }
+        if self.viewModel.balanceData?.paymentMethod == "SETUP_INTENT" {
+            for item in model.data {
+                if item.default {
+                    self.viewModel.selectedItem = item; break
+                }
+            }
+        }
         self.tableView.reloadData()
     }
     
@@ -57,12 +64,10 @@ class GXMinePayManagerVC: GXBaseViewController {
 private extension GXMinePayManagerVC {
     func requestStripePaymentList() {
         MBProgressHUD.showLoading()
-        let combinedPromise = when(fulfilled: [
-            self.viewModel.requestStripePaymentList(),
-            self.viewModel.requestWalletConsumerBalance()
-        ])
         firstly {
-            combinedPromise
+            self.viewModel.requestWalletConsumerBalance()
+        }.then { model in
+            self.viewModel.requestStripePaymentList()
         }.done { model in
             MBProgressHUD.dismiss()
             self.updateDataSource()

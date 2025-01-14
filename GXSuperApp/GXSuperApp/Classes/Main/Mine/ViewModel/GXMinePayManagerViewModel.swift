@@ -22,11 +22,6 @@ class GXMinePayManagerViewModel: GXBaseViewModel {
             let api = GXApi.normalApi(Api_stripe_consumer_payment_method_list, [:], .get)
             GXNWProvider.login_request(api, type: GXStripePaymentListModel.self, success: { model in
                 self.model = model
-                for item in model.data {
-                    if item.default {
-                        self.selectedItem = item; break
-                    }
-                }
                 seal.fulfill(model)
             }, failure: { error in
                 seal.reject(error)
@@ -35,7 +30,7 @@ class GXMinePayManagerViewModel: GXBaseViewModel {
     }
     
     /// 钱包余额
-    func requestWalletConsumerBalance() -> Promise<GXWalletConsumerBalanceModel?> {
+    func requestWalletConsumerBalance() -> Promise<GXWalletConsumerBalanceModel> {
         let api = GXApi.normalApi(Api_wallet_consumer_balance, [:], .get)
         return Promise { seal in
             GXNWProvider.login_request(api, type: GXWalletConsumerBalanceModel.self, success: { model in
