@@ -98,6 +98,10 @@ extension GXAppleLoginManager: ASAuthorizationControllerDelegate, ASAuthorizatio
                 errorMsg = "Authorization request not processed"
             case .matchedExcludedCredential:
                 errorMsg = "matched excluded credential"
+            case .credentialImport:
+                errorMsg = "This error signals that the import request failed.->credentialImport"
+            case .credentialExport:
+                errorMsg = "This error signals that the import request failed.->credentialExport"
             @unknown default:
                 errorMsg = "Authorization request failed for other reasons"
             }
