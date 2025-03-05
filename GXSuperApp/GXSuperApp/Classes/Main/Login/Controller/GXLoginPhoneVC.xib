@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,10 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GXLoginPhoneVC" customModule="GXSuperApp" customModuleProvider="target">
             <connections>
+                <outlet property="check1Button" destination="XRd-Io-HZi" id="aZa-pB-B39"/>
                 <outlet property="checkButton" destination="KMV-Iv-8Sr" id="8tf-ps-kcY"/>
                 <outlet property="codeTextField" destination="jFq-a6-Hoc" id="dcq-UL-KoB"/>
                 <outlet property="confirmButton" destination="hx9-a9-7kC" id="3Jh-oI-knx"/>
                 <outlet property="countryCodeLabel" destination="QSm-mG-r06" id="eKu-p2-8de"/>
+                <outlet property="infoText1View" destination="BfJ-nm-hbX" id="aAO-75-m5e"/>
+                <outlet property="infoText2View" destination="xv9-PW-rXd" id="4Ib-XS-1ze"/>
                 <outlet property="infoTextView" destination="xL4-7U-Yuk" id="w4K-dS-nx7"/>
                 <outlet property="otherLoginView" destination="YG1-ms-1fZ" id="JfV-Tn-DOc"/>
                 <outlet property="phoneInputView" destination="bAV-7J-pzU" id="Yza-Ld-QI6"/>
@@ -33,7 +36,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzk-HA-nsW">
-                    <rect key="frame" x="0.0" y="59" width="393" height="558"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="509"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqw-Xu-bXM" userLabel="ContentView">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="414"/>
@@ -209,7 +212,7 @@
                     <viewLayoutGuide key="frameLayoutGuide" id="rrO-Il-EeY"/>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YG1-ms-1fZ" userLabel="OtherLoginView" customClass="GXLoginDashedLineView" customModule="GXSuperApp" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="617" width="393" height="100"/>
+                    <rect key="frame" x="0.0" y="568" width="393" height="100"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6x7-xr-5QF">
                             <rect key="frame" x="186.66666666666666" y="0.0" width="20" height="30"/>
@@ -273,10 +276,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFS-o4-uWi" userLabel="BottomView">
-                    <rect key="frame" x="0.0" y="757" width="393" height="61"/>
+                    <rect key="frame" x="0.0" y="688" width="393" height="130"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMV-Iv-8Sr">
-                            <rect key="frame" x="24" y="10" width="38" height="51"/>
+                            <rect key="frame" x="24" y="10" width="38" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="38" id="xtB-Yd-mIy"/>
                             </constraints>
@@ -288,46 +291,88 @@
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="I agree to the &quot;Privacy Policy&quot; and &quot;User Agreement&quot; &quot;ATT Service Terms&quot;" translatesAutoresizingMaskIntoConstraints="NO" id="xL4-7U-Yuk" customClass="GXLinkTextView" customModule="GXSuperApp" customModuleProvider="target">
-                            <rect key="frame" x="48" y="5" width="321" height="56"/>
+                            <rect key="frame" x="48" y="10" width="321" height="32"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="56" id="U0h-gc-Jhk"/>
+                                <constraint firstAttribute="height" constant="32" id="U0h-gc-Jhk"/>
                             </constraints>
                             <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="MuktaMahee-Light" family="Mukta Mahee" pointSize="15"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRd-Io-HZi">
+                            <rect key="frame" x="24" y="44" width="38" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="38" id="EGt-zg-O5C"/>
+                                <constraint firstAttribute="height" constant="40" id="nIj-7r-gFc"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="com_list_ic_checkbox_normal"/>
+                            <state key="selected" image="com_list_ic_checkbox_selected"/>
+                            <connections>
+                                <action selector="check1ButtonClicked:" destination="-1" eventType="touchUpInside" id="Io0-cU-SOa"/>
+                            </connections>
+                        </button>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="I agree to receive text message" translatesAutoresizingMaskIntoConstraints="NO" id="BfJ-nm-hbX" customClass="GXLinkTextView" customModule="GXSuperApp" customModuleProvider="target">
+                            <rect key="frame" x="48" y="44" width="321" height="16"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="qJa-pO-ITE"/>
+                            </constraints>
+                            <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xv9-PW-rXd" customClass="GXLinkTextView" customModule="GXSuperApp" customModuleProvider="target">
+                            <rect key="frame" x="48" y="60" width="321" height="70"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <string key="text">Message and data rates may apply. Enter your phone number to subscribe to recurring Account updates to your phone from MarsEnergy. Msg freq may vary Reply "HELP" for help. Reply "STOP" to cancel.</string>
+                            <color key="textColor" red="0.4549019608" green="0.46666666670000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             <dataDetectorType key="dataDetectorTypes" link="YES"/>
                         </textView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="BfJ-nm-hbX" firstAttribute="leading" secondItem="xL4-7U-Yuk" secondAttribute="leading" id="55r-Gg-nfv"/>
+                        <constraint firstItem="xv9-PW-rXd" firstAttribute="top" secondItem="BfJ-nm-hbX" secondAttribute="bottom" id="9ym-A2-0XR"/>
                         <constraint firstItem="xL4-7U-Yuk" firstAttribute="leading" secondItem="vFS-o4-uWi" secondAttribute="leading" constant="48" id="AeP-Ca-VQ8"/>
+                        <constraint firstItem="xv9-PW-rXd" firstAttribute="leading" secondItem="xL4-7U-Yuk" secondAttribute="leading" id="DlG-NN-aan"/>
                         <constraint firstItem="KMV-Iv-8Sr" firstAttribute="top" secondItem="vFS-o4-uWi" secondAttribute="top" constant="10" id="NO2-0n-sT8"/>
-                        <constraint firstItem="KMV-Iv-8Sr" firstAttribute="top" secondItem="xL4-7U-Yuk" secondAttribute="top" constant="5" id="OU2-rC-d6k"/>
+                        <constraint firstItem="KMV-Iv-8Sr" firstAttribute="top" secondItem="xL4-7U-Yuk" secondAttribute="top" id="OU2-rC-d6k"/>
                         <constraint firstItem="xL4-7U-Yuk" firstAttribute="bottom" secondItem="KMV-Iv-8Sr" secondAttribute="bottom" id="Pgx-BC-373"/>
+                        <constraint firstItem="BfJ-nm-hbX" firstAttribute="trailing" secondItem="xL4-7U-Yuk" secondAttribute="trailing" id="XGm-aH-fYY"/>
+                        <constraint firstItem="xv9-PW-rXd" firstAttribute="trailing" secondItem="xL4-7U-Yuk" secondAttribute="trailing" id="Xt0-cv-hpb"/>
+                        <constraint firstItem="BfJ-nm-hbX" firstAttribute="leading" secondItem="XRd-Io-HZi" secondAttribute="leading" constant="24" id="eCg-k2-ObB"/>
+                        <constraint firstItem="XRd-Io-HZi" firstAttribute="top" secondItem="KMV-Iv-8Sr" secondAttribute="bottom" constant="2" id="f5c-hI-CR4"/>
+                        <constraint firstAttribute="bottom" secondItem="xv9-PW-rXd" secondAttribute="bottom" id="hsx-xf-zTR"/>
                         <constraint firstItem="xL4-7U-Yuk" firstAttribute="leading" secondItem="KMV-Iv-8Sr" secondAttribute="leading" constant="24" id="tnS-Ve-adx"/>
                         <constraint firstAttribute="trailing" secondItem="xL4-7U-Yuk" secondAttribute="trailing" constant="24" id="utV-qB-s60"/>
-                        <constraint firstAttribute="bottom" secondItem="xL4-7U-Yuk" secondAttribute="bottom" id="wQh-gw-m50"/>
+                        <constraint firstItem="XRd-Io-HZi" firstAttribute="top" secondItem="BfJ-nm-hbX" secondAttribute="top" id="vuu-re-dg0"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vFS-o4-uWi" secondAttribute="bottom" id="7Yj-vq-5Ai"/>
                 <constraint firstItem="XUM-8C-dcm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="F3L-KN-As7"/>
                 <constraint firstItem="YG1-ms-1fZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GEx-uY-jzX"/>
                 <constraint firstItem="XUM-8C-dcm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Hlw-J7-j4s"/>
+                <constraint firstItem="vFS-o4-uWi" firstAttribute="top" secondItem="YG1-ms-1fZ" secondAttribute="bottom" constant="20" id="IOl-Hj-84T"/>
                 <constraint firstItem="Rzk-HA-nsW" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="MRi-D3-TFA"/>
                 <constraint firstItem="YG1-ms-1fZ" firstAttribute="top" secondItem="Rzk-HA-nsW" secondAttribute="bottom" id="POf-O5-LPp"/>
                 <constraint firstItem="Rzk-HA-nsW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Roo-ul-xiV"/>
                 <constraint firstAttribute="trailing" secondItem="XUM-8C-dcm" secondAttribute="trailing" id="W1k-Tx-kld"/>
                 <constraint firstItem="vFS-o4-uWi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ygj-Fh-2mR"/>
                 <constraint firstAttribute="trailing" secondItem="vFS-o4-uWi" secondAttribute="trailing" id="ZKz-t1-VdB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vFS-o4-uWi" secondAttribute="bottom" id="bXS-bM-SvX"/>
                 <constraint firstItem="YG1-ms-1fZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="csE-Rf-GQP"/>
                 <constraint firstAttribute="bottom" secondItem="XUM-8C-dcm" secondAttribute="bottom" id="emb-UG-rfY"/>
                 <constraint firstItem="Rzk-HA-nsW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hwT-Hj-P3q"/>
-                <constraint firstItem="vFS-o4-uWi" firstAttribute="top" secondItem="YG1-ms-1fZ" secondAttribute="bottom" constant="40" id="yqg-fW-7ui"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="YG1-ms-1fZ" secondAttribute="bottom" constant="150" id="yqg-fW-7ui"/>
             </constraints>
             <point key="canvasLocation" x="14.503816793893129" y="12.67605633802817"/>
         </view>

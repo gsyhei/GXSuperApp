@@ -27,6 +27,9 @@ class GXLoginPhoneVC: GXBaseViewController {
     @IBOutlet weak var sendCodeButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var infoTextView: GXLinkTextView!
+    @IBOutlet weak var check1Button: UIButton!
+    @IBOutlet weak var infoText1View: GXLinkTextView!
+    @IBOutlet weak var infoText2View: GXLinkTextView!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var otherLoginView: UIView!
     
@@ -79,6 +82,9 @@ class GXLoginPhoneVC: GXBaseViewController {
         self.infoTextView.gx_appendLink(string: " \"ATT Service Terms\"", color: UIColor.gx_green, urlString: "ast")
         self.infoTextView.delegate = self
         
+        self.infoText1View.gx_setMarginZero()
+        self.infoText2View.gx_setMarginZero()
+        
         self.confirmButton.isEnabled = false
         self.confirmButton.setBackgroundColor(.gx_gray, for: .disabled)
         self.confirmButton.setBackgroundColor(.gx_green, for: .normal)
@@ -88,7 +94,8 @@ class GXLoginPhoneVC: GXBaseViewController {
         self.sendCodeButton.setTitleColor(.gx_drakGray, for: .disabled)
         self.sendCodeButton.setTitleColor(.gx_green, for: .normal)
         self.checkButton.isSelected = true
-        
+        self.check1Button.isSelected = true
+
         let usernameValid = self.phoneTextField.rx.text.orEmpty.map {[weak self] text in
             let maxCount: Int = 11
             var string: String = text
@@ -109,7 +116,8 @@ class GXLoginPhoneVC: GXBaseViewController {
             return string.count == 4 || string.count == 6
         }
         let checkedValid: Observable<Bool> = self.checkButton.rx.gx_isSelected.map { $0 }
-        let everythingValid = Observable.combineLatest(usernameValid, codeValid, checkedValid) { $0 && $1 && $2 }
+        let checked1Valid: Observable<Bool> = self.check1Button.rx.gx_isSelected.map { $0 }
+        let everythingValid = Observable.combineLatest(usernameValid, codeValid, checkedValid, checked1Valid) { $0 && $1 && $2 && $3}
         everythingValid.bind(to: self.confirmButton.rx.isEnabled).disposed(by: disposeBag)
         
         (self.phoneTextField.rx.textInput <-> self.viewModel.account).disposed(by: disposeBag)
@@ -270,6 +278,9 @@ extension GXLoginPhoneVC {
         self.requestSendCode()
     }
     @IBAction func checkButtonClicked(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
+    @IBAction func check1ButtonClicked(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
     }
     @IBAction func loginButtonClicked(_ sender: UIButton) {
