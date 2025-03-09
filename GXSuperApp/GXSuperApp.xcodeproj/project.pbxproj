@@ -1289,6 +1289,7 @@
 				33D9DFDC2C0EFA0700A282D5 /* Resources */,
 				BA8BE59F64A43CD70B8E3458 /* [CP] Embed Pods Frameworks */,
 				59315578DF995EE8F10EA04A /* [CP] Copy Pods Resources */,
+				89B91A374EF96B9CCE1132A9 /* Fix Privacy Manifest */,
 			);
 			buildRules = (
 			);
@@ -1450,6 +1451,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89B91A374EF96B9CCE1132A9 /* Fix Privacy Manifest */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fix Privacy Manifest";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/app_privacy_manifest_fixer-main/fixer.sh\" \n";
 			showEnvVarsInLog = 0;
 		};
 		BA8BE59F64A43CD70B8E3458 /* [CP] Embed Pods Frameworks */ = {
@@ -1817,7 +1838,7 @@
 				CODE_SIGN_ENTITLEMENTS = GXSuperApp/GXSuperApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = V9JU6X647H;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1863,7 +1884,7 @@
 				CODE_SIGN_ENTITLEMENTS = GXSuperApp/GXSuperApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = V9JU6X647H;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
