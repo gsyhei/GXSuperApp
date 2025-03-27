@@ -6,8 +6,8 @@
 //
 
 /// 基础Url
-let Api_baseUrl = "http://39.108.126.187"
-let Api_base1Url = "http://47.238.124.126:8081"
+let Api_baseUrl  = "https://api.marsenergyev.com"
+let Api_base1Url = "https://api.marsenergyev.com"
 
 // MARK: - 公用第三方接口
 
