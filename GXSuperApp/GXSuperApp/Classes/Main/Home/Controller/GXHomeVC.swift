@@ -23,7 +23,7 @@ class GXHomeVC: GXBaseViewController {
     private weak var locationMarker: GMSMarker?
     private weak var selectedMarker: GXCustomMarker?
     private weak var selectedMarkerMenu: GXSelectedMarkerInfoView?
-    private let zoomLarge: Float = 15.0
+    private let zoomLarge: Float = 12.0
     private var lastTarget: CLLocationCoordinate2D?
     private var lastIsZoomLarge: Bool = false
     private var markerList: [GXCustomMarker] = []
