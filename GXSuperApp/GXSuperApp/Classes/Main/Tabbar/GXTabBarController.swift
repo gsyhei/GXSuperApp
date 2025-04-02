@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import SnapKit
+import MBProgressHUD
 
 class GXTabBarController: UITabBarController {
     let disposeBag = DisposeBag()
@@ -111,6 +112,9 @@ extension GXTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard let index = tabBarController.viewControllers?.firstIndex(of: viewController) else { return false }
         switch index {
+        case 1:
+            MBProgressHUD.showInfo(text: "Stay tuned!")
+            return false
         case 2:
             // 扫码入口
             if GXUserManager.shared.isLogin {
@@ -129,7 +133,7 @@ extension GXTabBarController: UITabBarControllerDelegate {
                 GXAppDelegate?.gotoLogin(from: tabBarController)
             }
             return false
-        case 1, 3, 4:
+        case 3, 4:
             if !GXUserManager.shared.isLogin {
                 GXAppDelegate?.gotoLogin(from: tabBarController)
                 return false

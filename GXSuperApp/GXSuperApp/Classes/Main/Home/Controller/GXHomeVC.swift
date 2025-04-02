@@ -23,7 +23,7 @@ class GXHomeVC: GXBaseViewController {
     private weak var locationMarker: GMSMarker?
     private weak var selectedMarker: GXCustomMarker?
     private weak var selectedMarkerMenu: GXSelectedMarkerInfoView?
-    private let zoomLarge: Float = 12.0
+    private let zoomLarge: Float = 12.5
     private var lastTarget: CLLocationCoordinate2D?
     private var lastIsZoomLarge: Bool = false
     private var markerList: [GXCustomMarker] = []
@@ -271,7 +271,21 @@ private extension GXHomeVC {
     func showAlertNotLocation() {
         let title = "Enable Location"
         let message = "Allow MarsEnergy to access your location to find nearby stations"
-        GXUtil.showAlert(to: UIWindow.gx_frontWindow, title: title, message: message, cancelTitle: "Go to Settings", actionHandler: { alert, index in
+        GXUtil.showAlert(to: UIWindow.gx_frontWindow, title: title, message: message, actionTitle: "Go to Settings", handler: { alert, index in
+            guard index == 1 else {
+                let coordinate = self.mapView.camera.target
+                self.mapView.animate(with: GMSCameraUpdate.setTarget(coordinate, zoom: self.zoomLarge))
+                self.lastIsZoomLarge = true
+                self.mapView.delegate = self
+                if let alerts: [GXAlertView] = UIWindow.gx_frontWindow?.viewsForSuperview() {
+                    for alert in alerts {
+                        if alert.titleLabel.text == "Enable Location" {
+                            alert.hide(animated: true)
+                        }
+                    }
+                }
+                return
+            }
             if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(appSettings, completionHandler: nil)
             }

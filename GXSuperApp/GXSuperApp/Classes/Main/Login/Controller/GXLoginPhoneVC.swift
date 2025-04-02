@@ -19,7 +19,6 @@ class GXLoginPhoneVC: GXBaseViewController {
         case login
         case bindPhone
     }
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var phoneInputView: UIView!
     @IBOutlet weak var countryCodeLabel: UILabel!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -29,7 +28,6 @@ class GXLoginPhoneVC: GXBaseViewController {
     @IBOutlet weak var infoTextView: GXLinkTextView!
     @IBOutlet weak var check1Button: UIButton!
     @IBOutlet weak var infoText1View: GXLinkTextView!
-    @IBOutlet weak var infoText2View: GXLinkTextView!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var otherLoginView: UIView!
     
@@ -83,7 +81,6 @@ class GXLoginPhoneVC: GXBaseViewController {
         self.infoTextView.delegate = self
         
         self.infoText1View.gx_setMarginZero()
-        self.infoText2View.gx_setMarginZero()
         
         self.confirmButton.isEnabled = false
         self.confirmButton.setBackgroundColor(.gx_gray, for: .disabled)

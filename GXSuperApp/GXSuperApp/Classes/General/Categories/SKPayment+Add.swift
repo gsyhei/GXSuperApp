@@ -51,7 +51,7 @@ extension SKPayment {
             "exclude-old-transactions": true
         ]
         let requestData = try? JSONSerialization.data(withJSONObject: params, options: [])
-        var request = URLRequest(url: URL(string: Box_verifyReceiptUrl)!)
+        var request = URLRequest(url: URL(string: Buy_verifyReceiptUrl)!)
         request.httpMethod = "POST"
         request.httpBody = requestData
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
