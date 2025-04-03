@@ -17,6 +17,7 @@ class GXMineCell3: UITableViewCell, NibReusable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.renewButton.isHidden = true
         self.renewButton.setBackgroundColor(.gx_black, for: .normal)
         self.renewButton.setBackgroundColor(.gx_drakGray, for: .highlighted)
     }

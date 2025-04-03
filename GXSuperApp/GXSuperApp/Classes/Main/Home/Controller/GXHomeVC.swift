@@ -37,7 +37,8 @@ class GXHomeVC: GXBaseViewController {
     
     private lazy var mapView: GMSMapView = {
         let options = GMSMapViewOptions()
-        options.camera = GMSCameraPosition(latitude: -33.868, longitude: 151.2086, zoom: 12)
+        //37.4279818, -122.1614154
+        options.camera = GMSCameraPosition(latitude: 37.4279818, longitude: -122.1614154, zoom: 12)
         return GMSMapView(options: options).then {
             $0.preferredFrameRate = .maximum
             $0.settings.compassButton = false
@@ -176,35 +177,39 @@ class GXHomeVC: GXBaseViewController {
             guard isAuth else {
                 self.showAlertNotLocation(); return
             }
-            guard let letLocation = location else { return }
-            if let existingMaker = self.locationMarker {
-                UIView.animate(.promise, duration: 0.2) {
-                    existingMaker.position = letLocation.coordinate
-                    existingMaker.rotation = letLocation.course
-                }
-            } else {
-                let marker = GMSMarker(position: letLocation.coordinate)
-                marker.icon = UIImage(named: "home_map_ic_direction")
-                marker.rotation = letLocation.course
-                marker.map = self.mapView
-                self.locationMarker = marker
-                self.mapView.animate(with: GMSCameraUpdate.setTarget(letLocation.coordinate, zoom: self.zoomLarge))
-                self.lastIsZoomLarge = true
-                self.mapView.delegate = self
-            }
-            if let alerts: [GXAlertView] = UIWindow.gx_frontWindow?.viewsForSuperview() {
-                for alert in alerts {
-                    if alert.titleLabel.text == "Enable Location" {
-                        alert.hide(animated: true)
-                    }
-                }
-            }
+            self.updateLocationMarker(location: location)
         }
     }
     
     override func loginReloadViewData() {
         self.requestOrderConsumerDoing()
         self.requestStationConsumerQuery()
+    }
+    
+    func updateLocationMarker(location: CLLocation?) {
+        guard let letLocation = location else { return }
+        if let existingMaker = self.locationMarker {
+            UIView.animate(.promise, duration: 0.2) {
+                existingMaker.position = letLocation.coordinate
+                existingMaker.rotation = letLocation.course
+            }
+        } else {
+            let marker = GMSMarker(position: letLocation.coordinate)
+            marker.icon = UIImage(named: "home_map_ic_direction")
+            marker.rotation = letLocation.course
+            marker.map = self.mapView
+            self.locationMarker = marker
+            self.mapView.animate(with: GMSCameraUpdate.setTarget(letLocation.coordinate, zoom: self.zoomLarge))
+            self.lastIsZoomLarge = true
+            self.mapView.delegate = self
+        }
+        if let alerts: [GXAlertView] = UIWindow.gx_frontWindow?.viewsForSuperview() {
+            for alert in alerts {
+                if alert.titleLabel.text == "Enable Location" {
+                    alert.hide(animated: true)
+                }
+            }
+        }
     }
 }
 
@@ -441,7 +446,7 @@ extension GXHomeVC: GMSMapViewDelegate {
         let isZoomLarge = position.zoom >= self.zoomLarge
         if let lastTarget = self.lastTarget {
             let distance = GXLocationManager.getDistanceTo(coordinate1: lastTarget, coordinate2: position.target)
-            let maxDistance = (GXUserManager.shared.paramsData?.queryDistance ?? 50) * 1000
+            let maxDistance: CGFloat = 100
             XCGLogger.info("mapView move distance = \(distance), maxDistance = \(maxDistance)")
             if distance > maxDistance {
                 self.lastTarget = position.target
