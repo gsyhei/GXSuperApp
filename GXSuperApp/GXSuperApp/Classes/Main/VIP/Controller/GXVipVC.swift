@@ -83,14 +83,14 @@ class GXVipVC: GXBaseViewController {
     func updateDataSource() {
         if GXUserManager.shared.isVip {
             self.navigationItem.title = "VIP for Discounts"
-            self.renewButton.isHidden = false
+            self.renewButton.isHidden = true
             self.confirmButton.isHidden = true
             self.contentBottomLC.constant = 30
         }
         else {
             self.navigationItem.title = "Become a VIP"
             self.renewButton.isHidden = true
-            self.confirmButton.isHidden = false
+            self.confirmButton.isHidden = true
             self.contentBottomLC.constant = 90
         }
         if let params = GXUserManager.shared.paramsData {

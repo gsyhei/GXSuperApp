@@ -112,9 +112,6 @@ extension GXTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard let index = tabBarController.viewControllers?.firstIndex(of: viewController) else { return false }
         switch index {
-        case 1:
-            MBProgressHUD.showInfo(text: "Stay tuned!")
-            return false
         case 2:
             // 扫码入口
             if GXUserManager.shared.isLogin {
