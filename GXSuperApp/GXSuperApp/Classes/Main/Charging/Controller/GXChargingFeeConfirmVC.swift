@@ -236,6 +236,9 @@ extension GXChargingFeeConfirmTableVC {
                 return 0
             }
         }
+        else if indexPath.row == 4 {
+            return 0
+        }
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
     

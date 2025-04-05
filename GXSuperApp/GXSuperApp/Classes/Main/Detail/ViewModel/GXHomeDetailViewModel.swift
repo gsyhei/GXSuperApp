@@ -123,7 +123,7 @@ extension GXHomeDetailViewModel {
         // Charging Fee
         self.cellIndexs.append(3)
         // VIP介绍
-        self.cellIndexs.append(8)
+        //self.cellIndexs.append(8)
         // Charger Status
         self.cellIndexs.append(5)
         // Parking Fee Reduction
