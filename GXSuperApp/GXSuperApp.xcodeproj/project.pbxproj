@@ -45,7 +45,6 @@
 		333DE2002C44BB59009B83CD /* GXLoginPhoneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 333DE1FF2C44BB59009B83CD /* GXLoginPhoneVC.xib */; };
 		333DE2012C44BB59009B83CD /* GXLoginPhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333DE1FE2C44BB59009B83CD /* GXLoginPhoneVC.swift */; };
 		3340F7612C18498900B97923 /* GXRoundedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7602C18498900B97923 /* GXRoundedInView.swift */; };
-		3340F7632C18861600B97923 /* GXTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340F7622C18861600B97923 /* GXTabBar.swift */; };
 		334105C02C3B097D007F2F0E /* GXChargingOrderDetailsCell4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334105BE2C3B097D007F2F0E /* GXChargingOrderDetailsCell4.xib */; };
 		334105C12C3B097D007F2F0E /* GXChargingOrderDetailsCell4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334105BF2C3B097D007F2F0E /* GXChargingOrderDetailsCell4.swift */; };
 		334105C42C3B0ECC007F2F0E /* GXChargingOrderDetailsCell5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334105C22C3B0ECC007F2F0E /* GXChargingOrderDetailsCell5.xib */; };
@@ -316,7 +315,6 @@
 		333DE1FE2C44BB59009B83CD /* GXLoginPhoneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXLoginPhoneVC.swift; sourceTree = "<group>"; };
 		333DE1FF2C44BB59009B83CD /* GXLoginPhoneVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GXLoginPhoneVC.xib; sourceTree = "<group>"; };
 		3340F7602C18498900B97923 /* GXRoundedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXRoundedInView.swift; sourceTree = "<group>"; };
-		3340F7622C18861600B97923 /* GXTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXTabBar.swift; sourceTree = "<group>"; };
 		334105BE2C3B097D007F2F0E /* GXChargingOrderDetailsCell4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXChargingOrderDetailsCell4.xib; sourceTree = "<group>"; };
 		334105BF2C3B097D007F2F0E /* GXChargingOrderDetailsCell4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXChargingOrderDetailsCell4.swift; sourceTree = "<group>"; };
 		334105C22C3B0ECC007F2F0E /* GXChargingOrderDetailsCell5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXChargingOrderDetailsCell5.xib; sourceTree = "<group>"; };
@@ -1083,7 +1081,6 @@
 		33EC53882C101BA100D4CCD0 /* Bases */ = {
 			isa = PBXGroup;
 			children = (
-				3340F7622C18861600B97923 /* GXTabBar.swift */,
 				33EC53842C101BA100D4CCD0 /* GXConfigTVC.swift */,
 				33EC537C2C101BA100D4CCD0 /* GXBaseModel.swift */,
 				33EC53792C101BA100D4CCD0 /* GXArrowButton.swift */,
@@ -1590,7 +1587,6 @@
 				33EC56042C101BA100D4CCD0 /* GXServiceManager.swift in Sources */,
 				33EC55C12C101BA100D4CCD0 /* UIAlertController+Add.swift in Sources */,
 				330607B32C3932BA00F59C08 /* GXChargingOrderDetailsViewModel.swift in Sources */,
-				3340F7632C18861600B97923 /* GXTabBar.swift in Sources */,
 				33EC55BE2C101BA100D4CCD0 /* NSAttributedString+Add.swift in Sources */,
 				33EC55BA2C101BA100D4CCD0 /* GXCopyable+Add.swift in Sources */,
 				334105D12C3B1F74007F2F0E /* GXChargingOrderDetailsCell8.swift in Sources */,

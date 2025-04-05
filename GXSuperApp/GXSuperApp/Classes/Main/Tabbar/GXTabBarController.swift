@@ -53,10 +53,15 @@ class GXTabBarController: UITabBarController {
                       title: self.titleNames[0],
                       imageName: self.normalImageNames[0],
                       selectedImageName: self.selectedImageNames[0])
-        self.addChild(GXVipVC.xibViewController(),
-                      title: self.titleNames[1],
-                      imageName: self.normalImageNames[1],
-                      selectedImageName: self.selectedImageNames[1])
+//        self.addChild(GXVipVC.xibViewController(),
+//                      title: self.titleNames[1],
+//                      imageName: self.normalImageNames[1],
+//                      selectedImageName: self.selectedImageNames[1])
+        self.addChild(UIViewController(),
+                      title: self.titleNames[2],
+                      imageName: self.normalImageNames[2],
+                      selectedImageName: self.selectedImageNames[2])
+        
         self.addChild(UIViewController(),
                       title: self.titleNames[2],
                       imageName: self.normalImageNames[2],
@@ -112,6 +117,8 @@ extension GXTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard let index = tabBarController.viewControllers?.firstIndex(of: viewController) else { return false }
         switch index {
+        case 1:
+            return false
         case 2:
             // 扫码入口
             if GXUserManager.shared.isLogin {

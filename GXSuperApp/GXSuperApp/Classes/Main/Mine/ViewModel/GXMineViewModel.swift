@@ -10,7 +10,7 @@ import PromiseKit
 
 class GXMineViewModel: GXBaseViewModel {
     /// 动态配置cell
-    var cellIndexs: [Int] = [0, 1, 2, 3]
+    var cellIndexs: [Int] = [0, 1, 2]
     /// 钱包余额
     var balanceData: GXWalletConsumerBalanceData?
     /// 钱包余额
@@ -31,10 +31,10 @@ class GXMineViewModel: GXBaseViewModel {
     /// 更新配置
     func updateConfigCellIndexs() {
         if GXUserManager.shared.isVip {
-            self.cellIndexs = [0, 1, 2, 3]
+            self.cellIndexs = [0, 1, 2]
         }
         else {
-            self.cellIndexs = [0, 3, 1, 2]
+            self.cellIndexs = [0, 1, 2]
         }
     }
     

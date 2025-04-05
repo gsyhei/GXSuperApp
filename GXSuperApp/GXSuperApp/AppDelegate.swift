@@ -103,8 +103,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tbiAppearance = UITabBarItemAppearance(style: .stacked)
         tbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_drakGray, .font: UIFont.gx_font(size: 13)]
         tbiAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.gx_green, .font: UIFont.gx_boldFont(size: 13)]
-        tbiAppearance.normal.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
-        tbiAppearance.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+//        tbiAppearance.normal.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+//        tbiAppearance.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
         appearance.stackedLayoutAppearance = tbiAppearance
         UITabBar.appearance().standardAppearance = appearance
         if #available(iOS 15.0, *) {
@@ -114,8 +114,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let tbiAppearance = UITabBarItemAppearance(style: .stacked)
             tbiAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.gx_drakGray, .font: UIFont.gx_font(size: 13)]
             tbiAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.gx_green, .font: UIFont.gx_boldFont(size: 13)]
-            tbiAppearance.normal.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
-            tbiAppearance.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+//            tbiAppearance.normal.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
+//            tbiAppearance.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -4)
             appearance.stackedLayoutAppearance = tbiAppearance
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }

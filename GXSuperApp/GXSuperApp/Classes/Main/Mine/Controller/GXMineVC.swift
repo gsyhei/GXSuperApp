@@ -17,7 +17,7 @@ class GXMineVC: GXBaseViewController {
         didSet {
             tableView.configuration(estimated: true, separatorLeft: false)
             tableView.separatorStyle = .none
-            tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: .leastNormalMagnitude))
+            tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 80))
             tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: .leastNormalMagnitude))
             tableView.sectionHeaderHeight = .leastNormalMagnitude
             tableView.sectionFooterHeight = 12.0
@@ -224,7 +224,7 @@ extension GXMineVC: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset
         if offset.y < 0 {
-            self.topBgHeightLC.constant = 260 + abs(offset.y)
+            self.topBgHeightLC.constant = 334 + abs(offset.y)
         }
     }
     
